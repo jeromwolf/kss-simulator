@@ -1,0 +1,87 @@
+/* Custom styles for ontology content */
+.ontology-content {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced content styles */
+.ontology-content :global(.section) {
+  @apply mb-12 p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700;
+}
+
+.ontology-content :global(.highlight) {
+  @apply bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900/20 dark:to-yellow-800/10 px-2 py-1 rounded;
+}
+
+.ontology-content :global(.note) {
+  @apply bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 my-6 rounded-r-lg;
+}
+
+.ontology-content :global(.warning) {
+  @apply bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 my-6 rounded-r-lg;
+}
+
+.ontology-content :global(.example) {
+  @apply bg-gray-50 dark:bg-gray-900 p-6 rounded-xl my-6 border border-gray-200 dark:border-gray-700;
+}
+
+.ontology-content :global(.code-block) {
+  @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 rounded-lg overflow-x-auto my-4 text-sm font-mono;
+}
+
+/* Interactive elements */
+.ontology-content :global(.interactive-demo) {
+  @apply bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-xl my-8 border border-purple-200 dark:border-purple-700;
+}
+
+/* Progress indicator */
+.progress-bar {
+  @apply fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-kss-primary to-kss-secondary transition-all duration-300;
+}
+
+/* Smooth scrolling */
+.ontology-content {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced list styles */
+.ontology-content :global(ul) {
+  @apply space-y-2;
+}
+
+.ontology-content :global(ul li) {
+  @apply relative pl-6;
+}
+
+.ontology-content :global(ul li::before) {
+  content: '▶';
+  @apply absolute left-0 text-kss-primary text-xs;
+}
+
+/* Table enhancements */
+.ontology-content :global(table) {
+  @apply w-full my-8;
+}
+
+.ontology-content :global(tbody tr:hover) {
+  @apply bg-gray-50 dark:bg-gray-800/50;
+}
+
+/* Button styles for interactive elements */
+.ontology-content :global(.btn) {
+  @apply inline-flex items-center px-4 py-2 bg-kss-primary text-white rounded-lg hover:bg-kss-secondary transition-colors font-medium;
+}
+
+.ontology-content :global(.btn-secondary) {
+  @apply inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-medium;
+}

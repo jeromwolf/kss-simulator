@@ -1,0 +1,1317 @@
+<!-- Chapter 10: 온톨로지 설계 방법론 -->
+
+<div class="chapter-header">
+    <h1>Chapter 10. 온톨로지 설계 방법론</h1>
+    <div class="chapter-quote">
+        "좋은 온톨로지는 우연히 만들어지지 않습니다. 체계적인 방법론과 설계 원칙이 필요합니다."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 65분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>온톨로지 개발 생명주기와 단계별 활동 이해</li>
+        <li>주요 온톨로지 설계 방법론 비교 및 선택</li>
+        <li>온톨로지 설계 원칙과 모범 사례 학습</li>
+        <li>실제 프로젝트에 적용 가능한 설계 기법 습득</li>
+    </ul>
+</div>
+
+<!-- 섹션 10.1 -->
+<section class="content-section">
+    <h2>10.1 온톨로지 개발 생명주기</h2>
+    
+    <p>온톨로지 개발은 소프트웨어 개발과 유사하게 체계적인 생명주기를 따릅니다. 각 단계는 반복적이고 점진적으로 진행됩니다.</p>
+    
+    <div class="concept-box">
+        <h4><i class="fas fa-lightbulb"></i> 핵심 개념</h4>
+        <p><strong>온톨로지 개발 생명주기</strong>: 요구사항 분석부터 유지보수까지의 체계적인 개발 과정으로, 반복적이고 점진적인 특성을 가집니다.</p>
+    </div>
+    
+    <h3>개발 생명주기 단계</h3>
+    <div class="lifecycle-stages">
+        <div class="stage-card">
+            <div class="stage-number">1</div>
+            <h4>타당성 검토</h4>
+            <p>온톨로지 필요성 평가</p>
+            <ul>
+                <li>문제 정의</li>
+                <li>범위 설정</li>
+                <li>기대 효과 분석</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">2</div>
+            <h4>명세화</h4>
+            <p>요구사항 상세 정의</p>
+            <ul>
+                <li>목적 명확화</li>
+                <li>사용자 식별</li>
+                <li>역량 질문 작성</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">3</div>
+            <h4>지식 획득</h4>
+            <p>도메인 지식 수집</p>
+            <ul>
+                <li>전문가 인터뷰</li>
+                <li>문서 분석</li>
+                <li>기존 자원 조사</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">4</div>
+            <h4>개념화</h4>
+            <p>개념 모델 구축</p>
+            <ul>
+                <li>개념 식별</li>
+                <li>관계 정의</li>
+                <li>계층 구조화</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">5</div>
+            <h4>통합</h4>
+            <p>기존 온톨로지 활용</p>
+            <ul>
+                <li>재사용 검토</li>
+                <li>매핑 작업</li>
+                <li>일관성 확보</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">6</div>
+            <h4>구현</h4>
+            <p>형식 언어로 표현</p>
+            <ul>
+                <li>OWL 코딩</li>
+                <li>제약 정의</li>
+                <li>추론 규칙</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">7</div>
+            <h4>평가</h4>
+            <p>품질 검증</p>
+            <ul>
+                <li>일관성 검사</li>
+                <li>완전성 평가</li>
+                <li>사용성 테스트</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">8</div>
+            <h4>문서화</h4>
+            <p>상세 문서 작성</p>
+            <ul>
+                <li>설계 결정 기록</li>
+                <li>사용 가이드</li>
+                <li>예제 제공</li>
+            </ul>
+        </div>
+        
+        <div class="stage-arrow">→</div>
+        
+        <div class="stage-card">
+            <div class="stage-number">9</div>
+            <h4>유지보수</h4>
+            <p>지속적 개선</p>
+            <ul>
+                <li>버전 관리</li>
+                <li>변경 추적</li>
+                <li>진화 관리</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.2 -->
+<section class="content-section">
+    <h2>10.2 주요 온톨로지 설계 방법론</h2>
+    
+    <p>다양한 온톨로지 설계 방법론이 개발되어 왔으며, 각각의 장단점과 적용 상황이 다릅니다.</p>
+    
+    <h3>1. Uschold와 King 방법론</h3>
+    <div class="methodology-detail">
+        <div class="methodology-overview">
+            <p><strong>특징:</strong> 엔터프라이즈 온톨로지 개발을 위해 최초로 제안된 방법론</p>
+        </div>
+        <div class="methodology-steps">
+            <h4>주요 단계</h4>
+            <ol>
+                <li><strong>목적 식별:</strong> 온톨로지의 용도와 사용자 정의</li>
+                <li><strong>온톨로지 구축:</strong>
+                    <ul>
+                        <li>핵심 개념과 관계 파악</li>
+                        <li>정확한 텍스트 정의 작성</li>
+                        <li>형식 언어로 코딩</li>
+                    </ul>
+                </li>
+                <li><strong>평가:</strong> 요구사항 충족 여부 검증</li>
+                <li><strong>문서화:</strong> 가정과 설계 결정 기록</li>
+            </ol>
+        </div>
+        <div class="methodology-pros-cons">
+            <div class="pros">
+                <h5>장점</h5>
+                <ul>
+                    <li>단순하고 직관적</li>
+                    <li>초보자도 쉽게 적용</li>
+                    <li>빠른 프로토타이핑</li>
+                </ul>
+            </div>
+            <div class="cons">
+                <h5>단점</h5>
+                <ul>
+                    <li>세부 지침 부족</li>
+                    <li>복잡한 도메인에 한계</li>
+                    <li>재사용성 고려 미흡</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <h3>2. Grüninger와 Fox 방법론</h3>
+    <div class="methodology-detail">
+        <div class="methodology-overview">
+            <p><strong>특징:</strong> 역량 질문(Competency Questions)을 중심으로 한 체계적 접근</p>
+        </div>
+        <div class="methodology-steps">
+            <h4>주요 단계</h4>
+            <ol>
+                <li><strong>동기 시나리오:</strong> 온톨로지 필요성을 보여주는 사례 작성</li>
+                <li><strong>비형식 역량 질문:</strong> 온톨로지가 답해야 할 질문 목록</li>
+                <li><strong>형식 용어 정의:</strong> 일차 논리로 개념 정의</li>
+                <li><strong>형식 역량 질문:</strong> 질문을 형식 언어로 표현</li>
+                <li><strong>형식 공리:</strong> 온톨로지 공리 정의</li>
+                <li><strong>완전성 정리:</strong> 역량 질문에 대한 답변 가능성 증명</li>
+            </ol>
+        </div>
+        <div class="competency-example">
+            <h5>역량 질문 예시</h5>
+            <ul>
+                <li>"특정 제품을 생산하는데 필요한 모든 부품은?"</li>
+                <li>"특정 작업을 수행할 수 있는 모든 직원은?"</li>
+                <li>"프로젝트 완료에 필요한 최소 시간은?"</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>3. METHONTOLOGY</h3>
+    <div class="methodology-detail">
+        <div class="methodology-overview">
+            <p><strong>특징:</strong> 소프트웨어 공학 원칙을 온톨로지 개발에 적용한 종합적 방법론</p>
+        </div>
+        <div class="methodology-framework">
+            <div class="framework-component">
+                <h4>관리 활동</h4>
+                <ul>
+                    <li>일정 계획</li>
+                    <li>품질 보증</li>
+                    <li>제어</li>
+                </ul>
+            </div>
+            <div class="framework-component">
+                <h4>개발 활동</h4>
+                <ul>
+                    <li>명세화</li>
+                    <li>개념화</li>
+                    <li>형식화</li>
+                    <li>통합</li>
+                    <li>구현</li>
+                    <li>유지보수</li>
+                </ul>
+            </div>
+            <div class="framework-component">
+                <h4>지원 활동</h4>
+                <ul>
+                    <li>지식 획득</li>
+                    <li>평가</li>
+                    <li>문서화</li>
+                    <li>구성 관리</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <h3>4. On-To-Knowledge</h3>
+    <div class="methodology-detail">
+        <div class="methodology-overview">
+            <p><strong>특징:</strong> 비즈니스 중심의 온톨로지 개발 방법론</p>
+        </div>
+        <div class="otk-process">
+            <div class="otk-phase">
+                <h5>타당성 연구</h5>
+                <p>문제 분석과 기회 식별</p>
+            </div>
+            <div class="otk-phase">
+                <h5>킥오프</h5>
+                <p>요구사항 수집과 베이스라인 설정</p>
+            </div>
+            <div class="otk-phase">
+                <h5>정제</h5>
+                <p>온톨로지 상세 개발</p>
+            </div>
+            <div class="otk-phase">
+                <h5>평가</h5>
+                <p>기술적 평가와 사용자 평가</p>
+            </div>
+            <div class="otk-phase">
+                <h5>유지보수</h5>
+                <p>진화와 업데이트 관리</p>
+            </div>
+        </div>
+    </div>
+    
+    <h3>5. DILIGENT</h3>
+    <div class="methodology-detail">
+        <div class="methodology-overview">
+            <p><strong>특징:</strong> 분산 환경에서의 협업적 온톨로지 개발</p>
+        </div>
+        <div class="diligent-features">
+            <ul>
+                <li>다수의 전문가가 참여하는 분산 개발</li>
+                <li>지속적인 논의와 합의 과정</li>
+                <li>로컬 적응과 중앙 통합의 균형</li>
+                <li>변경 사항의 추적과 관리</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.3 -->
+<section class="content-section">
+    <h2>10.3 온톨로지 설계 원칙</h2>
+    
+    <p>성공적인 온톨로지 개발을 위해서는 검증된 설계 원칙을 따르는 것이 중요합니다.</p>
+    
+    <h3>기본 설계 원칙</h3>
+    <div class="design-principles">
+        <div class="principle-card">
+            <h4>1. 명확성 (Clarity)</h4>
+            <div class="principle-content">
+                <p><strong>원칙:</strong> 모든 정의는 객관적이고 명확해야 함</p>
+                <div class="principle-example">
+                    <p class="good">✅ 좋은 예: "학생은 교육기관에 등록된 사람이다"</p>
+                    <p class="bad">❌ 나쁜 예: "학생은 공부하는 사람이다"</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <h4>2. 일관성 (Coherence)</h4>
+            <div class="principle-content">
+                <p><strong>원칙:</strong> 정의가 서로 모순되지 않아야 함</p>
+                <div class="principle-example">
+                    <p>추론된 결과가 정의와 일치해야 함</p>
+                    <p>논리적 모순이 없어야 함</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <h4>3. 확장성 (Extendibility)</h4>
+            <div class="principle-content">
+                <p><strong>원칙:</strong> 새로운 개념 추가가 용이해야 함</p>
+                <div class="principle-example">
+                    <p>기존 정의 수정 없이 확장 가능</p>
+                    <p>모듈화된 구조 유지</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <h4>4. 최소 부호화 편향</h4>
+            <div class="principle-content">
+                <p><strong>원칙:</strong> 구현 수준의 세부사항 최소화</p>
+                <div class="principle-example">
+                    <p>개념적 수준에서 모델링</p>
+                    <p>특정 시스템에 종속되지 않음</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <h4>5. 최소 온톨로지 약속</h4>
+            <div class="principle-content">
+                <p><strong>원칙:</strong> 꼭 필요한 것만 정의</p>
+                <div class="principle-example">
+                    <p>과도한 제약 피하기</p>
+                    <p>유연성 확보</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>명명 규칙</h3>
+    <div class="naming-conventions">
+        <div class="convention-category">
+            <h4>클래스 명명</h4>
+            <ul>
+                <li>단수형 명사 사용: Person (not People)</li>
+                <li>대문자로 시작: Student</li>
+                <li>CamelCase 사용: GraduateStudent</li>
+                <li>의미있는 이름: Document (not Doc)</li>
+            </ul>
+        </div>
+        
+        <div class="convention-category">
+            <h4>속성 명명</h4>
+            <ul>
+                <li>동사 또는 동사구: hasAuthor, isWrittenBy</li>
+                <li>소문자로 시작: hasAge</li>
+                <li>관계 방향 명확히: parentOf vs hasParent</li>
+                <li>데이터 속성은 명사 가능: age, name</li>
+            </ul>
+        </div>
+        
+        <div class="convention-category">
+            <h4>인스턴스 명명</h4>
+            <ul>
+                <li>소문자 또는 camelCase: johnDoe</li>
+                <li>고유 식별자 사용 고려: person_12345</li>
+                <li>의미있는 접두사: proj_Alpha</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.4 -->
+<section class="content-section">
+    <h2>10.4 온톨로지 설계 패턴</h2>
+    
+    <p>자주 발생하는 모델링 문제에 대한 검증된 해결책을 설계 패턴으로 정리할 수 있습니다.</p>
+    
+    <h3>컨텐츠 온톨로지 설계 패턴</h3>
+    <div class="design-patterns">
+        <div class="pattern-card">
+            <h4>1. 부분-전체 패턴</h4>
+            <div class="pattern-detail">
+                <p><strong>문제:</strong> 구성 요소와 전체의 관계 표현</p>
+                <p><strong>해결책:</strong></p>
+                <pre class="pattern-code">
+Class: Car
+Class: Engine
+Class: Wheel
+
+ObjectProperty: hasPart
+    Domain: Car
+    Range: Engine or Wheel
+    
+ObjectProperty: isPartOf
+    InverseOf: hasPart
+                </pre>
+            </div>
+        </div>
+        
+        <div class="pattern-card">
+            <h4>2. 참여자 역할 패턴</h4>
+            <div class="pattern-detail">
+                <p><strong>문제:</strong> 같은 개체가 다른 상황에서 다른 역할</p>
+                <p><strong>해결책:</strong></p>
+                <pre class="pattern-code">
+Class: Person
+Class: Role
+Class: StudentRole
+    SubClassOf: Role
+Class: TeacherRole
+    SubClassOf: Role
+
+ObjectProperty: hasRole
+    Domain: Person
+    Range: Role
+                </pre>
+            </div>
+        </div>
+        
+        <div class="pattern-card">
+            <h4>3. 시간 인덱스 패턴</h4>
+            <div class="pattern-detail">
+                <p><strong>문제:</strong> 시간에 따라 변하는 속성 표현</p>
+                <p><strong>해결책:</strong></p>
+                <pre class="pattern-code">
+Class: EmploymentRecord
+ObjectProperty: hasEmployee
+ObjectProperty: hasEmployer
+ObjectProperty: hasStartDate
+ObjectProperty: hasEndDate
+DataProperty: salary
+                </pre>
+            </div>
+        </div>
+        
+        <div class="pattern-card">
+            <h4>4. n항 관계 패턴</h4>
+            <div class="pattern-detail">
+                <p><strong>문제:</strong> 3개 이상의 개체 간 관계</p>
+                <p><strong>해결책:</strong></p>
+                <pre class="pattern-code">
+Class: Purchase
+ObjectProperty: hasBuyer
+ObjectProperty: hasSeller
+ObjectProperty: hasProduct
+DataProperty: price
+DataProperty: date
+                </pre>
+            </div>
+        </div>
+    </div>
+    
+    <h3>구조적 온톨로지 설계 패턴</h3>
+    <div class="structural-patterns">
+        <div class="pattern-card">
+            <h4>값 분할 패턴</h4>
+            <p>하나의 속성을 여러 세부 속성으로 분해</p>
+            <div class="pattern-example">
+                <p>주소 → 도로명, 건물번호, 우편번호</p>
+            </div>
+        </div>
+        
+        <div class="pattern-card">
+            <h4>값 집합 패턴</h4>
+            <p>제한된 값 집합을 개체로 표현</p>
+            <div class="pattern-example">
+                <p>색상 → {Red, Green, Blue} 인스턴스</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.5 -->
+<section class="content-section">
+    <h2>10.5 온톨로지 모듈화</h2>
+    
+    <p>대규모 온톨로지는 관리와 재사용을 위해 모듈로 분할하는 것이 중요합니다.</p>
+    
+    <h3>모듈화의 이점</h3>
+    <div class="modularization-benefits">
+        <div class="benefit-item">
+            <i class="fas fa-puzzle-piece"></i>
+            <h4>재사용성</h4>
+            <p>필요한 부분만 선택적 사용</p>
+        </div>
+        <div class="benefit-item">
+            <i class="fas fa-tools"></i>
+            <h4>유지보수성</h4>
+            <p>독립적인 수정과 업데이트</p>
+        </div>
+        <div class="benefit-item">
+            <i class="fas fa-expand-arrows-alt"></i>
+            <h4>확장성</h4>
+            <p>새 모듈 추가 용이</p>
+        </div>
+        <div class="benefit-item">
+            <i class="fas fa-users"></i>
+            <h4>협업</h4>
+            <p>팀별 독립 작업 가능</p>
+        </div>
+    </div>
+    
+    <h3>모듈화 전략</h3>
+    <div class="modularization-strategies">
+        <div class="strategy-card">
+            <h4>1. 주제별 분할</h4>
+            <p>도메인의 주요 주제별로 모듈 구성</p>
+            <div class="strategy-example">
+                <ul>
+                    <li>Person 모듈</li>
+                    <li>Organization 모듈</li>
+                    <li>Location 모듈</li>
+                    <li>Event 모듈</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="strategy-card">
+            <h4>2. 계층별 분할</h4>
+            <p>추상화 수준에 따른 계층 구조</p>
+            <div class="strategy-example">
+                <ul>
+                    <li>상위 온톨로지 (Upper)</li>
+                    <li>도메인 온톨로지 (Domain)</li>
+                    <li>응용 온톨로지 (Application)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="strategy-card">
+            <h4>3. 기능별 분할</h4>
+            <p>온톨로지의 용도에 따른 분할</p>
+            <div class="strategy-example">
+                <ul>
+                    <li>스키마 모듈</li>
+                    <li>규칙 모듈</li>
+                    <li>인스턴스 모듈</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <h3>모듈 통합 기법</h3>
+    <div class="integration-techniques">
+        <pre class="code-block">
+# OWL imports 사용
+@prefix : &lt;http://example.org/main#&gt; .
+@prefix person: &lt;http://example.org/person#&gt; .
+@prefix org: &lt;http://example.org/organization#&gt; .
+
+&lt;http://example.org/main&gt;
+    owl:imports &lt;http://example.org/person&gt; ;
+    owl:imports &lt;http://example.org/organization&gt; .
+
+# 모듈 간 관계 정의
+:worksFor
+    rdfs:domain person:Person ;
+    rdfs:range org:Organization .
+        </pre>
+    </div>
+</section>
+
+<!-- 섹션 10.6 -->
+<section class="content-section">
+    <h2>10.6 온톨로지 평가</h2>
+    
+    <p>개발된 온톨로지의 품질을 평가하기 위한 체계적인 방법이 필요합니다.</p>
+    
+    <h3>평가 차원</h3>
+    <div class="evaluation-dimensions">
+        <div class="dimension-card">
+            <h4>구조적 차원</h4>
+            <ul>
+                <li>문법적 정확성</li>
+                <li>논리적 일관성</li>
+                <li>순환 참조 여부</li>
+            </ul>
+        </div>
+        
+        <div class="dimension-card">
+            <h4>기능적 차원</h4>
+            <ul>
+                <li>역량 질문 충족도</li>
+                <li>추론 정확성</li>
+                <li>질의 응답 능력</li>
+            </ul>
+        </div>
+        
+        <div class="dimension-card">
+            <h4>사용성 차원</h4>
+            <ul>
+                <li>이해 용이성</li>
+                <li>문서화 품질</li>
+                <li>도구 지원</li>
+            </ul>
+        </div>
+        
+        <div class="dimension-card">
+            <h4>실용적 차원</h4>
+            <ul>
+                <li>계산 효율성</li>
+                <li>확장 가능성</li>
+                <li>유지보수성</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>평가 방법</h3>
+    <div class="evaluation-methods">
+        <div class="method-card">
+            <h4>1. 자동화된 검증</h4>
+            <div class="method-content">
+                <p><strong>도구:</strong> 추론기를 통한 일관성 검사</p>
+                <ul>
+                    <li>문법 오류 검출</li>
+                    <li>불일치 클래스 발견</li>
+                    <li>추론 결과 검증</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="method-card">
+            <h4>2. 전문가 리뷰</h4>
+            <div class="method-content">
+                <p><strong>방법:</strong> 도메인 전문가의 검토</p>
+                <ul>
+                    <li>개념 정의의 정확성</li>
+                    <li>관계의 적절성</li>
+                    <li>누락된 지식 식별</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="method-card">
+            <h4>3. 응용 기반 평가</h4>
+            <div class="method-content">
+                <p><strong>접근:</strong> 실제 사용 시나리오 테스트</p>
+                <ul>
+                    <li>질의 응답 테스트</li>
+                    <li>추론 성능 측정</li>
+                    <li>통합 테스트</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="method-card">
+            <h4>4. 메트릭 기반 평가</h4>
+            <div class="method-content">
+                <p><strong>측정 지표:</strong></p>
+                <ul>
+                    <li>깊이와 너비</li>
+                    <li>밀도와 연결성</li>
+                    <li>모듈성 지수</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.7 -->
+<section class="content-section">
+    <h2>10.7 실전 프로젝트: 스마트 도시 온톨로지</h2>
+    
+    <p>실제 온톨로지 설계 과정을 스마트 도시 도메인을 예로 살펴보겠습니다.</p>
+    
+    <h3>1단계: 요구사항 분석</h3>
+    <div class="project-phase">
+        <h4>목적 정의</h4>
+        <p>스마트 도시의 다양한 서비스와 인프라를 통합 관리하기 위한 온톨로지</p>
+        
+        <h4>주요 역량 질문</h4>
+        <ul>
+            <li>특정 지역의 모든 공공 서비스는?</li>
+            <li>센서 데이터와 관련 서비스의 연결은?</li>
+            <li>시민의 요구와 제공 서비스의 매칭은?</li>
+        </ul>
+    </div>
+    
+    <h3>2단계: 개념 모델링</h3>
+    <div class="concept-model">
+        <pre class="code-block">
+# 핵심 클래스 정의
+Class: City
+Class: District
+Class: Service
+    SubClassOf: 
+        - PublicService
+        - EmergencyService
+        - TransportService
+Class: Infrastructure
+    SubClassOf:
+        - Sensor
+        - Network
+        - Facility
+Class: Citizen
+Class: Event
+
+# 핵심 관계 정의
+ObjectProperty: locatedIn
+ObjectProperty: provides
+ObjectProperty: uses
+ObjectProperty: monitors
+        </pre>
+    </div>
+    
+    <h3>3단계: 상세 설계</h3>
+    <div class="detailed-design">
+        <pre class="code-block">
+# 교통 서비스 모듈
+Class: TransportService
+    SubClassOf: Service
+    
+Class: PublicTransport
+    SubClassOf: TransportService
+    SubClassOf: 
+        hasRoute some Route
+        hasSchedule some Schedule
+        
+Class: Bus
+    SubClassOf: PublicTransport
+    SubClassOf:
+        hasCapacity exactly 1 xsd:integer
+        hasRoute some BusRoute
+        
+Class: SmartParking
+    SubClassOf: TransportService
+    SubClassOf:
+        hasAvailableSpots some xsd:integer
+        hasLocation exactly 1 Location
+
+# 센서 네트워크 모듈
+Class: Sensor
+    SubClassOf: Infrastructure
+    
+Class: TrafficSensor
+    SubClassOf: Sensor
+    SubClassOf:
+        monitors only TrafficFlow
+        hasLocation exactly 1 Location
+        
+Class: AirQualitySensor
+    SubClassOf: Sensor
+    SubClassOf:
+        measures some AirQualityParameter
+        </pre>
+    </div>
+    
+    <h3>4단계: 추론 규칙 정의</h3>
+    <div class="inference-rules">
+        <pre class="code-block">
+# SWRL 규칙 예시
+
+# 교통 혼잡 시 대체 경로 추천
+TrafficSensor(?s) ^ monitors(?s, ?flow) ^ 
+hasValue(?flow, ?v) ^ swrlb:greaterThan(?v, 80) ^
+hasLocation(?s, ?loc) ^ hasAlternativeRoute(?loc, ?alt)
+→ recommendRoute(?alt)
+
+# 대기질 악화 시 경보 발생
+AirQualitySensor(?s) ^ measures(?s, ?pm) ^
+hasValue(?pm, ?v) ^ swrlb:greaterThan(?v, 150)
+→ Alert(?a) ^ hasType(?a, "AirQuality") ^ 
+  hasSeverity(?a, "High")
+        </pre>
+    </div>
+</section>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제 1: 병원 온톨로지 설계</h3>
+        <p>다음 요구사항을 만족하는 병원 온톨로지를 설계하세요:</p>
+        <ol>
+            <li>환자, 의료진, 진료과목의 클래스 계층구조</li>
+            <li>진료 예약과 처방 관련 관계 정의</li>
+            <li>주요 역량 질문 5개 작성</li>
+            <li>모듈화 전략 수립</li>
+        </ol>
+    </div>
+    
+    <div class="practice-task">
+        <h3>과제 2: 설계 패턴 적용</h3>
+        <p>다음 시나리오에 적절한 설계 패턴을 적용하세요:</p>
+        <ol>
+            <li>직원이 여러 프로젝트에 다른 역할로 참여</li>
+            <li>제품 가격이 시간에 따라 변동</li>
+            <li>부서가 다른 부서의 하위 조직일 수 있음</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>개발 생명주기</h3>
+            <ul>
+                <li>타당성 검토</li>
+                <li>명세화와 지식 획듍</li>
+                <li>개념화와 구현</li>
+                <li>평가와 유지보수</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>설계 원칙</h3>
+            <ul>
+                <li>명확성과 일관성</li>
+                <li>확장성과 모듈화</li>
+                <li>최소 온톨로지 약속</li>
+                <li>재사용성 고려</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>평가 방법</h3>
+            <ul>
+                <li>구조적 검증</li>
+                <li>기능적 테스트</li>
+                <li>전문가 리뷰</li>
+                <li>메트릭 분석</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>온톨로지 통합과 매핑 기술에 대해 학습합니다. 서로 다른 온톨로지를 연결하고 통합하는 방법을 알아봅니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter11')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+/* 생명주기 단계 */
+.lifecycle-stages {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stage-card {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 140px;
+    position: relative;
+}
+
+.stage-number {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0ea5e9;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.stage-card h4 {
+    color: #0369a1;
+    margin: 0.5rem 0;
+}
+
+.stage-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+}
+
+.stage-arrow {
+    font-size: 2rem;
+    color: #0ea5e9;
+}
+
+/* 방법론 상세 */
+.methodology-detail {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.methodology-overview {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.methodology-steps {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.methodology-pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.pros, .cons {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.pros h5 {
+    color: #16a34a;
+}
+
+.cons h5 {
+    color: #dc2626;
+}
+
+/* 역량 질문 예시 */
+.competency-example {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.competency-example ul {
+    margin: 0.5rem 0;
+}
+
+/* 프레임워크 컴포넌트 */
+.methodology-framework {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.framework-component {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.framework-component h4 {
+    color: #4f46e5;
+    margin-bottom: 1rem;
+}
+
+/* OTK 프로세스 */
+.otk-process {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    position: relative;
+}
+
+.otk-process::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e5e7eb;
+    z-index: -1;
+}
+
+.otk-phase {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid #6366f1;
+    text-align: center;
+    flex: 1;
+    margin: 0 0.5rem;
+}
+
+.otk-phase h5 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+/* DILIGENT 특징 */
+.diligent-features {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* 설계 원칙 */
+.design-principles {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.principle-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.principle-card h4 {
+    color: #0369a1;
+    margin-bottom: 1rem;
+}
+
+.principle-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.principle-example {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 6px;
+}
+
+.principle-example .good {
+    color: #16a34a;
+}
+
+.principle-example .bad {
+    color: #dc2626;
+}
+
+/* 명명 규칙 */
+.naming-conventions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.convention-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.convention-category h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 설계 패턴 */
+.design-patterns {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.pattern-card {
+    background: white;
+    border: 2px solid #e0e7ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.pattern-card h4 {
+    color: #4f46e5;
+    margin-bottom: 1rem;
+}
+
+.pattern-detail {
+    margin-top: 1rem;
+}
+
+.pattern-code {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    margin-top: 0.5rem;
+}
+
+/* 구조적 패턴 */
+.structural-patterns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.pattern-example {
+    background: #f0f9ff;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+
+/* 모듈화 이점 */
+.modularization-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.benefit-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    border-radius: 12px;
+}
+
+.benefit-item i {
+    font-size: 2.5rem;
+    color: #92400e;
+    margin-bottom: 1rem;
+}
+
+.benefit-item h4 {
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+/* 모듈화 전략 */
+.modularization-strategies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.strategy-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #fbbf24;
+}
+
+.strategy-card h4 {
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+.strategy-example {
+    background: #fef3c7;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* 평가 차원 */
+.evaluation-dimensions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.dimension-card {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.dimension-card h4 {
+    color: #6b21a8;
+    margin-bottom: 1rem;
+}
+
+/* 평가 방법 */
+.evaluation-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.method-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #a78bfa;
+}
+
+.method-card h4 {
+    color: #7c3aed;
+    margin-bottom: 1rem;
+}
+
+.method-content {
+    background: #faf5ff;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* 프로젝트 단계 */
+.project-phase {
+    background: #f0fdf4;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 1.5rem 0;
+}
+
+.project-phase h4 {
+    color: #166534;
+    margin-bottom: 1rem;
+}
+
+/* 개념 모델 */
+.concept-model,
+.detailed-design,
+.inference-rules {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 1.5rem 0;
+}
+
+/* 통합 기법 */
+.integration-techniques {
+    margin: 2rem 0;
+}
+
+/* 코드 블록 */
+.code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .lifecycle-stages {
+        flex-direction: column;
+    }
+    
+    .stage-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .methodology-pros-cons {
+        grid-template-columns: 1fr;
+    }
+    
+    .otk-process {
+        flex-direction: column;
+    }
+    
+    .otk-process::before {
+        display: none;
+    }
+    
+    .otk-phase {
+        margin: 0.5rem 0;
+    }
+}
+</style>

@@ -1,0 +1,1276 @@
+<!-- Chapter 2: 온톨로지의 핵심 개념 -->
+
+<div class="chapter-header">
+    <h1>Chapter 2. 온톨로지의 핵심 개념</h1>
+    <div class="chapter-quote">
+        "개념을 정의하고 관계를 맺는 것, 그것이 지식의 시작입니다."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 40분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>클래스(Class)와 인스턴스(Instance)의 개념 이해</li>
+        <li>속성(Property)과 관계(Relation)의 종류와 특성 파악</li>
+        <li>제약사항(Constraint)과 추론(Reasoning)의 원리 학습</li>
+        <li>온톨로지 설계 원칙과 모범 사례 습득</li>
+    </ul>
+</div>
+
+<!-- 섹션 2.1 -->
+<section class="content-section">
+    <h2>2.1 클래스(Class): 개념의 범주화</h2>
+    
+    <p>클래스는 온톨로지의 가장 기본적인 구성 요소로, 유사한 특징을 가진 개체들의 집합을 나타냅니다.</p>
+    
+    <div class="concept-box">
+        <h4><i class="fas fa-lightbulb"></i> 핵심 개념</h4>
+        <p><strong>클래스(Class)</strong>: 공통된 속성을 가진 개체들의 범주 또는 타입</p>
+    </div>
+    
+    <h3>클래스의 특징</h3>
+    <div class="class-features">
+        <div class="feature-card">
+            <h4>1. 추상화</h4>
+            <p>개별 개체들의 공통 특성을 추출하여 일반화</p>
+            <div class="example-box">
+                <strong>예시:</strong><br>
+                • 사람 클래스: 홍길동, 김철수, 이영희의 공통 특성<br>
+                • 자동차 클래스: 소나타, K5, 그랜저의 공통 특성
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <h4>2. 계층구조</h4>
+            <p>상위 클래스와 하위 클래스의 관계로 조직화</p>
+            <div class="hierarchy-example">
+                <div class="hierarchy-level">생물</div>
+                <div class="hierarchy-level level-2">├─ 동물</div>
+                <div class="hierarchy-level level-3">│  ├─ 포유류</div>
+                <div class="hierarchy-level level-4">│  │  ├─ 개</div>
+                <div class="hierarchy-level level-4">│  │  └─ 고양이</div>
+                <div class="hierarchy-level level-3">│  └─ 조류</div>
+                <div class="hierarchy-level level-2">└─ 식물</div>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <h4>3. 다중 상속</h4>
+            <p>하나의 클래스가 여러 상위 클래스를 가질 수 있음</p>
+            <div class="multiple-inheritance">
+                <div class="parent-classes">
+                    <div class="parent">직원</div>
+                    <div class="parent">학생</div>
+                </div>
+                <div class="arrow">↓</div>
+                <div class="child-class">직장인대학원생</div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>클래스 정의 실습</h3>
+    <div class="practice-example">
+        <h4>도서관 온톨로지의 클래스 설계</h4>
+        <div class="library-ontology">
+            <div class="ontology-tree">
+                <div class="tree-node root">
+                    <span class="node-label">도서관자료</span>
+                    <div class="children">
+                        <div class="tree-node">
+                            <span class="node-label">인쇄자료</span>
+                            <div class="children">
+                                <div class="tree-node">
+                                    <span class="node-label">도서</span>
+                                    <div class="children">
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">단행본</span>
+                                        </div>
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">시리즈</span>
+                                        </div>
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">참고도서</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="node-label">정기간행물</span>
+                                    <div class="children">
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">잡지</span>
+                                        </div>
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">신문</span>
+                                        </div>
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">학술지</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="node-label">기타인쇄물</span>
+                                    <div class="children">
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">지도</span>
+                                        </div>
+                                        <div class="tree-node leaf">
+                                            <span class="node-label">악보</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tree-node">
+                            <span class="node-label">전자자료</span>
+                            <div class="children">
+                                <div class="tree-node leaf">
+                                    <span class="node-label">전자책</span>
+                                </div>
+                                <div class="tree-node leaf">
+                                    <span class="node-label">오디오북</span>
+                                </div>
+                                <div class="tree-node leaf">
+                                    <span class="node-label">동영상</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 2.2 -->
+<section class="content-section">
+    <h2>2.2 인스턴스(Instance): 구체적인 개체</h2>
+    
+    <p>인스턴스는 클래스의 구체적인 예시로, 실제 세계에 존재하는 개별 개체를 나타냅니다.</p>
+    
+    <h3>인스턴스와 클래스의 관계</h3>
+    <div class="instance-class-relation">
+        <div class="relation-example">
+            <div class="class-box">
+                <h4>클래스: 책</h4>
+                <p>속성: 제목, 저자, ISBN, 출판사</p>
+            </div>
+            <div class="arrow-down">↓ is-a 관계</div>
+            <div class="instance-grid">
+                <div class="instance-box">
+                    <h5>인스턴스 1</h5>
+                    <p>제목: "사피엔스"<br>
+                    저자: "유발 하라리"<br>
+                    ISBN: "978-89-349-7166-9"<br>
+                    출판사: "김영사"</p>
+                </div>
+                <div class="instance-box">
+                    <h5>인스턴스 2</h5>
+                    <p>제목: "코스모스"<br>
+                    저자: "칼 세이건"<br>
+                    ISBN: "978-89-349-2815-1"<br>
+                    출판사: "사이언스북스"</p>
+                </div>
+                <div class="instance-box">
+                    <h5>인스턴스 3</h5>
+                    <p>제목: "1984"<br>
+                    저자: "조지 오웰"<br>
+                    ISBN: "978-89-374-8322-4"<br>
+                    출판사: "민음사"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>인스턴스 생성 규칙</h3>
+    <div class="instance-rules">
+        <div class="rule-card">
+            <h4>1. 유일성</h4>
+            <p>각 인스턴스는 고유한 식별자를 가져야 함</p>
+            <div class="code-example">
+                <code>
+                책_사피엔스_001 rdf:type 책 .<br>
+                책_사피엔스_002 rdf:type 책 .  # 다른 판본
+                </code>
+            </div>
+        </div>
+        
+        <div class="rule-card">
+            <h4>2. 타입 일관성</h4>
+            <p>인스턴스는 해당 클래스의 모든 속성을 만족해야 함</p>
+            <div class="validation-example">
+                ✅ 올바른 예: 모든 필수 속성 포함<br>
+                ❌ 잘못된 예: ISBN 없는 책 인스턴스
+            </div>
+        </div>
+        
+        <div class="rule-card">
+            <h4>3. 명명 규칙</h4>
+            <p>의미 있고 일관된 이름 사용</p>
+            <div class="naming-example">
+                • 좋은 예: Book_Sapiens_2015_KR<br>
+                • 나쁜 예: b1, temp_book, 책123
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 2.3 -->
+<section class="content-section">
+    <h2>2.3 속성(Property): 특성과 관계</h2>
+    
+    <p>속성은 클래스나 인스턴스의 특징을 설명하고, 개체 간의 관계를 정의합니다.</p>
+    
+    <h3>속성의 종류</h3>
+    <div class="property-types">
+        <div class="property-category">
+            <h4>1. 객체 속성 (Object Property)</h4>
+            <p>개체와 개체 사이의 관계</p>
+            <div class="property-examples">
+                <div class="property-item">
+                    <strong>저자관계</strong>
+                    <div class="relation-diagram">
+                        <span class="entity">책</span>
+                        <span class="arrow">—[저자]→</span>
+                        <span class="entity">사람</span>
+                    </div>
+                </div>
+                <div class="property-item">
+                    <strong>소속관계</strong>
+                    <div class="relation-diagram">
+                        <span class="entity">직원</span>
+                        <span class="arrow">—[근무처]→</span>
+                        <span class="entity">회사</span>
+                    </div>
+                </div>
+                <div class="property-item">
+                    <strong>위치관계</strong>
+                    <div class="relation-diagram">
+                        <span class="entity">건물</span>
+                        <span class="arrow">—[위치]→</span>
+                        <span class="entity">도시</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="property-category">
+            <h4>2. 데이터 속성 (Data Property)</h4>
+            <p>개체의 값이나 리터럴 데이터</p>
+            <div class="data-property-grid">
+                <div class="data-property">
+                    <strong>텍스트 속성</strong>
+                    <ul>
+                        <li>이름: "홍길동"</li>
+                        <li>제목: "온톨로지 입문"</li>
+                        <li>설명: "이 책은..."</li>
+                    </ul>
+                </div>
+                <div class="data-property">
+                    <strong>숫자 속성</strong>
+                    <ul>
+                        <li>나이: 25</li>
+                        <li>가격: 15000</li>
+                        <li>페이지수: 350</li>
+                    </ul>
+                </div>
+                <div class="data-property">
+                    <strong>날짜 속성</strong>
+                    <ul>
+                        <li>생년월일: 1990-01-01</li>
+                        <li>출판일: 2024-03-15</li>
+                        <li>등록일: 2024-04-01</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>속성의 특성</h3>
+    <div class="property-characteristics">
+        <div class="characteristic-card">
+            <h4>기능적 속성 (Functional)</h4>
+            <p>하나의 주체는 하나의 값만 가질 수 있음</p>
+            <div class="example">
+                • 생년월일 (사람당 하나)<br>
+                • ISBN (책당 하나)<br>
+                • 주민등록번호 (사람당 하나)
+            </div>
+        </div>
+        
+        <div class="characteristic-card">
+            <h4>역기능적 속성 (Inverse Functional)</h4>
+            <p>하나의 값은 하나의 주체만 가질 수 있음</p>
+            <div class="example">
+                • 주민등록번호 (고유값)<br>
+                • 이메일 주소 (중복 불가)<br>
+                • 사원번호 (회사 내 고유)
+            </div>
+        </div>
+        
+        <div class="characteristic-card">
+            <h4>대칭적 속성 (Symmetric)</h4>
+            <p>A→B이면 B→A도 성립</p>
+            <div class="example">
+                • 친구 관계<br>
+                • 형제 관계<br>
+                • 동료 관계
+            </div>
+        </div>
+        
+        <div class="characteristic-card">
+            <h4>이행적 속성 (Transitive)</h4>
+            <p>A→B이고 B→C이면 A→C도 성립</p>
+            <div class="example">
+                • 조상 관계<br>
+                • 상위 개념 관계<br>
+                • 위치 포함 관계
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 2.4 -->
+<section class="content-section">
+    <h2>2.4 제약사항(Constraint): 규칙과 제한</h2>
+    
+    <p>제약사항은 온톨로지의 일관성과 정확성을 보장하기 위한 규칙입니다.</p>
+    
+    <h3>주요 제약사항 유형</h3>
+    <div class="constraint-types">
+        <div class="constraint-card">
+            <h4>1. 카디널리티 제약</h4>
+            <p>관계의 개수 제한</p>
+            <div class="cardinality-examples">
+                <table class="constraint-table">
+                    <tr>
+                        <th>제약 유형</th>
+                        <th>설명</th>
+                        <th>예시</th>
+                    </tr>
+                    <tr>
+                        <td>정확히 1</td>
+                        <td>반드시 하나</td>
+                        <td>사람은 정확히 1개의 생년월일을 가짐</td>
+                    </tr>
+                    <tr>
+                        <td>최소 1</td>
+                        <td>하나 이상</td>
+                        <td>책은 최소 1명의 저자를 가짐</td>
+                    </tr>
+                    <tr>
+                        <td>최대 2</td>
+                        <td>둘 이하</td>
+                        <td>사람은 최대 2명의 생물학적 부모를 가짐</td>
+                    </tr>
+                    <tr>
+                        <td>0..n</td>
+                        <td>제한 없음</td>
+                        <td>사람은 0개 이상의 자녀를 가질 수 있음</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="constraint-card">
+            <h4>2. 값 제약</h4>
+            <p>속성 값의 범위나 형식 제한</p>
+            <div class="value-constraints">
+                <div class="constraint-example">
+                    <strong>범위 제약</strong>
+                    <code>
+                    나이: 0 ≤ 값 ≤ 150<br>
+                    평점: 0.0 ≤ 값 ≤ 5.0<br>
+                    할인율: 0% ≤ 값 ≤ 100%
+                    </code>
+                </div>
+                <div class="constraint-example">
+                    <strong>형식 제약</strong>
+                    <code>
+                    이메일: *@*.*<br>
+                    전화번호: 010-****-****<br>
+                    우편번호: #####
+                    </code>
+                </div>
+                <div class="constraint-example">
+                    <strong>열거형 제약</strong>
+                    <code>
+                    성별: {남, 여, 기타}<br>
+                    혈액형: {A, B, O, AB}<br>
+                    요일: {월, 화, 수, 목, 금, 토, 일}
+                    </code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="constraint-card">
+            <h4>3. 논리적 제약</h4>
+            <p>클래스 간의 관계 규칙</p>
+            <div class="logical-constraints">
+                <div class="logic-item">
+                    <strong>분리 제약 (Disjoint)</strong>
+                    <p>두 클래스가 공통 인스턴스를 가질 수 없음</p>
+                    <div class="example">남성 ⊥ 여성</div>
+                </div>
+                <div class="logic-item">
+                    <strong>동치 제약 (Equivalent)</strong>
+                    <p>두 클래스가 동일한 인스턴스 집합을 가짐</p>
+                    <div class="example">부모 ≡ (아버지 ∪ 어머니)</div>
+                </div>
+                <div class="logic-item">
+                    <strong>포함 제약 (Subclass)</strong>
+                    <p>한 클래스가 다른 클래스에 포함됨</p>
+                    <div class="example">학생 ⊆ 사람</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 2.5 -->
+<section class="content-section">
+    <h2>2.5 추론(Reasoning): 지식의 확장</h2>
+    
+    <p>추론은 명시적으로 저장되지 않은 지식을 논리적으로 도출하는 과정입니다.</p>
+    
+    <h3>추론의 유형</h3>
+    <div class="reasoning-types">
+        <div class="reasoning-card">
+            <h4>1. 분류 추론</h4>
+            <p>개체가 어떤 클래스에 속하는지 결정</p>
+            <div class="reasoning-example">
+                <div class="premise">
+                    <strong>전제:</strong><br>
+                    • 포유류는 젖을 먹여 새끼를 키운다<br>
+                    • 고래는 젖을 먹여 새끼를 키운다
+                </div>
+                <div class="conclusion">
+                    <strong>결론:</strong><br>
+                    → 고래는 포유류이다
+                </div>
+            </div>
+        </div>
+        
+        <div class="reasoning-card">
+            <h4>2. 속성 추론</h4>
+            <p>속성 값을 논리적으로 도출</p>
+            <div class="reasoning-example">
+                <div class="premise">
+                    <strong>전제:</strong><br>
+                    • 철수의 아버지는 영수이다<br>
+                    • 영수의 아버지는 민수이다<br>
+                    • '할아버지' = '아버지의 아버지'
+                </div>
+                <div class="conclusion">
+                    <strong>결론:</strong><br>
+                    → 철수의 할아버지는 민수이다
+                </div>
+            </div>
+        </div>
+        
+        <div class="reasoning-card">
+            <h4>3. 일관성 검증</h4>
+            <p>모순되는 정보 검출</p>
+            <div class="reasoning-example">
+                <div class="premise">
+                    <strong>모순 발견:</strong><br>
+                    • 사람 A는 미혼이다<br>
+                    • 사람 A는 배우자가 있다<br>
+                </div>
+                <div class="conclusion">
+                    <strong>오류:</strong><br>
+                    → 논리적 모순 검출!
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>추론 규칙 실습</h3>
+    <div class="reasoning-practice">
+        <h4>가족 관계 추론 예제</h4>
+        <div class="inference-rules">
+            <pre class="rule-block">
+# 기본 관계 정의
+부모(?x, ?y) ← 아버지(?x, ?y)
+부모(?x, ?y) ← 어머니(?x, ?y)
+
+# 추론 규칙
+조부모(?x, ?z) ← 부모(?x, ?y) ∧ 부모(?y, ?z)
+형제자매(?x, ?y) ← 부모(?z, ?x) ∧ 부모(?z, ?y) ∧ 다름(?x, ?y)
+삼촌(?x, ?z) ← 형제(?x, ?y) ∧ 부모(?y, ?z) ∧ 남성(?x)
+이모(?x, ?z) ← 자매(?x, ?y) ∧ 부모(?y, ?z) ∧ 여성(?x)
+
+# 대칭 관계
+형제자매(?x, ?y) → 형제자매(?y, ?x)
+배우자(?x, ?y) → 배우자(?y, ?x)
+
+# 이행 관계
+조상(?x, ?z) ← 부모(?x, ?y) ∧ 조상(?y, ?z)
+            </pre>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 2.6 -->
+<section class="content-section">
+    <h2>2.6 온톨로지 설계 원칙</h2>
+    
+    <p>효과적인 온톨로지를 만들기 위한 핵심 원칙과 모범 사례를 알아봅니다.</p>
+    
+    <h3>설계 원칙</h3>
+    <div class="design-principles">
+        <div class="principle-card">
+            <h4>1. 명확성 (Clarity)</h4>
+            <p>의미가 명확하고 모호하지 않게 정의</p>
+            <div class="principle-example">
+                <div class="good">
+                    ✅ 좋은 예:<br>
+                    <code>생물학적부모: 유전적 부모</code>
+                </div>
+                <div class="bad">
+                    ❌ 나쁜 예:<br>
+                    <code>부모: (생물학적? 법적? 양육?)</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <h4>2. 일관성 (Consistency)</h4>
+            <p>전체 온톨로지에서 일관된 규칙 적용</p>
+            <div class="principle-example">
+                • 명명 규칙 통일<br>
+                • 관계 방향 일관성<br>
+                • 속성 타입 일관성
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <h4>3. 확장성 (Extensibility)</h4>
+            <p>새로운 개념 추가가 용이한 구조</p>
+            <div class="principle-example">
+                • 적절한 추상화 수준<br>
+                • 모듈화된 설계<br>
+                • 버전 관리 고려
+            </div>
+        </div>
+        
+        <div class="principle-card">
+            <h4>4. 최소 온톨로지 약속</h4>
+            <p>필요한 최소한의 제약만 정의</p>
+            <div class="principle-example">
+                • 과도한 제약 피하기<br>
+                • 도메인 특성 고려<br>
+                • 유연성 확보
+            </div>
+        </div>
+    </div>
+    
+    <h3>온톨로지 설계 프로세스</h3>
+    <div class="design-process">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <h4>도메인과 범위 정의</h4>
+            <p>• 대상 영역 명확화<br>
+            • 사용 목적 정의<br>
+            • 핵심 질문 도출</p>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <h4>기존 온톨로지 검토</h4>
+            <p>• 재사용 가능성 검토<br>
+            • 표준 온톨로지 참조<br>
+            • 통합 방안 모색</p>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <h4>주요 용어 나열</h4>
+            <p>• 핵심 개념 추출<br>
+            • 동의어 정리<br>
+            • 용어 정의</p>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <h4>클래스 계층 구성</h4>
+            <p>• 상하위 관계 정의<br>
+            • 분류 체계 구축<br>
+            • 다중 상속 검토</p>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">5</div>
+            <h4>속성 정의</h4>
+            <p>• 객체 속성 정의<br>
+            • 데이터 속성 정의<br>
+            • 도메인/레인지 설정</p>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">6</div>
+            <h4>제약사항 추가</h4>
+            <p>• 카디널리티 설정<br>
+            • 값 제약 정의<br>
+            • 논리 규칙 추가</p>
+        </div>
+        
+        <div class="process-step">
+            <div class="step-number">7</div>
+            <h4>인스턴스 생성</h4>
+            <p>• 예제 데이터 입력<br>
+            • 검증 수행<br>
+            • 추론 테스트</p>
+        </div>
+    </div>
+</section>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>기본 구성요소</h3>
+            <ul>
+                <li><strong>클래스</strong>: 개념의 범주</li>
+                <li><strong>인스턴스</strong>: 구체적 개체</li>
+                <li><strong>속성</strong>: 특성과 관계</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>고급 개념</h3>
+            <ul>
+                <li><strong>제약사항</strong>: 규칙과 제한</li>
+                <li><strong>추론</strong>: 지식 도출</li>
+                <li><strong>일관성</strong>: 모순 검증</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>설계 원칙</h3>
+            <ul>
+                <li>명확성과 일관성</li>
+                <li>확장 가능한 구조</li>
+                <li>체계적인 프로세스</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>대학 온톨로지 설계하기</h3>
+        <p>다음 요구사항을 만족하는 대학 온톨로지를 설계하세요:</p>
+        <ol>
+            <li>주요 클래스 정의: 사람(교수, 학생, 직원), 조직(학과, 대학), 과목, 건물</li>
+            <li>관계 정의: 소속, 수강, 강의, 위치</li>
+            <li>제약사항 추가:
+                <ul>
+                    <li>학생은 최소 1개 이상의 과목을 수강해야 함</li>
+                    <li>교수는 정확히 1개의 학과에 소속됨</li>
+                    <li>강의실은 1개의 건물에만 위치함</li>
+                </ul>
+            </li>
+            <li>추론 규칙 정의:
+                <ul>
+                    <li>같은 과목을 수강하는 학생들은 '동기'</li>
+                    <li>학생을 지도하는 교수는 '지도교수'</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <div class="hint-box">
+            <strong>힌트:</strong> 클래스 계층구조를 먼저 그려보고, 각 클래스의 주요 속성을 정의한 후 관계를 연결하세요.
+        </div>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>시맨틱 웹과 온톨로지의 관계, 그리고 웹에서 지식을 표현하고 공유하는 방법을 배웁니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter03')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+/* 클래스 특징 카드 */
+.class-features {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.feature-card h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 계층구조 예시 */
+.hierarchy-example {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: monospace;
+    margin-top: 1rem;
+}
+
+.hierarchy-level {
+    padding: 0.25rem 0;
+    color: #1e293b;
+}
+
+.level-2 { padding-left: 1.5rem; }
+.level-3 { padding-left: 3rem; }
+.level-4 { padding-left: 4.5rem; }
+
+/* 다중 상속 다이어그램 */
+.multiple-inheritance {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.parent-classes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.parent, .child-class {
+    background: #e0e7ff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.arrow {
+    font-size: 2rem;
+    color: #6366f1;
+    margin: 1rem 0;
+}
+
+/* 인스턴스 관계 */
+.instance-class-relation {
+    margin: 2rem 0;
+}
+
+.relation-example {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.class-box {
+    background: #4f46e5;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.arrow-down {
+    text-align: center;
+    color: #6366f1;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.instance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.instance-box {
+    background: white;
+    border: 2px solid #e0e7ff;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.instance-box h5 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+/* 속성 타입 */
+.property-types {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.property-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.property-category h4 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.property-examples {
+    margin-top: 1rem;
+}
+
+.property-item {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+}
+
+.relation-diagram {
+    font-family: monospace;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.entity {
+    background: #e0e7ff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+/* 데이터 속성 그리드 */
+.data-property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.data-property {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.data-property strong {
+    color: #1e293b;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* 속성 특성 카드 */
+.property-characteristics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.characteristic-card {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.characteristic-card h4 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.characteristic-card .example {
+    background: white;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 0.75rem;
+}
+
+/* 제약사항 스타일 */
+.constraint-types {
+    margin: 2rem 0;
+}
+
+.constraint-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+}
+
+.constraint-card h4 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.constraint-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.constraint-table th,
+.constraint-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.constraint-table th {
+    background: #f1f5f9;
+    font-weight: 600;
+}
+
+.value-constraints {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.constraint-example {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.constraint-example strong {
+    display: block;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.constraint-example code {
+    display: block;
+    font-family: monospace;
+    color: #4f46e5;
+}
+
+/* 논리적 제약 */
+.logical-constraints {
+    margin-top: 1rem;
+}
+
+.logic-item {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+}
+
+.logic-item strong {
+    color: #1e293b;
+}
+
+.logic-item .example {
+    font-family: monospace;
+    color: #6366f1;
+    margin-top: 0.25rem;
+}
+
+/* 추론 타입 */
+.reasoning-types {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.reasoning-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.reasoning-card h4 {
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+.reasoning-example {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.premise, .conclusion {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.premise strong, .conclusion strong {
+    color: #1e293b;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* 추론 규칙 블록 */
+.rule-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: monospace;
+    overflow-x: auto;
+}
+
+/* 설계 원칙 */
+.design-principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.principle-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e0e7ff;
+}
+
+.principle-card h4 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.principle-example {
+    margin-top: 1rem;
+}
+
+.good, .bad {
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+}
+
+.good {
+    background: #f0fdf4;
+    color: #166534;
+}
+
+.bad {
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+/* 설계 프로세스 */
+.design-process {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.process-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -0.75rem;
+    left: 1rem;
+    background: #4f46e5;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.process-step h4 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+/* 도서관 온톨로지 트리 스타일 */
+.library-ontology {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ontology-tree {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tree-node {
+    margin-left: 0;
+    position: relative;
+}
+
+.tree-node .children {
+    margin-left: 2rem;
+    position: relative;
+}
+
+.tree-node .children::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: -1rem;
+    bottom: 1rem;
+    width: 1px;
+    background: #e5e7eb;
+}
+
+.node-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #f0f9ff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #1e293b;
+    margin: 0.5rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tree-node.root > .node-label {
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tree-node:not(.root) .node-label::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    width: 1rem;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.tree-node.leaf .node-label {
+    background: #fef3c7;
+    border-color: #fbbf24;
+    font-size: 0.9rem;
+}
+
+.node-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #dbeafe;
+}
+
+.tree-node.root > .node-label:hover {
+    background: #6366f1;
+}
+
+.tree-node.leaf .node-label:hover {
+    background: #fde68a;
+}
+
+/* 코드 블록 */
+.code-block {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+    overflow-x: auto;
+    border-left: 4px solid #6366f1;
+}
+
+.code-example {
+    background: #f1f5f9;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    font-family: monospace;
+}
+
+/* 실습 예제 */
+.practice-example {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.practice-example h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 힌트 박스 */
+.hint-box {
+    background: #fef3c7;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #f59e0b;
+    margin-top: 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .instance-grid,
+    .data-property-grid,
+    .property-characteristics,
+    .value-constraints,
+    .design-principles,
+    .design-process {
+        grid-template-columns: 1fr;
+    }
+    
+    .reasoning-example {
+        grid-template-columns: 1fr;
+    }
+    
+    .parent-classes {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* 호버 효과 */
+.feature-card:hover,
+.property-category:hover,
+.constraint-card:hover,
+.reasoning-card:hover,
+.principle-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.instance-box:hover {
+    border-color: #6366f1;
+    transition: border-color 0.3s ease;
+}
+
+.process-step:hover .step-number {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+</style>

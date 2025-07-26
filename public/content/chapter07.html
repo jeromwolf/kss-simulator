@@ -1,0 +1,990 @@
+<!-- Chapter 7: SPARQL - RDF 질의 언어 -->
+
+<div class="chapter-header">
+    <h1>Chapter 7. SPARQL - RDF 질의 언어</h1>
+    <div class="chapter-quote">
+        "SPARQL은 시맨틱 웹의 SQL입니다. 지식 그래프에서 원하는 정보를 찾아내는 열쇠죠."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 60분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>SPARQL의 기본 구조와 문법 이해</li>
+        <li>다양한 질의 패턴과 필터링 방법 학습</li>
+        <li>그래프 패턴과 옵셔널 매칭 활용</li>
+        <li>실제 SPARQL 엔드포인트 사용법 습득</li>
+    </ul>
+</div>
+
+<!-- 섹션 7.1 -->
+<section class="content-section">
+    <h2>7.1 SPARQL이란?</h2>
+    
+    <p>SPARQL(SPARQL Protocol and RDF Query Language)은 RDF 데이터를 질의하기 위한 W3C 표준 질의 언어입니다. SQL과 유사하지만 그래프 데이터에 특화되어 있습니다.</p>
+    
+    <div class="concept-box">
+        <h4><i class="fas fa-lightbulb"></i> 핵심 개념</h4>
+        <p><strong>SPARQL</strong>: RDF 트리플 스토어에서 데이터를 검색, 조작, 변환할 수 있는 선언적 질의 언어</p>
+    </div>
+    
+    <h3>SPARQL vs SQL 비교</h3>
+    <div class="comparison-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>특징</th>
+                    <th>SQL</th>
+                    <th>SPARQL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>데이터 모델</td>
+                    <td>테이블 (관계형)</td>
+                    <td>그래프 (트리플)</td>
+                </tr>
+                <tr>
+                    <td>스키마</td>
+                    <td>고정 스키마</td>
+                    <td>스키마 없음/유연함</td>
+                </tr>
+                <tr>
+                    <td>조인</td>
+                    <td>명시적 JOIN</td>
+                    <td>패턴 매칭</td>
+                </tr>
+                <tr>
+                    <td>데이터 탐색</td>
+                    <td>테이블 간 참조</td>
+                    <td>그래프 순회</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- 섹션 7.2 -->
+<section class="content-section">
+    <h2>7.2 SPARQL 기본 구조</h2>
+    
+    <h3>기본 질의 형식</h3>
+    <div class="query-structure">
+        <pre class="code-block">
+PREFIX 접두사선언
+SELECT 반환할변수
+WHERE {
+    트리플패턴
+}
+MODIFIERS (옵션)
+        </pre>
+    </div>
+    
+    <h3>첫 번째 SPARQL 질의</h3>
+    <div class="first-query">
+        <h4>예제: 모든 사람의 이름 조회</h4>
+        <pre class="sparql-code">
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+
+SELECT ?name
+WHERE {
+    ?person a foaf:Person .
+    ?person foaf:name ?name .
+}
+        </pre>
+        
+        <div class="query-explanation">
+            <p><strong>설명:</strong></p>
+            <ul>
+                <li><code>PREFIX</code>: 네임스페이스 축약 정의</li>
+                <li><code>SELECT ?name</code>: name 변수 반환</li>
+                <li><code>?person a foaf:Person</code>: Person 타입인 개체 찾기</li>
+                <li><code>?person foaf:name ?name</code>: 그 개체의 이름 속성 가져오기</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>SPARQL 질의 유형</h3>
+    <div class="query-types">
+        <div class="query-type-card">
+            <h4>SELECT</h4>
+            <p>특정 변수의 값을 반환</p>
+            <div class="usage">테이블 형태의 결과</div>
+        </div>
+        
+        <div class="query-type-card">
+            <h4>CONSTRUCT</h4>
+            <p>새로운 RDF 그래프 생성</p>
+            <div class="usage">데이터 변환에 사용</div>
+        </div>
+        
+        <div class="query-type-card">
+            <h4>ASK</h4>
+            <p>조건 만족 여부 확인</p>
+            <div class="usage">true/false 반환</div>
+        </div>
+        
+        <div class="query-type-card">
+            <h4>DESCRIBE</h4>
+            <p>자원에 대한 정보 반환</p>
+            <div class="usage">RDF 그래프 반환</div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.3 -->
+<section class="content-section">
+    <h2>7.3 트리플 패턴과 변수</h2>
+    
+    <p>SPARQL의 핵심은 트리플 패턴을 사용한 그래프 매칭입니다.</p>
+    
+    <h3>변수와 상수</h3>
+    <div class="variable-constant">
+        <div class="var-const-example">
+            <h4>변수 사용</h4>
+            <pre class="sparql-code">
+# 변수는 ?나 $로 시작
+SELECT ?person ?age
+WHERE {
+    ?person :hasAge ?age .
+}
+            </pre>
+        </div>
+        
+        <div class="var-const-example">
+            <h4>상수와 혼합</h4>
+            <pre class="sparql-code">
+# 특정 사람의 나이 조회
+SELECT ?age
+WHERE {
+    :홍길동 :hasAge ?age .
+}
+            </pre>
+        </div>
+    </div>
+    
+    <h3>복잡한 패턴 매칭</h3>
+    <div class="complex-patterns">
+        <h4>다중 패턴 예제</h4>
+        <pre class="sparql-code">
+PREFIX : &lt;http://example.org/&gt;
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+
+SELECT ?name ?email ?workplace
+WHERE {
+    ?person foaf:name ?name .
+    ?person foaf:mbox ?email .
+    ?person :worksAt ?company .
+    ?company :name ?workplace .
+}
+        </pre>
+        
+        <div class="pattern-diagram">
+            <div class="graph-pattern">
+                <div class="node person">?person</div>
+                <div class="edge">→ foaf:name →</div>
+                <div class="node">?name</div>
+                <br>
+                <div class="edge">→ foaf:mbox →</div>
+                <div class="node">?email</div>
+                <br>
+                <div class="edge">→ :worksAt →</div>
+                <div class="node company">?company</div>
+                <div class="edge">→ :name →</div>
+                <div class="node">?workplace</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.4 -->
+<section class="content-section">
+    <h2>7.4 필터와 연산자</h2>
+    
+    <p>FILTER를 사용하여 결과를 제한하고 정제할 수 있습니다.</p>
+    
+    <h3>기본 필터링</h3>
+    <div class="filter-examples">
+        <div class="filter-card">
+            <h4>숫자 비교</h4>
+            <pre class="sparql-code">
+SELECT ?name ?age
+WHERE {
+    ?person foaf:name ?name .
+    ?person :age ?age .
+    FILTER (?age >= 18)
+}
+            </pre>
+        </div>
+        
+        <div class="filter-card">
+            <h4>문자열 필터</h4>
+            <pre class="sparql-code">
+SELECT ?name
+WHERE {
+    ?person foaf:name ?name .
+    FILTER (CONTAINS(?name, "김"))
+}
+            </pre>
+        </div>
+        
+        <div class="filter-card">
+            <h4>정규표현식</h4>
+            <pre class="sparql-code">
+SELECT ?email
+WHERE {
+    ?person foaf:mbox ?email .
+    FILTER (REGEX(?email, "@gmail\\.com$"))
+}
+            </pre>
+        </div>
+        
+        <div class="filter-card">
+            <h4>언어 필터</h4>
+            <pre class="sparql-code">
+SELECT ?name
+WHERE {
+    ?person rdfs:label ?name .
+    FILTER (LANG(?name) = "ko")
+}
+            </pre>
+        </div>
+    </div>
+    
+    <h3>내장 함수</h3>
+    <div class="built-in-functions">
+        <div class="function-category">
+            <h4>문자열 함수</h4>
+            <ul>
+                <li>STR() - 문자열 변환</li>
+                <li>STRLEN() - 문자열 길이</li>
+                <li>UCASE() / LCASE() - 대소문자 변환</li>
+                <li>CONCAT() - 문자열 연결</li>
+                <li>SUBSTR() - 부분 문자열</li>
+            </ul>
+        </div>
+        
+        <div class="function-category">
+            <h4>숫자 함수</h4>
+            <ul>
+                <li>ABS() - 절대값</li>
+                <li>ROUND() - 반올림</li>
+                <li>CEIL() / FLOOR() - 올림/내림</li>
+                <li>RAND() - 난수</li>
+            </ul>
+        </div>
+        
+        <div class="function-category">
+            <h4>날짜 함수</h4>
+            <ul>
+                <li>NOW() - 현재 시간</li>
+                <li>YEAR() / MONTH() / DAY()</li>
+                <li>HOURS() / MINUTES()</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.5 -->
+<section class="content-section">
+    <h2>7.5 옵셔널 패턴과 유니온</h2>
+    
+    <h3>OPTIONAL - 선택적 매칭</h3>
+    <div class="optional-pattern">
+        <pre class="sparql-code">
+SELECT ?name ?email ?phone
+WHERE {
+    ?person foaf:name ?name .
+    OPTIONAL { ?person foaf:mbox ?email }
+    OPTIONAL { ?person :phone ?phone }
+}
+        </pre>
+        <p class="explanation">이메일이나 전화번호가 없어도 이름은 반환됩니다.</p>
+    </div>
+    
+    <h3>UNION - 대체 패턴</h3>
+    <div class="union-pattern">
+        <pre class="sparql-code">
+SELECT ?name ?contact
+WHERE {
+    ?person foaf:name ?name .
+    {
+        ?person foaf:mbox ?contact
+    } UNION {
+        ?person :phone ?contact
+    }
+}
+        </pre>
+        <p class="explanation">이메일 또는 전화번호 중 하나를 연락처로 반환합니다.</p>
+    </div>
+    
+    <h3>NOT EXISTS - 부정 패턴</h3>
+    <div class="not-exists-pattern">
+        <pre class="sparql-code">
+SELECT ?person
+WHERE {
+    ?person a :Student .
+    FILTER NOT EXISTS {
+        ?person :hasGraduated true
+    }
+}
+        </pre>
+        <p class="explanation">아직 졸업하지 않은 학생들만 조회합니다.</p>
+    </div>
+</section>
+
+<!-- 섹션 7.6 -->
+<section class="content-section">
+    <h2>7.6 집계와 그룹화</h2>
+    
+    <h3>집계 함수</h3>
+    <div class="aggregation-functions">
+        <div class="agg-example">
+            <h4>COUNT - 개수 세기</h4>
+            <pre class="sparql-code">
+SELECT (COUNT(?student) AS ?studentCount)
+WHERE {
+    ?student a :Student
+}
+            </pre>
+        </div>
+        
+        <div class="agg-example">
+            <h4>AVG/SUM - 평균/합계</h4>
+            <pre class="sparql-code">
+SELECT (AVG(?score) AS ?avgScore)
+       (SUM(?score) AS ?totalScore)
+WHERE {
+    ?student :hasScore ?score
+}
+            </pre>
+        </div>
+        
+        <div class="agg-example">
+            <h4>MIN/MAX - 최소/최대</h4>
+            <pre class="sparql-code">
+SELECT (MIN(?age) AS ?youngest)
+       (MAX(?age) AS ?oldest)
+WHERE {
+    ?person :age ?age
+}
+            </pre>
+        </div>
+    </div>
+    
+    <h3>GROUP BY와 HAVING</h3>
+    <div class="grouping-example">
+        <pre class="sparql-code">
+SELECT ?department (COUNT(?student) AS ?count)
+WHERE {
+    ?student :belongsTo ?department
+}
+GROUP BY ?department
+HAVING (COUNT(?student) > 10)
+ORDER BY DESC(?count)
+        </pre>
+        <p class="explanation">부서별 학생 수를 집계하고 10명 이상인 부서만 표시합니다.</p>
+    </div>
+</section>
+
+<!-- 섹션 7.7 -->
+<section class="content-section">
+    <h2>7.7 정렬과 페이징</h2>
+    
+    <h3>ORDER BY - 정렬</h3>
+    <div class="ordering-examples">
+        <pre class="sparql-code">
+SELECT ?name ?age
+WHERE {
+    ?person foaf:name ?name .
+    ?person :age ?age
+}
+ORDER BY DESC(?age) ?name
+        </pre>
+        <p class="explanation">나이 내림차순, 같은 나이는 이름 오름차순으로 정렬</p>
+    </div>
+    
+    <h3>LIMIT과 OFFSET - 페이징</h3>
+    <div class="paging-example">
+        <pre class="sparql-code">
+SELECT ?title ?author
+WHERE {
+    ?book :title ?title .
+    ?book :author ?author
+}
+ORDER BY ?title
+LIMIT 10
+OFFSET 20
+        </pre>
+        <p class="explanation">21번째부터 30번째까지의 책 정보를 반환합니다.</p>
+    </div>
+</section>
+
+<!-- 섹션 7.8 -->
+<section class="content-section">
+    <h2>7.8 실전 SPARQL 질의</h2>
+    
+    <h3>복잡한 질의 예제</h3>
+    <div class="complex-query-example">
+        <h4>도서관 시스템 질의</h4>
+        <pre class="sparql-code">
+PREFIX lib: &lt;http://example.org/library#&gt;
+PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+
+# 가장 많이 대출된 책 Top 10
+SELECT ?title (COUNT(?loan) AS ?loanCount)
+WHERE {
+    ?book dc:title ?title .
+    ?loan lib:borrowedItem ?book .
+    ?loan lib:borrowDate ?date .
+    
+    # 최근 1년 이내 대출만
+    FILTER (?date > NOW() - "P1Y"^^xsd:duration)
+}
+GROUP BY ?title
+ORDER BY DESC(?loanCount)
+LIMIT 10
+        </pre>
+    </div>
+    
+    <h3>페더레이션 질의</h3>
+    <div class="federation-example">
+        <h4>여러 데이터 소스 결합</h4>
+        <pre class="sparql-code">
+SELECT ?drug ?disease ?sideEffect
+WHERE {
+    # 로컬 데이터베이스에서 약품 정보
+    ?drug a :Drug ;
+          :treats ?disease .
+    
+    # 외부 DBpedia에서 부작용 정보
+    SERVICE &lt;https://dbpedia.org/sparql&gt; {
+        ?drug dbo:sideEffect ?sideEffect .
+    }
+}
+        </pre>
+    </div>
+</section>
+
+<!-- 섹션 7.9 -->
+<section class="content-section">
+    <h2>7.9 SPARQL 업데이트</h2>
+    
+    <p>SPARQL 1.1부터는 데이터 수정도 가능합니다.</p>
+    
+    <h3>INSERT DATA</h3>
+    <div class="update-example">
+        <pre class="sparql-code">
+PREFIX : &lt;http://example.org/&gt;
+
+INSERT DATA {
+    :김철수 a :Person ;
+           :name "김철수" ;
+           :age 25 ;
+           :email "kim@example.com" .
+}
+        </pre>
+    </div>
+    
+    <h3>DELETE/INSERT</h3>
+    <div class="update-example">
+        <pre class="sparql-code">
+DELETE { ?person :age ?oldAge }
+INSERT { ?person :age ?newAge }
+WHERE {
+    ?person :name "김철수" ;
+            :age ?oldAge .
+    BIND (?oldAge + 1 AS ?newAge)
+}
+        </pre>
+    </div>
+    
+    <h3>DELETE WHERE</h3>
+    <div class="update-example">
+        <pre class="sparql-code">
+DELETE WHERE {
+    ?person :temporaryFlag true
+}
+        </pre>
+    </div>
+</section>
+
+<!-- 섹션 7.10 -->
+<section class="content-section">
+    <h2>7.10 SPARQL 엔드포인트 활용</h2>
+    
+    <h3>공개 SPARQL 엔드포인트</h3>
+    <div class="endpoint-list">
+        <div class="endpoint-card">
+            <h4>DBpedia</h4>
+            <p class="endpoint-url">https://dbpedia.org/sparql</p>
+            <p>위키피디아 데이터의 RDF 버전</p>
+        </div>
+        
+        <div class="endpoint-card">
+            <h4>Wikidata</h4>
+            <p class="endpoint-url">https://query.wikidata.org/</p>
+            <p>구조화된 지식 베이스</p>
+        </div>
+        
+        <div class="endpoint-card">
+            <h4>국립중앙도서관 LOD</h4>
+            <p class="endpoint-url">http://lod.nl.go.kr/sparql</p>
+            <p>한국 서지 데이터</p>
+        </div>
+    </div>
+    
+    <h3>실습: Wikidata 질의</h3>
+    <div class="wikidata-example">
+        <h4>한국의 도시 인구 조회</h4>
+        <pre class="sparql-code">
+SELECT ?city ?cityLabel ?population
+WHERE {
+    ?city wdt:P31 wd:Q515 ;          # 도시
+          wdt:P17 wd:Q884 ;          # 한국
+          wdt:P1082 ?population .    # 인구
+    
+    SERVICE wikibase:label {
+        bd:serviceParam wikibase:language "ko,en" .
+    }
+}
+ORDER BY DESC(?population)
+LIMIT 20
+        </pre>
+    </div>
+</section>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>기본 구조</h3>
+            <ul>
+                <li>SELECT/WHERE 패턴</li>
+                <li>트리플 패턴 매칭</li>
+                <li>변수와 바인딩</li>
+                <li>PREFIX 선언</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>고급 기능</h3>
+            <ul>
+                <li>FILTER와 함수</li>
+                <li>OPTIONAL/UNION</li>
+                <li>집계와 GROUP BY</li>
+                <li>서브쿼리</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>실전 활용</h3>
+            <ul>
+                <li>복잡한 그래프 순회</li>
+                <li>페더레이션 질의</li>
+                <li>업데이트 연산</li>
+                <li>성능 최적화</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제 1: 도서 검색 시스템</h3>
+        <p>다음 기능을 구현하는 SPARQL 질의를 작성하세요:</p>
+        <ol>
+            <li>특정 저자의 모든 책 조회</li>
+            <li>2020년 이후 출판된 책 중 평점 4.0 이상</li>
+            <li>장르별 도서 수와 평균 가격</li>
+            <li>가장 많은 책을 쓴 저자 Top 5</li>
+        </ol>
+    </div>
+    
+    <div class="practice-task">
+        <h3>과제 2: 소셜 네트워크 분석</h3>
+        <p>친구 관계 그래프에서:</p>
+        <ol>
+            <li>특정 사람의 친구의 친구 찾기</li>
+            <li>공통 친구가 가장 많은 사람들</li>
+            <li>친구가 없는 사람 찾기</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>온톨로지 추론과 추론 엔진에 대해 학습합니다. OWL의 추론 규칙과 실제 추론 엔진 활용법을 알아봅니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter08')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+/* 비교 테이블 */
+.comparison-table {
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.comparison-table th {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.comparison-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* 질의 구조 */
+.query-structure {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.query-structure pre {
+    font-size: 1.1rem;
+    color: #1e293b;
+}
+
+/* SPARQL 코드 */
+.sparql-code {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+.sparql-code:hover {
+    background: #0f172a;
+}
+
+/* 질의 타입 카드 */
+.query-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.query-type-card {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.query-type-card:hover {
+    transform: translateY(-4px);
+}
+
+.query-type-card h4 {
+    color: #4c1d95;
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.query-type-card .usage {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* 패턴 다이어그램 */
+.graph-pattern {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    margin: 1.5rem 0;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+}
+
+.graph-pattern .node {
+    display: inline-block;
+    background: #f0f9ff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid #0ea5e9;
+    margin: 0.5rem;
+}
+
+.graph-pattern .node.person {
+    background: #fef3c7;
+    border-color: #f59e0b;
+}
+
+.graph-pattern .node.company {
+    background: #dcfce7;
+    border-color: #22c55e;
+}
+
+.graph-pattern .edge {
+    display: inline-block;
+    color: #64748b;
+    margin: 0 0.5rem;
+}
+
+/* 필터 카드 */
+.filter-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.filter-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.filter-card h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 함수 카테고리 */
+.built-in-functions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.function-category {
+    background: #f0f9ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.function-category h4 {
+    color: #0369a1;
+    margin-bottom: 1rem;
+}
+
+.function-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.function-category li {
+    padding: 0.3rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* 패턴 예제 */
+.optional-pattern,
+.union-pattern,
+.not-exists-pattern {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+}
+
+.explanation {
+    color: #64748b;
+    font-style: italic;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+}
+
+/* 집계 예제 */
+.aggregation-functions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.agg-example {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #fbbf24;
+}
+
+.agg-example h4 {
+    color: #92400e;
+    margin-bottom: 1rem;
+}
+
+/* 엔드포인트 카드 */
+.endpoint-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.endpoint-card {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.endpoint-card h4 {
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+}
+
+.endpoint-url {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #2563eb;
+    word-break: break-all;
+    margin: 0.5rem 0;
+}
+
+/* 복잡한 질의 예제 */
+.complex-query-example,
+.federation-example,
+.wikidata-example,
+.update-example,
+.grouping-example,
+.ordering-examples,
+.paging-example {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.complex-query-example h4,
+.federation-example h4,
+.wikidata-example h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 변수 예제 */
+.variable-constant {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.var-const-example {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.var-const-example h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 복잡한 패턴 */
+.complex-patterns {
+    margin: 2rem 0;
+}
+
+.complex-patterns h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 첫 번째 쿼리 */
+.first-query {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.first-query h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.query-explanation {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.query-explanation ul {
+    margin-top: 0.5rem;
+}
+
+.query-explanation code {
+    background: #e2e8f0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+/* 코드 블록 */
+.code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .query-types,
+    .filter-examples,
+    .built-in-functions,
+    .aggregation-functions,
+    .endpoint-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .sparql-code {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+}
+</style>

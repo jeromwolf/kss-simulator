@@ -1,0 +1,926 @@
+<!-- Chapter 8: 온톨로지 추론과 추론 엔진 -->
+
+<div class="chapter-header">
+    <h1>Chapter 8. 온톨로지 추론과 추론 엔진</h1>
+    <div class="chapter-quote">
+        "추론은 명시되지 않은 지식을 발견하는 강력한 도구입니다. 온톨로지의 진정한 가치는 추론에서 나옵니다."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 55분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>온톨로지 추론의 원리와 중요성 이해</li>
+        <li>Description Logic과 추론 규칙 학습</li>
+        <li>주요 추론 엔진의 특징과 사용법</li>
+        <li>추론 결과 활용과 성능 최적화</li>
+    </ul>
+</div>
+
+<!-- 섹션 8.1 -->
+<section class="content-section">
+    <h2>8.1 온톨로지 추론이란?</h2>
+    
+    <p>온톨로지 추론(Ontology Reasoning)은 명시적으로 표현된 지식으로부터 암묵적인 지식을 자동으로 도출하는 과정입니다.</p>
+    
+    <div class="concept-box">
+        <h4><i class="fas fa-lightbulb"></i> 핵심 개념</h4>
+        <p><strong>추론(Reasoning)</strong>: 온톨로지에 정의된 공리(axiom)와 규칙을 바탕으로 새로운 사실을 논리적으로 유도하는 과정</p>
+    </div>
+    
+    <h3>추론의 필요성</h3>
+    <div class="reasoning-benefits">
+        <div class="benefit-card">
+            <h4>1. 지식 완성</h4>
+            <p>모든 관계를 명시할 필요 없이 자동으로 유도</p>
+            <div class="example">
+                <p><strong>명시:</strong> 홍길동은 사람이다. 사람은 포유류다.</p>
+                <p><strong>추론:</strong> 홍길동은 포유류다.</p>
+            </div>
+        </div>
+        
+        <div class="benefit-card">
+            <h4>2. 일관성 검증</h4>
+            <p>모순되는 정보 자동 감지</p>
+            <div class="example">
+                <p><strong>오류 감지:</strong> 철수는 학생이면서 동시에 교수일 수 없음</p>
+            </div>
+        </div>
+        
+        <div class="benefit-card">
+            <h4>3. 분류 자동화</h4>
+            <p>개체와 클래스의 자동 분류</p>
+            <div class="example">
+                <p><strong>자동 분류:</strong> 날개가 있고 깃털이 있으면 → 새</p>
+            </div>
+        </div>
+        
+        <div class="benefit-card">
+            <h4>4. 질의 확장</h4>
+            <p>더 풍부한 질의 결과 제공</p>
+            <div class="example">
+                <p><strong>질의:</strong> 모든 동물 → <strong>결과:</strong> 명시된 동물 + 추론된 동물</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.2 -->
+<section class="content-section">
+    <h2>8.2 Description Logic 기초</h2>
+    
+    <p>Description Logic(DL)은 OWL의 이론적 기반으로, 추론의 복잡도와 표현력 사이의 균형을 제공합니다.</p>
+    
+    <h3>DL 구문과 의미</h3>
+    <div class="dl-syntax">
+        <div class="syntax-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>구문</th>
+                        <th>의미</th>
+                        <th>OWL 표현</th>
+                        <th>예시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>⊤</td>
+                        <td>전체 클래스</td>
+                        <td>owl:Thing</td>
+                        <td>모든 것</td>
+                    </tr>
+                    <tr>
+                        <td>⊥</td>
+                        <td>공집합</td>
+                        <td>owl:Nothing</td>
+                        <td>존재하지 않음</td>
+                    </tr>
+                    <tr>
+                        <td>⊓</td>
+                        <td>교집합</td>
+                        <td>intersectionOf</td>
+                        <td>Person ⊓ Student</td>
+                    </tr>
+                    <tr>
+                        <td>⊔</td>
+                        <td>합집합</td>
+                        <td>unionOf</td>
+                        <td>Cat ⊔ Dog</td>
+                    </tr>
+                    <tr>
+                        <td>¬</td>
+                        <td>여집합</td>
+                        <td>complementOf</td>
+                        <td>¬Vegetarian</td>
+                    </tr>
+                    <tr>
+                        <td>∃</td>
+                        <td>존재 한정사</td>
+                        <td>someValuesFrom</td>
+                        <td>∃hasChild.Person</td>
+                    </tr>
+                    <tr>
+                        <td>∀</td>
+                        <td>전칭 한정사</td>
+                        <td>allValuesFrom</td>
+                        <td>∀hasChild.Female</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <h3>DL 표현력 등급</h3>
+    <div class="dl-expressivity">
+        <div class="expressivity-card">
+            <h4>AL (Attributive Language)</h4>
+            <ul>
+                <li>기본 교집합, 전칭 한정사</li>
+                <li>제한된 존재 한정사</li>
+                <li>원자 부정</li>
+            </ul>
+        </div>
+        
+        <div class="expressivity-card">
+            <h4>ALC</h4>
+            <ul>
+                <li>AL + 완전한 부정</li>
+                <li>합집합</li>
+                <li>존재 한정사</li>
+            </ul>
+        </div>
+        
+        <div class="expressivity-card">
+            <h4>SHIQ</h4>
+            <ul>
+                <li>ALC + 역할 계층</li>
+                <li>역 속성</li>
+                <li>한정된 카디널리티</li>
+            </ul>
+        </div>
+        
+        <div class="expressivity-card">
+            <h4>SROIQ</h4>
+            <ul>
+                <li>OWL 2 DL의 기반</li>
+                <li>복잡한 역할 포함</li>
+                <li>데이터타입 지원</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.3 -->
+<section class="content-section">
+    <h2>8.3 추론 규칙과 메커니즘</h2>
+    
+    <h3>기본 추론 규칙</h3>
+    <div class="inference-rules">
+        <div class="rule-category">
+            <h4>1. 포함관계 추론</h4>
+            <div class="rule-box">
+                <div class="rule-formula">
+                    A ⊑ B ∧ B ⊑ C → A ⊑ C
+                </div>
+                <div class="rule-example">
+                    <p><strong>예시:</strong></p>
+                    <p>Dog ⊑ Mammal ∧ Mammal ⊑ Animal</p>
+                    <p>→ Dog ⊑ Animal</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rule-category">
+            <h4>2. 속성 전파</h4>
+            <div class="rule-box">
+                <div class="rule-formula">
+                    P ⊑ Q ∧ (x, y) ∈ P → (x, y) ∈ Q
+                </div>
+                <div class="rule-example">
+                    <p><strong>예시:</strong></p>
+                    <p>hasMother ⊑ hasParent</p>
+                    <p>John hasMother Mary → John hasParent Mary</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rule-category">
+            <h4>3. 도메인/레인지 추론</h4>
+            <div class="rule-box">
+                <div class="rule-formula">
+                    domain(P, C) ∧ (x, y) ∈ P → x ∈ C
+                </div>
+                <div class="rule-example">
+                    <p><strong>예시:</strong></p>
+                    <p>domain(teaches, Teacher)</p>
+                    <p>Kim teaches Math → Kim ∈ Teacher</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rule-category">
+            <h4>4. 이행성 규칙</h4>
+            <div class="rule-box">
+                <div class="rule-formula">
+                    Trans(P) ∧ P(x,y) ∧ P(y,z) → P(x,z)
+                </div>
+                <div class="rule-example">
+                    <p><strong>예시:</strong></p>
+                    <p>Trans(ancestorOf)</p>
+                    <p>A ancestorOf B ∧ B ancestorOf C</p>
+                    <p>→ A ancestorOf C</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>추론 알고리즘</h3>
+    <div class="algorithm-types">
+        <div class="algorithm-card">
+            <h4>Tableau Algorithm</h4>
+            <p>가장 널리 사용되는 결정 절차</p>
+            <ul>
+                <li>ABox와 TBox 일관성 검사</li>
+                <li>개체 분류</li>
+                <li>완전성 보장</li>
+            </ul>
+        </div>
+        
+        <div class="algorithm-card">
+            <h4>Resolution</h4>
+            <p>일차 논리 기반 추론</p>
+            <ul>
+                <li>규칙 기반 추론</li>
+                <li>호른 절 처리 효율적</li>
+                <li>불완전할 수 있음</li>
+            </ul>
+        </div>
+        
+        <div class="algorithm-card">
+            <h4>Rete Algorithm</h4>
+            <p>규칙 엔진에서 사용</p>
+            <ul>
+                <li>패턴 매칭 최적화</li>
+                <li>증분적 추론</li>
+                <li>대규모 규칙 처리</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.4 -->
+<section class="content-section">
+    <h2>8.4 주요 추론 엔진</h2>
+    
+    <p>다양한 추론 엔진이 각각의 특징과 장단점을 가지고 있습니다.</p>
+    
+    <h3>추론 엔진 비교</h3>
+    <div class="reasoner-comparison">
+        <div class="reasoner-card">
+            <h4>HermiT</h4>
+            <div class="reasoner-features">
+                <p class="description">Oxford 대학에서 개발한 OWL 추론기</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>OWL 2 DL 완전 지원</li>
+                            <li>높은 정확성</li>
+                            <li>우수한 오류 설명</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>단점</h5>
+                        <ul>
+                            <li>대규모 온톨로지에서 느림</li>
+                            <li>메모리 사용량 높음</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="use-case">
+                    <strong>적합한 경우:</strong> 정확성이 중요한 중소규모 온톨로지
+                </div>
+            </div>
+        </div>
+        
+        <div class="reasoner-card">
+            <h4>Pellet</h4>
+            <div class="reasoner-features">
+                <p class="description">Java 기반 오픈소스 OWL DL 추론기</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>증분적 추론 지원</li>
+                            <li>SPARQL-DL 질의</li>
+                            <li>좋은 문서화</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>단점</h5>
+                        <ul>
+                            <li>개발 중단 (유지보수만)</li>
+                            <li>최신 OWL 2 기능 제한적</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="use-case">
+                    <strong>적합한 경우:</strong> 안정성이 중요한 프로젝트
+                </div>
+            </div>
+        </div>
+        
+        <div class="reasoner-card">
+            <h4>ELK</h4>
+            <div class="reasoner-features">
+                <p class="description">OWL 2 EL 프로파일 특화 추론기</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>매우 빠른 속도</li>
+                            <li>대규모 온톨로지 처리</li>
+                            <li>병렬 처리 지원</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>단점</h5>
+                        <ul>
+                            <li>OWL EL만 지원</li>
+                            <li>표현력 제한</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="use-case">
+                    <strong>적합한 경우:</strong> 대규모 분류 체계 (예: SNOMED CT)
+                </div>
+            </div>
+        </div>
+        
+        <div class="reasoner-card">
+            <h4>Fact++</h4>
+            <div class="reasoner-features">
+                <p class="description">C++ 기반 고성능 추론기</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>빠른 처리 속도</li>
+                            <li>메모리 효율적</li>
+                            <li>OWL 2 지원</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>단점</h5>
+                        <ul>
+                            <li>제한적인 API</li>
+                            <li>오류 메시지 빈약</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="use-case">
+                    <strong>적합한 경우:</strong> 성능이 중요한 응용 프로그램
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.5 -->
+<section class="content-section">
+    <h2>8.5 추론 실습</h2>
+    
+    <h3>예제: 가족 관계 추론</h3>
+    <div class="reasoning-example">
+        <h4>온톨로지 정의</h4>
+        <pre class="code-block">
+# 클래스 정의
+Person ⊑ Thing
+Male ⊑ Person
+Female ⊑ Person
+Parent ≡ Person ⊓ ∃hasChild.Person
+Father ≡ Parent ⊓ Male
+Mother ≡ Parent ⊓ Female
+
+# 속성 정의
+hasParent inverse hasChild
+hasFather ⊑ hasParent, range Father
+hasMother ⊑ hasParent, range Mother
+hasBrother ≡ hasSibling ○ Male
+
+# 개체와 관계
+John : Male
+Mary : Female
+Tom : Person
+John hasChild Tom
+Mary hasChild Tom
+        </pre>
+        
+        <h4>추론 결과</h4>
+        <div class="inference-results">
+            <div class="result-item">
+                <strong>자동 분류:</strong>
+                <ul>
+                    <li>John : Father (Male이고 hasChild 관계 있음)</li>
+                    <li>Mary : Mother (Female이고 hasChild 관계 있음)</li>
+                </ul>
+            </div>
+            
+            <div class="result-item">
+                <strong>역관계 추론:</strong>
+                <ul>
+                    <li>Tom hasParent John</li>
+                    <li>Tom hasParent Mary</li>
+                    <li>Tom hasFather John</li>
+                    <li>Tom hasMother Mary</li>
+                </ul>
+            </div>
+            
+            <div class="result-item">
+                <strong>일관성 검증:</strong>
+                <ul>
+                    <li>Male ⊓ Female ≡ ⊥ (상호 배타적)</li>
+                    <li>Father ⊓ Mother ≡ ⊥ (자동 유도됨)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.6 -->
+<section class="content-section">
+    <h2>8.6 추론 성능 최적화</h2>
+    
+    <h3>성능 향상 기법</h3>
+    <div class="optimization-techniques">
+        <div class="technique-card">
+            <h4>1. 온톨로지 모듈화</h4>
+            <p>큰 온톨로지를 작은 모듈로 분할</p>
+            <ul>
+                <li>관련 개념끼리 그룹화</li>
+                <li>필요한 부분만 로드</li>
+                <li>독립적 추론 가능</li>
+            </ul>
+            <div class="code-example">
+                <pre>
+// 모듈 임포트
+import: &lt;http://example.org/person-module&gt;
+import: &lt;http://example.org/location-module&gt;
+                </pre>
+            </div>
+        </div>
+        
+        <div class="technique-card">
+            <h4>2. 프로파일 선택</h4>
+            <p>용도에 맞는 OWL 프로파일 사용</p>
+            <ul>
+                <li>OWL EL: 대규모 분류</li>
+                <li>OWL QL: 데이터베이스 연동</li>
+                <li>OWL RL: 규칙 기반 시스템</li>
+            </ul>
+        </div>
+        
+        <div class="technique-card">
+            <h4>3. 증분적 추론</h4>
+            <p>변경된 부분만 재계산</p>
+            <ul>
+                <li>추론 결과 캐싱</li>
+                <li>변경 추적</li>
+                <li>부분 업데이트</li>
+            </ul>
+        </div>
+        
+        <div class="technique-card">
+            <h4>4. 추론 깊이 제한</h4>
+            <p>필요한 수준까지만 추론</p>
+            <ul>
+                <li>추론 체인 길이 제한</li>
+                <li>특정 속성 제외</li>
+                <li>근사 추론 활용</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>추론기 선택 가이드</h3>
+    <div class="selection-guide">
+        <table>
+            <thead>
+                <tr>
+                    <th>시나리오</th>
+                    <th>추천 추론기</th>
+                    <th>이유</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>의료 온톨로지 (SNOMED CT)</td>
+                    <td>ELK</td>
+                    <td>대규모 + EL 프로파일</td>
+                </tr>
+                <tr>
+                    <td>연구용 소규모 온톨로지</td>
+                    <td>HermiT</td>
+                    <td>정확성 + 디버깅</td>
+                </tr>
+                <tr>
+                    <td>실시간 웹 애플리케이션</td>
+                    <td>Pellet/Fact++</td>
+                    <td>균형잡힌 성능</td>
+                </tr>
+                <tr>
+                    <td>규칙 기반 시스템</td>
+                    <td>Drools + Pellet</td>
+                    <td>규칙 엔진 통합</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제 1: 대학 온톨로지 추론</h3>
+        <p>다음 규칙을 포함하는 온톨로지를 만들고 추론 결과를 확인하세요:</p>
+        <ol>
+            <li>학부생은 학부 과목만 수강 가능</li>
+            <li>대학원생은 모든 과목 수강 가능</li>
+            <li>교수는 자신이 가르치는 과목을 수강할 수 없음</li>
+            <li>필수과목을 모두 수강한 학생은 졸업 가능</li>
+        </ol>
+    </div>
+    
+    <div class="practice-task">
+        <h3>과제 2: 추론기 성능 비교</h3>
+        <p>동일한 온톨로지를 다른 추론기로 처리하고 비교하세요:</p>
+        <ol>
+            <li>추론 시간 측정</li>
+            <li>메모리 사용량 확인</li>
+            <li>추론 결과 차이 분석</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>추론의 가치</h3>
+            <ul>
+                <li>암묵적 지식 발견</li>
+                <li>일관성 검증</li>
+                <li>자동 분류</li>
+                <li>질의 결과 확장</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>추론 메커니즘</h3>
+            <ul>
+                <li>Description Logic</li>
+                <li>추론 규칙</li>
+                <li>Tableau 알고리즘</li>
+                <li>전방/후방 추론</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>실무 고려사항</h3>
+            <ul>
+                <li>추론기 선택</li>
+                <li>성능 최적화</li>
+                <li>모듈화 전략</li>
+                <li>프로파일 활용</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>Protégé를 사용하여 온톨로지를 시각적으로 설계하고 관리하는 방법을 학습합니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter09')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+/* 추론 이점 카드 */
+.reasoning-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.benefit-card {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+}
+
+.benefit-card h4 {
+    color: #0369a1;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-card .example {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* DL 구문 테이블 */
+.dl-syntax {
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.syntax-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.syntax-table th {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.syntax-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.syntax-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* DL 표현력 카드 */
+.dl-expressivity {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.expressivity-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.expressivity-card h4 {
+    color: #1e293b;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 1rem;
+}
+
+/* 추론 규칙 */
+.inference-rules {
+    margin: 2rem 0;
+}
+
+.rule-category {
+    margin-bottom: 2rem;
+}
+
+.rule-category h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.rule-box {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #6366f1;
+}
+
+.rule-formula {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.rule-example {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* 알고리즘 카드 */
+.algorithm-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.algorithm-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.algorithm-card h4 {
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+/* 추론기 비교 */
+.reasoner-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.reasoner-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.reasoner-card h4 {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+}
+
+.reasoner-features {
+    padding: 1.5rem;
+}
+
+.reasoner-features .description {
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+
+.pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.pros h5 {
+    color: #16a34a;
+}
+
+.cons h5 {
+    color: #dc2626;
+}
+
+.use-case {
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* 추론 예제 */
+.reasoning-example {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.reasoning-example h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.inference-results {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.result-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.result-item strong {
+    color: #4f46e5;
+}
+
+/* 최적화 기법 */
+.optimization-techniques {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.technique-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e0e7ff;
+}
+
+.technique-card h4 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.code-example {
+    background: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.code-example pre {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* 선택 가이드 테이블 */
+.selection-guide {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.selection-guide table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.selection-guide th {
+    background: #6366f1;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.selection-guide td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* 코드 블록 */
+.code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .reasoning-benefits,
+    .dl-expressivity,
+    .algorithm-types,
+    .reasoner-comparison,
+    .optimization-techniques {
+        grid-template-columns: 1fr;
+    }
+    
+    .pros-cons {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

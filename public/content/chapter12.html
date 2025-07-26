@@ -1,0 +1,598 @@
+<!-- Chapter 12: 뉴스 온톨로지: 지식 그래프 -->
+
+<div class="chapter-header">
+    <h1>Chapter 12. 뉴스 온톨로지: 지식 그래프</h1>
+    <div class="chapter-quote">
+        "뉴스 데이터에서 의미있는 지식을 추출하고 연결하기"
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 45분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>뉴스 도메인 온톨로지 설계</li>
+        <li>개체명 인식과 관계 추출</li>
+        <li>시공간 정보 모델링</li>
+        <li>뉴스 지식 그래프 구축</li>
+    </ul>
+</div>
+
+<!-- 섹션 12.1 -->
+<section class="content-section">
+    <h2>12.1 뉴스 온톨로지 설계</h2>
+    
+    <p>뉴스 기사에서 추출할 수 있는 정보를 체계적으로 모델링합니다.</p>
+    
+    <div class="concept-box">
+        <h4><i class="fas fa-lightbulb"></i> 뉴스 온톨로지의 핵심 요소</h4>
+        <ul>
+            <li>기사 메타데이터 (제목, 날짜, 출처)</li>
+            <li>개체 (인물, 조직, 장소)</li>
+            <li>이벤트와 관계</li>
+            <li>주제와 카테고리</li>
+            <li>감성과 의견</li>
+        </ul>
+    </div>
+    
+    <h3>핵심 클래스 구조</h3>
+    <pre class="code-block">
+@prefix news: &lt;http://example.org/news#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+
+# 뉴스 기사
+news:NewsArticle rdf:type owl:Class ;
+    rdfs:label "뉴스 기사"@ko ;
+    rdfs:subClassOf schema:Article .
+
+# 뉴스 소스
+news:NewsSource rdf:type owl:Class ;
+    rdfs:label "뉴스 소스"@ko ;
+    rdfs:subClassOf schema:Organization .
+
+# 개체 클래스
+news:NamedEntity rdf:type owl:Class ;
+    rdfs:label "개체명"@ko .
+
+news:Person rdfs:subClassOf news:NamedEntity ;
+    rdfs:label "인물"@ko .
+
+news:Organization rdfs:subClassOf news:NamedEntity ;
+    rdfs:label "조직"@ko .
+
+news:Location rdfs:subClassOf news:NamedEntity ;
+    rdfs:label "장소"@ko .
+
+# 이벤트
+news:Event rdf:type owl:Class ;
+    rdfs:label "이벤트"@ko .
+
+news:PoliticalEvent rdfs:subClassOf news:Event ;
+    rdfs:label "정치 이벤트"@ko .
+
+news:EconomicEvent rdfs:subClassOf news:Event ;
+    rdfs:label "경제 이벤트"@ko .
+
+news:SocialEvent rdfs:subClassOf news:Event ;
+    rdfs:label "사회 이벤트"@ko .
+
+# 주제 분류
+news:Topic rdf:type owl:Class ;
+    rdfs:label "주제"@ko .
+
+news:Category rdf:type owl:Class ;
+    rdfs:label "카테고리"@ko .
+    </pre>
+</section>
+
+<!-- 섹션 12.2 -->
+<section class="content-section">
+    <h2>12.2 속성과 관계 모델링</h2>
+    
+    <h3>기사 속성</h3>
+    <pre class="code-block">
+# 기사 메타데이터
+news:headline rdf:type owl:DatatypeProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range xsd:string ;
+    rdfs:label "제목"@ko .
+
+news:publishedDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "발행일"@ko .
+
+news:articleBody rdf:type owl:DatatypeProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range xsd:string ;
+    rdfs:label "본문"@ko .
+
+news:wordCount rdf:type owl:DatatypeProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range xsd:integer ;
+    rdfs:label "단어수"@ko .
+
+# 관계 속성
+news:publishedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range news:NewsSource ;
+    rdfs:label "발행처"@ko .
+
+news:mentions rdf:type owl:ObjectProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range news:NamedEntity ;
+    rdfs:label "언급된 개체"@ko .
+
+news:hasCategory rdf:type owl:ObjectProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range news:Category ;
+    rdfs:label "카테고리"@ko .
+
+news:relatedTo rdf:type owl:ObjectProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range news:NewsArticle ;
+    rdf:type owl:SymmetricProperty ;
+    rdfs:label "관련 기사"@ko .
+    </pre>
+    
+    <h3>이벤트 관계</h3>
+    <pre class="code-block">
+# 이벤트 속성
+news:eventDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain news:Event ;
+    rdfs:range xsd:date ;
+    rdfs:label "이벤트 날짜"@ko .
+
+news:eventLocation rdf:type owl:ObjectProperty ;
+    rdfs:domain news:Event ;
+    rdfs:range news:Location ;
+    rdfs:label "이벤트 장소"@ko .
+
+# 참여자 관계
+news:hasParticipant rdf:type owl:ObjectProperty ;
+    rdfs:domain news:Event ;
+    rdfs:range news:NamedEntity ;
+    rdfs:label "참여자"@ko .
+
+news:hasAgent rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf news:hasParticipant ;
+    rdfs:label "주체"@ko .
+
+news:hasPatient rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf news:hasParticipant ;
+    rdfs:label "대상"@ko .
+    </pre>
+</section>
+
+<!-- 섹션 12.3 -->
+<section class="content-section">
+    <h2>12.3 개체명 인식과 관계 추출</h2>
+    
+    <h3>NER 통합 예제</h3>
+    <pre class="code-block">
+# Python을 사용한 개체명 인식과 온톨로지 통합
+import spacy
+from rdflib import Graph, Namespace, URIRef, Literal
+
+# 네임스페이스 정의
+NEWS = Namespace("http://example.org/news#")
+g = Graph()
+
+def extract_entities_to_rdf(article_text, article_uri):
+    nlp = spacy.load("ko_core_news_lg")
+    doc = nlp(article_text)
+    
+    # 개체명 추출
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":
+            entity_uri = URIRef(NEWS + f"person/{ent.text.replace(' ', '_')}")
+            g.add((entity_uri, RDF.type, NEWS.Person))
+            g.add((entity_uri, RDFS.label, Literal(ent.text, lang="ko")))
+            g.add((article_uri, NEWS.mentions, entity_uri))
+            
+        elif ent.label_ == "ORG":
+            entity_uri = URIRef(NEWS + f"org/{ent.text.replace(' ', '_')}")
+            g.add((entity_uri, RDF.type, NEWS.Organization))
+            g.add((entity_uri, RDFS.label, Literal(ent.text, lang="ko")))
+            g.add((article_uri, NEWS.mentions, entity_uri))
+            
+        elif ent.label_ == "LOC":
+            entity_uri = URIRef(NEWS + f"location/{ent.text.replace(' ', '_')}")
+            g.add((entity_uri, RDF.type, NEWS.Location))
+            g.add((entity_uri, RDFS.label, Literal(ent.text, lang="ko")))
+            g.add((article_uri, NEWS.mentions, entity_uri))
+    
+    return g
+    </pre>
+    
+    <h3>관계 추출 패턴</h3>
+    <div class="relation-patterns">
+        <div class="pattern-card">
+            <h4>인물-조직 관계</h4>
+            <pre class="code-block">
+# SPARQL로 CEO 관계 추출
+SELECT ?person ?company
+WHERE {
+    ?article news:mentions ?person, ?company .
+    ?person rdf:type news:Person .
+    ?company rdf:type news:Organization .
+    ?article news:articleBody ?text .
+    FILTER(REGEX(?text, CONCAT(STR(?person), ".{0,10}CEO.{0,10}", STR(?company))))
+}
+            </pre>
+        </div>
+        
+        <div class="pattern-card">
+            <h4>이벤트 참여자</h4>
+            <pre class="code-block">
+# 회의 참석자 추출
+SELECT ?event ?participant
+WHERE {
+    ?article news:describes ?event .
+    ?event rdf:type news:PoliticalEvent ;
+           news:hasParticipant ?participant .
+    ?participant rdf:type news:Person .
+}
+            </pre>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 12.4 -->
+<section class="content-section">
+    <h2>12.4 시공간 정보 모델링</h2>
+    
+    <h3>시간 정보 표현</h3>
+    <pre class="code-block">
+# 시간 온톨로지
+news:TemporalEntity rdf:type owl:Class ;
+    rdfs:label "시간 개체"@ko .
+
+news:TimeInterval rdf:type owl:Class ;
+    rdfs:subClassOf news:TemporalEntity ;
+    rdfs:label "시간 구간"@ko .
+
+news:hasStartTime rdf:type owl:DatatypeProperty ;
+    rdfs:domain news:TimeInterval ;
+    rdfs:range xsd:dateTime .
+
+news:hasEndTime rdf:type owl:DatatypeProperty ;
+    rdfs:domain news:TimeInterval ;
+    rdfs:range xsd:dateTime .
+
+# 시간 관계
+news:before rdf:type owl:ObjectProperty ;
+    rdf:type owl:TransitiveProperty ;
+    rdfs:domain news:Event ;
+    rdfs:range news:Event .
+
+news:after owl:inverseOf news:before .
+
+news:during rdf:type owl:ObjectProperty ;
+    rdfs:domain news:Event ;
+    rdfs:range news:TimeInterval .
+    </pre>
+    
+    <h3>공간 정보 표현</h3>
+    <pre class="code-block">
+# GeoSPARQL 통합
+@prefix geo: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+
+news:Location rdfs:subClassOf geo:Feature .
+
+news:hasGeometry rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf geo:hasGeometry ;
+    rdfs:domain news:Location ;
+    rdfs:range geo:Geometry .
+
+# 위치 계층구조
+news:Country rdfs:subClassOf news:Location .
+news:City rdfs:subClassOf news:Location .
+news:District rdfs:subClassOf news:Location .
+
+news:locatedIn rdf:type owl:ObjectProperty ;
+    rdf:type owl:TransitiveProperty ;
+    rdfs:domain news:Location ;
+    rdfs:range news:Location .
+    </pre>
+</section>
+
+<!-- 섹션 12.5 -->
+<section class="content-section">
+    <h2>12.5 뉴스 지식 그래프 구축</h2>
+    
+    <h3>실제 뉴스 데이터 예제</h3>
+    <pre class="code-block">
+# 뉴스 기사 인스턴스
+news:article_20240115_001 rdf:type news:NewsArticle ;
+    news:headline "삼성전자, AI 반도체 개발 가속화"@ko ;
+    news:publishedDate "2024-01-15T09:30:00"^^xsd:dateTime ;
+    news:publishedBy news:source_yonhap ;
+    news:hasCategory news:category_tech ;
+    news:wordCount 450 ;
+    news:mentions news:org/삼성전자,
+                 news:person/이재용,
+                 news:location/서울 .
+
+# 개체 정보
+news:org/삼성전자 rdf:type news:Organization ;
+    rdfs:label "삼성전자"@ko ;
+    news:industry "전자"@ko ;
+    news:headquartersLocation news:location/수원 .
+
+news:person/이재용 rdf:type news:Person ;
+    rdfs:label "이재용"@ko ;
+    news:position "회장"@ko ;
+    news:affiliatedWith news:org/삼성전자 .
+
+# 이벤트
+news:event_ai_investment rdf:type news:EconomicEvent ;
+    rdfs:label "AI 반도체 투자 발표"@ko ;
+    news:eventDate "2024-01-15"^^xsd:date ;
+    news:hasAgent news:org/삼성전자 ;
+    news:investmentAmount "10조원"@ko .
+    </pre>
+    
+    <h3>지식 그래프 시각화</h3>
+    <div class="knowledge-graph-viz">
+        <p class="viz-description">
+            뉴스 지식 그래프는 기사, 개체, 이벤트 간의 복잡한 관계를 시각화합니다:
+        </p>
+        <ul>
+            <li>노드: 기사(파란색), 인물(초록색), 조직(빨간색), 장소(노란색)</li>
+            <li>엣지: mentions, publishedBy, affiliatedWith 등의 관계</li>
+            <li>클러스터: 관련 주제별로 그룹화</li>
+        </ul>
+    </div>
+</section>
+
+<!-- 섹션 12.6 -->
+<section class="content-section">
+    <h2>12.6 활용 사례와 응용</h2>
+    
+    <h3>뉴스 분석 질의</h3>
+    <div class="use-cases">
+        <div class="query-example">
+            <h4>1. 인물 네트워크 분석</h4>
+            <pre class="code-block">
+# 특정 인물과 함께 언급된 사람들
+SELECT ?person2 (COUNT(?article) as ?coMentions)
+WHERE {
+    ?article news:mentions news:person/이재용, ?person2 .
+    ?person2 rdf:type news:Person .
+    FILTER(?person2 != news:person/이재용)
+}
+GROUP BY ?person2
+ORDER BY DESC(?coMentions)
+LIMIT 10
+            </pre>
+        </div>
+        
+        <div class="query-example">
+            <h4>2. 트렌드 분석</h4>
+            <pre class="code-block">
+# 시간대별 주제 빈도
+SELECT ?date ?topic (COUNT(?article) as ?count)
+WHERE {
+    ?article news:publishedDate ?date ;
+             news:hasTopic ?topic .
+    FILTER(?date >= "2024-01-01"^^xsd:date)
+}
+GROUP BY ?date ?topic
+ORDER BY ?date
+            </pre>
+        </div>
+        
+        <div class="query-example">
+            <h4>3. 지역별 이벤트</h4>
+            <pre class="code-block">
+# 특정 지역의 주요 이벤트
+SELECT ?event ?date ?type
+WHERE {
+    ?event news:eventLocation news:location/서울 ;
+           news:eventDate ?date ;
+           rdf:type ?type .
+    FILTER(?type != news:Event)
+}
+ORDER BY DESC(?date)
+            </pre>
+        </div>
+    </div>
+    
+    <h3>실제 응용 시스템</h3>
+    <div class="application-examples">
+        <div class="app-card">
+            <h4>팩트 체킹 시스템</h4>
+            <p>뉴스 간 정보 일관성 검증</p>
+            <ul>
+                <li>상충되는 정보 감지</li>
+                <li>출처 신뢰도 평가</li>
+                <li>시간순 사실 추적</li>
+            </ul>
+        </div>
+        
+        <div class="app-card">
+            <h4>이슈 트래킹</h4>
+            <p>주요 이슈의 발전 과정 추적</p>
+            <ul>
+                <li>이슈 라이프사이클</li>
+                <li>관련 인물/조직 변화</li>
+                <li>여론 변화 분석</li>
+            </ul>
+        </div>
+        
+        <div class="app-card">
+            <h4>개인화 뉴스 추천</h4>
+            <p>사용자 관심사 기반 추천</p>
+            <ul>
+                <li>선호 주제 분석</li>
+                <li>연관 기사 추천</li>
+                <li>다양성 보장</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>모델링 요소</h3>
+            <ul>
+                <li>기사 메타데이터</li>
+                <li>개체명 (인물, 조직, 장소)</li>
+                <li>이벤트와 관계</li>
+                <li>시공간 정보</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>핵심 기술</h3>
+            <ul>
+                <li>NER (개체명 인식)</li>
+                <li>관계 추출</li>
+                <li>시간 추론</li>
+                <li>공간 추론</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>활용 방안</h3>
+            <ul>
+                <li>팩트 체킹</li>
+                <li>트렌드 분석</li>
+                <li>네트워크 분석</li>
+                <li>개인화 서비스</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제: 감성 분석 온톨로지 확장</h3>
+        <p>뉴스 온톨로지에 감성 분석 기능을 추가하세요:</p>
+        <ol>
+            <li>감성 클래스 정의 (긍정, 부정, 중립)</li>
+            <li>의견 주체와 대상 모델링</li>
+            <li>감성 강도 속성 추가</li>
+            <li>시간에 따른 감성 변화 추적</li>
+            <li>주제별 감성 집계 질의 작성</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>금융 온톨로지와 뉴스 온톨로지를 통합한 프로젝트를 진행합니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter13')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+.relation-patterns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.pattern-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.pattern-card h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.knowledge-graph-viz {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px dashed #cbd5e1;
+    margin: 2rem 0;
+}
+
+.viz-description {
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+
+.use-cases {
+    margin: 2rem 0;
+}
+
+.query-example {
+    margin-bottom: 2rem;
+}
+
+.query-example h4 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.application-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.app-card {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.app-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
+}
+
+.app-card h4 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.app-card p {
+    color: #4c1d95;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .relation-patterns {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

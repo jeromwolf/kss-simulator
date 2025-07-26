@@ -1,0 +1,412 @@
+<!-- 인트로 페이지 -->
+<div class="intro-hero">
+    <div class="hero-content">
+        <h1 class="hero-title animate-on-scroll">
+            온톨로지 마스터클래스
+        </h1>
+        <p class="hero-subtitle animate-on-scroll">
+            개념부터 실무까지, 온톨로지의 모든 것을 마스터하세요
+        </p>
+        
+        <div class="hero-features animate-on-scroll">
+            <div class="feature-card">
+                <i class="fas fa-brain fa-3x"></i>
+                <h3>철학에서 AI까지</h3>
+                <p>온톨로지의 근본 개념부터 최신 AI 응용까지</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-project-diagram fa-3x"></i>
+                <h3>인터랙티브 학습</h3>
+                <p>실시간 그래프와 시각화로 배우는 온톨로지</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-code fa-3x"></i>
+                <h3>실전 프로젝트</h3>
+                <p>금융과 뉴스 데이터로 만드는 실제 온톨로지</p>
+            </div>
+        </div>
+        
+        <div class="cta-buttons animate-on-scroll">
+            <button class="btn-primary" onclick="OntologyBook.loadChapter('chapter01')">
+                <i class="fas fa-rocket"></i> 학습 시작하기
+            </button>
+            <button class="btn-secondary" onclick="showDemo()">
+                <i class="fas fa-play"></i> 데모 보기
+            </button>
+        </div>
+    </div>
+    
+    <!-- 인터랙티브 배경 -->
+    <div class="hero-background">
+        <canvas id="networkCanvas"></canvas>
+    </div>
+</div>
+
+<!-- 학습 로드맵 -->
+<section class="learning-path animate-on-scroll">
+    <h2>학습 로드맵</h2>
+    <div class="roadmap-container">
+        <div class="roadmap-item">
+            <div class="roadmap-icon">1</div>
+            <h3>기초 개념</h3>
+            <p>온톨로지의 정의와 핵심 구성요소</p>
+        </div>
+        <div class="roadmap-arrow">→</div>
+        <div class="roadmap-item">
+            <div class="roadmap-icon">2</div>
+            <h3>기술 표준</h3>
+            <p>RDF, OWL, SPARQL 마스터</p>
+        </div>
+        <div class="roadmap-arrow">→</div>
+        <div class="roadmap-item">
+            <div class="roadmap-icon">3</div>
+            <h3>설계 실습</h3>
+            <p>Protégé로 온톨로지 구축</p>
+        </div>
+        <div class="roadmap-arrow">→</div>
+        <div class="roadmap-item">
+            <div class="roadmap-icon">4</div>
+            <h3>실전 프로젝트</h3>
+            <p>금융/뉴스 온톨로지 개발</p>
+        </div>
+    </div>
+</section>
+
+<!-- 핵심 기술 스택 -->
+<section class="tech-stack animate-on-scroll">
+    <h2>배우게 될 기술들</h2>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <img src="https://via.placeholder.com/80" alt="RDF">
+            <h4>RDF</h4>
+            <p>Resource Description Framework</p>
+        </div>
+        <div class="tech-card">
+            <img src="https://via.placeholder.com/80" alt="OWL">
+            <h4>OWL</h4>
+            <p>Web Ontology Language</p>
+        </div>
+        <div class="tech-card">
+            <img src="https://via.placeholder.com/80" alt="SPARQL">
+            <h4>SPARQL</h4>
+            <p>RDF Query Language</p>
+        </div>
+        <div class="tech-card">
+            <img src="https://via.placeholder.com/80" alt="Protégé">
+            <h4>Protégé</h4>
+            <p>Ontology Editor</p>
+        </div>
+    </div>
+</section>
+
+<script>
+// 네트워크 배경 애니메이션
+function initNetworkAnimation() {
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const nodes = [];
+    const numNodes = 50;
+    
+    for (let i = 0; i < numNodes; i++) {
+        nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: Math.random() * 3 + 1
+        });
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 노드 그리기
+        nodes.forEach(node => {
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
+            ctx.fill();
+            
+            // 움직임
+            node.x += node.vx;
+            node.y += node.vy;
+            
+            // 경계 체크
+            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+        });
+        
+        // 연결선 그리기
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const dx = nodes[i].x - nodes[j].x;
+                const dy = nodes[i].y - nodes[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(nodes[j].x, nodes[j].y);
+                    ctx.strokeStyle = `rgba(99, 102, 241, ${0.2 * (1 - distance / 150)})`;
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+}
+
+// 데모 보기
+function showDemo() {
+    const demoContainer = document.createElement('div');
+    demoContainer.className = 'interactive-demo';
+    demoContainer.innerHTML = `
+        <h3>온톨로지 데모: 간단한 가족 관계</h3>
+        <div id="demoGraph" style="height: 400px;"></div>
+        <button class="control-btn" onclick="this.parentElement.remove()">닫기</button>
+    `;
+    document.getElementById('mainContent').appendChild(demoContainer);
+    
+    // 데모 그래프 데이터
+    const demoData = {
+        nodes: [
+            {id: 'Person', label: '사람', type: 'class'},
+            {id: 'Male', label: '남성', type: 'class'},
+            {id: 'Female', label: '여성', type: 'class'},
+            {id: 'Father', label: '아버지', type: 'class'},
+            {id: 'Mother', label: '어머니', type: 'class'},
+            {id: 'john', label: '철수', type: 'instance'},
+            {id: 'jane', label: '영희', type: 'instance'},
+            {id: 'child', label: '민수', type: 'instance'}
+        ],
+        links: [
+            {source: 'Male', target: 'Person', type: 'subClassOf'},
+            {source: 'Female', target: 'Person', type: 'subClassOf'},
+            {source: 'Father', target: 'Male', type: 'subClassOf'},
+            {source: 'Mother', target: 'Female', type: 'subClassOf'},
+            {source: 'john', target: 'Father', type: 'instanceOf'},
+            {source: 'jane', target: 'Mother', type: 'instanceOf'},
+            {source: 'child', target: 'Person', type: 'instanceOf'},
+            {source: 'john', target: 'child', type: 'hasChild'},
+            {source: 'jane', target: 'child', type: 'hasChild'}
+        ]
+    };
+    
+    new OntologyGraphs.OntologyGraph('#demoGraph', demoData, {
+        width: document.getElementById('demoGraph').offsetWidth,
+        height: 400
+    });
+}
+
+// 초기화
+setTimeout(() => initNetworkAnimation(), 100);
+</script>
+
+<style>
+/* 인트로 페이지 전용 스타일 */
+.intro-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+#networkCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #64748b;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease 0.2s;
+    animation-fill-mode: both;
+}
+
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card i {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: var(--gradient-1);
+    color: white;
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.learning-path {
+    padding: 4rem 2rem;
+    background: #f8fafc;
+}
+
+.roadmap-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.roadmap-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.roadmap-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-1);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.roadmap-arrow {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.tech-stack {
+    padding: 4rem 2rem;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tech-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .roadmap-arrow {
+        transform: rotate(90deg);
+    }
+}
+</style>
