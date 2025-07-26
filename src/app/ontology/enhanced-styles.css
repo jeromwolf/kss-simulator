@@ -1,0 +1,264 @@
+/* Enhanced Learning Styles */
+
+/* Chapter Header with gradient */
+.chapter-header {
+  @apply mb-8 pb-6 border-b-2 border-gradient;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chapter-header h1 {
+  @apply text-4xl md:text-5xl font-bold mb-4;
+  background: inherit;
+  -webkit-background-clip: inherit;
+  -webkit-text-fill-color: inherit;
+  background-clip: inherit;
+}
+
+.chapter-quote {
+  @apply text-lg md:text-xl italic opacity-80 mt-4;
+  color: #6b7280;
+}
+
+.dark .chapter-quote {
+  color: #9ca3af;
+}
+
+/* Reading time indicator */
+.reading-time {
+  @apply inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-6;
+}
+
+/* Learning objectives card */
+.learning-objectives {
+  @apply bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 mb-8 border border-blue-200 dark:border-blue-800;
+}
+
+.learning-objectives h3 {
+  @apply text-xl font-bold text-blue-900 dark:text-blue-100 mb-4 flex items-center gap-2;
+}
+
+.learning-objectives ul {
+  @apply space-y-3;
+}
+
+.learning-objectives li {
+  @apply flex items-start gap-2 text-blue-800 dark:text-blue-200;
+}
+
+.learning-objectives li::before {
+  content: "✓";
+  @apply text-green-500 font-bold mt-0.5;
+}
+
+/* Content sections with cards */
+.content-section {
+  @apply mb-12 p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all hover:shadow-xl;
+}
+
+.content-section h2 {
+  @apply text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400;
+}
+
+.content-section h3 {
+  @apply text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100;
+}
+
+/* Concept boxes */
+.concept-box {
+  @apply relative bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-6 mb-6 border-l-4 border-yellow-500;
+  overflow: hidden;
+}
+
+.concept-box::before {
+  content: "💡";
+  @apply absolute top-2 right-2 text-4xl opacity-20;
+}
+
+.concept-box h4 {
+  @apply text-lg font-bold text-yellow-900 dark:text-yellow-100 mb-2;
+}
+
+.concept-box p {
+  @apply text-yellow-800 dark:text-yellow-200;
+}
+
+/* Example boxes */
+.example {
+  @apply bg-gray-50 dark:bg-gray-900 rounded-xl p-6 mb-6 border-2 border-dashed border-gray-300 dark:border-gray-600;
+}
+
+.example h4 {
+  @apply text-lg font-semibold mb-3 text-gray-700 dark:text-gray-200;
+}
+
+/* Code blocks with syntax highlighting feel */
+.code-block, pre {
+  @apply bg-gray-900 dark:bg-black text-gray-100 rounded-xl p-6 mb-6 overflow-x-auto;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.code-block code, pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Interactive demo sections */
+.interactive-demo {
+  @apply bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-indigo-900/20 rounded-2xl p-8 mb-8 border-2 border-purple-200 dark:border-purple-700;
+}
+
+.interactive-demo h3 {
+  @apply text-2xl font-bold mb-4 text-purple-900 dark:text-purple-100;
+}
+
+/* Note and warning boxes */
+.note {
+  @apply relative bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-6 rounded-r-xl;
+}
+
+.note::before {
+  content: "ℹ️";
+  @apply absolute -left-3 top-6 bg-white dark:bg-gray-800 px-1;
+}
+
+.warning {
+  @apply relative bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-6 rounded-r-xl;
+}
+
+.warning::before {
+  content: "⚠️";
+  @apply absolute -left-3 top-6 bg-white dark:bg-gray-800 px-1;
+}
+
+/* Tables with better styling */
+table {
+  @apply w-full border-collapse mb-8 rounded-xl overflow-hidden shadow-sm;
+}
+
+thead {
+  @apply bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-700;
+}
+
+th {
+  @apply px-6 py-4 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-600;
+}
+
+td {
+  @apply px-6 py-4 border-b border-gray-100 dark:border-gray-700;
+}
+
+tbody tr {
+  @apply transition-colors hover:bg-gray-50 dark:hover:bg-gray-800;
+}
+
+tbody tr:last-child td {
+  @apply border-b-0;
+}
+
+/* Lists with better spacing */
+ul, ol {
+  @apply my-6 ml-6 space-y-2;
+}
+
+ul li {
+  @apply relative pl-6;
+}
+
+ul li::before {
+  content: "▸";
+  @apply absolute left-0 text-purple-500 font-bold;
+}
+
+ol li {
+  @apply relative pl-6;
+}
+
+/* Links with underline animation */
+a {
+  @apply text-purple-600 dark:text-purple-400 font-medium relative;
+  text-decoration: none;
+}
+
+a::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 dark:bg-purple-400 transition-all duration-300;
+}
+
+a:hover::after {
+  @apply w-full;
+}
+
+/* Progress indicators */
+.progress-section {
+  @apply fixed bottom-4 right-4 bg-white dark:bg-gray-800 rounded-full shadow-lg px-4 py-2 flex items-center gap-2;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Card grid for examples */
+.card-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-8;
+}
+
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700;
+}
+
+.card h4 {
+  @apply text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100;
+}
+
+/* Stage cards for process flows */
+.lifecycle-stages {
+  @apply flex flex-wrap items-center justify-center gap-4 mb-8;
+}
+
+.stage-card {
+  @apply relative bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-6 min-w-[200px] text-center shadow-md hover:shadow-xl transition-all;
+}
+
+.stage-number {
+  @apply absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full flex items-center justify-center font-bold text-sm;
+}
+
+.stage-arrow {
+  @apply text-3xl text-gray-400 dark:text-gray-600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-section {
+    @apply p-6;
+  }
+  
+  .chapter-header h1 {
+    @apply text-3xl;
+  }
+  
+  .lifecycle-stages {
+    @apply flex-col;
+  }
+  
+  .stage-arrow {
+    @apply rotate-90;
+  }
+}

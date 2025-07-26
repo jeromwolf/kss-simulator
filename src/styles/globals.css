@@ -30,23 +30,54 @@
   }
 }
 
-/* Override any existing chapter styles */
+/* Base chapter content styles */
 .chapter-content {
   @apply text-base text-gray-700 dark:text-gray-300 leading-relaxed;
+  font-family: var(--font-inter), 'Noto Sans KR', system-ui, sans-serif;
 }
 
-.chapter-content h1,
-.chapter-content h2,
-.chapter-content h3,
-.chapter-content h4,
-.chapter-content h5,
-.chapter-content h6 {
-  @apply font-sans;
+/* Preserve original typography hierarchy */
+.chapter-content h1 {
+  @apply text-4xl md:text-5xl font-bold mb-8;
 }
 
-/* Hide font awesome icons that don't load */
-.chapter-content .fas,
-.chapter-content .far,
-.chapter-content .fa {
-  display: none;
+.chapter-content h2 {
+  @apply text-3xl font-bold mt-12 mb-6;
+}
+
+.chapter-content h3 {
+  @apply text-2xl font-semibold mt-8 mb-4;
+}
+
+.chapter-content h4 {
+  @apply text-xl font-medium mt-6 mb-3;
+}
+
+.chapter-content p {
+  @apply mb-6 leading-relaxed;
+}
+
+/* Preserve list styles */
+.chapter-content ul {
+  @apply my-6 ml-6 space-y-2;
+}
+
+.chapter-content ol {
+  @apply my-6 ml-6 space-y-2 list-decimal;
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
 }

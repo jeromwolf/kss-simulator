@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
 import ContentWrapper from './ContentWrapper'
+import ProgressTracker from '@/components/ProgressTracker'
 import styles from './ontology.module.css'
 import './style-override.css'
 
@@ -46,13 +47,9 @@ export default function OntologyPage() {
     setIsLoading(true)
     try {
       const response = await fetch(`/content/${chapterId}.html`)
-      let html = await response.text()
+      const html = await response.text()
       
-      // Remove any existing style tags and inline styles
-      html = html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-      html = html.replace(/style="[^"]*"/gi, '')
-      html = html.replace(/style='[^']*'/gi, '')
-      
+      // Keep the original HTML structure and classes
       setChapterContent(html)
     } catch (error) {
       console.error('Failed to load chapter:', error)
@@ -185,6 +182,9 @@ export default function OntologyPage() {
           </div>
         </div>
       </main>
+      
+      {/* Progress Tracker */}
+      <ProgressTracker currentChapter={currentChapter} totalChapters={chapters.length} />
     </div>
   )
 }
