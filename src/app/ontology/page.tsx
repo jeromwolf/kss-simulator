@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
 import styles from './ontology.module.css'
+import './style-override.css'
 
 interface Chapter {
   id: string
@@ -44,7 +45,13 @@ export default function OntologyPage() {
     setIsLoading(true)
     try {
       const response = await fetch(`/content/${chapterId}.html`)
-      const html = await response.text()
+      let html = await response.text()
+      
+      // Remove any existing style tags and inline styles
+      html = html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+      html = html.replace(/style="[^"]*"/gi, '')
+      html = html.replace(/style='[^']*'/gi, '')
+      
       setChapterContent(html)
     } catch (error) {
       console.error('Failed to load chapter:', error)
@@ -173,23 +180,7 @@ export default function OntologyPage() {
               </div>
             ) : (
               <div 
-                className={`${styles['ontology-content']} prose prose-lg dark:prose-invert max-w-none
-                  prose-headings:font-bold prose-headings:text-gray-800 dark:prose-headings:text-gray-100
-                  prose-h1:text-4xl prose-h1:mb-8 prose-h1:pb-4 prose-h1:border-b prose-h1:border-gray-200 dark:prose-h1:border-gray-700
-                  prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-kss-primary dark:prose-h2:text-kss-secondary
-                  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-                  prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
-                  prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
-                  prose-ol:my-6 prose-ol:list-decimal prose-ol:pl-6
-                  prose-li:mb-2 prose-li:text-gray-700 dark:prose-li:text-gray-300
-                  prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:text-kss-primary dark:prose-code:text-kss-secondary prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
-                  prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:text-gray-100 prose-pre:p-6 prose-pre:rounded-xl prose-pre:shadow-lg prose-pre:overflow-x-auto
-                  prose-blockquote:border-l-4 prose-blockquote:border-kss-primary prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400
-                  prose-table:w-full prose-table:border-collapse prose-table:overflow-hidden prose-table:rounded-lg prose-table:shadow-sm
-                  prose-th:bg-gray-100 dark:prose-th:bg-gray-800 prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold
-                  prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-gray-200 dark:prose-td:border-gray-700
-                  prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
-                  prose-a:text-kss-primary dark:prose-a:text-kss-secondary prose-a:no-underline hover:prose-a:underline prose-a:transition-all`}
+                className="chapter-content"
                 dangerouslySetInnerHTML={{ __html: chapterContent }}
               />
             )}

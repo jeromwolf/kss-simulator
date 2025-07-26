@@ -1,0 +1,243 @@
+/* Style override for chapter content */
+
+/* Reset all default styles from chapters */
+.chapter-content * {
+  all: unset;
+  display: revert;
+  box-sizing: border-box;
+}
+
+/* Apply our custom styles with high specificity */
+.chapter-content {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif !important;
+  color: rgb(55 65 81);
+  line-height: 1.75;
+}
+
+.dark .chapter-content {
+  color: rgb(209 213 219);
+}
+
+/* Headers */
+.chapter-content h1 {
+  display: block;
+  font-size: 2.25rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 1px solid rgb(229 231 235) !important;
+  color: rgb(31 41 55) !important;
+}
+
+.dark .chapter-content h1 {
+  border-bottom-color: rgb(55 65 81) !important;
+  color: rgb(243 244 246) !important;
+}
+
+.chapter-content h2 {
+  display: block;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  color: rgb(99 102 241) !important;
+}
+
+.dark .chapter-content h2 {
+  color: rgb(167 139 250) !important;
+}
+
+.chapter-content h3 {
+  display: block;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  color: rgb(55 65 81) !important;
+}
+
+.dark .chapter-content h3 {
+  color: rgb(209 213 219) !important;
+}
+
+/* Paragraphs */
+.chapter-content p {
+  display: block;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.875 !important;
+}
+
+/* Lists */
+.chapter-content ul,
+.chapter-content ol {
+  display: block;
+  margin: 1.5rem 0 !important;
+  padding-left: 2rem !important;
+}
+
+.chapter-content ul {
+  list-style-type: disc !important;
+}
+
+.chapter-content ol {
+  list-style-type: decimal !important;
+}
+
+.chapter-content li {
+  display: list-item;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.75 !important;
+}
+
+/* Code blocks */
+.chapter-content pre {
+  display: block;
+  background-color: rgb(17 24 39) !important;
+  color: rgb(243 244 246) !important;
+  padding: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  overflow-x: auto !important;
+  margin: 1.5rem 0 !important;
+  font-family: ui-monospace, monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.chapter-content code {
+  background-color: rgb(243 244 246) !important;
+  color: rgb(99 102 241) !important;
+  padding: 0.125rem 0.5rem !important;
+  border-radius: 0.25rem !important;
+  font-family: ui-monospace, monospace !important;
+  font-size: 0.875rem !important;
+}
+
+.dark .chapter-content code {
+  background-color: rgb(31 41 55) !important;
+  color: rgb(167 139 250) !important;
+}
+
+.chapter-content pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+}
+
+/* Tables */
+.chapter-content table {
+  display: table;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 2rem 0 !important;
+}
+
+.chapter-content th,
+.chapter-content td {
+  display: table-cell;
+  padding: 0.75rem 1rem !important;
+  text-align: left !important;
+  border: 1px solid rgb(229 231 235) !important;
+}
+
+.dark .chapter-content th,
+.dark .chapter-content td {
+  border-color: rgb(55 65 81) !important;
+}
+
+.chapter-content th {
+  background-color: rgb(243 244 246) !important;
+  font-weight: 600 !important;
+}
+
+.dark .chapter-content th {
+  background-color: rgb(31 41 55) !important;
+}
+
+/* Links */
+.chapter-content a {
+  color: rgb(99 102 241) !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+.dark .chapter-content a {
+  color: rgb(167 139 250) !important;
+}
+
+.chapter-content a:hover {
+  text-decoration-thickness: 2px !important;
+}
+
+/* Blockquotes */
+.chapter-content blockquote {
+  display: block;
+  border-left: 4px solid rgb(99 102 241) !important;
+  padding-left: 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  font-style: italic !important;
+  color: rgb(107 114 128) !important;
+}
+
+.dark .chapter-content blockquote {
+  color: rgb(156 163 175) !important;
+  border-left-color: rgb(167 139 250) !important;
+}
+
+/* Special sections */
+.chapter-content .section {
+  display: block;
+  background-color: white !important;
+  padding: 2rem !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 2rem !important;
+  border: 1px solid rgb(243 244 246) !important;
+}
+
+.dark .chapter-content .section {
+  background-color: rgb(31 41 55) !important;
+  border-color: rgb(55 65 81) !important;
+}
+
+/* Example boxes */
+.chapter-content .example {
+  display: block;
+  background-color: rgb(249 250 251) !important;
+  border: 1px solid rgb(229 231 235) !important;
+  padding: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  margin: 1.5rem 0 !important;
+}
+
+.dark .chapter-content .example {
+  background-color: rgb(17 24 39) !important;
+  border-color: rgb(55 65 81) !important;
+}
+
+/* Note boxes */
+.chapter-content .note {
+  display: block;
+  background-color: rgb(239 246 255) !important;
+  border-left: 4px solid rgb(59 130 246) !important;
+  padding: 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+
+.dark .chapter-content .note {
+  background-color: rgb(30 58 138 / 0.2) !important;
+}
+
+/* Warning boxes */
+.chapter-content .warning {
+  display: block;
+  background-color: rgb(254 242 242) !important;
+  border-left: 4px solid rgb(239 68 68) !important;
+  padding: 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 0 0.5rem 0.5rem 0 !important;
+}
+
+.dark .chapter-content .warning {
+  background-color: rgb(127 29 29 / 0.2) !important;
+}
