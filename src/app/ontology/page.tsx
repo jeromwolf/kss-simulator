@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
 import ContentWrapper from './ContentWrapper'
 import ProgressTracker from '@/components/ProgressTracker'
+import TableOfContents from '@/components/TableOfContents'
 import styles from './ontology.module.css'
 import './style-override.css'
 
@@ -182,6 +183,9 @@ export default function OntologyPage() {
           </div>
         </div>
       </main>
+      
+      {/* Table of Contents */}
+      {!isLoading && <TableOfContents />}
       
       {/* Progress Tracker */}
       <ProgressTracker currentChapter={currentChapter} totalChapters={chapters.length} />
