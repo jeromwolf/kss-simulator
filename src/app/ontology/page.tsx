@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
+import ContentWrapper from './ContentWrapper'
 import styles from './ontology.module.css'
 import './style-override.css'
 
@@ -179,10 +180,7 @@ export default function OntologyPage() {
                 <p className="mt-4 text-gray-500 dark:text-gray-400">콘텐츠를 불러오는 중...</p>
               </div>
             ) : (
-              <div 
-                className="chapter-content"
-                dangerouslySetInnerHTML={{ __html: chapterContent }}
-              />
+              <ContentWrapper content={chapterContent} />
             )}
           </div>
         </div>
