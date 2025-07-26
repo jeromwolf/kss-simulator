@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Menu, X, Home } from 'lucide-react'
 import ContentWrapper from './ContentWrapper'
 import ProgressTracker from '@/components/ProgressTracker'
 import TableOfContents from '@/components/TableOfContents'
@@ -96,7 +96,7 @@ export default function OntologyPage() {
             {chapters.map((chapter, index) => (
               <div key={chapter.id}>
                 {chapter.part && (
-                  <div className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wide mt-6 mb-3 px-4">
+                  <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-8 mb-3 px-4 first:mt-0">
                     {chapter.part}
                   </div>
                 )}
@@ -109,16 +109,22 @@ export default function OntologyPage() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    {index > 0 && (
-                      <span className={`text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center ${
+                    {index === 0 ? (
+                      <Home className={`w-4 h-4 flex-shrink-0 ${
                         currentChapter === chapter.id 
-                          ? 'bg-white/20' 
-                          : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                          ? 'text-white' 
+                          : 'text-gray-600 dark:text-gray-400'
+                      }`} />
+                    ) : (
+                      <span className={`text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 ${
+                        currentChapter === chapter.id 
+                          ? 'bg-white/20 text-white' 
+                          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                       }`}>
                         {index}
                       </span>
                     )}
-                    <span className="text-sm font-medium">
+                    <span className="text-sm font-medium flex-1">
                       {chapter.title}
                     </span>
                   </div>
