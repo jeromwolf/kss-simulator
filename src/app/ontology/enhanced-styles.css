@@ -2,19 +2,15 @@
 
 /* Chapter Header with gradient */
 .chapter-header {
-  @apply mb-8 pb-6 border-b-2 border-gradient;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  @apply mb-8 pb-6 border-b-2 border-gray-200 dark:border-gray-700;
 }
 
 .chapter-header h1 {
   @apply text-4xl md:text-5xl font-bold mb-4;
-  background: inherit;
-  -webkit-background-clip: inherit;
-  -webkit-text-fill-color: inherit;
-  background-clip: inherit;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .chapter-quote {
