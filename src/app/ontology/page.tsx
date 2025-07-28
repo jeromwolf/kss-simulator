@@ -191,7 +191,7 @@ export default function OntologyPage() {
       </main>
       
       {/* Table of Contents */}
-      {!isLoading && <TableOfContents />}
+      {!isLoading && chapterContent && <TableOfContents />}
       
       {/* Progress Tracker */}
       <ProgressTracker currentChapter={currentChapter} totalChapters={chapters.length} />

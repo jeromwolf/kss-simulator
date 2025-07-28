@@ -63,9 +63,10 @@ export default function TableOfContents() {
   if (toc.length === 0) return null
 
   return (
-    <div className="hidden xl:block fixed right-8 top-32 w-64 max-h-[calc(100vh-10rem)] overflow-y-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
-        <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wide">
+    <div className="hidden xl:block fixed right-8 top-32 w-64 max-h-[calc(100vh-10rem)] overflow-y-auto z-20">
+      <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-gray-200 dark:border-gray-700">
+        <h3 className="text-sm font-bold text-gray-900 dark:text-gray-100 mb-4 uppercase tracking-wide flex items-center gap-2">
+          <span className="text-purple-600 dark:text-purple-400">📑</span>
           목차
         </h3>
         <nav className="space-y-1">
@@ -74,17 +75,17 @@ export default function TableOfContents() {
               key={item.id}
               onClick={() => scrollToHeading(item.id)}
               className={`
-                block w-full text-left transition-all duration-200
-                ${item.level === 3 ? 'ml-4' : ''}
+                block w-full text-left transition-all duration-200 py-1.5 px-2 rounded-lg
+                ${item.level === 3 ? 'ml-4 text-xs' : 'text-sm'}
                 ${activeId === item.id 
-                  ? 'text-purple-600 dark:text-purple-400 font-medium' 
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                  ? 'text-purple-600 dark:text-purple-400 font-medium bg-purple-50 dark:bg-purple-900/20' 
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/30'
                 }
               `}
             >
-              <span className="flex items-center gap-1 text-sm">
-                {activeId === item.id && <ChevronRight className="w-3 h-3" />}
-                <span className="line-clamp-2">{item.text}</span>
+              <span className="flex items-center gap-2">
+                <ChevronRight className={`w-3 h-3 transition-opacity ${activeId === item.id ? 'opacity-100' : 'opacity-0'}`} />
+                <span className="line-clamp-2 flex-1">{item.text}</span>
               </span>
             </button>
           ))}

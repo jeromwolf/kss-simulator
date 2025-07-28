@@ -19,12 +19,21 @@ KSS(Knowledge Space Simulator)는 추상적인 기술 개념을 시각적으로 
 - **16개 챕터**: 온톨로지 기초부터 실전 프로젝트까지
 - **인터랙티브 학습**: 개념을 직접 조작하며 이해
 - **실시간 피드백**: 즉각적인 학습 확인
+- **RDF/SPARQL 도구**: 실습용 에디터와 플레이그라운드
+
+### 📈 주식투자분석 시뮬레이터
+- **5개 전문 모듈**: 기초부터 AI/퀀트 투자까지
+- **AI 기반 시뮬레이터**: 실시간 시장 시뮬레이션
+- **인터랙티브 커리큘럼**: 퀴즈, 실습케이스, 핵심포인트
+- **AI 멘토 시스템**: 개인화된 투자 학습 가이드
+- **165개+ 금융 용어**: 체계적인 용어 학습
 
 ### 🎯 핵심 특징
 - 🌓 **다크모드 지원**: 눈이 편안한 학습 환경
 - 📱 **반응형 디자인**: 모든 디바이스에서 최적화
 - ⚡ **빠른 성능**: Next.js 기반 최적화
 - 🎨 **모던 UI/UX**: Tailwind CSS로 구현된 세련된 디자인
+- 🤖 **AI 통합**: 학습 도우미 및 멘토 시스템
 
 ## 🛠️ 기술 스택
 
@@ -37,7 +46,13 @@ KSS(Knowledge Space Simulator)는 추상적인 기술 개념을 시각적으로 
 
 ### Visualization
 - **2D Graphics**: D3.js
+- **3D Graphics**: Three.js (3D 지식 그래프)
 - **Data Visualization**: 온톨로지 그래프, RDF Triple 시각화
+
+### Learning Systems
+- **Interactive Learning**: 퀴즈, 실습케이스
+- **AI Mentor**: 대화형 학습 도우미
+- **Real-time Simulation**: 주식 시장 시뮬레이터
 
 ## 🚦 시작하기
 
@@ -50,13 +65,15 @@ KSS(Knowledge Space Simulator)는 추상적인 기술 개념을 시각적으로 
 ```bash
 # 1. 저장소 클론
 git clone https://github.com/jeromwolf/kss-simulator.git
-cd kss-simulator
+cd kss-simulator/kss-standalone
 
 # 2. 의존성 설치
 npm install
 
 # 3. 개발 서버 실행
 npm run dev
+# 또는 편의 스크립트 사용
+./start.sh
 
 # 4. 브라우저에서 접속
 # http://localhost:3000
@@ -72,6 +89,19 @@ npm run build
 npm start
 ```
 
+### 서버 관리 스크립트
+
+```bash
+# 서버 시작
+./start.sh
+
+# 서버 중지
+./stop.sh
+
+# 서버 상태 확인
+./status.sh
+```
+
 ## 📁 프로젝트 구조
 
 ```
@@ -79,70 +109,136 @@ kss-standalone/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── page.tsx           # 홈페이지
-│   │   ├── ontology/          # 온톨로지 학습 페이지
-│   │   └── layout.tsx         # 레이아웃
+│   │   ├── ontology/          # 온톨로지 학습
+│   │   ├── stock-analysis/    # 주식투자분석
+│   │   │   ├── page.tsx       # 메인 허브
+│   │   │   ├── terms/         # 금융 용어 사전
+│   │   │   └── curriculum/    # 커리큘럼 (리다이렉트)
+│   │   ├── rdf-editor/        # RDF 트리플 에디터
+│   │   ├── sparql-playground/ # SPARQL 쿼리 도구
+│   │   ├── 3d-graph/          # 3D 지식 그래프
+│   │   └── video-creator/     # 비디오 생성 도구
 │   ├── components/            # React 컴포넌트
-│   │   └── DarkModeToggle.tsx
+│   │   ├── Navigation.tsx     # 전역 네비게이션
+│   │   ├── ontology/          # 온톨로지 컴포넌트
+│   │   └── stock-analysis/    # 주식투자 컴포넌트
+│   │       ├── StockAnalysisHub.tsx
+│   │       ├── CurriculumRenderer.tsx
+│   │       ├── AdvancedSimulator.tsx
+│   │       ├── InteractiveLearning.tsx
+│   │       ├── FinancialTermsModule.tsx
+│   │       └── AIMentor.tsx
+│   ├── data/                  # 데이터 구조
+│   │   └── stockCurriculum.ts # 주식 커리큘럼 데이터
 │   ├── styles/               # 글로벌 스타일
 │   └── types/                # TypeScript 타입 정의
 ├── public/
-│   └── content/              # 온톨로지 학습 콘텐츠
+│   └── content/              # 정적 콘텐츠
 └── package.json
 ```
 
 ## 🎓 학습 콘텐츠
 
-### Part 1: 온톨로지의 이해
+### 온톨로지 교육 과정
+
+#### Part 1: 온톨로지의 이해
 1. 온톨로지란 무엇인가?
 2. 온톨로지의 핵심 개념
 3. 시맨틱 웹과 온톨로지
 
-### Part 2: 온톨로지 기술 표준
+#### Part 2: 온톨로지 기술 표준
 4. RDF: 지식 표현의 기초
 5. RDFS: 스키마와 계층구조
 6. OWL: 표현력 있는 온톨로지
 7. SPARQL: 온톨로지 질의
 
-### Part 3: 온톨로지 설계와 구축
+#### Part 3: 온톨로지 설계와 구축
 8. Protégé 마스터하기
 9. 온톨로지 설계 방법론
 10. 패턴과 모범 사례
 
-### Part 4: 실전 프로젝트
+#### Part 4: 실전 프로젝트
 11. 금융 온톨로지: 주식 시장
 12. 뉴스 온톨로지: 지식 그래프
 13. 통합 프로젝트: 주식-뉴스 연계
 
-### Part 5: 온톨로지의 미래
+#### Part 5: 온톨로지의 미래
 14. AI와 온톨로지
 15. 산업별 활용사례
 16. 미래 전망과 도전과제
 
+### 주식투자분석 과정
+
+#### Module 1: 금융시장의 이해 (2주)
+- 주식시장의 구조와 원리
+- 필수 금융 용어 마스터
+- 주문 유형과 거래 전략
+
+#### Module 2: 기본적 분석 (3주)
+- 재무제표 완전 정복
+- 가치평가 지표 활용
+- 산업 분석과 경쟁력 평가
+
+#### Module 3: 기술적 분석 (3주)
+- 차트의 기본과 캔들스틱
+- 주요 기술적 지표
+- 고급 패턴과 전략
+
+#### Module 4: 포트폴리오 관리 (2주)
+- 현대 포트폴리오 이론
+- 자산 배분 전략
+- 리스크 관리
+
+#### Module 5: AI & 퀀트 투자 (4주)
+- 퀀트 투자의 기초
+- 머신러닝 투자 전략
+- 실전 프로젝트
+
+## 🛤️ 사용 가능한 경로
+
+### 메인 페이지
+- `/` - 홈페이지 (코스 목록)
+- `/ontology` - 온톨로지 학습
+- `/stock-analysis` - 주식투자분석 시뮬레이터
+
+### 도구 페이지
+- `/rdf-editor` - RDF Triple 비주얼 에디터
+- `/sparql-playground` - SPARQL 쿼리 플레이그라운드
+- `/3d-graph` - 3D 지식 그래프 시각화
+- `/video-creator` - 비디오 콘텐츠 생성기
+
+### API 엔드포인트
+- `/api/generate-audio` - 텍스트 음성 변환 API
+
 ## 🔮 로드맵
 
-### Phase 1: MVP (현재)
-- ✅ 온톨로지 교육 콘텐츠
-- ✅ 인터랙티브 네비게이션
+### Phase 1: MVP ✅ (완료)
+- ✅ 온톨로지 교육 콘텐츠 (16개 챕터)
+- ✅ 주식투자분석 시뮬레이터
+- ✅ AI 멘토 시스템
+- ✅ 인터랙티브 학습 시스템
 - ✅ 다크모드 지원
 - ✅ 반응형 디자인
 
-### Phase 2: 시뮬레이터 (예정)
-- [ ] RDF Triple 비주얼 에디터
-- [ ] SPARQL 쿼리 플레이그라운드
-- [ ] 실시간 추론 시각화
-- [ ] 3D 지식 그래프
+### Phase 2: 도구 강화 🚧 (진행중)
+- ✅ RDF Triple 비주얼 에디터
+- ✅ SPARQL 쿼리 플레이그라운드
+- ✅ 3D 지식 그래프
+- ⏳ 실시간 추론 시각화
+- ⏳ 협업 기능
 
-### Phase 3: AI 통합 (예정)
-- [ ] AI 학습 도우미
-- [ ] 개인화된 학습 경로
+### Phase 3: AI 통합 📅 (예정)
+- [ ] AI 학습 경로 추천
 - [ ] 자동 평가 시스템
-- [ ] 콘텐츠 추천
+- [ ] 콘텐츠 개인화
+- [ ] 실시간 피드백 강화
 
-### Phase 4: 확장 (예정)
+### Phase 4: 확장 🔮 (예정)
 - [ ] LLM 시뮬레이터
 - [ ] 양자컴퓨팅 시뮬레이터
 - [ ] RAG 시뮬레이터
 - [ ] 커뮤니티 기능
+- [ ] 모바일 앱
 
 ## 🤝 기여하기
 
@@ -154,6 +250,12 @@ KSS는 오픈소스 프로젝트입니다. 기여를 환영합니다!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+### 기여 가이드라인
+- 코드 스타일 가이드 준수
+- 테스트 코드 작성
+- 문서화 업데이트
+- PR 템플릿 사용
+
 ## 📄 라이선스
 
 MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
@@ -162,13 +264,29 @@ MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
 - 온톨로지 교육 콘텐츠 제작에 도움을 주신 모든 분들
 - 오픈소스 커뮤니티의 훌륭한 도구들
+- 프로젝트에 기여해주신 모든 컨트리뷰터
 
 ## 📞 연락처
 
 프로젝트 관련 문의사항이 있으시면 이슈를 생성해 주세요.
 
+### 버그 리포트
+- [이슈 트래커](https://github.com/jeromwolf/kss-simulator/issues)
+
+### 기능 제안
+- [디스커션](https://github.com/jeromwolf/kss-simulator/discussions)
+
 ---
 
 <div align="center">
   <strong>🌟 Star를 눌러 프로젝트를 응원해주세요! 🌟</strong>
+  
+  <br />
+  
+  <a href="https://github.com/jeromwolf/kss-simulator/stargazers">
+    <img src="https://img.shields.io/github/stars/jeromwolf/kss-simulator?style=social" alt="GitHub stars" />
+  </a>
+  <a href="https://github.com/jeromwolf/kss-simulator/network/members">
+    <img src="https://img.shields.io/github/forks/jeromwolf/kss-simulator?style=social" alt="GitHub forks" />
+  </a>
 </div>
