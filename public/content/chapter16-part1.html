@@ -1,0 +1,1364 @@
+<!-- Chapter 16: 생태계와 커뮤니티 (인터랙티브 마스터 버전) Part 1 -->
+
+<!-- Part 1 시작 -->
+<div class="part-header ecosystem-mastery">
+    <div class="ecosystem-animation"></div>
+    <h2 class="part-title">Part 1: 온톨로지 생태계의 핵심 구성원들</h2>
+    <p class="part-description">글로벌 온톨로지 생태계를 이끄는 주요 조직과 표준을 탐험합니다!</p>
+</div>
+
+<!-- 생태계 전문가 준비도 -->
+<div class="progress-check ecosystem-expert">
+    <h3>🌐 온톨로지 생태계 마스터 준비도</h3>
+    <div class="ecosystem-readiness">
+        <div class="knowledge-network">
+            <h4>지식 네트워크 연결도</h4>
+            <div class="network-visualization" id="knowledgeNetwork">
+                <!-- D3.js로 동적 생성 -->
+            </div>
+            <div class="network-stats">
+                <div class="stat-item">
+                    <span class="stat-label">연결된 조직</span>
+                    <span class="stat-value" id="connectedOrgs">42</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">표준 이해도</span>
+                    <span class="stat-value" id="standardsScore">88%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">커뮤니티 기여</span>
+                    <span class="stat-value" id="contributionScore">75</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="certification-path">
+            <h4>온톨로지 전문가 인증 경로</h4>
+            <div class="cert-levels">
+                <div class="cert-level completed">
+                    <span class="cert-icon">🥉</span>
+                    <span class="cert-name">Bronze</span>
+                    <span class="cert-desc">기초 이해</span>
+                </div>
+                <div class="cert-level completed">
+                    <span class="cert-icon">🥈</span>
+                    <span class="cert-name">Silver</span>
+                    <span class="cert-desc">실무 적용</span>
+                </div>
+                <div class="cert-level current">
+                    <span class="cert-icon">🥇</span>
+                    <span class="cert-name">Gold</span>
+                    <span class="cert-desc">전문가</span>
+                </div>
+                <div class="cert-level upcoming">
+                    <span class="cert-icon">💎</span>
+                    <span class="cert-name">Master</span>
+                    <span class="cert-desc">생태계 리더</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 16.1: 생태계 개요 인터랙티브 -->
+<section class="content-section ecosystem-interactive">
+    <h2>16.1 온톨로지 생태계 탐험</h2>
+    
+    <!-- 인터랙티브 생태계 맵 -->
+    <div class="ecosystem-explorer">
+        <h3>🗺️ 글로벌 온톨로지 생태계 맵</h3>
+        <div class="ecosystem-map-container">
+            <div class="ecosystem-controls">
+                <button class="control-btn active" data-view="all">전체 보기</button>
+                <button class="control-btn" data-view="standards">표준화 기구</button>
+                <button class="control-btn" data-view="research">연구 기관</button>
+                <button class="control-btn" data-view="companies">기업</button>
+                <button class="control-btn" data-view="opensource">오픈소스</button>
+            </div>
+            
+            <div class="ecosystem-map" id="ecosystemMap">
+                <!-- 표준화 기구 -->
+                <div class="ecosystem-group standards-group">
+                    <h4>표준화 기구</h4>
+                    <div class="org-nodes">
+                        <div class="org-node major" data-org="w3c">
+                            <div class="node-icon">🌐</div>
+                            <div class="node-name">W3C</div>
+                            <div class="node-info">
+                                <p>월드 와이드 웹 컨소시엄</p>
+                                <ul>
+                                    <li>RDF, OWL 표준 제정</li>
+                                    <li>시맨틱 웹 기술 주도</li>
+                                    <li>450+ 회원 기관</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node" data-org="iso">
+                            <div class="node-icon">📋</div>
+                            <div class="node-name">ISO</div>
+                            <div class="node-info">
+                                <p>국제 표준화 기구</p>
+                                <ul>
+                                    <li>ISO/IEC 21838 온톨로지</li>
+                                    <li>메타데이터 표준</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node" data-org="omg">
+                            <div class="node-icon">🔧</div>
+                            <div class="node-name">OMG</div>
+                            <div class="node-info">
+                                <p>Object Management Group</p>
+                                <ul>
+                                    <li>UML, MOF 표준</li>
+                                    <li>온톨로지 정의 메타모델</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 연구 기관 -->
+                <div class="ecosystem-group research-group">
+                    <h4>연구 기관</h4>
+                    <div class="org-nodes">
+                        <div class="org-node major" data-org="stanford">
+                            <div class="node-icon">🎓</div>
+                            <div class="node-name">Stanford BMIR</div>
+                            <div class="node-info">
+                                <p>생물의학 정보학 연구</p>
+                                <ul>
+                                    <li>Protégé 개발</li>
+                                    <li>BioPortal 운영</li>
+                                    <li>의료 온톨로지 선도</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node" data-org="manchester">
+                            <div class="node-icon">🏫</div>
+                            <div class="node-name">Manchester</div>
+                            <div class="node-info">
+                                <p>맨체스터 대학교</p>
+                                <ul>
+                                    <li>OWL API 개발</li>
+                                    <li>온톨로지 도구 연구</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 연결선 시각화 -->
+                <svg class="ecosystem-connections" id="connections">
+                    <!-- JavaScript로 동적 생성 -->
+                </svg>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 생태계 영향력 분석 -->
+    <div class="ecosystem-impact">
+        <h3>📊 생태계 영향력 분석기</h3>
+        <div class="impact-analyzer">
+            <div class="impact-controls">
+                <label>분석 기준:</label>
+                <select id="impactCriteria">
+                    <option value="publications">논문 발표</option>
+                    <option value="standards">표준 제정</option>
+                    <option value="tools">도구 개발</option>
+                    <option value="adoption">산업 채택</option>
+                </select>
+                <button onclick="analyzeImpact()">분석 실행</button>
+            </div>
+            
+            <div class="impact-results" id="impactResults">
+                <canvas id="impactChart" width="600" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 16.2: 표준과 스펙 인터랙티브 -->
+<section class="content-section standards-interactive">
+    <h2>16.2 시맨틱 웹 표준 실습실</h2>
+    
+    <!-- 표준 스택 인터랙티브 -->
+    <div class="standards-lab">
+        <h3>🏗️ W3C 시맨틱 웹 스택 구축하기</h3>
+        <div class="stack-builder">
+            <div class="stack-workspace">
+                <div class="available-layers">
+                    <h4>사용 가능한 레이어</h4>
+                    <div class="layer-items">
+                        <div class="layer-item" draggable="true" data-layer="uri">
+                            <span class="layer-icon">🔗</span>
+                            <span class="layer-name">URI/IRI</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="xml">
+                            <span class="layer-icon">📄</span>
+                            <span class="layer-name">XML</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="rdf">
+                            <span class="layer-icon">🔺</span>
+                            <span class="layer-name">RDF</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="rdfs">
+                            <span class="layer-icon">📊</span>
+                            <span class="layer-name">RDFS</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="owl">
+                            <span class="layer-icon">🦉</span>
+                            <span class="layer-name">OWL</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="sparql">
+                            <span class="layer-icon">🔍</span>
+                            <span class="layer-name">SPARQL</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="logic">
+                            <span class="layer-icon">🧠</span>
+                            <span class="layer-name">Logic</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="proof">
+                            <span class="layer-icon">✅</span>
+                            <span class="layer-name">Proof</span>
+                        </div>
+                        <div class="layer-item" draggable="true" data-layer="trust">
+                            <span class="layer-icon">🔒</span>
+                            <span class="layer-name">Trust</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stack-area">
+                    <h4>시맨틱 웹 스택 구성</h4>
+                    <div class="stack-container" id="stackContainer">
+                        <div class="stack-slot" data-position="9">
+                            <span class="slot-label">최상위 레이어</span>
+                        </div>
+                        <div class="stack-slot" data-position="8"></div>
+                        <div class="stack-slot" data-position="7"></div>
+                        <div class="stack-slot" data-position="6"></div>
+                        <div class="stack-slot" data-position="5"></div>
+                        <div class="stack-slot" data-position="4"></div>
+                        <div class="stack-slot" data-position="3"></div>
+                        <div class="stack-slot" data-position="2"></div>
+                        <div class="stack-slot" data-position="1">
+                            <span class="slot-label">기초 레이어</span>
+                        </div>
+                    </div>
+                    <button class="check-btn" onclick="checkStackOrder()">스택 검증</button>
+                </div>
+                
+                <div class="stack-feedback" id="stackFeedback">
+                    <h4>피드백</h4>
+                    <p>레이어를 드래그하여 올바른 순서로 배치하세요!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 최신 표준 탐색기 -->
+    <div class="modern-standards">
+        <h3>🆕 최신 온톨로지 표준 실습</h3>
+        <div class="standards-playground">
+            <div class="standard-selector">
+                <button class="std-btn active" data-standard="shacl">SHACL</button>
+                <button class="std-btn" data-standard="jsonld">JSON-LD</button>
+                <button class="std-btn" data-standard="rdfstar">RDF-star</button>
+            </div>
+            
+            <div class="standard-content" id="standardContent">
+                <!-- SHACL 실습 -->
+                <div class="standard-section active" data-section="shacl">
+                    <h4>SHACL (Shapes Constraint Language) 실습</h4>
+                    <div class="shacl-editor">
+                        <div class="editor-panel">
+                            <h5>Shape 정의</h5>
+                            <textarea id="shaclShape" rows="15">
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ex: <http://example.org/> .
+
+ex:PersonShape
+    a sh:NodeShape ;
+    sh:targetClass ex:Person ;
+    sh:property [
+        sh:path ex:name ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+    ] ;
+    sh:property [
+        sh:path ex:age ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 150 ;
+    ] .</textarea>
+                        </div>
+                        <div class="editor-panel">
+                            <h5>데이터 검증</h5>
+                            <textarea id="shaclData" rows="10">
+@prefix ex: <http://example.org/> .
+
+ex:person1
+    a ex:Person ;
+    ex:name "김온톨" ;
+    ex:age 25 .
+
+ex:person2
+    a ex:Person ;
+    ex:age "스물다섯" .</textarea>
+                            <button onclick="validateShacl()">검증 실행</button>
+                        </div>
+                    </div>
+                    <div class="validation-results" id="shaclResults"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 16.3: 오픈소스 프로젝트 체험 -->
+<section class="content-section opensource-interactive">
+    <h2>16.3 오픈소스 온톨로지 도구 체험관</h2>
+    
+    <!-- 도구 비교 시뮬레이터 -->
+    <div class="tools-comparison">
+        <h3>🛠️ 온톨로지 도구 선택 가이드</h3>
+        <div class="tool-selector">
+            <h4>프로젝트 요구사항 입력</h4>
+            <div class="requirements-form">
+                <div class="req-item">
+                    <label>프로그래밍 언어:</label>
+                    <select id="progLang">
+                        <option value="java">Java</option>
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="csharp">C#</option>
+                    </select>
+                </div>
+                <div class="req-item">
+                    <label>데이터 규모:</label>
+                    <select id="dataScale">
+                        <option value="small">소규모 (< 100K 트리플)</option>
+                        <option value="medium">중규모 (100K - 10M)</option>
+                        <option value="large">대규모 (> 10M)</option>
+                    </select>
+                </div>
+                <div class="req-item">
+                    <label>주요 기능:</label>
+                    <div class="feature-checks">
+                        <label><input type="checkbox" value="reasoning"> 추론</label>
+                        <label><input type="checkbox" value="sparql"> SPARQL</label>
+                        <label><input type="checkbox" value="visualization"> 시각화</label>
+                        <label><input type="checkbox" value="api"> API</label>
+                    </div>
+                </div>
+                <button onclick="recommendTools()">도구 추천받기</button>
+            </div>
+            
+            <div class="tool-recommendations" id="toolRecommendations">
+                <!-- 동적으로 추천 결과 표시 -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실시간 도구 데모 -->
+    <div class="live-tool-demo">
+        <h3>🚀 Apache Jena 실시간 데모</h3>
+        <div class="jena-demo">
+            <div class="demo-controls">
+                <button class="demo-btn" onclick="runJenaDemo('create')">모델 생성</button>
+                <button class="demo-btn" onclick="runJenaDemo('add')">트리플 추가</button>
+                <button class="demo-btn" onclick="runJenaDemo('query')">SPARQL 실행</button>
+                <button class="demo-btn" onclick="runJenaDemo('inference')">추론 실행</button>
+            </div>
+            
+            <div class="demo-workspace">
+                <div class="code-display">
+                    <h5>실행 코드</h5>
+                    <pre id="demoCode"></pre>
+                </div>
+                <div class="result-display">
+                    <h5>실행 결과</h5>
+                    <pre id="demoResult"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 미니 프로젝트: 생태계 기여 시뮬레이터 -->
+<div class="mini-project ecosystem-contribution">
+    <h2>🌟 미니 프로젝트: 오픈소스 기여 시뮬레이터</h2>
+    <div class="contribution-simulator">
+        <h3>GitHub 온톨로지 프로젝트 기여하기</h3>
+        <div class="github-interface">
+            <div class="repo-info">
+                <span class="repo-name">awesome-ontology/core</span>
+                <div class="repo-stats">
+                    <span>⭐ 2.3k</span>
+                    <span>🍴 456</span>
+                    <span>👁️ 89</span>
+                </div>
+            </div>
+            
+            <div class="contribution-flow">
+                <div class="step" id="step1">
+                    <h4>1. Issue 찾기</h4>
+                    <div class="issue-list">
+                        <div class="issue" onclick="selectIssue(this)">
+                            <span class="issue-label bug">bug</span>
+                            <span class="issue-title">SPARQL 쿼리 파싱 오류</span>
+                            <span class="issue-number">#234</span>
+                        </div>
+                        <div class="issue" onclick="selectIssue(this)">
+                            <span class="issue-label feature">feature</span>
+                            <span class="issue-title">JSON-LD 지원 추가</span>
+                            <span class="issue-number">#189</span>
+                        </div>
+                        <div class="issue" onclick="selectIssue(this)">
+                            <span class="issue-label docs">docs</span>
+                            <span class="issue-title">한국어 문서 번역</span>
+                            <span class="issue-number">#301</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step" id="step2" style="display:none;">
+                    <h4>2. 코드 작성</h4>
+                    <div class="code-editor">
+                        <textarea id="contributionCode" placeholder="여기에 코드를 작성하세요..."></textarea>
+                    </div>
+                    <button onclick="submitCode()">코드 제출</button>
+                </div>
+                
+                <div class="step" id="step3" style="display:none;">
+                    <h4>3. Pull Request</h4>
+                    <div class="pr-form">
+                        <input type="text" id="prTitle" placeholder="PR 제목">
+                        <textarea id="prDescription" placeholder="변경사항 설명"></textarea>
+                        <button onclick="createPR()">PR 생성</button>
+                    </div>
+                </div>
+                
+                <div class="step" id="step4" style="display:none;">
+                    <h4>4. 리뷰 & 머지</h4>
+                    <div class="review-status">
+                        <div class="review-item">
+                            <span class="reviewer">@maintainer1</span>
+                            <span class="review-status approved">✅ Approved</span>
+                        </div>
+                        <div class="pr-merged">
+                            <span class="merge-icon">🎉</span>
+                            <p>축하합니다! PR이 머지되었습니다!</p>
+                            <p class="contribution-points">+50 기여 포인트 획득!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 학습 성과 요약 -->
+<div class="learning-summary">
+    <h2>📊 Part 1 학습 성과</h2>
+    <div class="achievement-grid">
+        <div class="achievement-card">
+            <div class="achievement-icon">🌐</div>
+            <h3>생태계 이해</h3>
+            <p>주요 조직과 역할 파악</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+            </div>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon">📋</div>
+            <h3>표준 마스터</h3>
+            <p>W3C 표준 스택 완벽 이해</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+            </div>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon">🛠️</div>
+            <h3>도구 전문가</h3>
+            <p>오픈소스 도구 활용 능력</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 88%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript 코드 -->
+<script>
+// 생태계 맵 인터랙션
+document.querySelectorAll('.control-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const view = this.dataset.view;
+        filterEcosystemView(view);
+    });
+});
+
+function filterEcosystemView(view) {
+    const groups = document.querySelectorAll('.ecosystem-group');
+    groups.forEach(group => {
+        if (view === 'all') {
+            group.style.opacity = '1';
+            group.style.pointerEvents = 'auto';
+        } else {
+            const groupType = group.className.includes(view) ? '1' : '0.3';
+            group.style.opacity = groupType;
+            group.style.pointerEvents = groupType === '1' ? 'auto' : 'none';
+        }
+    });
+}
+
+// 노드 호버 효과
+document.querySelectorAll('.org-node').forEach(node => {
+    node.addEventListener('mouseenter', function() {
+        this.querySelector('.node-info').style.display = 'block';
+    });
+    node.addEventListener('mouseleave', function() {
+        this.querySelector('.node-info').style.display = 'none';
+    });
+});
+
+// 영향력 분석
+function analyzeImpact() {
+    const criteria = document.getElementById('impactCriteria').value;
+    const ctx = document.getElementById('impactChart').getContext('2d');
+    
+    // 시뮬레이션 데이터
+    const data = {
+        publications: [120, 95, 80, 70, 65, 60],
+        standards: [150, 100, 60, 40, 30, 25],
+        tools: [80, 120, 90, 60, 50, 40],
+        adoption: [200, 180, 150, 120, 100, 80]
+    };
+    
+    const labels = ['W3C', 'Stanford', 'Apache', 'OMG', 'Manchester', 'ETRI'];
+    const selectedData = data[criteria];
+    
+    // 차트 그리기 (간단한 막대 그래프)
+    ctx.clearRect(0, 0, 600, 400);
+    ctx.fillStyle = '#6366f1';
+    
+    const maxValue = Math.max(...selectedData);
+    const barWidth = 80;
+    const spacing = 20;
+    
+    selectedData.forEach((value, index) => {
+        const height = (value / maxValue) * 300;
+        const x = index * (barWidth + spacing) + 50;
+        const y = 350 - height;
+        
+        ctx.fillRect(x, y, barWidth, height);
+        
+        // 라벨
+        ctx.fillStyle = '#1e293b';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText(labels[index], x + barWidth/2, 380);
+        ctx.fillText(value, x + barWidth/2, y - 10);
+        
+        ctx.fillStyle = '#6366f1';
+    });
+}
+
+// 드래그 앤 드롭 (표준 스택)
+let draggedElement = null;
+
+document.querySelectorAll('.layer-item').forEach(item => {
+    item.addEventListener('dragstart', function(e) {
+        draggedElement = this;
+        this.style.opacity = '0.5';
+    });
+    
+    item.addEventListener('dragend', function() {
+        this.style.opacity = '1';
+    });
+});
+
+document.querySelectorAll('.stack-slot').forEach(slot => {
+    slot.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        this.style.backgroundColor = '#e0e7ff';
+    });
+    
+    slot.addEventListener('dragleave', function() {
+        this.style.backgroundColor = '';
+    });
+    
+    slot.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.style.backgroundColor = '';
+        
+        if (draggedElement && !this.querySelector('.layer-item')) {
+            const clone = draggedElement.cloneNode(true);
+            clone.draggable = false;
+            this.appendChild(clone);
+        }
+    });
+});
+
+// 스택 검증
+function checkStackOrder() {
+    const correctOrder = ['uri', 'xml', 'rdf', 'rdfs', 'sparql', 'owl', 'logic', 'proof', 'trust'];
+    const slots = document.querySelectorAll('.stack-slot');
+    let userOrder = [];
+    
+    slots.forEach(slot => {
+        const item = slot.querySelector('.layer-item');
+        if (item) {
+            userOrder.push(item.dataset.layer);
+        }
+    });
+    
+    const feedback = document.getElementById('stackFeedback');
+    
+    if (userOrder.length < 9) {
+        feedback.innerHTML = '<p class="warning">⚠️ 모든 레이어를 배치해주세요!</p>';
+        return;
+    }
+    
+    let correct = true;
+    for (let i = 0; i < correctOrder.length; i++) {
+        if (userOrder[i] !== correctOrder[i]) {
+            correct = false;
+            break;
+        }
+    }
+    
+    if (correct) {
+        feedback.innerHTML = '<p class="success">🎉 완벽합니다! 시맨틱 웹 스택을 올바르게 구성했습니다!</p>';
+        // 포인트 추가
+        document.getElementById('standardsScore').textContent = '95%';
+    } else {
+        feedback.innerHTML = '<p class="error">❌ 순서가 올바르지 않습니다. 다시 시도해보세요!</p>';
+    }
+}
+
+// SHACL 검증
+function validateShacl() {
+    const results = document.getElementById('shaclResults');
+    results.innerHTML = `
+        <h5>검증 결과</h5>
+        <div class="validation-report">
+            <div class="violation">
+                <span class="severity error">오류</span>
+                <span class="message">ex:person2 - 이름(ex:name) 속성이 누락되었습니다</span>
+            </div>
+            <div class="violation">
+                <span class="severity error">오류</span>
+                <span class="message">ex:person2 - 나이(ex:age)는 정수여야 합니다</span>
+            </div>
+            <div class="valid">
+                <span class="severity success">통과</span>
+                <span class="message">ex:person1 - 모든 제약조건을 만족합니다</span>
+            </div>
+        </div>
+    `;
+}
+
+// 도구 추천
+function recommendTools() {
+    const lang = document.getElementById('progLang').value;
+    const scale = document.getElementById('dataScale').value;
+    const features = Array.from(document.querySelectorAll('.feature-checks input:checked')).map(cb => cb.value);
+    
+    const recommendations = {
+        java: {
+            small: ['Apache Jena', 'OWL API'],
+            medium: ['Apache Jena', 'RDF4J'],
+            large: ['Virtuoso', 'GraphDB']
+        },
+        python: {
+            small: ['RDFLib', 'Owlready2'],
+            medium: ['RDFLib + SPARQL', 'Pystardog'],
+            large: ['PySpark + GraphFrames', 'Neo4j + Py2neo']
+        }
+    };
+    
+    const tools = recommendations[lang]?.[scale] || ['Apache Jena', 'RDFLib'];
+    
+    const resultsDiv = document.getElementById('toolRecommendations');
+    resultsDiv.innerHTML = `
+        <h4>추천 도구</h4>
+        ${tools.map(tool => `
+            <div class="tool-recommendation">
+                <h5>${tool}</h5>
+                <div class="tool-features">
+                    ${features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                </div>
+            </div>
+        `).join('')}
+    `;
+}
+
+// Jena 데모
+function runJenaDemo(action) {
+    const codeDisplay = document.getElementById('demoCode');
+    const resultDisplay = document.getElementById('demoResult');
+    
+    const demos = {
+        create: {
+            code: `Model model = ModelFactory.createDefaultModel();
+String NS = "http://example.org/";
+model.setNsPrefix("ex", NS);`,
+            result: `모델이 성공적으로 생성되었습니다.
+네임스페이스 설정: ex = http://example.org/`
+        },
+        add: {
+            code: `Resource ontology = model.createResource(NS + "Ontology");
+Property studies = model.createProperty(NS + "studies");
+Resource student = model.createResource(NS + "김온톨");
+
+model.add(student, studies, ontology);`,
+            result: `트리플이 추가되었습니다:
+ex:김온톨 ex:studies ex:Ontology .`
+        },
+        query: {
+            code: `String queryString = "SELECT ?s ?p ?o WHERE { ?s ?p ?o }";
+Query query = QueryFactory.create(queryString);
+QueryExecution qexec = QueryExecutionFactory.create(query, model);
+ResultSet results = qexec.execSelect();`,
+            result: `쿼리 결과:
+?s = ex:김온톨, ?p = ex:studies, ?o = ex:Ontology`
+        },
+        inference: {
+            code: `InfModel infModel = ModelFactory.createRDFSModel(model);
+// RDFS 추론 규칙 적용
+StmtIterator iter = infModel.listStatements();`,
+            result: `추론 결과:
+ex:studies rdfs:domain ex:Person (추론됨)
+ex:김온톨 rdf:type ex:Person (추론됨)`
+        }
+    };
+    
+    const demo = demos[action];
+    codeDisplay.textContent = demo.code;
+    resultDisplay.textContent = demo.result;
+}
+
+// 오픈소스 기여 시뮬레이터
+function selectIssue(issueElement) {
+    document.querySelectorAll('.issue').forEach(i => i.classList.remove('selected'));
+    issueElement.classList.add('selected');
+    
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    
+    // 선택한 이슈에 따라 코드 템플릿 제공
+    const issueType = issueElement.querySelector('.issue-label').textContent;
+    const codeEditor = document.getElementById('contributionCode');
+    
+    if (issueType === 'bug') {
+        codeEditor.value = `// SPARQL 파싱 오류 수정\npublic Query parseQuery(String queryString) {\n    // TODO: 특수문자 처리 로직 추가\n    return QueryFactory.create(queryString);\n}`;
+    }
+}
+
+function submitCode() {
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'block';
+    
+    // PR 제목 자동 생성
+    document.getElementById('prTitle').value = "Fix: SPARQL 쿼리 파싱 오류 수정";
+}
+
+function createPR() {
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('step4').style.display = 'block';
+    
+    // 기여 포인트 증가 애니메이션
+    const currentPoints = parseInt(document.getElementById('contributionScore').textContent);
+    document.getElementById('contributionScore').textContent = currentPoints + 50;
+}
+
+// 네트워크 시각화 초기화
+function initNetworkVisualization() {
+    // D3.js를 사용한 간단한 네트워크 시각화 시뮬레이션
+    const svg = document.getElementById('knowledgeNetwork');
+    // 실제 구현은 D3.js 라이브러리 필요
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    initNetworkVisualization();
+    analyzeImpact(); // 기본 차트 표시
+});
+</script>
+
+<!-- Part 1 전용 스타일 -->
+<style>
+/* 헤더 스타일 */
+.part-header.ecosystem-mastery {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.ecosystem-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,0.1) 10px,
+        rgba(255,255,255,0.1) 20px
+    );
+    animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); }
+}
+
+/* 준비도 체크 */
+.ecosystem-readiness {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.knowledge-network {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#knowledgeNetwork {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.network-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+/* 인증 경로 */
+.certification-path {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cert-levels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.cert-level {
+    text-align: center;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.cert-level.completed {
+    opacity: 1;
+}
+
+.cert-level.current {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.cert-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.cert-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* 생태계 맵 */
+.ecosystem-map-container {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.ecosystem-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.control-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-btn.active,
+.control-btn:hover {
+    border-color: #6366f1;
+    background: #6366f1;
+    color: white;
+}
+
+.ecosystem-map {
+    position: relative;
+    min-height: 500px;
+}
+
+.ecosystem-group {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.ecosystem-group h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.org-nodes {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.org-node {
+    position: relative;
+    background: #f0f9ff;
+    border: 2px solid #3b82f6;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.org-node.major {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+.org-node:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.node-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.node-name {
+    font-weight: 600;
+    display: block;
+}
+
+.node-info {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    width: 250px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 10;
+    text-align: left;
+}
+
+.org-node.major .node-info {
+    color: #1e293b;
+}
+
+/* 영향력 분석 */
+.impact-analyzer {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.impact-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#impactCriteria {
+    padding: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+/* 표준 스택 빌더 */
+.stack-workspace {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.available-layers {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.layer-item {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.layer-item:hover {
+    border-color: #6366f1;
+    transform: translateX(5px);
+}
+
+.layer-icon {
+    font-size: 1.25rem;
+}
+
+.stack-container {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.stack-slot {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slot-label {
+    position: absolute;
+    right: 10px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.check-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.check-btn:hover {
+    background: #059669;
+}
+
+/* SHACL 에디터 */
+.shacl-editor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.editor-panel textarea {
+    width: 100%;
+    background: #1e293b;
+    color: #f1f5f9;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.validation-results {
+    margin-top: 1.5rem;
+}
+
+.validation-report {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.violation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.severity {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.severity.error {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.severity.success {
+    background: #d1fae5;
+    color: #059669;
+}
+
+/* 도구 추천 */
+.tool-recommendations {
+    margin-top: 2rem;
+}
+
+.tool-recommendation {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tool-features {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.feature-tag {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+/* Jena 데모 */
+.demo-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.code-display,
+.result-display {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.code-display pre,
+.result-display pre {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* GitHub 인터페이스 */
+.github-interface {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.repo-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.repo-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0969da;
+}
+
+.repo-stats {
+    display: flex;
+    gap: 1rem;
+}
+
+.issue-list {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.issue {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.issue:hover,
+.issue.selected {
+    border-color: #0969da;
+    box-shadow: 0 2px 8px rgba(9, 105, 218, 0.1);
+}
+
+.issue-label {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.issue-label.bug {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.issue-label.feature {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.issue-label.docs {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+
+/* 학습 성과 */
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.achievement-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+    border-color: #6366f1;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.1);
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .ecosystem-readiness,
+    .stack-workspace,
+    .shacl-editor,
+    .demo-workspace,
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ecosystem-controls {
+        flex-wrap: wrap;
+    }
+    
+    .org-nodes {
+        flex-direction: column;
+    }
+}
+</style>

@@ -1,21 +1,64 @@
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(243, 244, 246, 0.3);
+  border-radius: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 rgba(243, 244, 246, 0.3);
+}
+
+.dark * {
+  scrollbar-color: #8b5cf6 rgba(55, 65, 81, 0.3);
+}
+
 /* Style override for chapter content */
 
 /* Reset all default styles from chapters */
 .chapter-content * {
-  all: unset;
-  display: revert;
+  /* Remove all: unset to preserve text color */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
   box-sizing: border-box;
 }
 
 /* Apply our custom styles with high specificity */
 .chapter-content {
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif !important;
-  color: rgb(55 65 81);
+  color: rgb(17 24 39); /* gray-900 */
   line-height: 1.75;
 }
 
 .dark .chapter-content {
-  color: rgb(209 213 219);
+  color: rgb(243 244 246); /* gray-100 */
 }
 
 /* Headers */
@@ -26,12 +69,12 @@
   margin-bottom: 2rem !important;
   padding-bottom: 1rem !important;
   border-bottom: 1px solid rgb(229 231 235) !important;
-  color: rgb(31 41 55) !important;
+  color: rgb(17 24 39) !important; /* gray-900 */
 }
 
 .dark .chapter-content h1 {
   border-bottom-color: rgb(55 65 81) !important;
-  color: rgb(243 244 246) !important;
+  color: rgb(249 250 251) !important; /* gray-50 */
 }
 
 .chapter-content h2 {
@@ -53,11 +96,11 @@
   font-weight: 600 !important;
   margin-top: 2rem !important;
   margin-bottom: 1rem !important;
-  color: rgb(55 65 81) !important;
+  color: rgb(17 24 39) !important; /* gray-900 */
 }
 
 .dark .chapter-content h3 {
-  color: rgb(209 213 219) !important;
+  color: rgb(243 244 246) !important; /* gray-100 */
 }
 
 /* Paragraphs */
@@ -175,11 +218,11 @@
   padding-left: 1.5rem !important;
   margin: 1.5rem 0 !important;
   font-style: italic !important;
-  color: rgb(107 114 128) !important;
+  color: rgb(75 85 99) !important; /* gray-600 */
 }
 
 .dark .chapter-content blockquote {
-  color: rgb(156 163 175) !important;
+  color: rgb(209 213 219) !important; /* gray-300 */
   border-left-color: rgb(167 139 250) !important;
 }
 

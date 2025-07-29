@@ -1,0 +1,2464 @@
+<!-- Chapter 10: 온톨로지 설계 방법론 (인터랙티브 마스터 버전) Part 3 -->
+
+<!-- Part 3 시작 -->
+<div class="part-header design-mastery">
+    <div class="design-pattern-animation"></div>
+    <h2 class="part-title">Part 3: 설계 패턴과 실전 프로젝트</h2>
+    <p class="part-description">검증된 설계 패턴과 모범 사례를 통해 완벽한 온톨로지 아키텍트로 성장하는 마지막 단계입니다!</p>
+</div>
+
+<!-- 아키텍트 마스터 준비도 -->
+<div class="progress-check architect-mastery">
+    <h3>🏗️ 온톨로지 아키텍트 준비도</h3>
+    <div class="architect-assessment">
+        <div class="mastery-dashboard">
+            <div class="skill-domains">
+                <div class="domain-card">
+                    <div class="domain-icon">🎨</div>
+                    <h4>설계 패턴</h4>
+                    <div class="skill-progress">
+                        <div class="progress-circle">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                                <circle cx="50" cy="50" r="40" stroke="#3b82f6" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251" stroke-dashoffset="75" 
+                                        style="transform: rotate(-90deg); transform-origin: 50% 50%;"/>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="progress-value">70%</span>
+                            </div>
+                        </div>
+                        <div class="skill-breakdown">
+                            <div class="skill-item">구조 패턴: 80%</div>
+                            <div class="skill-item">행위 패턴: 65%</div>
+                            <div class="skill-item">생성 패턴: 75%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon">📐</div>
+                    <h4>모듈화 설계</h4>
+                    <div class="skill-progress">
+                        <div class="progress-circle">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                                <circle cx="50" cy="50" r="40" stroke="#10b981" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251" stroke-dashoffset="50" 
+                                        style="transform: rotate(-90deg); transform-origin: 50% 50%;"/>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="progress-value">80%</span>
+                            </div>
+                        </div>
+                        <div class="skill-breakdown">
+                            <div class="skill-item">분할 전략: 85%</div>
+                            <div class="skill-item">통합 기법: 75%</div>
+                            <div class="skill-item">의존성 관리: 80%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="domain-card">
+                    <div class="domain-icon">⚖️</div>
+                    <h4>품질 평가</h4>
+                    <div class="skill-progress">
+                        <div class="progress-circle">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                                <circle cx="50" cy="50" r="40" stroke="#f59e0b" stroke-width="8" fill="none" 
+                                        stroke-dasharray="251" stroke-dashoffset="100" 
+                                        style="transform: rotate(-90deg); transform-origin: 50% 50%;"/>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="progress-value">60%</span>
+                            </div>
+                        </div>
+                        <div class="skill-breakdown">
+                            <div class="skill-item">구조 평가: 70%</div>
+                            <div class="skill-item">성능 평가: 55%</div>
+                            <div class="skill-item">사용성 평가: 65%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mastery-verdict">
+                <div class="verdict-card architect">
+                    <div class="verdict-icon">🚀</div>
+                    <div class="verdict-content">
+                        <h4>아키텍트 도전 준비 완료!</h4>
+                        <p>설계 원리를 이해하고 실무 프로젝트를 수행할 준비가 되었습니다.</p>
+                        <div class="next-milestone">
+                            <span class="milestone-icon">👑</span>
+                            <span>목표: 온톨로지 마스터 아키텍트</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 10.7: 온톨로지 설계 패턴 -->
+<section class="content-section design-patterns">
+    <h2>10.7 온톨로지 설계 패턴 마스터리</h2>
+    
+    <!-- 패턴 탐색기 -->
+    <div class="pattern-explorer">
+        <h3>🎨 설계 패턴 탐색기</h3>
+        <div class="explorer-interface">
+            <div class="pattern-categories">
+                <div class="category-tabs">
+                    <button class="category-tab active" onclick="showPatternCategory('structural')">
+                        <span class="tab-icon">🏗️</span>
+                        <span>구조 패턴</span>
+                    </button>
+                    <button class="category-tab" onclick="showPatternCategory('behavioral')">
+                        <span class="tab-icon">⚡</span>
+                        <span>행위 패턴</span>
+                    </button>
+                    <button class="category-tab" onclick="showPatternCategory('creational')">
+                        <span class="tab-icon">🏭</span>
+                        <span>생성 패턴</span>
+                    </button>
+                    <button class="category-tab" onclick="showPatternCategory('temporal')">
+                        <span class="tab-icon">⏰</span>
+                        <span>시간 패턴</span>
+                    </button>
+                </div>
+                
+                <div class="pattern-content-area">
+                    <!-- 구조 패턴 -->
+                    <div class="pattern-category active" id="structural-patterns">
+                        <div class="pattern-grid">
+                            <div class="pattern-card" onclick="showPatternDetail('part-whole')">
+                                <div class="pattern-icon">🧩</div>
+                                <h4>부분-전체 패턴</h4>
+                                <p>컴포지션과 어그리게이션 관계 모델링</p>
+                                <div class="pattern-complexity beginner">초급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('role-pattern')">
+                                <div class="pattern-icon">🎭</div>
+                                <h4>역할 패턴</h4>
+                                <p>상황에 따른 다양한 역할 표현</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('classification')">
+                                <div class="pattern-icon">📂</div>
+                                <h4>분류 패턴</h4>
+                                <p>다중 상속과 다면적 분류</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('normalization')">
+                                <div class="pattern-icon">⚖️</div>
+                                <h4>정규화 패턴</h4>
+                                <p>중복 제거와 일관성 확보</p>
+                                <div class="pattern-complexity advanced">고급</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 행위 패턴 -->
+                    <div class="pattern-category" id="behavioral-patterns">
+                        <div class="pattern-grid">
+                            <div class="pattern-card" onclick="showPatternDetail('state-machine')">
+                                <div class="pattern-icon">🔄</div>
+                                <h4>상태 머신 패턴</h4>
+                                <p>상태 전이와 생명주기 모델링</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('workflow')">
+                                <div class="pattern-icon">🔗</div>
+                                <h4>워크플로우 패턴</h4>
+                                <p>비즈니스 프로세스 모델링</p>
+                                <div class="pattern-complexity advanced">고급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('event-pattern')">
+                                <div class="pattern-icon">⚡</div>
+                                <h4>이벤트 패턴</h4>
+                                <p>이벤트 기반 상호작용 모델링</p>
+                                <div class="pattern-complexity advanced">고급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('observer')">
+                                <div class="pattern-icon">👁️</div>
+                                <h4>관찰자 패턴</h4>
+                                <p>변화 감지와 알림 시스템</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 생성 패턴 -->
+                    <div class="pattern-category" id="creational-patterns">
+                        <div class="pattern-grid">
+                            <div class="pattern-card" onclick="showPatternDetail('factory')">
+                                <div class="pattern-icon">🏭</div>
+                                <h4>팩토리 패턴</h4>
+                                <p>객체 생성의 체계적 관리</p>
+                                <div class="pattern-complexity beginner">초급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('template')">
+                                <div class="pattern-icon">📋</div>
+                                <h4>템플릿 패턴</h4>
+                                <p>재사용 가능한 구조 정의</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('singleton')">
+                                <div class="pattern-icon">🎯</div>
+                                <h4>싱글톤 패턴</h4>
+                                <p>유일 객체와 전역 접근</p>
+                                <div class="pattern-complexity beginner">초급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('builder')">
+                                <div class="pattern-icon">🔨</div>
+                                <h4>빌더 패턴</h4>
+                                <p>복잡한 객체의 단계적 구성</p>
+                                <div class="pattern-complexity advanced">고급</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 시간 패턴 -->
+                    <div class="pattern-category" id="temporal-patterns">
+                        <div class="pattern-grid">
+                            <div class="pattern-card" onclick="showPatternDetail('versioning')">
+                                <div class="pattern-icon">📝</div>
+                                <h4>버전 관리 패턴</h4>
+                                <p>시간에 따른 변화 추적</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('temporal-index')">
+                                <div class="pattern-icon">⏰</div>
+                                <h4>시간 인덱스 패턴</h4>
+                                <p>시점별 데이터 관리</p>
+                                <div class="pattern-complexity advanced">고급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('lifecycle')">
+                                <div class="pattern-icon">🔄</div>
+                                <h4>생명주기 패턴</h4>
+                                <p>객체의 탄생부터 소멸까지</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                            
+                            <div class="pattern-card" onclick="showPatternDetail('snapshot')">
+                                <div class="pattern-icon">📸</div>
+                                <h4>스냅샷 패턴</h4>
+                                <p>특정 시점의 상태 보존</p>
+                                <div class="pattern-complexity intermediate">중급</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 패턴 상세 보기 -->
+            <div class="pattern-detail-viewer">
+                <div id="patternDetailContent" class="pattern-detail-content">
+                    <div class="detail-placeholder">
+                        <div class="placeholder-icon">🎨</div>
+                        <h4>설계 패턴을 선택하세요</h4>
+                        <p>왼쪽에서 패턴을 클릭하면 상세 정보와 실습 예제를 볼 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.8: 대화형 패턴 워크샵 -->
+<section class="content-section pattern-workshop">
+    <h2>10.8 대화형 패턴 워크샵</h2>
+    
+    <!-- 패턴 적용 시뮬레이터 -->
+    <div class="pattern-simulator">
+        <h3>🔧 패턴 적용 시뮬레이터</h3>
+        <div class="simulator-workspace">
+            <div class="scenario-selector">
+                <h4>시나리오 선택</h4>
+                <div class="scenario-options">
+                    <div class="scenario-option active" onclick="loadScenario('hospital')">
+                        <div class="scenario-icon">🏥</div>
+                        <h5>병원 관리 시스템</h5>
+                        <p>환자, 의료진, 진료과의 복잡한 관계</p>
+                    </div>
+                    <div class="scenario-option" onclick="loadScenario('university')">
+                        <div class="scenario-icon">🎓</div>
+                        <h5>대학교 관리 시스템</h5>
+                        <p>학생, 교수, 강의의 다양한 연결</p>
+                    </div>
+                    <div class="scenario-option" onclick="loadScenario('ecommerce')">
+                        <div class="scenario-icon">🛒</div>
+                        <h5>전자상거래 플랫폼</h5>
+                        <p>상품, 주문, 배송의 워크플로우</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="design-canvas">
+                <div class="canvas-header">
+                    <h4>설계 캔버스</h4>
+                    <div class="canvas-tools">
+                        <button class="tool-btn" onclick="clearCanvas()">🗑️ 지우기</button>
+                        <button class="tool-btn" onclick="validateDesign()">✅ 검증</button>
+                        <button class="tool-btn" onclick="generateOWL()">📝 OWL 생성</button>
+                    </div>
+                </div>
+                <div class="canvas-area">
+                    <div id="designCanvas" class="design-canvas-content">
+                        <!-- 동적으로 생성되는 설계 요소들 -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pattern-toolbox">
+                <h4>패턴 도구상자</h4>
+                <div class="toolbox-patterns">
+                    <div class="pattern-tool" draggable="true" data-pattern="part-whole">
+                        <div class="tool-icon">🧩</div>
+                        <span>부분-전체</span>
+                    </div>
+                    <div class="pattern-tool" draggable="true" data-pattern="role">
+                        <div class="tool-icon">🎭</div>
+                        <span>역할</span>
+                    </div>
+                    <div class="pattern-tool" draggable="true" data-pattern="state">
+                        <div class="tool-icon">🔄</div>
+                        <span>상태 머신</span>
+                    </div>
+                    <div class="pattern-tool" draggable="true" data-pattern="event">
+                        <div class="tool-icon">⚡</div>
+                        <span>이벤트</span>
+                    </div>
+                    <div class="pattern-tool" draggable="true" data-pattern="temporal">
+                        <div class="tool-icon">⏰</div>
+                        <span>시간 인덱스</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 시뮬레이션 결과 -->
+        <div class="simulation-results">
+            <div class="results-tabs">
+                <button class="result-tab active" onclick="showResult('validation')">검증 결과</button>
+                <button class="result-tab" onclick="showResult('owl')">OWL 코드</button>
+                <button class="result-tab" onclick="showResult('metrics')">품질 지표</button>
+                <button class="result-tab" onclick="showResult('suggestions')">개선 제안</button>
+            </div>
+            <div class="results-content">
+                <div id="validationResult" class="result-panel active">
+                    <p class="placeholder-text">설계를 완성하고 검증 버튼을 눌러주세요.</p>
+                </div>
+                <div id="owlResult" class="result-panel">
+                    <p class="placeholder-text">OWL 생성 버튼을 눌러 코드를 확인하세요.</p>
+                </div>
+                <div id="metricsResult" class="result-panel">
+                    <p class="placeholder-text">품질 지표는 검증 후 확인할 수 있습니다.</p>
+                </div>
+                <div id="suggestionsResult" class="result-panel">
+                    <p class="placeholder-text">설계 개선 제안을 확인하세요.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.9: 실전 프로젝트 - 스마트 시티 온톨로지 -->
+<section class="content-section real-project">
+    <h2>10.9 실전 프로젝트: 스마트 시티 온톨로지 설계</h2>
+    
+    <!-- 프로젝트 대시보드 -->
+    <div class="project-dashboard">
+        <h3>🏙️ 스마트 시티 온톨로지 프로젝트</h3>
+        <div class="dashboard-overview">
+            <div class="project-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">핵심 도메인</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏗️</div>
+                    <div class="stat-content">
+                        <div class="stat-value">150+</div>
+                        <div class="stat-label">예상 클래스</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔗</div>
+                    <div class="stat-content">
+                        <div class="stat-value">80+</div>
+                        <div class="stat-label">관계 속성</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-value">12주</div>
+                        <div class="stat-label">예상 기간</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-phases">
+                <div class="phase-tracker">
+                    <div class="phase-item completed">
+                        <div class="phase-icon">✅</div>
+                        <span>요구사항 분석</span>
+                    </div>
+                    <div class="phase-item completed">
+                        <div class="phase-icon">✅</div>
+                        <span>도메인 식별</span>
+                    </div>
+                    <div class="phase-item active">
+                        <div class="phase-icon">🔄</div>
+                        <span>아키텍처 설계</span>
+                    </div>
+                    <div class="phase-item pending">
+                        <div class="phase-icon">⏳</div>
+                        <span>상세 모델링</span>
+                    </div>
+                    <div class="phase-item pending">
+                        <div class="phase-icon">⏳</div>
+                        <span>통합 및 검증</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 도메인 아키텍처 설계 -->
+        <div class="architecture-designer">
+            <h4>🏗️ 도메인 아키텍처 설계</h4>
+            <div class="designer-interface">
+                <div class="domain-modules">
+                    <div class="module-grid">
+                        <div class="domain-module" data-domain="transport">
+                            <div class="module-header">
+                                <div class="module-icon">🚌</div>
+                                <h5>교통 시스템</h5>
+                                <div class="module-status developing">개발중</div>
+                            </div>
+                            <div class="module-content">
+                                <div class="key-concepts">
+                                    <span class="concept-tag">버스</span>
+                                    <span class="concept-tag">지하철</span>
+                                    <span class="concept-tag">교통신호</span>
+                                    <span class="concept-tag">주차장</span>
+                                </div>
+                                <div class="module-metrics">
+                                    <div class="metric">클래스: 25</div>
+                                    <div class="metric">속성: 15</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="domain-module" data-domain="energy">
+                            <div class="module-header">
+                                <div class="module-icon">⚡</div>
+                                <h5>에너지 관리</h5>
+                                <div class="module-status planning">계획중</div>
+                            </div>
+                            <div class="module-content">
+                                <div class="key-concepts">
+                                    <span class="concept-tag">전력망</span>
+                                    <span class="concept-tag">태양광</span>
+                                    <span class="concept-tag">배터리</span>
+                                    <span class="concept-tag">스마트미터</span>
+                                </div>
+                                <div class="module-metrics">
+                                    <div class="metric">클래스: 18</div>
+                                    <div class="metric">속성: 12</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="domain-module" data-domain="environment">
+                            <div class="module-header">
+                                <div class="module-icon">🌱</div>
+                                <h5>환경 모니터링</h5>
+                                <div class="module-status completed">완료</div>
+                            </div>
+                            <div class="module-content">
+                                <div class="key-concepts">
+                                    <span class="concept-tag">공기질</span>
+                                    <span class="concept-tag">소음</span>
+                                    <span class="concept-tag">센서</span>
+                                    <span class="concept-tag">측정값</span>
+                                </div>
+                                <div class="module-metrics">
+                                    <div class="metric">클래스: 22</div>
+                                    <div class="metric">속성: 18</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="domain-module" data-domain="safety">
+                            <div class="module-header">
+                                <div class="module-icon">🚨</div>
+                                <h5>공공 안전</h5>
+                                <div class="module-status planning">계획중</div>
+                            </div>
+                            <div class="module-content">
+                                <div class="key-concepts">
+                                    <span class="concept-tag">CCTV</span>
+                                    <span class="concept-tag">응급신고</span>
+                                    <span class="concept-tag">소방서</span>
+                                    <span class="concept-tag">병원</span>
+                                </div>
+                                <div class="module-metrics">
+                                    <div class="metric">클래스: 20</div>
+                                    <div class="metric">속성: 14</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 모듈 간 관계 시각화 -->
+                <div class="module-relationships">
+                    <h5>🔗 모듈 간 관계</h5>
+                    <div class="relationship-canvas">
+                        <svg width="100%" height="300" id="relationshipSVG">
+                            <!-- SVG로 모듈 간 관계를 동적으로 그림 -->
+                        </svg>
+                    </div>
+                    <div class="relationship-controls">
+                        <button onclick="showAllRelations()">모든 관계 보기</button>
+                        <button onclick="showCriticalPath()">핵심 경로</button>
+                        <button onclick="analyzeDependencies()">의존성 분석</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 상세 모델링 도구 -->
+        <div class="detailed-modeling">
+            <h4>🔍 상세 모델링 도구</h4>
+            <div class="modeling-workspace">
+                <div class="selected-module">
+                    <div id="moduleDetails" class="module-detail-view">
+                        <p class="select-prompt">위에서 모듈을 선택하여 상세 모델링을 시작하세요.</p>
+                    </div>
+                </div>
+                
+                <div class="modeling-tools">
+                    <div class="tool-panel">
+                        <h5>🛠️ 모델링 도구</h5>
+                        <div class="tool-buttons">
+                            <button class="model-tool" onclick="addClass()">
+                                <span class="tool-icon">📦</span>
+                                클래스 추가
+                            </button>
+                            <button class="model-tool" onclick="addProperty()">
+                                <span class="tool-icon">🔗</span>
+                                속성 추가
+                            </button>
+                            <button class="model-tool" onclick="addConstraint()">
+                                <span class="tool-icon">⚖️</span>
+                                제약 추가
+                            </button>
+                            <button class="model-tool" onclick="addInstance()">
+                                <span class="tool-icon">🎯</span>
+                                인스턴스 추가
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="validation-panel">
+                        <h5>✅ 검증 도구</h5>
+                        <div class="validation-checks">
+                            <div class="check-item">
+                                <input type="checkbox" id="syntaxCheck" checked>
+                                <label for="syntaxCheck">구문 검사</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="consistencyCheck" checked>
+                                <label for="consistencyCheck">일관성 검사</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="completenessCheck">
+                                <label for="completenessCheck">완전성 검사</label>
+                            </div>
+                            <div class="check-item">
+                                <input type="checkbox" id="performanceCheck">
+                                <label for="performanceCheck">성능 검사</label>
+                            </div>
+                        </div>
+                        <button class="validate-btn" onclick="runValidation()">
+                            검증 실행
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 프로젝트 진행 상황 -->
+        <div class="project-progress">
+            <h4>📊 프로젝트 진행 상황</h4>
+            <div class="progress-dashboard">
+                <div class="progress-metrics">
+                    <div class="metric-card">
+                        <h5>전체 진행률</h5>
+                        <div class="circular-progress">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="50" stroke="#e5e7eb" stroke-width="10" fill="none"/>
+                                <circle cx="60" cy="60" r="50" stroke="#3b82f6" stroke-width="10" fill="none" 
+                                        stroke-dasharray="314" stroke-dashoffset="157" 
+                                        style="transform: rotate(-90deg); transform-origin: 50% 50%;"/>
+                            </svg>
+                            <div class="progress-text">
+                                <span class="progress-value">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h5>품질 점수</h5>
+                        <div class="quality-gauge">
+                            <div class="gauge-bar">
+                                <div class="gauge-fill" style="width: 75%"></div>
+                            </div>
+                            <div class="gauge-score">75/100</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h5>완료된 작업</h5>
+                        <div class="task-completion">
+                            <div class="completion-stats">
+                                <div class="stat-line">
+                                    <span>요구사항 분석</span>
+                                    <span class="completion-badge completed">완료</span>
+                                </div>
+                                <div class="stat-line">
+                                    <span>도메인 모델링</span>
+                                    <span class="completion-badge in-progress">진행중</span>
+                                </div>
+                                <div class="stat-line">
+                                    <span>통합 테스트</span>
+                                    <span class="completion-badge pending">대기중</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-view">
+                    <h5>프로젝트 타임라인</h5>
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h6>1주차: 요구사항 분석</h6>
+                                <p>이해관계자 인터뷰 및 역량 질문 도출</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item completed">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h6>2-3주차: 도메인 식별</h6>
+                                <p>핵심 도메인 7개 식별 및 경계 정의</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h6>4-6주차: 아키텍처 설계</h6>
+                                <p>모듈 구조 및 인터페이스 설계</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item pending">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h6>7-10주차: 상세 구현</h6>
+                                <p>각 모듈별 클래스 및 속성 정의</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item pending">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h6>11-12주차: 통합 및 검증</h6>
+                                <p>전체 시스템 통합 및 품질 검증</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 마스터 인증 챌린지 -->
+<div class="master-certification">
+    <h3>🏆 온톨로지 아키텍트 마스터 인증</h3>
+    <div class="certification-interface">
+        <div class="certification-requirements">
+            <h4>📋 인증 요구사항</h4>
+            <div class="requirement-checklist">
+                <div class="requirement-item">
+                    <input type="checkbox" id="req1" checked>
+                    <label for="req1">설계 패턴 10개 이상 학습</label>
+                    <div class="progress-indicator">10/10 ✅</div>
+                </div>
+                <div class="requirement-item">
+                    <input type="checkbox" id="req2" checked>
+                    <label for="req2">모듈화 설계 실습 완료</label>
+                    <div class="progress-indicator">완료 ✅</div>
+                </div>
+                <div class="requirement-item">
+                    <input type="checkbox" id="req3">
+                    <label for="req3">실전 프로젝트 80% 이상 완성</label>
+                    <div class="progress-indicator">50/80 ⏳</div>
+                </div>
+                <div class="requirement-item">
+                    <input type="checkbox" id="req4">
+                    <label for="req4">품질 평가 75점 이상 달성</label>
+                    <div class="progress-indicator">75/75 ⏳</div>
+                </div>
+                <div class="requirement-item">
+                    <input type="checkbox" id="req5">
+                    <label for="req5">최종 시험 80점 이상</label>
+                    <div class="progress-indicator">미응시 ⏳</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="certification-exam">
+            <h4>📝 최종 인증 시험</h4>
+            <div class="exam-interface">
+                <div class="exam-progress">
+                    <div class="progress-header">
+                        <span>진행률: <span id="examProgress">0/5</span></span>
+                        <span>점수: <span id="examScore">0</span>점</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="examProgressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="exam-questions">
+                    <div class="question-card active" id="question1">
+                        <h5>문제 1. 다음 중 부분-전체 패턴의 가장 적절한 활용 사례는?</h5>
+                        <div class="question-options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="a">
+                                자동차와 엔진, 바퀴의 관계
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="b">
+                                학생과 교수의 관계
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="c">
+                                주문과 배송의 관계
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="d">
+                                사용자와 권한의 관계
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card" id="question2">
+                        <h5>문제 2. 온톨로지 모듈화의 가장 큰 장점은?</h5>
+                        <div class="question-options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="a">
+                                파일 크기 축소
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="b">
+                                재사용성과 유지보수성 향상
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="c">
+                                실행 속도 개선
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="d">
+                                메모리 사용량 감소
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card" id="question3">
+                        <h5>문제 3. 시간 인덱스 패턴이 필요한 상황은?</h5>
+                        <div class="question-options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="a">
+                                정적 분류 체계 구축
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="b">
+                                직원의 급여 변화 추적
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="c">
+                                단순한 상속 관계 표현
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="d">
+                                객체 간 동등성 비교
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card" id="question4">
+                        <h5>문제 4. 온톨로지 품질 평가의 가장 중요한 기준은?</h5>
+                        <div class="question-options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="a">
+                                클래스의 개수
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="b">
+                                일관성과 완전성
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="c">
+                                파일 크기
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="d">
+                                개발 기간
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card" id="question5">
+                        <h5>문제 5. 협업 온톨로지 개발에서 가장 중요한 요소는?</h5>
+                        <div class="question-options">
+                            <label class="option">
+                                <input type="radio" name="q5" value="a">
+                                개발 도구의 통일
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="b">
+                                합의 형성과 변경 관리
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="c">
+                                개발자의 기술 수준
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="d">
+                                프로젝트 예산
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exam-controls">
+                    <button id="prevBtn" onclick="previousQuestion()" disabled>이전</button>
+                    <button id="nextBtn" onclick="nextQuestion()">다음</button>
+                    <button id="submitBtn" onclick="submitExam()" style="display: none;">제출</button>
+                </div>
+            </div>
+            
+            <div class="exam-result" id="examResult" style="display: none;">
+                <div class="result-content">
+                    <div class="result-icon">🎉</div>
+                    <h4>인증 시험 결과</h4>
+                    <div class="final-score">
+                        <span id="finalScore">0</span>/100점
+                    </div>
+                    <div class="certification-status">
+                        <div id="certificationBadge" class="certification-badge">
+                            <!-- 동적으로 생성 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 챕터 전용 스타일과 스크립트 -->
+<style>
+/* Part 3 헤더 애니메이션 */
+.design-pattern-animation {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(135deg, 
+        #8b5cf6 0%, 
+        #a855f7 25%, 
+        #d946ef 50%, 
+        #ec4899 75%, 
+        #f97316 100%);
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.design-pattern-animation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    animation: patternFloat 4s ease-in-out infinite;
+}
+
+@keyframes patternFloat {
+    0% { left: -100px; }
+    100% { left: calc(100% + 100px); }
+}
+
+/* 아키텍트 마스터리 평가 */
+.architect-assessment {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.mastery-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+}
+
+.skill-domains {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.domain-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.domain-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.domain-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.skill-progress {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.progress-circle {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.skill-breakdown {
+    flex: 1;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.skill-item:last-child {
+    border-bottom: none;
+}
+
+.verdict-card.architect {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.verdict-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* 패턴 탐색기 */
+.pattern-explorer {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.explorer-interface {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.category-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.category-tab:hover {
+    border-color: #8b5cf6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+.category-tab.active {
+    background: #8b5cf6;
+    color: white;
+    border-color: #8b5cf6;
+}
+
+.pattern-category {
+    display: none;
+}
+
+.pattern-category.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+.pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.pattern-card {
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pattern-card:hover {
+    border-color: #8b5cf6;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+}
+
+.pattern-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.pattern-card h4 {
+    margin: 0.5rem 0;
+    color: #1f2937;
+}
+
+.pattern-card p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.pattern-complexity {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.pattern-complexity.beginner {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.pattern-complexity.intermediate {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.pattern-complexity.advanced {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.pattern-detail-viewer {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.detail-placeholder {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6b7280;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.pattern-detail-content {
+    min-height: 400px;
+}
+
+/* 패턴 시뮬레이터 */
+.pattern-simulator {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.simulator-workspace {
+    display: grid;
+    grid-template-columns: 250px 1fr 200px;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.scenario-selector {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.scenario-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scenario-option {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scenario-option:hover {
+    border-color: #8b5cf6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+.scenario-option.active {
+    border-color: #8b5cf6;
+    background: #f0f9ff;
+}
+
+.scenario-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.scenario-option h5 {
+    margin: 0.5rem 0;
+    color: #1f2937;
+}
+
+.scenario-option p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.design-canvas {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.canvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.canvas-tools {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tool-btn {
+    padding: 0.5rem 1rem;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.tool-btn:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+}
+
+.canvas-area {
+    min-height: 300px;
+    background: white;
+    border-radius: 12px;
+    border: 2px dashed #d1d5db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.design-canvas-content {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+
+.pattern-toolbox {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.toolbox-patterns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.pattern-tool {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: grab;
+    transition: all 0.3s ease;
+}
+
+.pattern-tool:hover {
+    border-color: #8b5cf6;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
+}
+
+.pattern-tool:active {
+    cursor: grabbing;
+}
+
+.tool-icon {
+    font-size: 1.2rem;
+}
+
+/* 시뮬레이션 결과 */
+.simulation-results {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.results-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.result-tab {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.result-tab:hover {
+    border-color: #8b5cf6;
+}
+
+.result-tab.active {
+    background: #8b5cf6;
+    color: white;
+    border-color: #8b5cf6;
+}
+
+.results-content {
+    min-height: 200px;
+}
+
+.result-panel {
+    display: none;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.result-panel.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+/* 실전 프로젝트 */
+.project-dashboard {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.dashboard-overview {
+    margin-bottom: 3rem;
+}
+
+.project-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid #bae6fd;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0369a1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #0284c7;
+    font-weight: 600;
+}
+
+.phase-tracker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.phase-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.phase-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phase-item.completed .phase-icon {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.phase-item.active .phase-icon {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.phase-item.pending .phase-icon {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.phase-item span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* 도메인 모듈 */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.domain-module {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.domain-module:hover {
+    border-color: #8b5cf6;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+}
+
+.module-header {
+    background: #f8fafc;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.module-icon {
+    font-size: 2rem;
+}
+
+.module-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.module-status.completed {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.module-status.developing {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.module-status.planning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.module-content {
+    padding: 1.5rem;
+}
+
+.key-concepts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.concept-tag {
+    background: #f0f9ff;
+    color: #0284c7;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.module-metrics {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* 모듈 관계 시각화 */
+.relationship-canvas {
+    background: white;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    margin: 1rem 0;
+}
+
+.relationship-controls {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.relationship-controls button {
+    padding: 0.5rem 1rem;
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.relationship-controls button:hover {
+    border-color: #8b5cf6;
+    background: #f0f9ff;
+}
+
+/* 상세 모델링 도구 */
+.modeling-workspace {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.selected-module {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    min-height: 400px;
+}
+
+.modeling-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tool-panel,
+.validation-panel {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.tool-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.model-tool {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.model-tool:hover {
+    border-color: #8b5cf6;
+    background: #f0f9ff;
+}
+
+.validation-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #8b5cf6;
+}
+
+.validate-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.validate-btn:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+}
+
+/* 프로젝트 진행 상황 */
+.progress-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.progress-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.metric-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.circular-progress {
+    position: relative;
+    display: inline-block;
+    margin: 1rem 0;
+}
+
+.quality-gauge {
+    margin: 1rem 0;
+}
+
+.gauge-bar {
+    width: 100%;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #34d399);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+
+.gauge-score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #10b981;
+}
+
+.task-completion {
+    margin: 1rem 0;
+}
+
+.completion-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.stat-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completion-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.completion-badge.completed {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.completion-badge.in-progress {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.completion-badge.pending {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+/* 타임라인 */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+    background: white;
+}
+
+.timeline-item.completed .timeline-marker {
+    border-color: #10b981;
+    background: #10b981;
+}
+
+.timeline-item.active .timeline-marker {
+    border-color: #3b82f6;
+    background: #3b82f6;
+}
+
+.timeline-content h6 {
+    margin: 0 0 0.5rem 0;
+    color: #1f2937;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* 마스터 인증 */
+.master-certification {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.certification-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.certification-requirements {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.requirement-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+}
+
+.requirement-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #10b981;
+    margin-right: 1rem;
+}
+
+.progress-indicator {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.certification-exam {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.exam-progress {
+    margin-bottom: 2rem;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #10b981;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.question-card {
+    display: none;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.question-card.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+.question-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.question-options .option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.question-options .option:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.question-options .option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #8b5cf6;
+}
+
+.exam-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.exam-controls button {
+    padding: 0.75rem 1.5rem;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.exam-controls button:hover:not(:disabled) {
+    background: #7c3aed;
+    transform: translateY(-1px);
+}
+
+.exam-controls button:disabled {
+    background: rgba(255,255,255,0.2);
+    cursor: not-allowed;
+}
+
+.exam-result {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+}
+
+.result-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.final-score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #10b981;
+    margin: 1rem 0;
+}
+
+.certification-badge {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #10b981, #34d399);
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .mastery-dashboard,
+    .explorer-interface,
+    .simulator-workspace,
+    .modeling-workspace,
+    .progress-dashboard,
+    .certification-interface {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-tabs {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .phase-tracker {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .exam-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+</style>
+
+<script>
+// 패턴 카테고리 전환
+function showPatternCategory(category) {
+    // 모든 탭 비활성화
+    document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 모든 카테고리 숨기기
+    document.querySelectorAll('.pattern-category').forEach(cat => {
+        cat.classList.remove('active');
+    });
+    
+    // 선택된 탭과 카테고리 활성화
+    event.target.closest('.category-tab').classList.add('active');
+    const categoryElement = document.getElementById(category + '-patterns');
+    if (categoryElement) {
+        categoryElement.classList.add('active');
+    }
+}
+
+// 패턴 상세 보기
+function showPatternDetail(patternId) {
+    const detailContent = document.getElementById('patternDetailContent');
+    
+    const patternDetails = {
+        'part-whole': {
+            title: '🧩 부분-전체 패턴',
+            description: '전체 객체와 그 구성 요소들 간의 관계를 모델링하는 패턴입니다.',
+            structure: `
+                <div class="pattern-structure">
+                    <h5>구조</h5>
+                    <pre class="code-block">
+Class: Car
+    SubClassOf: Vehicle
+    
+Class: Engine  
+    SubClassOf: CarComponent
+    
+Class: Wheel
+    SubClassOf: CarComponent
+    
+ObjectProperty: hasPart
+    Domain: Car
+    Range: CarComponent
+    
+ObjectProperty: isPartOf
+    InverseOf: hasPart
+                    </pre>
+                </div>
+            `,
+            example: '자동차와 엔진, 바퀴의 관계를 표현할 때 사용합니다.',
+            benefits: [
+                '계층적 구조의 명확한 표현',
+                '부분-전체 관계의 체계적 관리',
+                '집합과 구성의 구분 가능'
+            ]
+        },
+        'role-pattern': {
+            title: '🎭 역할 패턴',
+            description: '같은 개체가 상황에 따라 다른 역할을 수행하는 것을 모델링하는 패턴입니다.',
+            structure: `
+                <div class="pattern-structure">
+                    <h5>구조</h5>
+                    <pre class="code-block">
+Class: Person
+    
+Class: Role
+    
+Class: StudentRole
+    SubClassOf: Role
+    
+Class: TeacherRole  
+    SubClassOf: Role
+    
+ObjectProperty: hasRole
+    Domain: Person
+    Range: Role
+                    </pre>
+                </div>
+            `,
+            example: '한 사람이 학생이면서 동시에 아르바이트 직원일 수 있는 상황을 표현합니다.',
+            benefits: [
+                '다중 역할 지원',
+                '역할 변화의 동적 모델링',
+                '컨텍스트별 행동 정의 가능'
+            ]
+        }
+        // 다른 패턴들도 유사하게 추가...
+    };
+    
+    const pattern = patternDetails[patternId];
+    if (pattern) {
+        detailContent.innerHTML = `
+            <div class="pattern-detail-full">
+                <div class="pattern-header">
+                    <h3>${pattern.title}</h3>
+                    <p class="pattern-desc">${pattern.description}</p>
+                </div>
+                ${pattern.structure}
+                <div class="pattern-example">
+                    <h5>예시</h5>
+                    <p>${pattern.example}</p>
+                </div>
+                <div class="pattern-benefits">
+                    <h5>장점</h5>
+                    <ul>
+                        ${pattern.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="pattern-actions">
+                    <button onclick="applyPattern('${patternId}')" class="apply-btn">
+                        패턴 적용하기
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// 시나리오 로드
+function loadScenario(scenarioId) {
+    // 모든 시나리오 옵션 비활성화
+    document.querySelectorAll('.scenario-option').forEach(option => {
+        option.classList.remove('active');
+    });
+    
+    // 선택된 시나리오 활성화
+    event.target.closest('.scenario-option').classList.add('active');
+    
+    const scenarios = {
+        hospital: {
+            entities: ['환자', '의사', '간호사', '진료과', '병실', '치료'],
+            relationships: ['진료', '입원', '처방', '배정']
+        },
+        university: {
+            entities: ['학생', '교수', '강의', '학과', '강의실', '성적'],
+            relationships: ['수강', '강의', '소속', '평가']
+        },
+        ecommerce: {
+            entities: ['고객', '상품', '주문', '배송', '결제', '리뷰'],
+            relationships: ['주문', '배송', '결제', '리뷰작성']
+        }
+    };
+    
+    const scenario = scenarios[scenarioId];
+    if (scenario) {
+        const canvas = document.getElementById('designCanvas');
+        canvas.innerHTML = `
+            <div class="scenario-setup">
+                <h4>${scenarioId.toUpperCase()} 시나리오</h4>
+                <div class="available-entities">
+                    <h5>사용 가능한 엔티티:</h5>
+                    <div class="entity-list">
+                        ${scenario.entities.map(entity => 
+                            `<span class="entity-tag">${entity}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+                <div class="canvas-workspace">
+                    <p>왼쪽 도구상자에서 패턴을 드래그하여 설계를 시작하세요.</p>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// 캔버스 초기화
+function clearCanvas() {
+    const canvas = document.getElementById('designCanvas');
+    canvas.innerHTML = '<p>캔버스가 초기화되었습니다. 새로운 설계를 시작하세요.</p>';
+}
+
+// 설계 검증
+function validateDesign() {
+    const result = document.getElementById('validationResult');
+    result.innerHTML = `
+        <div class="validation-report">
+            <h4>✅ 설계 검증 결과</h4>
+            <div class="validation-metrics">
+                <div class="metric-item">
+                    <span class="metric-label">구문 검사</span>
+                    <span class="metric-status pass">통과</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">일관성 검사</span>
+                    <span class="metric-status pass">통과</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">완전성 검사</span>
+                    <span class="metric-status warning">부분적</span>
+                </div>
+            </div>
+            <div class="validation-summary">
+                <p><strong>전체 점수: 85/100</strong></p>
+                <p>설계가 대체로 양호하나 일부 개선이 필요합니다.</p>
+            </div>
+        </div>
+    `;
+    result.classList.add('active');
+    showResult('validation');
+}
+
+// OWL 코드 생성
+function generateOWL() {
+    const result = document.getElementById('owlResult');
+    result.innerHTML = `
+        <div class="owl-output">
+            <h4>📝 생성된 OWL 코드</h4>
+            <pre class="code-block">
+@prefix : &lt;http://example.org/hospital#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+# Classes
+:Patient rdf:type owl:Class .
+:Doctor rdf:type owl:Class .
+:Treatment rdf:type owl:Class .
+
+# Object Properties  
+:treatedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Patient ;
+    rdfs:range :Doctor .
+
+:receives rdf:type owl:ObjectProperty ;
+    rdfs:domain :Patient ;
+    rdfs:range :Treatment .
+            </pre>
+            <div class="code-actions">
+                <button onclick="downloadOWL()">다운로드</button>
+                <button onclick="copyOWL()">복사</button>
+            </div>
+        </div>
+    `;
+    showResult('owl');
+}
+
+// 결과 탭 전환
+function showResult(resultType) {
+    document.querySelectorAll('.result-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    document.querySelectorAll('.result-panel').forEach(panel => {
+        panel.classList.remove('active');
+    });
+    
+    event.target.classList.add('active');
+    const panel = document.getElementById(resultType + 'Result');
+    if (panel) {
+        panel.classList.add('active');
+    }
+}
+
+// 실전 프로젝트 관련 함수들
+function showAllRelations() {
+    // SVG로 모든 모듈 간 관계 표시
+    const svg = document.getElementById('relationshipSVG');
+    // 관계 시각화 로직 구현
+}
+
+function showCriticalPath() {
+    // 핵심 경로 강조 표시
+}
+
+function analyzeDependencies() {
+    // 의존성 분석 결과 표시
+}
+
+// 모델링 도구 함수들
+function addClass() {
+    alert('클래스 추가 다이얼로그가 열립니다.');
+}
+
+function addProperty() {
+    alert('속성 추가 다이얼로그가 열립니다.');
+}
+
+function addConstraint() {
+    alert('제약 조건 추가 다이얼로그가 열립니다.');
+}
+
+function addInstance() {
+    alert('인스턴스 추가 다이얼로그가 열립니다.');
+}
+
+function runValidation() {
+    const checks = document.querySelectorAll('.validation-checks input[type="checkbox"]:checked');
+    alert(`${checks.length}개 항목에 대한 검증을 실행합니다.`);
+}
+
+// 인증 시험 관련 함수들
+let currentQuestion = 1;
+let examAnswers = {};
+let examScore = 0;
+
+function nextQuestion() {
+    if (currentQuestion < 5) {
+        // 현재 답변 저장
+        const currentAnswer = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+        if (currentAnswer) {
+            examAnswers[`q${currentQuestion}`] = currentAnswer.value;
+        }
+        
+        // 다음 질문으로
+        document.getElementById(`question${currentQuestion}`).classList.remove('active');
+        currentQuestion++;
+        document.getElementById(`question${currentQuestion}`).classList.add('active');
+        
+        // 버튼 상태 업데이트
+        document.getElementById('prevBtn').disabled = false;
+        if (currentQuestion === 5) {
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'inline-block';
+        }
+        
+        updateExamProgress();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestion > 1) {
+        document.getElementById(`question${currentQuestion}`).classList.remove('active');
+        currentQuestion--;
+        document.getElementById(`question${currentQuestion}`).classList.add('active');
+        
+        // 버튼 상태 업데이트
+        if (currentQuestion === 1) {
+            document.getElementById('prevBtn').disabled = true;
+        }
+        document.getElementById('nextBtn').style.display = 'inline-block';
+        document.getElementById('submitBtn').style.display = 'none';
+        
+        updateExamProgress();
+    }
+}
+
+function updateExamProgress() {
+    const answeredQuestions = Object.keys(examAnswers).length;
+    document.getElementById('examProgress').textContent = `${answeredQuestions}/5`;
+    document.getElementById('examProgressBar').style.width = `${(answeredQuestions / 5) * 100}%`;
+}
+
+function submitExam() {
+    // 마지막 답변 저장
+    const currentAnswer = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+    if (currentAnswer) {
+        examAnswers[`q${currentQuestion}`] = currentAnswer.value;
+    }
+    
+    // 정답 확인
+    const correctAnswers = {
+        q1: 'a', // 자동차와 엔진, 바퀴의 관계
+        q2: 'b', // 재사용성과 유지보수성 향상
+        q3: 'b', // 직원의 급여 변화 추적
+        q4: 'b', // 일관성과 완전성
+        q5: 'b'  // 합의 형성과 변경 관리
+    };
+    
+    examScore = 0;
+    for (let i = 1; i <= 5; i++) {
+        if (examAnswers[`q${i}`] === correctAnswers[`q${i}`]) {
+            examScore += 20;
+        }
+    }
+    
+    // 결과 표시
+    document.querySelector('.exam-interface').style.display = 'none';
+    document.getElementById('examResult').style.display = 'block';
+    document.getElementById('finalScore').textContent = examScore;
+    document.getElementById('examScore').textContent = examScore;
+    
+    // 인증 배지 생성
+    const badge = document.getElementById('certificationBadge');
+    if (examScore >= 80) {
+        badge.innerHTML = '🏆 온톨로지 마스터 아키텍트';
+        badge.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+        
+        // 요구사항 업데이트
+        document.getElementById('req5').checked = true;
+        updateCertificationStatus();
+    } else if (examScore >= 60) {
+        badge.innerHTML = '🥈 온톨로지 설계 전문가';
+        badge.style.background = 'linear-gradient(135deg, #6b7280, #4b5563)';
+    } else {
+        badge.innerHTML = '📚 추가 학습 필요';
+        badge.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+    }
+}
+
+function updateCertificationStatus() {
+    const requirements = document.querySelectorAll('.requirement-item input[type="checkbox"]');
+    const completedCount = document.querySelectorAll('.requirement-item input[type="checkbox"]:checked').length;
+    
+    if (completedCount === requirements.length) {
+        // 모든 요구사항 완료 시 최종 인증
+        setTimeout(() => {
+            alert('🎉 축하합니다! 온톨로지 마스터 아키텍트 인증을 획득하셨습니다!');
+        }, 1000);
+    }
+}
+
+// 드래그 앤 드롭 설정
+document.addEventListener('DOMContentLoaded', function() {
+    const patternTools = document.querySelectorAll('.pattern-tool');
+    const canvas = document.getElementById('designCanvas');
+    
+    patternTools.forEach(tool => {
+        tool.addEventListener('dragstart', function(e) {
+            e.dataTransfer.setData('text/plain', this.dataset.pattern);
+        });
+    });
+    
+    if (canvas) {
+        canvas.addEventListener('dragover', function(e) {
+            e.preventDefault();
+        });
+        
+        canvas.addEventListener('drop', function(e) {
+            e.preventDefault();
+            const patternType = e.dataTransfer.getData('text/plain');
+            
+            // 패턴 적용 로직
+            const patternElement = document.createElement('div');
+            patternElement.className = 'applied-pattern';
+            patternElement.innerHTML = `
+                <div class="pattern-instance">
+                    <h6>${patternType} 패턴</h6>
+                    <p>패턴이 적용되었습니다.</p>
+                </div>
+            `;
+            
+            if (this.querySelector('.scenario-setup')) {
+                this.querySelector('.canvas-workspace').appendChild(patternElement);
+            } else {
+                this.appendChild(patternElement);
+            }
+        });
+    }
+});
+</script>

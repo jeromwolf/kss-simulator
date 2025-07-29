@@ -24,13 +24,17 @@ interface ChapterExplainerWithAudioProps {
   backgroundMusic?: string;
 }
 
-// 간단한 TTS 시뮬레이션 (실제로는 음성 파일 사용)
-const NarrationAudio: React.FC<{ text: string; voice: 'male' | 'female' }> = ({ text, voice }) => {
-  // 실제 구현에서는 TTS API를 통해 생성된 오디오 파일 경로를 반환
-  // 예: const audioPath = await generateTTS(text, voice);
+// TTS 오디오 재생 컴포넌트
+const NarrationAudio: React.FC<{ 
+  audioId: string; 
+  volume?: number;
+}> = ({ audioId, volume = 1.0 }) => {
+  // 사전 생성된 TTS 오디오 파일 사용
+  const audioPath = `sounds/narrations/${audioId}.mp3`;
   
-  // 데모를 위해 임시 오디오 사용
-  return <Audio src={staticFile('sounds/silence.mp3')} volume={0.8} />;
+  console.log('Loading audio:', audioPath, 'with volume:', volume);
+  
+  return <Audio src={staticFile(audioPath)} volume={volume} />;
 };
 
 const Narration: React.FC<{ text: string; startFrame: number }> = ({ text, startFrame }) => {
@@ -129,7 +133,7 @@ const TitleSlideWithAudio: React.FC<{
       
       {/* TTS 오디오 */}
       <Sequence from={30}>
-        <NarrationAudio text={narration} voice="female" />
+        <NarrationAudio audioId={`chapter${number}-title`} />
       </Sequence>
     </AbsoluteFill>
   );
@@ -138,7 +142,8 @@ const TitleSlideWithAudio: React.FC<{
 const ContentSlideWithAudio: React.FC<{ 
   section: ChapterSection; 
   index: number;
-}> = ({ section, index }) => {
+  chapterNumber: number;
+}> = ({ section, index, chapterNumber }) => {
   const frame = useCurrentFrame();
   
   const titleY = interpolate(frame, [0, 20], [-50, 0], {
@@ -215,7 +220,7 @@ const ContentSlideWithAudio: React.FC<{
       
       {/* TTS 오디오 */}
       <Sequence from={20}>
-        <NarrationAudio text={section.narration} voice="female" />
+        <NarrationAudio audioId={`chapter${chapterNumber}-section${index + 1}`} />
       </Sequence>
     </AbsoluteFill>
   );
@@ -225,7 +230,7 @@ export const ChapterExplainerWithAudio: React.FC<ChapterExplainerWithAudioProps>
   chapterNumber,
   chapterTitle,
   sections,
-  backgroundMusic = 'sounds/silence.mp3'
+  backgroundMusic = 'sounds/background-music.mp3'
 }) => {
   const TITLE_DURATION = 90;
   const SECTION_DURATION = 150;
@@ -241,13 +246,15 @@ export const ChapterExplainerWithAudio: React.FC<ChapterExplainerWithAudioProps>
   
   return (
     <AbsoluteFill>
-      {/* 배경음악 - 전체 재생 */}
-      <Audio 
-        src={staticFile(backgroundMusic)} 
-        volume={0.1}
-        startFrom={0}
-        endAt={totalDuration}
-      />
+      {/* 배경음악 - 옵션 */}
+      {backgroundMusic && backgroundMusic !== 'sounds/background-music.mp3' && (
+        <Audio 
+          src={staticFile(backgroundMusic)} 
+          volume={0.1}
+          startFrom={0}
+          endAt={totalDuration}
+        />
+      )}
       
       {/* Title Slide */}
       <Sequence from={currentFrame} durationInFrames={TITLE_DURATION}>
@@ -267,7 +274,7 @@ export const ChapterExplainerWithAudio: React.FC<ChapterExplainerWithAudioProps>
             from={currentFrame}
             durationInFrames={SECTION_DURATION}
           >
-            <ContentSlideWithAudio section={section} index={index} />
+            <ContentSlideWithAudio section={section} index={index} chapterNumber={chapterNumber} />
           </Sequence>
         );
       })}
@@ -315,7 +322,7 @@ export const ChapterExplainerWithAudio: React.FC<ChapterExplainerWithAudioProps>
           
           {/* TTS 오디오 */}
           <Sequence from={30}>
-            <NarrationAudio text={summaryNarration} voice="female" />
+            <NarrationAudio audioId={`chapter${chapterNumber}-summary`} />
           </Sequence>
         </AbsoluteFill>
       </Sequence>

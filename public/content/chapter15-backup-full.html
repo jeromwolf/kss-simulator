@@ -1,0 +1,585 @@
+<!-- Chapter 15: 산업별 활용사례 -->
+
+<div class="chapter-header">
+    <h1>Chapter 15. 산업별 활용사례</h1>
+    <div class="chapter-quote">
+        "온톨로지는 모든 산업에서 지식 관리의 혁신을 이끌고 있습니다."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 35분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>주요 산업 분야의 온톨로지 활용 현황</li>
+        <li>산업별 특화 온톨로지 사례</li>
+        <li>실제 구현 사례와 효과</li>
+        <li>도입 시 고려사항과 교훈</li>
+    </ul>
+</div>
+
+<!-- 섹션 15.1 -->
+<section class="content-section">
+    <h2>15.1 의료 및 생명과학</h2>
+    
+    <p>의료 분야는 온톨로지가 가장 활발히 활용되는 영역 중 하나입니다.</p>
+    
+    <div class="industry-case">
+        <h3>주요 의료 온톨로지</h3>
+        <div class="ontology-examples">
+            <div class="ontology-card">
+                <h4>SNOMED CT</h4>
+                <p>가장 포괄적인 임상 용어 체계</p>
+                <ul>
+                    <li>350,000+ 개념</li>
+                    <li>1.5M+ 관계</li>
+                    <li>다국어 지원</li>
+                </ul>
+            </div>
+            
+            <div class="ontology-card">
+                <h4>Gene Ontology</h4>
+                <p>유전자 기능 분류 체계</p>
+                <ul>
+                    <li>생물학적 프로세스</li>
+                    <li>분자 기능</li>
+                    <li>세포 구성요소</li>
+                </ul>
+            </div>
+            
+            <div class="ontology-card">
+                <h4>ICD-11</h4>
+                <p>국제 질병 분류</p>
+                <ul>
+                    <li>WHO 표준</li>
+                    <li>17,000+ 질병</li>
+                    <li>의료 통계</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>실제 활용 사례</h3>
+        <div class="use-case-example">
+            <h4>IBM Watson for Oncology</h4>
+            <p>온톨로지 기반 암 진단 지원 시스템</p>
+            <pre class="code-block">
+# 암 진단 온톨로지 예시
+@prefix cancer: &lt;http://example.org/oncology#&gt; .
+
+cancer:BreastCancer rdf:type owl:Class ;
+    rdfs:subClassOf cancer:Cancer ;
+    cancer:hasRiskFactor cancer:GeneticPredisposition,
+                        cancer:Age,
+                        cancer:FamilyHistory ;
+    cancer:hasStage cancer:Stage0,
+                    cancer:StageI,
+                    cancer:StageII,
+                    cancer:StageIII,
+                    cancer:StageIV ;
+    cancer:hasTreatment cancer:Surgery,
+                        cancer:Chemotherapy,
+                        cancer:RadiationTherapy .
+
+# 치료 결정 규칙
+cancer:TreatmentDecision(?patient, ?treatment) ← 
+    cancer:hasCondition(?patient, ?cancer) ∧
+    cancer:hasStage(?cancer, ?stage) ∧
+    cancer:recommendedFor(?treatment, ?stage) ∧
+    cancer:noContraindication(?patient, ?treatment)
+            </pre>
+            
+            <div class="case-results">
+                <h5>도입 효과</h5>
+                <ul>
+                    <li>진단 정확도 96% 달성</li>
+                    <li>치료 계획 수립 시간 60% 단축</li>
+                    <li>의료진 간 일관성 향상</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 15.2 -->
+<section class="content-section">
+    <h2>15.2 금융 서비스</h2>
+    
+    <h3>금융 온톨로지 활용</h3>
+    <div class="finance-applications">
+        <div class="application-area">
+            <h4>규제 준수 (RegTech)</h4>
+            <p>복잡한 금융 규제를 온톨로지로 모델링</p>
+            <pre class="code-block">
+# FIBO (Financial Industry Business Ontology) 예시
+@prefix fibo-fnd: &lt;https://spec.edmcouncil.org/fibo/ontology/FND/&gt; .
+@prefix fibo-be: &lt;https://spec.edmcouncil.org/fibo/ontology/BE/&gt; .
+
+fibo-be:LegalEntity rdf:type owl:Class ;
+    rdfs:label "법인"@ko ;
+    rdfs:subClassOf fibo-fnd:Organization .
+
+fibo-be:Corporation rdfs:subClassOf fibo-be:LegalEntity ;
+    rdfs:label "주식회사"@ko ;
+    fibo-be:hasJurisdiction fibo-be:Jurisdiction ;
+    fibo-be:isListedOn fibo-fbc:Exchange .
+
+# AML (자금세탁방지) 규칙
+fibo-reg:SuspiciousTransaction(?trans) ← 
+    fibo-fbc:Transaction(?trans) ∧
+    fibo-fbc:hasAmount(?trans, ?amount) ∧
+    swrlb:greaterThan(?amount, 10000) ∧
+    fibo-fbc:hasFrequency(?trans, ?freq) ∧
+    swrlb:greaterThan(?freq, 5)
+            </pre>
+        </div>
+        
+        <div class="application-area">
+            <h4>리스크 관리</h4>
+            <p>통합 리스크 평가 프레임워크</p>
+            <ul>
+                <li>신용 리스크 모델링</li>
+                <li>시장 리스크 분석</li>
+                <li>운영 리스크 관리</li>
+                <li>통합 리스크 대시보드</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>실제 구현: JP Morgan COIN</h3>
+    <div class="implementation-case">
+        <p>계약 지능화 온톨로지 (Contract Intelligence)</p>
+        <ul>
+            <li>연간 360,000시간의 변호사 업무 자동화</li>
+            <li>상업 대출 계약 자동 분석</li>
+            <li>핵심 조항 추출 및 리스크 평가</li>
+        </ul>
+    </div>
+</section>
+
+<!-- 섹션 15.3 -->
+<section class="content-section">
+    <h2>15.3 제조업</h2>
+    
+    <h3>Industry 4.0과 온톨로지</h3>
+    <div class="manufacturing-ontology">
+        <h4>스마트 팩토리 온톨로지</h4>
+        <pre class="code-block">
+@prefix mfg: &lt;http://example.org/manufacturing#&gt; .
+@prefix iot: &lt;http://example.org/iot#&gt; .
+
+# 생산 설비 온톨로지
+mfg:ProductionEquipment rdf:type owl:Class ;
+    rdfs:label "생산 설비"@ko .
+
+mfg:Robot rdfs:subClassOf mfg:ProductionEquipment ;
+    mfg:hasCapability mfg:Welding,
+                      mfg:Assembly,
+                      mfg:Painting ;
+    iot:hasStatus iot:OperationalStatus ;
+    iot:hasSensor iot:TemperatureSensor,
+                  iot:VibrationSensor .
+
+# 예측 유지보수 규칙
+mfg:MaintenanceRequired(?equipment) ← 
+    mfg:ProductionEquipment(?equipment) ∧
+    iot:vibrationLevel(?equipment, ?vib) ∧
+    swrlb:greaterThan(?vib, 10) ∧
+    iot:operatingHours(?equipment, ?hours) ∧
+    swrlb:greaterThan(?hours, 1000)
+        </pre>
+        
+        <h4>디지털 트윈 통합</h4>
+        <div class="digital-twin-integration">
+            <p>물리적 자산과 디지털 모델을 온톨로지로 연결</p>
+            <ul>
+                <li>실시간 상태 모니터링</li>
+                <li>시뮬레이션 기반 최적화</li>
+                <li>예측적 의사결정</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>사례: Siemens MindSphere</h3>
+    <div class="siemens-case">
+        <p>산업 IoT 플랫폼에서의 온톨로지 활용</p>
+        <div class="case-metrics">
+            <div class="metric">
+                <h5>25%</h5>
+                <p>생산성 향상</p>
+            </div>
+            <div class="metric">
+                <h5>30%</h5>
+                <p>다운타임 감소</p>
+            </div>
+            <div class="metric">
+                <h5>20%</h5>
+                <p>유지보수 비용 절감</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 15.4 -->
+<section class="content-section">
+    <h2>15.4 전자상거래</h2>
+    
+    <h3>상품 온톨로지</h3>
+    <div class="ecommerce-ontology">
+        <h4>GS1 Smart Search</h4>
+        <p>글로벌 상품 분류 및 검색 표준</p>
+        <pre class="code-block">
+@prefix gs1: &lt;https://www.gs1.org/voc/&gt; .
+@prefix schema: &lt;https://schema.org/&gt; .
+
+gs1:Product rdf:type owl:Class ;
+    owl:equivalentClass schema:Product ;
+    rdfs:label "상품"@ko .
+
+gs1:hasGTIN rdf:type owl:DatatypeProperty ;
+    rdfs:domain gs1:Product ;
+    rdfs:range xsd:string ;
+    owl:cardinality 1 .
+
+# 상품 추천 규칙
+ecom:RecommendedProduct(?product2, ?customer) ← 
+    ecom:Purchase(?customer, ?product1) ∧
+    gs1:hasCategory(?product1, ?category) ∧
+    gs1:hasCategory(?product2, ?category) ∧
+    gs1:hasBrand(?product1, ?brand) ∧
+    gs1:hasBrand(?product2, ?brand) ∧
+    owl:differentFrom(?product1, ?product2)
+        </pre>
+    </div>
+    
+    <h3>Amazon Product Graph</h3>
+    <div class="amazon-case">
+        <h4>세계 최대 상품 지식 그래프</h4>
+        <ul>
+            <li>10억+ 상품 노드</li>
+            <li>100억+ 관계</li>
+            <li>다국어 상품 정보</li>
+            <li>실시간 재고 연동</li>
+        </ul>
+        
+        <div class="impact-metrics">
+            <p><strong>도입 효과:</strong></p>
+            <ul>
+                <li>검색 정확도 35% 향상</li>
+                <li>추천 클릭률 28% 증가</li>
+                <li>장바구니 추가율 22% 상승</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 15.5 -->
+<section class="content-section">
+    <h2>15.5 교육 분야</h2>
+    
+    <h3>교육 온톨로지</h3>
+    <div class="education-ontology">
+        <h4>IEEE LOM (Learning Object Metadata)</h4>
+        <p>학습 객체 메타데이터 표준</p>
+        
+        <div class="learning-ontology-example">
+            <pre class="code-block">
+@prefix edu: &lt;http://example.org/education#&gt; .
+@prefix lom: &lt;http://ltsc.ieee.org/xsd/LOM&gt; .
+
+edu:LearningObject rdf:type owl:Class ;
+    rdfs:label "학습 객체"@ko .
+
+edu:Course rdfs:subClassOf edu:LearningObject ;
+    edu:hasPrerequisite edu:Course ;
+    edu:hasLearningOutcome edu:LearningOutcome ;
+    edu:hasDifficulty edu:DifficultyLevel ;
+    edu:estimatedTime xsd:duration .
+
+# 적응형 학습 경로 추천
+edu:RecommendedNext(?course2, ?student) ← 
+    edu:Completed(?student, ?course1) ∧
+    edu:hasLearningOutcome(?course1, ?outcome1) ∧
+    edu:hasPrerequisite(?course2, ?course1) ∧
+    edu:hasSkillLevel(?student, ?skill) ∧
+    edu:requiresSkillLevel(?course2, ?required) ∧
+    swrlb:greaterThanOrEqual(?skill, ?required)
+            </pre>
+        </div>
+    </div>
+    
+    <h3>Coursera 지식 그래프</h3>
+    <div class="coursera-case">
+        <p>개인화된 학습 경로 추천 시스템</p>
+        <ul>
+            <li>5,000+ 강좌 분류</li>
+            <li>기술 스킬 온톨로지</li>
+            <li>경력 경로 매핑</li>
+            <li>학습 성과 예측</li>
+        </ul>
+    </div>
+</section>
+
+<!-- 섹션 15.6 -->
+<section class="content-section">
+    <h2>15.6 스마트 시티</h2>
+    
+    <h3>도시 인프라 온톨로지</h3>
+    <div class="smart-city-ontology">
+        <pre class="code-block">
+@prefix city: &lt;http://example.org/smartcity#&gt; .
+@prefix geo: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+
+city:CityInfrastructure rdf:type owl:Class ;
+    rdfs:label "도시 인프라"@ko .
+
+city:TransportationSystem rdfs:subClassOf city:CityInfrastructure ;
+    city:hasCapacity xsd:integer ;
+    city:currentUtilization xsd:decimal ;
+    geo:hasGeometry geo:Geometry .
+
+city:TrafficLight rdfs:subClassOf city:TransportationSystem ;
+    city:hasPhase city:Green, city:Yellow, city:Red ;
+    city:connectedTo city:TrafficSensor ;
+    city:controlledBy city:TrafficManagementSystem .
+
+# 교통 최적화 규칙
+city:AdjustSignalTiming(?light, ?newTiming) ← 
+    city:TrafficLight(?light) ∧
+    city:nearbyTraffic(?light, ?volume) ∧
+    swrlb:greaterThan(?volume, 100) ∧
+    city:currentPhase(?light, city:Red) ∧
+    city:waitTime(?light, ?wait) ∧
+    swrlb:greaterThan(?wait, 120)
+        </pre>
+    </div>
+    
+    <h3>싱가포르 Smart Nation</h3>
+    <div class="singapore-case">
+        <h4>통합 도시 온톨로지 플랫폼</h4>
+        <div class="smart-nation-components">
+            <div class="component-card">
+                <h5>교통</h5>
+                <p>실시간 교통 흐름 최적화</p>
+            </div>
+            <div class="component-card">
+                <h5>에너지</h5>
+                <p>스마트 그리드 관리</p>
+            </div>
+            <div class="component-card">
+                <h5>환경</h5>
+                <p>대기질 모니터링</p>
+            </div>
+            <div class="component-card">
+                <h5>안전</h5>
+                <p>통합 보안 시스템</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>산업별 특징</h3>
+            <ul>
+                <li>의료: 정확성과 표준화</li>
+                <li>금융: 규제 준수와 리스크</li>
+                <li>제조: 자동화와 최적화</li>
+                <li>교육: 개인화와 적응성</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>공통 성공 요인</h3>
+            <ul>
+                <li>명확한 비즈니스 목표</li>
+                <li>단계적 구현 전략</li>
+                <li>이해관계자 참여</li>
+                <li>지속적 개선</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>도입 시 고려사항</h3>
+            <ul>
+                <li>기존 시스템 통합</li>
+                <li>데이터 품질 관리</li>
+                <li>조직 문화 변화</li>
+                <li>ROI 측정 방법</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제: 산업 특화 온톨로지 설계</h3>
+        <p>관심 있는 산업 분야를 선택하여 온톨로지를 설계하세요:</p>
+        <ol>
+            <li>산업 도메인 분석 (주요 개체, 프로세스)</li>
+            <li>핵심 클래스와 관계 정의</li>
+            <li>비즈니스 규칙 모델링</li>
+            <li>기존 표준과의 연계 방안</li>
+            <li>예상 효과와 ROI 분석</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>온톨로지 생태계와 커뮤니티, 그리고 미래 전망에 대해 알아봅니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter16')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+.industry-case {
+    margin: 2rem 0;
+}
+
+.ontology-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.ontology-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e0e7ff;
+    text-align: center;
+}
+
+.ontology-card h4 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.use-case-example {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.case-results {
+    background: #f0fdf4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.finance-applications {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.application-area {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.implementation-case {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #3b82f6;
+    margin: 2rem 0;
+}
+
+.digital-twin-integration {
+    background: #e0e7ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.case-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric h5 {
+    font-size: 2rem;
+    color: #10b981;
+    margin: 0;
+}
+
+.amazon-case {
+    background: #f0f9ff;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.impact-metrics {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.smart-nation-components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.component-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+.component-card h5 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .ontology-examples,
+    .case-metrics {
+        flex-direction: column;
+    }
+    
+    .metric {
+        margin-bottom: 1rem;
+    }
+}
+</style>

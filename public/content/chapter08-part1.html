@@ -1,0 +1,2322 @@
+<!-- Chapter 8: Protégé - 온톨로지 개발의 필수 도구 (인터랙티브 마스터 버전) Part 1 -->
+
+<div class="chapter-header protege-epic">
+    <div class="protege-bg-animation"></div>
+    <h1 class="chapter-title stanford-style" data-text="Chapter 8. Protégé">Chapter 8. Protégé - 온톨로지 개발의 필수 도구</h1>
+    <div class="chapter-subtitle">아이디어에서 실제 온톨로지까지</div>
+    <div class="chapter-quote">
+        "Protégé는 단순한 도구가 아니라, 온톨로지 개발자의 사고를 현실로 만드는 마법입니다." <br>
+        <span class="quote-author">- Mark Musen, Protégé 개발 팀 리더</span>
+    </div>
+    <div class="protege-mascot">🛠️</div>
+</div>
+
+<!-- 게임화된 학습 준비 -->
+<div class="protege-academy-intro">
+    <h2>🏛️ Protégé 아카데미에 오신 것을 환영합니다!</h2>
+    <div class="academy-dashboard">
+        <div class="student-profile">
+            <div class="avatar-container">
+                <div class="avatar">👨‍💻</div>
+                <div class="level-badge">초보자</div>
+            </div>
+            <div class="progress-info">
+                <h4>학습 진행 상황</h4>
+                <div class="skill-meters">
+                    <div class="skill-meter">
+                        <span class="skill-name">온톨로지 이론</span>
+                        <div class="meter-bar">
+                            <div class="meter-fill theory" style="width: 85%"></div>
+                        </div>
+                        <span class="skill-level">고급</span>
+                    </div>
+                    <div class="skill-meter">
+                        <span class="skill-name">실무 도구 활용</span>
+                        <div class="meter-bar">
+                            <div class="meter-fill practical" style="width: 15%"></div>
+                        </div>
+                        <span class="skill-level">초급</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="learning-path">
+            <h4>🗺️ 학습 경로</h4>
+            <div class="path-stages">
+                <div class="stage-item current">
+                    <span class="stage-number">1</span>
+                    <span class="stage-name">Protégé 마스터</span>
+                    <span class="stage-reward">🏆 도구 전문가</span>
+                </div>
+                <div class="stage-item locked">
+                    <span class="stage-number">2</span>
+                    <span class="stage-name">추론 엔진</span>
+                    <span class="stage-reward">🏆 추론 마스터</span>
+                </div>
+                <div class="stage-item locked">
+                    <span class="stage-number">3</span>
+                    <span class="stage-name">실전 프로젝트</span>
+                    <span class="stage-reward">🏆 온톨로지 아키텍트</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 인터랙티브 학습 목표 -->
+<div class="learning-objectives protege-style">
+    <h3><i class="fas fa-bullseye"></i> 미션 목표</h3>
+    <div class="objectives-missions">
+        <div class="mission-card beginner active">
+            <div class="mission-header">
+                <span class="mission-icon">🎮</span>
+                <h4>Mission 1: 도구 마스터</h4>
+                <span class="difficulty">⭐⭐☆☆☆</span>
+            </div>
+            <div class="mission-content">
+                <div class="mission-goals">
+                    <div class="goal-item">
+                        <span class="status">⏳</span>
+                        <span>Protégé 5.5 완벽 설치</span>
+                    </div>
+                    <div class="goal-item">
+                        <span class="status">⏳</span>
+                        <span>인터페이스 구성 완전 이해</span>
+                    </div>
+                    <div class="goal-item">
+                        <span class="status">⏳</span>
+                        <span>첫 번째 온톨로지 생성</span>
+                    </div>
+                    <div class="goal-item">
+                        <span class="status">⏳</span>
+                        <span>클래스와 속성 정의</span>
+                    </div>
+                </div>
+                <div class="mission-reward">
+                    <span class="reward-icon">🏅</span>
+                    <span>보상: Protégé 초급자 뱃지</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mission-card intermediate">
+            <div class="mission-header">
+                <span class="mission-icon">🔒</span>
+                <h4>Mission 2: 고급 기능</h4>
+                <span class="difficulty">⭐⭐⭐☆☆</span>
+            </div>
+            <div class="mission-content locked-mission">
+                <div class="unlock-condition">Mission 1 완료 후 잠금 해제</div>
+            </div>
+        </div>
+        
+        <div class="mission-card expert">
+            <div class="mission-header">
+                <span class="mission-icon">🔒</span>
+                <h4>Mission 3: 실전 프로젝트</h4>  
+                <span class="difficulty">⭐⭐⭐⭐⭐</span>
+            </div>
+            <div class="mission-content locked-mission">
+                <div class="unlock-condition">Mission 2 완료 후 잠금 해제</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 8.1: Protégé의 탄생과 역사 -->
+<section class="content-section stanford-history">
+    <h2>8.1 Stanford에서 시작된 혁신의 역사</h2>
+    
+    <!-- 인터랙티브 역사 타임라인 -->
+    <div class="history-experience">
+        <h3>🏛️ 시간 여행: Protégé의 진화</h3>
+        
+        <div class="timeline-player">
+            <div class="timeline-controls">
+                <button class="timeline-btn" onclick="jumpToEra(1987)">1987년</button>
+                <button class="timeline-btn" onclick="jumpToEra(2000)">2000년</button>
+                <button class="timeline-btn active" onclick="jumpToEra(2009)">2009년</button>
+                <button class="timeline-btn" onclick="jumpToEra(2024)">2024년</button>
+            </div>
+            
+            <div class="era-display" id="era-2009">
+                <div class="era-background stanford-bg"></div>
+                <div class="era-content">
+                    <div class="era-header">
+                        <h4>2009년: Protégé 4.0 혁명</h4>
+                        <div class="era-location">📍 Stanford University, California</div>
+                    </div>
+                    
+                    <div class="era-story">
+                        <div class="story-narrator">
+                            <img src="/assets/mark-musen.jpg" alt="Mark Musen" class="narrator-img">
+                            <div class="narrator-info">
+                                <span class="narrator-name">Mark Musen</span>
+                                <span class="narrator-title">Protégé Project Director</span>
+                            </div>
+                        </div>
+                        
+                        <div class="story-dialogue">
+                            <p>"우리는 온톨로지 개발의 패러다임을 바꾸고 싶었습니다. 
+                            복잡한 지식 구조를 시각적으로, 직관적으로 다룰 수 있는 도구를 만들고자 했죠."</p>
+                        </div>
+                        
+                        <div class="era-achievements">
+                            <h5>🏆 주요 혁신</h5>
+                            <div class="achievement-grid">
+                                <div class="achievement-item">
+                                    <span class="achievement-icon">🎨</span>
+                                    <span>완전히 새로운 UI/UX</span>
+                                </div>
+                                <div class="achievement-item">
+                                    <span class="achievement-icon">🦉</span>
+                                    <span>OWL 2 표준 완전 지원</span>
+                                </div>
+                                <div class="achievement-item">
+                                    <span class="achievement-icon">🧩</span>
+                                    <span>플러그인 생태계 확장</span>
+                                </div>
+                                <div class="achievement-item">
+                                    <span class="achievement-icon">⚡</span>
+                                    <span>성능 대폭 향상</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 사용 통계 대시보드 -->
+        <div class="usage-stats">
+            <h4>📊 글로벌 영향력</h4>
+            <div class="stats-grid">
+                <div class="stat-card downloads">
+                    <div class="stat-icon">📥</div>  
+                    <div class="stat-value" id="downloadCount">2,847,293</div>
+                    <div class="stat-label">총 다운로드</div>
+                    <div class="stat-animation">
+                        <div class="counter-animation"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card countries">
+                    <div class="stat-icon">🌍</div>
+                    <div class="stat-value">150+</div>
+                    <div class="stat-label">사용 국가</div>
+                </div>
+                
+                <div class="stat-card users">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value">500,000+</div>
+                    <div class="stat-label">활성 사용자</div>
+                </div>
+                
+                <div class="stat-card papers">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-value">12,847</div>
+                    <div class="stat-label">관련 논문</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.2: 왜 Protégé인가? -->
+<section class="content-section why-protege">
+    <h2>8.2 전 세계가 선택한 이유</h2>
+    
+    <!-- 경쟁사 비교 인터랙티브 -->
+    <div class="competitor-comparison">
+        <h3>🥊 온톨로지 도구 대결</h3>
+        
+        <div class="comparison-arena">
+            <div class="competitor-select">
+                <h4>도구 선택</h4>
+                <div class="tool-options">
+                    <button class="tool-btn active" onclick="selectTool('protege')">
+                        <img src="/assets/protege-logo.png" alt="Protégé" class="tool-logo">
+                        <span>Protégé</span>
+                    </button>
+                    <button class="tool-btn" onclick="selectTool('topbraid')">
+                        <img src="/assets/topbraid-logo.png" alt="TopBraid" class="tool-logo">
+                        <span>TopBraid</span>
+                    </button>
+                    <button class="tool-btn" onclick="selectTool('webprotege')">
+                        <img src="/assets/webprotege-logo.png" alt="WebProtégé" class="tool-logo">
+                        <span>WebProtégé</span>
+                    </button>
+                    <button class="tool-btn" onclick="selectTool('fluent')">
+                        <img src="/assets/fluent-logo.png" alt="Fluent Editor" class="tool-logo">
+                        <span>Fluent Editor</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="comparison-chart" id="comparisonChart">
+                <div class="chart-category">
+                    <h5>💰 가격</h5>
+                    <div class="score-bar">
+                        <div class="score-fill protege-score" style="width: 100%"></div>
+                        <span class="score-text">무료 (100점)</span>
+                    </div>
+                </div>
+                
+                <div class="chart-category">
+                    <h5>🎯 사용 편의성</h5>
+                    <div class="score-bar">
+                        <div class="score-fill protege-score" style="width: 88%"></div>
+                        <span class="score-text">88점</span>
+                    </div>
+                </div>
+                
+                <div class="chart-category">
+                    <h5>🔧 기능 완성도</h5>
+                    <div class="score-bar">
+                        <div class="score-fill protege-score" style="width: 95%"></div>
+                        <span class="score-text">95점</span>
+                    </div>
+                </div>
+                
+                <div class="chart-category">
+                    <h5>🌐 커뮤니티</h5>
+                    <div class="score-bar">
+                        <div class="score-fill protege-score" style="width: 98%"></div>
+                        <span class="score-text">98점</span>
+                    </div>
+                </div>
+                
+                <div class="chart-category">
+                    <h5>🚀 성능</h5>
+                    <div class="score-bar">
+                        <div class="score-fill protege-score" style="width: 85%"></div>
+                        <span class="score-text">85점</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="winner-display">
+                <div class="winner-badge">
+                    <div class="trophy">🏆</div>
+                    <div class="winner-text">종합 우승: Protégé</div>
+                    <div class="winner-score">총점: 466/500</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실제 사용 사례 쇼케이스 -->
+    <div class="use-cases-showcase">
+        <h3>🌟 글로벌 성공 사례</h3>
+        
+        <div class="case-tabs">
+            <button class="case-tab active" onclick="showCase('medical')">의료</button>
+            <button class="case-tab" onclick="showCase('finance')">금융</button>
+            <button class="case-tab" onclick="showCase('manufacturing')">제조</button>
+            <button class="case-tab" onclick="showCase('government')">정부</button>
+        </div>
+        
+        <div class="case-content" id="medical-case">
+            <div class="case-header">
+                <h4>🏥 의료 분야: Mayo Clinic의 혁신</h4>
+                <div class="case-location">미국 미네소타주 로체스터</div>
+            </div>
+            
+            <div class="case-details">
+                <div class="case-challenge">
+                    <h5>🎯 도전 과제</h5>
+                    <p>5만 개 이상의 의학 용어와 100만 개의 관계를 체계화하여 
+                    의사들의 진단 정확도를 향상시키고 싶었습니다.</p>
+                </div>
+                
+                <div class="case-solution">
+                    <h5>💡 Protégé 솔루션</h5>
+                    <ul>
+                        <li>SNOMED CT 온톨로지를 Protégé로 구축</li>
+                        <li>추론 엔진으로 질병 간 관계 자동 도출</li>
+                        <li>의료진을 위한 시각적 진단 지원 시스템</li>
+                    </ul>
+                </div>
+                
+                <div class="case-results">
+                    <h5>📈 성과</h5>
+                    <div class="results-metrics">
+                        <div class="metric">
+                            <span class="metric-value">23%</span>
+                            <span class="metric-label">진단 정확도 향상</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">40%</span>
+                            <span class="metric-label">진단 시간 단축</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">$12M</span>
+                            <span class="metric-label">연간 비용 절감</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-testimonial">
+                    <blockquote>
+                        "Protégé 덕분에 복잡한 의학 지식을 체계화할 수 있었습니다. 
+                        이제 젊은 의사들도 전문의 수준의 진단 지원을 받을 수 있어요."
+                    </blockquote>
+                    <cite>- Dr. Christopher Chute, Mayo Clinic 의료정보학과 교수</cite>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.3: 설치와 초기 설정 -->
+<section class="content-section installation-master">
+    <h2>8.3 Protégé 완벽 설치 가이드</h2>
+    
+    <!-- 인터랙티브 설치 마법사 -->
+    <div class="installation-wizard">
+        <h3>🪄 설치 마법사</h3>
+        
+        <div class="wizard-interface">
+            <div class="wizard-progress">
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-name">OS 선택</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-name">다운로드</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-name">설치</span>
+                    </div>
+                    <div class="step" data-step="4">
+                        <span class="step-number">4</span>
+                        <span class="step-name">설정</span>
+                    </div>
+                    <div class="step" data-step="5">
+                        <span class="step-number">5</span>
+                        <span class="step-name">완료</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="wizardProgress" style="width: 20%"></div>
+                </div>
+            </div>
+            
+            <div class="wizard-content">
+                <!-- Step 1: OS 선택 -->
+                <div class="wizard-step active" id="step-1">
+                    <h4>💻 운영체제 선택</h4>
+                    <div class="os-detector">
+                        <p>자동 감지된 운영체제: <span id="detectedOS">Windows 10</span></p>
+                        <p>또는 수동으로 선택하세요:</p>
+                    </div>
+                    
+                    <div class="os-selection">
+                        <div class="os-card" onclick="selectOS('windows')">
+                            <div class="os-icon">🪟</div>
+                            <h5>Windows</h5>
+                            <p>Windows 10/11</p>
+                            <div class="os-requirements">
+                                <small>Java 8+ 필요</small>
+                            </div>
+                        </div>
+                        
+                        <div class="os-card" onclick="selectOS('macos')">
+                            <div class="os-icon">🍎</div>
+                            <h5>macOS</h5>
+                            <p>macOS 10.14+</p>
+                            <div class="os-requirements">
+                                <small>Intel/Apple Silicon</small>
+                            </div>
+                        </div>
+                        
+                        <div class="os-card" onclick="selectOS('linux')">
+                            <div class="os-icon">🐧</div>
+                            <h5>Linux</h5>
+                            <p>Ubuntu, CentOS, Fedora</p>
+                            <div class="os-requirements">
+                                <small>GTK+ 3.0+</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="wizard-next" onclick="nextStep()" disabled>다음 단계</button>
+                </div>
+                
+                <!-- Step 2: 다운로드 -->
+                <div class="wizard-step" id="step-2" style="display: none;">
+                    <h4>📥 다운로드</h4>
+                    <div class="download-info" id="downloadInfo">
+                        <!-- JavaScript로 동적 생성 -->
+                    </div>
+                    
+                    <div class="download-progress" id="downloadProgress" style="display: none;">
+                        <div class="progress-info">
+                            <span>Protégé 5.5.0 다운로드 중...</span>
+                            <span id="downloadPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill download-fill" id="downloadBar"></div>
+                        </div>
+                        <div class="download-speed">
+                            속도: <span id="downloadSpeed">2.3 MB/s</span> | 
+                            남은 시간: <span id="timeRemaining">1분 30초</span>
+                        </div>
+                    </div>
+                    
+                    <button class="wizard-next" onclick="startDownload()">다운로드 시작</button>
+                </div>
+                
+                <!-- Step 3: 설치 -->
+                <div class="wizard-step" id="step-3" style="display: none;">
+                    <h4>🔧 설치 진행</h4>
+                    <div class="installation-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <div class="btn red"></div>
+                                <div class="btn yellow"></div>
+                                <div class="btn green"></div>
+                            </div>
+                            <div class="terminal-title">Protégé 설치</div>
+                        </div>
+                        <div class="terminal-content" id="terminalOutput">
+                            <div class="terminal-line">$ 설치 프로그램 실행 중...</div>
+                            <div class="terminal-line">✓ Java 런타임 확인 완료</div>
+                            <div class="terminal-line">✓ 시스템 요구사항 검증</div>
+                            <div class="terminal-line">✓ 파일 압축 해제 중... (1/3)</div>
+                        </div>
+                    </div>
+                    
+                    <button class="wizard-next" onclick="nextStep()" style="display: none;" id="installComplete">설치 완료 - 다음</button>
+                </div>
+                
+                <!-- Step 4: 초기 설정 -->
+                <div class="wizard-step" id="step-4" style="display: none;">
+                    <h4>⚙️ 초기 설정 최적화</h4>
+                    
+                    <div class="settings-optimizer">
+                        <div class="setting-group">
+                            <h5>💾 메모리 설정</h5>
+                            <div class="memory-config">
+                                <label>최대 메모리 할당:</label>
+                                <div class="memory-slider">
+                                    <input type="range" id="memorySlider" min="1024" max="8192" value="4096" 
+                                           oninput="updateMemoryDisplay(this.value)">
+                                    <div class="memory-display">
+                                        <span id="memoryValue">4096</span> MB
+                                    </div>
+                                </div>
+                                <div class="memory-recommendations">
+                                    <small>
+                                        권장: 소규모 온톨로지 (2GB), 대규모 온톨로지 (4GB+)
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h5>🔄 자동 저장</h5>
+                            <div class="autosave-config">
+                                <label>
+                                    <input type="checkbox" id="enableAutosave" checked>
+                                    자동 저장 활성화
+                                </label>
+                                <div class="autosave-interval">
+                                    <label>저장 주기:</label>
+                                    <select id="autosaveInterval">
+                                        <option value="1">1분</option>
+                                        <option value="5" selected>5분</option>
+                                        <option value="10">10분</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-group">
+                            <h5>🧠 기본 추론 엔진</h5>
+                            <div class="reasoner-selection">
+                                <div class="reasoner-options">
+                                    <label class="reasoner-option">
+                                        <input type="radio" name="reasoner" value="hermit" checked>
+                                        <div class="reasoner-info">
+                                            <span class="reasoner-name">HermiT</span>
+                                            <span class="reasoner-desc">균형잡힌 성능 (권장)</span>
+                                        </div>
+                                    </label>
+                                    <label class="reasoner-option">
+                                        <input type="radio" name="reasoner" value="pellet">
+                                        <div class="reasoner-info">
+                                            <span class="reasoner-name">Pellet</span>
+                                            <span class="reasoner-desc">안정성 중시</span>
+                                        </div>
+                                    </label>
+                                    <label class="reasoner-option">
+                                        <input type="radio" name="reasoner" value="elk">
+                                        <div class="reasoner-info">
+                                            <span class="reasoner-name">ELK</span>
+                                            <span class="reasoner-desc">대용량 온톨로지</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="wizard-next" onclick="applySettings()">설정 적용</button>
+                </div>
+                
+                <!-- Step 5: 완료 -->
+                <div class="wizard-step" id="step-5" style="display: none;">
+                    <h4>🎉 설치 완료!</h4>
+                    
+                    <div class="installation-success">
+                        <div class="success-animation">
+                            <div class="checkmark">✓</div>
+                        </div>
+                        
+                        <div class="success-info">
+                            <h5>Protégé 5.5.0 설치 성공</h5>
+                            <p>이제 세계 최고의 온톨로지 개발 도구를 사용할 준비가 되었습니다!</p>
+                        </div>
+                        
+                        <div class="launch-options">
+                            <button class="launch-btn primary" onclick="launchProtege()">
+                                🚀 Protégé 실행
+                            </button>
+                            <button class="launch-btn secondary" onclick="showTutorial()">
+                                📚 튜토리얼 시작
+                            </button>
+                        </div>
+                        
+                        <div class="quick-tips">
+                            <h6>💡 빠른 시작 팁</h6>
+                            <ul>
+                                <li>File → New를 클릭하여 첫 온톨로지 생성</li>
+                                <li>Classes 탭에서 클래스 계층 구조 설계</li>
+                                <li>Object Properties로 관계 정의</li>
+                                <li>Reasoner 메뉴에서 추론 실행</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 설치 후 확인 체크리스트 -->
+    <div class="post-installation-checklist">
+        <h3>✅ 설치 확인 체크리스트</h3>
+        
+        <div class="checklist-interactive">
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <div class="check-box">☐</div>
+                <div class="check-content">
+                    <span class="check-title">Protégé 정상 실행</span>
+                    <span class="check-desc">프로그램이 오류 없이 시작되는지 확인</span>
+                </div>
+            </div>
+            
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <div class="check-box">☐</div>
+                <div class="check-content">
+                    <span class="check-title">Java 버전 호환성</span>
+                    <span class="check-desc">Help → About에서 Java 버전 확인 (8+ 필요)</span>
+                </div>
+            </div>
+            
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <div class="check-box">☐</div>
+                <div class="check-content">
+                    <span class="check-title">기본 플러그인 로드</span>
+                    <span class="check-desc">Window → Tabs에서 모든 탭이 표시되는지 확인</span>
+                </div>
+            </div>
+            
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <div class="check-box">☐</div>
+                <div class="check-content">
+                    <span class="check-title">추론 엔진 동작</span>
+                    <span class="check-desc">Reasoner 메뉴에서 HermiT 실행 가능한지 확인</span>
+                </div>
+            </div>
+            
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <div class="check-box">☐</div>
+                <div class="check-content">
+                    <span class="check-title">샘플 온톨로지 열기</span>
+                    <span class="check-desc">File → Open examples에서 pizza.owl 로드 테스트</span>
+                </div>
+            </div>
+            
+            <div class="checklist-item" onclick="toggleCheck(this)">
+                <div class="check-box">☐</div>
+                <div class="check-content">
+                    <span class="check-title">메모리 설정 적용</span>
+                    <span class="check-desc">대용량 파일 로드 시 OutOfMemory 오류 없음</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="checklist-result" id="checklistResult">
+            <div class="result-summary">
+                <span class="checked-count">0</span>/6 완료
+                <div class="result-bar">
+                    <div class="result-fill" id="resultFill"></div>
+                </div>
+            </div>
+            <div class="result-message" id="resultMessage">
+                체크리스트를 완료하여 설치를 검증하세요!
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 스타일 정의 -->
+<style>
+/* Chapter 8 Part 1 특별 스타일 */
+.chapter-header.protege-epic {
+    background: linear-gradient(135deg, #8B0000 0%, #DC143C 25%, #CD853F 50%, #DAA520 75%, #FFD700 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.protege-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+    animation: protegeFloat 15s linear infinite;
+}
+
+.chapter-title.stanford-style {
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.8);
+    font-weight: bold;
+    animation: stanfordGlow 3s ease-in-out infinite;
+}
+
+.protege-mascot {
+    font-size: 4rem;
+    animation: toolBounce 2s ease-in-out infinite;
+}
+
+/* 아카데미 인트로 */
+.protege-academy-intro {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 2rem 0;
+    color: white;
+}
+
+.academy-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.student-profile {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.avatar {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a2e;
+}
+
+.level-badge {
+    background: #DC143C;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.skill-meters {
+    margin-top: 1rem;
+}
+
+.skill-meter {
+    margin: 1rem 0;
+}
+
+.skill-name {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+.meter-bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.meter-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 2s ease;
+}
+
+.meter-fill.theory {
+    background: linear-gradient(to right, #4CAF50, #8BC34A);
+}
+
+.meter-fill.practical {
+    background: linear-gradient(to right, #FF9800, #FFC107);
+    animation: practicalPulse 2s ease-in-out infinite;
+}
+
+.skill-level {
+    font-size: 0.8rem;
+    color: #DAA520;
+    font-weight: bold;
+}
+
+/* 학습 경로 */
+.learning-path {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.path-stages {
+    margin-top: 1rem;
+}
+
+.stage-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+
+.stage-item.current {
+    background: rgba(255, 215, 0, 0.2);
+    border: 2px solid #FFD700;
+}
+
+.stage-item.locked {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.stage-number {
+    background: #FFD700;
+    color: #1a1a2e;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.stage-item.locked .stage-number {
+    background: #666;
+    color: #ccc;
+}
+
+.stage-name {
+    flex: 1;
+    font-weight: bold;
+}
+
+.stage-reward {
+    font-size: 0.9rem;
+    color: #DAA520;
+}
+
+/* 미션 목표 */
+.learning-objectives.protege-style {
+    background: #1a1a2e;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 2rem 0;
+}
+
+.objectives-missions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.mission-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.mission-card.active {
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.mission-card.beginner {
+    border-left: 4px solid #4CAF50;
+}
+
+.mission-card.intermediate {
+    border-left: 4px solid #FF9800;
+}
+
+.mission-card.expert {
+    border-left: 4px solid #F44336;
+}
+
+.mission-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.mission-icon {
+    font-size: 2rem;
+}
+
+.difficulty {
+    font-size: 1.2rem;
+}
+
+.mission-goals {
+    margin: 1rem 0;
+}
+
+.goal-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.status {
+    font-size: 1.2rem;
+}
+
+.mission-reward {
+    background: rgba(255, 215, 0, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.locked-mission {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Stanford 역사 섹션 */
+.stanford-history {
+    background: linear-gradient(135deg, #8B0000, #DC143C);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.history-experience {
+    margin-top: 2rem;
+}
+
+.timeline-player {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.timeline-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.timeline-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid transparent;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.timeline-btn.active {
+    background: #FFD700;
+    color: #8B0000;
+    border-color: #DAA520;
+}
+
+.timeline-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.era-display {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stanford-bg {
+    background: url('/assets/stanford-campus.jpg') center/cover;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.era-content {
+    position: relative;
+    z-index: 2;
+}
+
+.era-header {
+    margin-bottom: 2rem;
+}
+
+.era-location {
+    color: #DAA520;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.story-narrator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.narrator-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #FFD700;
+}
+
+.narrator-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.narrator-name {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.narrator-title {
+    font-size: 0.9rem;
+    color: #DAA520;
+}
+
+.story-dialogue {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #FFD700;
+    margin: 1rem 0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.achievement-item {
+    background: rgba(255, 215, 0, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.achievement-icon {
+    font-size: 1.5rem;
+}
+
+/* 사용 통계 */
+.usage-stats {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card.downloads {
+    border: 2px solid #4CAF50;
+}
+
+.stat-card.countries {
+    border: 2px solid #2196F3;
+}
+
+.stat-card.users {
+    border: 2px solid #FF9800;
+}
+
+.stat-card.papers {
+    border: 2px solid #9C27B0;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    margin: 1rem 0;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.counter-animation {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: counterShine 3s infinite;
+}
+
+/* 경쟁사 비교 */
+.competitor-comparison {
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.comparison-arena {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.tool-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.tool-btn {
+    background: #f1f3f4;
+    border: 2px solid transparent;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tool-btn.active {
+    background: #FFD700;
+    border-color: #DAA520;
+    color: #8B0000;
+}
+
+.tool-logo {
+    width: 30px;
+    height: 30px;
+}
+
+.comparison-chart {
+    margin: 2rem 0;
+}
+
+.chart-category {
+    margin: 1rem 0;
+}
+
+.score-bar {
+    background: #e9ecef;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.score-fill {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+}
+
+.protege-score {
+    background: linear-gradient(to right, #FFD700, #DAA520);
+}
+
+.score-text {
+    font-weight: bold;
+    color: #8B0000;
+    font-size: 0.9rem;
+}
+
+.winner-display {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.winner-badge {
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    color: #8B0000;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: inline-block;
+}
+
+.trophy {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.winner-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* 사용 사례 쇼케이스 */
+.use-cases-showcase {
+    background: #1a1a2e;
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.case-tabs {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.case-tab {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid transparent;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.case-tab.active {
+    background: #FFD700;
+    color: #1a1a2e;
+    border-color: #DAA520;
+}
+
+.case-content {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.case-header {
+    margin-bottom: 2rem;
+}
+
+.case-location {
+    color: #DAA520;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.case-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.case-challenge, .case-solution, .case-results {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.case-challenge h5 {
+    color: #FF6B6B;
+}
+
+.case-solution h5 {
+    color: #4ECDC4;
+}
+
+.case-results h5 {
+    color: #45B7D1;
+}
+
+.results-metrics {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.metric {
+    background: rgba(255, 215, 0, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    display: block;
+}
+
+.metric-label {
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+.case-testimonial {
+    grid-column: 1 / -1;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #FFD700;
+    margin-top: 2rem;
+}
+
+.case-testimonial blockquote {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.case-testimonial cite {
+    color: #DAA520;
+    font-weight: bold;
+}
+
+/* 설치 마법사 */
+.installation-wizard {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+    color: white;
+}
+
+.wizard-interface {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.wizard-progress {
+    margin-bottom: 2rem;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step-number {
+    background: rgba(255, 255, 255, 0.3);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step.active .step-number {
+    background: #FFD700;
+    color: #667eea;
+}
+
+.step-name {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #FFD700;
+    transition: width 0.5s ease;
+}
+
+/* OS 선택 */
+.os-detector {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.os-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.os-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.os-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+}
+
+.os-card.selected {
+    border-color: #FFD700;
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.os-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.os-requirements {
+    margin-top: 1rem;
+    color: #ccc;
+}
+
+/* 다운로드 진행 */
+.download-progress {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.download-fill {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    animation: downloadProgress 3s ease-in-out;
+}
+
+.download-speed {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+/* 설치 터미널 */
+.installation-terminal {
+    background: #1a1a1a;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 2rem 0;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.terminal-header {
+    background: #333;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.btn.red { background: #ff5f56; }
+.btn.yellow { background: #ffbd2e; }
+.btn.green { background: #27ca3f; }
+
+.terminal-title {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.terminal-content {
+    padding: 2rem;
+    color: #0f0;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.terminal-line {
+    margin: 0.5rem 0;
+    animation: terminalType 0.5s ease;
+}
+
+/* 설정 최적화 */
+.settings-optimizer {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.setting-group {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+}
+
+.memory-config {
+    margin-top: 1rem;
+}
+
+.memory-slider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.memory-slider input[type="range"] {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.memory-slider input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #FFD700;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.memory-display {
+    background: #FFD700;
+    color: #667eea;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.memory-recommendations {
+    margin-top: 0.5rem;
+    color: #ccc;
+}
+
+.autosave-config {
+    margin-top: 1rem;
+}
+
+.autosave-config label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.autosave-interval {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.autosave-interval select {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.reasoner-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.reasoner-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.reasoner-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.reasoner-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.reasoner-name {
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.reasoner-desc {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* 설치 완료 */
+.installation-success {
+    text-align: center;
+}
+
+.success-animation {
+    margin: 2rem 0;
+}
+
+.checkmark {
+    font-size: 5rem;
+    color: #4CAF50;
+    animation: checkmarkBounce 1s ease;
+}
+
+.success-info h5 {
+    color: #FFD700;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.launch-options {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.launch-btn {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.launch-btn.primary {
+    background: #FFD700;
+    color: #667eea;
+}
+
+.launch-btn.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.launch-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.quick-tips {
+    background: rgba(255, 215, 0, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.quick-tips h6 {
+    color: #FFD700;
+    margin-bottom: 1rem;
+}
+
+.quick-tips ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-tips li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quick-tips li:last-child {
+    border-bottom: none;
+}
+
+/* 설치 후 체크리스트 */
+.post-installation-checklist {
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.checklist-interactive {
+    margin: 2rem 0;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.checklist-item:hover {
+    background: #f1f3f4;
+    transform: translateX(5px);
+}
+
+.checklist-item.checked {
+    background: #e8f5e8;
+    border-color: #4CAF50;
+}
+
+.check-box {
+    font-size: 1.5rem;
+    color: #ccc;
+    transition: all 0.3s;
+}
+
+.checklist-item.checked .check-box {
+    color: #4CAF50;
+}
+
+.check-content {
+    flex: 1;
+}
+
+.check-title {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.check-desc {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.checklist-result {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.checked-count {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.result-bar {
+    flex: 1;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.result-fill {
+    height: 100%;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    transition: width 0.5s ease;
+}
+
+.result-message {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.wizard-next {
+    background: #FFD700;
+    color: #667eea;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    margin-top: 2rem;
+}
+
+.wizard-next:disabled {
+    background: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.wizard-next:not(:disabled):hover {
+    background: #DAA520;
+    transform: translateY(-2px);
+}
+
+/* 애니메이션 */
+@keyframes protegeFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes stanfordGlow {
+    0%, 100% { text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.8); }
+    50% { text-shadow: 2px 2px 20px rgba(255, 215, 0, 0.8); }
+}
+
+@keyframes toolBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes practicalPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes counterShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes downloadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes checkmarkBounce {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes terminalType {
+    0% { opacity: 0; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .academy-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .objectives-missions {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-controls {
+        flex-direction: column;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tool-options {
+        flex-direction: column;
+    }
+    
+    .case-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-metrics {
+        flex-direction: column;
+    }
+    
+    .progress-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .os-selection {
+        grid-template-columns: 1fr;
+    }
+    
+    .launch-options {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+
+<!-- 스크립트 -->
+<script>
+// 전역 변수
+let currentStep = 1;
+let selectedOS = '';
+let checkedItems = 0;
+
+// OS 자동 감지
+function detectOS() {
+    const userAgent = navigator.userAgent;
+    let detectedOS = 'Windows 10';
+    
+    if (userAgent.indexOf('Mac') !== -1) {
+        detectedOS = 'macOS';
+    } else if (userAgent.indexOf('Linux') !== -1) {
+        detectedOS = 'Linux';
+    }
+    
+    document.getElementById('detectedOS').textContent = detectedOS;
+}
+
+// 시대 선택
+function jumpToEra(year) {
+    const buttons = document.querySelectorAll('.timeline-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // 실제로는 각 시대별 컨텐츠를 표시
+    console.log(`Jumping to era: ${year}`);
+}
+
+// 도구 선택
+function selectTool(tool) {
+    const buttons = document.querySelectorAll('.tool-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // 점수 업데이트 (실제로는 각 도구별 점수가 다를 것)
+    updateComparisonChart(tool);
+}
+
+function updateComparisonChart(tool) {
+    const scores = {
+        protege: { price: 100, usability: 88, features: 95, community: 98, performance: 85 },
+        topbraid: { price: 40, usability: 92, features: 90, community: 60, performance: 88 },
+        webprotege: { price: 100, usability: 85, features: 70, community: 85, performance: 75 },
+        fluent: { price: 30, usability: 78, features: 65, community: 40, performance: 82 }
+    };
+    
+    const toolScores = scores[tool];
+    const categories = ['price', 'usability', 'features', 'community', 'performance'];
+    const fills = document.querySelectorAll('.score-fill');
+    const texts = document.querySelectorAll('.score-text');
+    
+    categories.forEach((category, index) => {
+        const score = toolScores[category];
+        fills[index].style.width = `${score}%`;
+        texts[index].textContent = `${score}점`;
+    });
+    
+    // 총점 계산
+    const total = Object.values(toolScores).reduce((a, b) => a + b, 0);
+    document.querySelector('.winner-score').textContent = `총점: ${total}/500`;
+}
+
+// 사용 사례 표시
+function showCase(caseType) {
+    const tabs = document.querySelectorAll('.case-tab');
+    const contents = document.querySelectorAll('.case-content');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    contents.forEach(content => content.style.display = 'none');
+    
+    event.target.classList.add('active');
+    document.getElementById(`${caseType}-case`).style.display = 'block';
+}
+
+// OS 선택
+function selectOS(os) {
+    selectedOS = os;
+    const cards = document.querySelectorAll('.os-card');
+    cards.forEach(card => card.classList.remove('selected'));
+    event.target.classList.add('selected');
+    
+    document.querySelector('.wizard-next').disabled = false;
+}
+
+// 다음 단계
+function nextStep() {
+    if (currentStep < 5) {
+        // 현재 단계 숨기기
+        document.getElementById(`step-${currentStep}`).style.display = 'none';
+        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+        
+        // 다음 단계 표시
+        currentStep++;
+        document.getElementById(`step-${currentStep}`).style.display = 'block';
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        
+        // 진행률 업데이트
+        const progress = (currentStep / 5) * 100;
+        document.getElementById('wizardProgress').style.width = `${progress}%`;
+        
+        // 각 단계별 특별 처리
+        if (currentStep === 2) {
+            setupDownloadStep();
+        } else if (currentStep === 3) {
+            simulateInstallation();
+        }
+    }
+}
+
+// 다운로드 단계 설정
+function setupDownloadStep() {
+    const downloadInfo = document.getElementById('downloadInfo');
+    const osInfo = {
+        windows: {
+            file: 'protege-5.5.0-win.zip',
+            size: '156 MB',
+            url: 'https://protege.stanford.edu/download/protege/5.5/installanywhere/Web_Installers/'
+        },
+        macos: {
+            file: 'Protege-5.5.0.dmg',
+            size: '142 MB', 
+            url: 'https://protege.stanford.edu/download/protege/5.5/installanywhere/Web_Installers/'
+        },
+        linux: {
+            file: 'protege-5.5.0-linux.tar.gz',
+            size: '138 MB',
+            url: 'https://protege.stanford.edu/download/protege/5.5/installanywhere/Web_Installers/'
+        }
+    };
+    
+    const info = osInfo[selectedOS] || osInfo.windows;
+    downloadInfo.innerHTML = `
+        <div class="download-details">
+            <h5>📦 다운로드 정보</h5>
+            <div class="file-info">
+                <div class="file-name">${info.file}</div>
+                <div class="file-size">크기: ${info.size}</div>
+                <div class="file-url">
+                    <a href="${info.url}" target="_blank">공식 다운로드 페이지</a>
+                </div>
+            </div>
+            <div class="download-features">
+                <h6>포함된 기능:</h6>
+                <ul>
+                    <li>✅ Protégé 5.5.0 메인 프로그램</li>
+                    <li>✅ 기본 추론 엔진 (HermiT, Pellet)</li>
+                    <li>✅ 기본 플러그인 세트</li>
+                    <li>✅ 샘플 온톨로지 파일들</li>
+                    <li>✅ 사용자 가이드 문서</li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+// 다운로드 시작
+function startDownload() {
+    const progressDiv = document.getElementById('downloadProgress');
+    const button = document.querySelector('#step-2 .wizard-next');
+    
+    progressDiv.style.display = 'block';
+    button.style.display = 'none';
+    
+    // 다운로드 진행률 시뮬레이션
+    simulateDownload();
+}
+
+function simulateDownload() {
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 100) progress = 100;
+        
+        document.getElementById('downloadBar').style.width = `${progress}%`;
+        document.getElementById('downloadPercent').textContent = `${Math.round(progress)}%`;
+        
+        // 속도와 시간 업데이트
+        const speed = (2.3 + Math.random() * 1.5).toFixed(1);
+        const timeLeft = Math.max(0, Math.round((100 - progress) / 10));
+        document.getElementById('downloadSpeed').textContent = `${speed} MB/s`;
+        document.getElementById('timeRemaining').textContent = `${timeLeft}초`;
+        
+        if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                document.getElementById('downloadProgress').innerHTML = `
+                    <div class="download-complete">
+                        <div class="success-icon">✅</div>
+                        <div class="success-text">다운로드 완료!</div>
+                    </div>
+                `;
+                setTimeout(() => nextStep(), 1000);
+            }, 500);
+        }
+    }, 200);
+}
+
+// 설치 시뮬레이션
+function simulateInstallation() {
+    const terminal = document.getElementById('terminalOutput');
+    const button = document.getElementById('installComplete');
+    
+    const installSteps = [
+        "✓ 디지털 서명 검증 중...",
+        "✓ 의존성 확인 (Java 8+ 발견)",
+        "✓ 설치 디렉토리 생성 중...",
+        "✓ 파일 추출 중... (2/3)",
+        "✓ 플러그인 초기화 중...",
+        "✓ 바로가기 생성 중...",
+        "✓ 레지스트리 등록 (Windows)",
+        "✓ 파일 권한 설정 중...",
+        "✓ 파일 추출 완료 (3/3)",
+        "✓ 설치 완료! Protégé 5.5.0 사용 준비됨"
+    ];
+    
+    let step = 0;
+    const interval = setInterval(() => {
+        if (step < installSteps.length) {
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.textContent = installSteps[step];
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+            step++;
+        } else {
+            clearInterval(interval);
+            button.style.display = 'block';
+        }
+    }, 800);
+}
+
+// 메모리 표시 업데이트
+function updateMemoryDisplay(value) {
+    document.getElementById('memoryValue').textContent = value;
+}
+
+// 설정 적용
+function applySettings() {
+    const memory = document.getElementById('memorySlider').value;
+    const autosave = document.getElementById('enableAutosave').checked;
+    const interval = document.getElementById('autosaveInterval').value;
+    const reasoner = document.querySelector('input[name="reasoner"]:checked').value;
+    
+    // 설정 적용 시뮬레이션
+    setTimeout(() => {
+        alert(`설정이 적용되었습니다!\n\n메모리: ${memory}MB\n자동저장: ${autosave ? '활성화 (' + interval + '분)' : '비활성화'}\n추론엔진: ${reasoner.toUpperCase()}`);
+        nextStep();
+    }, 500);
+}
+
+// Protégé 실행
+function launchProtege() {
+    alert('🚀 Protégé를 실행합니다!\n\n(실제 환경에서는 Protégé 프로그램이 시작됩니다)');
+}
+
+// 튜토리얼 표시
+function showTutorial() {
+    alert('📚 튜토리얼을 시작합니다!\n\n다음 섹션에서 Protégé 인터페이스와 기본 사용법을 배워보세요.');
+}
+
+// 체크리스트 토글
+function toggleCheck(element) {
+    element.classList.toggle('checked');
+    const checkbox = element.querySelector('.check-box');
+    
+    if (element.classList.contains('checked')) {
+        checkbox.textContent = '☑';
+        checkedItems++;
+    } else {
+        checkbox.textContent = '☐';
+        checkedItems--;
+    }
+    
+    updateChecklistResult();
+}
+
+function updateChecklistResult() {
+    const total = 6;
+    const percentage = (checkedItems / total) * 100;
+    
+    document.querySelector('.checked-count').textContent = checkedItems;
+    document.getElementById('resultFill').style.width = `${percentage}%`;
+    
+    let message = '';
+    if (checkedItems === 0) {
+        message = '체크리스트를 완료하여 설치를 검증하세요!';
+    } else if (checkedItems < 3) {
+        message = '좋은 시작입니다! 계속 확인해보세요.';
+    } else if (checkedItems < 6) {
+        message = '거의 다 왔습니다! 몇 가지만 더 확인하세요.';
+    } else {
+        message = '🎉 완벽합니다! Protégé 설치가 성공적으로 완료되었습니다!';
+    }
+    
+    document.getElementById('resultMessage').textContent = message;
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    detectOS();
+    
+    // 사용 통계 카운터 애니메이션
+    setTimeout(() => {
+        const downloadCount = document.getElementById('downloadCount');
+        if (downloadCount) {
+            let count = 0;
+            const target = 2847293;
+            const increment = target / 100;
+            
+            const counter = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target;
+                    clearInterval(counter);
+                }
+                downloadCount.textContent = Math.floor(count).toLocaleString();
+            }, 50);
+        }
+    }, 1000);
+});
+</script>

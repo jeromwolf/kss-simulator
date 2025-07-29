@@ -1,0 +1,1624 @@
+<!-- Chapter 14: AI와 온톨로지 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header explainable-ai-mastery">
+    <div class="xai-animation"></div>
+    <h2 class="part-title">Part 2: 설명 가능한 AI와 뉴로-심볼릭 시스템</h2>
+    <p class="part-description">AI의 블랙박스를 열고, 신경망과 심볼릭 AI의 완벽한 조화를 이룹니다!</p>
+</div>
+
+<!-- XAI 전문가 준비도 -->
+<div class="progress-check xai-expert">
+    <h3>🔍 설명 가능한 AI 전문가 준비도</h3>
+    <div class="xai-readiness">
+        <div class="transparency-levels">
+            <h4>AI 투명성 레벨</h4>
+            <div class="level-pyramid">
+                <div class="pyramid-level level-5">
+                    <span class="level-name">완전 투명성</span>
+                    <span class="level-desc">모든 결정 과정 설명 가능</span>
+                    <div class="level-progress" style="width: 60%"></div>
+                </div>
+                <div class="pyramid-level level-4">
+                    <span class="level-name">추론 경로</span>
+                    <span class="level-desc">논리적 추론 과정 추적</span>
+                    <div class="level-progress" style="width: 75%"></div>
+                </div>
+                <div class="pyramid-level level-3">
+                    <span class="level-name">특징 중요도</span>
+                    <span class="level-desc">입력 특징의 영향도 분석</span>
+                    <div class="level-progress" style="width: 85%"></div>
+                </div>
+                <div class="pyramid-level level-2">
+                    <span class="level-name">모델 구조</span>
+                    <span class="level-desc">아키텍처 이해</span>
+                    <div class="level-progress" style="width: 92%"></div>
+                </div>
+                <div class="pyramid-level level-1">
+                    <span class="level-name">기본 출력</span>
+                    <span class="level-desc">예측 결과만 제공</span>
+                    <div class="level-progress" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="xai-skills">
+            <h4>설명 기법 마스터리</h4>
+            <div class="skill-hexagons">
+                <div class="hexagon-skill">
+                    <div class="hexagon-content">
+                        <span class="skill-icon">🎯</span>
+                        <span class="skill-name">LIME</span>
+                        <span class="skill-level">85%</span>
+                    </div>
+                </div>
+                <div class="hexagon-skill">
+                    <div class="hexagon-content">
+                        <span class="skill-icon">🔥</span>
+                        <span class="skill-name">SHAP</span>
+                        <span class="skill-level">82%</span>
+                    </div>
+                </div>
+                <div class="hexagon-skill">
+                    <div class="hexagon-content">
+                        <span class="skill-icon">🌈</span>
+                        <span class="skill-name">Grad-CAM</span>
+                        <span class="skill-level">78%</span>
+                    </div>
+                </div>
+                <div class="hexagon-skill">
+                    <div class="hexagon-content">
+                        <span class="skill-icon">📊</span>
+                        <span class="skill-name">Attention</span>
+                        <span class="skill-level">80%</span>
+                    </div>
+                </div>
+                <div class="hexagon-skill">
+                    <div class="hexagon-content">
+                        <span class="skill-icon">🧩</span>
+                        <span class="skill-name">온톨로지 기반</span>
+                        <span class="skill-level">88%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 14.4: XAI 실습 랩 -->
+<section class="content-section xai-lab">
+    <h2>14.4 설명 가능한 AI 실습 연구실</h2>
+    
+    <!-- XAI 대시보드 -->
+    <div class="xai-dashboard">
+        <h3>🔬 XAI 분석 대시보드</h3>
+        <div class="xai-interface">
+            <!-- 모델 선택 및 입력 -->
+            <div class="model-input-panel">
+                <h4>모델 및 데이터 설정</h4>
+                <div class="model-selector">
+                    <label>AI 모델 선택</label>
+                    <select id="modelSelect" onchange="updateModelConfig()">
+                        <option value="image">이미지 분류 (CNN)</option>
+                        <option value="text">텍스트 분석 (BERT)</option>
+                        <option value="tabular">정형 데이터 (XGBoost)</option>
+                        <option value="hybrid">하이브리드 모델</option>
+                    </select>
+                </div>
+                
+                <div class="input-area" id="imageInput">
+                    <h5>이미지 업로드</h5>
+                    <div class="image-upload-zone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>이미지를 드래그하거나 클릭하여 업로드</p>
+                        <input type="file" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="sample-images">
+                        <h6>샘플 이미지</h6>
+                        <div class="sample-grid">
+                            <img src="#" alt="고양이" onclick="loadSample('cat')">
+                            <img src="#" alt="강아지" onclick="loadSample('dog')">
+                            <img src="#" alt="새" onclick="loadSample('bird')">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="analyze-btn" onclick="runXAIAnalysis()">
+                    <i class="fas fa-microscope"></i> XAI 분석 시작
+                </button>
+            </div>
+            
+            <!-- 설명 시각화 -->
+            <div class="explanation-panel">
+                <h4>AI 결정 과정 분석</h4>
+                <div class="explanation-tabs">
+                    <button class="tab-btn active" data-tab="prediction">예측 결과</button>
+                    <button class="tab-btn" data-tab="features">특징 중요도</button>
+                    <button class="tab-btn" data-tab="ontology">온톨로지 추론</button>
+                    <button class="tab-btn" data-tab="counterfactual">반사실적 설명</button>
+                </div>
+                
+                <div class="tab-content prediction-tab active">
+                    <div class="prediction-result">
+                        <h5>모델 예측</h5>
+                        <div class="prediction-display">
+                            <div class="predicted-class">
+                                <span class="class-icon">🐱</span>
+                                <span class="class-name">고양이</span>
+                                <span class="confidence">95.3%</span>
+                            </div>
+                            <div class="alternative-predictions">
+                                <div class="alt-prediction">
+                                    <span>🐯 호랑이</span>
+                                    <span>3.2%</span>
+                                </div>
+                                <div class="alt-prediction">
+                                    <span>🦁 사자</span>
+                                    <span>1.5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content features-tab">
+                    <div class="feature-importance">
+                        <h5>픽셀/특징 중요도</h5>
+                        <div class="heatmap-container">
+                            <canvas id="importanceHeatmap" width="400" height="400"></canvas>
+                        </div>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <span class="feature-name">귀 모양</span>
+                                <div class="importance-bar">
+                                    <div class="bar-fill" style="width: 92%"></div>
+                                </div>
+                                <span class="importance-value">0.92</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-name">수염</span>
+                                <div class="importance-bar">
+                                    <div class="bar-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="importance-value">0.85</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-name">눈 모양</span>
+                                <div class="importance-bar">
+                                    <div class="bar-fill" style="width: 78%"></div>
+                                </div>
+                                <span class="importance-value">0.78</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content ontology-tab">
+                    <div class="ontology-reasoning">
+                        <h5>온톨로지 기반 추론</h5>
+                        <div class="reasoning-tree">
+                            <div class="reasoning-node root">
+                                <span class="node-label">입력: 동물 이미지</span>
+                            </div>
+                            <div class="reasoning-branch">
+                                <div class="reasoning-node">
+                                    <span class="node-label">포유류 특징 감지</span>
+                                    <span class="node-confidence">98%</span>
+                                </div>
+                                <div class="reasoning-branch">
+                                    <div class="reasoning-node">
+                                        <span class="node-label">고양이과 특징</span>
+                                        <span class="node-confidence">95%</span>
+                                    </div>
+                                    <div class="reasoning-branch">
+                                        <div class="reasoning-node leaf">
+                                            <span class="node-label">집고양이 확정</span>
+                                            <span class="node-confidence">95.3%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ontology-rules">
+                            <h6>적용된 온톨로지 규칙</h6>
+                            <div class="rule-item">
+                                <code>hasFeature(X, whiskers) ∧ hasFeature(X, pointedEars) → Cat(X)</code>
+                            </div>
+                            <div class="rule-item">
+                                <code>Cat(X) ∧ size(X, small) ∧ domestic(X) → HouseCat(X)</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content counterfactual-tab">
+                    <div class="counterfactual-explanation">
+                        <h5>반사실적 설명</h5>
+                        <p>"만약 다음이 바뀌었다면 결과가 달라졌을 것입니다:"</p>
+                        <div class="counterfactual-scenarios">
+                            <div class="scenario">
+                                <div class="change-description">
+                                    <span class="change-icon">🔄</span>
+                                    <span>귀가 둥글었다면</span>
+                                </div>
+                                <div class="new-prediction">
+                                    <span>→ 강아지 (78%)</span>
+                                </div>
+                            </div>
+                            <div class="scenario">
+                                <div class="change-description">
+                                    <span class="change-icon">🔄</span>
+                                    <span>크기가 더 컸다면</span>
+                                </div>
+                                <div class="new-prediction">
+                                    <span>→ 호랑이 (82%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 자연어 설명 생성 -->
+            <div class="natural-language-explanation">
+                <h4>🗣️ 자연어 설명</h4>
+                <div class="explanation-text">
+                    <p class="generated-explanation">
+                        이 이미지는 <strong>95.3%의 확신도</strong>로 <strong>고양이</strong>로 분류되었습니다. 
+                        주요 판단 근거는 다음과 같습니다:
+                    </p>
+                    <ul class="explanation-points">
+                        <li>뾰족한 귀 모양이 고양이의 전형적인 특징과 일치합니다 (중요도: 92%)</li>
+                        <li>수염이 명확하게 보이며, 이는 고양이과 동물의 특징입니다 (중요도: 85%)</li>
+                        <li>눈의 모양과 동공이 고양이의 특성을 나타냅니다 (중요도: 78%)</li>
+                    </ul>
+                    <p class="confidence-statement">
+                        온톨로지 추론을 통해 포유류 → 고양이과 → 집고양이의 분류 체계를 따랐으며, 
+                        모든 단계에서 높은 확신도를 보였습니다.
+                    </p>
+                </div>
+                <button class="refine-btn" onclick="refineExplanation()">
+                    <i class="fas fa-magic"></i> 설명 개선
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 14.5: 뉴로-심볼릭 AI 실습 -->
+<section class="content-section neuro-symbolic">
+    <h2>14.5 뉴로-심볼릭 AI 통합 실습</h2>
+    
+    <!-- 뉴로-심볼릭 빌더 -->
+    <div class="neuro-symbolic-builder">
+        <h3>🧠🔗📚 뉴로-심볼릭 시스템 빌더</h3>
+        <div class="builder-interface">
+            <!-- 신경망 컴포넌트 -->
+            <div class="neural-component">
+                <h4>🧠 신경망 모듈</h4>
+                <div class="neural-config">
+                    <div class="network-architecture">
+                        <h5>네트워크 구조</h5>
+                        <div class="layer-stack">
+                            <div class="network-layer input-layer">
+                                <span class="layer-type">입력층</span>
+                                <input type="number" value="784" class="layer-size">
+                            </div>
+                            <div class="add-layer-btn" onclick="addLayer()">+</div>
+                            <div class="network-layer hidden-layer">
+                                <span class="layer-type">은닉층</span>
+                                <input type="number" value="128" class="layer-size">
+                                <select class="activation">
+                                    <option>ReLU</option>
+                                    <option>Sigmoid</option>
+                                    <option>Tanh</option>
+                                </select>
+                            </div>
+                            <div class="add-layer-btn" onclick="addLayer()">+</div>
+                            <div class="network-layer output-layer">
+                                <span class="layer-type">출력층</span>
+                                <input type="number" value="10" class="layer-size">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="training-config">
+                        <h5>학습 설정</h5>
+                        <div class="config-item">
+                            <label>학습률</label>
+                            <input type="number" value="0.001" step="0.001">
+                        </div>
+                        <div class="config-item">
+                            <label>배치 크기</label>
+                            <input type="number" value="32">
+                        </div>
+                        <div class="config-item">
+                            <label>에폭</label>
+                            <input type="number" value="10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 통합 브릿지 -->
+            <div class="integration-bridge">
+                <h4>🔗 통합 브릿지</h4>
+                <div class="bridge-visualization">
+                    <svg width="200" height="300" id="bridgeSvg">
+                        <!-- 동적 연결 시각화 -->
+                    </svg>
+                </div>
+                <div class="bridge-rules">
+                    <h5>변환 규칙</h5>
+                    <div class="rule-editor">
+                        <div class="rule">
+                            <span class="rule-name">특징 추출</span>
+                            <span class="rule-arrow">→</span>
+                            <span class="rule-target">개념 매핑</span>
+                        </div>
+                        <div class="rule">
+                            <span class="rule-name">활성화 패턴</span>
+                            <span class="rule-arrow">→</span>
+                            <span class="rule-target">논리 명제</span>
+                        </div>
+                        <button class="add-rule-btn">+ 규칙 추가</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 심볼릭 컴포넌트 -->
+            <div class="symbolic-component">
+                <h4>📚 심볼릭 추론 모듈</h4>
+                <div class="symbolic-config">
+                    <div class="knowledge-base">
+                        <h5>지식 베이스</h5>
+                        <div class="kb-editor">
+                            <textarea id="kbRules" rows="8">
+% 도메인 지식
+animal(X) :- mammal(X).
+animal(X) :- bird(X).
+mammal(X) :- cat(X).
+mammal(X) :- dog(X).
+
+% 추론 규칙
+pet(X) :- cat(X), domestic(X).
+pet(X) :- dog(X), domestic(X).
+
+% 제약 조건
+:- wild(X), domestic(X).
+                            </textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="reasoning-engine">
+                        <h5>추론 엔진</h5>
+                        <select id="reasonerType">
+                            <option>Forward Chaining</option>
+                            <option>Backward Chaining</option>
+                            <option>Probabilistic</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 통합 실행 및 모니터링 -->
+        <div class="execution-monitor">
+            <h4>🎯 통합 시스템 실행</h4>
+            <div class="execution-controls">
+                <button class="execute-btn" onclick="runNeuroSymbolic()">
+                    <i class="fas fa-play"></i> 시스템 실행
+                </button>
+                <button class="monitor-btn" onclick="toggleMonitoring()">
+                    <i class="fas fa-chart-line"></i> 모니터링
+                </button>
+            </div>
+            
+            <div class="execution-display">
+                <div class="data-flow-monitor">
+                    <h5>데이터 흐름</h5>
+                    <div class="flow-visualization">
+                        <div class="flow-stage neural-input">
+                            <span class="stage-label">입력 데이터</span>
+                            <div class="data-preview">[0.2, 0.8, 0.1, ...]</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-stage neural-processing">
+                            <span class="stage-label">신경망 처리</span>
+                            <div class="activations">[0.9, 0.1, 0.0, ...]</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-stage symbolic-mapping">
+                            <span class="stage-label">심볼 변환</span>
+                            <div class="symbols">cat(x1), confidence(0.9)</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-stage reasoning">
+                            <span class="stage-label">추론</span>
+                            <div class="conclusions">pet(x1) :- cat(x1), domestic(x1)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="performance-metrics">
+                    <h5>성능 지표</h5>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <span class="metric-label">정확도</span>
+                            <span class="metric-value">94.5%</span>
+                            <div class="metric-trend">↑ 2.3%</div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">추론 시간</span>
+                            <span class="metric-value">45ms</span>
+                            <div class="metric-trend">↓ 12ms</div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">설명력</span>
+                            <span class="metric-value">89%</span>
+                            <div class="metric-trend">↑ 15%</div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">일관성</span>
+                            <span class="metric-value">100%</span>
+                            <div class="metric-trend">→ 0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실전 예제: 게임 AI -->
+    <div class="game-ai-example">
+        <h3>🎮 실전 예제: 뉴로-심볼릭 게임 AI</h3>
+        <div class="game-demo">
+            <div class="game-board">
+                <h4>체스 AI 데모</h4>
+                <div class="chess-board">
+                    <canvas id="chessBoard" width="400" height="400"></canvas>
+                </div>
+                <div class="game-controls">
+                    <button onclick="makeMove()">AI 수 두기</button>
+                    <button onclick="explainMove()">수 설명</button>
+                    <button onclick="resetGame()">초기화</button>
+                </div>
+            </div>
+            
+            <div class="ai-thinking">
+                <h4>AI 사고 과정</h4>
+                <div class="thinking-process">
+                    <div class="neural-evaluation">
+                        <h5>신경망 평가</h5>
+                        <div class="position-scores">
+                            <div class="move-score">
+                                <span class="move">e2-e4</span>
+                                <span class="score">0.85</span>
+                            </div>
+                            <div class="move-score">
+                                <span class="move">d2-d4</span>
+                                <span class="score">0.82</span>
+                            </div>
+                            <div class="move-score">
+                                <span class="move">Nf3</span>
+                                <span class="score">0.78</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="symbolic-reasoning">
+                        <h5>전략적 추론</h5>
+                        <div class="strategy-rules">
+                            <div class="rule-application">
+                                <code>opening_principle(control_center) → prefer(e4, d4)</code>
+                            </div>
+                            <div class="rule-application">
+                                <code>development(knights_before_bishops) → consider(Nf3)</code>
+                            </div>
+                            <div class="rule-application">
+                                <code>king_safety(castle_early) → plan(0-0)</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="final-decision">
+                        <h5>최종 결정</h5>
+                        <div class="decision-explanation">
+                            <p><strong>선택된 수:</strong> e2-e4</p>
+                            <p><strong>이유:</strong> 신경망 평가(85%)와 중앙 통제 원칙이 일치. 
+                               킹스 폰 오프닝으로 공격적인 게임 전개 가능.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 미니 챌린지: XAI 디버거 -->
+<div class="mini-challenge">
+    <h3>🔧 미니 챌린지: AI 디버거 만들기</h3>
+    <div class="challenge-description">
+        <p>잘못된 AI 예측을 디버깅하고 수정하는 도구를 만들어보세요!</p>
+        <div class="challenge-objectives">
+            <h4>목표</h4>
+            <ul>
+                <li>오분류 사례 탐지</li>
+                <li>원인 분석 도구 구현</li>
+                <li>온톨로지 기반 수정 제안</li>
+                <li>재학습 전략 수립</li>
+            </ul>
+        </div>
+        <button class="start-challenge-btn" onclick="startDebuggerChallenge()">
+            <i class="fas fa-bug"></i> 챌린지 시작
+        </button>
+    </div>
+</div>
+
+<!-- Part 2 체크포인트 -->
+<div class="checkpoint">
+    <h3>✅ Part 2 완료!</h3>
+    <div class="checkpoint-summary">
+        <p>설명 가능한 AI와 뉴로-심볼릭 시스템의 구현 방법을 마스터했습니다.</p>
+        <div class="learned-skills">
+            <span class="skill-tag">XAI 기법</span>
+            <span class="skill-tag">온톨로지 추론</span>
+            <span class="skill-tag">뉴로-심볼릭 통합</span>
+            <span class="skill-tag">반사실적 설명</span>
+        </div>
+    </div>
+    <button class="next-part-btn" onclick="loadPart3()">
+        Part 3로 진행 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- Part 2 전용 스타일 -->
+<style>
+/* XAI 애니메이션 */
+.xai-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.1;
+}
+
+.xai-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(59, 130, 246, 0.1) 10px,
+        rgba(59, 130, 246, 0.1) 20px
+    );
+    animation: xaiScan 2s linear infinite;
+}
+
+@keyframes xaiScan {
+    0% { transform: translateX(-20px); }
+    100% { transform: translateX(20px); }
+}
+
+/* 투명성 레벨 피라미드 */
+.transparency-levels {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.level-pyramid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.pyramid-level {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+}
+
+.pyramid-level.level-1 { margin: 0; }
+.pyramid-level.level-2 { margin: 0 20px; }
+.pyramid-level.level-3 { margin: 0 40px; }
+.pyramid-level.level-4 { margin: 0 60px; }
+.pyramid-level.level-5 { margin: 0 80px; }
+
+.level-name {
+    font-weight: 600;
+    color: #1e293b;
+    min-width: 120px;
+}
+
+.level-desc {
+    flex: 1;
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0 1rem;
+}
+
+.level-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981, #059669);
+    border-radius: 0 0 8px 8px;
+    transition: width 0.5s ease;
+}
+
+/* 헥사곤 스킬 */
+.skill-hexagons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.hexagon-skill {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin: 10px;
+}
+
+.hexagon-content {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.hexagon-skill:hover .hexagon-content {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.skill-icon {
+    font-size: 1.5rem;
+}
+
+.skill-level {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* XAI 대시보드 */
+.xai-dashboard {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.xai-interface {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.model-input-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.model-selector {
+    margin-bottom: 1.5rem;
+}
+
+.model-selector label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.model-selector select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.image-upload-zone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-upload-zone:hover {
+    border-color: #3b82f6;
+    background: #f0f9ff;
+}
+
+.image-upload-zone i {
+    font-size: 3rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.sample-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.sample-grid img {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.sample-grid img:hover {
+    border-color: #3b82f6;
+}
+
+.analyze-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+/* 설명 패널 */
+.explanation-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.explanation-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* 예측 결과 */
+.predicted-class {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.class-icon {
+    font-size: 3rem;
+}
+
+.class-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex: 1;
+}
+
+.confidence {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #065f46;
+}
+
+.alternative-predictions {
+    display: flex;
+    gap: 1rem;
+}
+
+.alt-prediction {
+    flex: 1;
+    padding: 0.75rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 특징 중요도 */
+.heatmap-container {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.feature-name {
+    min-width: 100px;
+}
+
+.importance-bar {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.importance-bar .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+.importance-value {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* 온톨로지 추론 트리 */
+.reasoning-tree {
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.reasoning-node {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    display: inline-block;
+}
+
+.reasoning-node.root {
+    border-color: #3b82f6;
+}
+
+.reasoning-node.leaf {
+    background: #d1fae5;
+    border-color: #10b981;
+}
+
+.node-confidence {
+    font-weight: 600;
+    color: #3b82f6;
+    margin-left: 0.5rem;
+}
+
+.reasoning-branch {
+    margin-left: 2rem;
+    position: relative;
+}
+
+.reasoning-branch::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: -0.5rem;
+    bottom: 50%;
+    width: 1rem;
+    border-left: 2px solid #e5e7eb;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.ontology-rules {
+    margin-top: 1.5rem;
+}
+
+.rule-item {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+/* 반사실적 설명 */
+.counterfactual-scenarios {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scenario {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.change-icon {
+    font-size: 1.5rem;
+}
+
+.new-prediction {
+    font-weight: 600;
+    color: #3b82f6;
+}
+
+/* 자연어 설명 */
+.natural-language-explanation {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    grid-column: span 2;
+    margin-top: 2rem;
+}
+
+.explanation-text {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.generated-explanation {
+    line-height: 1.6;
+}
+
+.explanation-points {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.explanation-points li {
+    margin-bottom: 0.5rem;
+}
+
+.confidence-statement {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #64748b;
+}
+
+.refine-btn {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 뉴로-심볼릭 빌더 */
+.neuro-symbolic-builder {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.builder-interface {
+    display: grid;
+    grid-template-columns: 1fr 200px 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.neural-component,
+.symbolic-component {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.neural-component {
+    border: 2px solid #3b82f6;
+}
+
+.symbolic-component {
+    border: 2px solid #8b5cf6;
+}
+
+.layer-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.network-layer {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.layer-type {
+    font-weight: 500;
+    min-width: 80px;
+}
+
+.layer-size {
+    width: 60px;
+    padding: 0.25rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.activation {
+    padding: 0.25rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.add-layer-btn {
+    text-align: center;
+    padding: 0.25rem;
+    background: #e5e7eb;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-layer-btn:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+/* 통합 브릿지 */
+.integration-bridge {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px dashed #cbd5e1;
+}
+
+.bridge-visualization {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.bridge-rules {
+    margin-top: 1.5rem;
+}
+
+.rule {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #f8fafc;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.rule-arrow {
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.add-rule-btn {
+    width: 100%;
+    padding: 0.5rem;
+    background: #e5e7eb;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+/* 지식 베이스 에디터 */
+.kb-editor textarea {
+    width: 100%;
+    background: #1e293b;
+    color: #f1f5f9;
+    border: none;
+    border-radius: 4px;
+    padding: 1rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+/* 실행 모니터 */
+.execution-monitor {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.execution-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.execute-btn,
+.monitor-btn {
+    padding: 0.75rem 1.5rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.monitor-btn {
+    background: #8b5cf6;
+}
+
+/* 데이터 흐름 모니터 */
+.flow-visualization {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.flow-stage {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 150px;
+    text-align: center;
+}
+
+.stage-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.data-preview,
+.activations,
+.symbols,
+.conclusions {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    color: #3b82f6;
+}
+
+/* 성능 메트릭 */
+.performance-metrics {
+    margin-top: 1.5rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.metric {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.metric-trend {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.metric-trend:contains('↑') { color: #10b981; }
+.metric-trend:contains('↓') { color: #ef4444; }
+.metric-trend:contains('→') { color: #6b7280; }
+
+/* 게임 AI 데모 */
+.game-ai-example {
+    margin-top: 3rem;
+}
+
+.game-demo {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.chess-board {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.game-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.game-controls button {
+    flex: 1;
+    padding: 0.5rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.thinking-process {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.neural-evaluation,
+.symbolic-reasoning,
+.final-decision {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.position-scores {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.move-score {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 4px;
+}
+
+.move {
+    font-weight: 600;
+    font-family: monospace;
+}
+
+.score {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.rule-application {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+.decision-explanation {
+    line-height: 1.6;
+}
+
+/* 미니 챌린지 */
+.mini-challenge {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.challenge-objectives {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.start-challenge-btn {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .xai-interface,
+    .builder-interface,
+    .game-demo {
+        grid-template-columns: 1fr;
+    }
+    
+    .explanation-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skill-hexagons {
+        gap: 0.5rem;
+    }
+    
+    .hexagon-skill {
+        width: 80px;
+        height: 80px;
+    }
+}
+</style>
+
+<!-- JavaScript 초기화 -->
+<script>
+// 모델 설정 업데이트
+function updateModelConfig() {
+    const modelType = document.getElementById('modelSelect').value;
+    // 모델 타입에 따라 입력 영역 변경
+    document.querySelectorAll('.input-area > div').forEach(div => {
+        div.style.display = 'none';
+    });
+    
+    if (modelType === 'image') {
+        document.getElementById('imageInput').style.display = 'block';
+    }
+    // 다른 모델 타입 처리...
+}
+
+// XAI 분석 실행
+function runXAIAnalysis() {
+    // 분석 애니메이션
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach((tab, index) => {
+        setTimeout(() => {
+            tab.click();
+        }, index * 2000);
+    });
+}
+
+// 탭 전환
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const tabName = this.dataset.tab;
+        
+        // 탭 버튼 활성화
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        // 탭 컨텐츠 전환
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        document.querySelector(`.${tabName}-tab`).classList.add('active');
+    });
+});
+
+// 샘플 이미지 로드
+function loadSample(type) {
+    console.log(`Loading sample: ${type}`);
+    // 샘플 이미지 로드 및 분석 시작
+}
+
+// 설명 개선
+function refineExplanation() {
+    const explanationText = document.querySelector('.generated-explanation');
+    explanationText.innerHTML = `
+        <strong>개선된 설명:</strong> 이 이미지는 <strong>고양이</strong>로 확실하게 분류됩니다. 
+        AI 모델은 다음과 같은 핵심 특징들을 종합적으로 분석했습니다:
+    `;
+    
+    const points = document.querySelector('.explanation-points');
+    points.innerHTML += `
+        <li>얼굴의 전체적인 구조가 고양이과 동물의 전형적인 형태를 보입니다</li>
+        <li>털의 질감과 패턴이 집고양이의 특성과 일치합니다</li>
+    `;
+}
+
+// 레이어 추가
+function addLayer() {
+    const layerHtml = `
+        <div class="network-layer hidden-layer">
+            <span class="layer-type">은닉층</span>
+            <input type="number" value="64" class="layer-size">
+            <select class="activation">
+                <option>ReLU</option>
+                <option>Sigmoid</option>
+                <option>Tanh</option>
+            </select>
+        </div>
+    `;
+    // 레이어 추가 로직
+}
+
+// 뉴로-심볼릭 실행
+function runNeuroSymbolic() {
+    // 실행 시뮬레이션
+    const stages = document.querySelectorAll('.flow-stage');
+    stages.forEach((stage, index) => {
+        setTimeout(() => {
+            stage.style.borderColor = '#10b981';
+            stage.style.background = '#d1fae5';
+        }, index * 500);
+    });
+    
+    // 메트릭 업데이트
+    setTimeout(() => {
+        document.querySelectorAll('.metric-value').forEach(metric => {
+            const current = parseFloat(metric.textContent);
+            const change = (Math.random() - 0.3) * 10;
+            metric.textContent = (current + change).toFixed(1) + '%';
+        });
+    }, 2000);
+}
+
+// 체스 보드 초기화
+function initChessBoard() {
+    const canvas = document.getElementById('chessBoard');
+    if (canvas && canvas.getContext) {
+        const ctx = canvas.getContext('2d');
+        const size = 50;
+        
+        // 체스판 그리기
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+                ctx.fillStyle = (i + j) % 2 === 0 ? '#f0d9b5' : '#b58863';
+                ctx.fillRect(i * size, j * size, size, size);
+            }
+        }
+    }
+}
+
+// AI 수 두기
+function makeMove() {
+    console.log('AI making move...');
+    // AI 수 계산 및 표시
+}
+
+// 수 설명
+function explainMove() {
+    const explanation = document.querySelector('.decision-explanation');
+    explanation.innerHTML = `
+        <p><strong>선택된 수:</strong> e2-e4</p>
+        <p><strong>상세 설명:</strong></p>
+        <ul>
+            <li>신경망이 85%의 확률로 이 수를 최선으로 평가했습니다</li>
+            <li>오프닝 원칙 중 '중앙 통제'가 이 수를 지지합니다</li>
+            <li>이후 Nf3, Bc4 등의 빠른 전개가 가능합니다</li>
+            <li>상대의 예상 응수: e7-e5 (65%), c7-c5 (20%), d7-d6 (15%)</li>
+        </ul>
+    `;
+}
+
+// 게임 초기화
+function resetGame() {
+    initChessBoard();
+    document.querySelector('.thinking-process').innerHTML = '';
+}
+
+// 디버거 챌린지 시작
+function startDebuggerChallenge() {
+    window.location.href = '#debugger-challenge';
+}
+
+// 모니터링 토글
+function toggleMonitoring() {
+    const display = document.querySelector('.execution-display');
+    display.style.display = display.style.display === 'none' ? 'block' : 'none';
+}
+
+// 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    initChessBoard();
+    updateModelConfig();
+});
+
+// 중요도 히트맵 그리기
+function drawImportanceHeatmap() {
+    const canvas = document.getElementById('importanceHeatmap');
+    if (canvas && canvas.getContext) {
+        const ctx = canvas.getContext('2d');
+        // 히트맵 그리기 로직
+        for (let i = 0; i < 20; i++) {
+            for (let j = 0; j < 20; j++) {
+                const intensity = Math.random();
+                ctx.fillStyle = `rgba(59, 130, 246, ${intensity})`;
+                ctx.fillRect(i * 20, j * 20, 20, 20);
+            }
+        }
+    }
+}
+
+// 페이지 로드 시 히트맵 그리기
+setTimeout(drawImportanceHeatmap, 1000);
+</script>

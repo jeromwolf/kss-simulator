@@ -1,4 +1,4 @@
-<!-- Chapter 3: 시맨틱 웹과 온톨로지 -->
+<!-- Chapter 3: 시맨틱 웹과 온톨로지 (Enhanced Version) -->
 
 <div class="chapter-header">
     <h1>Chapter 3. 시맨틱 웹과 온톨로지</h1>
@@ -8,105 +8,303 @@
 </div>
 
 <div class="reading-time">
-    <i class="fas fa-clock"></i> 예상 학습 시간: 45분
+    <i class="fas fa-clock"></i> 예상 학습 시간: 3시간 30분
+</div>
+
+<!-- 들어가며 -->
+<div class="chapter-intro">
+    <p>우리가 매일 사용하는 웹은 놀라운 발전을 거듭해왔지만, 여전히 근본적인 한계를 가지고 있습니다. 
+    검색엔진에 "파리 여행"을 입력했을 때, 프랑스의 도시인지 곤충인지 구분하지 못하는 것처럼 말이죠. 
+    시맨틱 웹은 이러한 한계를 극복하고, 기계가 웹의 정보를 이해하고 추론할 수 있는 지능적인 웹을 만들고자 하는 비전입니다.</p>
 </div>
 
 <!-- 학습 목표 -->
 <div class="learning-objectives card">
     <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
     <ul>
-        <li>시맨틱 웹의 비전과 목표 이해</li>
-        <li>현재 웹의 한계와 시맨틱 웹의 필요성 파악</li>
-        <li>시맨틱 웹의 핵심 기술 스택 학습</li>
-        <li>온톨로지가 시맨틱 웹에서 하는 역할 이해</li>
+        <li>시맨틱 웹의 탄생 배경과 팀 버너스 리의 비전 심층 이해</li>
+        <li>현재 웹의 구조적 한계와 시맨틱 웹의 필요성 분석</li>
+        <li>시맨틱 웹 기술 스택(Layer Cake)의 각 계층별 역할 파악</li>
+        <li>온톨로지가 시맨틱 웹에서 수행하는 핵심 역할 이해</li>
+        <li>실제 시맨틱 웹 응용 사례와 구현 방법 학습</li>
+        <li>Linked Data와 Knowledge Graph의 개념과 활용</li>
+        <li>시맨틱 웹의 현재와 미래 전망</li>
     </ul>
+</div>
+
+<!-- 학습 로드맵 -->
+<div class="learning-roadmap">
+    <h3><i class="fas fa-road"></i> 이번 장의 학습 경로</h3>
+    <div class="roadmap-container">
+        <div class="roadmap-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4>웹의 진화와 한계</h4>
+                <p>현재 웹의 문제점 분석</p>
+            </div>
+        </div>
+        <div class="roadmap-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4>시맨틱 웹의 비전</h4>
+                <p>팀 버너스 리의 구상</p>
+            </div>
+        </div>
+        <div class="roadmap-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4>기술 스택</h4>
+                <p>Layer Cake 아키텍처</p>
+            </div>
+        </div>
+        <div class="roadmap-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h4>온톨로지의 역할</h4>
+                <p>의미 정의와 추론</p>
+            </div>
+        </div>
+        <div class="roadmap-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h4>실제 응용</h4>
+                <p>Linked Data와 활용</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- 섹션 3.1 -->
 <section class="content-section">
-    <h2>3.1 팀 버너스 리의 비전</h2>
+    <h2>3.1 현재 웹의 한계와 도전과제</h2>
     
-    <p>2001년 Scientific American에 발표된 팀 버너스 리의 논문 "The Semantic Web"은 웹의 미래에 대한 혁명적인 비전을 제시했습니다.</p>
-    
-    <div class="quote-box">
-        <blockquote>
-            "나는 웹이 인간뿐만 아니라 기계도 이해할 수 있는 데이터의 웹이 되기를 꿈꿉니다. 언젠가는 컴퓨터가 웹의 모든 데이터를 분석할 수 있게 될 것입니다."
-        </blockquote>
-        <cite>- 팀 버너스 리 (Tim Berners-Lee)</cite>
+    <div class="section-intro">
+        <p>우리가 사용하는 현재의 웹(Web 2.0)은 놀라운 성공을 거두었지만, 
+        정보의 의미를 이해하지 못한다는 근본적인 한계를 가지고 있습니다.</p>
     </div>
+
+    <h3>3.1.1 문법적 웹 vs 의미적 웹</h3>
     
-    <h3>시맨틱 웹의 시나리오</h3>
-    <div class="scenario-box">
-        <h4>👨‍⚕️ 의료 예약 시나리오</h4>
-        <div class="scenario-flow">
-            <div class="scenario-step">
-                <div class="step-icon">1</div>
-                <p>"어머니의 물리치료 예약이 필요해"</p>
+    <div class="comparison-section">
+        <div class="comparison-grid">
+            <div class="comparison-item syntactic">
+                <h4><i class="fas fa-code"></i> 문법적 웹 (현재)</h4>
+                <div class="characteristics">
+                    <h5>특징</h5>
+                    <ul>
+                        <li>HTML 태그로 문서 구조 표현</li>
+                        <li>키워드 기반 검색</li>
+                        <li>사람을 위한 표현</li>
+                        <li>링크는 단순 참조</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <h5>예시: 현재 웹의 표현</h5>
+                    <pre><code class="language-html">
+&lt;div class="product"&gt;
+    &lt;h2&gt;iPhone 13&lt;/h2&gt;
+    &lt;p&gt;가격: 1,250,000원&lt;/p&gt;
+    &lt;p&gt;제조사: Apple&lt;/p&gt;
+&lt;/div&gt;
+                    </code></pre>
+                    <p class="limitation">⚠️ 컴퓨터는 이것이 '제품'이라는 것을 이해하지 못함</p>
+                </div>
             </div>
-            <div class="arrow">→</div>
-            <div class="scenario-step">
-                <div class="step-icon">2</div>
-                <p>에이전트가 병원 온톨로지 검색</p>
-            </div>
-            <div class="arrow">→</div>
-            <div class="scenario-step">
-                <div class="step-icon">3</div>
-                <p>보험 적용 가능 병원 필터링</p>
-            </div>
-            <div class="arrow">→</div>
-            <div class="scenario-step">
-                <div class="step-icon">4</div>
-                <p>일정과 위치 최적화</p>
-            </div>
-            <div class="arrow">→</div>
-            <div class="scenario-step">
-                <div class="step-icon">5</div>
-                <p>자동 예약 완료</p>
+            
+            <div class="comparison-item semantic">
+                <h4><i class="fas fa-brain"></i> 의미적 웹 (시맨틱 웹)</h4>
+                <div class="characteristics">
+                    <h5>특징</h5>
+                    <ul>
+                        <li>온톨로지로 의미 정의</li>
+                        <li>개념 기반 검색</li>
+                        <li>기계가 이해 가능</li>
+                        <li>의미있는 관계 표현</li>
+                    </ul>
+                </div>
+                <div class="example-box">
+                    <h5>예시: 시맨틱 웹의 표현</h5>
+                    <pre><code class="language-turtle">
+@prefix product: &lt;http://example.org/product/&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+
+product:iPhone13 a schema:Product ;
+    schema:name "iPhone 13" ;
+    schema:price [
+        a schema:PriceSpecification ;
+        schema:price "1250000" ;
+        schema:priceCurrency "KRW"
+    ] ;
+    schema:manufacturer [
+        a schema:Organization ;
+        schema:name "Apple Inc."
+    ] .
+                    </code></pre>
+                    <p class="advantage">✓ 컴퓨터가 제품, 가격, 제조사의 의미를 정확히 이해</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <h3>3.1.2 현재 웹의 주요 문제점</h3>
     
-    <h3>웹의 진화 단계</h3>
-    <div class="web-evolution">
-        <div class="evolution-stage">
-            <h4>Web 1.0</h4>
-            <p class="stage-period">1990-2000</p>
-            <p class="stage-name">읽기 전용 웹</p>
-            <ul>
-                <li>정적 HTML 페이지</li>
-                <li>하이퍼링크로 연결</li>
-                <li>일방향 정보 제공</li>
-            </ul>
-            <div class="stage-example">
-                예: 회사 홈페이지, 뉴스 사이트
+    <div class="problems-showcase">
+        <div class="problem-card">
+            <div class="problem-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <h4>1. 의미 모호성 (Ambiguity)</h4>
+            <div class="problem-content">
+                <p>같은 단어가 문맥에 따라 다른 의미를 가짐</p>
+                <div class="ambiguity-examples">
+                    <div class="example">
+                        <strong>"Java"의 의미:</strong>
+                        <ul>
+                            <li>☕ 커피 종류</li>
+                            <li>💻 프로그래밍 언어</li>
+                            <li>🏝️ 인도네시아의 섬</li>
+                        </ul>
+                    </div>
+                    <div class="example">
+                        <strong>"Apple"의 의미:</strong>
+                        <ul>
+                            <li>🍎 과일</li>
+                            <li>📱 기술 회사</li>
+                            <li>🎵 레코드 레이블</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="evolution-stage">
-            <h4>Web 2.0</h4>
-            <p class="stage-period">2000-2010</p>
-            <p class="stage-name">참여와 공유의 웹</p>
-            <ul>
-                <li>사용자 생성 콘텐츠</li>
-                <li>소셜 네트워크</li>
-                <li>동적 웹 애플리케이션</li>
-            </ul>
-            <div class="stage-example">
-                예: 페이스북, 유튜브, 위키피디아
+        <div class="problem-card">
+            <div class="problem-icon">
+                <i class="fas fa-database"></i>
+            </div>
+            <h4>2. 데이터 사일로 (Data Silos)</h4>
+            <div class="problem-content">
+                <p>각 웹사이트가 독립적인 데이터 섬</p>
+                <div class="silo-illustration">
+                    <div class="silo">
+                        <h5>쇼핑몰 A</h5>
+                        <p>제품명: "갤럭시 S23"</p>
+                        <p>분류: "스마트폰"</p>
+                    </div>
+                    <div class="silo">
+                        <h5>쇼핑몰 B</h5>
+                        <p>상품명: "Galaxy S23"</p>
+                        <p>카테고리: "휴대폰"</p>
+                    </div>
+                    <div class="silo">
+                        <h5>리뷰 사이트</h5>
+                        <p>모델: "삼성 S23"</p>
+                        <p>종류: "모바일기기"</p>
+                    </div>
+                </div>
+                <p class="problem-impact">💔 같은 제품인지 자동으로 연결할 수 없음</p>
             </div>
         </div>
         
-        <div class="evolution-stage">
-            <h4>Web 3.0</h4>
-            <p class="stage-period">2010-현재</p>
-            <p class="stage-name">의미 기반 웹</p>
+        <div class="problem-card">
+            <div class="problem-icon">
+                <i class="fas fa-link-slash"></i>
+            </div>
+            <h4>3. 단순한 링크 구조</h4>
+            <div class="problem-content">
+                <p>링크가 관계의 의미를 표현하지 못함</p>
+                <div class="link-comparison">
+                    <div class="current-link">
+                        <h5>현재의 링크</h5>
+                        <code>&lt;a href="tim-berners-lee.html"&gt;팀 버너스 리&lt;/a&gt;</code>
+                        <p>→ 단순히 "연결됨"만 표현</p>
+                    </div>
+                    <div class="semantic-link">
+                        <h5>의미있는 링크 (필요)</h5>
+                        <code>:WWW :inventedBy :TimBernersLee</code>
+                        <p>→ "발명했다"는 관계 명시</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="problem-card">
+            <div class="problem-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h4>4. 자동화의 한계</h4>
+            <div class="problem-content">
+                <p>복잡한 작업을 자동화하기 어려움</p>
+                <div class="automation-example">
+                    <h5>시나리오: "다음 주 도쿄 출장 준비"</h5>
+                    <div class="manual-steps">
+                        <p><strong>현재 (수동):</strong></p>
+                        <ol>
+                            <li>항공권 사이트에서 검색</li>
+                            <li>호텔 예약 사이트 방문</li>
+                            <li>환율 정보 확인</li>
+                            <li>날씨 예보 확인</li>
+                            <li>비자 요구사항 검색</li>
+                        </ol>
+                        <p class="limitation">😓 각 단계를 사람이 직접 수행해야 함</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실습: 현재 웹의 한계 체험 -->
+    <div class="hands-on-exercise">
+        <h3><i class="fas fa-flask"></i> 실습: 현재 웹의 한계 체험하기</h3>
+        
+        <div class="exercise-scenario">
+            <h4>과제: 특정 조건의 제품 찾기</h4>
+            <p>다음 조건을 모두 만족하는 노트북을 찾아보세요:</p>
             <ul>
-                <li>기계가 이해하는 데이터</li>
-                <li>지능형 검색</li>
-                <li>개인화된 경험</li>
+                <li>가격: 150만원 이하</li>
+                <li>무게: 1.5kg 이하</li>
+                <li>화면: 14인치 이상</li>
+                <li>메모리: 16GB 이상</li>
+                <li>보증기간: 2년 이상</li>
             </ul>
-            <div class="stage-example">
-                예: 구글 지식 그래프, Siri, Alexa
+            
+            <div class="exercise-steps">
+                <h5>현재 웹에서의 과정:</h5>
+                <ol>
+                    <li>여러 쇼핑몰을 각각 방문</li>
+                    <li>각 사이트의 다른 필터 인터페이스 사용</li>
+                    <li>스펙 비교를 위해 수동으로 정보 수집</li>
+                    <li>보증기간은 각 제품 상세페이지에서 확인</li>
+                </ol>
+                
+                <div class="time-estimate">
+                    <i class="fas fa-clock"></i> 예상 소요 시간: 30분~1시간
+                </div>
+            </div>
+            
+            <div class="semantic-solution">
+                <h5>시맨틱 웹에서의 해결:</h5>
+                <pre><code class="language-sparql">
+SELECT ?laptop ?name ?price ?weight ?screen ?memory ?warranty
+WHERE {
+    ?laptop a :Laptop ;
+            :hasPrice ?price ;
+            :hasWeight ?weight ;
+            :hasScreenSize ?screen ;
+            :hasMemory ?memory ;
+            :hasWarranty ?warranty ;
+            :hasName ?name .
+    
+    FILTER (?price <= 1500000)
+    FILTER (?weight <= 1.5)
+    FILTER (?screen >= 14)
+    FILTER (?memory >= 16)
+    FILTER (?warranty >= 24)
+}
+ORDER BY ?price
+                </code></pre>
+                <div class="time-estimate">
+                    <i class="fas fa-clock"></i> 예상 소요 시간: 1초 미만
+                </div>
             </div>
         </div>
     </div>
@@ -114,128 +312,329 @@
 
 <!-- 섹션 3.2 -->
 <section class="content-section">
-    <h2>3.2 현재 웹의 한계</h2>
+    <h2>3.2 팀 버너스 리의 시맨틱 웹 비전</h2>
     
-    <p>우리가 매일 사용하는 웹은 놀라운 성공을 거두었지만, 여전히 근본적인 한계를 가지고 있습니다.</p>
-    
-    <h3>문제점 1: 의미의 부재</h3>
-    <div class="problem-illustration">
-        <div class="web-comparison">
-            <div class="current-web">
-                <h4>현재 웹의 HTML</h4>
-                <pre class="code-example">
-&lt;h1&gt;자바&lt;/h1&gt;
-&lt;p&gt;인도네시아의 섬&lt;/p&gt;
-&lt;p&gt;인구: 1억 4천만&lt;/p&gt;
+    <div class="section-intro">
+        <p>월드 와이드 웹의 창시자 팀 버너스 리(Tim Berners-Lee)는 웹이 단순히 문서를 연결하는 것을 
+        넘어서 데이터와 의미를 연결하는 거대한 지식 네트워크가 되기를 꿈꿨습니다.</p>
+    </div>
 
-&lt;h1&gt;자바&lt;/h1&gt;
-&lt;p&gt;프로그래밍 언어&lt;/p&gt;
-&lt;p&gt;개발자: 제임스 고슬링&lt;/p&gt;
-                </pre>
-                <div class="problem-note">
-                    ⚠️ 컴퓨터는 두 '자바'가 다른 의미임을 모름
-                </div>
+    <div class="tim-berners-lee-profile">
+        <div class="profile-header">
+            <div class="profile-image">
+                <i class="fas fa-user-circle"></i>
             </div>
-            
-            <div class="semantic-web">
-                <h4>시맨틱 웹의 RDF</h4>
-                <pre class="code-example">
-&lt;rdf:Description rdf:about="자바_섬"&gt;
-  &lt;rdf:type&gt;지리:섬&lt;/rdf:type&gt;
-  &lt;지리:위치&gt;인도네시아&lt;/지리:위치&gt;
-  &lt;지리:인구&gt;140000000&lt;/지리:인구&gt;
-&lt;/rdf:Description&gt;
+            <div class="profile-info">
+                <h3>Sir Tim Berners-Lee</h3>
+                <p>월드 와이드 웹의 창시자</p>
+                <p>W3C (World Wide Web Consortium) 설립자</p>
+            </div>
+        </div>
+        <div class="profile-quote">
+            <blockquote>
+                "나는 웹이 인간뿐만 아니라 기계도 이해할 수 있는 데이터의 웹이 되기를 꿈꿉니다. 
+                언젠가는 컴퓨터가 웹의 모든 데이터를 분석할 수 있게 될 것입니다."
+            </blockquote>
+        </div>
+    </div>
 
-&lt;rdf:Description rdf:about="자바_언어"&gt;
-  &lt;rdf:type&gt;컴퓨터:프로그래밍언어&lt;/rdf:type&gt;
-  &lt;컴퓨터:개발자&gt;제임스_고슬링&lt;/컴퓨터:개발자&gt;
-&lt;/rdf:Description&gt;
-                </pre>
-                <div class="solution-note">
-                    ✅ 명확한 의미 구분과 관계 표현
+    <h3>3.2.1 2001년 Scientific American 논문</h3>
+    
+    <div class="seminal-paper">
+        <div class="paper-header">
+            <h4>📄 "The Semantic Web"</h4>
+            <p>Tim Berners-Lee, James Hendler, Ora Lassila</p>
+            <p>Scientific American, May 2001</p>
+        </div>
+        
+        <div class="paper-scenario">
+            <h4>논문의 핵심 시나리오: Lucy와 Pete의 이야기</h4>
+            
+            <div class="scenario-narrative">
+                <p>Lucy의 어머니가 정기적인 물리치료가 필요한 상황. Lucy와 그녀의 오빠 Pete는 
+                어머니를 위한 적절한 치료 서비스를 찾아야 합니다.</p>
+                
+                <div class="scenario-steps">
+                    <div class="step">
+                        <h5>1. 요구사항 입력</h5>
+                        <div class="step-content">
+                            <p>Lucy가 시맨틱 웹 에이전트에 입력:</p>
+                            <ul>
+                                <li>치료 종류: 물리치료</li>
+                                <li>보험: 어머니의 건강보험 정보</li>
+                                <li>위치: 집에서 20마일 이내</li>
+                                <li>평점: 우수 이상</li>
+                                <li>시간: 평일 오전</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h5>2. 자동 검색과 추론</h5>
+                        <div class="step-content">
+                            <p>에이전트의 작업:</p>
+                            <ul>
+                                <li>의료 서비스 온톨로지 검색</li>
+                                <li>보험사 데이터베이스와 연동</li>
+                                <li>지리 정보 시스템 활용</li>
+                                <li>리뷰 사이트 데이터 통합</li>
+                                <li>교통 정보 확인</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h5>3. 최적화된 결과</h5>
+                        <div class="step-content">
+                            <p>제시된 옵션:</p>
+                            <ul>
+                                <li>Dr. Smith - 15마일, 평점 4.8</li>
+                                <li>City Rehab Center - 12마일, 평점 4.5</li>
+                                <li>각 옵션의 장단점 분석</li>
+                                <li>Pete의 일정과 조율 가능한 시간</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h5>4. 자동 예약</h5>
+                        <div class="step-content">
+                            <p>선택 후 자동 처리:</p>
+                            <ul>
+                                <li>병원 예약 시스템과 연동</li>
+                                <li>보험 사전 승인 처리</li>
+                                <li>캘린더에 일정 추가</li>
+                                <li>교통 경로 안내 설정</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <h3>3.2.2 시맨틱 웹의 핵심 원칙</h3>
     
-    <h3>문제점 2: 정보 사일로</h3>
-    <div class="info-silos">
-        <div class="silo-diagram">
-            <div class="silo">
-                <h5>쇼핑몰 A</h5>
-                <div class="silo-data">
-                    • 상품명: 갤럭시 S24<br>
-                    • 가격: 1,200,000원<br>
-                    • 재고: 있음
-                </div>
+    <div class="principles-grid">
+        <div class="principle-card">
+            <div class="principle-icon">
+                <i class="fas fa-globe"></i>
             </div>
-            <div class="silo">
-                <h5>쇼핑몰 B</h5>
-                <div class="silo-data">
-                    • 제품: Galaxy S24<br>
-                    • 판매가: 120만원<br>
-                    • 상태: 판매중
-                </div>
-            </div>
-            <div class="silo">
-                <h5>쇼핑몰 C</h5>
-                <div class="silo-data">
-                    • Name: 삼성 S24<br>
-                    • Price: ₩1,200,000<br>
-                    • Stock: 10
-                </div>
-            </div>
-        </div>
-        <div class="silo-problem">
-            <h5>문제점</h5>
+            <h4>1. 개방성 (Openness)</h4>
+            <p>누구나 참여하고 기여할 수 있는 열린 웹</p>
             <ul>
-                <li>같은 제품을 다르게 표현</li>
-                <li>통합 검색 불가능</li>
-                <li>가격 비교 어려움</li>
-                <li>데이터 연계 불가</li>
+                <li>개방형 표준 사용</li>
+                <li>독점 기술 배제</li>
+                <li>상호운용성 보장</li>
+            </ul>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-icon">
+                <i class="fas fa-share-alt"></i>
+            </div>
+            <h4>2. 분산성 (Distribution)</h4>
+            <p>중앙 집중식이 아닌 분산된 지식</p>
+            <ul>
+                <li>각자 자신의 데이터 관리</li>
+                <li>P2P 방식의 연결</li>
+                <li>단일 실패점 없음</li>
+            </ul>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <h4>3. 계층성 (Layering)</h4>
+            <p>단계적 기술 스택 구축</p>
+            <ul>
+                <li>하위 계층의 안정성</li>
+                <li>상위 계층의 확장성</li>
+                <li>점진적 도입 가능</li>
+            </ul>
+        </div>
+        
+        <div class="principle-card">
+            <div class="principle-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <h4>4. 신뢰성 (Trust)</h4>
+            <p>검증 가능한 정보와 출처</p>
+            <ul>
+                <li>디지털 서명</li>
+                <li>출처 추적</li>
+                <li>신뢰 네트워크</li>
             </ul>
         </div>
     </div>
+
+    <h3>3.2.3 웹의 진화: Web 1.0에서 Web 3.0으로</h3>
     
-    <h3>문제점 3: 검색의 한계</h3>
-    <div class="search-limitations">
-        <div class="search-example">
-            <h4>현재 키워드 검색</h4>
-            <div class="search-query">
-                🔍 "서울 이탈리안 레스토랑 예약 가능"
+    <div class="web-evolution-timeline">
+        <div class="evolution-stage web1">
+            <div class="stage-header">
+                <h4>Web 1.0</h4>
+                <span class="period">1990-2000</span>
             </div>
-            <div class="search-problems">
-                <p>검색 엔진이 이해하지 못하는 것:</p>
-                <ul>
-                    <li>'서울'이 위치임을 모름</li>
-                    <li>'이탈리안'이 음식 종류임을 모름</li>
-                    <li>'예약 가능'의 의미를 모름</li>
-                    <li>현재 시간 기준 판단 불가</li>
-                </ul>
+            <div class="stage-content">
+                <h5>읽기 전용 웹 (Read-Only Web)</h5>
+                <div class="characteristics">
+                    <div class="char-item">
+                        <i class="fas fa-file-alt"></i>
+                        <p>정적 HTML 페이지</p>
+                    </div>
+                    <div class="char-item">
+                        <i class="fas fa-link"></i>
+                        <p>하이퍼링크 연결</p>
+                    </div>
+                    <div class="char-item">
+                        <i class="fas fa-arrow-right"></i>
+                        <p>일방향 정보 전달</p>
+                    </div>
+                </div>
+                <div class="examples">
+                    <h6>대표 사례:</h6>
+                    <ul>
+                        <li>Yahoo 디렉토리</li>
+                        <li>초기 Amazon</li>
+                        <li>정적 홈페이지</li>
+                    </ul>
+                </div>
+                <div class="technology">
+                    <h6>핵심 기술:</h6>
+                    <code>HTML, HTTP, URL</code>
+                </div>
             </div>
         </div>
         
-        <div class="semantic-search">
-            <h4>시맨틱 검색</h4>
-            <div class="semantic-query">
-                <pre class="sparql-query">
-SELECT ?restaurant WHERE {
-  ?restaurant rdf:type :ItalianRestaurant .
-  ?restaurant :location :Seoul .
-  ?restaurant :hasAvailableTable ?table .
-  ?table :availableAt ?time .
-  FILTER(?time > NOW())
-}
-                </pre>
+        <div class="evolution-stage web2">
+            <div class="stage-header">
+                <h4>Web 2.0</h4>
+                <span class="period">2000-2020</span>
             </div>
-            <div class="semantic-benefits">
-                <p>시맨틱 웹의 장점:</p>
-                <ul>
-                    <li>의미 기반 정확한 검색</li>
-                    <li>실시간 데이터 연동</li>
-                    <li>추론을 통한 확장 검색</li>
-                    <li>다국어 자동 처리</li>
-                </ul>
+            <div class="stage-content">
+                <h5>참여와 공유의 웹 (Read-Write Web)</h5>
+                <div class="characteristics">
+                    <div class="char-item">
+                        <i class="fas fa-users"></i>
+                        <p>사용자 참여</p>
+                    </div>
+                    <div class="char-item">
+                        <i class="fas fa-share"></i>
+                        <p>소셜 네트워크</p>
+                    </div>
+                    <div class="char-item">
+                        <i class="fas fa-sync"></i>
+                        <p>동적 콘텐츠</p>
+                    </div>
+                </div>
+                <div class="examples">
+                    <h6>대표 사례:</h6>
+                    <ul>
+                        <li>Facebook, Twitter</li>
+                        <li>YouTube, Instagram</li>
+                        <li>Wikipedia, Blog</li>
+                    </ul>
+                </div>
+                <div class="technology">
+                    <h6>핵심 기술:</h6>
+                    <code>AJAX, REST API, RSS, JSON</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="evolution-stage web3">
+            <div class="stage-header">
+                <h4>Web 3.0</h4>
+                <span class="period">2020-미래</span>
+            </div>
+            <div class="stage-content">
+                <h5>의미와 지능의 웹 (Read-Write-Execute Web)</h5>
+                <div class="characteristics">
+                    <div class="char-item">
+                        <i class="fas fa-brain"></i>
+                        <p>기계 이해</p>
+                    </div>
+                    <div class="char-item">
+                        <i class="fas fa-robot"></i>
+                        <p>AI 통합</p>
+                    </div>
+                    <div class="char-item">
+                        <i class="fas fa-cube"></i>
+                        <p>분산화</p>
+                    </div>
+                </div>
+                <div class="examples">
+                    <h6>대표 사례:</h6>
+                    <ul>
+                        <li>Knowledge Graph</li>
+                        <li>Voice Assistants</li>
+                        <li>Blockchain, DeFi</li>
+                    </ul>
+                </div>
+                <div class="technology">
+                    <h6>핵심 기술:</h6>
+                    <code>RDF, OWL, SPARQL, AI/ML, Blockchain</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 인터랙티브 데모: 웹의 진화 비교 -->
+    <div class="interactive-comparison">
+        <h3><i class="fas fa-balance-scale"></i> 인터랙티브 비교: 검색의 진화</h3>
+        
+        <div class="search-comparison">
+            <div class="search-scenario">
+                <h4>검색 시나리오: "2시간 이내 완성 가능한 이탈리안 요리 레시피"</h4>
+            </div>
+            
+            <div class="comparison-panels">
+                <div class="panel web1-search">
+                    <h5>Web 1.0 검색</h5>
+                    <div class="search-process">
+                        <ol>
+                            <li>Yahoo 디렉토리 → 요리 → 이탈리안</li>
+                            <li>각 사이트 수동 방문</li>
+                            <li>레시피 하나씩 확인</li>
+                            <li>시간 정보 직접 계산</li>
+                        </ol>
+                    </div>
+                    <div class="result-quality">
+                        <p>결과: 매우 제한적, 시간 소모적</p>
+                    </div>
+                </div>
+                
+                <div class="panel web2-search">
+                    <h5>Web 2.0 검색</h5>
+                    <div class="search-process">
+                        <ol>
+                            <li>Google: "이탈리안 요리 레시피 2시간"</li>
+                            <li>키워드 매칭 결과</li>
+                            <li>사용자 리뷰 참고</li>
+                            <li>여러 결과 비교</li>
+                        </ol>
+                    </div>
+                    <div class="result-quality">
+                        <p>결과: 많은 결과, 수동 필터링 필요</p>
+                    </div>
+                </div>
+                
+                <div class="panel web3-search">
+                    <h5>Web 3.0 검색</h5>
+                    <div class="search-process">
+                        <ol>
+                            <li>자연어 이해: "2시간 이내 이탈리안"</li>
+                            <li>온톨로지 기반 추론</li>
+                            <li>재료 가용성 확인</li>
+                            <li>개인화된 추천</li>
+                        </ol>
+                    </div>
+                    <div class="result-quality">
+                        <p>결과: 정확한 맞춤형 레시피</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -243,89 +642,379 @@ SELECT ?restaurant WHERE {
 
 <!-- 섹션 3.3 -->
 <section class="content-section">
-    <h2>3.3 시맨틱 웹의 기술 스택</h2>
+    <h2>3.3 시맨틱 웹 기술 스택 (Layer Cake)</h2>
     
-    <p>시맨틱 웹은 여러 계층의 기술들이 유기적으로 연결된 스택 구조로 이루어져 있습니다.</p>
-    
-    <div class="semantic-stack">
-        <div class="stack-layer layer-7">
-            <h4>사용자 인터페이스 & 애플리케이션</h4>
-            <p>지능형 에이전트, 시맨틱 검색 엔진</p>
-        </div>
-        <div class="stack-layer layer-6">
-            <h4>신뢰 (Trust)</h4>
-            <p>전자서명, 평판 시스템</p>
-        </div>
-        <div class="stack-layer layer-5">
-            <h4>증명 (Proof)</h4>
-            <p>논리적 증명, 검증</p>
-        </div>
-        <div class="stack-layer layer-4">
-            <h4>논리 (Logic)</h4>
-            <p>추론 규칙, SWRL</p>
-        </div>
-        <div class="stack-layer layer-3">
-            <h4>온톨로지 (Ontology)</h4>
-            <p>OWL, 어휘 정의</p>
-        </div>
-        <div class="stack-layer layer-2">
-            <h4>스키마 (Schema)</h4>
-            <p>RDFS, 기본 어휘</p>
-        </div>
-        <div class="stack-layer layer-1">
-            <h4>데이터 (Data)</h4>
-            <p>RDF, 트리플</p>
-        </div>
-        <div class="stack-layer layer-0">
-            <h4>기반 기술</h4>
-            <p>URI, Unicode, XML</p>
+    <div class="section-intro">
+        <p>시맨틱 웹은 여러 기술이 층층이 쌓여 구성되는 "Layer Cake" 아키텍처를 따릅니다. 
+        각 계층은 하위 계층을 기반으로 하며, 상위로 갈수록 더 복잡하고 지능적인 기능을 제공합니다.</p>
+    </div>
+
+    <div class="layer-cake-visualization">
+        <h3>시맨틱 웹 Layer Cake</h3>
+        
+        <div class="cake-container">
+            <div class="cake-layer trust">
+                <h4>Trust (신뢰)</h4>
+                <p>디지털 서명, 평판 시스템</p>
+            </div>
+            
+            <div class="cake-layer proof">
+                <h4>Proof (증명)</h4>
+                <p>논리적 증명, 추론 검증</p>
+            </div>
+            
+            <div class="cake-layer logic">
+                <h4>Logic (논리)</h4>
+                <p>추론 규칙, 일차 논리</p>
+            </div>
+            
+            <div class="cake-layer ontology">
+                <h4>Ontology (온톨로지)</h4>
+                <p>OWL - 복잡한 지식 표현</p>
+                <div class="layer-detail">
+                    <code>owl:Class, owl:ObjectProperty, owl:DatatypeProperty</code>
+                </div>
+            </div>
+            
+            <div class="cake-layer rdfs">
+                <h4>RDFS (RDF Schema)</h4>
+                <p>기본 어휘와 스키마 정의</p>
+                <div class="layer-detail">
+                    <code>rdfs:Class, rdfs:subClassOf, rdfs:domain, rdfs:range</code>
+                </div>
+            </div>
+            
+            <div class="cake-layer rdf">
+                <h4>RDF (Resource Description Framework)</h4>
+                <p>트리플 기반 데이터 모델</p>
+                <div class="layer-detail">
+                    <code>Subject - Predicate - Object</code>
+                </div>
+            </div>
+            
+            <div class="cake-layer xml">
+                <h4>XML + Namespaces</h4>
+                <p>구조화된 데이터 교환 형식</p>
+                <div class="layer-detail">
+                    <code>&lt;rdf:RDF xmlns:rdf="..."&gt;</code>
+                </div>
+            </div>
+            
+            <div class="cake-layer unicode">
+                <h4>Unicode + URI</h4>
+                <p>전역적 식별자와 문자 인코딩</p>
+                <div class="layer-detail">
+                    <code>http://example.org/resource#item</code>
+                </div>
+            </div>
         </div>
     </div>
+
+    <h3>3.3.1 각 계층의 상세 설명</h3>
     
-    <h3>각 계층의 역할</h3>
     <div class="layer-details">
-        <div class="layer-card">
-            <h4>1. URI (Uniform Resource Identifier)</h4>
-            <p>웹 상의 모든 자원을 고유하게 식별</p>
-            <div class="example-box">
-                <strong>예시:</strong><br>
-                • http://example.org/people/홍길동<br>
-                • http://dbpedia.org/resource/Seoul<br>
-                • http://schema.org/Person
-            </div>
-        </div>
-        
-        <div class="layer-card">
-            <h4>2. RDF (Resource Description Framework)</h4>
-            <p>주어-술어-목적어 형태의 트리플로 정보 표현</p>
-            <div class="rdf-triple">
-                <div class="triple-part subject">홍길동</div>
-                <div class="triple-arrow">근무처</div>
-                <div class="triple-part object">삼성전자</div>
-            </div>
-        </div>
-        
-        <div class="layer-card">
-            <h4>3. RDFS (RDF Schema)</h4>
-            <p>클래스와 속성의 기본 어휘 제공</p>
-            <pre class="code-example">
-rdfs:Class      # 클래스 정의
-rdfs:subClassOf # 상하위 관계
-rdfs:domain     # 속성의 주어 범위
-rdfs:range      # 속성의 목적어 범위
-            </pre>
-        </div>
-        
-        <div class="layer-card">
-            <h4>4. OWL (Web Ontology Language)</h4>
-            <p>풍부한 의미 표현을 위한 온톨로지 언어</p>
-            <div class="owl-features">
+        <div class="layer-detail-card">
+            <h4>1. Unicode + URI 계층</h4>
+            <div class="layer-content">
+                <h5>역할</h5>
+                <p>시맨틱 웹의 기초로, 전 세계 어떤 리소스든 고유하게 식별하고 표현</p>
+                
+                <h5>핵심 구성요소</h5>
                 <ul>
-                    <li>복잡한 클래스 정의</li>
-                    <li>속성 특성 (대칭, 이행 등)</li>
-                    <li>카디널리티 제약</li>
-                    <li>논리적 추론 지원</li>
+                    <li><strong>URI (Uniform Resource Identifier)</strong>
+                        <ul>
+                            <li>모든 리소스의 고유 식별자</li>
+                            <li>예: <code>http://dbpedia.org/resource/Seoul</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>IRI (Internationalized Resource Identifier)</strong>
+                        <ul>
+                            <li>다국어 지원 URI</li>
+                            <li>예: <code>http://example.org/리소스/서울</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Unicode</strong>
+                        <ul>
+                            <li>전 세계 모든 문자 체계 지원</li>
+                            <li>다국어 온톨로지 구축 가능</li>
+                        </ul>
+                    </li>
                 </ul>
+                
+                <div class="code-example">
+                    <h5>예제: URI 활용</h5>
+                    <pre><code class="language-turtle">
+# 한국어 리소스 URI 예제
+@prefix kr: &lt;http://example.kr/resource/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+kr:서울특별시 a kr:광역시 ;
+    foaf:name "서울특별시"@ko ;
+    foaf:name "Seoul"@en ;
+    kr:인구 "9,733,509" .
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="layer-detail-card">
+            <h4>2. XML + Namespaces 계층</h4>
+            <div class="layer-content">
+                <h5>역할</h5>
+                <p>구조화된 데이터 표현과 서로 다른 어휘의 혼용</p>
+                
+                <h5>핵심 기능</h5>
+                <ul>
+                    <li>계층적 데이터 구조 표현</li>
+                    <li>네임스페이스로 어휘 충돌 방지</li>
+                    <li>RDF/XML 직렬화 지원</li>
+                </ul>
+                
+                <div class="code-example">
+                    <h5>예제: RDF/XML</h5>
+                    <pre><code class="language-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rdf:RDF 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"&gt;
+    
+    &lt;rdf:Description rdf:about="http://example.org/book/1"&gt;
+        &lt;dc:title&gt;온톨로지 입문&lt;/dc:title&gt;
+        &lt;dc:creator&gt;
+            &lt;foaf:Person&gt;
+                &lt;foaf:name&gt;김철수&lt;/foaf:name&gt;
+            &lt;/foaf:Person&gt;
+        &lt;/dc:creator&gt;
+    &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="layer-detail-card">
+            <h4>3. RDF 계층</h4>
+            <div class="layer-content">
+                <h5>역할</h5>
+                <p>시맨틱 웹의 핵심 데이터 모델 제공</p>
+                
+                <h5>트리플 모델</h5>
+                <div class="triple-model">
+                    <div class="triple-component subject">
+                        <h6>주어 (Subject)</h6>
+                        <p>설명하려는 리소스</p>
+                        <code>:Leonardo_da_Vinci</code>
+                    </div>
+                    <div class="triple-arrow">→</div>
+                    <div class="triple-component predicate">
+                        <h6>술어 (Predicate)</h6>
+                        <p>속성이나 관계</p>
+                        <code>:painted</code>
+                    </div>
+                    <div class="triple-arrow">→</div>
+                    <div class="triple-component object">
+                        <h6>목적어 (Object)</h6>
+                        <p>값이나 다른 리소스</p>
+                        <code>:Mona_Lisa</code>
+                    </div>
+                </div>
+                
+                <div class="serialization-formats">
+                    <h5>RDF 직렬화 형식</h5>
+                    <div class="format-examples">
+                        <div class="format-example">
+                            <h6>Turtle</h6>
+                            <pre><code class="language-turtle">
+@prefix : &lt;http://example.org/&gt; .
+:김철수 :works_for :삼성전자 ;
+       :age 30 .
+                            </code></pre>
+                        </div>
+                        <div class="format-example">
+                            <h6>JSON-LD</h6>
+                            <pre><code class="language-json">
+{
+  "@context": "http://example.org/",
+  "@id": "김철수",
+  "works_for": {"@id": "삼성전자"},
+  "age": 30
+}
+                            </code></pre>
+                        </div>
+                        <div class="format-example">
+                            <h6>N-Triples</h6>
+                            <pre><code>
+&lt;http://example.org/김철수&gt; &lt;http://example.org/works_for&gt; &lt;http://example.org/삼성전자&gt; .
+&lt;http://example.org/김철수&gt; &lt;http://example.org/age&gt; "30"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="layer-detail-card">
+            <h4>4. RDFS 계층</h4>
+            <div class="layer-content">
+                <h5>역할</h5>
+                <p>RDF에 스키마 기능을 추가하여 기본적인 온톨로지 구축</p>
+                
+                <h5>주요 구성요소</h5>
+                <div class="rdfs-components">
+                    <div class="component">
+                        <h6>클래스 정의</h6>
+                        <ul>
+                            <li><code>rdfs:Class</code> - 클래스 선언</li>
+                            <li><code>rdfs:subClassOf</code> - 상하위 관계</li>
+                            <li><code>rdf:type</code> - 인스턴스 관계</li>
+                        </ul>
+                    </div>
+                    <div class="component">
+                        <h6>속성 정의</h6>
+                        <ul>
+                            <li><code>rdf:Property</code> - 속성 선언</li>
+                            <li><code>rdfs:domain</code> - 속성의 주어 제한</li>
+                            <li><code>rdfs:range</code> - 속성의 목적어 제한</li>
+                        </ul>
+                    </div>
+                    <div class="component">
+                        <h6>문서화</h6>
+                        <ul>
+                            <li><code>rdfs:label</code> - 사람이 읽을 레이블</li>
+                            <li><code>rdfs:comment</code> - 설명</li>
+                            <li><code>rdfs:seeAlso</code> - 관련 리소스</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <h5>예제: RDFS로 간단한 스키마 정의</h5>
+                    <pre><code class="language-turtle">
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix : &lt;http://example.org/vehicles#&gt; .
+
+# 클래스 계층구조
+:Vehicle rdf:type rdfs:Class ;
+    rdfs:label "차량"@ko ;
+    rdfs:comment "모든 운송수단의 상위 클래스"@ko .
+
+:Car rdfs:subClassOf :Vehicle ;
+    rdfs:label "자동차"@ko .
+
+:ElectricCar rdfs:subClassOf :Car ;
+    rdfs:label "전기자동차"@ko .
+
+# 속성 정의
+:manufacturedBy rdf:type rdf:Property ;
+    rdfs:domain :Vehicle ;
+    rdfs:range :Company ;
+    rdfs:label "제조사"@ko .
+
+:maxSpeed rdf:type rdf:Property ;
+    rdfs:domain :Vehicle ;
+    rdfs:range xsd:integer ;
+    rdfs:label "최고속도"@ko .
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="layer-detail-card">
+            <h4>5. OWL 계층</h4>
+            <div class="layer-content">
+                <h5>역할</h5>
+                <p>RDFS보다 훨씬 강력한 표현력으로 복잡한 온톨로지 구축</p>
+                
+                <h5>OWL의 추가 기능</h5>
+                <ul>
+                    <li>복잡한 클래스 표현 (교집합, 합집합, 보수)</li>
+                    <li>속성 특성 (전이적, 대칭적, 함수적 등)</li>
+                    <li>카디널리티 제약</li>
+                    <li>고급 추론 지원</li>
+                </ul>
+                
+                <div class="owl-profiles">
+                    <h5>OWL 프로파일</h5>
+                    <div class="profile-grid">
+                        <div class="profile">
+                            <h6>OWL Lite</h6>
+                            <p>간단한 제약사항</p>
+                            <p>빠른 추론</p>
+                        </div>
+                        <div class="profile">
+                            <h6>OWL DL</h6>
+                            <p>서술논리 기반</p>
+                            <p>결정가능한 추론</p>
+                        </div>
+                        <div class="profile">
+                            <h6>OWL Full</h6>
+                            <p>최대 표현력</p>
+                            <p>결정불가능</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실습: Layer Cake 구축하기 -->
+    <div class="hands-on-practice">
+        <h3><i class="fas fa-layer-group"></i> 실습: 미니 Layer Cake 구축하기</h3>
+        
+        <div class="practice-scenario">
+            <h4>목표: 간단한 도서관 시스템을 각 계층별로 구축</h4>
+            
+            <div class="layer-practice">
+                <h5>1단계: URI 설계</h5>
+                <pre><code class="language-text">
+기본 네임스페이스: http://library.example.org/
+리소스 URI 패턴:
+  - 도서: http://library.example.org/book/{isbn}
+  - 저자: http://library.example.org/author/{id}
+  - 출판사: http://library.example.org/publisher/{id}
+                </code></pre>
+            </div>
+            
+            <div class="layer-practice">
+                <h5>2단계: RDF 트리플</h5>
+                <pre><code class="language-turtle">
+@prefix lib: &lt;http://library.example.org/&gt; .
+
+lib:book/978-89-123-4567-8
+    lib:title "온톨로지 입문" ;
+    lib:author lib:author/kim-cs ;
+    lib:publisher lib:publisher/tech-books .
+                </code></pre>
+            </div>
+            
+            <div class="layer-practice">
+                <h5>3단계: RDFS 스키마</h5>
+                <pre><code class="language-turtle">
+lib:Book rdf:type rdfs:Class .
+lib:Person rdf:type rdfs:Class .
+lib:Author rdfs:subClassOf lib:Person .
+
+lib:hasAuthor rdf:type rdf:Property ;
+    rdfs:domain lib:Book ;
+    rdfs:range lib:Author .
+                </code></pre>
+            </div>
+            
+            <div class="layer-practice">
+                <h5>4단계: OWL 온톨로지</h5>
+                <pre><code class="language-turtle">
+lib:Book rdf:type owl:Class ;
+    rdfs:subClassOf [
+        rdf:type owl:Restriction ;
+        owl:onProperty lib:hasISBN ;
+        owl:cardinality 1
+    ] .
+
+lib:hasISBN rdf:type owl:FunctionalProperty ;
+    rdfs:domain lib:Book ;
+    rdfs:range xsd:string .
+                </code></pre>
             </div>
         </div>
     </div>
@@ -333,95 +1022,273 @@ rdfs:range      # 속성의 목적어 범위
 
 <!-- 섹션 3.4 -->
 <section class="content-section">
-    <h2>3.4 시맨틱 웹에서 온톨로지의 역할</h2>
+    <h2>3.4 온톨로지의 역할과 중요성</h2>
     
-    <p>온톨로지는 시맨틱 웹의 핵심으로, 데이터에 의미를 부여하고 기계가 이해할 수 있게 만듭니다.</p>
-    
-    <h3>온톨로지의 주요 기능</h3>
-    <div class="ontology-functions">
-        <div class="function-card">
-            <div class="function-icon">📖</div>
-            <h4>공통 어휘 제공</h4>
-            <p>도메인의 개념과 관계를 표준화된 방식으로 정의</p>
-            <div class="function-example">
-                <strong>예:</strong> Schema.org는 웹 콘텐츠를 위한 공통 어휘 제공
-            </div>
-        </div>
-        
-        <div class="function-card">
-            <div class="function-icon">🔗</div>
-            <h4>데이터 통합</h4>
-            <p>서로 다른 소스의 데이터를 의미적으로 연결</p>
-            <div class="function-example">
-                <strong>예:</strong> 병원 시스템과 보험사 시스템의 데이터 통합
-            </div>
-        </div>
-        
-        <div class="function-card">
-            <div class="function-icon">🧠</div>
-            <h4>지능적 추론</h4>
-            <p>명시되지 않은 정보를 논리적으로 도출</p>
-            <div class="function-example">
-                <strong>예:</strong> "포유류는 따뜻한 피를 가진다" → "개는 따뜻한 피를 가진다"
-            </div>
-        </div>
-        
-        <div class="function-card">
-            <div class="function-icon">🔍</div>
-            <h4>의미 기반 검색</h4>
-            <p>단순 키워드가 아닌 의미를 이해하는 검색</p>
-            <div class="function-example">
-                <strong>예:</strong> "심장 전문의"로 검색 시 "순환기내과 의사"도 결과에 포함
-            </div>
-        </div>
+    <div class="section-intro">
+        <p>시맨틱 웹에서 온톨로지는 단순한 데이터 구조를 넘어서 웹을 지능화하는 핵심 역할을 합니다. 
+        온톨로지는 시맨틱 웹의 '두뇌'라고 할 수 있습니다.</p>
     </div>
+
+    <h3>3.4.1 온톨로지의 핵심 역할</h3>
     
-    <h3>실제 적용 사례</h3>
-    <div class="real-world-examples">
-        <div class="example-case">
-            <h4>Google Knowledge Graph</h4>
-            <div class="case-details">
-                <p>구글의 지식 그래프는 수십억 개의 사실을 온톨로지로 구조화</p>
-                <div class="case-stats">
-                    <div class="stat">
-                        <strong>500억+</strong>
-                        <span>팩트</span>
-                    </div>
-                    <div class="stat">
-                        <strong>50억+</strong>
-                        <span>엔티티</span>
-                    </div>
-                    <div class="stat">
-                        <strong>1,500+</strong>
-                        <span>타입</span>
+    <div class="roles-grid">
+        <div class="role-card">
+            <div class="role-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <h4>1. 공통 어휘 제공</h4>
+            <div class="role-content">
+                <p>서로 다른 시스템이 같은 의미로 사용할 수 있는 표준 용어 정의</p>
+                <div class="example">
+                    <h5>예시: 전자상거래 온톨로지</h5>
+                    <pre><code class="language-turtle">
+# 모든 쇼핑몰이 공유하는 제품 온톨로지
+:Product rdf:type owl:Class .
+:price rdf:type owl:DatatypeProperty ;
+    rdfs:comment "제품의 판매 가격" .
+:manufacturer rdf:type owl:ObjectProperty ;
+    rdfs:comment "제품 제조사" .
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="role-card">
+            <div class="role-icon">
+                <i class="fas fa-sitemap"></i>
+            </div>
+            <h4>2. 지식 구조화</h4>
+            <div class="role-content">
+                <p>분산된 정보를 체계적으로 조직화하고 연결</p>
+                <div class="structure-example">
+                    <div class="knowledge-structure">
+                        <div class="structure-node root">의료 지식</div>
+                        <div class="structure-children">
+                            <div class="structure-node">질병</div>
+                            <div class="structure-node">증상</div>
+                            <div class="structure-node">치료법</div>
+                            <div class="structure-node">약물</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="example-case">
-            <h4>DBpedia</h4>
-            <div class="case-details">
-                <p>위키피디아를 구조화된 지식으로 변환</p>
-                <ul>
-                    <li>4.58백만 개의 사물 설명</li>
-                    <li>30억 개의 RDF 트리플</li>
-                    <li>125개 언어 지원</li>
-                    <li>SPARQL 엔드포인트 제공</li>
-                </ul>
+        <div class="role-card">
+            <div class="role-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <h4>3. 추론 가능</h4>
+            <div class="role-content">
+                <p>명시되지 않은 사실을 논리적으로 도출</p>
+                <div class="inference-example">
+                    <h5>추론 예시</h5>
+                    <div class="inference-flow">
+                        <div class="given">
+                            <h6>주어진 사실:</h6>
+                            <p>서울은 대한민국의 수도다</p>
+                            <p>수도는 도시다</p>
+                        </div>
+                        <div class="arrow">⇒</div>
+                        <div class="inferred">
+                            <h6>추론된 사실:</h6>
+                            <p>서울은 도시다</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="example-case">
-            <h4>의료 분야: BioPortal</h4>
-            <div class="case-details">
-                <p>생의학 온톨로지 저장소</p>
-                <ul>
-                    <li>800+ 온톨로지</li>
-                    <li>8백만+ 클래스</li>
-                    <li>질병, 약물, 해부학 등 포괄</li>
-                    <li>연구자간 지식 공유 플랫폼</li>
-                </ul>
+        <div class="role-card">
+            <div class="role-icon">
+                <i class="fas fa-exchange-alt"></i>
+            </div>
+            <h4>4. 상호운용성</h4>
+            <div class="role-content">
+                <p>이질적인 시스템 간 데이터 교환과 통합</p>
+                <div class="interop-diagram">
+                    <div class="system">병원 A</div>
+                    <div class="ontology">의료 온톨로지</div>
+                    <div class="system">병원 B</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>3.4.2 시맨틱 웹에서 온톨로지의 활용 사례</h3>
+    
+    <div class="use-cases">
+        <div class="use-case">
+            <h4>사례 1: DBpedia - Wikipedia의 시맨틱 버전</h4>
+            <div class="case-content">
+                <div class="case-overview">
+                    <p>Wikipedia의 정보를 구조화된 지식으로 변환한 대규모 온톨로지</p>
+                    <ul>
+                        <li>600만개 이상의 리소스</li>
+                        <li>320개 클래스, 1,650개 속성</li>
+                        <li>125개 언어 지원</li>
+                    </ul>
+                </div>
+                
+                <div class="case-example">
+                    <h5>DBpedia 쿼리 예시</h5>
+                    <pre><code class="language-sparql">
+# 한국의 모든 도시 검색
+PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+PREFIX dbr: &lt;http://dbpedia.org/resource/&gt;
+
+SELECT ?city ?population
+WHERE {
+    ?city rdf:type dbo:City ;
+          dbo:country dbr:South_Korea ;
+          dbo:populationTotal ?population .
+}
+ORDER BY DESC(?population)
+LIMIT 10
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="use-case">
+            <h4>사례 2: Schema.org - 웹 콘텐츠 구조화</h4>
+            <div class="case-content">
+                <div class="case-overview">
+                    <p>Google, Microsoft, Yahoo, Yandex가 공동 개발한 웹 콘텐츠 마크업 온톨로지</p>
+                </div>
+                
+                <div class="schema-example">
+                    <h5>웹페이지에 의미 추가</h5>
+                    <pre><code class="language-html">
+&lt;div itemscope itemtype="https://schema.org/Restaurant"&gt;
+    &lt;h1 itemprop="name"&gt;맛있는 김치찌개&lt;/h1&gt;
+    &lt;div itemprop="address" itemscope 
+         itemtype="https://schema.org/PostalAddress"&gt;
+        &lt;span itemprop="streetAddress"&gt;강남대로 123&lt;/span&gt;
+        &lt;span itemprop="addressLocality"&gt;서울&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span itemprop="telephone"&gt;02-1234-5678&lt;/span&gt;
+    &lt;div itemprop="aggregateRating" itemscope 
+         itemtype="https://schema.org/AggregateRating"&gt;
+        평점: &lt;span itemprop="ratingValue"&gt;4.5&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                    </code></pre>
+                    
+                    <div class="result-preview">
+                        <h6>검색 결과 미리보기:</h6>
+                        <div class="rich-snippet">
+                            <h3>맛있는 김치찌개</h3>
+                            <div class="rating">★★★★☆ 4.5</div>
+                            <div class="address">서울 강남대로 123</div>
+                            <div class="phone">📞 02-1234-5678</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="use-case">
+            <h4>사례 3: Google Knowledge Graph</h4>
+            <div class="case-content">
+                <div class="case-overview">
+                    <p>수십억 개의 사실과 관계를 포함하는 Google의 지식 그래프</p>
+                </div>
+                
+                <div class="knowledge-graph-demo">
+                    <h5>Knowledge Graph 검색 결과</h5>
+                    <div class="kg-search">
+                        <input type="text" value="아인슈타인" readonly>
+                        <div class="kg-result">
+                            <div class="kg-card">
+                                <h3>알베르트 아인슈타인</h3>
+                                <p class="kg-type">물리학자</p>
+                                <div class="kg-facts">
+                                    <div class="fact">
+                                        <strong>출생:</strong> 1879년 3월 14일
+                                    </div>
+                                    <div class="fact">
+                                        <strong>사망:</strong> 1955년 4월 18일
+                                    </div>
+                                    <div class="fact">
+                                        <strong>업적:</strong> 상대성 이론
+                                    </div>
+                                    <div class="fact">
+                                        <strong>수상:</strong> 노벨 물리학상 (1921)
+                                    </div>
+                                </div>
+                                <div class="kg-related">
+                                    <h4>관련 인물</h4>
+                                    <span class="related-item">막스 플랑크</span>
+                                    <span class="related-item">닐스 보어</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>3.4.3 온톨로지 기반 추론의 실제</h3>
+    
+    <div class="reasoning-examples">
+        <h4>의료 진단 시스템에서의 추론</h4>
+        
+        <div class="medical-reasoning">
+            <div class="reasoning-scenario">
+                <h5>시나리오: 증상 기반 질병 추론</h5>
+                
+                <div class="reasoning-process">
+                    <div class="step input">
+                        <h6>입력된 증상</h6>
+                        <ul>
+                            <li>발열 (38.5°C)</li>
+                            <li>기침</li>
+                            <li>인후통</li>
+                            <li>근육통</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="step ontology">
+                        <h6>온톨로지 규칙</h6>
+                        <pre><code class="language-turtle">
+:Flu rdf:type owl:Class ;
+    owl:equivalentClass [
+        owl:intersectionOf (
+            :ViralInfection
+            [ rdf:type owl:Restriction ;
+              owl:onProperty :hasSymptom ;
+              owl:someValuesFrom :Fever ]
+            [ rdf:type owl:Restriction ;
+              owl:onProperty :hasSymptom ;
+              owl:someValuesFrom :Cough ]
+            [ rdf:type owl:Restriction ;
+              owl:onProperty :hasSymptom ;
+              owl:someValuesFrom :MusclePain ]
+        )
+    ] .
+                        </code></pre>
+                    </div>
+                    
+                    <div class="step inference">
+                        <h6>추론 결과</h6>
+                        <div class="inference-result">
+                            <p><strong>가능성 높은 진단:</strong></p>
+                            <ul>
+                                <li>독감 (Influenza) - 85%</li>
+                                <li>감기 (Common Cold) - 60%</li>
+                                <li>COVID-19 - 검사 필요</li>
+                            </ul>
+                            <p><strong>추천 조치:</strong></p>
+                            <ul>
+                                <li>독감 신속 검사</li>
+                                <li>충분한 휴식</li>
+                                <li>수분 섭취</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -429,98 +1296,279 @@ rdfs:range      # 속성의 목적어 범위
 
 <!-- 섹션 3.5 -->
 <section class="content-section">
-    <h2>3.5 링크드 데이터 (Linked Data)</h2>
+    <h2>3.5 Linked Data와 5-Star Open Data</h2>
     
-    <p>링크드 데이터는 시맨틱 웹의 실현을 위한 실천적 방법론입니다.</p>
+    <div class="section-intro">
+        <p>Linked Data는 시맨틱 웹의 실질적인 구현 방법론으로, 웹상의 데이터를 서로 연결하여 
+        거대한 글로벌 데이터 공간을 만드는 것을 목표로 합니다.</p>
+    </div>
+
+    <h3>3.5.1 Linked Data의 4원칙</h3>
     
-    <h3>링크드 데이터 원칙</h3>
-    <div class="linked-data-principles">
+    <div class="principles-showcase">
         <div class="principle">
             <div class="principle-number">1</div>
-            <h4>URI 사용</h4>
-            <p>사물의 이름으로 URI를 사용하라</p>
-            <div class="principle-example">
-                ❌ "서울"<br>
-                ✅ http://dbpedia.org/resource/Seoul
+            <div class="principle-content">
+                <h4>URI로 사물 이름 짓기</h4>
+                <p>모든 리소스에 HTTP URI를 부여하여 웹에서 식별 가능하게 함</p>
+                <div class="example">
+                    <code>http://dbpedia.org/resource/Seoul</code>
+                    <code>http://data.gov.kr/resource/city/11000</code>
+                </div>
             </div>
         </div>
         
         <div class="principle">
             <div class="principle-number">2</div>
-            <h4>HTTP URI</h4>
-            <p>사람들이 찾을 수 있도록 HTTP URI를 사용하라</p>
-            <div class="principle-example">
-                ❌ urn:seoul:korea<br>
-                ✅ http://ko.dbpedia.org/resource/서울
+            <div class="principle-content">
+                <h4>HTTP URI 사용</h4>
+                <p>사람과 기계가 조회할 수 있도록 HTTP 프로토콜 사용</p>
+                <div class="example">
+                    <p>❌ <code>urn:isbn:978-89-123-4567-8</code></p>
+                    <p>✅ <code>http://example.org/book/978-89-123-4567-8</code></p>
+                </div>
             </div>
         </div>
         
         <div class="principle">
             <div class="principle-number">3</div>
-            <h4>유용한 정보 제공</h4>
-            <p>URI를 찾았을 때 RDF와 SPARQL로 유용한 정보를 제공하라</p>
-            <div class="principle-example">
-                RDF/XML, JSON-LD, Turtle 형식으로 데이터 제공
+            <div class="principle-content">
+                <h4>유용한 정보 제공</h4>
+                <p>URI 접근 시 RDF, SPARQL 등 표준 형식으로 정보 제공</p>
+                <div class="content-negotiation">
+                    <h5>Content Negotiation 예시</h5>
+                    <pre><code>
+GET /resource/Seoul HTTP/1.1
+Host: example.org
+Accept: text/html → HTML 페이지
+Accept: application/rdf+xml → RDF/XML
+Accept: text/turtle → Turtle
+                    </code></pre>
+                </div>
             </div>
         </div>
         
         <div class="principle">
             <div class="principle-number">4</div>
-            <h4>다른 URI 링크</h4>
-            <p>더 많은 것을 발견할 수 있도록 다른 URI를 포함하라</p>
-            <div class="principle-example">
-                서울 → 대한민국 → 아시아 → ...
+            <div class="principle-content">
+                <h4>다른 URI로의 링크 포함</h4>
+                <p>관련 정보를 발견할 수 있도록 다른 데이터셋으로의 링크 제공</p>
+                <div class="linking-example">
+                    <pre><code class="language-turtle">
+&lt;http://data.gov.kr/Seoul&gt;
+    owl:sameAs &lt;http://dbpedia.org/resource/Seoul&gt; ;
+    owl:sameAs &lt;http://www.geonames.org/1835848&gt; ;
+    rdfs:seeAlso &lt;http://en.wikipedia.org/wiki/Seoul&gt; .
+                    </code></pre>
+                </div>
             </div>
         </div>
     </div>
+
+    <h3>3.5.2 5-Star Open Data</h3>
     
-    <h3>링크드 오픈 데이터 클라우드</h3>
+    <div class="five-star-system">
+        <h4>팀 버너스 리의 5-Star Open Data 체계</h4>
+        
+        <div class="stars-progression">
+            <div class="star-level one-star">
+                <div class="stars">⭐</div>
+                <h5>1 Star: 웹에 공개</h5>
+                <p>어떤 형식이든 오픈 라이선스로 데이터 공개</p>
+                <div class="example">
+                    <code>PDF, 이미지 파일 등</code>
+                </div>
+                <div class="pros-cons">
+                    <p class="pro">✅ 데이터 접근 가능</p>
+                    <p class="con">❌ 기계 처리 어려움</p>
+                </div>
+            </div>
+            
+            <div class="star-level two-star">
+                <div class="stars">⭐⭐</div>
+                <h5>2 Star: 구조화된 데이터</h5>
+                <p>기계가 읽을 수 있는 구조화된 형식</p>
+                <div class="example">
+                    <code>Excel, CSV</code>
+                </div>
+                <div class="pros-cons">
+                    <p class="pro">✅ 기계 처리 가능</p>
+                    <p class="con">❌ 독점 형식 문제</p>
+                </div>
+            </div>
+            
+            <div class="star-level three-star">
+                <div class="stars">⭐⭐⭐</div>
+                <h5>3 Star: 개방형 형식</h5>
+                <p>비독점적 개방형 형식 사용</p>
+                <div class="example">
+                    <code>CSV, XML, JSON</code>
+                </div>
+                <div class="pros-cons">
+                    <p class="pro">✅ 소프트웨어 독립적</p>
+                    <p class="con">❌ 웹 표준 미사용</p>
+                </div>
+            </div>
+            
+            <div class="star-level four-star">
+                <div class="stars">⭐⭐⭐⭐</div>
+                <h5>4 Star: URI 사용</h5>
+                <p>사물을 나타내는 URI 사용 (RDF)</p>
+                <div class="example">
+                    <code>RDF, SPARQL Endpoint</code>
+                </div>
+                <div class="pros-cons">
+                    <p class="pro">✅ 웹 표준 준수</p>
+                    <p class="con">❌ 고립된 데이터</p>
+                </div>
+            </div>
+            
+            <div class="star-level five-star">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h5>5 Star: Linked Data</h5>
+                <p>다른 데이터와 연결된 Linked Open Data</p>
+                <div class="example">
+                    <code>DBpedia, Wikidata</code>
+                </div>
+                <div class="pros-cons">
+                    <p class="pro">✅ 완전한 연결성</p>
+                    <p class="pro">✅ 네트워크 효과</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>3.5.3 LOD (Linked Open Data) Cloud</h3>
+    
     <div class="lod-cloud">
-        <div class="lod-stats">
-            <h4>LOD 클라우드 현황</h4>
-            <div class="stat-grid">
-                <div class="lod-stat">
-                    <strong>1,200+</strong>
-                    <span>데이터셋</span>
-                </div>
-                <div class="lod-stat">
-                    <strong>160억+</strong>
-                    <span>트리플</span>
-                </div>
-                <div class="lod-stat">
-                    <strong>5억+</strong>
-                    <span>링크</span>
-                </div>
+        <h4>전 세계 Linked Open Data 현황</h4>
+        
+        <div class="lod-statistics">
+            <div class="stat-card">
+                <div class="stat-number">1,300+</div>
+                <div class="stat-label">데이터셋</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">160억+</div>
+                <div class="stat-label">트리플</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">570만+</div>
+                <div class="stat-label">링크</div>
             </div>
         </div>
         
         <div class="lod-categories">
-            <h4>주요 카테고리</h4>
-            <div class="category-list">
-                <div class="category-item">
-                    <span class="category-icon">📚</span>
-                    <span>출판물</span>
+            <h5>주요 분야별 LOD</h5>
+            <div class="category-grid">
+                <div class="lod-category">
+                    <h6>지리 정보</h6>
+                    <ul>
+                        <li>GeoNames</li>
+                        <li>LinkedGeoData</li>
+                        <li>Ordnance Survey</li>
+                    </ul>
                 </div>
-                <div class="category-item">
-                    <span class="category-icon">🧬</span>
-                    <span>생명과학</span>
+                <div class="lod-category">
+                    <h6>생명과학</h6>
+                    <ul>
+                        <li>Bio2RDF</li>
+                        <li>DrugBank</li>
+                        <li>UniProt</li>
+                    </ul>
                 </div>
-                <div class="category-item">
-                    <span class="category-icon">🏛️</span>
-                    <span>정부 데이터</span>
+                <div class="lod-category">
+                    <h6>정부 데이터</h6>
+                    <ul>
+                        <li>data.gov.uk</li>
+                        <li>data.gov</li>
+                        <li>공공데이터포털</li>
+                    </ul>
                 </div>
-                <div class="category-item">
-                    <span class="category-icon">🌍</span>
-                    <span>지리 정보</span>
+                <div class="lod-category">
+                    <h6>미디어</h6>
+                    <ul>
+                        <li>BBC Music</li>
+                        <li>MusicBrainz</li>
+                        <li>Flickr</li>
+                    </ul>
                 </div>
-                <div class="category-item">
-                    <span class="category-icon">📱</span>
-                    <span>소셜 미디어</span>
-                </div>
-                <div class="category-item">
-                    <span class="category-icon">🎨</span>
-                    <span>문화 예술</span>
-                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실습: Linked Data 만들기 -->
+    <div class="linked-data-practice">
+        <h3><i class="fas fa-link"></i> 실습: 나만의 Linked Data 만들기</h3>
+        
+        <div class="practice-steps">
+            <h4>한국 관광지 Linked Data 구축</h4>
+            
+            <div class="ld-step">
+                <h5>Step 1: URI 스키마 설계</h5>
+                <pre><code class="language-text">
+기본 네임스페이스: http://korea-tourism.kr/
+
+URI 패턴:
+- 도시: http://korea-tourism.kr/city/{name}
+- 명소: http://korea-tourism.kr/attraction/{id}
+- 축제: http://korea-tourism.kr/festival/{id}
+- 음식: http://korea-tourism.kr/food/{name}
+                </code></pre>
+            </div>
+            
+            <div class="ld-step">
+                <h5>Step 2: 데이터 모델링</h5>
+                <pre><code class="language-turtle">
+@prefix kt: &lt;http://korea-tourism.kr/&gt; .
+@prefix geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix dbpedia: &lt;http://dbpedia.org/resource/&gt; .
+
+kt:city/seoul a schema:City ;
+    schema:name "서울특별시"@ko , "Seoul"@en ;
+    geo:lat "37.5665" ;
+    geo:long "126.9780" ;
+    schema:description "대한민국의 수도"@ko ;
+    owl:sameAs dbpedia:Seoul ;
+    kt:hasAttraction kt:attraction/gyeongbokgung ,
+                     kt:attraction/n-seoul-tower .
+                </code></pre>
+            </div>
+            
+            <div class="ld-step">
+                <h5>Step 3: 외부 데이터 연결</h5>
+                <pre><code class="language-turtle">
+kt:attraction/gyeongbokgung a schema:TouristAttraction ;
+    schema:name "경복궁"@ko , "Gyeongbokgung Palace"@en ;
+    schema:description "조선왕조의 정궁"@ko ;
+    geo:lat "37.5796" ;
+    geo:long "126.9770" ;
+    schema:openingHours "Mo-Su 09:00-18:00" ;
+    schema:isAccessibleForFree false ;
+    owl:sameAs dbpedia:Gyeongbokgung ;
+    owl:sameAs &lt;http://www.wikidata.org/entity/Q483501&gt; ;
+    schema:image &lt;http://korea-tourism.kr/images/gyeongbokgung.jpg&gt; ;
+    kt:nearbyFood kt:food/kimchi ,
+                  kt:food/bulgogi .
+                </code></pre>
+            </div>
+            
+            <div class="ld-step">
+                <h5>Step 4: SPARQL 엔드포인트 제공</h5>
+                <pre><code class="language-sparql">
+# 서울의 모든 관광명소 검색
+PREFIX kt: &lt;http://korea-tourism.kr/&gt;
+PREFIX schema: &lt;http://schema.org/&gt;
+
+SELECT ?attraction ?name ?description
+WHERE {
+    kt:city/seoul kt:hasAttraction ?attraction .
+    ?attraction schema:name ?name ;
+                schema:description ?description .
+    FILTER (lang(?name) = "ko")
+}
+                </code></pre>
             </div>
         </div>
     </div>
@@ -530,732 +1578,766 @@ rdfs:range      # 속성의 목적어 범위
 <section class="content-section">
     <h2>3.6 시맨틱 웹의 현재와 미래</h2>
     
-    <h3>현재 상황</h3>
-    <div class="current-state">
-        <div class="state-card success">
-            <h4>✅ 성공 사례</h4>
+    <div class="section-intro">
+        <p>20년이 넘는 시간 동안 시맨틱 웹은 비전에서 현실로 조금씩 다가왔습니다. 
+        완전한 실현은 아직이지만, 많은 영역에서 실질적인 성과를 보이고 있습니다.</p>
+    </div>
+
+    <h3>3.6.1 현재의 성과</h3>
+    
+    <div class="achievements-grid">
+        <div class="achievement">
+            <div class="achievement-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <h4>검색엔진의 진화</h4>
+            <div class="achievement-content">
+                <p>단순 키워드 매칭에서 의미 기반 검색으로</p>
+                <ul>
+                    <li>Google Knowledge Graph</li>
+                    <li>Bing Entity Search</li>
+                    <li>음성 검색 고도화</li>
+                    <li>자연어 질의 이해</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="achievement">
+            <div class="achievement-icon">
+                <i class="fas fa-microphone"></i>
+            </div>
+            <h4>음성 비서의 발전</h4>
+            <div class="achievement-content">
+                <p>온톨로지 기반 자연어 이해</p>
+                <ul>
+                    <li>Siri, Alexa, Google Assistant</li>
+                    <li>문맥 이해 능력 향상</li>
+                    <li>다중 턴 대화 가능</li>
+                    <li>개인화된 응답</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="achievement">
+            <div class="achievement-icon">
+                <i class="fas fa-share-alt"></i>
+            </div>
+            <h4>소셜 미디어 통합</h4>
+            <div class="achievement-content">
+                <p>Open Graph Protocol 활용</p>
+                <ul>
+                    <li>풍부한 미리보기</li>
+                    <li>구조화된 공유 정보</li>
+                    <li>크로스 플랫폼 통합</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="achievement">
+            <div class="achievement-icon">
+                <i class="fas fa-industry"></i>
+            </div>
+            <h4>산업별 적용</h4>
+            <div class="achievement-content">
+                <p>특정 도메인에서의 성공</p>
+                <ul>
+                    <li>의료: SNOMED CT, HL7 FHIR</li>
+                    <li>금융: FIBO, XBRL</li>
+                    <li>출판: ONIX, EPUB</li>
+                    <li>정부: 공공데이터 표준</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3>3.6.2 도전과제와 한계</h3>
+    
+    <div class="challenges">
+        <div class="challenge-card">
+            <h4>🔧 기술적 도전</h4>
             <ul>
-                <li>지식 그래프의 상용화 (Google, Facebook)</li>
-                <li>Schema.org의 광범위한 채택</li>
-                <li>오픈 데이터 운동의 확산</li>
-                <li>AI 어시스턴트의 발전</li>
-                <li>의료, 생명과학 분야의 활발한 활용</li>
+                <li>복잡한 기술 스택</li>
+                <li>확장성 문제</li>
+                <li>추론 성능</li>
+                <li>데이터 품질 관리</li>
             </ul>
         </div>
         
-        <div class="state-card challenge">
-            <h4>🚧 도전 과제</h4>
+        <div class="challenge-card">
+            <h4>💼 비즈니스 도전</h4>
             <ul>
-                <li>복잡한 기술 스택</li>
-                <li>높은 진입 장벽</li>
-                <li>온톨로지 구축 비용</li>
-                <li>데이터 품질 문제</li>
-                <li>프라이버시와 보안</li>
+                <li>투자 대비 효과 증명</li>
+                <li>킬러 애플리케이션 부족</li>
+                <li>기존 시스템과의 통합</li>
+                <li>변화 저항</li>
+            </ul>
+        </div>
+        
+        <div class="challenge-card">
+            <h4>👥 사회적 도전</h4>
+            <ul>
+                <li>프라이버시 우려</li>
+                <li>데이터 소유권</li>
+                <li>디지털 격차</li>
+                <li>신뢰성 검증</li>
             </ul>
         </div>
     </div>
+
+    <h3>3.6.3 미래 전망</h3>
     
-    <h3>미래 전망</h3>
-    <div class="future-outlook">
-        <div class="future-trend">
-            <h4>🤖 AI와의 융합</h4>
-            <p>머신러닝과 온톨로지의 결합으로 더 똑똑한 AI 시스템 구현</p>
-            <div class="trend-examples">
-                • 설명 가능한 AI<br>
-                • 자동 온톨로지 학습<br>
-                • 하이브리드 추론 시스템
+    <div class="future-vision">
+        <h4>시맨틱 웹의 진화 방향</h4>
+        
+        <div class="evolution-paths">
+            <div class="path">
+                <h5>1. AI와의 융합</h5>
+                <div class="path-content">
+                    <p>머신러닝과 온톨로지의 시너지</p>
+                    <ul>
+                        <li>자동 온톨로지 구축</li>
+                        <li>신경-기호 AI 통합</li>
+                        <li>설명 가능한 AI</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="path">
+                <h5>2. IoT와 Edge Computing</h5>
+                <div class="path-content">
+                    <p>사물인터넷에서의 시맨틱 기술</p>
+                    <ul>
+                        <li>센서 데이터 의미화</li>
+                        <li>자율 시스템 간 협업</li>
+                        <li>실시간 추론</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="path">
+                <h5>3. 탈중앙화 웹</h5>
+                <div class="path-content">
+                    <p>블록체인과 분산 시스템</p>
+                    <ul>
+                        <li>자기주권 신원</li>
+                        <li>분산 지식 그래프</li>
+                        <li>신뢰 없는 데이터 교환</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="path">
+                <h5>4. 메타버스와 디지털 트윈</h5>
+                <div class="path-content">
+                    <p>가상 세계의 의미 표현</p>
+                    <ul>
+                        <li>3D 공간 온톨로지</li>
+                        <li>크로스 플랫폼 아바타</li>
+                        <li>가상 자산 상호운용</li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- 최종 프로젝트 -->
+    <div class="final-project">
+        <h3><i class="fas fa-rocket"></i> 종합 프로젝트: 미니 시맨틱 웹 애플리케이션</h3>
         
-        <div class="future-trend">
-            <h4>🌐 탈중앙화 웹</h4>
-            <p>블록체인과 분산 기술을 활용한 신뢰 기반 시맨틱 웹</p>
-            <div class="trend-examples">
-                • 분산 지식 그래프<br>
-                • 자기주권 신원<br>
-                • P2P 데이터 공유
+        <div class="project-overview">
+            <h4>프로젝트: 스마트 여행 추천 시스템</h4>
+            <p>시맨틱 웹 기술을 활용하여 개인화된 여행 추천 시스템을 구축합니다.</p>
+            
+            <div class="project-requirements">
+                <h5>요구사항</h5>
+                <ol>
+                    <li>여행지 온톨로지 설계 (도시, 명소, 숙박, 음식)</li>
+                    <li>외부 LOD 연결 (DBpedia, GeoNames)</li>
+                    <li>사용자 선호도 모델링</li>
+                    <li>SPARQL 기반 추천 엔진</li>
+                    <li>Schema.org 마크업 적용</li>
+                </ol>
             </div>
-        </div>
-        
-        <div class="future-trend">
-            <h4>🔮 일상 속 시맨틱 웹</h4>
-            <p>보이지 않지만 모든 곳에 존재하는 지능형 웹</p>
-            <div class="trend-examples">
-                • IoT 기기 간 자동 협업<br>
-                • 개인화된 디지털 어시스턴트<br>
-                • 스마트 시티 인프라
+            
+            <div class="project-architecture">
+                <h5>시스템 아키텍처</h5>
+                <div class="architecture-diagram">
+                    <div class="layer">사용자 인터페이스</div>
+                    <div class="layer">추천 엔진</div>
+                    <div class="layer">SPARQL 엔드포인트</div>
+                    <div class="layer">온톨로지 + Triple Store</div>
+                    <div class="layer">외부 LOD 소스</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 핵심 정리 -->
-<div class="summary-section">
-    <h2>💡 핵심 정리</h2>
+<!-- 학습 요약 -->
+<section class="chapter-summary">
+    <h2><i class="fas fa-bookmark"></i> Chapter 3 학습 요약</h2>
     
-    <div class="summary-grid">
-        <div class="summary-card">
-            <h3>시맨틱 웹의 비전</h3>
+    <div class="summary-content">
+        <div class="key-points">
+            <h3>핵심 요점</h3>
             <ul>
-                <li>기계가 이해하는 웹</li>
-                <li>데이터의 의미 표현</li>
-                <li>지능적인 정보 처리</li>
-                <li>자동화된 서비스</li>
+                <li>시맨틱 웹은 기계가 이해할 수 있는 웹을 만드는 비전입니다</li>
+                <li>현재 웹의 한계(의미 모호성, 데이터 사일로)를 극복하고자 합니다</li>
+                <li>Layer Cake 아키텍처로 단계적 기술 스택을 구성합니다</li>
+                <li>온톨로지는 시맨틱 웹의 핵심으로 의미를 정의하고 추론을 가능케 합니다</li>
+                <li>Linked Data는 전 세계 데이터를 하나의 거대한 그래프로 연결합니다</li>
+                <li>검색엔진, AI 등에서 이미 실용화되고 있으며 계속 발전 중입니다</li>
             </ul>
         </div>
         
-        <div class="summary-card">
-            <h3>핵심 기술</h3>
+        <div class="skills-acquired">
+            <h3>습득한 기술</h3>
             <ul>
-                <li>RDF: 데이터 모델</li>
-                <li>OWL: 온톨로지 언어</li>
-                <li>SPARQL: 질의 언어</li>
-                <li>링크드 데이터: 연결 원칙</li>
+                <li>시맨틱 웹의 기본 개념과 비전 이해</li>
+                <li>Layer Cake의 각 계층 역할 파악</li>
+                <li>Linked Data 4원칙 적용</li>
+                <li>5-Star Open Data 평가</li>
+                <li>실제 시맨틱 웹 응용 사례 분석</li>
             </ul>
         </div>
         
-        <div class="summary-card">
-            <h3>온톨로지의 역할</h3>
-            <ul>
-                <li>공통 어휘 제공</li>
-                <li>데이터 통합</li>
-                <li>지능적 추론</li>
-                <li>의미 기반 검색</li>
-            </ul>
+        <div class="next-chapter-preview">
+            <h3>다음 장 미리보기</h3>
+            <p><strong>Chapter 4: RDF - 지식 표현의 기초</strong>에서는 시맨틱 웹의 
+            기본 데이터 모델인 RDF를 심도 있게 학습합니다. 트리플 구조, 다양한 직렬화 형식, 
+            그리고 실제 RDF 데이터를 작성하고 활용하는 방법을 다룹니다.</p>
         </div>
     </div>
-</div>
+</section>
 
-<!-- 실습 과제 -->
-<div class="practice-section">
-    <h2>🎯 실습 과제</h2>
+<!-- JavaScript for Interactive Elements -->
+<script>
+// 웹 진화 비교 인터랙션
+document.querySelectorAll('.evolution-stage').forEach(stage => {
+    stage.addEventListener('click', function() {
+        this.classList.toggle('expanded');
+    });
+});
+
+// Layer Cake 인터랙션
+document.querySelectorAll('.cake-layer').forEach(layer => {
+    layer.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+        this.style.zIndex = '10';
+    });
     
-    <div class="practice-task">
-        <h3>나만의 링크드 데이터 만들기</h3>
-        <p>좋아하는 주제를 선택하여 간단한 링크드 데이터를 설계해보세요:</p>
-        
-        <div class="task-steps">
-            <h4>Step 1: 주제 선택</h4>
-            <p>예: 좋아하는 영화, 음악, 책, 여행지 등</p>
-            
-            <h4>Step 2: 주요 개체 식별</h4>
-            <p>예: 영화 제목, 감독, 배우, 장르 등</p>
-            
-            <h4>Step 3: URI 설계</h4>
-            <pre class="code-example">
-http://mydata.org/movie/기생충
-http://mydata.org/person/봉준호
-http://mydata.org/genre/스릴러
-            </pre>
-            
-            <h4>Step 4: 트리플 작성</h4>
-            <pre class="code-example">
-&lt;http://mydata.org/movie/기생충&gt;
-    rdf:type :Movie ;
-    :director &lt;http://mydata.org/person/봉준호&gt; ;
-    :genre &lt;http://mydata.org/genre/스릴러&gt; ;
-    :releaseYear "2019" .
-            </pre>
-            
-            <h4>Step 5: 외부 데이터 연결</h4>
-            <pre class="code-example">
-&lt;http://mydata.org/movie/기생충&gt;
-    owl:sameAs &lt;http://dbpedia.org/resource/Parasite_(2019_film)&gt; .
-            </pre>
-        </div>
-        
-        <div class="hint-box">
-            <strong>힌트:</strong> DBpedia나 Wikidata에서 URI를 찾아 연결하면 더 풍부한 데이터가 됩니다!
-        </div>
-    </div>
-</div>
+    layer.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.zIndex = '1';
+    });
+});
 
-<!-- 다음 장 예고 -->
-<div class="next-chapter">
-    <h3>다음 장에서는...</h3>
-    <p>RDF(Resource Description Framework)의 구조와 문법을 자세히 배워봅니다.</p>
-    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter04')">
-        다음 장으로 <i class="fas fa-arrow-right"></i>
-    </button>
-</div>
+// 5-Star 진행 애니메이션
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+};
 
-<!-- 챕터 전용 스타일 -->
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.star-level').forEach(level => {
+    observer.observe(level);
+});
+
+// SPARQL 쿼리 실행 시뮬레이션
+function executeSPARQL() {
+    const queryInput = document.getElementById('sparql-query');
+    const resultsDiv = document.getElementById('query-results');
+    
+    // 시뮬레이션된 결과 표시
+    resultsDiv.innerHTML = `
+        <table>
+            <tr><th>도시</th><th>인구</th></tr>
+            <tr><td>서울</td><td>9,733,509</td></tr>
+            <tr><td>부산</td><td>3,453,198</td></tr>
+            <tr><td>인천</td><td>2,945,117</td></tr>
+        </table>
+    `;
+}
+</script>
+
 <style>
-/* 인용구 박스 */
-.quote-box {
-    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+/* Enhanced Styles for Chapter 3 */
+
+/* 학습 로드맵 */
+.learning-roadmap {
+    background: #f7fafc;
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: 1rem;
     margin: 2rem 0;
+}
+
+.roadmap-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
     position: relative;
 }
 
-.quote-box blockquote {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #4c1d95;
-    margin: 0;
-    line-height: 1.8;
+.roadmap-container::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 0;
 }
 
-.quote-box cite {
-    display: block;
-    text-align: right;
-    margin-top: 1rem;
-    color: #6d28d9;
-    font-weight: 500;
-}
-
-/* 시나리오 박스 */
-.scenario-box {
-    background: #f8fafc;
-    padding: 2rem;
-    border-radius: 12px;
-    margin: 2rem 0;
-}
-
-.scenario-flow {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    overflow-x: auto;
-    padding: 1rem 0;
-}
-
-.scenario-step {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 2px solid #e0e7ff;
-    min-width: 150px;
+.roadmap-step {
+    flex: 1;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
-.step-icon {
-    background: #4f46e5;
-    color: white;
-    width: 2rem;
-    height: 2rem;
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 3px solid #667eea;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0.5rem;
+    margin: 0 auto;
     font-weight: bold;
+    color: #667eea;
 }
 
-.arrow {
-    color: #6366f1;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-/* 웹 진화 단계 */
-.web-evolution {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.evolution-stage {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 2px solid #e5e7eb;
-    text-align: center;
-}
-
-.evolution-stage h4 {
-    color: #1e293b;
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-}
-
-.stage-period {
-    color: #6b7280;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.stage-name {
-    color: #4f46e5;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.stage-example {
-    background: #f3f4f6;
-    padding: 0.75rem;
-    border-radius: 6px;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #4b5563;
-}
-
-/* 문제점 설명 */
-.web-comparison {
+/* 비교 그리드 */
+.comparison-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin: 2rem 0;
 }
 
-.current-web, .semantic-web {
+.comparison-item {
     background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 2rem;
 }
 
-.current-web {
+.comparison-item.syntactic {
     border-left: 4px solid #ef4444;
 }
 
-.semantic-web {
+.comparison-item.semantic {
     border-left: 4px solid #10b981;
 }
 
-.problem-note {
-    background: #fef2f2;
-    color: #991b1b;
-    padding: 0.75rem;
-    border-radius: 6px;
-    margin-top: 1rem;
+/* 문제점 카드 */
+.problem-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin: 1rem 0;
+    transition: transform 0.3s;
 }
 
-.solution-note {
-    background: #f0fdf4;
-    color: #166534;
-    padding: 0.75rem;
-    border-radius: 6px;
-    margin-top: 1rem;
+.problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* 정보 사일로 */
-.info-silos {
-    margin: 2rem 0;
-}
-
-.silo-diagram {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.silo {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 2px dashed #cbd5e1;
+.problem-icon {
+    font-size: 3rem;
+    color: #ef4444;
     text-align: center;
-}
-
-.silo h5 {
-    color: #1e293b;
     margin-bottom: 1rem;
 }
 
-.silo-data {
-    text-align: left;
-    font-size: 0.9rem;
-    color: #4b5563;
-}
-
-.silo-problem {
-    background: #fef3c7;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border-left: 4px solid #f59e0b;
-}
-
-/* 검색 한계 */
-.search-limitations {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.search-example, .semantic-search {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-}
-
-.search-query {
-    background: #f3f4f6;
-    padding: 1rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-    font-size: 1.1rem;
-}
-
-.sparql-query {
-    background: #1e293b;
-    color: #f1f5f9;
-    padding: 1rem;
-    border-radius: 8px;
-    overflow-x: auto;
-}
-
-/* 시맨틱 스택 */
-.semantic-stack {
+/* Layer Cake 시각화 */
+.cake-container {
     max-width: 600px;
     margin: 2rem auto;
 }
 
-.stack-layer {
-    padding: 1rem 1.5rem;
-    margin-bottom: 2px;
-    text-align: center;
-    color: white;
-    position: relative;
-}
-
-.stack-layer h4 {
-    margin: 0;
-    font-size: 1rem;
-    color: white;
-}
-
-.stack-layer p {
-    margin: 0.25rem 0 0 0;
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
-.layer-0 { background: #64748b; }
-.layer-1 { background: #475569; }
-.layer-2 { background: #334155; }
-.layer-3 { background: #4f46e5; }
-.layer-4 { background: #4338ca; }
-.layer-5 { background: #3730a3; }
-.layer-6 { background: #312e81; }
-.layer-7 { background: #1e1b4b; }
-
-/* 계층 상세 */
-.layer-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.layer-card {
+.cake-layer {
     background: white;
+    border: 2px solid #e2e8f0;
     padding: 1.5rem;
-    border-radius: 12px;
-    border: 2px solid #e0e7ff;
+    margin: -1px 0;
+    position: relative;
+    transition: all 0.3s;
+    cursor: pointer;
 }
 
-.layer-card h4 {
-    color: #4f46e5;
-    margin-bottom: 0.5rem;
+.cake-layer:first-child {
+    border-radius: 1rem 1rem 0 0;
+    background: #667eea;
+    color: white;
 }
 
-/* RDF 트리플 */
-.rdf-triple {
+.cake-layer:last-child {
+    border-radius: 0 0 1rem 1rem;
+}
+
+.cake-layer:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.layer-detail {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-family: monospace;
+}
+
+/* 웹 진화 타임라인 */
+.evolution-stage {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.evolution-stage:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stage-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.stage-header h4 {
+    color: #667eea;
+    margin: 0;
+}
+
+.period {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.characteristics {
+    display: flex;
     gap: 1rem;
     margin: 1rem 0;
-    padding: 1rem;
-    background: #f8fafc;
-    border-radius: 8px;
 }
 
-.triple-part {
-    background: #e0e7ff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
-}
-
-.triple-part.subject {
-    background: #dbeafe;
-}
-
-.triple-part.object {
-    background: #fce7f3;
-}
-
-.triple-arrow {
-    color: #6366f1;
-    font-weight: 500;
-}
-
-/* 온톨로지 기능 */
-.ontology-functions {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.function-card {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    padding: 1.5rem;
-    border-radius: 12px;
+.char-item {
+    flex: 1;
     text-align: center;
 }
 
-.function-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.function-card h4 {
-    color: #0369a1;
+.char-item i {
+    font-size: 2rem;
+    color: #667eea;
     margin-bottom: 0.5rem;
 }
 
-.function-example {
-    background: white;
-    padding: 0.75rem;
-    border-radius: 6px;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-}
-
-/* 실제 사례 */
-.real-world-examples {
-    display: grid;
-    gap: 1.5rem;
+/* 5-Star System */
+.stars-progression {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     margin: 2rem 0;
 }
 
-.example-case {
+.star-level {
     background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
     padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s;
 }
 
-.example-case h4 {
-    color: #1e293b;
-    margin-bottom: 1rem;
+.star-level.animate-in {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.case-stats {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1rem;
-}
-
-.stat {
+.stars {
+    font-size: 1.5rem;
     text-align: center;
 }
 
-.stat strong {
-    display: block;
-    font-size: 1.5rem;
-    color: #4f46e5;
+.pros-cons {
+    margin-top: 1rem;
+    font-size: 0.875rem;
 }
 
-.stat span {
-    color: #6b7280;
-    font-size: 0.9rem;
+.pro {
+    color: #10b981;
 }
 
-/* 링크드 데이터 원칙 */
-.linked-data-principles {
+.con {
+    color: #ef4444;
+}
+
+/* Linked Data 원칙 */
+.principles-showcase {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin: 2rem 0;
 }
 
 .principle {
     background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
     padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
     display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
+    gap: 1rem;
 }
 
 .principle-number {
-    background: #4f46e5;
+    width: 50px;
+    height: 50px;
+    background: #667eea;
     color: white;
-    width: 2.5rem;
-    height: 2.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.5rem;
     font-weight: bold;
     flex-shrink: 0;
 }
 
-.principle-example {
-    background: #f8fafc;
-    padding: 0.75rem;
-    border-radius: 6px;
-    margin-top: 0.5rem;
-    font-family: monospace;
-    font-size: 0.9rem;
-}
-
-/* LOD 클라우드 */
-.lod-cloud {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+/* LOD Cloud */
+.lod-statistics {
+    display: flex;
+    justify-content: space-around;
     margin: 2rem 0;
 }
 
-.lod-stats {
-    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-    padding: 1.5rem;
-    border-radius: 12px;
-}
-
-.stat-grid {
-    display: grid;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.lod-stat {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
+.stat-card {
     text-align: center;
 }
 
-.lod-stat strong {
-    display: block;
-    font-size: 1.5rem;
-    color: #4f46e5;
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #667eea;
 }
 
-.category-list {
+.stat-label {
+    color: #6b7280;
+}
+
+/* 도전과제 카드 */
+.challenges {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    margin-top: 1rem;
-}
-
-.category-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #f8fafc;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-}
-
-.category-icon {
-    font-size: 1.2rem;
-}
-
-/* 현재 상황과 미래 */
-.current-state {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.state-card {
-    padding: 1.5rem;
-    border-radius: 12px;
-}
-
-.state-card.success {
-    background: #f0fdf4;
-    border: 2px solid #86efac;
-}
-
-.state-card.challenge {
-    background: #fef3c7;
-    border: 2px solid #fde047;
-}
-
-.future-outlook {
-    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     margin: 2rem 0;
 }
 
-.future-trend {
-    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+.challenge-card {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 0.5rem;
     padding: 1.5rem;
-    border-radius: 12px;
 }
 
-.future-trend h4 {
-    color: #6b21a8;
-    margin-bottom: 0.5rem;
+.challenge-card h4 {
+    color: #92400e;
+    margin-bottom: 1rem;
 }
 
-.trend-examples {
-    background: white;
-    padding: 0.75rem;
-    border-radius: 6px;
-    margin-top: 1rem;
+/* 미래 비전 */
+.evolution-paths {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.path {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.path:hover {
+    transform: translateY(-4px);
+}
+
+.path h5 {
+    margin-bottom: 1rem;
+}
+
+.path-content {
     font-size: 0.9rem;
 }
 
-/* 태스크 단계 */
-.task-steps {
-    background: #f8fafc;
+/* 인터랙티브 요소 */
+.interactive-comparison,
+.interactive-demo {
+    background: #f7fafc;
+    border-radius: 1rem;
     padding: 2rem;
-    border-radius: 12px;
-    margin-top: 1rem;
+    margin: 2rem 0;
 }
 
-.task-steps h4 {
-    color: #1e293b;
+.comparison-panels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
 }
 
-.task-steps h4:first-child {
-    margin-top: 0;
+.panel {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.web1-search {
+    border-top: 4px solid #ef4444;
+}
+
+.web2-search {
+    border-top: 4px solid #f59e0b;
+}
+
+.web3-search {
+    border-top: 4px solid #10b981;
+}
+
+/* 실습 섹션 */
+.hands-on-practice,
+.linked-data-practice {
+    background: #f0f4ff;
+    border-left: 4px solid #667eea;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.practice-steps {
+    margin-top: 1.5rem;
+}
+
+.ld-step {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
 }
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-    .web-comparison,
-    .search-limitations,
-    .lod-cloud,
-    .current-state {
+    .roadmap-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .roadmap-container::before {
+        display: none;
+    }
+    
+    .comparison-grid {
         grid-template-columns: 1fr;
     }
     
-    .scenario-flow {
-        flex-direction: column;
+    .comparison-panels {
+        grid-template-columns: 1fr;
     }
     
-    .arrow {
-        transform: rotate(90deg);
-    }
-    
-    .principle {
-        flex-direction: column;
+    .star-level {
+        grid-template-columns: 1fr;
+        text-align: center;
     }
 }
 
-/* 호버 효과 */
-.evolution-stage:hover,
-.silo:hover,
-.layer-card:hover,
-.function-card:hover,
-.example-case:hover,
-.future-trend:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+/* 애니메이션 효과 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.category-item:hover {
-    background: #e0e7ff;
-    transition: background 0.3s ease;
+.animate-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Knowledge Graph 데모 스타일 */
+.kg-search {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.kg-search input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+.kg-card {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.kg-facts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.fact {
+    font-size: 0.875rem;
+}
+
+.kg-related {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.related-item {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    margin: 0.25rem;
 }
 </style>

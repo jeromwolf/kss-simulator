@@ -1,0 +1,1411 @@
+<!-- Chapter 4: RDF - 지식 표현의 기초 (Enhanced Version - Part 1) -->
+
+<div class="chapter-header">
+    <h1>Chapter 4. RDF - 지식 표현의 기초</h1>
+    <div class="chapter-quote">
+        "트리플은 지식을 표현하는 가장 단순하면서도 강력한 방법입니다."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 4시간
+</div>
+
+<!-- 들어가며 -->
+<div class="chapter-intro">
+    <p>온톨로지와 시맨틱 웹의 이론적 토대를 이해했다면, 이제 실제로 지식을 어떻게 표현하고 저장하는지 알아야 합니다. 
+    RDF(Resource Description Framework)는 웹 상의 모든 정보를 기계가 이해할 수 있는 형태로 표현하는 표준 프레임워크입니다. 
+    마치 문장의 주어-동사-목적어처럼 간단한 구조이지만, 이를 통해 무한히 복잡한 지식을 표현할 수 있습니다.</p>
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>RDF의 철학적 배경과 설계 원칙 심층 이해</li>
+        <li>트리플 구조의 이론과 실제 구현 방법 완전 습득</li>
+        <li>URI/IRI 식별자 시스템의 원리와 설계 모범사례</li>
+        <li>모든 RDF 직렬화 형식의 특징과 적절한 사용법</li>
+        <li>RDF 데이터 모델링과 스키마 설계 능력 배양</li>
+        <li>네임스페이스와 어휘 관리 체계 이해</li>
+        <li>실제 프로젝트에서 RDF 데이터 구축 능력</li>
+        <li>RDF와 다른 데이터 모델 간의 변환과 통합</li>
+        <li>성능 최적화와 대용량 RDF 처리 방법</li>
+    </ul>
+</div>
+
+<!-- 학습 로드맵 -->
+<div class="learning-roadmap">
+    <h3><i class="fas fa-route"></i> 4시간 학습 로드맵</h3>
+    <div class="roadmap-timeline">
+        <div class="roadmap-phase">
+            <div class="phase-number">1</div>
+            <div class="phase-content">
+                <h4>RDF 기초 이론 (1시간)</h4>
+                <ul>
+                    <li>RDF의 탄생과 철학</li>
+                    <li>트리플 모델의 수학적 기초</li>
+                    <li>그래프 이론과 RDF</li>
+                </ul>
+            </div>
+        </div>
+        <div class="roadmap-phase">
+            <div class="phase-number">2</div>
+            <div class="phase-content">
+                <h4>구조와 문법 (1시간)</h4>
+                <ul>
+                    <li>URI/IRI 식별자 체계</li>
+                    <li>리터럴과 데이터 타입</li>
+                    <li>네임스페이스 관리</li>
+                </ul>
+            </div>
+        </div>
+        <div class="roadmap-phase">
+            <div class="phase-number">3</div>
+            <div class="phase-content">
+                <h4>직렬화와 표현 (1시간)</h4>
+                <ul>
+                    <li>Turtle, RDF/XML, JSON-LD</li>
+                    <li>각 형식의 장단점</li>
+                    <li>변환과 호환성</li>
+                </ul>
+            </div>
+        </div>
+        <div class="roadmap-phase">
+            <div class="phase-number">4</div>
+            <div class="phase-content">
+                <h4>실전 응용 (1시간)</h4>
+                <ul>
+                    <li>데이터 모델링 실습</li>
+                    <li>성능 최적화</li>
+                    <li>도구와 라이브러리</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 4.1 -->
+<section class="content-section">
+    <h2>4.1 RDF의 탄생과 철학적 기초</h2>
+    
+    <div class="section-intro">
+        <p>RDF는 단순히 기술적 표준이 아닙니다. 이는 인류가 지식을 표현하고 공유하는 방식에 대한 근본적인 철학적 접근을 담고 있습니다.</p>
+    </div>
+
+    <h3>4.1.1 지식 표현의 역사적 진화</h3>
+    
+    <div class="historical-evolution">
+        <div class="evolution-timeline">
+            <div class="era-card ancient">
+                <div class="era-period">고대</div>
+                <div class="era-title">구술 전승</div>
+                <div class="era-description">
+                    <p>지식이 이야기와 기억을 통해 전승</p>
+                    <ul>
+                        <li>주관적이고 변화 가능</li>
+                        <li>문화적 맥락에 의존</li>
+                        <li>전승자의 해석에 좌우</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="era-card classical">
+                <div class="era-period">고전 시대</div>
+                <div class="era-title">문자와 서적</div>
+                <div class="era-description">
+                    <p>문자를 통한 지식의 기록과 보존</p>
+                    <ul>
+                        <li>정확성과 일관성 향상</li>
+                        <li>시공간 제약 극복</li>
+                        <li>체계적 분류 시작</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="era-card modern">
+                <div class="era-period">근현대</div>
+                <div class="era-title">도서관과 데이터베이스</div>
+                <div class="era-description">
+                    <p>체계적 분류와 검색 시스템</p>
+                    <ul>
+                        <li>듀이 십진분류법</li>
+                        <li>관계형 데이터베이스</li>
+                        <li>구조화된 정보 관리</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="era-card digital">
+                <div class="era-period">디지털 시대</div>
+                <div class="era-title">웹과 하이퍼텍스트</div>
+                <div class="era-description">
+                    <p>연결과 공유의 혁명</p>
+                    <ul>
+                        <li>하이퍼링크를 통한 연결</li>
+                        <li>전 세계 정보 접근</li>
+                        <li>하지만 의미 부재</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="era-card semantic">
+                <div class="era-period">시맨틱 시대</div>
+                <div class="era-title">RDF와 시맨틱 웹</div>
+                <div class="era-description">
+                    <p>기계가 이해하는 의미적 웹</p>
+                    <ul>
+                        <li>명시적 의미 표현</li>
+                        <li>자동 추론과 처리</li>
+                        <li>상호 운용성</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>4.1.2 RDF의 설계 철학</h3>
+
+    <div class="design-philosophy">
+        <div class="philosophy-grid">
+            <div class="philosophy-card simplicity">
+                <div class="philosophy-icon">🔹</div>
+                <h4>단순성 (Simplicity)</h4>
+                <div class="principle-explanation">
+                    <p><strong>핵심 원칙:</strong> 가장 단순한 구조로 최대의 표현력</p>
+                    <div class="principle-details">
+                        <h5>트리플의 힘</h5>
+                        <p>모든 지식을 주어-서술어-목적어 구조로 분해</p>
+                        <div class="example-box">
+                            <strong>예시:</strong> "아인슈타인은 상대성이론을 발견했다"
+                            <br>→ (아인슈타인, 발견했다, 상대성이론)
+                        </div>
+                        <h5>인지적 기초</h5>
+                        <p>인간의 자연스러운 사고 패턴을 반영</p>
+                        <ul>
+                            <li>주어: 무엇에 대해 말하는가?</li>
+                            <li>서술어: 어떤 관계나 속성인가?</li>
+                            <li>목적어: 그 값이나 연결된 대상은?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="philosophy-card universality">
+                <div class="philosophy-icon">🌍</div>
+                <h4>보편성 (Universality)</h4>
+                <div class="principle-explanation">
+                    <p><strong>핵심 원칙:</strong> 모든 도메인, 모든 언어, 모든 문화에 적용</p>
+                    <div class="principle-details">
+                        <h5>도메인 독립성</h5>
+                        <p>의학, 생물학, 경제학, 예술 등 모든 분야에 동일하게 적용</p>
+                        <div class="domain-examples">
+                            <div class="domain-example">
+                                <strong>의학:</strong> (환자001, 진단받다, 당뇨병)
+                            </div>
+                            <div class="domain-example">
+                                <strong>예술:</strong> (모나리자, 그린사람, 레오나르도다빈치)
+                            </div>
+                            <div class="domain-example">
+                                <strong>경제:</strong> (애플주식, 가격, 150달러)
+                            </div>
+                        </div>
+                        <h5>문화적 중립성</h5>
+                        <p>특정 문화나 언어에 종속되지 않는 구조</p>
+                        <ul>
+                            <li>URI를 통한 전역 식별</li>
+                            <li>다국어 지원 (@language 태그)</li>
+                            <li>문화적 맥락의 명시적 표현</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="philosophy-card extensibility">
+                <div class="philosophy-icon">🔗</div>
+                <h4>확장성 (Extensibility)</h4>
+                <div class="principle-explanation">
+                    <p><strong>핵심 원칙:</strong> 무한한 확장과 연결이 가능한 구조</p>
+                    <div class="principle-details">
+                        <h5>그래프 기반 확장</h5>
+                        <p>새로운 트리플 추가로 지식 확장</p>
+                        <div class="extension-demo">
+                            <div class="step">
+                                <strong>1단계:</strong> (홍길동, 직업, 개발자)
+                            </div>
+                            <div class="step">
+                                <strong>2단계:</strong> (홍길동, 거주지, 서울) 추가
+                            </div>
+                            <div class="step">
+                                <strong>3단계:</strong> (서울, 인구, 9백만명) 추가
+                            </div>
+                            <div class="step">
+                                <strong>결과:</strong> 연결된 지식 네트워크 형성
+                            </div>
+                        </div>
+                        <h5>상호 운용성</h5>
+                        <p>서로 다른 시스템 간의 무결성 있는 연결</p>
+                        <ul>
+                            <li>표준 URI 스키마</li>
+                            <li>공통 어휘 사용</li>
+                            <li>트리플 머지 가능성</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="philosophy-card decentralization">
+                <div class="philosophy-icon">🕸️</div>
+                <h4>분산성 (Decentralization)</h4>
+                <div class="principle-explanation">
+                    <p><strong>핵심 원칙:</strong> 중앙 집중식 제어 없이 분산된 지식 생성</p>
+                    <div class="principle-details">
+                        <h5>웹의 정신 계승</h5>
+                        <p>월드 와이드 웹의 분산 철학을 데이터로 확장</p>
+                        <div class="web-analogy">
+                            <div class="comparison-item">
+                                <strong>웹 문서:</strong> 누구나 HTML 페이지 생성 가능
+                            </div>
+                            <div class="comparison-item">
+                                <strong>RDF 데이터:</strong> 누구나 트리플 생성 가능
+                            </div>
+                        </div>
+                        <h5>자율성과 협력</h5>
+                        <p>개별 조직이 독립적으로 데이터를 생성하면서도 전체적 일관성 유지</p>
+                        <ul>
+                            <li>네임스페이스를 통한 충돌 방지</li>
+                            <li>표준 어휘를 통한 상호 이해</li>
+                            <li>링크드 데이터 원칙</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>4.1.3 RDF가 해결하는 문제들</h3>
+
+    <div class="problem-solutions">
+        <div class="problem-solution-pair">
+            <div class="problem-box">
+                <h4>🔴 기존 웹의 한계</h4>
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <h5>의미 모호성</h5>
+                        <p>"bank"가 은행인지 강둑인지 구분 불가</p>
+                        <div class="technical-detail">
+                            동음이의어 문제로 인한 검색 정확도 저하
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <h5>구조 불일치</h5>
+                        <p>동일한 정보를 다른 형식으로 표현</p>
+                        <div class="technical-detail">
+                            사이트마다 다른 스키마, 필드명, 구조
+                        </div>
+                    </div>
+                    <div class="problem-item">
+                        <h5>연결의 부재</h5>
+                        <p>관련 정보 간의 명시적 연결 없음</p>
+                        <div class="technical-detail">
+                            하이퍼링크는 단순 참조, 관계의 의미 없음
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-box">
+                <h4>🟢 RDF의 해결책</h4>
+                <div class="solution-list">
+                    <div class="solution-item">
+                        <h5>URI 기반 명확한 식별</h5>
+                        <p>http://dbpedia.org/resource/Bank_(finance)</p>
+                        <div class="technical-detail">
+                            전역적으로 고유한 식별자로 의미 명확화
+                        </div>
+                    </div>
+                    <div class="solution-item">
+                        <h5>표준화된 트리플 구조</h5>
+                        <p>모든 정보를 동일한 주어-서술어-목적어 형식</p>
+                        <div class="technical-detail">
+                            구조적 일관성으로 자동 처리 가능
+                        </div>
+                    </div>
+                    <div class="solution-item">
+                        <h5>의미적 링크</h5>
+                        <p>관계의 종류와 방향이 명시된 연결</p>
+                        <div class="technical-detail">
+                            owl:sameAs, rdfs:subClassOf 등 의미 있는 관계
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>4.1.4 RDF의 수학적 기초</h3>
+
+    <div class="mathematical-foundation">
+        <div class="math-concept">
+            <h4>그래프 이론과 RDF</h4>
+            <div class="graph-theory-explanation">
+                <p>RDF는 수학의 그래프 이론을 데이터 모델로 구현한 것입니다.</p>
+                
+                <div class="graph-components">
+                    <div class="component-card">
+                        <h5>정점 (Vertices)</h5>
+                        <p>RDF에서는 <strong>자원(Resource)</strong>에 해당</p>
+                        <ul>
+                            <li>URI로 식별되는 모든 엔티티</li>
+                            <li>리터럴 값들</li>
+                            <li>블랭크 노드</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h5>간선 (Edges)</h5>
+                        <p>RDF에서는 <strong>속성(Property)</strong>에 해당</p>
+                        <ul>
+                            <li>자원 간의 관계</li>
+                            <li>방향성을 가짐 (주어 → 목적어)</li>
+                            <li>자체적으로도 URI를 가진 자원</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="formal-definition">
+                    <h5>수학적 정의</h5>
+                    <div class="math-notation">
+                        <p><strong>RDF 그래프 G = (V, E, L)</strong></p>
+                        <ul>
+                            <li><strong>V</strong>: 정점의 집합 (자원들)</li>
+                            <li><strong>E</strong>: 간선의 집합 (속성들)</li>
+                            <li><strong>L</strong>: 라벨 함수 (URI 매핑)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="triple-notation">
+                        <p><strong>트리플 (s, p, o)</strong>는 다음을 만족:</p>
+                        <ul>
+                            <li>s ∈ V (주어는 정점)</li>
+                            <li>p ∈ E (서술어는 간선)</li>
+                            <li>o ∈ V ∪ Literals (목적어는 정점 또는 리터럴)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="math-concept">
+            <h4>집합론적 접근</h4>
+            <div class="set-theory-explanation">
+                <p>RDF는 집합론의 개념을 활용하여 지식을 구조화합니다.</p>
+                
+                <div class="set-operations">
+                    <div class="operation-card">
+                        <h5>합집합 (Union)</h5>
+                        <p>여러 RDF 그래프를 결합</p>
+                        <div class="operation-example">
+                            <strong>예시:</strong><br>
+                            그래프 A: {(홍길동, 직업, 개발자)}<br>
+                            그래프 B: {(홍길동, 나이, 30)}<br>
+                            A ∪ B: {(홍길동, 직업, 개발자), (홍길동, 나이, 30)}
+                        </div>
+                    </div>
+                    
+                    <div class="operation-card">
+                        <h5>교집합 (Intersection)</h5>
+                        <p>공통된 트리플 발견</p>
+                        <div class="operation-example">
+                            <strong>활용:</strong> 서로 다른 데이터 소스에서 일치하는 정보 찾기
+                        </div>
+                    </div>
+                    
+                    <div class="operation-card">
+                        <h5>차집합 (Difference)</h5>
+                        <p>한 그래프에만 있는 정보</p>
+                        <div class="operation-example">
+                            <strong>활용:</strong> 데이터 업데이트나 변경사항 추적
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 4.2 -->
+<section class="content-section">
+    <h2>4.2 트리플: 지식의 원자 구조</h2>
+    
+    <div class="section-intro">
+        <p>트리플은 RDF의 핵심입니다. 마치 원자가 물질의 기본 단위이듯, 트리플은 지식의 기본 단위입니다. 
+        모든 복잡한 지식도 결국 트리플들의 조합으로 표현됩니다.</p>
+    </div>
+
+    <h3>4.2.1 트리플의 구조적 분석</h3>
+
+    <div class="triple-anatomy">
+        <div class="triple-visualization">
+            <h4>트리플의 해부학</h4>
+            <div class="anatomical-diagram">
+                <div class="triple-structure-detailed">
+                    <div class="subject-analysis">
+                        <div class="component-header">
+                            <h5>주어 (Subject)</h5>
+                            <span class="component-symbol">S</span>
+                        </div>
+                        <div class="component-details">
+                            <p><strong>역할:</strong> 설명의 대상이 되는 자원</p>
+                            <p><strong>제약:</strong> 반드시 URI 또는 블랭크 노드</p>
+                            <p><strong>의미:</strong> "무엇에 대해 말하는가?"</p>
+                            
+                            <div class="constraint-explanation">
+                                <h6>왜 리터럴이 될 수 없는가?</h6>
+                                <ul>
+                                    <li>리터럴은 값이지 엔티티가 아님</li>
+                                    <li>"30"이라는 숫자 자체에 대해 설명할 일은 거의 없음</li>
+                                    <li>추가 정보를 연결할 수 없음</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="examples-detailed">
+                                <h6>주어의 예시</h6>
+                                <div class="example-item valid">
+                                    <span class="validity">✓ 유효</span>
+                                    <code>http://example.org/person/홍길동</code>
+                                    <p>URI로 식별되는 사람</p>
+                                </div>
+                                <div class="example-item valid">
+                                    <span class="validity">✓ 유효</span>
+                                    <code>_:blank1</code>
+                                    <p>이름 없는 블랭크 노드</p>
+                                </div>
+                                <div class="example-item invalid">
+                                    <span class="validity">✗ 무효</span>
+                                    <code>"홍길동"</code>
+                                    <p>리터럴은 주어가 될 수 없음</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="predicate-analysis">
+                        <div class="component-header">
+                            <h5>서술어 (Predicate)</h5>
+                            <span class="component-symbol">P</span>
+                        </div>
+                        <div class="component-details">
+                            <p><strong>역할:</strong> 주어와 목적어 사이의 관계 정의</p>
+                            <p><strong>제약:</strong> 반드시 URI</p>
+                            <p><strong>의미:</strong> "어떤 관계인가?"</p>
+                            
+                            <div class="relationship-types">
+                                <h6>관계의 종류</h6>
+                                <div class="relationship-category">
+                                    <h7>속성 관계</h7>
+                                    <p>주어의 고유한 특성</p>
+                                    <ul>
+                                        <li>foaf:name (이름)</li>
+                                        <li>foaf:age (나이)</li>
+                                        <li>dc:title (제목)</li>
+                                    </ul>
+                                </div>
+                                <div class="relationship-category">
+                                    <h7>객체 관계</h7>
+                                    <p>다른 자원과의 연결</p>
+                                    <ul>
+                                        <li>foaf:knows (아는 사람)</li>
+                                        <li>org:memberOf (소속)</li>
+                                        <li>owl:sameAs (동일함)</li>
+                                    </ul>
+                                </div>
+                                <div class="relationship-category">
+                                    <h7>메타 관계</h7>
+                                    <p>타입이나 분류 정보</p>
+                                    <ul>
+                                        <li>rdf:type (타입)</li>
+                                        <li>rdfs:subClassOf (하위 클래스)</li>
+                                        <li>skos:broader (상위 개념)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="object-analysis">
+                        <div class="component-header">
+                            <h5>목적어 (Object)</h5>
+                            <span class="component-symbol">O</span>
+                        </div>
+                        <div class="component-details">
+                            <p><strong>역할:</strong> 관계의 값이나 대상</p>
+                            <p><strong>제약:</strong> URI, 블랭크 노드, 또는 리터럴</p>
+                            <p><strong>의미:</strong> "그 값이나 대상은 무엇인가?"</p>
+                            
+                            <div class="object-types">
+                                <h6>목적어의 유형</h6>
+                                <div class="object-type">
+                                    <h7>자원 목적어</h7>
+                                    <p>다른 자원과의 연결</p>
+                                    <div class="type-example">
+                                        <code>(홍길동, foaf:knows, 김철수)</code>
+                                        <p>김철수도 자원이므로 추가 정보 연결 가능</p>
+                                    </div>
+                                </div>
+                                <div class="object-type">
+                                    <h7>리터럴 목적어</h7>
+                                    <p>구체적인 값</p>
+                                    <div class="type-example">
+                                        <code>(홍길동, foaf:age, "30"^^xsd:integer)</code>
+                                        <p>더 이상 확장되지 않는 말단 값</p>
+                                    </div>
+                                </div>
+                                <div class="object-type">
+                                    <h7>블랭크 노드 목적어</h7>
+                                    <p>구조화된 값</p>
+                                    <div class="type-example">
+                                        <code>(홍길동, foaf:address, _:addr1)</code>
+                                        <p>주소라는 복합 구조를 나타냄</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>4.2.2 트리플의 의미론적 특성</h3>
+
+    <div class="semantic-properties">
+        <div class="property-analysis">
+            <div class="semantic-property">
+                <h4>방향성 (Directionality)</h4>
+                <div class="property-explanation">
+                    <p>모든 트리플은 주어에서 목적어로 향하는 방향성을 가집니다.</p>
+                    
+                    <div class="directionality-demo">
+                        <div class="direction-example">
+                            <div class="triple-flow">
+                                <span class="subject">홍길동</span>
+                                <span class="arrow">→</span>
+                                <span class="predicate">employs</span>
+                                <span class="arrow">→</span>
+                                <span class="object">김철수</span>
+                            </div>
+                            <p class="interpretation">홍길동이 김철수를 고용한다</p>
+                        </div>
+                        
+                        <div class="direction-example reverse">
+                            <div class="triple-flow">
+                                <span class="subject">김철수</span>
+                                <span class="arrow">→</span>
+                                <span class="predicate">employedBy</span>
+                                <span class="arrow">→</span>
+                                <span class="object">홍길동</span>
+                            </div>
+                            <p class="interpretation">김철수가 홍길동에게 고용당한다</p>
+                        </div>
+                    </div>
+                    
+                    <div class="directionality-importance">
+                        <h5>방향성의 중요성</h5>
+                        <ul>
+                            <li><strong>명확성:</strong> 누가 누구에게 영향을 주는지 명확</li>
+                            <li><strong>추론:</strong> 역관계 추론의 기초</li>
+                            <li><strong>쿼리:</strong> SPARQL에서 패턴 매칭의 기준</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="semantic-property">
+                <h4>원자성 (Atomicity)</h4>
+                <div class="property-explanation">
+                    <p>트리플은 더 이상 분해될 수 없는 의미의 최소 단위입니다.</p>
+                    
+                    <div class="atomicity-demo">
+                        <div class="complex-statement">
+                            <h5>복잡한 진술</h5>
+                            <p>"홍길동은 2024년에 서울에서 AI 컨퍼런스에 참가했다"</p>
+                        </div>
+                        
+                        <div class="atomic-decomposition">
+                            <h5>원자적 분해</h5>
+                            <div class="triple-set">
+                                <div class="atomic-triple">
+                                    <code>(홍길동, 참가했다, :event1)</code>
+                                </div>
+                                <div class="atomic-triple">
+                                    <code>(:event1, rdf:type, 컨퍼런스)</code>
+                                </div>
+                                <div class="atomic-triple">
+                                    <code>(:event1, 주제, AI)</code>
+                                </div>
+                                <div class="atomic-triple">
+                                    <code>(:event1, 개최년도, "2024"^^xsd:year)</code>
+                                </div>
+                                <div class="atomic-triple">
+                                    <code>(:event1, 개최장소, 서울)</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="atomicity-benefits">
+                        <h5>원자성의 이점</h5>
+                        <ul>
+                            <li><strong>모듈성:</strong> 각 사실을 독립적으로 관리</li>
+                            <li><strong>재사용성:</strong> 개별 트리플을 다른 맥락에서 활용</li>
+                            <li><strong>정확성:</strong> 부분적 업데이트와 검증 가능</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="semantic-property">
+                <h4>합성성 (Compositionality)</h4>
+                <div class="property-explanation">
+                    <p>개별 트리플들이 결합되어 복잡한 지식 구조를 형성합니다.</p>
+                    
+                    <div class="composition-demo">
+                        <div class="building-blocks">
+                            <h5>기본 블록들</h5>
+                            <div class="basic-triples">
+                                <div class="basic-triple">T1: (홍길동, rdf:type, Person)</div>
+                                <div class="basic-triple">T2: (홍길동, foaf:name, "홍길동")</div>
+                                <div class="basic-triple">T3: (홍길동, worksFor, :company1)</div>
+                                <div class="basic-triple">T4: (:company1, rdf:type, Organization)</div>
+                                <div class="basic-triple">T5: (:company1, rdfs:label, "테크기업")</div>
+                            </div>
+                        </div>
+                        
+                        <div class="composed-knowledge">
+                            <h5>합성된 지식</h5>
+                            <div class="knowledge-graph">
+                                <p>이 트리플들이 결합되어 다음을 표현:</p>
+                                <ul>
+                                    <li>홍길동이라는 사람이 존재함</li>
+                                    <li>그는 "테크기업"이라는 조직에서 일함</li>
+                                    <li>이들 간의 고용 관계가 성립함</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="emergent-properties">
+                        <h5>창발적 속성</h5>
+                        <p>트리플의 조합에서 나타나는 새로운 의미:</p>
+                        <ul>
+                            <li><strong>경로 추론:</strong> A→B, B→C에서 A→C 관계 도출</li>
+                            <li><strong>타입 추론:</strong> 속성의 도메인/레인지에서 타입 추론</li>
+                            <li><strong>일관성 검증:</strong> 모순되는 트리플 조합 발견</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>4.2.3 트리플의 변형과 확장</h3>
+
+    <div class="triple-variations">
+        <div class="variation-type">
+            <h4>명명된 그래프 (Named Graphs)</h4>
+            <div class="named-graph-explanation">
+                <p>트리플에 컨텍스트 정보를 추가한 4-tuple 구조</p>
+                
+                <div class="quad-structure">
+                    <h5>Quad: (Subject, Predicate, Object, Graph)</h5>
+                    <div class="quad-example">
+                        <div class="quad-demo">
+                            <code>(홍길동, 나이, 30, :2024데이터)</code>
+                            <p>2024년 데이터에서 홍길동의 나이는 30</p>
+                        </div>
+                        <div class="quad-demo">
+                            <code>(홍길동, 나이, 29, :2023데이터)</code>
+                            <p>2023년 데이터에서 홍길동의 나이는 29</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="named-graph-uses">
+                    <h5>활용 사례</h5>
+                    <ul>
+                        <li><strong>출처 추적:</strong> 데이터의 소스 명시</li>
+                        <li><strong>시간적 버전 관리:</strong> 시점별 데이터 구분</li>
+                        <li><strong>신뢰도 표현:</strong> 확실성 수준별 분류</li>
+                        <li><strong>접근 제어:</strong> 그래프별 권한 관리</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="variation-type">
+            <h4>블랭크 노드 (Blank Nodes)</h4>
+            <div class="blank-node-explanation">
+                <p>URI가 없는 익명의 자원</p>
+                
+                <div class="blank-node-syntax">
+                    <h5>표현 방법</h5>
+                    <div class="syntax-examples">
+                        <div class="syntax-example">
+                            <strong>Turtle:</strong> <code>_:b1</code> 또는 <code>[]</code>
+                        </div>
+                        <div class="syntax-example">
+                            <strong>N-Triples:</strong> <code>_:genid1</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blank-node-use-cases">
+                    <h5>사용 사례</h5>
+                    <div class="use-case">
+                        <h6>구조화된 값</h6>
+                        <div class="structured-value-example">
+                            <pre><code>:홍길동 :주소 [
+    :street "테헤란로 123" ;
+    :city "서울" ;
+    :zipcode "06154"
+] .</code></pre>
+                            <p>주소라는 복합 구조를 별도 URI 없이 표현</p>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case">
+                        <h6>임시 식별자</h6>
+                        <div class="temp-id-example">
+                            <pre><code>_:person1 foaf:name "알려지지 않은 사람" ;
+          foaf:age 25 .</code></pre>
+                            <p>아직 URI가 할당되지 않은 임시 엔티티</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blank-node-limitations">
+                    <h5>한계사항</h5>
+                    <ul>
+                        <li><strong>식별 불가:</strong> 외부에서 직접 참조 불가능</li>
+                        <li><strong>머지 문제:</strong> 서로 다른 그래프의 블랭크 노드 구분 어려움</li>
+                        <li><strong>쿼리 제약:</strong> SPARQL에서 제한적 사용</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Chapter 4 Part 1 전용 스타일 */
+.historical-evolution {
+    margin: 2rem 0;
+}
+
+.evolution-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.era-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    border-left: 6px solid #6366f1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.era-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.era-period {
+    font-size: 0.9rem;
+    color: #6366f1;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.era-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin: 0.5rem 0;
+}
+
+.era-description ul {
+    margin-top: 1rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+.era-description li {
+    padding: 0.25rem 0;
+    color: #64748b;
+}
+
+.era-description li::before {
+    content: "▸";
+    color: #6366f1;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* 철학 카드 스타일 */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.philosophy-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.philosophy-icon {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.philosophy-card h4 {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.principle-explanation p {
+    font-weight: 600;
+    color: #4f46e5;
+    margin-bottom: 1.5rem;
+}
+
+.principle-details h5 {
+    color: #1e293b;
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.example-box {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    border-left: 4px solid #10b981;
+}
+
+.domain-examples {
+    margin: 1rem 0;
+}
+
+.domain-example {
+    background: #f0f9ff;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* 문제-해결 스타일 */
+.problem-solutions {
+    margin: 2rem 0;
+}
+
+.problem-solution-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.problem-box {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 2px solid #f87171;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.solution-box {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border: 2px solid #4ade80;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.problem-item, .solution-item {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+}
+
+.technical-detail {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* 수학적 기초 스타일 */
+.mathematical-foundation {
+    margin: 2rem 0;
+}
+
+.math-concept {
+    background: #fafafa;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.graph-components {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.component-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.formal-definition {
+    background: #1e293b;
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+}
+
+.math-notation, .triple-notation {
+    font-family: 'Courier New', monospace;
+    margin: 1rem 0;
+}
+
+.set-operations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.operation-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #6366f1;
+}
+
+.operation-example {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* 트리플 해부학 스타일 */
+.triple-anatomy {
+    margin: 2rem 0;
+}
+
+.anatomical-diagram {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 2rem 0;
+}
+
+.triple-structure-detailed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.subject-analysis, .predicate-analysis, .object-analysis {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.component-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.component-symbol {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6366f1;
+    background: #ede9fe;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.constraint-explanation, .relationship-types, .object-types {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.examples-detailed {
+    margin: 1.5rem 0;
+}
+
+.example-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.example-item.valid {
+    background: #f0fdf4;
+    border: 1px solid #4ade80;
+}
+
+.example-item.invalid {
+    background: #fef2f2;
+    border: 1px solid #f87171;
+}
+
+.validity {
+    font-weight: bold;
+    min-width: 60px;
+}
+
+.relationship-category, .object-type {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #6366f1;
+}
+
+/* 의미론적 속성 스타일 */
+.semantic-properties {
+    margin: 2rem 0;
+}
+
+.property-analysis {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.semantic-property {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.directionality-demo {
+    margin: 1.5rem 0;
+}
+
+.direction-example {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+.triple-flow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+}
+
+.subject, .predicate, .object {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.subject {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.predicate {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.object {
+    background: #fed7aa;
+    color: #92400e;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    color: #6366f1;
+}
+
+.interpretation {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #64748b;
+}
+
+.atomicity-demo, .composition-demo {
+    margin: 1.5rem 0;
+}
+
+.complex-statement {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #f59e0b;
+}
+
+.atomic-decomposition {
+    background: #f0fdf4;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #10b981;
+    margin-top: 1rem;
+}
+
+.triple-set {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.atomic-triple {
+    background: white;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    border-left: 4px solid #10b981;
+}
+
+.building-blocks {
+    background: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.basic-triples {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.basic-triple {
+    background: white;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    border-left: 4px solid #6366f1;
+}
+
+.composed-knowledge {
+    background: #ede9fe;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.knowledge-graph {
+    margin-top: 1rem;
+}
+
+/* 트리플 변형 스타일 */
+.triple-variations {
+    margin: 2rem 0;
+}
+
+.variation-type {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quad-structure {
+    margin: 1.5rem 0;
+}
+
+.quad-demo {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    font-family: 'Courier New', monospace;
+}
+
+.named-graph-uses, .blank-node-limitations, .atomicity-benefits, .emergent-properties {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.syntax-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.syntax-example {
+    background: #1e293b;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+}
+
+.use-case {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #6366f1;
+}
+
+.structured-value-example, .temp-id-example {
+    margin: 1rem 0;
+}
+
+.structured-value-example pre, .temp-id-example pre {
+    background: #1e293b;
+    color: #10b981;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+/* 로드맵 스타일 */
+.learning-roadmap {
+    margin: 2rem 0;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.roadmap-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.roadmap-phase {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.phase-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.phase-content h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.phase-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.phase-content li {
+    padding: 0.25rem 0;
+    color: #64748b;
+}
+
+.phase-content li::before {
+    content: "•";
+    color: #6366f1;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .problem-solution-pair {
+        grid-template-columns: 1fr;
+    }
+    
+    .graph-components {
+        grid-template-columns: 1fr;
+    }
+    
+    .triple-structure-detailed {
+        grid-template-columns: 1fr;
+    }
+    
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .roadmap-timeline {
+        grid-template-columns: 1fr;
+    }
+    
+    .evolution-timeline {
+        gap: 1rem;
+    }
+    
+    .triple-flow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+</style>

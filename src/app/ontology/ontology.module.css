@@ -41,24 +41,24 @@
 }
 
 .ontology-content :global(.note) {
-  @apply bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 my-6 rounded-r-lg;
+  @apply bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-8 md:p-10 my-6 rounded-r-lg;
 }
 
 .ontology-content :global(.warning) {
-  @apply bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-4 my-6 rounded-r-lg;
+  @apply bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-8 md:p-10 my-6 rounded-r-lg;
 }
 
 .ontology-content :global(.example) {
-  @apply bg-gray-50 dark:bg-gray-900 p-6 rounded-xl my-6 border border-gray-200 dark:border-gray-700;
+  @apply bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-xl my-6 border border-gray-200 dark:border-gray-700;
 }
 
 .ontology-content :global(.code-block) {
-  @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 rounded-lg overflow-x-auto my-4 text-sm font-mono;
+  @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-6 md:p-8 rounded-lg overflow-x-auto my-4 text-sm font-mono;
 }
 
 /* Interactive elements */
 .ontology-content :global(.interactive-demo) {
-  @apply bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-xl my-8 border border-purple-200 dark:border-purple-700;
+  @apply bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-8 md:p-10 rounded-xl my-8 border border-purple-200 dark:border-purple-700;
 }
 
 /* Progress indicator */
@@ -80,10 +80,7 @@
   @apply relative pl-6;
 }
 
-.ontology-content :global(ul li::before) {
-  content: '▶';
-  @apply absolute left-0 text-kss-primary text-xs;
-}
+/* Removed list bullet styles to prevent visual artifacts */
 
 /* Table enhancements */
 .ontology-content :global(table) {

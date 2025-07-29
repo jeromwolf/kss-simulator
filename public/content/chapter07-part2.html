@@ -1,0 +1,1999 @@
+<!-- Chapter 7: SPARQL - RDF 질의 언어 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header intermediate">
+    <h2 class="part-title">Part 2: 중급 테크닉과 고급 패턴</h2>
+    <p class="part-description">이제 SPARQL의 진정한 힘을 발휘할 시간입니다. 복잡한 그래프 패턴과 고급 기법을 마스터하세요.</p>
+</div>
+
+<!-- 진도 체크 -->
+<div class="progress-check intermediate-level">
+    <h3>🎯 중급자 준비 상황</h3>
+    <div class="skill-progress">
+        <div class="skill-item completed">
+            <span class="skill-name">SPARQL 기초</span>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </div>
+        <div class="skill-item current">
+            <span class="skill-name">고급 패턴</span>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 25%"></div>
+            </div>
+        </div>
+        <div class="skill-item pending">
+            <span class="skill-name">최적화 기법</span>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 7.4: SPARQL 고급 패턴 마스터리 -->
+<section class="content-section advanced-patterns">
+    <h2>7.4 고급 패턴 매칭: SPARQL의 숨겨진 힘</h2>
+    
+    <!-- 패턴 매칭 실험실 -->
+    <div class="pattern-matching-lab">
+        <h3>🧪 패턴 매칭 실험실</h3>
+        
+        <div class="lab-interface">
+            <!-- 시나리오 선택 -->
+            <div class="scenario-selector">
+                <h4>실험 시나리오 선택</h4>
+                <div class="scenario-options">
+                    <button class="scenario-btn active" onclick="selectScenario('social')">
+                        <span class="scenario-icon">👥</span>
+                        <span class="scenario-name">소셜 네트워크</span>
+                    </button>
+                    <button class="scenario-btn" onclick="selectScenario('ecommerce')">
+                        <span class="scenario-icon">🛒</span>
+                        <span class="scenario-name">전자상거래</span>
+                    </button>
+                    <button class="scenario-btn" onclick="selectScenario('academic')">
+                        <span class="scenario-icon">🎓</span>
+                        <span class="scenario-name">학술 연구</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- OPTIONAL 패턴 실습 -->
+            <div class="pattern-section">
+                <h4>🔸 OPTIONAL: 선택적 정보 수집</h4>
+                <div class="pattern-explanation">
+                    <p>OPTIONAL은 "있으면 가져오고, 없어도 괜찮다"는 의미입니다. SQL의 LEFT JOIN과 유사하지만 더 직관적입니다.</p>
+                </div>
+                
+                <div class="pattern-demo">
+                    <div class="demo-scenario">
+                        <h5>📋 시나리오: 사용자 프로필 완성도 조사</h5>
+                        <p>"모든 사용자의 기본 정보와 선택적으로 소셜 미디어 정보를 수집하세요"</p>
+                    </div>
+                    
+                    <div class="code-comparison">
+                        <div class="code-panel">
+                            <h6>❌ OPTIONAL 없이 (문제 발생)</h6>
+                            <pre class="code-editor"><code>SELECT ?name ?email ?twitter ?instagram
+WHERE {
+  ?person foaf:name ?name ;
+          foaf:mbox ?email ;
+          foaf:account ?twitterAccount ;
+          foaf:account ?instaAccount .
+  ?twitterAccount foaf:accountServiceHomepage &lt;https://twitter.com&gt; ;
+                  foaf:accountName ?twitter .
+  ?instaAccount foaf:accountServiceHomepage &lt;https://instagram.com&gt; ;
+                foaf:accountName ?instagram .
+}</code></pre>
+                            <div class="result-preview">
+                                <div class="result-count error">결과: 0건 (모든 소셜 미디어가 있는 사용자만)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-panel">
+                            <h6>✅ OPTIONAL로 해결</h6>
+                            <pre class="code-editor"><code>SELECT ?name ?email ?twitter ?instagram
+WHERE {
+  ?person foaf:name ?name ;
+          foaf:mbox ?email .
+          
+  OPTIONAL {
+    ?person foaf:account ?twitterAccount .
+    ?twitterAccount foaf:accountServiceHomepage &lt;https://twitter.com&gt; ;
+                    foaf:accountName ?twitter .
+  }
+  
+  OPTIONAL {
+    ?person foaf:account ?instaAccount .
+    ?instaAccount foaf:accountServiceHomepage &lt;https://instagram.com&gt; ;
+                  foaf:accountName ?instagram .
+  }
+}</code></pre>
+                            <div class="result-preview">
+                                <div class="result-count success">결과: 1,247건 (모든 사용자 포함)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 인터랙티브 결과 테이블 -->
+                    <div class="interactive-results">
+                        <h6>실행 결과 시뮬레이션</h6>
+                        <div class="result-table-container">
+                            <table class="result-table">
+                                <thead>
+                                    <tr>
+                                        <th>?name</th>
+                                        <th>?email</th>
+                                        <th>?twitter</th>
+                                        <th>?instagram</th>
+                                        <th>완성도</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="complete-profile">
+                                        <td>"김개발"</td>
+                                        <td>"kim@dev.com"</td>
+                                        <td>"@kimdev"</td>
+                                        <td>"kimdev_official"</td>
+                                        <td><span class="completeness-badge full">100%</span></td>
+                                    </tr>
+                                    <tr class="partial-profile">
+                                        <td>"이디자인"</td>
+                                        <td>"lee@design.co"</td>
+                                        <td>"@leeDesign"</td>
+                                        <td>unbound</td>
+                                        <td><span class="completeness-badge partial">75%</span></td>
+                                    </tr>
+                                    <tr class="minimal-profile">
+                                        <td>"박분석"</td>
+                                        <td>"park@data.org"</td>
+                                        <td>unbound</td>
+                                        <td>unbound</td>
+                                        <td><span class="completeness-badge minimal">50%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- UNION 패턴 실습 -->
+            <div class="pattern-section">
+                <h4>🔀 UNION: 대안 패턴 탐색</h4>
+                <div class="pattern-explanation">
+                    <p>UNION은 "이것 또는 저것"을 의미합니다. 여러 가능성 중 하나라도 만족하면 결과에 포함됩니다.</p>
+                </div>
+                
+                <div class="pattern-demo">
+                    <div class="demo-scenario">
+                        <h5>📋 시나리오: 다중 연락처 수집</h5>
+                        <p>"사용자의 연락 방법을 찾되, 이메일, 전화번호, 소셜 미디어 중 어느 것이라도 좋다"</p>
+                    </div>
+                    
+                    <div class="union-visualizer">
+                        <h6>UNION 동작 원리 시각화</h6>
+                        <div class="union-diagram">
+                            <div class="union-branch" data-branch="email">
+                                <div class="branch-header">Branch 1: 이메일</div>
+                                <div class="branch-pattern">?person foaf:mbox ?contact</div>
+                                <div class="branch-results">📧 3,421명</div>
+                            </div>
+                            <div class="union-operator">UNION</div>
+                            <div class="union-branch" data-branch="phone">
+                                <div class="branch-header">Branch 2: 전화번호</div>
+                                <div class="branch-pattern">?person foaf:phone ?contact</div>
+                                <div class="branch-results">📞 2,876명</div>
+                            </div>
+                            <div class="union-operator">UNION</div>
+                            <div class="union-branch" data-branch="social">
+                                <div class="branch-header">Branch 3: 소셜</div>
+                                <div class="branch-pattern">?person foaf:account/foaf:accountName ?contact</div>
+                                <div class="branch-results">📱 1,945명</div>
+                            </div>
+                            <div class="union-result">
+                                <div class="result-arrow">↘ ↓ ↙</div>
+                                <div class="final-result">총 결과: 5,847명 (중복 제거됨)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="union-code">
+                            <pre class="code-editor"><code>SELECT DISTINCT ?name ?contact ?contactType
+WHERE {
+  ?person foaf:name ?name .
+  
+  { 
+    ?person foaf:mbox ?contact .
+    BIND("email" AS ?contactType)
+  }
+  UNION
+  { 
+    ?person foaf:phone ?contact .
+    BIND("phone" AS ?contactType)
+  }
+  UNION
+  { 
+    ?person foaf:account ?account .
+    ?account foaf:accountName ?contact .
+    BIND("social" AS ?contactType)
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MINUS 패턴 실습 -->
+            <div class="pattern-section">
+                <h4>➖ MINUS: 제외 패턴</h4>
+                <div class="pattern-explanation">
+                    <p>MINUS는 "이건 빼고"를 의미합니다. 특정 조건을 만족하는 결과를 제외할 때 사용합니다.</p>
+                </div>
+                
+                <div class="pattern-demo">
+                    <div class="demo-scenario">
+                        <h5>📋 시나리오: 활성 사용자만 조회</h5>
+                        <p>"모든 사용자 중에서 비활성화되거나 탈퇴한 사용자는 제외하고 조회하세요"</p>
+                    </div>
+                    
+                    <div class="minus-flowchart">
+                        <div class="flow-step">
+                            <div class="step-icon">👥</div>
+                            <div class="step-name">전체 사용자</div>
+                            <div class="step-count">10,000명</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step exclude">
+                            <div class="step-icon">🚫</div>
+                            <div class="step-name">제외할 사용자</div>
+                            <div class="step-details">
+                                <div>비활성: 1,200명</div>
+                                <div>탈퇴: 800명</div>
+                                <div>정지: 150명</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step result">
+                            <div class="step-icon">✅</div>
+                            <div class="step-name">최종 결과</div>
+                            <div class="step-count">7,850명</div>
+                        </div>
+                    </div>
+                    
+                    <div class="minus-code">
+                        <pre class="code-editor"><code>SELECT ?name ?email ?lastActive
+WHERE {
+  # 기본 사용자 정보
+  ?person a foaf:Person ;
+          foaf:name ?name ;
+          foaf:mbox ?email ;
+          ex:lastActiveDate ?lastActive .
+  
+  # 제외할 사용자들
+  MINUS {
+    { ?person ex:status "inactive" }
+    UNION
+    { ?person ex:status "deleted" }
+    UNION  
+    { ?person ex:status "suspended" }
+  }
+}</code></pre>
+                    </div>
+                    
+                    <!-- MINUS vs FILTER 비교 -->
+                    <div class="comparison-box">
+                        <h6>🤔 MINUS vs FILTER 언제 사용할까?</h6>
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h7>MINUS 사용 시</h7>
+                                <ul>
+                                    <li>복잡한 서브그래프 제외</li>
+                                    <li>다중 조건 제외</li>
+                                    <li>성능이 중요한 경우</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item">
+                                <h7>FILTER 사용 시</h7>
+                                <ul>
+                                    <li>단순한 값 비교</li>
+                                    <li>수식 계산 결과</li>
+                                    <li>정규식 매칭</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.5: FILTER와 함수 마스터 -->
+<section class="content-section filter-functions">
+    <h2>7.5 FILTER와 함수: 데이터 정제의 마법</h2>
+    
+    <!-- FILTER 종합 실습장 -->
+    <div class="filter-training-ground">
+        <h3>🎯 FILTER 훈련장</h3>
+        
+        <div class="training-interface">
+            <!-- 함수 카테고리 -->
+            <div class="function-categories">
+                <h4>함수 카테고리</h4>
+                <div class="category-tabs">
+                    <button class="category-tab active" onclick="showCategory('string')">
+                        <span class="tab-icon">📝</span>
+                        <span>문자열</span>
+                    </button>
+                    <button class="category-tab" onclick="showCategory('numeric')">
+                        <span class="tab-icon">🔢</span>
+                        <span>숫자</span>
+                    </button>
+                    <button class="category-tab" onclick="showCategory('datetime')">
+                        <span class="tab-icon">📅</span>
+                        <span>날짜/시간</span>
+                    </button>
+                    <button class="category-tab" onclick="showCategory('logic')">
+                        <span class="tab-icon">🔄</span>
+                        <span>논리</span>
+                    </button>
+                    <button class="category-tab" onclick="showCategory('regex')">
+                        <span class="tab-icon">🎭</span>
+                        <span>정규식</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 문자열 함수들 -->
+            <div class="function-panel" id="string-functions">
+                <h5>📝 문자열 함수 마스터</h5>
+                
+                <div class="function-playground">
+                    <div class="function-item">
+                        <h6>STR() - 리터럴 추출</h6>
+                        <div class="function-demo">
+                            <div class="demo-input">
+                                <span class="input-label">입력:</span>
+                                <code>"김철수"@ko</code>
+                            </div>
+                            <div class="demo-process">
+                                <code>STR(?name)</code>
+                            </div>
+                            <div class="demo-output">
+                                <span class="output-label">출력:</span>
+                                <code>"김철수"</code>
+                            </div>
+                        </div>
+                        <div class="practical-example">
+                            <pre class="code-editor"><code># 언어 태그 제거하고 이름만 추출
+SELECT (STR(?name) AS ?cleanName)
+WHERE {
+  ?person foaf:name ?name .
+  FILTER(LANG(?name) = "ko")
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="function-item">
+                        <h6>STRLEN() - 문자열 길이</h6>
+                        <div class="function-demo">
+                            <div class="demo-input">
+                                <span class="input-label">입력:</span>
+                                <code>"Hello World"</code>
+                            </div>
+                            <div class="demo-process">
+                                <code>STRLEN(?text)</code>
+                            </div>
+                            <div class="demo-output">
+                                <span class="output-label">출력:</span>
+                                <code>11</code>
+                            </div>
+                        </div>
+                        <div class="practical-example">
+                            <pre class="code-editor"><code># 짧은 이름(5글자 이하)을 가진 사용자 찾기
+SELECT ?name
+WHERE {
+  ?person foaf:name ?name .
+  FILTER(STRLEN(STR(?name)) <= 5)
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="function-item advanced">
+                        <h6>CONCAT() - 문자열 결합</h6>
+                        <div class="function-demo multi-input">
+                            <div class="demo-inputs">
+                                <div class="demo-input">
+                                    <span class="input-label">firstName:</span>
+                                    <code>"김"</code>
+                                </div>
+                                <div class="demo-input">
+                                    <span class="input-label">lastName:</span>
+                                    <code>"철수"</code>
+                                </div>
+                            </div>
+                            <div class="demo-process">
+                                <code>CONCAT(?firstName, " ", ?lastName)</code>
+                            </div>
+                            <div class="demo-output">
+                                <span class="output-label">출력:</span>
+                                <code>"김 철수"</code>
+                            </div>
+                        </div>
+                        <div class="practical-example">
+                            <pre class="code-editor"><code># 풀네임 생성하고 이메일 도메인 추가
+SELECT (CONCAT(?firstName, " ", ?lastName, " <", ?email, ">") AS ?fullContact)
+WHERE {
+  ?person foaf:givenName ?firstName ;
+          foaf:familyName ?lastName ;
+          foaf:mbox ?email .
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 실시간 함수 테스터 -->
+                <div class="function-tester">
+                    <h6>🧪 실시간 함수 테스터</h6>
+                    <div class="tester-interface">
+                        <div class="tester-input">
+                            <label>테스트할 값:</label>
+                            <input type="text" id="testValue" placeholder='"Hello SPARQL World"' value='"Hello SPARQL World"'>
+                        </div>
+                        <div class="tester-functions">
+                            <button onclick="testFunction('STR')">STR()</button>
+                            <button onclick="testFunction('STRLEN')">STRLEN()</button>
+                            <button onclick="testFunction('UCASE')">UCASE()</button>
+                            <button onclick="testFunction('LCASE')">LCASE()</button>
+                        </div>
+                        <div class="tester-output" id="functionResult">
+                            결과가 여기에 표시됩니다
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 정규식 함수들 -->
+            <div class="function-panel" id="regex-functions" style="display: none;">
+                <h5>🎭 정규식 마스터</h5>
+                
+                <div class="regex-workshop">
+                    <div class="regex-intro">
+                        <h6>정규식의 힘</h6>
+                        <p>REGEX() 함수는 SPARQL에서 가장 강력한 패턴 매칭 도구입니다. 복잡한 문자열 패턴을 찾을 수 있어요.</p>
+                    </div>
+                    
+                    <div class="regex-patterns">
+                        <div class="pattern-category">
+                            <h6>🔍 기본 패턴</h6>
+                            <div class="pattern-examples">
+                                <div class="pattern-example">
+                                    <div class="pattern-code">
+                                        <code>FILTER(REGEX(?email, "@gmail\\.com$"))</code>
+                                    </div>
+                                    <div class="pattern-desc">Gmail 주소만 찾기</div>
+                                    <div class="pattern-test">
+                                        <span class="test-input">user@gmail.com</span>
+                                        <span class="test-result match">✅ 매치</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="pattern-example">
+                                    <div class="pattern-code">
+                                        <code>FILTER(REGEX(?phone, "^010-\\d{4}-\\d{4}$"))</code>
+                                    </div>
+                                    <div class="pattern-desc">한국 휴대폰 번호 형식</div>
+                                    <div class="pattern-test">
+                                        <span class="test-input">010-1234-5678</span>
+                                        <span class="test-result match">✅ 매치</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pattern-category">
+                            <h6>🌐 고급 패턴</h6>
+                            <div class="pattern-examples">
+                                <div class="pattern-example advanced">
+                                    <div class="pattern-code">
+                                        <code>FILTER(REGEX(?name, "^[김이박][가-힣]{1,3}$"))</code>
+                                    </div>
+                                    <div class="pattern-desc">김/이/박씨 한국 이름</div>
+                                    <div class="pattern-results">
+                                        <div class="pattern-test">
+                                            <span class="test-input">김철수</span>
+                                            <span class="test-result match">✅</span>
+                                        </div>
+                                        <div class="pattern-test">
+                                            <span class="test-input">John</span>
+                                            <span class="test-result no-match">❌</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="pattern-example advanced">
+                                    <div class="pattern-code">
+                                        <code>FILTER(REGEX(?skill, "(AI|Machine Learning|Deep Learning)", "i"))</code>
+                                    </div>
+                                    <div class="pattern-desc">AI 관련 기술 (대소문자 무시)</div>
+                                    <div class="pattern-results">
+                                        <div class="pattern-test">
+                                            <span class="test-input">machine learning</span>
+                                            <span class="test-result match">✅</span>
+                                        </div>
+                                        <div class="pattern-test">
+                                            <span class="test-input">DEEP LEARNING</span>
+                                            <span class="test-result match">✅</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 정규식 빌더 -->
+                    <div class="regex-builder">
+                        <h6>🏗️ 정규식 빌더</h6>
+                        <div class="builder-interface">
+                            <div class="builder-controls">
+                                <div class="control-group">
+                                    <label>패턴 유형:</label>
+                                    <select id="regexType" onchange="updateRegexPattern()">
+                                        <option value="email">이메일</option>
+                                        <option value="phone">전화번호</option>
+                                        <option value="korean">한국어 이름</option>
+                                        <option value="url">URL</option>
+                                        <option value="custom">커스텀</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label>플래그:</label>
+                                    <label><input type="checkbox" id="caseInsensitive"> 대소문자 무시 (i)</label>
+                                </div>
+                            </div>
+                            <div class="builder-output">
+                                <div class="regex-preview">
+                                    <span class="preview-label">생성된 정규식:</span>
+                                    <code id="generatedRegex">@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}</code>
+                                </div>
+                                <div class="sparql-preview">
+                                    <span class="preview-label">SPARQL 코드:</span>
+                                    <pre id="generatedSPARQL"><code>FILTER(REGEX(?email, "@[a-zA-Z0-9._-]+\\.[a-zA-Z]{2,}"))</code></pre>
+                                </div>
+                            </div>
+                            <div class="test-area">
+                                <input type="text" id="regexTestInput" placeholder="테스트할 문자열 입력">
+                                <button onclick="testRegex()">테스트</button>
+                                <div id="regexTestResult"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 날짜/시간 함수들 -->
+            <div class="function-panel" id="datetime-functions" style="display: none;">
+                <h5>📅 날짜/시간 마스터</h5>
+                
+                <div class="datetime-workshop">
+                    <div class="datetime-scenarios">
+                        <div class="scenario-card">
+                            <h6>📊 시나리오: 활동성 분석</h6>
+                            <p>"최근 30일 이내에 로그인한 활성 사용자를 찾아보세요"</p>
+                            
+                            <div class="datetime-solution">
+                                <pre class="code-editor"><code>SELECT ?user ?name ?lastLogin
+WHERE {
+  ?user foaf:name ?name ;
+        ex:lastLoginDate ?lastLogin .
+  
+  # 현재 시각에서 30일 이전 계산
+  BIND(NOW() - "P30D"^^xsd:duration AS ?cutoffDate)
+  
+  # 마지막 로그인이 30일 이내인 사용자만
+  FILTER(?lastLogin >= ?cutoffDate)
+}
+ORDER BY DESC(?lastLogin)</code></pre>
+                            </div>
+                            
+                            <div class="function-breakdown">
+                                <h7>사용된 함수 분석:</h7>
+                                <div class="function-list">
+                                    <div class="function-detail">
+                                        <span class="func-name">NOW()</span>
+                                        <span class="func-desc">현재 시각 반환</span>
+                                    </div>
+                                    <div class="function-detail">
+                                        <span class="func-name">xsd:duration</span>
+                                        <span class="func-desc">기간 표현 (P30D = 30일)</span>
+                                    </div>
+                                    <div class="function-detail">
+                                        <span class="func-name">>=</span>
+                                        <span class="func-desc">날짜 비교 연산</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="scenario-card">
+                            <h6>📈 시나리오: 시간대별 분석</h6>
+                            <p>"이벤트를 시간대별로 그룹화하여 패턴을 찾아보세요"</p>
+                            
+                            <div class="datetime-solution">
+                                <pre class="code-editor"><code>SELECT ?hourGroup (COUNT(?event) AS ?eventCount)
+WHERE {
+  ?event ex:timestamp ?timestamp .
+  
+  # 시간대 추출 (0-23시)
+  BIND(HOURS(?timestamp) AS ?hour)
+  
+  # 시간대 그룹화 (새벽/오전/오후/밤)
+  BIND(
+    IF(?hour >= 0 && ?hour < 6, "새벽",
+    IF(?hour >= 6 && ?hour < 12, "오전", 
+    IF(?hour >= 12 && ?hour < 18, "오후", "밤")))
+    AS ?hourGroup
+  )
+}
+GROUP BY ?hourGroup
+ORDER BY ?hourGroup</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 날짜 함수 참조표 -->
+                    <div class="datetime-reference">
+                        <h6>📚 날짜/시간 함수 참조표</h6>
+                        <div class="reference-grid">
+                            <div class="ref-category">
+                                <h7>추출 함수</h7>
+                                <div class="ref-items">
+                                    <div class="ref-item">
+                                        <code>YEAR(?date)</code>
+                                        <span>연도 (2024)</span>
+                                    </div>
+                                    <div class="ref-item">
+                                        <code>MONTH(?date)</code>
+                                        <span>월 (1-12)</span>
+                                    </div>
+                                    <div class="ref-item">
+                                        <code>DAY(?date)</code>
+                                        <span>일 (1-31)</span>
+                                    </div>
+                                    <div class="ref-item">
+                                        <code>HOURS(?datetime)</code>
+                                        <span>시 (0-23)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ref-category">
+                                <h7>생성 함수</h7>
+                                <div class="ref-items">
+                                    <div class="ref-item">
+                                        <code>NOW()</code>
+                                        <span>현재 시각</span>
+                                    </div>
+                                    <div class="ref-item">
+                                        <code>STRDT()</code>
+                                        <span>문자열을 날짜로</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.6: Property Path의 마법 -->
+<section class="content-section property-path">
+    <h2>7.6 Property Path: 그래프 탐험의 새로운 차원</h2>
+    
+    <!-- Property Path 시각화 실습 -->
+    <div class="path-exploration-lab">
+        <h3>🗺️ 그래프 탐험 실습실</h3>
+        
+        <div class="path-visualizer">
+            <h4>경로 시각화 도구</h4>
+            
+            <!-- 그래프 시각화 영역 -->
+            <div class="graph-canvas">
+                <svg viewBox="0 0 800 500" class="path-graph">
+                    <!-- 노드들 -->
+                    <circle cx="100" cy="250" r="30" class="node person" data-id="alice" />
+                    <text x="100" y="255" text-anchor="middle" class="node-label">Alice</text>
+                    
+                    <circle cx="300" cy="150" r="30" class="node person" data-id="bob" />
+                    <text x="300" y="155" text-anchor="middle" class="node-label">Bob</text>
+                    
+                    <circle cx="300" cy="350" r="30" class="node person" data-id="charlie" />
+                    <text x="300" y="355" text-anchor="middle" class="node-label">Charlie</text>
+                    
+                    <circle cx="500" cy="100" r="30" class="node person" data-id="david" />
+                    <text x="500" y="105" text-anchor="middle" class="node-label">David</text>
+                    
+                    <circle cx="500" cy="200" r="30" class="node person" data-id="eve" />
+                    <text x="500" y="205" text-anchor="middle" class="node-label">Eve</text>
+                    
+                    <circle cx="500" cy="300" r="30" class="node person" data-id="frank" />
+                    <text x="500" y="305" text-anchor="middle" class="node-label">Frank</text>
+                    
+                    <circle cx="700" cy="250" r="30" class="node person" data-id="grace" />
+                    <text x="700" y="255" text-anchor="middle" class="node-label">Grace</text>
+                    
+                    <!-- 관계들 -->
+                    <line x1="130" y1="250" x2="270" y2="150" class="edge knows" data-path="alice-bob" />
+                    <text x="200" y="195" class="edge-label">knows</text>
+                    
+                    <line x1="130" y1="250" x2="270" y2="350" class="edge knows" data-path="alice-charlie" />
+                    <text x="200" y="305" class="edge-label">knows</text>
+                    
+                    <line x1="330" y1="150" x2="470" y2="100" class="edge knows" data-path="bob-david" />
+                    <text x="400" y="120" class="edge-label">knows</text>
+                    
+                    <line x1="330" y1="150" x2="470" y2="200" class="edge knows" data-path="bob-eve" />
+                    <text x="400" y="170" class="edge-label">knows</text>
+                    
+                    <line x1="330" y1="350" x2="470" y2="300" class="edge knows" data-path="charlie-frank" />
+                    <text x="400" y="320" class="edge-label">knows</text>
+                    
+                    <line x1="530" y1="200" x2="670" y2="250" class="edge knows" data-path="eve-grace" />
+                    <text x="600" y="220" class="edge-label">knows</text>
+                    
+                    <line x1="530" y1="300" x2="670" y2="250" class="edge knows" data-path="frank-grace" />
+                    <text x="600" y="280" class="edge-label">knows</text>
+                </svg>
+            </div>
+            
+            <!-- Property Path 컨트롤 -->
+            <div class="path-controls">
+                <h5>경로 패턴 선택</h5>
+                <div class="path-buttons">
+                    <button class="path-btn" onclick="highlightPath('single')" data-pattern="foaf:knows">
+                        <span class="pattern-code">foaf:knows</span>
+                        <span class="pattern-desc">직접 친구</span>
+                    </button>
+                    <button class="path-btn" onclick="highlightPath('double')" data-pattern="foaf:knows/foaf:knows">
+                        <span class="pattern-code">foaf:knows/foaf:knows</span>
+                        <span class="pattern-desc">친구의 친구</span>
+                    </button>
+                    <button class="path-btn" onclick="highlightPath('optional')" data-pattern="foaf:knows?">
+                        <span class="pattern-code">foaf:knows?</span>
+                        <span class="pattern-desc">0개 또는 1개</span>
+                    </button>
+                    <button class="path-btn" onclick="highlightPath('one-plus')" data-pattern="foaf:knows+">
+                        <span class="pattern-code">foaf:knows+</span>
+                        <span class="pattern-desc">1개 이상</span>
+                    </button>
+                    <button class="path-btn" onclick="highlightPath('zero-plus')" data-pattern="foaf:knows*">
+                        <span class="pattern-code">foaf:knows*</span>
+                        <span class="pattern-desc">0개 이상</span>
+                    </button>
+                </div>
+                
+                <div class="path-result" id="pathResult">
+                    경로 패턴을 선택하면 결과가 여기에 표시됩니다.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Property Path 실전 시나리오 -->
+        <div class="path-scenarios">
+            <h4>🎯 실전 시나리오</h4>
+            
+            <div class="scenario-tabs">
+                <button class="scenario-tab active" onclick="showScenario('social')">소셜 네트워크</button>
+                <button class="scenario-tab" onclick="showScenario('org')">조직도</button>
+                <button class="scenario-tab" onclick="showScenario('semantic')">의미 관계</button>
+            </div>
+            
+            <div class="scenario-content" id="social-scenario">
+                <h5>👥 소셜 네트워크 분석</h5>
+                
+                <div class="scenario-challenges">
+                    <div class="challenge-card">
+                        <h6>Challenge 1: 인플루언서 찾기</h6>
+                        <p>"3단계 이내에 도달할 수 있는 사람이 1000명 이상인 인플루언서를 찾아라"</p>
+                        
+                        <div class="challenge-solution">
+                            <pre class="code-editor"><code>SELECT ?influencer (COUNT(DISTINCT ?reachable) AS ?reach)
+WHERE {
+  ?influencer foaf:knows{1,3} ?reachable .
+  ?influencer a foaf:Person .
+  ?reachable a foaf:Person .
+}
+GROUP BY ?influencer
+HAVING (COUNT(DISTINCT ?reachable) >= 1000)
+ORDER BY DESC(?reach)</code></pre>
+                        </div>
+                        
+                        <div class="challenge-explanation">
+                            <span class="explain-point">💡 <code>foaf:knows{1,3}</code>: 정확히 1~3단계의 knows 관계</span>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <h6>Challenge 2: 공통 친구 찾기</h6>
+                        <p>"Alice와 Bob이 공통으로 아는 사람들을 모두 찾아라"</p>
+                        
+                        <div class="challenge-solution">
+                            <pre class="code-editor"><code>SELECT DISTINCT ?commonFriend ?name
+WHERE {
+  ex:Alice foaf:knows+ ?commonFriend .
+  ex:Bob foaf:knows+ ?commonFriend .
+  ?commonFriend foaf:name ?name .
+  
+  # Alice와 Bob 자신은 제외
+  FILTER(?commonFriend != ex:Alice && ?commonFriend != ex:Bob)
+}</code></pre>
+                        </div>
+                        
+                        <div class="challenge-explanation">
+                            <span class="explain-point">💡 <code>foaf:knows+</code>: 1단계 이상의 모든 연결</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scenario-content" id="org-scenario" style="display: none;">
+                <h5>🏢 조직도 분석</h5>
+                
+                <div class="scenario-challenges">
+                    <div class="challenge-card">
+                        <h6>Challenge 1: 모든 부하직원 찾기</h6>
+                        <p>"CEO 밑의 모든 직속/간접 부하직원을 계층별로 찾아라"</p>
+                        
+                        <div class="challenge-solution">
+                            <pre class="code-editor"><code>SELECT ?employee ?level
+WHERE {
+  ex:CEO org:hasDirectReport* ?employee .
+  ?employee foaf:name ?name .
+  
+  # 계층 레벨 계산
+  {
+    SELECT ?employee (COUNT(?intermediate) AS ?level)
+    WHERE {
+      ex:CEO org:hasDirectReport* ?intermediate .
+      ?intermediate org:hasDirectReport* ?employee .
+    }
+    GROUP BY ?employee
+  }
+}
+ORDER BY ?level ?name</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 스타일 정의 -->
+<style>
+/* Part 2 스타일 */
+.part-header.intermediate {
+    background: linear-gradient(135deg, #4c1d95 0%, #6366f1 50%, #8b5cf6 100%);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+/* 진도 체크 - 중급 */
+.progress-check.intermediate-level {
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.skill-item.completed .progress-fill {
+    background: #22c55e;
+}
+
+.skill-item.current .progress-fill {
+    background: #fbbf24;
+    animation: progressPulse 2s infinite;
+}
+
+/* 패턴 매칭 실험실 */
+.pattern-matching-lab {
+    background: #0f172a;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 2rem 0;
+}
+
+.scenario-selector {
+    margin-bottom: 3rem;
+}
+
+.scenario-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scenario-btn {
+    background: #1f2937;
+    border: 2px solid #374151;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.scenario-btn.active {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.scenario-icon {
+    font-size: 2rem;
+}
+
+/* 패턴 섹션 */
+.pattern-section {
+    background: #111827;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.pattern-explanation {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border-left: 4px solid #6366f1;
+}
+
+/* 코드 비교 */
+.code-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.code-panel {
+    background: #0f172a;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.code-panel h6 {
+    background: #1f2937;
+    padding: 1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.code-editor {
+    background: #000;
+    color: #e5e7eb;
+    padding: 1.5rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.result-preview {
+    background: #1f2937;
+    padding: 1rem;
+    border-top: 1px solid #374151;
+}
+
+.result-count.success {
+    color: #22c55e;
+}
+
+.result-count.error {
+    color: #ef4444;
+}
+
+/* 인터랙티브 결과 테이블 */
+.interactive-results {
+    margin-top: 2rem;
+}
+
+.result-table-container {
+    background: #000;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-table th {
+    background: #374151;
+    color: #fbbf24;
+    padding: 1rem;
+    text-align: left;
+}
+
+.result-table td {
+    background: #1f2937;
+    color: #e5e7eb;
+    padding: 1rem;
+    border-bottom: 1px solid #374151;
+}
+
+.completeness-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.completeness-badge.full {
+    background: #22c55e;
+    color: white;
+}
+
+.completeness-badge.partial {
+    background: #fbbf24;
+    color: #1f2937;
+}
+
+.completeness-badge.minimal {
+    background: #ef4444;
+    color: white;
+}
+
+/* UNION 시각화 */
+.union-visualizer {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.union-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.union-branch {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 2px solid #374151;
+    transition: all 0.3s;
+}
+
+.union-branch[data-branch="email"] {
+    border-color: #22c55e;
+}
+
+.union-branch[data-branch="phone"] {
+    border-color: #6366f1;
+}
+
+.union-branch[data-branch="social"] {
+    border-color: #f59e0b;
+}
+
+.branch-header {
+    font-weight: bold;
+    color: #fbbf24;
+    margin-bottom: 0.5rem;
+}
+
+.branch-pattern {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+    margin: 0.5rem 0;
+}
+
+.branch-results {
+    font-weight: bold;
+    color: #6366f1;
+}
+
+.union-operator {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f59e0b;
+    background: #1f2937;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.union-result {
+    background: #22c55e;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.result-arrow {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* MINUS 플로우차트 */
+.minus-flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 2px solid #374151;
+}
+
+.flow-step.exclude {
+    border-color: #ef4444;
+}
+
+.flow-step.result {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.step-name {
+    font-weight: bold;
+    color: #fbbf24;
+    margin-bottom: 0.5rem;
+}
+
+.step-count {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6366f1;
+}
+
+.step-details {
+    margin-top: 1rem;
+}
+
+.step-details div {
+    font-size: 0.9rem;
+    color: #ef4444;
+    margin: 0.25rem 0;
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: #6366f1;
+}
+
+/* 비교 박스 */
+.comparison-box {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.comparison-item {
+    background: #374151;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.comparison-item h7 {
+    color: #fbbf24;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.comparison-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.comparison-item li {
+    padding: 0.25rem 0;
+    color: #cbd5e1;
+}
+
+.comparison-item li::before {
+    content: "▸ ";
+    color: #6366f1;
+}
+
+/* FILTER 훈련장 */
+.filter-training-ground {
+    background: #0f172a;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 2rem 0;
+}
+
+.function-categories {
+    margin-bottom: 2rem;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    background: #1f2937;
+    border: 2px solid #374151;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-tab.active {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.tab-icon {
+    font-size: 1.2rem;
+}
+
+/* 함수 패널 */
+.function-panel {
+    background: #111827;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.function-playground {
+    margin-top: 2rem;
+}
+
+.function-item {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.function-item.advanced {
+    border: 2px solid #f59e0b;
+}
+
+.function-demo {
+    background: #374151;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.function-demo.multi-input .demo-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.demo-input, .demo-process, .demo-output {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input-label, .output-label {
+    font-weight: bold;
+    color: #fbbf24;
+}
+
+.demo-input code, .demo-output code {
+    background: #4b5563;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+}
+
+.demo-process {
+    color: #6366f1;
+    font-weight: bold;
+}
+
+.practical-example {
+    margin-top: 1rem;
+}
+
+/* 함수 테스터 */
+.function-tester {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.tester-interface {
+    margin-top: 1rem;
+}
+
+.tester-input {
+    margin-bottom: 1rem;
+}
+
+.tester-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fbbf24;
+}
+
+.tester-input input {
+    width: 100%;
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.tester-functions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tester-functions button {
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tester-functions button:hover {
+    background: #4f46e5;
+}
+
+.tester-output {
+    background: #1f2937;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #374151;
+    font-family: monospace;
+    color: #e5e7eb;
+}
+
+/* 정규식 워크샵 */
+.regex-workshop {
+    background: #111827;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.regex-intro {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid #f59e0b;
+}
+
+.regex-patterns {
+    margin: 2rem 0;
+}
+
+.pattern-category {
+    margin: 2rem 0;
+}
+
+.pattern-category h6 {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+}
+
+.pattern-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pattern-example {
+    background: #374151;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.pattern-example.advanced {
+    border: 2px solid #8b5cf6;
+}
+
+.pattern-code {
+    background: #1f2937;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.pattern-code code {
+    color: #22c55e;
+    font-family: monospace;
+}
+
+.pattern-desc {
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
+
+.pattern-test, .pattern-results {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.pattern-results {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.test-input {
+    background: #4b5563;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+}
+
+.test-result.match {
+    color: #22c55e;
+}
+
+.test-result.no-match {
+    color: #ef4444;
+}
+
+/* 정규식 빌더 */
+.regex-builder {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.builder-controls {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+.control-group select {
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.builder-output {
+    margin: 2rem 0;
+}
+
+.regex-preview, .sparql-preview {
+    background: #1f2937;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.preview-label {
+    color: #fbbf24;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.regex-preview code, .sparql-preview pre {
+    color: #22c55e;
+    font-family: monospace;
+}
+
+.test-area {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.test-area input {
+    flex: 1;
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    min-width: 200px;
+}
+
+.test-area button {
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* Property Path 시각화 */
+.path-exploration-lab {
+    background: #0f172a;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 2rem 0;
+}
+
+.path-visualizer {
+    background: #111827;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.graph-canvas {
+    background: #1f2937;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.path-graph {
+    width: 100%;
+    height: 500px;
+}
+
+.node {
+    fill: #6366f1;
+    stroke: #4f46e5;
+    stroke-width: 3;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.node:hover {
+    fill: #8b5cf6;
+    r: 35;
+}
+
+.node-label {
+    fill: white;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.edge {
+    stroke: #94a3b8;
+    stroke-width: 2;
+    transition: all 0.3s;
+}
+
+.edge.highlighted {
+    stroke: #fbbf24;
+    stroke-width: 4;
+    animation: pathPulse 2s infinite;
+}
+
+.edge-label {
+    fill: #cbd5e1;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    pointer-events: none;
+}
+
+/* Path 컨트롤 */
+.path-controls {
+    margin-top: 2rem;
+}
+
+.path-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.path-btn {
+    background: #1f2937;
+    border: 2px solid #374151;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.path-btn:hover {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.pattern-code {
+    font-family: monospace;
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.pattern-desc {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.path-result {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    border: 1px solid #374151;
+}
+
+/* 시나리오 탭 */
+.scenario-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.scenario-tab {
+    background: #1f2937;
+    border: 2px solid #374151;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.scenario-tab.active {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* 챌린지 카드 */
+.challenge-card {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    border: 2px solid #374151;
+}
+
+.challenge-card h6 {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+}
+
+.challenge-solution {
+    margin: 1.5rem 0;
+}
+
+.challenge-explanation {
+    background: #374151;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.explain-point {
+    color: #cbd5e1;
+}
+
+/* 애니메이션 */
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes pathPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .code-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .union-diagram {
+        flex-direction: column;
+    }
+    
+    .minus-flowchart {
+        flex-direction: column;
+    }
+    
+    .builder-controls {
+        flex-direction: column;
+    }
+    
+    .path-buttons {
+        flex-direction: column;
+    }
+    
+    .scenario-tabs {
+        flex-direction: column;
+    }
+}
+</style>
+
+<!-- 스크립트 -->
+<script>
+// 전역 변수
+let currentScenario = 'social';
+let currentCategory = 'string';
+
+// 시나리오 선택
+function selectScenario(scenario) {
+    currentScenario = scenario;
+    const buttons = document.querySelectorAll('.scenario-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.closest('.scenario-btn').classList.add('active');
+    
+    // 시나리오별 컨텐츠 업데이트 (실제로는 더 많은 로직)
+    console.log(`Selected scenario: ${scenario}`);
+}
+
+// 함수 카테고리 전환
+function showCategory(category) {
+    currentCategory = category;
+    
+    // 탭 활성화
+    const tabs = document.querySelectorAll('.category-tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // 패널 전환
+    const panels = document.querySelectorAll('.function-panel');
+    panels.forEach(panel => panel.style.display = 'none');
+    
+    const targetPanel = document.getElementById(`${category}-functions`);
+    if (targetPanel) {
+        targetPanel.style.display = 'block';
+    }
+}
+
+// 함수 테스터
+function testFunction(funcName) {
+    const testValue = document.getElementById('testValue').value;
+    const resultElement = document.getElementById('functionResult');
+    
+    let result;
+    try {
+        switch(funcName) {
+            case 'STR':
+                result = testValue.replace(/^"(.*)"(@[a-z]+)?$/, '"$1"');
+                break;
+            case 'STRLEN':
+                const cleanValue = testValue.replace(/^"(.*)"$/, '$1');
+                result = cleanValue.length;
+                break;
+            case 'UCASE':
+                result = testValue.toUpperCase();
+                break;
+            case 'LCASE':
+                result = testValue.toLowerCase();
+                break;
+            default:
+                result = 'Unknown function';
+        }
+        
+        resultElement.innerHTML = `
+            <div class="test-result success">
+                <span class="function-name">${funcName}(${testValue})</span>
+                <span class="arrow"> → </span>
+                <span class="result-value">${result}</span>
+            </div>
+        `;
+    } catch (error) {
+        resultElement.innerHTML = `
+            <div class="test-result error">
+                Error: ${error.message}
+            </div>
+        `;
+    }
+}
+
+// 정규식 패턴 업데이트
+function updateRegexPattern() {
+    const regexType = document.getElementById('regexType').value;
+    const caseInsensitive = document.getElementById('caseInsensitive').checked;
+    const regexDisplay = document.getElementById('generatedRegex');
+    const sparqlDisplay = document.getElementById('generatedSPARQL');
+    
+    const patterns = {
+        email: '@[a-zA-Z0-9._-]+\\.[a-zA-Z]{2,}',
+        phone: '^010-\\d{4}-\\d{4}$',
+        korean: '^[가-힣]{2,4}$',
+        url: '^https?:\\/\\/.+',
+        custom: '사용자 정의 패턴'
+    };
+    
+    const pattern = patterns[regexType] || patterns.email;
+    const flags = caseInsensitive ? ', "i"' : '';
+    
+    regexDisplay.textContent = pattern;
+    sparqlDisplay.innerHTML = `<code>FILTER(REGEX(?variable, "${pattern}"${flags}))</code>`;
+}
+
+// 정규식 테스트
+function testRegex() {
+    const pattern = document.getElementById('generatedRegex').textContent;
+    const testInput = document.getElementById('regexTestInput').value;
+    const resultElement = document.getElementById('regexTestResult');
+    const caseInsensitive = document.getElementById('caseInsensitive').checked;
+    
+    try {
+        const flags = caseInsensitive ? 'i' : '';
+        const regex = new RegExp(pattern.replace(/\\\\/g, '\\'), flags);
+        const matches = regex.test(testInput);
+        
+        resultElement.innerHTML = matches 
+            ? `<span style="color: #22c55e;">✅ 매치됨</span>`
+            : `<span style="color: #ef4444;">❌ 매치되지 않음</span>`;
+    } catch (error) {
+        resultElement.innerHTML = `<span style="color: #ef4444;">오류: ${error.message}</span>`;
+    }
+}
+
+// Property Path 하이라이트
+function highlightPath(pathType) {
+    // 모든 경로 초기화
+    const edges = document.querySelectorAll('.edge');
+    const nodes = document.querySelectorAll('.node');
+    edges.forEach(edge => edge.classList.remove('highlighted'));
+    nodes.forEach(node => node.style.fill = '#6366f1');
+    
+    const resultElement = document.getElementById('pathResult');
+    
+    switch(pathType) {
+        case 'single':
+            // Alice의 직접 친구들 하이라이트
+            document.querySelector('[data-path="alice-bob"]').classList.add('highlighted');
+            document.querySelector('[data-path="alice-charlie"]').classList.add('highlighted');
+            document.querySelector('[data-id="alice"]').style.fill = '#22c55e';
+            document.querySelector('[data-id="bob"]').style.fill = '#fbbf24';
+            document.querySelector('[data-id="charlie"]').style.fill = '#fbbf24';
+            
+            resultElement.innerHTML = `
+                <h6>foaf:knows 결과</h6>
+                <p>Alice의 직접 친구: Bob, Charlie</p>
+                <div class="result-count">매치: 2개</div>
+            `;
+            break;
+            
+        case 'double':
+            // Alice의 친구의 친구들 하이라이트
+            document.querySelector('[data-path="alice-bob"]').classList.add('highlighted');
+            document.querySelector('[data-path="bob-david"]').classList.add('highlighted');
+            document.querySelector('[data-path="bob-eve"]').classList.add('highlighted');
+            document.querySelector('[data-path="alice-charlie"]').classList.add('highlighted');
+            document.querySelector('[data-path="charlie-frank"]').classList.add('highlighted');
+            
+            document.querySelector('[data-id="alice"]').style.fill = '#22c55e';
+            document.querySelector('[data-id="david"]').style.fill = '#f59e0b';
+            document.querySelector('[data-id="eve"]').style.fill = '#f59e0b';
+            document.querySelector('[data-id="frank"]').style.fill = '#f59e0b';
+            
+            resultElement.innerHTML = `
+                <h6>foaf:knows/foaf:knows 결과</h6>
+                <p>Alice의 친구의 친구: David, Eve, Frank</p>
+                <div class="result-count">매치: 3개</div>
+            `;
+            break;
+            
+        case 'one-plus':
+            // Alice로부터 1단계 이상 연결된 모든 사람들
+            edges.forEach(edge => {
+                if (edge.dataset.path?.includes('alice') || 
+                    edge.dataset.path?.includes('bob') || 
+                    edge.dataset.path?.includes('charlie')) {
+                    edge.classList.add('highlighted');
+                }
+            });
+            
+            resultElement.innerHTML = `
+                <h6>foaf:knows+ 결과</h6>
+                <p>Alice로부터 1단계 이상 연결된 모든 사람</p>
+                <div class="result-count">매치: 6개 (Bob, Charlie, David, Eve, Frank, Grace)</div>
+            `;
+            break;
+    }
+}
+
+// 시나리오 탭 전환
+function showScenario(scenario) {
+    const tabs = document.querySelectorAll('.scenario-tab');
+    const contents = document.querySelectorAll('.scenario-content');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    contents.forEach(content => content.style.display = 'none');
+    
+    event.target.classList.add('active');
+    document.getElementById(`${scenario}-scenario`).style.display = 'block';
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 정규식 패턴 초기화
+    updateRegexPattern();
+    
+    // 진행률 애니메이션
+    setTimeout(() => {
+        const currentProgress = document.querySelector('.skill-item.current .progress-fill');
+        if (currentProgress) {
+            currentProgress.style.width = '60%';
+        }
+    }, 1000);
+});
+</script>

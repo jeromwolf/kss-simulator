@@ -179,6 +179,19 @@ export function InteractiveLearning({ topic, onComplete }: InteractiveLearningPr
                 </li>
               ))}
             </ul>
+            
+            {/* 다음 학습으로 버튼 추가 */}
+            {onComplete && (
+              <div className="text-center pt-6">
+                <button
+                  onClick={onComplete}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2 mx-auto"
+                >
+                  다음 학습으로
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
         )}
 

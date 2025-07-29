@@ -1,0 +1,1798 @@
+<!-- Chapter 8: Protégé - 온톨로지 개발의 필수 도구 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header intermediate">
+    <div class="protege-power-animation"></div>
+    <h2 class="part-title">Part 2: 실전 모델링과 추론 엔진 마스터</h2>
+    <p class="part-description">이제 Protégé의 진정한 파워를 발휘할 시간입니다. 복잡한 온톨로지 구축과 추론 시스템을 마스터하세요.</p>
+</div>
+
+<!-- 진도 체크 - 중급 -->
+<div class="progress-check intermediate-level">
+    <h3>🛠️ 실전 개발자 준비 상황</h3>
+    <div class="dev-status">
+        <div class="status-item completed">
+            <span class="status-icon">✅</span>
+            <span class="status-name">Protégé 기초</span>
+            <span class="status-score">100%</span>
+        </div>
+        <div class="status-item current">
+            <span class="status-icon">🚀</span>
+            <span class="status-name">실전 모델링</span>
+            <span class="status-score">50%</span>
+        </div>
+        <div class="status-item pending">
+            <span class="status-icon">⏳</span>
+            <span class="status-name">고급 추론</span>
+            <span class="status-score">0%</span>
+        </div>
+    </div>
+    <div class="ready-indicator">
+        <span class="ready-text">실전 프로젝트 모드 활성화!</span>
+    </div>
+</div>
+
+<!-- 섹션 8.2: 스마트 홈 온톨로지 실전 구축 -->
+<section class="content-section smart-home-project">
+    <h2>8.2 실전 프로젝트: 스마트 홈 온톨로지 구축</h2>
+    
+    <!-- 프로젝트 대시보드 -->
+    <div class="project-dashboard">
+        <h3>🏠 스마트 홈 프로젝트 대시보드</h3>
+        <div class="project-stats">
+            <div class="stat-card">
+                <span class="stat-icon">🏗️</span>
+                <span class="stat-value">47</span>
+                <span class="stat-label">클래스</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🔗</span>
+                <span class="stat-value">23</span>
+                <span class="stat-label">오브젝트 프로퍼티</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📊</span>
+                <span class="stat-value">18</span>
+                <span class="stat-label">데이터 프로퍼티</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">👥</span>
+                <span class="stat-value">156</span>
+                <span class="stat-label">개체</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 단계별 구축 가이드 -->
+    <div class="construction-guide">
+        <h3>🔨 단계별 구축 가이드</h3>
+        
+        <!-- Step 1: 프로젝트 생성 -->
+        <div class="build-step active">
+            <div class="step-header">
+                <span class="step-number">01</span>
+                <h4>새 온톨로지 프로젝트 생성</h4>
+                <span class="step-status completed">완료</span>
+            </div>
+            <div class="step-content">
+                <div class="creation-wizard">
+                    <h5>🧙‍♂️ 프로젝트 생성 마법사</h5>
+                    <div class="wizard-interface">
+                        <div class="wizard-form">
+                            <div class="form-group">
+                                <label>프로젝트 이름</label>
+                                <input type="text" value="SmartHome Ontology v2.0" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Ontology IRI</label>
+                                <input type="text" value="http://smartliving.org/ontology/smarthome" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Base Namespace</label>
+                                <input type="text" value="http://smartliving.org/ontology/smarthome#" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Format</label>
+                                <select disabled>
+                                    <option selected>RDF/XML</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="wizard-preview">
+                            <h6>생성될 온톨로지 헤더</h6>
+                            <pre class="code-preview"><code><?xml version="1.0"?>
+<rdf:RDF xmlns="http://smartliving.org/ontology/smarthome#"
+         xml:base="http://smartliving.org/ontology/smarthome"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xml="http://www.w3.org/XML/1998/namespace"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://smartliving.org/ontology/smarthome">
+        <rdfs:label>Smart Home Ontology</rdfs:label>
+        <rdfs:comment>IoT 스마트홈 시스템을 위한 온톨로지</rdfs:comment>
+        <owl:versionInfo>2.0</owl:versionInfo>
+    </owl:Ontology>
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: 클래스 계층 설계 -->
+        <div class="build-step">
+            <div class="step-header">
+                <span class="step-number">02</span>
+                <h4>클래스 계층 구조 설계</h4>
+                <span class="step-status active">진행중</span>
+            </div>
+            <div class="step-content">
+                <div class="class-design-lab">
+                    <h5>🏗️ 클래스 설계 실험실</h5>
+                    
+                    <!-- 인터랙티브 클래스 빌더 -->
+                    <div class="class-builder">
+                        <div class="builder-interface">
+                            <h6>드래그 앤 드롭 클래스 빌더</h6>
+                            <div class="class-palette">
+                                <div class="palette-category">
+                                    <h7>📱 Device 카테고리</h7>
+                                    <div class="class-items">
+                                        <div class="class-item" draggable="true" data-class="Sensor">
+                                            <span class="class-icon">📡</span>
+                                            <span class="class-name">Sensor</span>
+                                        </div>
+                                        <div class="class-item" draggable="true" data-class="Actuator">
+                                            <span class="class-icon">⚙️</span>
+                                            <span class="class-name">Actuator</span>
+                                        </div>
+                                        <div class="class-item" draggable="true" data-class="Controller">
+                                            <span class="class-icon">🎮</span>
+                                            <span class="class-name">Controller</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="palette-category">
+                                    <h7>🏠 Space 카테고리</h7>
+                                    <div class="class-items">
+                                        <div class="class-item" draggable="true" data-class="Room">
+                                            <span class="class-icon">🚪</span>
+                                            <span class="class-name">Room</span>
+                                        </div>
+                                        <div class="class-item" draggable="true" data-class="Floor">
+                                            <span class="class-icon">🏢</span>
+                                            <span class="class-name">Floor</span>
+                                        </div>
+                                        <div class="class-item" draggable="true" data-class="Zone">
+                                            <span class="class-icon">📍</span>
+                                            <span class="class-name">Zone</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="hierarchy-canvas">
+                                <h7>🌳 클래스 계층 구조</h7>
+                                <div class="hierarchy-tree" id="hierarchyTree">
+                                    <div class="tree-node root">
+                                        <span class="node-icon">🌐</span>
+                                        <span class="node-name">owl:Thing</span>
+                                        <div class="node-children">
+                                            <div class="tree-node">
+                                                <span class="node-icon">📱</span>
+                                                <span class="node-name">Device</span>
+                                                <div class="node-children">
+                                                    <div class="tree-node">
+                                                        <span class="node-icon">📡</span>
+                                                        <span class="node-name">Sensor</span>
+                                                        <div class="node-children">
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">🌡️</span>
+                                                                <span class="node-name">TemperatureSensor</span>
+                                                            </div>
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">🚶</span>
+                                                                <span class="node-name">MotionSensor</span>
+                                                            </div>
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">💡</span>
+                                                                <span class="node-name">LightSensor</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tree-node">
+                                                        <span class="node-icon">⚙️</span>
+                                                        <span class="node-name">Actuator</span>
+                                                        <div class="node-children">
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">💡</span>
+                                                                <span class="node-name">Light</span>
+                                                            </div>
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">🔥</span>
+                                                                <span class="node-name">Heater</span>
+                                                            </div>
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">❄️</span>
+                                                                <span class="node-name">AirConditioner</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tree-node">
+                                                <span class="node-icon">🏠</span>
+                                                <span class="node-name">Space</span>
+                                                <div class="node-children">
+                                                    <div class="tree-node">
+                                                        <span class="node-icon">🚪</span>
+                                                        <span class="node-name">Room</span>
+                                                        <div class="node-children">
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">🛋️</span>
+                                                                <span class="node-name">LivingRoom</span>
+                                                            </div>
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">🛏️</span>
+                                                                <span class="node-name">Bedroom</span>
+                                                            </div>
+                                                            <div class="tree-node">
+                                                                <span class="node-icon">🍳</span>
+                                                                <span class="node-name">Kitchen</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 클래스 정의 자동 생성 -->
+                        <div class="class-definition-generator">
+                            <h6>📝 자동 클래스 정의 생성</h6>
+                            <div class="generated-definition">
+                                <pre class="code-output"><code># 현재 선택된 클래스: TemperatureSensor
+
+Declaration(Class(:TemperatureSensor))
+SubClassOf(:TemperatureSensor :Sensor)
+AnnotationAssertion(rdfs:label :TemperatureSensor "온도 센서")
+AnnotationAssertion(rdfs:comment :TemperatureSensor "주변 온도를 측정하는 센서")
+
+# 추가 제약 조건
+SubClassOf(:TemperatureSensor
+    ObjectExactCardinality(1 :hasLocation :Room)
+)
+SubClassOf(:TemperatureSensor
+    DataSomeValuesFrom(:hasTemperatureValue xsd:float)
+)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: 프로퍼티 정의 워크샵 -->
+        <div class="build-step">
+            <div class="step-header">
+                <span class="step-number">03</span>
+                <h4>프로퍼티 정의 워크샵</h4>
+                <span class="step-status pending">대기중</span>
+            </div>
+            <div class="step-content">
+                <div class="property-workshop">
+                    <h5>🔗 프로퍼티 설계 워크샵</h5>
+                    
+                    <!-- 프로퍼티 매트릭스 -->
+                    <div class="property-matrix">
+                        <h6>프로퍼티 관계 매트릭스</h6>
+                        <div class="matrix-interface">
+                            <table class="relation-matrix">
+                                <thead>
+                                    <tr>
+                                        <th>Domain \ Range</th>
+                                        <th>Device</th>
+                                        <th>Room</th>
+                                        <th>User</th>
+                                        <th>Automation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Device</strong></td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">controls</div>
+                                            <div class="relation-item">connectedTo</div>
+                                        </td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">locatedIn</div>
+                                            <div class="relation-item">monitors</div>
+                                        </td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">belongsTo</div>
+                                            <div class="relation-item">configuredBy</div>
+                                        </td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">triggers</div>
+                                            <div class="relation-item">executedBy</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Room</strong></td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">contains</div>
+                                        </td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">adjacentTo</div>
+                                            <div class="relation-item">partOf</div>
+                                        </td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">occupiedBy</div>
+                                        </td>
+                                        <td class="relation-cell">
+                                            <div class="relation-item">hasRule</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 프로퍼티 특성 설정 -->
+                    <div class="property-characteristics">
+                        <h6>⚙️ 프로퍼티 특성 설정</h6>
+                        <div class="characteristics-grid">
+                            <div class="characteristic-card">
+                                <h7>Functional Property</h7>
+                                <p>각 개체가 최대 하나의 값만 가짐</p>
+                                <div class="example">
+                                    <strong>예제:</strong> hasOwner
+                                    <br><small>하나의 기기는 하나의 소유자만</small>
+                                </div>
+                            </div>
+                            <div class="characteristic-card">
+                                <h7>Inverse Functional</h7>
+                                <p>역관계가 함수적 특성을 가짐</p>
+                                <div class="example">
+                                    <strong>예제:</strong> hasSerialNumber
+                                    <br><small>시리얼 번호는 기기를 유일하게 식별</small>
+                                </div>
+                            </div>
+                            <div class="characteristic-card">
+                                <h7>Transitive Property</h7>
+                                <p>전이적 특성 (A→B, B→C ⇒ A→C)</p>
+                                <div class="example">
+                                    <strong>예제:</strong> locatedIn
+                                    <br><small>센서→방→집 ⇒ 센서→집</small>
+                                </div>
+                            </div>
+                            <div class="characteristic-card">
+                                <h7>Symmetric Property</h7>
+                                <p>대칭적 특성 (A→B ⇒ B→A)</p>
+                                <div class="example">
+                                    <strong>예제:</strong> connectedTo
+                                    <br><small>A가 B에 연결 ⇒ B도 A에 연결</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 데이터 프로퍼티 설계 -->
+                    <div class="data-property-design">
+                        <h6>📊 데이터 프로퍼티 설계</h6>
+                        <div class="data-property-list">
+                            <div class="property-definition">
+                                <div class="property-header">
+                                    <span class="property-name">hasTemperature</span>
+                                    <span class="property-type">xsd:float</span>
+                                </div>
+                                <div class="property-details">
+                                    <div class="detail-item">
+                                        <strong>Domain:</strong> TemperatureSensor
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Range:</strong> xsd:float
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Restriction:</strong> [-50.0, 100.0]
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Unit:</strong> Celsius
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-definition">
+                                <div class="property-header">
+                                    <span class="property-name">hasBrightness</span>
+                                    <span class="property-type">xsd:integer</span>
+                                </div>
+                                <div class="property-details">
+                                    <div class="detail-item">
+                                        <strong>Domain:</strong> Light
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Range:</strong> xsd:integer[0..100]
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Unit:</strong> Percentage
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-definition">
+                                <div class="property-header">
+                                    <span class="property-name">lastUpdated</span>
+                                    <span class="property-type">xsd:dateTime</span>
+                                </div>
+                                <div class="property-details">
+                                    <div class="detail-item">
+                                        <strong>Domain:</strong> Device
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Range:</strong> xsd:dateTime
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Description:</strong> 마지막 업데이트 시간
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.3: 추론 엔진 실전 활용 -->
+<section class="content-section reasoning-mastery">
+    <h2>8.3 추론 엔진 마스터: 지능형 추론 시스템</h2>
+    
+    <!-- 추론 엔진 선택 가이드 -->
+    <div class="reasoner-selection-guide">
+        <h3>🧠 추론 엔진 선택 가이드</h3>
+        
+        <div class="reasoner-comparison-lab">
+            <h4>⚖️ 추론 엔진 비교 실험실</h4>
+            <div class="comparison-interface">
+                <div class="reasoner-cards">
+                    <div class="reasoner-card hermit">
+                        <div class="reasoner-header">
+                            <span class="reasoner-icon">🎯</span>
+                            <h5>HermiT</h5>
+                            <span class="reasoner-badge accuracy">정확성</span>
+                        </div>
+                        <div class="reasoner-stats">
+                            <div class="stat-bar">
+                                <span class="stat-label">완전성</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 100%"></div>
+                                </div>
+                                <span class="stat-value">100%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <span class="stat-label">속도</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 70%"></div>
+                                </div>
+                                <span class="stat-value">70%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <span class="stat-label">확장성</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 60%"></div>
+                                </div>
+                                <span class="stat-value">60%</span>
+                            </div>
+                        </div>
+                        <div class="reasoner-description">
+                            <p>OWL 2 DL의 모든 구조를 완벽 지원하는 가장 정확한 추론 엔진</p>
+                            <div class="use-cases">
+                                <span class="use-case">의료 온톨로지</span>
+                                <span class="use-case">법률 시스템</span>
+                                <span class="use-case">정밀 추론</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reasoner-card pellet">
+                        <div class="reasoner-header">
+                            <span class="reasoner-icon">⚖️</span>
+                            <h5>Pellet</h5>
+                            <span class="reasoner-badge balanced">균형</span>
+                        </div>
+                        <div class="reasoner-stats">
+                            <div class="stat-bar">
+                                <span class="stat-label">완전성</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 95%"></div>
+                                </div>
+                                <span class="stat-value">95%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <span class="stat-label">속도</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 85%"></div>
+                                </div>
+                                <span class="stat-value">85%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <span class="stat-label">확장성</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 80%"></div>
+                                </div>
+                                <span class="stat-value">80%</span>
+                            </div>
+                        </div>
+                        <div class="reasoner-description">
+                            <p>성능과 정확성의 균형이 뛰어난 실용적인 추론 엔진</p>
+                            <div class="use-cases">
+                                <span class="use-case">비즈니스 온톨로지</span>
+                                <span class="use-case">일반적 용도</span>
+                                <span class="use-case">중간 규모</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reasoner-card elk">
+                        <div class="reasoner-header">
+                            <span class="reasoner-icon">⚡</span>
+                            <h5>ELK</h5>
+                            <span class="reasoner-badge speed">고속</span>
+                        </div>
+                        <div class="reasoner-stats">
+                            <div class="stat-bar">
+                                <span class="stat-label">완전성</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 85%"></div>
+                                </div>
+                                <span class="stat-value">85%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <span class="stat-label">속도</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 100%"></div>
+                                </div>
+                                <span class="stat-value">100%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <span class="stat-label">확장성</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 100%"></div>
+                                </div>
+                                <span class="stat-value">100%</span>
+                            </div>
+                        </div>
+                        <div class="reasoner-description">
+                            <p>대규모 온톨로지 처리에 최적화된 초고속 추론 엔진</p>
+                            <div class="use-cases">
+                                <span class="use-case">대규모 시스템</span>
+                                <span class="use-case">실시간 처리</span>
+                                <span class="use-case">분류 중심</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 성능 비교 차트 -->
+                <div class="performance-chart">
+                    <h5>📊 성능 비교 차트</h5>
+                    <div class="chart-container">
+                        <div class="chart-axis">
+                            <div class="y-axis">
+                                <span>속도</span>
+                                <div class="axis-values">
+                                    <span>100%</span>
+                                    <span>75%</span>
+                                    <span>50%</span>
+                                    <span>25%</span>
+                                    <span>0%</span>
+                                </div>
+                            </div>
+                            <div class="chart-area">
+                                <div class="chart-bar hermit-bar" style="height: 70%">
+                                    <span class="bar-label">HermiT</span>
+                                </div>
+                                <div class="chart-bar pellet-bar" style="height: 85%">
+                                    <span class="bar-label">Pellet</span>
+                                </div>
+                                <div class="chart-bar elk-bar" style="height: 100%">
+                                    <span class="bar-label">ELK</span>
+                                </div>
+                            </div>
+                            <div class="x-axis">
+                                <span>정확성 vs 속도</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실전 추론 실습 -->
+    <div class="reasoning-practice-lab">
+        <h3>🧪 실전 추론 실습</h3>
+        
+        <!-- 추론 시나리오 1: 스마트 홈 자동화 -->
+        <div class="reasoning-scenario">
+            <h4>🏠 시나리오 1: 스마트 홈 자동화 추론</h4>
+            <div class="scenario-setup">
+                <div class="setup-description">
+                    <p><strong>목표:</strong> 사용자의 행동 패턴을 기반으로 자동화 규칙을 추론하고 실행</p>
+                    <p><strong>데이터:</strong> 센서 데이터, 사용자 선호도, 시간 정보</p>
+                </div>
+                
+                <div class="reasoning-steps">
+                    <div class="reasoning-step">
+                        <h5>Step 1: 기본 사실 입력</h5>
+                        <pre class="code-input"><code># 개체 생성 및 속성 할당
+livingRoomTempSensor rdf:type TemperatureSensor .
+livingRoomTempSensor hasTemperature "25.5"^^xsd:float .
+livingRoomTempSensor locatedIn livingRoom .
+
+johnDoe rdf:type User .
+johnDoe prefersTemperature "22.0"^^xsd:float .
+johnDoe currentlyIn livingRoom .
+
+smartThermostat rdf:type Heater .
+smartThermostat controls airConditioner1 .
+smartThermostat locatedIn livingRoom .</code></pre>
+                    </div>
+                    
+                    <div class="reasoning-step">
+                        <h5>Step 2: 추론 규칙 정의</h5>
+                        <pre class="code-input"><code># 온도 조절 규칙
+Class: ComfortZone
+    EquivalentTo: Room and (
+        exists hasTemperature some xsd:float[>= 20.0, <= 24.0]
+    )
+
+Class: OverheatedRoom
+    EquivalentTo: Room and (
+        exists hasTemperature some xsd:float[> 26.0]
+    )
+
+# 자동화 규칙
+Class: CoolingAction
+    EquivalentTo: Action and (
+        forall appliesTo (OverheatedRoom and (exists occupiedBy some User))
+    )</code></pre>
+                    </div>
+                    
+                    <div class="reasoning-step">
+                        <h5>Step 3: 추론 실행 및 결과</h5>
+                        <div class="reasoning-results">
+                            <div class="result-section">
+                                <h6>🔍 추론된 사실들</h6>
+                                <div class="inferred-facts">
+                                    <div class="fact-item">
+                                        <span class="fact-icon">✨</span>
+                                        <span class="fact-text">livingRoom rdf:type OverheatedRoom</span>
+                                        <span class="confidence">신뢰도: 100%</span>
+                                    </div>
+                                    <div class="fact-item">
+                                        <span class="fact-icon">✨</span>
+                                        <span class="fact-text">coolingAction1 rdf:type CoolingAction</span>
+                                        <span class="confidence">신뢰도: 95%</span>
+                                    </div>
+                                    <div class="fact-item">
+                                        <span class="fact-icon">✨</span>
+                                        <span class="fact-text">smartThermostat shouldActivate airConditioner1</span>
+                                        <span class="confidence">신뢰도: 90%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h6>⚙️ 실행될 액션</h6>
+                                <div class="action-queue">
+                                    <div class="action-item priority-high">
+                                        <span class="action-icon">❄️</span>
+                                        <span class="action-name">에어컨 자동 작동</span>
+                                        <span class="action-target">Target: 22°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DL Query 마스터 클래스 -->
+        <div class="dl-query-masterclass">
+            <h4>🔍 DL Query 마스터 클래스</h4>
+            
+            <div class="query-playground">
+                <h5>🎮 쿼리 플레이그라운드</h5>
+                <div class="playground-interface">
+                    <div class="query-editor">
+                        <h6>쿼리 에디터</h6>
+                        <div class="editor-tabs">
+                            <button class="tab active" onclick="switchTab('basic')">기본 쿼리</button>
+                            <button class="tab" onclick="switchTab('advanced')">고급 쿼리</button>
+                            <button class="tab" onclick="switchTab('expert')">전문가 쿼리</button>
+                        </div>
+                        
+                        <div class="query-content basic-queries">
+                            <div class="query-example">
+                                <h7>1. 특정 방의 모든 기기 찾기</h7>
+                                <textarea class="query-input" readonly>Device and locatedIn value livingRoom</textarea>
+                                <div class="query-result">
+                                    <strong>결과:</strong> 12개 기기 발견
+                                    <ul>
+                                        <li>livingRoomTempSensor</li>
+                                        <li>smartThermostat</li>
+                                        <li>philipsHueLight</li>
+                                        <li>alexaEcho</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="query-example">
+                                <h7>2. 온도가 특정 범위인 센서</h7>
+                                <textarea class="query-input" readonly>TemperatureSensor and 
+hasTemperature some xsd:float[>= 20.0, <= 25.0]</textarea>
+                                <div class="query-result">
+                                    <strong>결과:</strong> 3개 센서 매치
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="query-content advanced-queries" style="display: none;">
+                            <div class="query-example">
+                                <h7>3. 복잡한 조건 쿼리</h7>
+                                <textarea class="query-input" readonly>(Device and locatedIn some (Room and occupiedBy some User)) 
+and not (controlledBy some Controller)</textarea>
+                                <div class="query-result">
+                                    <strong>결과:</strong> 사용자가 있는 방의 제어되지 않는 기기들
+                                </div>
+                            </div>
+                            
+                            <div class="query-example">
+                                <h7>4. 추론 기반 쿼리</h7>
+                                <textarea class="query-input" readonly>Room and (hasTemperature some xsd:float[> 26.0]) 
+and (occupiedBy some (User and prefersTemperature some xsd:float[< 24.0]))</textarea>
+                                <div class="query-result">
+                                    <strong>결과:</strong> 사용자 선호도보다 뜨거운 방들
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="query-visualizer">
+                        <h6>쿼리 시각화</h6>
+                        <div class="visual-graph">
+                            <svg width="300" height="200" viewBox="0 0 300 200">
+                                <!-- 그래프 노드들 -->
+                                <circle cx="150" cy="50" r="20" fill="#4f46e5" />
+                                <text x="150" y="55" text-anchor="middle" fill="white" font-size="12">Device</text>
+                                
+                                <circle cx="75" cy="120" r="15" fill="#10b981" />
+                                <text x="75" y="125" text-anchor="middle" fill="white" font-size="10">Room</text>
+                                
+                                <circle cx="225" cy="120" r="15" fill="#f59e0b" />
+                                <text x="225" y="125" text-anchor="middle" fill="white" font-size="10">User</text>
+                                
+                                <!-- 관계 선들 -->
+                                <line x1="130" y1="65" x2="90" y2="105" stroke="#6b7280" stroke-width="2"/>
+                                <text x="110" y="85" font-size="10" fill="#6b7280">locatedIn</text>
+                                
+                                <line x1="90" y1="120" x2="210" y2="120" stroke="#6b7280" stroke-width="2"/>
+                                <text x="150" y="140" font-size="10" fill="#6b7280">occupiedBy</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 학습 진도 체크 -->
+<div class="progress-checkpoint">
+    <h3>🎯 Part 2 학습 완료 체크</h3>
+    <div class="checkpoint-grid">
+        <div class="checkpoint-category">
+            <h4>🏗️ 실전 모델링</h4>
+            <div class="checkpoint-items">
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">클래스 계층 구조 설계</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">프로퍼티 특성 설정</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">데이터 프로퍼티 정의</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">제약 조건 설정</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="checkpoint-category">
+            <h4>🧠 추론 엔진</h4>
+            <div class="checkpoint-items">
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">추론 엔진 선택 기준</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">실전 추론 실행</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">일관성 검증</span>
+                </label>
+                <label class="checkpoint-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">DL Query 작성</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="progress-summary">
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="part2-progress"></div>
+            </div>
+            <span class="progress-text">Part 2 진행률: <span id="progress-percentage">0%</span></span>
+        </div>
+    </div>
+</div>
+
+<!-- 스타일 정의 -->
+<style>
+/* Part 2 전용 스타일 */
+.part-header.intermediate {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.protege-power-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: powerSweep 3s ease-in-out infinite;
+}
+
+@keyframes powerSweep {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-check.intermediate-level {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.dev-status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+}
+
+.status-item.completed {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.status-item.current {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.project-dashboard {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.project-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937;
+    display: block;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.build-step {
+    background: white;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    border: 2px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.step-number {
+    background: #4f46e5;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.step-header h4 {
+    flex: 1;
+    margin: 0;
+    color: #1f2937;
+}
+
+.step-status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.step-status.completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.step-status.active {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.step-status.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.step-content {
+    padding: 2rem;
+}
+
+.class-design-lab {
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 2rem;
+    background: #fafafa;
+}
+
+.class-builder {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.class-palette {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.palette-category {
+    margin-bottom: 1.5rem;
+}
+
+.palette-category h7 {
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.class-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.class-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #f3f4f6;
+    border-radius: 6px;
+    cursor: move;
+    border: 1px solid #d1d5db;
+    transition: all 0.2s;
+}
+
+.class-item:hover {
+    background: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+.hierarchy-canvas {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.hierarchy-tree {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.tree-node {
+    margin: 0.25rem 0;
+    padding-left: 1rem;
+}
+
+.tree-node.root {
+    padding-left: 0;
+}
+
+.node-children {
+    margin-left: 1rem;
+    border-left: 1px solid #d1d5db;
+    padding-left: 1rem;
+}
+
+.node-icon {
+    margin-right: 0.5rem;
+}
+
+.node-name {
+    color: #374151;
+    font-weight: 500;
+}
+
+.property-workshop {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.relation-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.relation-matrix th {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.relation-matrix td {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+.relation-cell {
+    min-height: 80px;
+}
+
+.relation-item {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin: 0.25rem;
+    display: inline-block;
+}
+
+.characteristics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.characteristic-card {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.characteristic-card h7 {
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.example {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    border-left: 4px solid #4f46e5;
+}
+
+.data-property-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.property-definition {
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.property-header {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.property-name {
+    font-weight: 600;
+}
+
+.property-type {
+    background: rgba(255,255,255,0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.property-details {
+    padding: 1rem;
+}
+
+.detail-item {
+    margin: 0.5rem 0;
+    color: #374151;
+}
+
+.reasoner-selection-guide {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.reasoner-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.reasoner-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px solid #e5e7eb;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reasoner-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.reasoner-card.hermit {
+    border-color: #ef4444;
+}
+
+.reasoner-card.pellet {
+    border-color: #f59e0b;
+}
+
+.reasoner-card.elk {
+    border-color: #10b981;
+}
+
+.reasoner-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.reasoner-icon {
+    font-size: 2rem;
+}
+
+.reasoner-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.reasoner-badge.accuracy {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.reasoner-badge.balanced {
+    background: #fed7aa;
+    color: #9a3412;
+}
+
+.reasoner-badge.speed {
+    background: #bbf7d0;
+    color: #065f46;
+}
+
+.reasoner-stats {
+    margin: 1rem 0;
+}
+
+.stat-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.stat-label {
+    width: 80px;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.bar {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    transition: width 0.3s ease;
+}
+
+.stat-value {
+    width: 40px;
+    text-align: right;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.use-cases {
+    margin-top: 1rem;
+}
+
+.use-case {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+.performance-chart {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.chart-container {
+    height: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.chart-bar {
+    width: 60px;
+    background: linear-gradient(to top, #4f46e5, #7c3aed);
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+}
+
+.bar-label {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transform: rotate(-45deg);
+}
+
+.reasoning-scenario {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    margin: 2rem 0;
+}
+
+.reasoning-steps {
+    margin: 1.5rem 0;
+}
+
+.reasoning-step {
+    margin: 1rem 0;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 4px solid #4f46e5;
+}
+
+.reasoning-step h5 {
+    color: #4f46e5;
+    margin-bottom: 1rem;
+}
+
+.code-input {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+.reasoning-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.result-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.inferred-facts {
+    margin: 1rem 0;
+}
+
+.fact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+    border-left: 3px solid #10b981;
+}
+
+.fact-icon {
+    color: #10b981;
+}
+
+.confidence {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.action-queue {
+    margin: 1rem 0;
+}
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fef3c7;
+    border-radius: 6px;
+    border-left: 3px solid #f59e0b;
+}
+
+.action-item.priority-high {
+    background: #fecaca;
+    border-left-color: #ef4444;
+}
+
+.action-icon {
+    font-size: 1.5rem;
+}
+
+.action-target {
+    margin-left: auto;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.dl-query-masterclass {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    margin: 2rem 0;
+}
+
+.query-playground {
+    margin: 1.5rem 0;
+}
+
+.playground-interface {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.query-editor {
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.editor-tabs {
+    display: flex;
+    background: #e5e7eb;
+}
+
+.tab {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.tab.active {
+    background: white;
+    color: #374151;
+}
+
+.query-content {
+    padding: 1.5rem;
+}
+
+.query-example {
+    margin: 1.5rem 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.query-example:last-child {
+    border-bottom: none;
+}
+
+.query-example h7 {
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.query-input {
+    width: 100%;
+    min-height: 80px;
+    padding: 1rem;
+    background: #1e293b;
+    color: #f1f5f9;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    resize: vertical;
+}
+
+.query-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+}
+
+.query-visualizer {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.visual-graph {
+    background: #f9fafb;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.progress-checkpoint {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 2px solid #e5e7eb;
+}
+
+.checkpoint-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.checkpoint-category h4 {
+    color: #374151;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.checkpoint-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checkpoint-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.checkpoint-item:hover {
+    background: #f9fafb;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.checkpoint-item input[type="checkbox"] {
+    display: none;
+}
+
+.checkpoint-item input[type="checkbox"]:checked + .checkmark {
+    background: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.checkpoint-item input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.progress-summary {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-weight: 500;
+    color: #374151;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .class-builder,
+    .playground-interface,
+    .reasoning-results {
+        grid-template-columns: 1fr;
+    }
+    
+    .reasoner-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .characteristics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<!-- JavaScript for interactivity -->
+<script>
+// 탭 전환 기능
+function switchTab(tabName) {
+    // 모든 탭 비활성화
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 모든 콘텐츠 숨기기
+    document.querySelectorAll('.query-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // 선택된 탭 활성화
+    event.target.classList.add('active');
+    
+    // 해당 콘텐츠 표시
+    const contentClass = tabName + '-queries';
+    const content = document.querySelector('.' + contentClass);
+    if (content) {
+        content.style.display = 'block';
+    }
+}
+
+// 체크박스 진행률 계산
+function updateProgress() {
+    const checkboxes = document.querySelectorAll('.checkpoint-item input[type="checkbox"]');
+    const checkedBoxes = document.querySelectorAll('.checkpoint-item input[type="checkbox"]:checked');
+    
+    const progress = (checkedBoxes.length / checkboxes.length) * 100;
+    
+    const progressFill = document.getElementById('part2-progress');
+    const progressText = document.getElementById('progress-percentage');
+    
+    if (progressFill && progressText) {
+        progressFill.style.width = progress + '%';
+        progressText.textContent = Math.round(progress) + '%';
+    }
+}
+
+// 체크박스 이벤트 리스너 추가
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.checkpoint-item input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateProgress);
+    });
+    
+    // 초기 진행률 계산
+    updateProgress();
+});
+
+// 드래그 앤 드롭 기능 (간단한 시뮬레이션)
+document.addEventListener('DOMContentLoaded', function() {
+    const classItems = document.querySelectorAll('.class-item');
+    classItems.forEach(item => {
+        item.addEventListener('dragstart', function(e) {
+            e.dataTransfer.setData('text/plain', this.dataset.class);
+        });
+    });
+    
+    const hierarchyTree = document.getElementById('hierarchyTree');
+    if (hierarchyTree) {
+        hierarchyTree.addEventListener('dragover', function(e) {
+            e.preventDefault();
+        });
+        
+        hierarchyTree.addEventListener('drop', function(e) {
+            e.preventDefault();
+            const className = e.dataTransfer.getData('text/plain');
+            console.log('클래스 추가:', className);
+            // 실제 구현에서는 여기에 클래스 추가 로직이 들어갑니다
+        });
+    }
+});
+</script>

@@ -1,0 +1,2283 @@
+<!-- Chapter 6: OWL - 웹 온톨로지 언어 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header">
+    <h2 class="part-title">Part 2: OWL 클래스 표현식과 실전 도구</h2>
+    <p class="part-description">이제 OWL의 진정한 힘, 복잡한 클래스 표현식과 전문 도구들을 마스터합니다.</p>
+</div>
+
+<!-- 진도 체크 -->
+<div class="progress-check">
+    <h3>🎯 현재 진행 상황</h3>
+    <div class="skill-progress">
+        <div class="skill-item">
+            <span class="skill-name">Description Logic 기초</span>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <span class="skill-name">OWL 프로파일 이해</span>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </div>
+        <div class="skill-item current">
+            <span class="skill-name">클래스 표현식</span>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 20%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 6.3: OWL 클래스 표현식 (인터랙티브 실습) -->
+<section class="content-section interactive-workshop">
+    <h2>6.3 OWL 클래스 표현식: 복잡한 개념 정의의 예술</h2>
+    
+    <!-- 클래스 표현식 빌더 게임 -->
+    <div class="expression-builder-game">
+        <h3>🎮 클래스 표현식 빌더</h3>
+        <div class="game-interface">
+            <div class="challenge-panel">
+                <h4>도전 과제</h4>
+                <div class="current-challenge">
+                    <p class="challenge-description">
+                        "3명 이상의 자녀를 가진 부모"를 OWL로 표현하세요
+                    </p>
+                    <div class="hint-system">
+                        <button class="hint-btn" onclick="showHint(1)">💡 힌트 1</button>
+                        <button class="hint-btn" onclick="showHint(2)">💡 힌트 2</button>
+                        <button class="hint-btn" onclick="showHint(3)">💡 정답</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="builder-workspace">
+                <div class="expression-components">
+                    <h5>구성 요소</h5>
+                    <div class="component-palette">
+                        <div class="component-group">
+                            <h6>기본 클래스</h6>
+                            <button class="component" data-type="class" data-value="Person">Person</button>
+                            <button class="component" data-type="class" data-value="Parent">Parent</button>
+                            <button class="component" data-type="class" data-value="Child">Child</button>
+                        </div>
+                        <div class="component-group">
+                            <h6>속성</h6>
+                            <button class="component" data-type="property" data-value="hasChild">hasChild</button>
+                            <button class="component" data-type="property" data-value="hasParent">hasParent</button>
+                        </div>
+                        <div class="component-group">
+                            <h6>연산자</h6>
+                            <button class="component" data-type="operator" data-value="and">and (⊓)</button>
+                            <button class="component" data-type="operator" data-value="or">or (⊔)</button>
+                            <button class="component" data-type="operator" data-value="not">not (¬)</button>
+                        </div>
+                        <div class="component-group">
+                            <h6>제한자</h6>
+                            <button class="component" data-type="quantifier" data-value="some">some (∃)</button>
+                            <button class="component" data-type="quantifier" data-value="only">only (∀)</button>
+                            <button class="component" data-type="quantifier" data-value="min">min (≥)</button>
+                            <button class="component" data-type="quantifier" data-value="max">max (≤)</button>
+                            <button class="component" data-type="quantifier" data-value="exactly">exactly (=)</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expression-editor">
+                    <h5>표현식 작성</h5>
+                    <div class="editor-area" id="expressionEditor">
+                        <div class="expression-line active">
+                            <span class="line-number">1</span>
+                            <div class="expression-content" contenteditable="true"></div>
+                        </div>
+                    </div>
+                    <div class="editor-controls">
+                        <button onclick="validateExpression()">검증하기</button>
+                        <button onclick="visualizeExpression()">시각화</button>
+                        <button onclick="testExpression()">테스트</button>
+                    </div>
+                </div>
+                
+                <div class="expression-output">
+                    <div class="output-tabs">
+                        <button class="tab active" onclick="showOutput('manchester')">Manchester</button>
+                        <button class="tab" onclick="showOutput('dl')">DL Syntax</button>
+                        <button class="tab" onclick="showOutput('functional')">Functional</button>
+                        <button class="tab" onclick="showOutput('rdf')">RDF/XML</button>
+                    </div>
+                    <div class="output-content">
+                        <pre id="expressionOutput"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 클래스 표현식 종류별 마스터 가이드 -->
+    <div class="expression-types-guide">
+        <h3>📚 OWL 클래스 표현식 완벽 가이드</h3>
+        
+        <div class="expression-categories">
+            <!-- Boolean 연산 -->
+            <div class="expression-category">
+                <h4>🔤 Boolean 클래스 표현식</h4>
+                <div class="expression-cards">
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">⊓</span>
+                            <span class="expr-name">교집합 (Intersection)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>ClassA and ClassB</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>Mother ≡ Woman and Parent</code>
+                                <p>어머니 = 여성이면서 부모인 사람</p>
+                            </div>
+                            <div class="use-case">
+                                <h5>사용 시나리오</h5>
+                                <p>여러 조건을 동시에 만족해야 할 때</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">⊔</span>
+                            <span class="expr-name">합집합 (Union)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>ClassA or ClassB</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>Pet ≡ Dog or Cat or Bird</code>
+                                <p>애완동물 = 개 또는 고양이 또는 새</p>
+                            </div>
+                            <div class="use-case">
+                                <h5>사용 시나리오</h5>
+                                <p>여러 대안 중 하나를 선택할 때</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">¬</span>
+                            <span class="expr-name">부정 (Complement)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>not Class</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>NonSmoker ≡ not Smoker</code>
+                                <p>비흡연자 = 흡연자가 아닌 사람</p>
+                            </div>
+                            <div class="use-case">
+                                <h5>사용 시나리오</h5>
+                                <p>제외 조건을 표현할 때</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 속성 제한 -->
+            <div class="expression-category">
+                <h4>🔗 속성 제한 표현식</h4>
+                <div class="expression-cards">
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">∃</span>
+                            <span class="expr-name">존재 제한 (Existential)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>property some Class</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>Parent ≡ hasChild some Person</code>
+                                <p>부모 = 적어도 한 명의 사람인 자녀를 가진 사람</p>
+                            </div>
+                            <div class="interactive-demo">
+                                <h5>인터랙티브 데모</h5>
+                                <div class="demo-canvas" id="existentialDemo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">∀</span>
+                            <span class="expr-name">전체 제한 (Universal)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>property only Class</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>Vegetarian ≡ eats only Plant</code>
+                                <p>채식주의자 = 식물만 먹는 사람</p>
+                            </div>
+                            <div class="warning-box">
+                                <h5>⚠️ 주의사항</h5>
+                                <p>only는 "만약 있다면"의 의미. 값이 없어도 조건 만족!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">#</span>
+                            <span class="expr-name">카디널리티 제한</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>property min/max/exactly n [Class]</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제들</h5>
+                                <ul>
+                                    <li><code>hasChild min 3</code> - 최소 3명의 자녀</li>
+                                    <li><code>hasWheel exactly 4 Wheel</code> - 정확히 4개의 바퀴</li>
+                                    <li><code>hasSpouse max 1</code> - 최대 1명의 배우자</li>
+                                </ul>
+                            </div>
+                            <div class="cardinality-playground">
+                                <h5>카디널리티 실험실</h5>
+                                <input type="range" min="0" max="10" value="3" id="cardinalitySlider">
+                                <span id="cardinalityValue">3</span>
+                                <div id="cardinalityVisual"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 고급 표현식 -->
+            <div class="expression-category">
+                <h4>🎯 고급 클래스 표현식</h4>
+                <div class="expression-cards">
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">≡</span>
+                            <span class="expr-name">값 제한 (HasValue)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>property value individual</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>KoreanCitizen ≡ hasNationality value Korea</code>
+                                <p>한국 시민 = 국적이 한국인 사람</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">🔄</span>
+                            <span class="expr-name">자기 제한 (Self)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>property Self</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>Narcissist ≡ likes Self</code>
+                                <p>나르시시스트 = 자기 자신을 좋아하는 사람</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expr-card" onclick="expandCard(this)">
+                        <div class="card-header">
+                            <span class="expr-icon">{}</span>
+                            <span class="expr-name">열거 (Enumeration)</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="syntax-box">
+                                <h5>문법</h5>
+                                <code>{individual1, individual2, ...}</code>
+                            </div>
+                            <div class="example-box">
+                                <h5>예제</h5>
+                                <code>PrimaryColor ≡ {Red, Blue, Yellow}</code>
+                                <p>원색 = 빨강, 파랑, 노랑만 포함</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실전 패턴 라이브러리 -->
+    <div class="pattern-library">
+        <h3>🎨 실전 OWL 패턴 라이브러리</h3>
+        <div class="pattern-search">
+            <input type="text" placeholder="패턴 검색... (예: 부모, 시간, 위치)" id="patternSearch">
+        </div>
+        
+        <div class="patterns-grid">
+            <div class="pattern-item" data-tags="family,parent,child">
+                <h4>가족 관계 패턴</h4>
+                <div class="pattern-code">
+                    <pre>
+# 부모 정의
+Parent ≡ Person and hasChild some Person
+
+# 어머니 정의
+Mother ≡ Woman and Parent
+
+# 외동자녀 부모
+ParentOfOnlyChild ≡ Parent and hasChild exactly 1 Person
+
+# 다자녀 부모
+ParentOfManyChildren ≡ Parent and hasChild min 3 Person
+                    </pre>
+                </div>
+                <button class="use-pattern">이 패턴 사용하기</button>
+            </div>
+            
+            <div class="pattern-item" data-tags="time,temporal,period">
+                <h4>시간 관계 패턴</h4>
+                <div class="pattern-code">
+                    <pre>
+# 현재 활동중
+CurrentlyActive ≡ hasStatus value Active 
+                 and hasEndDate exactly 0
+
+# 기간 한정
+TimeLimited ≡ hasStartDate some DateTime 
+            and hasEndDate some DateTime
+
+# 미래 이벤트
+FutureEvent ≡ Event and hasStartDate some DateTime
+            and hasStartDate > currentDateTime
+                    </pre>
+                </div>
+                <button class="use-pattern">이 패턴 사용하기</button>
+            </div>
+            
+            <div class="pattern-item" data-tags="location,spatial,geo">
+                <h4>위치 관계 패턴</h4>
+                <div class="pattern-code">
+                    <pre>
+# 같은 도시 거주자
+SameCityResident ≡ Person and livesIn some City
+                 and (livesIn exactly 1 City)
+
+# 국제 조직
+InternationalOrg ≡ Organization 
+                  and hasOfficeIn min 2 Country
+
+# 원격 근무자
+RemoteWorker ≡ Employee 
+             and (not (workLocation some PhysicalOffice))
+                    </pre>
+                </div>
+                <button class="use-pattern">이 패턴 사용하기</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 6.4: Protégé 실전 마스터 -->
+<section class="content-section protege-workshop">
+    <h2>6.4 Protégé 완벽 마스터: 실무자를 위한 가이드</h2>
+    
+    <!-- Protégé 인터페이스 시뮬레이터 -->
+    <div class="protege-simulator">
+        <h3>🔧 Protégé 5.5 시뮬레이터</h3>
+        <div class="protege-interface">
+            <div class="protege-menubar">
+                <button class="menu-item">File</button>
+                <button class="menu-item">Edit</button>
+                <button class="menu-item">View</button>
+                <button class="menu-item">Reasoner</button>
+                <button class="menu-item">Tools</button>
+            </div>
+            
+            <div class="protege-workspace">
+                <div class="protege-sidebar">
+                    <div class="tab-selector">
+                        <button class="tab active" onclick="showProtegeTab('classes')">Classes</button>
+                        <button class="tab" onclick="showProtegeTab('properties')">Properties</button>
+                        <button class="tab" onclick="showProtegeTab('individuals')">Individuals</button>
+                    </div>
+                    
+                    <div class="hierarchy-view" id="classHierarchy">
+                        <div class="tree-node root">
+                            <span class="node-toggle">▼</span>
+                            <span class="node-icon">○</span>
+                            <span class="node-name">Thing</span>
+                        </div>
+                        <div class="tree-children">
+                            <div class="tree-node">
+                                <span class="node-toggle">▶</span>
+                                <span class="node-icon">○</span>
+                                <span class="node-name">Person</span>
+                            </div>
+                            <div class="tree-node">
+                                <span class="node-toggle">▶</span>
+                                <span class="node-icon">○</span>
+                                <span class="node-name">Organization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="protege-main">
+                    <div class="editor-panel">
+                        <h4>Class: Person</h4>
+                        <div class="editor-section">
+                            <h5>Annotations</h5>
+                            <div class="annotation-list">
+                                <div class="annotation">
+                                    <span class="anno-prop">rdfs:label</span>
+                                    <span class="anno-value">"Person"@en</span>
+                                </div>
+                                <div class="annotation">
+                                    <span class="anno-prop">rdfs:comment</span>
+                                    <span class="anno-value">"A human being"@en</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-section">
+                            <h5>Class Expression Editor</h5>
+                            <div class="expression-editor-protege">
+                                <textarea id="protegeExpEditor">Person and hasAge some xsd:integer</textarea>
+                                <button onclick="parseExpression()">Parse</button>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-section">
+                            <h5>Axioms</h5>
+                            <div class="axiom-list">
+                                <div class="axiom">
+                                    <span class="axiom-type">SubClassOf:</span>
+                                    <span class="axiom-value">Animal</span>
+                                </div>
+                                <div class="axiom">
+                                    <span class="axiom-type">DisjointWith:</span>
+                                    <span class="axiom-value">Robot</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="protege-reasoner">
+                    <h4>Reasoner Console</h4>
+                    <div class="reasoner-controls">
+                        <select id="reasonerSelect">
+                            <option>Pellet</option>
+                            <option>HermiT</option>
+                            <option>Fact++</option>
+                            <option>ELK</option>
+                        </select>
+                        <button onclick="runReasoner()">Start Reasoner</button>
+                        <button onclick="stopReasoner()">Stop</button>
+                    </div>
+                    <div class="reasoner-output" id="reasonerOutput">
+                        <div class="log-entry info">Reasoner ready...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Protégé 실전 팁 -->
+    <div class="protege-tips">
+        <h3>💡 Protégé 프로 팁</h3>
+        <div class="tips-carousel">
+            <div class="tip-slide active">
+                <h4>Tip 1: 단축키 마스터하기</h4>
+                <div class="shortcut-list">
+                    <div class="shortcut">
+                        <kbd>Ctrl+N</kbd>
+                        <span>새 클래스 생성</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>Ctrl+D</kbd>
+                        <span>선택 항목 삭제</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>Ctrl+R</kbd>
+                        <span>추론기 실행</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>F7</kbd>
+                        <span>일관성 검사</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-slide">
+                <h4>Tip 2: 뷰 커스터마이징</h4>
+                <p>Window → Views에서 필요한 뷰만 선택하여 작업 효율을 높이세요.</p>
+                <ul>
+                    <li>DL Query: 복잡한 쿼리 테스트</li>
+                    <li>OntoGraf: 시각적 탐색</li>
+                    <li>SPARQL Query: 표준 쿼리</li>
+                </ul>
+            </div>
+            
+            <div class="tip-slide">
+                <h4>Tip 3: 추론기 선택 가이드</h4>
+                <div class="reasoner-comparison">
+                    <div class="reasoner-info">
+                        <h5>Pellet</h5>
+                        <p>가장 균형잡힌 선택. OWL 2 DL 완전 지원</p>
+                    </div>
+                    <div class="reasoner-info">
+                        <h5>HermiT</h5>
+                        <p>가장 정확하지만 느림. 디버깅에 최적</p>
+                    </div>
+                    <div class="reasoner-info">
+                        <h5>ELK</h5>
+                        <p>EL 프로파일 전용. 대규모 온톨로지에 최적</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button onclick="prevTip()">◀</button>
+            <span class="tip-indicator">1 / 3</span>
+            <button onclick="nextTip()">▶</button>
+        </div>
+    </div>
+    
+    <!-- 실전 프로젝트: 스마트 홈 온톨로지 -->
+    <div class="hands-on-project">
+        <h3>🏠 실전 프로젝트: 스마트 홈 온톨로지 구축</h3>
+        <div class="project-steps">
+            <div class="step-card active" data-step="1">
+                <div class="step-header">
+                    <span class="step-number">Step 1</span>
+                    <h4>도메인 분석</h4>
+                </div>
+                <div class="step-content">
+                    <p>스마트 홈의 구성 요소를 파악합니다.</p>
+                    <div class="domain-elements">
+                        <div class="element">
+                            <span class="icon">🏠</span>
+                            <span class="name">Room</span>
+                        </div>
+                        <div class="element">
+                            <span class="icon">💡</span>
+                            <span class="name">Device</span>
+                        </div>
+                        <div class="element">
+                            <span class="icon">👤</span>
+                            <span class="name">Resident</span>
+                        </div>
+                        <div class="element">
+                            <span class="icon">⚡</span>
+                            <span class="name">Sensor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-card" data-step="2">
+                <div class="step-header">
+                    <span class="step-number">Step 2</span>
+                    <h4>클래스 계층 설계</h4>
+                </div>
+                <div class="step-content">
+                    <pre class="hierarchy-design">
+Thing
+├── Location
+│   ├── Room
+│   │   ├── Bedroom
+│   │   ├── Kitchen
+│   │   └── LivingRoom
+│   └── Floor
+├── Device
+│   ├── Actuator
+│   │   ├── Light
+│   │   ├── Thermostat
+│   │   └── DoorLock
+│   └── Sensor
+│       ├── MotionSensor
+│       ├── TemperatureSensor
+│       └── SmokeSensor
+└── Agent
+    ├── Human
+    └── AutomationRule
+                    </pre>
+                </div>
+            </div>
+            
+            <div class="step-card" data-step="3">
+                <div class="step-header">
+                    <span class="step-number">Step 3</span>
+                    <h4>속성 정의</h4>
+                </div>
+                <div class="step-content">
+                    <div class="property-definitions">
+                        <div class="prop-def">
+                            <h5>Object Properties</h5>
+                            <ul>
+                                <li><code>locatedIn</code> - Device가 위치한 Room</li>
+                                <li><code>controls</code> - Device가 제어하는 대상</li>
+                                <li><code>triggeredBy</code> - 자동화 트리거</li>
+                            </ul>
+                        </div>
+                        <div class="prop-def">
+                            <h5>Data Properties</h5>
+                            <ul>
+                                <li><code>hasTemperature</code> - 현재 온도</li>
+                                <li><code>isActive</code> - 활성화 상태</li>
+                                <li><code>powerConsumption</code> - 전력 소비량</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-card" data-step="4">
+                <div class="step-header">
+                    <span class="step-number">Step 4</span>
+                    <h4>복잡한 클래스 정의</h4>
+                </div>
+                <div class="step-content">
+                    <div class="complex-classes">
+                        <div class="class-definition">
+                            <h5>에너지 효율적인 방</h5>
+                            <code>
+EnergyEfficientRoom ≡ Room 
+    and hasDevice only LowPowerDevice
+    and hasTemperatureSensor min 1
+                            </code>
+                        </div>
+                        <div class="class-definition">
+                            <h5>자동화된 방</h5>
+                            <code>
+AutomatedRoom ≡ Room
+    and hasDevice some SmartDevice
+    and hasMotionSensor some MotionSensor
+    and hasAutomationRule min 1
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step-card" data-step="5">
+                <div class="step-header">
+                    <span class="step-number">Step 5</span>
+                    <h4>추론 규칙 활용</h4>
+                </div>
+                <div class="step-content">
+                    <div class="inference-examples">
+                        <h5>자동 추론 예시</h5>
+                        <div class="inference-case">
+                            <p><strong>입력:</strong> BathroomLight locatedIn MasterBathroom</p>
+                            <p><strong>추론:</strong> BathroomLight는 Device이고, MasterBathroom은 Room</p>
+                        </div>
+                        <div class="inference-case">
+                            <p><strong>규칙:</strong> 모든 방에 연기 감지기가 있으면 "안전한 집"</p>
+                            <code>
+SafeHome ≡ Home and 
+    (hasRoom only (Room and hasSmokeSensor min 1))
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step-navigation">
+            <button onclick="prevStep()" id="prevStepBtn" disabled>이전</button>
+            <div class="step-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
+            <button onclick="nextStep()" id="nextStepBtn">다음</button>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 6.5: 추론 엔진 심화 -->
+<section class="content-section reasoning-deep-dive">
+    <h2>6.5 추론 엔진 마스터하기</h2>
+    
+    <!-- 추론 과정 시각화 -->
+    <div class="reasoning-visualizer">
+        <h3>🤖 추론 과정 시각화</h3>
+        <div class="reasoning-demo">
+            <div class="input-panel">
+                <h4>입력 지식</h4>
+                <div class="knowledge-input">
+                    <div class="axiom-input">
+                        <code>John : Father</code>
+                    </div>
+                    <div class="axiom-input">
+                        <code>Father ⊑ Parent</code>
+                    </div>
+                    <div class="axiom-input">
+                        <code>Parent ⊑ Person</code>
+                    </div>
+                    <div class="axiom-input">
+                        <code>Father ⊑ Man</code>
+                    </div>
+                </div>
+                <button onclick="startReasoning()">추론 시작</button>
+            </div>
+            
+            <div class="reasoning-process">
+                <h4>추론 과정</h4>
+                <div class="reasoning-steps" id="reasoningSteps">
+                    <!-- 추론 단계가 여기에 표시됩니다 -->
+                </div>
+            </div>
+            
+            <div class="output-panel">
+                <h4>추론 결과</h4>
+                <div class="inferred-knowledge" id="inferredKnowledge">
+                    <!-- 추론된 지식이 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 추론기 성능 비교 -->
+    <div class="reasoner-benchmark">
+        <h3>⚡ 추론기 성능 벤치마크</h3>
+        <div class="benchmark-setup">
+            <div class="test-parameters">
+                <label>온톨로지 크기:
+                    <select id="ontologySize">
+                        <option value="small">소규모 (1K 공리)</option>
+                        <option value="medium">중규모 (10K 공리)</option>
+                        <option value="large">대규모 (100K 공리)</option>
+                    </select>
+                </label>
+                <label>작업 유형:
+                    <select id="taskType">
+                        <option value="classification">분류</option>
+                        <option value="consistency">일관성 검사</option>
+                        <option value="realization">실현</option>
+                    </select>
+                </label>
+                <button onclick="runBenchmark()">벤치마크 실행</button>
+            </div>
+        </div>
+        
+        <div class="benchmark-results">
+            <canvas id="benchmarkChart"></canvas>
+        </div>
+        
+        <div class="reasoner-recommendations">
+            <h4>상황별 추론기 추천</h4>
+            <div class="recommendation-matrix">
+                <div class="scenario">
+                    <h5>개발/디버깅</h5>
+                    <p class="rec-reasoner">HermiT</p>
+                    <p class="rec-reason">상세한 설명과 정확한 오류 메시지</p>
+                </div>
+                <div class="scenario">
+                    <h5>프로덕션 (OWL DL)</h5>
+                    <p class="rec-reasoner">Pellet</p>
+                    <p class="rec-reason">안정성과 성능의 균형</p>
+                </div>
+                <div class="scenario">
+                    <h5>대규모 분류</h5>
+                    <p class="rec-reasoner">ELK</p>
+                    <p class="rec-reason">EL 프로파일에 최적화</p>
+                </div>
+                <div class="scenario">
+                    <h5>실시간 추론</h5>
+                    <p class="rec-reasoner">Custom Rules</p>
+                    <p class="rec-reason">특정 패턴에 최적화된 규칙 엔진</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 추론 최적화 기법 -->
+    <div class="optimization-techniques">
+        <h3>🚀 추론 성능 최적화 기법</h3>
+        <div class="technique-cards">
+            <div class="technique-card">
+                <h4>1. 모듈화</h4>
+                <p>온톨로지를 작은 모듈로 분리하여 필요한 부분만 로드</p>
+                <div class="code-example">
+                    <pre>
+# Core 모듈
+core.owl: 기본 개념과 관계
+
+# Domain 모듈들
+person.owl: imports core.owl
+organization.owl: imports core.owl
+
+# Application 모듈
+app.owl: imports person.owl, organization.owl
+                    </pre>
+                </div>
+            </div>
+            
+            <div class="technique-card">
+                <h4>2. 프로파일 활용</h4>
+                <p>용도에 맞는 OWL 2 프로파일 선택으로 성능 향상</p>
+                <div class="profile-selector">
+                    <button class="profile-btn" onclick="showProfileOptimization('el')">EL</button>
+                    <button class="profile-btn" onclick="showProfileOptimization('ql')">QL</button>
+                    <button class="profile-btn" onclick="showProfileOptimization('rl')">RL</button>
+                </div>
+                <div class="profile-optimization" id="profileOptimization"></div>
+            </div>
+            
+            <div class="technique-card">
+                <h4>3. 캐싱 전략</h4>
+                <p>자주 사용되는 추론 결과를 캐싱하여 반복 계산 방지</p>
+                <div class="caching-demo">
+                    <div class="cache-stats">
+                        <div class="stat">
+                            <span class="label">Cache Hit Rate:</span>
+                            <span class="value">87%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Avg Response Time:</span>
+                            <span class="value">12ms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Part 2 완료 -->
+<div class="part-completion">
+    <div class="achievement-unlocked">
+        <div class="achievement-icon">🏅</div>
+        <h3>성취 달성: OWL 표현식 마스터!</h3>
+        <p>복잡한 클래스 표현식과 Protégé를 마스터했습니다!</p>
+    </div>
+    
+    <div class="skills-acquired">
+        <h4>습득한 스킬</h4>
+        <div class="skill-list">
+            <div class="skill">✓ Boolean 클래스 표현식</div>
+            <div class="skill">✓ 속성 제한 표현식</div>
+            <div class="skill">✓ 카디널리티 제약</div>
+            <div class="skill">✓ Protégé 실무 활용</div>
+            <div class="skill">✓ 추론 엔진 최적화</div>
+        </div>
+    </div>
+    
+    <div class="next-preview">
+        <h4>Part 3에서 만날 내용</h4>
+        <ul>
+            <li>🏢 실전 기업 프로젝트</li>
+            <li>🔗 시스템 통합과 API</li>
+            <li>🤖 AI/ML과의 융합</li>
+            <li>🌟 미래 기술 전망</li>
+        </ul>
+        <button class="continue-btn" onclick="loadPart3()">
+            최종 Part 3로 진입 →
+        </button>
+    </div>
+</div>
+
+<!-- 스크립트 -->
+<script>
+// 표현식 빌더
+function validateExpression() {
+    const expression = document.querySelector('.expression-content').textContent;
+    // 실제로는 OWL API를 사용하여 검증
+    console.log('Validating:', expression);
+    
+    // 시뮬레이션된 결과
+    const output = document.getElementById('expressionOutput');
+    output.textContent = `Parent and hasChild min 3 Person`;
+    
+    // 성공 효과
+    output.parentElement.classList.add('success');
+    setTimeout(() => {
+        output.parentElement.classList.remove('success');
+    }, 2000);
+}
+
+// 표현식 시각화
+function visualizeExpression() {
+    // D3.js 등을 사용한 시각화
+    alert('표현식 시각화 - 트리 구조로 표시됩니다');
+}
+
+// 힌트 시스템
+function showHint(level) {
+    const hints = {
+        1: "Person과 hasChild 속성을 사용하세요",
+        2: "카디널리티 제한 'min 3'을 사용하세요",
+        3: "정답: Parent and hasChild min 3 Person"
+    };
+    
+    alert(hints[level]);
+}
+
+// 카드 확장
+function expandCard(card) {
+    card.classList.toggle('expanded');
+}
+
+// 출력 탭 전환
+function showOutput(format) {
+    document.querySelectorAll('.output-tabs .tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    const outputs = {
+        manchester: "Parent and hasChild min 3 Person",
+        dl: "Parent ⊓ (≥3 hasChild.Person)",
+        functional: "ObjectIntersectionOf(:Parent ObjectMinCardinality(3 :hasChild :Person))",
+        rdf: "<owl:Class>\n  <owl:intersectionOf>...</owl:intersectionOf>\n</owl:Class>"
+    };
+    
+    document.getElementById('expressionOutput').textContent = outputs[format];
+}
+
+// 카디널리티 슬라이더
+document.getElementById('cardinalitySlider')?.addEventListener('input', function(e) {
+    const value = e.target.value;
+    document.getElementById('cardinalityValue').textContent = value;
+    
+    // 시각화 업데이트
+    const visual = document.getElementById('cardinalityVisual');
+    visual.innerHTML = '';
+    for (let i = 0; i < value; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'cardinality-dot';
+        visual.appendChild(dot);
+    }
+});
+
+// 패턴 검색
+document.getElementById('patternSearch')?.addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    document.querySelectorAll('.pattern-item').forEach(pattern => {
+        const tags = pattern.getAttribute('data-tags');
+        if (tags.includes(searchTerm)) {
+            pattern.style.display = 'block';
+        } else {
+            pattern.style.display = 'none';
+        }
+    });
+});
+
+// Protégé 탭 전환
+function showProtegeTab(tab) {
+    console.log('Switching to tab:', tab);
+}
+
+// 추론기 실행
+function runReasoner() {
+    const output = document.getElementById('reasonerOutput');
+    output.innerHTML += '<div class="log-entry info">Starting reasoner...</div>';
+    
+    setTimeout(() => {
+        output.innerHTML += '<div class="log-entry success">Classification completed in 0.3s</div>';
+        output.innerHTML += '<div class="log-entry info">Found 5 inferred axioms</div>';
+    }, 1000);
+}
+
+// Protégé 팁 캐러셀
+let currentTip = 0;
+const tips = document.querySelectorAll('.tip-slide');
+
+function showTip(index) {
+    tips.forEach(tip => tip.classList.remove('active'));
+    tips[index].classList.add('active');
+    document.querySelector('.tip-indicator').textContent = `${index + 1} / ${tips.length}`;
+}
+
+function nextTip() {
+    currentTip = (currentTip + 1) % tips.length;
+    showTip(currentTip);
+}
+
+function prevTip() {
+    currentTip = (currentTip - 1 + tips.length) % tips.length;
+    showTip(currentTip);
+}
+
+// 프로젝트 스텝 네비게이션
+let currentProjectStep = 1;
+const totalSteps = 5;
+
+function showStep(step) {
+    document.querySelectorAll('.step-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    document.querySelector(`[data-step="${step}"]`).classList.add('active');
+    
+    // 인디케이터 업데이트
+    document.querySelectorAll('.step-indicators .indicator').forEach((ind, i) => {
+        ind.classList.toggle('active', i < step);
+    });
+    
+    // 버튼 상태
+    document.getElementById('prevStepBtn').disabled = step === 1;
+    document.getElementById('nextStepBtn').disabled = step === totalSteps;
+}
+
+function nextStep() {
+    if (currentProjectStep < totalSteps) {
+        currentProjectStep++;
+        showStep(currentProjectStep);
+    }
+}
+
+function prevStep() {
+    if (currentProjectStep > 1) {
+        currentProjectStep--;
+        showStep(currentProjectStep);
+    }
+}
+
+// 추론 시뮬레이션
+function startReasoning() {
+    const steps = document.getElementById('reasoningSteps');
+    const results = document.getElementById('inferredKnowledge');
+    
+    steps.innerHTML = '';
+    results.innerHTML = '';
+    
+    const reasoningSteps = [
+        { step: 1, rule: "SubClassOf", fact: "John : Father → John : Parent" },
+        { step: 2, rule: "Transitivity", fact: "John : Parent → John : Person" },
+        { step: 3, rule: "SubClassOf", fact: "John : Father → John : Man" },
+        { step: 4, rule: "Disjoint", fact: "John : Man → John : not Woman" }
+    ];
+    
+    reasoningSteps.forEach((step, index) => {
+        setTimeout(() => {
+            const stepDiv = document.createElement('div');
+            stepDiv.className = 'reasoning-step';
+            stepDiv.innerHTML = `
+                <span class="step-num">Step ${step.step}</span>
+                <span class="rule-name">${step.rule}</span>
+                <span class="inference">${step.fact}</span>
+            `;
+            steps.appendChild(stepDiv);
+            
+            if (index === reasoningSteps.length - 1) {
+                results.innerHTML = `
+                    <div class="inferred-fact">John : Parent</div>
+                    <div class="inferred-fact">John : Person</div>
+                    <div class="inferred-fact">John : Man</div>
+                    <div class="inferred-fact">John : not Woman</div>
+                `;
+            }
+        }, (index + 1) * 500);
+    });
+}
+
+// 벤치마크 차트
+function runBenchmark() {
+    const ctx = document.getElementById('benchmarkChart').getContext('2d');
+    
+    // Chart.js를 사용한 시각화 (실제로는 라이브러리 필요)
+    // 여기서는 간단한 시뮬레이션
+    alert('벤치마크 실행 중... 결과가 차트로 표시됩니다.');
+}
+
+// 프로파일 최적화 표시
+function showProfileOptimization(profile) {
+    const optimizations = {
+        el: "✅ 존재 제한자 사용\n✅ 교집합 허용\n❌ 부정, 합집합 제거\n❌ 역속성 제거",
+        ql: "✅ SQL 친화적 구조\n✅ 계층 쿼리 최적화\n❌ 존재 제한자 제한\n❌ 자체 제한 제거",
+        rl: "✅ 규칙 기반 추론\n✅ Datalog 변환\n❌ 존재 제한자 제거\n❌ 부정 제한"
+    };
+    
+    document.getElementById('profileOptimization').textContent = optimizations[profile];
+}
+
+// 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 컴포넌트 클릭 이벤트
+    document.querySelectorAll('.component').forEach(comp => {
+        comp.addEventListener('click', function() {
+            const value = this.getAttribute('data-value');
+            const type = this.getAttribute('data-type');
+            
+            // 에디터에 추가
+            const editor = document.querySelector('.expression-content');
+            editor.textContent += ` ${value} `;
+        });
+    });
+});
+</script>
+
+<!-- 스타일 -->
+<style>
+/* Part 헤더 */
+.part-header {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* 진도 체크 */
+.progress-check {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.skill-progress {
+    margin-top: 1rem;
+}
+
+.skill-item {
+    margin-bottom: 1rem;
+}
+
+.skill-name {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.skill-item.current .skill-name {
+    color: #6366f1;
+    font-weight: 600;
+}
+
+/* 표현식 빌더 게임 */
+.expression-builder-game {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.game-interface {
+    margin-top: 1.5rem;
+}
+
+.challenge-panel {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.challenge-description {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #92400e;
+    margin-bottom: 1rem;
+}
+
+.hint-system {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.hint-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.hint-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+.builder-workspace {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    gap: 1.5rem;
+}
+
+.expression-components {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.component-palette {
+    margin-top: 1rem;
+}
+
+.component-group {
+    margin-bottom: 1.5rem;
+}
+
+.component-group h6 {
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+}
+
+.component {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem;
+    background: #e0e7ff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.component:hover {
+    background: #c7d2fe;
+    transform: scale(1.05);
+}
+
+.expression-editor {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.editor-area {
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 150px;
+    margin: 1rem 0;
+}
+
+.expression-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.line-number {
+    color: #9ca3af;
+    font-family: monospace;
+}
+
+.expression-content {
+    flex: 1;
+    min-height: 30px;
+    padding: 0.5rem;
+    outline: none;
+}
+
+.expression-content:focus {
+    background: #e0e7ff;
+    border-radius: 4px;
+}
+
+.editor-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.editor-controls button {
+    padding: 0.75rem 1.5rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.editor-controls button:hover {
+    background: #4f46e5;
+}
+
+.expression-output {
+    background: #1e293b;
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: white;
+}
+
+.output-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.output-tabs .tab {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.output-tabs .tab:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.output-tabs .tab.active {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.output-content pre {
+    margin: 0;
+    color: #e2e8f0;
+    font-family: 'Courier New', monospace;
+}
+
+.output-content.success {
+    animation: successPulse 0.5s;
+}
+
+@keyframes successPulse {
+    0% { background: #1e293b; }
+    50% { background: #065f46; }
+    100% { background: #1e293b; }
+}
+
+/* 표현식 종류 가이드 */
+.expression-types-guide {
+    margin: 2rem 0;
+}
+
+.expression-categories {
+    margin-top: 1.5rem;
+}
+
+.expression-category {
+    margin-bottom: 2rem;
+}
+
+.expression-category h4 {
+    margin-bottom: 1rem;
+    color: #4b5563;
+}
+
+.expression-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.expr-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.expr-card:hover {
+    border-color: #6366f1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.expr-card.expanded {
+    grid-column: span 2;
+}
+
+.card-header {
+    background: #f8fafc;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.expr-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6366f1;
+}
+
+.expr-name {
+    font-weight: 600;
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: none;
+}
+
+.expr-card.expanded .card-content {
+    display: block;
+}
+
+.syntax-box,
+.example-box,
+.use-case,
+.warning-box {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.syntax-box h5,
+.example-box h5,
+.use-case h5,
+.warning-box h5 {
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.syntax-box code,
+.example-box code {
+    display: block;
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+
+.warning-box {
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+}
+
+.interactive-demo,
+.cardinality-playground {
+    background: #e0e7ff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+#cardinalitySlider {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+#cardinalityVisual {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.cardinality-dot {
+    width: 20px;
+    height: 20px;
+    background: #6366f1;
+    border-radius: 50%;
+    animation: popIn 0.3s;
+}
+
+@keyframes popIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* 패턴 라이브러리 */
+.pattern-library {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.pattern-search {
+    margin-bottom: 1.5rem;
+}
+
+.pattern-search input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.patterns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.pattern-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.pattern-item h4 {
+    margin-bottom: 1rem;
+    color: #4c1d95;
+}
+
+.pattern-code {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.pattern-code pre {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.use-pattern {
+    width: 100%;
+    padding: 0.75rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.use-pattern:hover {
+    background: #4f46e5;
+}
+
+/* Protégé 시뮬레이터 */
+.protege-simulator {
+    background: #f0f4f8;
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.protege-interface {
+    background: white;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.protege-menubar {
+    background: #e5e7eb;
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.menu-item {
+    padding: 0.25rem 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.menu-item:hover {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+
+.protege-workspace {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    height: 500px;
+}
+
+.protege-sidebar {
+    background: #f9fafb;
+    border-right: 1px solid #e5e7eb;
+    overflow-y: auto;
+}
+
+.tab-selector {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tab-selector .tab {
+    flex: 1;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-selector .tab.active {
+    border-bottom-color: #6366f1;
+    color: #6366f1;
+}
+
+.hierarchy-view {
+    padding: 1rem;
+}
+
+.tree-node {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.tree-node:hover {
+    background: #e5e7eb;
+    border-radius: 4px;
+}
+
+.node-toggle {
+    width: 16px;
+    font-size: 0.75rem;
+}
+
+.node-icon {
+    color: #6366f1;
+}
+
+.tree-children {
+    margin-left: 1.5rem;
+}
+
+.protege-main {
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.editor-panel h4 {
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.editor-section {
+    margin-bottom: 1.5rem;
+}
+
+.editor-section h5 {
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+.annotation-list,
+.axiom-list {
+    background: #f9fafb;
+    padding: 0.75rem;
+    border-radius: 6px;
+}
+
+.annotation,
+.axiom {
+    display: flex;
+    gap: 1rem;
+    padding: 0.25rem 0;
+}
+
+.anno-prop,
+.axiom-type {
+    color: #6366f1;
+    font-weight: 500;
+}
+
+.expression-editor-protege textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+.protege-reasoner {
+    background: #f3f4f6;
+    border-left: 1px solid #e5e7eb;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.reasoner-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.reasoner-controls select,
+.reasoner-controls button {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background: white;
+}
+
+.reasoner-output {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.875rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.log-entry {
+    padding: 0.25rem 0;
+}
+
+.log-entry.info {
+    color: #93c5fd;
+}
+
+.log-entry.success {
+    color: #86efac;
+}
+
+.log-entry.error {
+    color: #fca5a5;
+}
+
+/* Protégé 팁 */
+.protege-tips {
+    margin: 2rem 0;
+}
+
+.tips-carousel {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tip-slide {
+    display: none;
+}
+
+.tip-slide.active {
+    display: block;
+}
+
+.shortcut-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.shortcut {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.shortcut kbd {
+    background: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+    border: 1px solid #d1d5db;
+}
+
+.reasoner-comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.reasoner-info {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.reasoner-info h5 {
+    color: #6366f1;
+    margin-bottom: 0.5rem;
+}
+
+.carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* 실전 프로젝트 */
+.hands-on-project {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.project-steps {
+    margin: 1.5rem 0;
+}
+
+.step-card {
+    display: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.step-card.active {
+    display: block;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.step-number {
+    background: #6366f1;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.domain-elements {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+
+.element {
+    text-align: center;
+}
+
+.element .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.hierarchy-design {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+    line-height: 1.6;
+}
+
+.property-definitions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.prop-def {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.prop-def h5 {
+    color: #4c1d95;
+    margin-bottom: 0.5rem;
+}
+
+.complex-classes {
+    display: grid;
+    gap: 1rem;
+}
+
+.class-definition {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.class-definition h5 {
+    color: #4c1d95;
+    margin-bottom: 0.5rem;
+}
+
+.class-definition code {
+    display: block;
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    font-family: monospace;
+}
+
+.inference-examples {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.inference-case {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.step-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.step-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.indicator.active {
+    background: #6366f1;
+}
+
+/* 추론 시각화 */
+.reasoning-visualizer {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.reasoning-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.input-panel,
+.reasoning-process,
+.output-panel {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.knowledge-input {
+    margin: 1rem 0;
+}
+
+.axiom-input {
+    background: #f9fafb;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+}
+
+.reasoning-steps {
+    min-height: 200px;
+}
+
+.reasoning-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    animation: slideIn 0.5s;
+}
+
+.step-num {
+    background: #6366f1;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.rule-name {
+    color: #6366f1;
+    font-weight: 500;
+}
+
+.inference {
+    flex: 1;
+    font-family: monospace;
+}
+
+.inferred-knowledge {
+    min-height: 150px;
+}
+
+.inferred-fact {
+    background: #d1fae5;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    font-family: monospace;
+}
+
+/* 추론기 벤치마크 */
+.reasoner-benchmark {
+    margin: 2rem 0;
+}
+
+.benchmark-setup {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.test-parameters {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.test-parameters label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.test-parameters select {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.test-parameters button {
+    padding: 0.5rem 1.5rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.benchmark-results {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    min-height: 300px;
+}
+
+.recommendation-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.scenario {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+}
+
+.scenario h5 {
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+.rec-reasoner {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #6366f1;
+    margin: 0.5rem 0;
+}
+
+.rec-reason {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* 최적화 기법 */
+.optimization-techniques {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.technique-cards {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.technique-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.technique-card h4 {
+    color: #4c1d95;
+    margin-bottom: 0.5rem;
+}
+
+.code-example {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.profile-selector {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.profile-btn {
+    padding: 0.5rem 1rem;
+    background: #e0e7ff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile-btn:hover {
+    background: #c7d2fe;
+}
+
+.profile-optimization {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    white-space: pre-line;
+}
+
+.caching-demo {
+    margin-top: 1rem;
+}
+
+.cache-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat .label {
+    display: block;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.stat .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #10b981;
+}
+
+/* Part 완료 */
+.achievement-unlocked {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.achievement-icon {
+    font-size: 4rem;
+    animation: bounce 1s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.skills-acquired {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.skill-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.skill {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .builder-workspace,
+    .reasoning-demo {
+        grid-template-columns: 1fr;
+    }
+    
+    .expression-cards,
+    .patterns-grid,
+    .property-definitions,
+    .recommendation-matrix,
+    .skill-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .protege-workspace {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    
+    .protege-sidebar,
+    .protege-reasoner {
+        display: none;
+    }
+}
+</style>

@@ -1,0 +1,1366 @@
+<!-- Chapter 13: 통합 프로젝트: 주식-뉴스 연계 (인터랙티브 마스터 버전) Part 1 -->
+
+<!-- Part 1 시작 -->
+<div class="part-header integrated-project-mastery">
+    <div class="integration-animation"></div>
+    <h2 class="part-title">Part 1: 금융-뉴스 온톨로지 통합 아키텍처</h2>
+    <p class="part-description">두 개의 독립적인 지식 도메인을 하나의 강력한 인사이트 시스템으로 융합합니다!</p>
+</div>
+
+<!-- 통합 프로젝트 전문가 준비도 -->
+<div class="progress-check integration-expert">
+    <h3>🔗 온톨로지 통합 전문가 준비도</h3>
+    <div class="integration-readiness">
+        <div class="skill-fusion-diagram">
+            <div class="fusion-center">
+                <h4>통합 역량</h4>
+                <div class="fusion-score">
+                    <span class="score-value">92%</span>
+                    <span class="score-label">융합 지수</span>
+                </div>
+            </div>
+            
+            <div class="skill-domains">
+                <div class="domain-sphere financial">
+                    <h5>금융 온톨로지</h5>
+                    <div class="domain-skills">
+                        <div class="skill-item">
+                            <span>주식 모델링</span>
+                            <div class="skill-bar">
+                                <div class="fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>시장 분석</span>
+                            <div class="skill-bar">
+                                <div class="fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>리스크 평가</span>
+                            <div class="skill-bar">
+                                <div class="fill" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fusion-bridge">
+                    <div class="bridge-line"></div>
+                    <div class="bridge-node">
+                        <span class="node-icon">⚡</span>
+                        <span class="node-label">시너지</span>
+                    </div>
+                </div>
+                
+                <div class="domain-sphere news">
+                    <h5>뉴스 온톨로지</h5>
+                    <div class="domain-skills">
+                        <div class="skill-item">
+                            <span>NER 추출</span>
+                            <div class="skill-bar">
+                                <div class="fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>감성 분석</span>
+                            <div class="skill-bar">
+                                <div class="fill" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>이벤트 감지</span>
+                            <div class="skill-bar">
+                                <div class="fill" style="width: 84%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="integration-achievements">
+            <h4>🏅 통합 프로젝트 성과</h4>
+            <div class="achievement-badges">
+                <div class="badge gold">
+                    <span class="badge-icon">🥇</span>
+                    <span class="badge-title">크로스 도메인 마스터</span>
+                </div>
+                <div class="badge silver">
+                    <span class="badge-icon">🥈</span>
+                    <span class="badge-title">실시간 분석 전문가</span>
+                </div>
+                <div class="badge bronze">
+                    <span class="badge-icon">🥉</span>
+                    <span class="badge-title">AI 트레이딩 설계자</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 13.1: 프로젝트 아키텍처 시뮬레이터 -->
+<section class="content-section architecture-simulator">
+    <h2>13.1 통합 시스템 아키텍처 설계</h2>
+    
+    <!-- 인터랙티브 아키텍처 빌더 -->
+    <div class="architecture-builder">
+        <h3>🏗️ 시스템 아키텍처 빌더</h3>
+        <div class="builder-interface">
+            <div class="layer-palette">
+                <h4>컴포넌트 팔레트</h4>
+                <div class="component-categories">
+                    <div class="category data-collection">
+                        <h5>📥 데이터 수집</h5>
+                        <div class="draggable-components">
+                            <div class="component" draggable="true" data-type="stock-api">
+                                <i class="fas fa-chart-line"></i>
+                                <span>주식 API</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="news-crawler">
+                                <i class="fas fa-newspaper"></i>
+                                <span>뉴스 크롤러</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="disclosure">
+                                <i class="fas fa-file-alt"></i>
+                                <span>공시 수집기</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="social-media">
+                                <i class="fas fa-share-alt"></i>
+                                <span>소셜 미디어</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category processing">
+                        <h5>⚙️ 처리 엔진</h5>
+                        <div class="draggable-components">
+                            <div class="component" draggable="true" data-type="nlp-engine">
+                                <i class="fas fa-brain"></i>
+                                <span>NLP 엔진</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="sentiment">
+                                <i class="fas fa-smile"></i>
+                                <span>감성 분석</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="entity-mapper">
+                                <i class="fas fa-link"></i>
+                                <span>개체 매퍼</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="inference">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>추론 엔진</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="category storage">
+                        <h5>💾 저장소</h5>
+                        <div class="draggable-components">
+                            <div class="component" draggable="true" data-type="triple-store">
+                                <i class="fas fa-database"></i>
+                                <span>트리플 저장소</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="time-series">
+                                <i class="fas fa-clock"></i>
+                                <span>시계열 DB</span>
+                            </div>
+                            <div class="component" draggable="true" data-type="cache">
+                                <i class="fas fa-memory"></i>
+                                <span>캐시 레이어</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="architecture-canvas">
+                <h4>시스템 설계 캔버스</h4>
+                <div class="canvas-grid">
+                    <div class="layer" data-layer="collection">
+                        <h5>데이터 수집층</h5>
+                        <div class="drop-zone"></div>
+                    </div>
+                    <div class="layer" data-layer="processing">
+                        <h5>처리/분석층</h5>
+                        <div class="drop-zone"></div>
+                    </div>
+                    <div class="layer" data-layer="integration">
+                        <h5>온톨로지 통합층</h5>
+                        <div class="drop-zone"></div>
+                    </div>
+                    <div class="layer" data-layer="application">
+                        <h5>응용층</h5>
+                        <div class="drop-zone"></div>
+                    </div>
+                </div>
+                
+                <div class="architecture-controls">
+                    <button class="control-btn" onclick="validateArchitecture()">
+                        <i class="fas fa-check"></i> 아키텍처 검증
+                    </button>
+                    <button class="control-btn" onclick="simulateDataFlow()">
+                        <i class="fas fa-play"></i> 데이터 흐름 시뮬레이션
+                    </button>
+                    <button class="control-btn" onclick="exportArchitecture()">
+                        <i class="fas fa-download"></i> 설계 내보내기
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 실시간 데이터 흐름 시각화 -->
+        <div class="data-flow-visualization">
+            <h4>🔄 실시간 데이터 흐름</h4>
+            <div class="flow-diagram">
+                <svg id="dataFlowSvg" width="100%" height="400">
+                    <!-- 동적 데이터 흐름 애니메이션 -->
+                </svg>
+            </div>
+            <div class="flow-statistics">
+                <div class="stat-card">
+                    <span class="stat-icon">📰</span>
+                    <span class="stat-label">뉴스/분</span>
+                    <span class="stat-value">127</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📈</span>
+                    <span class="stat-label">주가 업데이트/초</span>
+                    <span class="stat-value">89</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🧠</span>
+                    <span class="stat-label">추론/초</span>
+                    <span class="stat-value">342</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">⚡</span>
+                    <span class="stat-label">지연시간</span>
+                    <span class="stat-value">45ms</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 13.2: 온톨로지 통합 워크샵 -->
+<section class="content-section integration-workshop">
+    <h2>13.2 온톨로지 매핑과 통합 설계</h2>
+    
+    <!-- 비주얼 온톨로지 매퍼 -->
+    <div class="ontology-mapper">
+        <h3>🔗 온톨로지 통합 매핑 스튜디오</h3>
+        <div class="mapping-studio">
+            <div class="ontology-panels">
+                <div class="ontology-panel financial">
+                    <h4>💰 금융 온톨로지</h4>
+                    <div class="ontology-tree">
+                        <div class="tree-node root">
+                            <span class="node-icon">🏦</span>
+                            <span class="node-name">FinancialEntity</span>
+                            <div class="child-nodes">
+                                <div class="tree-node">
+                                    <span class="node-icon">🏢</span>
+                                    <span class="node-name">Company</span>
+                                    <div class="properties">
+                                        <div class="property">ticker</div>
+                                        <div class="property">marketCap</div>
+                                        <div class="property">sector</div>
+                                    </div>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="node-icon">📊</span>
+                                    <span class="node-name">Stock</span>
+                                    <div class="properties">
+                                        <div class="property">price</div>
+                                        <div class="property">volume</div>
+                                        <div class="property">volatility</div>
+                                    </div>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="node-icon">📈</span>
+                                    <span class="node-name">MarketEvent</span>
+                                    <div class="properties">
+                                        <div class="property">eventType</div>
+                                        <div class="property">impact</div>
+                                        <div class="property">timestamp</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mapping-area">
+                    <h4>🔄 매핑 관계</h4>
+                    <div class="mapping-canvas">
+                        <svg id="mappingSvg" width="100%" height="400">
+                            <!-- 매핑 연결선 -->
+                        </svg>
+                    </div>
+                    <div class="mapping-rules">
+                        <h5>매핑 규칙 정의</h5>
+                        <div class="rule-editor">
+                            <div class="rule-template">
+                                <code>
+news:mentions(?article, ?entity) ∧ 
+fin:Company(?entity) ∧ 
+fin:issuedBy(?stock, ?entity) 
+→ inte:impactsStock(?article, ?stock)
+                                </code>
+                            </div>
+                            <button class="add-rule-btn">+ 새 규칙 추가</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ontology-panel news">
+                    <h4>📰 뉴스 온톨로지</h4>
+                    <div class="ontology-tree">
+                        <div class="tree-node root">
+                            <span class="node-icon">📄</span>
+                            <span class="node-name">NewsArticle</span>
+                            <div class="child-nodes">
+                                <div class="tree-node">
+                                    <span class="node-icon">👤</span>
+                                    <span class="node-name">NamedEntity</span>
+                                    <div class="properties">
+                                        <div class="property">entityType</div>
+                                        <div class="property">mentions</div>
+                                        <div class="property">context</div>
+                                    </div>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="node-icon">🎯</span>
+                                    <span class="node-name">Event</span>
+                                    <div class="properties">
+                                        <div class="property">eventDate</div>
+                                        <div class="property">location</div>
+                                        <div class="property">participants</div>
+                                    </div>
+                                </div>
+                                <div class="tree-node">
+                                    <span class="node-icon">😊</span>
+                                    <span class="node-name">Sentiment</span>
+                                    <div class="properties">
+                                        <div class="property">score</div>
+                                        <div class="property">confidence</div>
+                                        <div class="property">aspect</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 통합 온톨로지 미리보기 -->
+            <div class="integrated-preview">
+                <h4>✨ 통합 온톨로지 프리뷰</h4>
+                <div class="preview-graph">
+                    <div class="integrated-node central">
+                        <span class="node-icon">🔮</span>
+                        <span class="node-name">MarketIntelligence</span>
+                    </div>
+                    <div class="integrated-connections">
+                        <div class="connection-group financial-news">
+                            <div class="connection-node">CompanyNews</div>
+                            <div class="connection-node">StockImpact</div>
+                            <div class="connection-node">SentimentSignal</div>
+                        </div>
+                        <div class="connection-group event-market">
+                            <div class="connection-node">NewsEvent</div>
+                            <div class="connection-node">MarketReaction</div>
+                            <div class="connection-node">TradingSignal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SWRL 규칙 빌더 -->
+    <div class="swrl-rule-builder">
+        <h3>🧩 지능형 추론 규칙 생성기</h3>
+        <div class="rule-builder-interface">
+            <div class="rule-categories">
+                <button class="category-btn active" data-category="sentiment">감성 기반</button>
+                <button class="category-btn" data-category="event">이벤트 기반</button>
+                <button class="category-btn" data-category="pattern">패턴 기반</button>
+                <button class="category-btn" data-category="risk">리스크 기반</button>
+            </div>
+            
+            <div class="rule-workspace">
+                <div class="rule-components">
+                    <h5>규칙 구성 요소</h5>
+                    <div class="component-list">
+                        <div class="rule-component" draggable="true">
+                            <span class="component-type">조건</span>
+                            <span class="component-name">뉴스 감성 점수</span>
+                        </div>
+                        <div class="rule-component" draggable="true">
+                            <span class="component-type">조건</span>
+                            <span class="component-name">주가 변동률</span>
+                        </div>
+                        <div class="rule-component" draggable="true">
+                            <span class="component-type">액션</span>
+                            <span class="component-name">매수 시그널</span>
+                        </div>
+                        <div class="rule-component" draggable="true">
+                            <span class="component-type">액션</span>
+                            <span class="component-name">리스크 경고</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rule-canvas">
+                    <h5>규칙 캔버스</h5>
+                    <div class="rule-drop-area">
+                        <div class="rule-structure">
+                            <div class="if-section">
+                                <span class="section-label">IF</span>
+                                <div class="condition-slots"></div>
+                            </div>
+                            <div class="then-section">
+                                <span class="section-label">THEN</span>
+                                <div class="action-slots"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rule-preview">
+                        <h6>생성된 SWRL 규칙</h6>
+                        <code id="generatedRule"></code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 13.3: 실시간 통합 시뮬레이터 -->
+<section class="content-section realtime-simulator">
+    <h2>13.3 실시간 뉴스-주가 연동 시뮬레이터</h2>
+    
+    <!-- 라이브 마켓 시뮬레이터 -->
+    <div class="market-simulator">
+        <h3>📊 실시간 시장 반응 시뮬레이터</h3>
+        <div class="simulator-dashboard">
+            <!-- 뉴스 피드 -->
+            <div class="news-feed-panel">
+                <h4>📰 실시간 뉴스 스트림</h4>
+                <div class="news-stream">
+                    <div class="news-item breaking">
+                        <span class="timestamp">14:32:15</span>
+                        <span class="news-badge">속보</span>
+                        <p class="news-text">삼성전자, AI 반도체 대규모 투자 발표</p>
+                        <div class="sentiment-indicator positive">
+                            <span class="sentiment-score">+0.85</span>
+                            <span class="sentiment-label">매우 긍정</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <span class="timestamp">14:30:45</span>
+                        <p class="news-text">현대차, 전기차 배터리 리콜 검토</p>
+                        <div class="sentiment-indicator negative">
+                            <span class="sentiment-score">-0.62</span>
+                            <span class="sentiment-label">부정</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <span class="timestamp">14:28:22</span>
+                        <p class="news-text">SK하이닉스, 실적 전망 상향 조정</p>
+                        <div class="sentiment-indicator positive">
+                            <span class="sentiment-score">+0.73</span>
+                            <span class="sentiment-label">긍정</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-controls">
+                    <button class="control-btn" onclick="addCustomNews()">
+                        <i class="fas fa-plus"></i> 뉴스 추가
+                    </button>
+                    <button class="control-btn" onclick="toggleNewsSpeed()">
+                        <i class="fas fa-tachometer-alt"></i> 속도 조절
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 주가 차트 -->
+            <div class="stock-chart-panel">
+                <h4>📈 주가 반응 차트</h4>
+                <div class="chart-container">
+                    <canvas id="stockReactionChart" width="600" height="300"></canvas>
+                </div>
+                <div class="stock-indicators">
+                    <div class="indicator">
+                        <span class="company-name">삼성전자</span>
+                        <span class="price-change positive">+2.3%</span>
+                        <span class="volume">거래량 +45%</span>
+                    </div>
+                    <div class="indicator">
+                        <span class="company-name">현대차</span>
+                        <span class="price-change negative">-1.8%</span>
+                        <span class="volume">거래량 +62%</span>
+                    </div>
+                    <div class="indicator">
+                        <span class="company-name">SK하이닉스</span>
+                        <span class="price-change positive">+1.5%</span>
+                        <span class="volume">거래량 +28%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 상관관계 분석 -->
+            <div class="correlation-panel">
+                <h4>🔍 뉴스-주가 상관관계 분석</h4>
+                <div class="correlation-matrix">
+                    <div class="matrix-header">
+                        <span>감성점수 vs 주가변동</span>
+                    </div>
+                    <canvas id="correlationChart" width="400" height="300"></canvas>
+                    <div class="correlation-stats">
+                        <div class="stat">
+                            <span class="stat-label">상관계수</span>
+                            <span class="stat-value">0.73</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">지연시간</span>
+                            <span class="stat-value">~15분</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">정확도</span>
+                            <span class="stat-value">82%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 시뮬레이션 컨트롤 -->
+        <div class="simulation-controls">
+            <h4>⚙️ 시뮬레이션 설정</h4>
+            <div class="control-grid">
+                <div class="control-group">
+                    <label>시장 변동성</label>
+                    <input type="range" id="volatilitySlider" min="1" max="10" value="5">
+                    <span class="value-display">5</span>
+                </div>
+                <div class="control-group">
+                    <label>뉴스 빈도</label>
+                    <input type="range" id="newsFrequency" min="1" max="20" value="10">
+                    <span class="value-display">10/분</span>
+                </div>
+                <div class="control-group">
+                    <label>반응 민감도</label>
+                    <input type="range" id="sensitivity" min="1" max="10" value="7">
+                    <span class="value-display">7</span>
+                </div>
+            </div>
+            <div class="scenario-buttons">
+                <button class="scenario-btn" onclick="loadScenario('bull')">
+                    📈 강세장 시나리오
+                </button>
+                <button class="scenario-btn" onclick="loadScenario('bear')">
+                    📉 약세장 시나리오
+                </button>
+                <button class="scenario-btn" onclick="loadScenario('crisis')">
+                    🚨 위기 시나리오
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 미니 프로젝트: 통합 대시보드 -->
+<div class="mini-project">
+    <h3>🎯 미니 프로젝트: 나만의 투자 인사이트 대시보드</h3>
+    <div class="project-description">
+        <p>지금까지 학습한 내용을 바탕으로 뉴스와 주가를 연동한 실시간 투자 대시보드를 만들어보세요!</p>
+        <div class="project-requirements">
+            <h4>요구사항</h4>
+            <ul>
+                <li>실시간 뉴스 수집 및 감성 분석</li>
+                <li>주가 데이터와 뉴스 이벤트 매핑</li>
+                <li>상관관계 기반 예측 모델</li>
+                <li>투자 시그널 생성 및 알림</li>
+            </ul>
+        </div>
+        <button class="start-project-btn" onclick="startMiniProject()">
+            <i class="fas fa-rocket"></i> 프로젝트 시작하기
+        </button>
+    </div>
+</div>
+
+<!-- Part 1 체크포인트 -->
+<div class="checkpoint">
+    <h3>✅ Part 1 완료!</h3>
+    <div class="checkpoint-summary">
+        <p>금융과 뉴스 온톨로지를 통합하는 아키텍처를 설계하고, 실시간 연동 시스템의 기초를 구축했습니다.</p>
+        <div class="learned-skills">
+            <span class="skill-tag">시스템 아키텍처</span>
+            <span class="skill-tag">온톨로지 매핑</span>
+            <span class="skill-tag">SWRL 규칙</span>
+            <span class="skill-tag">실시간 연동</span>
+        </div>
+    </div>
+    <button class="next-part-btn" onclick="loadPart2()">
+        Part 2로 진행 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- Part 1 전용 스타일 -->
+<style>
+/* 통합 애니메이션 */
+.integration-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.1;
+}
+
+.integration-animation::before,
+.integration-animation::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%;
+}
+
+.integration-animation::before {
+    background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+    animation: pulseIntegration 3s ease-in-out infinite;
+}
+
+.integration-animation::after {
+    background: radial-gradient(circle, #10b981 0%, transparent 70%);
+    animation: pulseIntegration 3s ease-in-out infinite reverse;
+}
+
+@keyframes pulseIntegration {
+    0%, 100% { transform: scale(0.8) translate(-25%, -25%); }
+    50% { transform: scale(1.2) translate(-25%, -25%); }
+}
+
+/* 스킬 융합 다이어그램 */
+.skill-fusion-diagram {
+    position: relative;
+    padding: 3rem;
+}
+
+.fusion-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    padding: 2rem;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 10;
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+}
+
+.fusion-score {
+    margin-top: 1rem;
+}
+
+.fusion-score .score-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+.skill-domains {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 400px;
+}
+
+.domain-sphere {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 280px;
+}
+
+.domain-sphere.financial {
+    border: 3px solid #3b82f6;
+}
+
+.domain-sphere.news {
+    border: 3px solid #10b981;
+}
+
+.domain-skills {
+    margin-top: 1rem;
+}
+
+.skill-item {
+    margin-bottom: 1rem;
+}
+
+.skill-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.25rem;
+}
+
+.skill-bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.5s ease;
+}
+
+.fusion-bridge {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bridge-line {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    opacity: 0.5;
+}
+
+.bridge-node {
+    background: white;
+    border: 3px solid #8b5cf6;
+    border-radius: 50%;
+    padding: 1.5rem;
+    text-align: center;
+    z-index: 5;
+}
+
+.node-icon {
+    font-size: 2rem;
+    display: block;
+}
+
+/* 아키텍처 빌더 */
+.architecture-builder {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.builder-interface {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+.layer-palette {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.component-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.category h5 {
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+}
+
+.draggable-components {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.component {
+    background: #f1f5f9;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.component:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.component.dragging {
+    opacity: 0.5;
+}
+
+.architecture-canvas {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.canvas-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.layer {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 80px;
+}
+
+.layer h5 {
+    margin-bottom: 0.5rem;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.drop-zone {
+    min-height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.drop-zone.drag-over {
+    background: #dbeafe;
+    border-color: #3b82f6;
+}
+
+.architecture-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.control-btn {
+    flex: 1;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* 데이터 흐름 시각화 */
+.data-flow-visualization {
+    margin-top: 2rem;
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+}
+
+.flow-diagram {
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.flow-statistics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+/* 온톨로지 매퍼 */
+.mapping-studio {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.ontology-panels {
+    display: grid;
+    grid-template-columns: 1fr 300px 1fr;
+    gap: 2rem;
+}
+
+.ontology-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.ontology-panel.financial {
+    border: 2px solid #3b82f6;
+}
+
+.ontology-panel.news {
+    border: 2px solid #10b981;
+}
+
+.tree-node {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.tree-node.root {
+    margin-left: 0;
+}
+
+.node-icon {
+    margin-right: 0.5rem;
+}
+
+.properties {
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+}
+
+.property {
+    background: #f1f5f9;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    display: inline-block;
+}
+
+.mapping-area {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.mapping-canvas {
+    background: #f8fafc;
+    border-radius: 8px;
+    margin: 1rem 0;
+    min-height: 200px;
+}
+
+.rule-editor {
+    margin-top: 1rem;
+}
+
+.rule-template {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.add-rule-btn {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* 시뮬레이터 대시보드 */
+.simulator-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.news-feed-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    grid-row: span 2;
+}
+
+.news-stream {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.news-item {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.news-item.breaking {
+    border-left: 4px solid #ef4444;
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.news-badge {
+    background: #ef4444;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+}
+
+.sentiment-indicator {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.sentiment-indicator.positive {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.sentiment-indicator.negative {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.stock-chart-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.stock-indicators {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.indicator {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.company-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.price-change {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.price-change.positive { color: #10b981; }
+.price-change.negative { color: #ef4444; }
+
+.correlation-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.correlation-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+/* 시뮬레이션 컨트롤 */
+.simulation-controls {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+
+.value-display {
+    text-align: center;
+    display: block;
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.scenario-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.scenario-btn {
+    flex: 1;
+    padding: 1rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scenario-btn:hover {
+    border-color: #3b82f6;
+    background: #f0f9ff;
+}
+
+/* 미니 프로젝트 */
+.mini-project {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.project-requirements {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.start-project-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-project-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .builder-interface,
+    .ontology-panels,
+    .simulator-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-domains {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .fusion-bridge {
+        height: 100px;
+    }
+    
+    .bridge-line {
+        width: 3px;
+        height: 100%;
+    }
+    
+    .flow-statistics,
+    .stock-indicators,
+    .control-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+
+<!-- JavaScript 초기화 -->
+<script>
+// 드래그 앤 드롭 기능
+document.addEventListener('DOMContentLoaded', function() {
+    // 컴포넌트 드래그
+    const components = document.querySelectorAll('.component[draggable="true"]');
+    const dropZones = document.querySelectorAll('.drop-zone');
+    
+    components.forEach(comp => {
+        comp.addEventListener('dragstart', handleDragStart);
+        comp.addEventListener('dragend', handleDragEnd);
+    });
+    
+    dropZones.forEach(zone => {
+        zone.addEventListener('dragover', handleDragOver);
+        zone.addEventListener('drop', handleDrop);
+        zone.addEventListener('dragleave', handleDragLeave);
+    });
+});
+
+function handleDragStart(e) {
+    e.target.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'copy';
+    e.dataTransfer.setData('component-type', e.target.dataset.type);
+    e.dataTransfer.setData('component-html', e.target.outerHTML);
+}
+
+function handleDragEnd(e) {
+    e.target.classList.remove('dragging');
+}
+
+function handleDragOver(e) {
+    if (e.preventDefault) e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    e.currentTarget.classList.add('drag-over');
+    return false;
+}
+
+function handleDrop(e) {
+    if (e.stopPropagation) e.stopPropagation();
+    e.currentTarget.classList.remove('drag-over');
+    
+    const componentHtml = e.dataTransfer.getData('component-html');
+    const newComponent = document.createElement('div');
+    newComponent.innerHTML = componentHtml;
+    newComponent.firstChild.draggable = false;
+    e.currentTarget.appendChild(newComponent.firstChild);
+    
+    return false;
+}
+
+function handleDragLeave(e) {
+    e.currentTarget.classList.remove('drag-over');
+}
+
+// 아키텍처 검증
+function validateArchitecture() {
+    // 아키텍처 검증 로직
+    alert('아키텍처 검증 완료! 모든 컴포넌트가 올바르게 연결되었습니다.');
+}
+
+// 데이터 흐름 시뮬레이션
+function simulateDataFlow() {
+    // SVG 애니메이션으로 데이터 흐름 표시
+    const svg = document.getElementById('dataFlowSvg');
+    // 애니메이션 구현
+}
+
+// 시나리오 로드
+function loadScenario(type) {
+    switch(type) {
+        case 'bull':
+            // 강세장 시나리오 설정
+            document.getElementById('volatilitySlider').value = 3;
+            document.getElementById('newsFrequency').value = 15;
+            break;
+        case 'bear':
+            // 약세장 시나리오 설정
+            document.getElementById('volatilitySlider').value = 8;
+            document.getElementById('newsFrequency').value = 18;
+            break;
+        case 'crisis':
+            // 위기 시나리오 설정
+            document.getElementById('volatilitySlider').value = 10;
+            document.getElementById('newsFrequency').value = 20;
+            break;
+    }
+}
+
+// 실시간 차트 업데이트
+function updateStockChart() {
+    const ctx = document.getElementById('stockReactionChart');
+    if (ctx && ctx.getContext) {
+        // Chart.js로 실시간 차트 업데이트
+    }
+}
+
+// 상관관계 차트
+function updateCorrelationChart() {
+    const ctx = document.getElementById('correlationChart');
+    if (ctx && ctx.getContext) {
+        // 상관관계 스캐터 플롯
+    }
+}
+
+// 미니 프로젝트 시작
+function startMiniProject() {
+    // 프로젝트 워크스페이스로 이동
+    window.location.href = '#mini-project-workspace';
+}
+
+// 시뮬레이션 시작
+setInterval(updateStockChart, 1000);
+setInterval(updateCorrelationChart, 5000);
+</script>

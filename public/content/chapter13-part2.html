@@ -1,0 +1,1833 @@
+<!-- Chapter 13: 통합 프로젝트: 주식-뉴스 연계 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header advanced-analytics-mastery">
+    <div class="analytics-flow-animation"></div>
+    <h2 class="part-title">Part 2: 감성 분석과 영향도 평가 시스템</h2>
+    <p class="part-description">뉴스의 감성을 분석하고 주가에 미치는 영향을 정량화하는 고급 분석 시스템을 구축합니다!</p>
+</div>
+
+<!-- 감성 분석 전문가 준비도 -->
+<div class="progress-check sentiment-expert">
+    <h3>😊 감성 분석 & 영향도 평가 전문가</h3>
+    <div class="sentiment-readiness">
+        <div class="expertise-spectrum">
+            <h4>감성 분석 역량 스펙트럼</h4>
+            <div class="spectrum-visualization">
+                <div class="spectrum-bar">
+                    <div class="spectrum-segments">
+                        <div class="segment basic" style="flex: 1;">
+                            <span class="label">기초</span>
+                            <span class="score">100%</span>
+                        </div>
+                        <div class="segment intermediate" style="flex: 1;">
+                            <span class="label">중급</span>
+                            <span class="score">92%</span>
+                        </div>
+                        <div class="segment advanced" style="flex: 1;">
+                            <span class="label">고급</span>
+                            <span class="score">85%</span>
+                        </div>
+                        <div class="segment expert" style="flex: 1;">
+                            <span class="label">전문가</span>
+                            <span class="score">78%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="capability-matrix">
+                    <div class="capability-row">
+                        <span class="capability-name">한국어 감성 분석</span>
+                        <div class="capability-level">
+                            <div class="level-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="capability-row">
+                        <span class="capability-name">금융 도메인 특화</span>
+                        <div class="capability-level">
+                            <div class="level-fill" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div class="capability-row">
+                        <span class="capability-name">실시간 처리</span>
+                        <div class="capability-level">
+                            <div class="level-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="capability-row">
+                        <span class="capability-name">영향도 예측</span>
+                        <div class="capability-level">
+                            <div class="level-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="analysis-toolbox">
+            <h4>🛠️ 분석 도구함</h4>
+            <div class="tools-grid">
+                <div class="tool-card active">
+                    <span class="tool-icon">🤖</span>
+                    <span class="tool-name">FinBERT-KR</span>
+                    <span class="tool-desc">금융 한국어 모델</span>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">📊</span>
+                    <span class="tool-name">Impact Analyzer</span>
+                    <span class="tool-desc">영향도 분석기</span>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">⚡</span>
+                    <span class="tool-name">Real-time Engine</span>
+                    <span class="tool-desc">실시간 엔진</span>
+                </div>
+                <div class="tool-card">
+                    <span class="tool-icon">🎯</span>
+                    <span class="tool-name">Pattern Detector</span>
+                    <span class="tool-desc">패턴 감지기</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 13.4: 감성 분석 실습 -->
+<section class="content-section sentiment-analysis-lab">
+    <h2>13.4 실시간 뉴스 감성 분석 시스템</h2>
+    
+    <!-- 감성 분석 워크벤치 -->
+    <div class="sentiment-workbench">
+        <h3>🔬 감성 분석 실험실</h3>
+        <div class="analysis-interface">
+            <!-- 뉴스 입력 패널 -->
+            <div class="input-panel">
+                <h4>뉴스 텍스트 입력</h4>
+                <div class="news-input-area">
+                    <textarea id="newsTextInput" placeholder="분석할 뉴스 기사를 입력하거나 예제를 선택하세요..."></textarea>
+                    <div class="example-news">
+                        <button class="example-btn" onclick="loadExample('positive')">
+                            😊 긍정 예제
+                        </button>
+                        <button class="example-btn" onclick="loadExample('negative')">
+                            😟 부정 예제
+                        </button>
+                        <button class="example-btn" onclick="loadExample('neutral')">
+                            😐 중립 예제
+                        </button>
+                        <button class="example-btn" onclick="loadExample('complex')">
+                            🤔 복합 예제
+                        </button>
+                    </div>
+                    <button class="analyze-btn" onclick="analyzeSentiment()">
+                        <i class="fas fa-brain"></i> 감성 분석 실행
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 분석 프로세스 시각화 -->
+            <div class="analysis-process">
+                <h4>분석 프로세스</h4>
+                <div class="process-pipeline">
+                    <div class="pipeline-stage" data-stage="tokenize">
+                        <div class="stage-icon">✂️</div>
+                        <div class="stage-name">토큰화</div>
+                        <div class="stage-status"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage" data-stage="embed">
+                        <div class="stage-icon">🔢</div>
+                        <div class="stage-name">임베딩</div>
+                        <div class="stage-status"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage" data-stage="analyze">
+                        <div class="stage-icon">🧠</div>
+                        <div class="stage-name">분석</div>
+                        <div class="stage-status"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage" data-stage="classify">
+                        <div class="stage-icon">🏷️</div>
+                        <div class="stage-name">분류</div>
+                        <div class="stage-status"></div>
+                    </div>
+                </div>
+                
+                <div class="token-visualization">
+                    <h5>토큰 감성 히트맵</h5>
+                    <div id="tokenHeatmap" class="heatmap-container"></div>
+                </div>
+            </div>
+            
+            <!-- 분석 결과 대시보드 -->
+            <div class="analysis-results">
+                <h4>분석 결과</h4>
+                <div class="sentiment-gauge">
+                    <div class="gauge-container">
+                        <svg width="200" height="100" viewBox="0 0 200 100">
+                            <path d="M 20 80 A 60 60 0 0 1 180 80" fill="none" stroke="#e5e7eb" stroke-width="20"/>
+                            <path id="sentimentArc" d="M 20 80 A 60 60 0 0 1 100 20" fill="none" stroke="#10b981" stroke-width="20"/>
+                        </svg>
+                        <div class="gauge-value">
+                            <span id="sentimentScore">0.00</span>
+                        </div>
+                        <div class="gauge-label">감성 점수</div>
+                    </div>
+                </div>
+                
+                <div class="sentiment-breakdown">
+                    <div class="sentiment-category positive">
+                        <span class="category-icon">😊</span>
+                        <span class="category-name">긍정</span>
+                        <div class="category-bar">
+                            <div class="bar-fill" id="positiveBar" style="width: 0%"></div>
+                        </div>
+                        <span class="category-value" id="positiveValue">0%</span>
+                    </div>
+                    <div class="sentiment-category neutral">
+                        <span class="category-icon">😐</span>
+                        <span class="category-name">중립</span>
+                        <div class="category-bar">
+                            <div class="bar-fill" id="neutralBar" style="width: 0%"></div>
+                        </div>
+                        <span class="category-value" id="neutralValue">0%</span>
+                    </div>
+                    <div class="sentiment-category negative">
+                        <span class="category-icon">😟</span>
+                        <span class="category-name">부정</span>
+                        <div class="category-bar">
+                            <div class="bar-fill" id="negativeBar" style="width: 0%"></div>
+                        </div>
+                        <span class="category-value" id="negativeValue">0%</span>
+                    </div>
+                </div>
+                
+                <div class="key-phrases">
+                    <h5>핵심 감성 구문</h5>
+                    <div id="keyPhrases" class="phrase-tags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 영향도 평가 시스템 -->
+    <div class="impact-assessment">
+        <h3>📊 주가 영향도 평가 시스템</h3>
+        <div class="impact-analyzer">
+            <div class="impact-factors">
+                <h4>영향 요인 분석</h4>
+                <div class="factor-grid">
+                    <div class="factor-card">
+                        <div class="factor-header">
+                            <span class="factor-icon">💭</span>
+                            <h5>감성 강도</h5>
+                        </div>
+                        <div class="factor-meter">
+                            <div class="meter-fill sentiment-strength" style="width: 0%"></div>
+                        </div>
+                        <span class="factor-value">0</span>
+                    </div>
+                    <div class="factor-card">
+                        <div class="factor-header">
+                            <span class="factor-icon">🏢</span>
+                            <h5>기업 관련성</h5>
+                        </div>
+                        <div class="factor-meter">
+                            <div class="meter-fill company-relevance" style="width: 0%"></div>
+                        </div>
+                        <span class="factor-value">0</span>
+                    </div>
+                    <div class="factor-card">
+                        <div class="factor-header">
+                            <span class="factor-icon">📰</span>
+                            <h5>뉴스 중요도</h5>
+                        </div>
+                        <div class="factor-meter">
+                            <div class="meter-fill news-importance" style="width: 0%"></div>
+                        </div>
+                        <span class="factor-value">0</span>
+                    </div>
+                    <div class="factor-card">
+                        <div class="factor-header">
+                            <span class="factor-icon">📈</span>
+                            <h5>시장 민감도</h5>
+                        </div>
+                        <div class="factor-meter">
+                            <div class="meter-fill market-sensitivity" style="width: 0%"></div>
+                        </div>
+                        <span class="factor-value">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="impact-prediction">
+                <h4>예상 주가 영향</h4>
+                <div class="prediction-chart">
+                    <canvas id="impactPredictionChart" width="400" height="250"></canvas>
+                </div>
+                <div class="prediction-summary">
+                    <div class="prediction-item">
+                        <span class="label">예상 변동률</span>
+                        <span class="value" id="expectedChange">0.0%</span>
+                    </div>
+                    <div class="prediction-item">
+                        <span class="label">영향 지속 시간</span>
+                        <span class="value" id="impactDuration">0시간</span>
+                    </div>
+                    <div class="prediction-item">
+                        <span class="label">신뢰도</span>
+                        <span class="value" id="confidence">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 13.5: 패턴 인식과 예측 -->
+<section class="content-section pattern-recognition">
+    <h2>13.5 뉴스 패턴 인식과 시장 예측</h2>
+    
+    <!-- 패턴 학습 시스템 -->
+    <div class="pattern-learning-system">
+        <h3>🧩 패턴 학습 & 인식 엔진</h3>
+        <div class="pattern-interface">
+            <!-- 패턴 라이브러리 -->
+            <div class="pattern-library">
+                <h4>학습된 패턴 라이브러리</h4>
+                <div class="pattern-categories">
+                    <div class="pattern-category active" data-category="earnings">
+                        <div class="category-header">
+                            <span class="icon">💰</span>
+                            <span class="name">실적 발표</span>
+                            <span class="count">156</span>
+                        </div>
+                        <div class="pattern-list">
+                            <div class="pattern-item">
+                                <span class="pattern-name">실적 호조 → 주가 상승</span>
+                                <span class="accuracy">87%</span>
+                            </div>
+                            <div class="pattern-item">
+                                <span class="pattern-name">실적 쇼크 → 급락</span>
+                                <span class="accuracy">92%</span>
+                            </div>
+                            <div class="pattern-item">
+                                <span class="pattern-name">가이던스 상향 → 지속 상승</span>
+                                <span class="accuracy">78%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pattern-category" data-category="ma">
+                        <div class="category-header">
+                            <span class="icon">🤝</span>
+                            <span class="name">M&A</span>
+                            <span class="count">89</span>
+                        </div>
+                        <div class="pattern-list" style="display: none;">
+                            <div class="pattern-item">
+                                <span class="pattern-name">인수 발표 → 대상 기업 급등</span>
+                                <span class="accuracy">95%</span>
+                            </div>
+                            <div class="pattern-item">
+                                <span class="pattern-name">합병 무산 → 양사 하락</span>
+                                <span class="accuracy">83%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pattern-category" data-category="regulation">
+                        <div class="category-header">
+                            <span class="icon">⚖️</span>
+                            <span class="name">규제</span>
+                            <span class="count">124</span>
+                        </div>
+                        <div class="pattern-list" style="display: none;">
+                            <div class="pattern-item">
+                                <span class="pattern-name">규제 강화 → 섹터 전체 하락</span>
+                                <span class="accuracy">81%</span>
+                            </div>
+                            <div class="pattern-item">
+                                <span class="pattern-name">규제 완화 → 관련주 상승</span>
+                                <span class="accuracy">76%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 실시간 패턴 매칭 -->
+            <div class="pattern-matching">
+                <h4>실시간 패턴 매칭</h4>
+                <div class="matching-visualization">
+                    <div class="current-news-pattern">
+                        <h5>현재 뉴스 패턴</h5>
+                        <div class="pattern-graph">
+                            <canvas id="currentPatternCanvas" width="300" height="200"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="matching-results">
+                        <h5>매칭 결과</h5>
+                        <div class="match-list">
+                            <div class="match-item high-match">
+                                <div class="match-score">94%</div>
+                                <div class="match-details">
+                                    <span class="match-pattern">실적 호조 패턴</span>
+                                    <span class="match-prediction">+2.5% ~ +3.8%</span>
+                                </div>
+                            </div>
+                            <div class="match-item medium-match">
+                                <div class="match-score">72%</div>
+                                <div class="match-details">
+                                    <span class="match-pattern">긍정적 전망 패턴</span>
+                                    <span class="match-prediction">+1.2% ~ +2.1%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 패턴 학습 모니터 -->
+                <div class="learning-monitor">
+                    <h5>패턴 학습 모니터</h5>
+                    <div class="learning-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">학습된 패턴</span>
+                            <span class="stat-value">1,247</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">정확도</span>
+                            <span class="stat-value">84.3%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">최근 업데이트</span>
+                            <span class="stat-value">2분 전</span>
+                        </div>
+                    </div>
+                    <button class="train-btn" onclick="trainNewPattern()">
+                        <i class="fas fa-graduation-cap"></i> 새 패턴 학습
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 시계열 예측 모델 -->
+    <div class="time-series-prediction">
+        <h3>📈 시계열 예측 모델링</h3>
+        <div class="prediction-interface">
+            <div class="model-selection">
+                <h4>예측 모델 선택</h4>
+                <div class="model-options">
+                    <div class="model-card selected">
+                        <span class="model-icon">🤖</span>
+                        <span class="model-name">LSTM + Attention</span>
+                        <span class="model-accuracy">정확도: 82%</span>
+                    </div>
+                    <div class="model-card">
+                        <span class="model-icon">🌳</span>
+                        <span class="model-name">Random Forest</span>
+                        <span class="model-accuracy">정확도: 78%</span>
+                    </div>
+                    <div class="model-card">
+                        <span class="model-icon">🧮</span>
+                        <span class="model-name">Ensemble</span>
+                        <span class="model-accuracy">정확도: 85%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prediction-visualization">
+                <h4>주가 예측 시각화</h4>
+                <div class="chart-container">
+                    <canvas id="predictionTimeSeriesChart" width="600" height="300"></canvas>
+                </div>
+                <div class="prediction-controls">
+                    <div class="control-item">
+                        <label>예측 기간</label>
+                        <select id="predictionPeriod">
+                            <option value="1h">1시간</option>
+                            <option value="1d" selected>1일</option>
+                            <option value="1w">1주</option>
+                            <option value="1m">1개월</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>신뢰 구간</label>
+                        <input type="checkbox" id="showConfidence" checked>
+                    </div>
+                    <button class="predict-btn" onclick="runPrediction()">
+                        <i class="fas fa-chart-line"></i> 예측 실행
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 13.6: 실시간 알림 시스템 -->
+<section class="content-section alert-system">
+    <h2>13.6 지능형 투자 알림 시스템</h2>
+    
+    <!-- 알림 대시보드 -->
+    <div class="alert-dashboard">
+        <h3>🔔 실시간 투자 시그널 센터</h3>
+        <div class="alert-interface">
+            <!-- 알림 설정 -->
+            <div class="alert-configuration">
+                <h4>알림 조건 설정</h4>
+                <div class="condition-builder">
+                    <div class="condition-group">
+                        <h5>감성 기반 알림</h5>
+                        <div class="condition-item">
+                            <label>
+                                <input type="checkbox" checked>
+                                극단적 긍정 뉴스 (점수 > 0.8)
+                            </label>
+                        </div>
+                        <div class="condition-item">
+                            <label>
+                                <input type="checkbox" checked>
+                                극단적 부정 뉴스 (점수 < -0.8)
+                            </label>
+                        </div>
+                        <div class="condition-item">
+                            <label>
+                                <input type="checkbox">
+                                감성 급변 (변화율 > 50%)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="condition-group">
+                        <h5>패턴 기반 알림</h5>
+                        <div class="condition-item">
+                            <label>
+                                <input type="checkbox" checked>
+                                고확률 패턴 감지 (> 90%)
+                            </label>
+                        </div>
+                        <div class="condition-item">
+                            <label>
+                                <input type="checkbox">
+                                이상 패턴 발생
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="condition-group">
+                        <h5>종목별 설정</h5>
+                        <div class="stock-alerts">
+                            <div class="stock-alert-item">
+                                <span class="stock-name">삼성전자</span>
+                                <input type="number" value="2" min="0" max="10" step="0.5">
+                                <span class="unit">% 이상 변동</span>
+                            </div>
+                            <div class="stock-alert-item">
+                                <span class="stock-name">SK하이닉스</span>
+                                <input type="number" value="3" min="0" max="10" step="0.5">
+                                <span class="unit">% 이상 변동</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 실시간 알림 피드 -->
+            <div class="alert-feed">
+                <h4>실시간 알림</h4>
+                <div class="alert-stream">
+                    <div class="alert-item critical">
+                        <div class="alert-header">
+                            <span class="alert-icon">🚨</span>
+                            <span class="alert-type">긴급</span>
+                            <span class="alert-time">방금 전</span>
+                        </div>
+                        <div class="alert-content">
+                            <h5>삼성전자 극단적 부정 뉴스 감지</h5>
+                            <p>반도체 공장 화재 발생, 감성 점수 -0.92</p>
+                            <div class="alert-action">
+                                <span class="predicted-impact">예상 하락률: -3.5%</span>
+                                <button class="action-btn sell">매도 검토</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-item high">
+                        <div class="alert-header">
+                            <span class="alert-icon">⚡</span>
+                            <span class="alert-type">높음</span>
+                            <span class="alert-time">2분 전</span>
+                        </div>
+                        <div class="alert-content">
+                            <h5>현대차 실적 호조 패턴 감지</h5>
+                            <p>영업이익 전년 대비 45% 증가, 패턴 일치도 94%</p>
+                            <div class="alert-action">
+                                <span class="predicted-impact">예상 상승률: +2.8%</span>
+                                <button class="action-btn buy">매수 검토</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-item medium">
+                        <div class="alert-header">
+                            <span class="alert-icon">📊</span>
+                            <span class="alert-type">보통</span>
+                            <span class="alert-time">5분 전</span>
+                        </div>
+                        <div class="alert-content">
+                            <h5>LG화학 감성 변화 감지</h5>
+                            <p>배터리 수주 관련 긍정적 뉴스 증가</p>
+                            <div class="alert-action">
+                                <span class="predicted-impact">예상 상승률: +1.2%</span>
+                                <button class="action-btn watch">관찰 목록 추가</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert-statistics">
+                    <div class="stat">
+                        <span class="stat-label">오늘 알림</span>
+                        <span class="stat-value">47</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">정확도</span>
+                        <span class="stat-value">83%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">수익률</span>
+                        <span class="stat-value positive">+2.4%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 실전 시뮬레이션 -->
+<div class="practice-simulation">
+    <h3>🎮 실전 투자 시뮬레이션</h3>
+    <div class="simulation-game">
+        <div class="game-header">
+            <div class="portfolio-status">
+                <span class="label">포트폴리오</span>
+                <span class="value">₩10,000,000</span>
+                <span class="change positive">+2.3%</span>
+            </div>
+            <div class="game-timer">
+                <span class="label">시뮬레이션 시간</span>
+                <span class="time">09:15:32</span>
+            </div>
+        </div>
+        
+        <div class="game-board">
+            <div class="news-events">
+                <h4>실시간 뉴스 이벤트</h4>
+                <div class="event-stream">
+                    <!-- 동적 뉴스 이벤트 -->
+                </div>
+            </div>
+            
+            <div class="trading-panel">
+                <h4>거래 실행</h4>
+                <div class="order-form">
+                    <select class="stock-select">
+                        <option>삼성전자</option>
+                        <option>SK하이닉스</option>
+                        <option>현대차</option>
+                    </select>
+                    <div class="order-type">
+                        <button class="type-btn buy">매수</button>
+                        <button class="type-btn sell">매도</button>
+                    </div>
+                    <input type="number" placeholder="수량" class="quantity">
+                    <button class="execute-btn">주문 실행</button>
+                </div>
+            </div>
+            
+            <div class="performance-chart">
+                <canvas id="portfolioPerformance" width="400" height="200"></canvas>
+            </div>
+        </div>
+        
+        <div class="simulation-controls">
+            <button class="sim-btn" onclick="startSimulation()">
+                <i class="fas fa-play"></i> 시작
+            </button>
+            <button class="sim-btn" onclick="pauseSimulation()">
+                <i class="fas fa-pause"></i> 일시정지
+            </button>
+            <button class="sim-btn" onclick="resetSimulation()">
+                <i class="fas fa-redo"></i> 초기화
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Part 2 체크포인트 -->
+<div class="checkpoint">
+    <h3>✅ Part 2 완료!</h3>
+    <div class="checkpoint-summary">
+        <p>감성 분석과 패턴 인식을 통한 주가 영향도 평가 시스템을 구축했습니다.</p>
+        <div class="learned-skills">
+            <span class="skill-tag">감성 분석</span>
+            <span class="skill-tag">영향도 평가</span>
+            <span class="skill-tag">패턴 인식</span>
+            <span class="skill-tag">예측 모델링</span>
+            <span class="skill-tag">알림 시스템</span>
+        </div>
+    </div>
+    <button class="next-part-btn" onclick="loadPart3()">
+        Part 3로 진행 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- Part 2 전용 스타일 -->
+<style>
+/* 애니메이션 배경 */
+.analytics-flow-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.1;
+}
+
+.analytics-flow-animation::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(59, 130, 246, 0.1) 50%, 
+        transparent 70%);
+    animation: flowAnimation 3s linear infinite;
+}
+
+@keyframes flowAnimation {
+    0% { transform: translateX(-100%) translateY(-100%); }
+    100% { transform: translateX(0%) translateY(0%); }
+}
+
+/* 역량 스펙트럼 */
+.expertise-spectrum {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.spectrum-bar {
+    margin: 1.5rem 0;
+}
+
+.spectrum-segments {
+    display: flex;
+    height: 60px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+.segment.basic { background: #10b981; }
+.segment.intermediate { background: #3b82f6; }
+.segment.advanced { background: #8b5cf6; }
+.segment.expert { background: #f59e0b; }
+
+.capability-matrix {
+    margin-top: 2rem;
+}
+
+.capability-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.capability-name {
+    width: 150px;
+    font-weight: 500;
+}
+
+.capability-level {
+    flex: 1;
+    height: 20px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 1rem;
+}
+
+.level-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.5s ease;
+}
+
+/* 분석 도구함 */
+.analysis-toolbox {
+    margin-top: 2rem;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.tool-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tool-card:hover,
+.tool-card.active {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.tool-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.tool-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.tool-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* 감성 분석 워크벤치 */
+.sentiment-workbench {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.analysis-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+}
+
+.input-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+#newsTextInput {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.example-news {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.example-btn {
+    flex: 1;
+    padding: 0.5rem;
+    background: #f1f5f9;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.example-btn:hover {
+    background: #e2e8f0;
+}
+
+.analyze-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* 분석 프로세스 */
+.analysis-process {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.process-pipeline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+}
+
+.pipeline-stage {
+    text-align: center;
+    flex: 1;
+}
+
+.stage-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stage-status {
+    width: 10px;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    margin: 0.5rem auto;
+}
+
+.pipeline-stage.active .stage-status {
+    background: #10b981;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.pipeline-arrow {
+    font-size: 1.5rem;
+    color: #cbd5e1;
+}
+
+.heatmap-container {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 100px;
+    margin-top: 1rem;
+}
+
+/* 분석 결과 */
+.analysis-results {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    grid-column: span 2;
+}
+
+.sentiment-gauge {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.gauge-container {
+    position: relative;
+    display: inline-block;
+}
+
+.gauge-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.gauge-label {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.sentiment-breakdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.sentiment-category {
+    text-align: center;
+}
+
+.category-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.category-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.bar-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.sentiment-category.positive .bar-fill { background: #10b981; }
+.sentiment-category.neutral .bar-fill { background: #6b7280; }
+.sentiment-category.negative .bar-fill { background: #ef4444; }
+
+.key-phrases {
+    margin-top: 2rem;
+}
+
+.phrase-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* 영향도 평가 */
+.impact-assessment {
+    margin-top: 3rem;
+}
+
+.impact-analyzer {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.factor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.factor-card {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.factor-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.factor-icon {
+    font-size: 1.5rem;
+}
+
+.factor-meter {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transition: width 0.5s ease;
+}
+
+.factor-value {
+    text-align: right;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.prediction-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.prediction-item {
+    text-align: center;
+}
+
+.prediction-item .label {
+    display: block;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.prediction-item .value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin-top: 0.25rem;
+}
+
+/* 패턴 학습 시스템 */
+.pattern-learning-system {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.pattern-interface {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+}
+
+.pattern-library {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.pattern-category {
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.category-header {
+    padding: 1rem;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.category-header:hover {
+    background: #f1f5f9;
+}
+
+.pattern-category.active .category-header {
+    background: #dbeafe;
+}
+
+.pattern-list {
+    padding: 0.5rem;
+}
+
+.pattern-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.pattern-item:hover {
+    background: #f8fafc;
+}
+
+.accuracy {
+    font-weight: 600;
+    color: #10b981;
+}
+
+/* 패턴 매칭 */
+.pattern-matching {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.matching-visualization {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.pattern-graph {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.match-list {
+    margin-top: 1rem;
+}
+
+.match-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.match-item.high-match {
+    background: #d1fae5;
+    border: 1px solid #10b981;
+}
+
+.match-item.medium-match {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+}
+
+.match-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.match-details {
+    flex: 1;
+}
+
+.match-pattern {
+    display: block;
+    font-weight: 600;
+}
+
+.match-prediction {
+    display: block;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* 학습 모니터 */
+.learning-monitor {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.learning-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.train-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* 시계열 예측 */
+.time-series-prediction {
+    margin-top: 2rem;
+}
+
+.prediction-interface {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.model-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.model-card {
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.model-card:hover,
+.model-card.selected {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.model-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.model-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.model-accuracy {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.prediction-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.control-item label {
+    margin-right: 0.5rem;
+}
+
+.predict-btn {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* 알림 대시보드 */
+.alert-dashboard {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.alert-interface {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.alert-configuration {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.condition-group {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.condition-group:last-child {
+    border-bottom: none;
+}
+
+.condition-item {
+    margin-bottom: 0.75rem;
+}
+
+.condition-item label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.condition-item input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.stock-alert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stock-name {
+    width: 100px;
+}
+
+.stock-alert-item input[type="number"] {
+    width: 60px;
+    padding: 0.25rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+/* 알림 피드 */
+.alert-feed {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.alert-stream {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.alert-item {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid transparent;
+}
+
+.alert-item.critical {
+    border-left-color: #ef4444;
+    background: #fee2e2;
+}
+
+.alert-item.high {
+    border-left-color: #f59e0b;
+    background: #fef3c7;
+}
+
+.alert-item.medium {
+    border-left-color: #3b82f6;
+    background: #dbeafe;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.alert-icon {
+    font-size: 1.25rem;
+}
+
+.alert-type {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.alert-time {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.alert-content h5 {
+    margin-bottom: 0.25rem;
+}
+
+.alert-content p {
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.alert-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+}
+
+.predicted-impact {
+    font-weight: 600;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-btn.buy {
+    background: #10b981;
+    color: white;
+}
+
+.action-btn.sell {
+    background: #ef4444;
+    color: white;
+}
+
+.action-btn.watch {
+    background: #3b82f6;
+    color: white;
+}
+
+.alert-statistics {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* 실전 시뮬레이션 */
+.practice-simulation {
+    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.simulation-game {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.portfolio-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.portfolio-status .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.portfolio-status .change {
+    font-weight: 600;
+}
+
+.portfolio-status .change.positive { color: #10b981; }
+.portfolio-status .change.negative { color: #ef4444; }
+
+.game-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+}
+
+.news-events {
+    grid-row: span 2;
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.event-stream {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.trading-panel {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.order-form {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.stock-select,
+.quantity {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.order-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.type-btn {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.type-btn.buy:hover,
+.type-btn.buy.active {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+.type-btn.sell:hover,
+.type-btn.sell.active {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.execute-btn {
+    padding: 0.75rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.simulation-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+.sim-btn {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #3b82f6;
+    border-radius: 6px;
+    color: #3b82f6;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sim-btn:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .analysis-interface,
+    .impact-analyzer,
+    .pattern-interface,
+    .alert-interface,
+    .game-board {
+        grid-template-columns: 1fr;
+    }
+    
+    .sentiment-breakdown {
+        grid-template-columns: 1fr;
+    }
+    
+    .model-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .prediction-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* 애니메이션 */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+</style>
+
+<!-- JavaScript 초기화 -->
+<script>
+// 예제 뉴스 로드
+function loadExample(type) {
+    const examples = {
+        positive: "삼성전자가 차세대 AI 반도체 개발에 성공했다고 발표했습니다. 이번 개발로 글로벌 AI 시장에서의 경쟁력이 크게 향상될 것으로 기대됩니다. 업계 관계자들은 이번 기술이 게임 체인저가 될 것이라고 평가하고 있습니다.",
+        negative: "현대자동차가 전기차 배터리 결함으로 대규모 리콜을 실시한다고 밝혔습니다. 이번 리콜로 인한 비용은 수천억원에 달할 것으로 예상되며, 브랜드 이미지에도 타격이 불가피할 전망입니다.",
+        neutral: "LG전자가 정기 이사회를 개최하고 분기 배당금을 작년과 동일한 수준으로 결정했습니다. 회사 측은 안정적인 주주 환원 정책을 유지하겠다고 밝혔습니다.",
+        complex: "SK하이닉스가 실적 발표에서 매출은 전년 대비 15% 증가했으나, 원자재 가격 상승으로 영업이익률은 소폭 하락했다고 밝혔습니다. 하지만 하반기 메모리 반도체 수요 증가로 실적 개선이 예상된다고 전망했습니다."
+    };
+    
+    document.getElementById('newsTextInput').value = examples[type];
+}
+
+// 감성 분석 실행
+function analyzeSentiment() {
+    // 프로세스 단계 활성화
+    const stages = document.querySelectorAll('.pipeline-stage');
+    stages.forEach((stage, index) => {
+        setTimeout(() => {
+            stage.classList.add('active');
+            if (index > 0) stages[index-1].classList.remove('active');
+        }, index * 500);
+    });
+    
+    // 결과 업데이트 (시뮬레이션)
+    setTimeout(() => {
+        // 감성 점수
+        document.getElementById('sentimentScore').textContent = '0.73';
+        
+        // 감성 분포
+        document.getElementById('positiveBar').style.width = '73%';
+        document.getElementById('positiveValue').textContent = '73%';
+        document.getElementById('neutralBar').style.width = '18%';
+        document.getElementById('neutralValue').textContent = '18%';
+        document.getElementById('negativeBar').style.width = '9%';
+        document.getElementById('negativeValue').textContent = '9%';
+        
+        // 핵심 구문
+        const phrasesContainer = document.getElementById('keyPhrases');
+        phrasesContainer.innerHTML = `
+            <span class="phrase-tag positive">차세대 AI 반도체 개발 성공</span>
+            <span class="phrase-tag positive">경쟁력 크게 향상</span>
+            <span class="phrase-tag positive">게임 체인저</span>
+        `;
+        
+        // 영향도 평가
+        updateImpactAssessment();
+    }, 2000);
+}
+
+// 영향도 평가 업데이트
+function updateImpactAssessment() {
+    // 요인별 점수 업데이트
+    document.querySelector('.sentiment-strength').style.width = '85%';
+    document.querySelector('.company-relevance').style.width = '92%';
+    document.querySelector('.news-importance').style.width = '78%';
+    document.querySelector('.market-sensitivity').style.width = '70%';
+    
+    // 예측 결과
+    document.getElementById('expectedChange').textContent = '+2.3%';
+    document.getElementById('impactDuration').textContent = '6시간';
+    document.getElementById('confidence').textContent = '82%';
+    
+    // 차트 업데이트
+    updateImpactChart();
+}
+
+// 영향도 차트 업데이트
+function updateImpactChart() {
+    const ctx = document.getElementById('impactPredictionChart');
+    if (ctx && ctx.getContext) {
+        // Chart.js로 차트 그리기
+    }
+}
+
+// 패턴 카테고리 토글
+document.querySelectorAll('.pattern-category').forEach(category => {
+    category.querySelector('.category-header').addEventListener('click', function() {
+        document.querySelectorAll('.pattern-category').forEach(c => {
+            c.classList.remove('active');
+            c.querySelector('.pattern-list').style.display = 'none';
+        });
+        
+        category.classList.add('active');
+        category.querySelector('.pattern-list').style.display = 'block';
+    });
+});
+
+// 새 패턴 학습
+function trainNewPattern() {
+    alert('새로운 패턴 학습을 시작합니다...');
+}
+
+// 예측 실행
+function runPrediction() {
+    // 예측 차트 업데이트
+    const ctx = document.getElementById('predictionTimeSeriesChart');
+    if (ctx && ctx.getContext) {
+        // 시계열 예측 차트 그리기
+    }
+}
+
+// 시뮬레이션 제어
+let simulationInterval;
+
+function startSimulation() {
+    simulationInterval = setInterval(() => {
+        // 랜덤 뉴스 이벤트 생성
+        generateRandomNewsEvent();
+        // 포트폴리오 업데이트
+        updatePortfolio();
+    }, 3000);
+}
+
+function pauseSimulation() {
+    clearInterval(simulationInterval);
+}
+
+function resetSimulation() {
+    clearInterval(simulationInterval);
+    // 포트폴리오 초기화
+    document.querySelector('.portfolio-status .value').textContent = '₩10,000,000';
+    document.querySelector('.portfolio-status .change').textContent = '+0.0%';
+}
+
+function generateRandomNewsEvent() {
+    // 랜덤 뉴스 이벤트 생성 로직
+}
+
+function updatePortfolio() {
+    // 포트폴리오 업데이트 로직
+}
+
+// 실시간 업데이트 시뮬레이션
+setInterval(() => {
+    // 알림 시간 업데이트
+    document.querySelectorAll('.alert-time').forEach(time => {
+        const current = time.textContent;
+        if (current === '방금 전') {
+            time.textContent = '1분 전';
+        } else if (current.includes('분 전')) {
+            const minutes = parseInt(current) + 1;
+            time.textContent = minutes + '분 전';
+        }
+    });
+}, 60000);
+</script>

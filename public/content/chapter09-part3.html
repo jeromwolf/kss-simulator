@@ -1,0 +1,3052 @@
+<!-- Chapter 9: 온톨로지 추론과 추론 엔진 (인터랙티브 마스터 버전) Part 3 -->
+
+<!-- Part 3 시작 -->
+<div class="part-header production-mastery">
+    <div class="system-architecture-animation"></div>
+    <h2 class="part-title">Part 3: 실전 추론 시스템 구축과 프로덕션 배포</h2>
+    <p class="part-description">이론을 현실로! 대규모 추론 시스템을 설계하고 구축하는 완전한 실무 가이드입니다.</p>
+</div>
+
+<!-- 실전 준비도 평가 -->
+<div class="progress-check production-level">
+    <h3>🏭 프로덕션 준비도 평가</h3>
+    <div class="production-readiness">
+        <div class="readiness-categories">
+            <div class="category-assessment">
+                <h4>🧠 기술적 역량</h4>
+                <div class="competency-radar">
+                    <div class="radar-item">
+                        <span class="radar-label">알고리즘 이해</span>
+                        <div class="radar-bar">
+                            <div class="bar-progress" style="width: 90%"></div>
+                        </div>
+                        <span class="radar-score">90%</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-label">시스템 설계</span>
+                        <div class="radar-bar">
+                            <div class="bar-progress" style="width: 75%"></div>
+                        </div>
+                        <span class="radar-score">75%</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-label">성능 최적화</span>
+                        <div class="radar-bar">
+                            <div class="bar-progress" style="width: 80%"></div>
+                        </div>
+                        <span class="radar-score">80%</span>
+                    </div>
+                    <div class="radar-item">
+                        <span class="radar-label">배포 경험</span>
+                        <div class="radar-bar">
+                            <div class="bar-progress" style="width: 65%"></div>
+                        </div>
+                        <span class="radar-score">65%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-assessment">
+                <h4>⚡ 실무 경험</h4>
+                <div class="experience-matrix">
+                    <div class="exp-category">
+                        <div class="exp-header">
+                            <span class="exp-icon">🏗️</span>
+                            <span class="exp-name">아키텍처 설계</span>
+                        </div>
+                        <div class="exp-level intermediate">중급</div>
+                    </div>
+                    <div class="exp-category">
+                        <div class="exp-header">
+                            <span class="exp-icon">🔧</span>
+                            <span class="exp-name">시스템 튜닝</span>
+                        </div>
+                        <div class="exp-level advanced">고급</div>
+                    </div>
+                    <div class="exp-category">
+                        <div class="exp-header">
+                            <span class="exp-icon">📊</span>
+                            <span class="exp-name">모니터링</span>
+                        </div>
+                        <div class="exp-level beginner">초급</div>
+                    </div>
+                    <div class="exp-category">
+                        <div class="exp-header">
+                            <span class="exp-icon">🚀</span>
+                            <span class="exp-name">DevOps</span>
+                        </div>
+                        <div class="exp-level intermediate">중급</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="readiness-verdict">
+            <div class="verdict-card">
+                <div class="verdict-icon">🎯</div>
+                <div class="verdict-content">
+                    <h4>실전 프로젝트 준비 완료!</h4>
+                    <p>기술적 기반이 탄탄하고 실무 프로젝트를 시작할 수 있는 수준입니다.</p>
+                    <div class="next-milestone">
+                        <span class="milestone-icon">🏆</span>
+                        <span>목표: 추론 시스템 아키텍트 달성</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 9.6: 엔터프라이즈 추론 시스템 아키텍처 -->
+<section class="content-section enterprise-architecture">
+    <h2>9.6 엔터프라이즈 추론 시스템 설계</h2>
+    
+    <!-- 시스템 아키텍처 설계자 -->
+    <div class="architecture-designer">
+        <h3>🏗️ 시스템 아키텍처 설계자</h3>
+        
+        <div class="design-workspace">
+            <div class="requirements-panel">
+                <h4>요구사항 정의</h4>
+                <div class="requirement-builder">
+                    <div class="req-category">
+                        <h5>📊 성능 요구사항</h5>
+                        <div class="req-sliders">
+                            <div class="slider-group">
+                                <label>응답 시간 (ms)</label>
+                                <input type="range" min="10" max="5000" value="100" id="response-time-slider">
+                                <span class="slider-value" id="response-time-value">100ms</span>
+                            </div>
+                            <div class="slider-group">
+                                <label>동시 사용자</label>
+                                <input type="range" min="1" max="10000" value="1000" id="concurrent-users-slider">
+                                <span class="slider-value" id="concurrent-users-value">1,000명</span>
+                            </div>
+                            <div class="slider-group">
+                                <label>온톨로지 크기 (classes)</label>
+                                <input type="range" min="100" max="1000000" value="50000" id="ontology-size-slider">
+                                <span class="slider-value" id="ontology-size-value">50,000개</span>
+                            </div>
+                            <div class="slider-group">
+                                <label>가용성 (%)</label>
+                                <input type="range" min="90" max="99.99" step="0.01" value="99.9" id="availability-slider">
+                                <span class="slider-value" id="availability-value">99.9%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="req-category">
+                        <h5>🔧 기능 요구사항</h5>
+                        <div class="feature-checkboxes">
+                            <label class="feature-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                <span class="feature-name">실시간 추론</span>
+                            </label>
+                            <label class="feature-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                <span class="feature-name">일관성 검증</span>
+                            </label>
+                            <label class="feature-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="feature-name">설명 생성</span>
+                            </label>
+                            <label class="feature-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                <span class="feature-name">REST API</span>
+                            </label>
+                            <label class="feature-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <span class="feature-name">GraphQL</span>
+                            </label>
+                            <label class="feature-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                <span class="feature-name">캐싱</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="architecture-recommendation">
+                    <h5>🎯 추천 아키텍처</h5>
+                    <div class="recommendation-card" id="arch-recommendation">
+                        <div class="rec-header">
+                            <span class="rec-icon">🏢</span>
+                            <span class="rec-name">Microservices + 캐시 Layer</span>
+                            <span class="rec-confidence">적합도: 95%</span>
+                        </div>
+                        <div class="rec-details">
+                            <p><strong>이유:</strong> 높은 동시성과 중간 규모 온톨로지에 최적화된 구조</p>
+                            <div class="rec-components">
+                                <span class="component">ELK Reasoner</span>
+                                <span class="component">Redis Cache</span>
+                                <span class="component">Load Balancer</span>
+                                <span class="component">API Gateway</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="architecture-canvas">
+                <h4>시스템 아키텍처 다이어그램</h4>
+                <div class="architecture-diagram" id="arch-diagram">
+                    <div class="arch-layer client-layer">
+                        <div class="layer-title">Client Layer</div>
+                        <div class="arch-components">
+                            <div class="arch-component web-app">
+                                <span class="comp-icon">🌐</span>
+                                <span class="comp-name">Web App</span>
+                            </div>
+                            <div class="arch-component mobile-app">
+                                <span class="comp-icon">📱</span>
+                                <span class="comp-name">Mobile App</span>
+                            </div>
+                            <div class="arch-component third-party">
+                                <span class="comp-icon">🔌</span>
+                                <span class="comp-name">3rd Party</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="connection-line"></div>
+                    
+                    <div class="arch-layer gateway-layer">
+                        <div class="layer-title">API Gateway</div>
+                        <div class="arch-components">
+                            <div class="arch-component api-gateway">
+                                <span class="comp-icon">🚪</span>
+                                <span class="comp-name">API Gateway</span>
+                                <div class="comp-details">
+                                    <span>Rate Limiting</span>
+                                    <span>Authentication</span>
+                                    <span>Routing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="connection-line"></div>
+                    
+                    <div class="arch-layer service-layer">
+                        <div class="layer-title">Service Layer</div>
+                        <div class="arch-components">
+                            <div class="arch-component reasoning-service">
+                                <span class="comp-icon">🧠</span>
+                                <span class="comp-name">Reasoning Service</span>
+                                <div class="comp-details">
+                                    <span>ELK Engine</span>
+                                    <span>Auto Scaling</span>
+                                </div>
+                            </div>
+                            <div class="arch-component ontology-service">
+                                <span class="comp-icon">📚</span>
+                                <span class="comp-name">Ontology Service</span>
+                                <div class="comp-details">
+                                    <span>CRUD Operations</span>
+                                    <span>Version Control</span>
+                                </div>
+                            </div>
+                            <div class="arch-component cache-service">
+                                <span class="comp-icon">⚡</span>
+                                <span class="comp-name">Cache Service</span>
+                                <div class="comp-details">
+                                    <span>Redis Cluster</span>
+                                    <span>TTL Management</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="connection-line"></div>
+                    
+                    <div class="arch-layer data-layer">
+                        <div class="layer-title">Data Layer</div>
+                        <div class="arch-components">
+                            <div class="arch-component ontology-store">
+                                <span class="comp-icon">🗄️</span>
+                                <span class="comp-name">Ontology Store</span>
+                                <div class="comp-details">
+                                    <span>Triple Store</span>
+                                    <span>Backup & Sync</span>
+                                </div>
+                            </div>
+                            <div class="arch-component metadata-db">
+                                <span class="comp-icon">📊</span>
+                                <span class="comp-name">Metadata DB</span>
+                                <div class="comp-details">
+                                    <span>PostgreSQL</span>
+                                    <span>Analytics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="architecture-metrics">
+                    <h5>📊 예상 성능 지표</h5>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-icon">⚡</span>
+                            <span class="metric-label">평균 응답시간</span>
+                            <span class="metric-value" id="estimated-response">95ms</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-icon">👥</span>
+                            <span class="metric-label">최대 동시 사용자</span>
+                            <span class="metric-value" id="estimated-users">1,200명</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-icon">💾</span>
+                            <span class="metric-label">메모리 사용량</span>
+                            <span class="metric-value" id="estimated-memory">8GB</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-icon">🔄</span>
+                            <span class="metric-label">캐시 적중률</span>
+                            <span class="metric-value" id="estimated-cache">85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 9.7: 실시간 추론 시스템 구현 -->
+<section class="content-section realtime-implementation">
+    <h2>9.7 실시간 추론 시스템 구현</h2>
+    
+    <!-- 프로젝트 설정 -->
+    <div class="project-setup">
+        <h3>🛠️ 프로젝트 설정 마법사</h3>
+        
+        <div class="setup-wizard">
+            <div class="wizard-progress">
+                <div class="progress-step completed">
+                    <span class="step-number">1</span>
+                    <span class="step-name">기술 스택</span>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step completed">
+                    <span class="step-number">2</span>
+                    <span class="step-name">환경 설정</span>
+                </div>
+                <div class="progress-line active"></div>
+                <div class="progress-step active">
+                    <span class="step-number">3</span>
+                    <span class="step-name">구현</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <span class="step-number">4</span>
+                    <span class="step-name">배포</span>
+                </div>
+            </div>
+            
+            <div class="setup-content">
+                <div class="tech-stack-overview">
+                    <h4>선택된 기술 스택</h4>
+                    <div class="stack-categories">
+                        <div class="stack-category">
+                            <h5>⚡ 추론 엔진</h5>
+                            <div class="stack-item selected">
+                                <span class="item-icon">🏃</span>
+                                <span class="item-name">ELK Reasoner</span>
+                                <span class="item-reason">고성능, OWL EL</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stack-category">
+                            <h5>🌐 백엔드</h5>
+                            <div class="stack-item selected">
+                                <span class="item-icon">☕</span>
+                                <span class="item-name">Spring Boot</span>
+                                <span class="item-reason">Java 생태계</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stack-category">
+                            <h5>💾 데이터베이스</h5>
+                            <div class="stack-item selected">
+                                <span class="item-icon">🗄️</span>
+                                <span class="item-name">Apache Jena TDB</span>
+                                <span class="item-reason">RDF 최적화</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stack-category">
+                            <h5>⚡ 캐시</h5>
+                            <div class="stack-item selected">
+                                <span class="item-icon">🔴</span>
+                                <span class="item-name">Redis</span>
+                                <span class="item-reason">인메모리 성능</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 핵심 구현 -->
+    <div class="core-implementation">
+        <h3>💻 핵심 구현</h3>
+        
+        <div class="implementation-tabs">
+            <button class="impl-tab active" onclick="showImplementation('reasoner-service')">
+                <span class="tab-icon">🧠</span>
+                <span>추론 서비스</span>
+            </button>
+            <button class="impl-tab" onclick="showImplementation('cache-layer')">
+                <span class="tab-icon">⚡</span>
+                <span>캐시 레이어</span>
+            </button>
+            <button class="impl-tab" onclick="showImplementation('api-gateway')">
+                <span class="tab-icon">🚪</span>
+                <span>API 게이트웨이</span>
+            </button>
+            <button class="impl-tab" onclick="showImplementation('monitoring')">
+                <span class="tab-icon">📊</span>
+                <span>모니터링</span>
+            </button>
+        </div>
+        
+        <div class="implementation-content" id="reasoner-service-impl">
+            <div class="impl-header">
+                <h4>🧠 추론 서비스 구현</h4>
+                <div class="impl-description">
+                    <p>ELK 추론 엔진을 활용한 고성능 추론 서비스</p>
+                </div>
+            </div>
+            
+            <div class="code-sections">
+                <div class="code-section">
+                    <h5>메인 서비스 클래스</h5>
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <span class="file-name">ReasoningService.java</span>
+                            <div class="editor-actions">
+                                <button class="action-btn copy" onclick="copyCode('reasoning-service-code')">
+                                    <span class="btn-icon">📋</span>
+                                    <span>복사</span>
+                                </button>
+                                <button class="action-btn run" onclick="runCode('reasoning-service')">
+                                    <span class="btn-icon">▶️</span>
+                                    <span>실행</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-content" id="reasoning-service-code"><code class="language-java">@Service
+@Slf4j
+public class ReasoningService {
+    
+    private final OWLReasonerFactory reasonerFactory;
+    private final CacheService cacheService;
+    private final MetricsService metricsService;
+    
+    @Autowired
+    public ReasoningService(
+            @Qualifier("elkReasonerFactory") OWLReasonerFactory reasonerFactory,
+            CacheService cacheService,
+            MetricsService metricsService) {
+        this.reasonerFactory = reasonerFactory;
+        this.cacheService = cacheService;
+        this.metricsService = metricsService;
+    }
+    
+    /**
+     * 클래스 계층 구조 추론
+     */
+    @Cacheable(value = "class-hierarchy", key = "#ontologyId")
+    public ClassHierarchyResponse inferClassHierarchy(String ontologyId) {
+        Timer.Sample sample = metricsService.startTimer("reasoning.class-hierarchy");
+        
+        try {
+            // 온톨로지 로드
+            OWLOntology ontology = loadOntology(ontologyId);
+            
+            // ELK 추론 엔진 초기화
+            OWLReasoner reasoner = reasonerFactory.createReasoner(ontology);
+            
+            // 클래스 계층 구조 계산
+            Node&lt;OWLClass&gt; topNode = reasoner.getTopClassNode();
+            Set&lt;Node&lt;OWLClass&gt;&gt; subClasses = reasoner.getSubClasses(
+                ontology.getOWLOntologyManager().getOWLDataFactory().getOWLThing(),
+                false
+            );
+            
+            // 결과 구성
+            ClassHierarchyResponse response = ClassHierarchyResponse.builder()
+                .ontologyId(ontologyId)
+                .rootClasses(convertToClassNodes(subClasses))
+                .inferenceTime(sample.stop(metricsService.getTimer("reasoning.class-hierarchy")))
+                .timestamp(Instant.now())
+                .build();
+            
+            log.info("Class hierarchy inference completed for ontology: {}", ontologyId);
+            return response;
+            
+        } catch (Exception e) {
+            metricsService.incrementCounter("reasoning.errors", "type", "class-hierarchy");
+            log.error("Failed to infer class hierarchy for ontology: {}", ontologyId, e);
+            throw new ReasoningException("Class hierarchy inference failed", e);
+        }
+    }
+    
+    /**
+     * 실시간 인스턴스 분류
+     */
+    @Async("reasoningExecutor")
+    public CompletableFuture&lt;InstanceClassificationResponse&gt; classifyInstanceAsync(
+            String ontologyId, 
+            String individualId,
+            Map&lt;String, Object&gt; properties) {
+        
+        return CompletableFuture.supplyAsync(() -> {
+            Timer.Sample sample = metricsService.startTimer("reasoning.instance-classification");
+            
+            try {
+                // 캐시 확인
+                String cacheKey = generateCacheKey(ontologyId, individualId, properties);
+                InstanceClassificationResponse cached = cacheService.get(cacheKey, 
+                    InstanceClassificationResponse.class);
+                
+                if (cached != null) {
+                    metricsService.incrementCounter("reasoning.cache.hits");
+                    return cached;
+                }
+                
+                // 온톨로지 로드 및 추론
+                OWLOntology ontology = loadOntology(ontologyId);
+                OWLReasoner reasoner = reasonerFactory.createReasoner(ontology);
+                
+                // 개체 생성 및 속성 추가
+                OWLNamedIndividual individual = createIndividualWithProperties(
+                    ontology, individualId, properties);
+                
+                // 타입 추론
+                NodeSet&lt;OWLClass&gt; types = reasoner.getTypes(individual, false);
+                Set&lt;OWLClass&gt; inferredClasses = types.getFlattened();
+                
+                InstanceClassificationResponse response = InstanceClassificationResponse.builder()
+                    .ontologyId(ontologyId)
+                    .individualId(individualId)
+                    .inferredClasses(convertToClassInfo(inferredClasses))
+                    .confidence(calculateConfidence(inferredClasses))
+                    .inferenceTime(sample.stop(metricsService.getTimer("reasoning.instance-classification")))
+                    .build();
+                
+                // 캐시 저장 (TTL: 1시간)
+                cacheService.put(cacheKey, response, Duration.ofHours(1));
+                metricsService.incrementCounter("reasoning.cache.misses");
+                
+                return response;
+                
+            } catch (Exception e) {
+                metricsService.incrementCounter("reasoning.errors", "type", "instance-classification");
+                throw new CompletionException(e);
+            }
+        });
+    }
+    
+    /**
+     * 일관성 검증
+     */
+    public ConsistencyCheckResponse checkConsistency(String ontologyId) {
+        Timer.Sample sample = metricsService.startTimer("reasoning.consistency-check");
+        
+        try {
+            OWLOntology ontology = loadOntology(ontologyId);
+            OWLReasoner reasoner = reasonerFactory.createReasoner(ontology);
+            
+            boolean isConsistent = reasoner.isConsistent();
+            Set&lt;OWLClass&gt; unsatisfiableClasses = Collections.emptySet();
+            
+            if (!isConsistent) {
+                unsatisfiableClasses = reasoner.getUnsatisfiableClasses().getFlattened();
+            }
+            
+            return ConsistencyCheckResponse.builder()
+                .ontologyId(ontologyId)
+                .isConsistent(isConsistent)
+                .unsatisfiableClasses(convertToClassInfo(unsatisfiableClasses))
+                .checkTime(sample.stop(metricsService.getTimer("reasoning.consistency-check")))
+                .build();
+                
+        } catch (Exception e) {
+            metricsService.incrementCounter("reasoning.errors", "type", "consistency-check");
+            throw new ReasoningException("Consistency check failed", e);
+        }
+    }
+    
+    private OWLOntology loadOntology(String ontologyId) {
+        // 온톨로지 로딩 로직
+        // TDB에서 온톨로지 데이터 로드
+        return ontologyRepository.findById(ontologyId)
+            .orElseThrow(() -> new OntologyNotFoundException(ontologyId));
+    }
+    
+    private double calculateConfidence(Set&lt;OWLClass&gt; classes) {
+        // 신뢰도 계산 로직
+        return Math.min(0.95, 0.8 + (classes.size() * 0.05));
+    }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-section">
+                    <h5>응답 데이터 모델</h5>
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <span class="file-name">ReasoningResponses.java</span>
+                        </div>
+                        <pre class="code-content"><code class="language-java">@Data
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ClassHierarchyResponse {
+    private String ontologyId;
+    private List&lt;ClassNode&gt; rootClasses;
+    private Duration inferenceTime;
+    private Instant timestamp;
+    
+    @Data
+    @Builder
+    public static class ClassNode {
+        private String className;
+        private String label;
+        private List&lt;ClassNode&gt; subClasses;
+        private int instanceCount;
+    }
+}
+
+@Data
+@Builder
+public class InstanceClassificationResponse {
+    private String ontologyId;
+    private String individualId;
+    private List&lt;ClassInfo&gt; inferredClasses;
+    private double confidence;
+    private Duration inferenceTime;
+    
+    @Data
+    @Builder
+    public static class ClassInfo {
+        private String className;
+        private String label;
+        private double probability;
+        private List&lt;String&gt; reasons;
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="performance-analysis">
+                <h5>📊 성능 분석</h5>
+                <div class="perf-metrics">
+                    <div class="perf-chart">
+                        <h6>응답 시간 분포</h6>
+                        <div class="chart-placeholder">
+                            <canvas id="responseTimeChart" width="300" height="150"></canvas>
+                        </div>
+                    </div>
+                    <div class="perf-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">평균 응답시간</span>
+                            <span class="stat-value">85ms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">P95 응답시간</span>
+                            <span class="stat-value">230ms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">처리량</span>
+                            <span class="stat-value">1,200 req/s</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">에러율</span>
+                            <span class="stat-value">0.02%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 다른 구현 탭들은 JavaScript로 동적 로딩 -->
+    </div>
+</section>
+
+<!-- 섹션 9.8: 고급 최적화 및 모니터링 -->
+<section class="content-section advanced-optimization">
+    <h2>9.8 고급 최적화 및 모니터링</h2>
+    
+    <!-- 성능 최적화 대시보드 -->
+    <div class="optimization-dashboard">
+        <h3>⚡ 성능 최적화 대시보드</h3>
+        
+        <div class="optimization-controls">
+            <div class="control-panel">
+                <h4>최적화 설정</h4>
+                <div class="optimization-toggles">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="enable-caching">
+                        <span class="slider"></span>
+                        <span class="toggle-label">스마트 캐싱</span>
+                    </label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="enable-parallel">
+                        <span class="slider"></span>
+                        <span class="toggle-label">병렬 처리</span>
+                    </label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="enable-precompute">
+                        <span class="slider"></span>
+                        <span class="toggle-label">사전 계산</span>
+                    </label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="enable-compression">
+                        <span class="slider"></span>
+                        <span class="toggle-label">응답 압축</span>
+                    </label>
+                </div>
+                
+                <div class="optimization-parameters">
+                    <div class="param-group">
+                        <label>스레드 풀 크기</label>
+                        <input type="range" min="2" max="32" value="8" id="thread-pool-size">
+                        <span class="param-value" id="thread-pool-value">8</span>
+                    </div>
+                    <div class="param-group">
+                        <label>캐시 TTL (분)</label>
+                        <input type="range" min="1" max="1440" value="60" id="cache-ttl">
+                        <span class="param-value" id="cache-ttl-value">60</span>
+                    </div>
+                    <div class="param-group">
+                        <label>배치 크기</label>
+                        <input type="range" min="10" max="1000" value="100" id="batch-size">
+                        <span class="param-value" id="batch-size-value">100</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="performance-preview">
+                <h4>성능 예측</h4>
+                <div class="preview-metrics">
+                    <div class="preview-metric">
+                        <span class="metric-icon">⚡</span>
+                        <div class="metric-content">
+                            <span class="metric-name">예상 응답시간</span>
+                            <span class="metric-value" id="predicted-response">68ms</span>
+                            <span class="metric-trend positive">↗ 22% 개선</span>
+                        </div>
+                    </div>
+                    <div class="preview-metric">
+                        <span class="metric-icon">🎯</span>
+                        <div class="metric-content">
+                            <span class="metric-name">예상 처리량</span>
+                            <span class="metric-value" id="predicted-throughput">1,850 req/s</span>
+                            <span class="metric-trend positive">↗ 54% 개선</span>
+                        </div>
+                    </div>
+                    <div class="preview-metric">
+                        <span class="metric-icon">💾</span>
+                        <div class="metric-content">
+                            <span class="metric-name">메모리 사용량</span>
+                            <span class="metric-value" id="predicted-memory">6.2GB</span>
+                            <span class="metric-trend positive">↘ 23% 절약</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="apply-optimization-btn" onclick="applyOptimizations()">
+                    <span class="btn-icon">🚀</span>
+                    <span>최적화 적용</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실시간 모니터링 -->
+    <div class="monitoring-dashboard">
+        <h3>📊 실시간 모니터링</h3>
+        
+        <div class="monitoring-grid">
+            <div class="monitor-panel system-health">
+                <h4>🏥 시스템 건강도</h4>
+                <div class="health-indicators">
+                    <div class="health-indicator healthy">
+                        <span class="indicator-icon">💚</span>
+                        <div class="indicator-content">
+                            <span class="indicator-name">추론 서비스</span>
+                            <span class="indicator-status">정상</span>
+                            <span class="indicator-uptime">99.98%</span>
+                        </div>
+                    </div>
+                    <div class="health-indicator healthy">
+                        <span class="indicator-icon">💚</span>
+                        <div class="indicator-content">
+                            <span class="indicator-name">캐시 서비스</span>
+                            <span class="indicator-status">정상</span>
+                            <span class="indicator-uptime">99.95%</span>
+                        </div>
+                    </div>
+                    <div class="health-indicator warning">
+                        <span class="indicator-icon">⚠️</span>
+                        <div class="indicator-content">
+                            <span class="indicator-name">데이터베이스</span>
+                            <span class="indicator-status">주의</span>
+                            <span class="indicator-uptime">99.85%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="health-trends">
+                    <h5>건강도 추이</h5>
+                    <div class="trend-chart">
+                        <canvas id="healthTrendChart" width="250" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="monitor-panel performance-metrics">
+                <h4>⚡ 성능 지표</h4>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">🎯</span>
+                            <span class="metric-name">처리량</span>
+                        </div>
+                        <div class="metric-value">1,248</div>
+                        <div class="metric-unit">req/s</div>
+                        <div class="metric-change positive">+15.2%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">⏱️</span>
+                            <span class="metric-name">지연시간</span>
+                        </div>
+                        <div class="metric-value">92</div>
+                        <div class="metric-unit">ms</div>
+                        <div class="metric-change negative">+5.8%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">💾</span>
+                            <span class="metric-name">메모리</span>
+                        </div>
+                        <div class="metric-value">7.2</div>
+                        <div class="metric-unit">GB</div>
+                        <div class="metric-change neutral">-2.1%</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">🎪</span>
+                            <span class="metric-name">캐시 적중률</span>
+                        </div>
+                        <div class="metric-value">87.3</div>
+                        <div class="metric-unit">%</div>
+                        <div class="metric-change positive">+3.2%</div>
+                    </div>
+                </div>
+                
+                <div class="performance-chart">
+                    <h5>성능 추이 (지난 24시간)</h5>
+                    <canvas id="performanceChart" width="300" height="120"></canvas>
+                </div>
+            </div>
+            
+            <div class="monitor-panel error-tracking">
+                <h4>🚨 에러 추적</h4>
+                <div class="error-summary">
+                    <div class="error-count">
+                        <span class="count-value">23</span>
+                        <span class="count-label">지난 1시간</span>
+                    </div>
+                    <div class="error-rate">
+                        <span class="rate-value">0.018%</span>
+                        <span class="rate-label">에러율</span>
+                    </div>
+                </div>
+                
+                <div class="error-types">
+                    <div class="error-type">
+                        <span class="error-icon">🔴</span>
+                        <div class="error-details">
+                            <span class="error-name">TimeoutException</span>
+                            <span class="error-count">15건</span>
+                        </div>
+                    </div>
+                    <div class="error-type">
+                        <span class="error-icon">🟡</span>
+                        <div class="error-details">
+                            <span class="error-name">MemoryOverflow</span>
+                            <span class="error-count">5건</span>
+                        </div>
+                    </div>
+                    <div class="error-type">
+                        <span class="error-icon">🟠</span>
+                        <div class="error-details">
+                            <span class="error-name">ParseException</span>
+                            <span class="error-count">3건</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert-config">
+                    <h5>알림 설정</h5>
+                    <div class="alert-rules">
+                        <div class="alert-rule">
+                            <span class="rule-condition">에러율 > 0.1%</span>
+                            <span class="rule-action">Slack 알림</span>
+                        </div>
+                        <div class="alert-rule">
+                            <span class="rule-condition">응답시간 > 500ms</span>
+                            <span class="rule-action">이메일 알림</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 최종 마스터 도전 -->
+<div class="master-challenge reasoning-expert">
+    <h2>🏆 추론 시스템 마스터 도전</h2>
+    <p>모든 학습을 완료했습니다! 이제 추론 시스템 전문가가 될 시간입니다.</p>
+    
+    <div class="challenge-overview">
+        <div class="mastery-stats">
+            <div class="mastery-stat">
+                <span class="stat-icon">🧠</span>
+                <span class="stat-value">3</span>
+                <span class="stat-label">학습 파트</span>
+            </div>
+            <div class="mastery-stat">
+                <span class="stat-icon">🛠️</span>
+                <span class="stat-value">2</span>
+                <span class="stat-label">실전 프로젝트</span>
+            </div>
+            <div class="mastery-stat">
+                <span class="stat-icon">⏱️</span>
+                <span class="stat-value">8+</span>
+                <span class="stat-label">실습 시간</span>
+            </div>
+            <div class="mastery-stat">
+                <span class="stat-icon">🎯</span>
+                <span class="stat-value">15</span>
+                <span class="stat-label">핵심 개념</span>
+            </div>
+        </div>
+        
+        <div class="final-mastery-check">
+            <h3>🎯 최종 마스터 체크리스트</h3>
+            <div class="mastery-grid">
+                <div class="mastery-category">
+                    <h4>🏛️ 이론적 기초</h4>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>추론 철학과 역사 이해</span>
+                    </label>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>Description Logic 완전 숙지</span>
+                    </label>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>단조성/비단조성 개념</span>
+                    </label>
+                </div>
+                
+                <div class="mastery-category">
+                    <h4>🌳 알고리즘 마스터</h4>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>Tableaux 알고리즘 완전 이해</span>
+                    </label>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>추론 엔진 아키텍처 분석</span>
+                    </label>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>성능 최적화 기법 적용</span>
+                    </label>
+                </div>
+                
+                <div class="mastery-category">
+                    <h4>🏭 실전 구현</h4>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>시스템 아키텍처 설계</span>
+                    </label>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>실시간 추론 서비스 구현</span>
+                    </label>
+                    <label class="mastery-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>모니터링 및 최적화</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="expert-achievement">
+            <div class="achievement-badge reasoning-master">
+                <span class="badge-icon">🧠</span>
+                <h3>Reasoning System Expert</h3>
+                <p>온톨로지 추론 시스템 전문가</p>
+                <div class="achievement-skills">
+                    <span class="skill-badge">알고리즘 마스터</span>
+                    <span class="skill-badge">시스템 아키텍트</span>
+                    <span class="skill-badge">성능 최적화</span>
+                </div>
+            </div>
+            
+            <div class="achievement-description">
+                <h4>🎉 축하합니다!</h4>
+                <p>이제 여러분은 온톨로지 추론 시스템의 모든 측면을 다룰 수 있는 전문가입니다:</p>
+                <ul>
+                    <li>복잡한 추론 알고리즘을 이해하고 구현할 수 있습니다</li>
+                    <li>대규모 추론 시스템을 설계하고 최적화할 수 있습니다</li>
+                    <li>실시간 추론 서비스를 구축하고 운영할 수 있습니다</li>
+                    <li>다른 개발자들을 멘토링할 수 있습니다</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 단계 안내 -->
+<div class="next-steps reasoning-complete">
+    <h3>🚀 다음 학습 여정</h3>
+    <p>추론 시스템 마스터가 되셨군요! 이제 다음 단계로 나아가세요:</p>
+    
+    <div class="journey-options">
+        <div class="journey-option">
+            <span class="journey-icon">🔧</span>
+            <h4>Chapter 10: 온톨로지 도구와 API</h4>
+            <p>실무에서 사용하는 다양한 온톨로지 도구와 API 활용법을 학습합니다.</p>
+            <button class="journey-btn" onclick="OntologyBook.loadChapter('chapter10')">
+                시작하기 <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Part 3 전용 스타일 -->
+<style>
+/* Production Mastery Theme */
+.part-header.production-mastery {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 70%, #64748b 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.system-architecture-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+    animation: systemFlow 4s ease-in-out infinite;
+}
+
+@keyframes systemFlow {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.progress-check.production-level {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 2px solid #64748b;
+}
+
+.production-readiness {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.readiness-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.category-assessment {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.category-assessment h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.competency-radar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.radar-label {
+    font-size: 0.875rem;
+    color: #475569;
+    width: 100px;
+    font-weight: 500;
+}
+
+.radar-bar {
+    flex: 1;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #64748b, #334155);
+    transition: width 1s ease;
+}
+
+.radar-score {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1e293b;
+    width: 40px;
+    text-align: right;
+}
+
+.experience-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.exp-category {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.exp-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.exp-icon {
+    font-size: 1.2rem;
+}
+
+.exp-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #475569;
+}
+
+.exp-level {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.exp-level.beginner {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.exp-level.intermediate {
+    background: #fed7aa;
+    color: #9a3412;
+}
+
+.exp-level.advanced {
+    background: #bbf7d0;
+    color: #065f46;
+}
+
+.readiness-verdict {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verdict-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.verdict-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.verdict-content h4 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.verdict-content p {
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+
+.next-milestone {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    background: #f0fdf4;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+}
+
+.milestone-icon {
+    color: #10b981;
+}
+
+.enterprise-architecture {
+    background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.architecture-designer {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.design-workspace {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.requirements-panel {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.requirements-panel h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.requirement-builder {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.req-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.req-category h5 {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.req-sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slider-group label {
+    font-size: 0.875rem;
+    color: #475569;
+    font-weight: 500;
+}
+
+.slider-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #64748b;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    text-align: center;
+}
+
+.feature-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.feature-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.feature-checkbox:hover {
+    background: #f1f5f9;
+}
+
+.feature-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.feature-checkbox .checkmark {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #cbd5e1;
+    border-radius: 3px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.feature-checkbox input[type="checkbox"]:checked + .checkmark {
+    background: #64748b;
+    border-color: #64748b;
+}
+
+.feature-checkbox input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.feature-name {
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.architecture-recommendation {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.architecture-recommendation h5 {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.recommendation-card {
+    background: #f0fdf4;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #10b981;
+}
+
+.rec-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.rec-icon {
+    font-size: 1.5rem;
+}
+
+.rec-name {
+    flex: 1;
+    font-weight: 600;
+    color: #166534;
+}
+
+.rec-confidence {
+    font-size: 0.75rem;
+    background: rgba(16, 185, 129, 0.2);
+    color: #166534;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.rec-details p {
+    color: #166534;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.rec-components {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.component {
+    background: white;
+    color: #166534;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.architecture-canvas {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.architecture-canvas h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.architecture-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.arch-layer {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    text-align: center;
+}
+
+.layer-title {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.arch-components {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.arch-component {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    text-align: center;
+    min-width: 120px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.arch-component:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.comp-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.comp-name {
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.comp-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.comp-details span {
+    font-size: 0.75rem;
+    color: #64748b;
+    background: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.connection-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+    margin: 0.5rem 0;
+}
+
+.architecture-metrics {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.architecture-metrics h5 {
+    color: #374151;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.metric-item {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.metric-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.realtime-implementation {
+    background: linear-gradient(135deg, #fefefe 0%, #f1f5f9 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.project-setup {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.setup-wizard {
+    margin: 2rem 0;
+}
+
+.wizard-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s;
+}
+
+.progress-step.completed .step-number {
+    background: #10b981;
+    color: white;
+}
+
+.progress-step.active .step-number {
+    background: #3b82f6;
+    color: white;
+}
+
+.step-name {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.progress-step.completed .step-name,
+.progress-step.active .step-name {
+    color: #374151;
+}
+
+.progress-line {
+    width: 60px;
+    height: 2px;
+    background: #e2e8f0;
+    margin: 0 1rem;
+    transition: all 0.2s;
+}
+
+.progress-line.completed {
+    background: #10b981;
+}
+
+.progress-line.active {
+    background: linear-gradient(90deg, #10b981, #3b82f6);
+}
+
+.tech-stack-overview {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.tech-stack-overview h4 {
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.stack-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.stack-category {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.stack-category h5 {
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.stack-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.stack-item.selected {
+    background: #eff6ff;
+    border: 1px solid #3b82f6;
+}
+
+.item-icon {
+    font-size: 1.2rem;
+}
+
+.item-name {
+    font-weight: 600;
+    color: #374151;
+    flex: 1;
+}
+
+.item-reason {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.core-implementation {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid #e2e8f0;
+}
+
+.implementation-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.impl-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #f8fafc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #475569;
+    transition: all 0.2s;
+}
+
+.impl-tab:hover {
+    background: #e2e8f0;
+}
+
+.impl-tab.active {
+    background: #1e293b;
+    color: white;
+}
+
+.tab-icon {
+    font-size: 1.2rem;
+}
+
+.implementation-content {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+}
+
+.impl-header {
+    margin-bottom: 2rem;
+}
+
+.impl-header h4 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.impl-description p {
+    color: #64748b;
+}
+
+.code-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.code-section {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.code-section h5 {
+    background: #1e293b;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+}
+
+.code-editor {
+    background: #0f172a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.editor-header {
+    background: #1e293b;
+    color: white;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-name {
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-icon {
+    font-size: 0.875rem;
+}
+
+.code-content {
+    color: #f1f5f9;
+    padding: 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 0;
+    background: #0f172a;
+}
+
+.performance-analysis {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-top: 2rem;
+}
+
+.performance-analysis h5 {
+    color: #374151;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.perf-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.perf-chart {
+    text-align: center;
+}
+
+.perf-chart h6 {
+    color: #475569;
+    margin-bottom: 1rem;
+}
+
+.chart-placeholder {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+}
+
+.perf-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.advanced-optimization {
+    background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.optimization-dashboard {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.optimization-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.control-panel {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.control-panel h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.optimization-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.toggle-switch input[type="checkbox"] {
+    display: none;
+}
+
+.slider {
+    width: 50px;
+    height: 24px;
+    background: #cbd5e1;
+    border-radius: 12px;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.2s;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .slider {
+    background: #64748b;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .slider::before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    color: #374151;
+    font-weight: 500;
+}
+
+.optimization-parameters {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.param-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.param-group label {
+    font-size: 0.875rem;
+    color: #475569;
+    font-weight: 500;
+}
+
+.param-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.param-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #64748b;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.param-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    text-align: center;
+}
+
+.performance-preview {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.performance-preview h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.preview-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.preview-metric {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.metric-icon {
+    font-size: 1.5rem;
+}
+
+.metric-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.metric-name {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.metric-trend {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.metric-trend.positive {
+    color: #10b981;
+}
+
+.metric-trend.negative {
+    color: #ef4444;
+}
+
+.apply-optimization-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #64748b, #475569);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.apply-optimization-btn:hover {
+    background: linear-gradient(135deg, #475569, #334155);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(100, 116, 139, 0.25);
+}
+
+.monitoring-dashboard {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid #e2e8f0;
+}
+
+.monitoring-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.monitor-panel {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.monitor-panel h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.health-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.health-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.health-indicator.healthy {
+    background: #f0fdf4;
+    border-color: #10b981;
+}
+
+.health-indicator.warning {
+    background: #fffbeb;
+    border-color: #f59e0b;
+}
+
+.indicator-icon {
+    font-size: 1.5rem;
+}
+
+.indicator-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.indicator-name {
+    font-weight: 600;
+    color: #374151;
+}
+
+.indicator-status {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.indicator-uptime {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #10b981;
+}
+
+.health-indicator.warning .indicator-uptime {
+    color: #f59e0b;
+}
+
+.health-trends h5 {
+    color: #374151;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.trend-chart {
+    background: white;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.metric-icon {
+    font-size: 1.2rem;
+}
+
+.metric-name {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.metric-unit {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.metric-change {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.metric-change.positive {
+    color: #10b981;
+}
+
+.metric-change.negative {
+    color: #ef4444;
+}
+
+.metric-change.neutral {
+    color: #64748b;
+}
+
+.performance-chart {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.performance-chart h5 {
+    color: #374151;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.error-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+}
+
+.error-count,
+.error-rate {
+    text-align: center;
+}
+
+.count-value,
+.rate-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ef4444;
+    display: block;
+}
+
+.count-label,
+.rate-label {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.error-types {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.error-type {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.error-icon {
+    font-size: 1.2rem;
+}
+
+.error-details {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.error-name {
+    font-weight: 500;
+    color: #374151;
+}
+
+.error-count {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.alert-config h5 {
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.alert-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alert-rule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.rule-condition {
+    font-size: 0.875rem;
+    color: #374151;
+    font-family: 'Courier New', monospace;
+}
+
+.rule-action {
+    font-size: 0.75rem;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.master-challenge.reasoning-expert {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.master-challenge h2 {
+    margin-bottom: 1rem;
+}
+
+.challenge-overview {
+    margin: 2rem 0;
+}
+
+.mastery-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.mastery-stat {
+    text-align: center;
+}
+
+.mastery-stat .stat-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.mastery-stat .stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.mastery-stat .stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.final-mastery-check {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.final-mastery-check h3 {
+    margin-bottom: 1.5rem;
+}
+
+.mastery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.mastery-category h4 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mastery-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.mastery-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mastery-item .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.mastery-item input[type="checkbox"] {
+    display: none;
+}
+
+.mastery-item input[type="checkbox"]:checked + .checkmark {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.mastery-item input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.expert-achievement {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.achievement-badge.reasoning-master {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1e293b;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-badge .badge-icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-badge h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.achievement-badge p {
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+    opacity: 0.8;
+}
+
+.achievement-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.skill-badge {
+    background: rgba(30, 41, 59, 0.8);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.achievement-description {
+    flex: 1;
+    text-align: left;
+}
+
+.achievement-description h4 {
+    margin-bottom: 1rem;
+}
+
+.achievement-description p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.achievement-description ul {
+    list-style: none;
+    padding: 0;
+}
+
+.achievement-description li {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.achievement-description li::before {
+    content: '🎯';
+    margin-right: 0.5rem;
+}
+
+.next-steps.reasoning-complete {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.journey-options {
+    margin: 2rem 0;
+}
+
+.journey-option {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #3b82f6;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.journey-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.journey-option h4 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.journey-option p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.journey-btn {
+    background: #3b82f6;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.journey-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.25);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .production-readiness,
+    .readiness-categories,
+    .design-workspace,
+    .optimization-controls,
+    .perf-metrics,
+    .monitoring-grid,
+    .expert-achievement {
+        grid-template-columns: 1fr;
+    }
+    
+    .mastery-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .impl-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .wizard-progress {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .progress-line {
+        display: none;
+    }
+}
+</style>
+
+<!-- JavaScript for interactivity -->
+<script>
+// 슬라이더 값 업데이트
+function updateSliderValue(sliderId, valueId, formatter) {
+    const slider = document.getElementById(sliderId);
+    const valueSpan = document.getElementById(valueId);
+    
+    if (slider && valueSpan) {
+        slider.addEventListener('input', function() {
+            let value = this.value;
+            if (formatter) {
+                value = formatter(value);
+            }
+            valueSpan.textContent = value;
+            updateArchitectureRecommendation();
+        });
+    }
+}
+
+// 아키텍처 추천 업데이트
+function updateArchitectureRecommendation() {
+    const responseTime = parseInt(document.getElementById('response-time-slider').value);
+    const users = parseInt(document.getElementById('concurrent-users-slider').value);
+    const ontologySize = parseInt(document.getElementById('ontology-size-slider').value);
+    const availability = parseFloat(document.getElementById('availability-slider').value);
+    
+    let recommendation = {
+        name: 'Microservices + 캐시 Layer',
+        confidence: 95,
+        components: ['ELK Reasoner', 'Redis Cache', 'Load Balancer', 'API Gateway']
+    };
+    
+    // 요구사항에 따른 추천 변경
+    if (responseTime < 50 && users > 5000) {
+        recommendation = {
+            name: 'High-Performance Cluster',
+            confidence: 98,
+            components: ['ELK Cluster', 'Hazelcast', 'Nginx Plus', 'API Gateway']
+        };
+    } else if (ontologySize > 500000) {
+        recommendation = {
+            name: 'Distributed Architecture',
+            confidence: 92,
+            components: ['HermiT Cluster', 'Neo4j', 'Kubernetes', 'GraphQL']
+        };
+    }
+    
+    const recCard = document.getElementById('arch-recommendation');
+    if (recCard) {
+        recCard.querySelector('.rec-name').textContent = recommendation.name;
+        recCard.querySelector('.rec-confidence').textContent = `적합도: ${recommendation.confidence}%`;
+        
+        const components = recCard.querySelector('.rec-components');
+        components.innerHTML = recommendation.components.map(comp => 
+            `<span class="component">${comp}</span>`
+        ).join('');
+    }
+    
+    // 성능 지표 업데이트
+    updatePerformanceMetrics(responseTime, users, ontologySize);
+}
+
+// 성능 지표 업데이트
+function updatePerformanceMetrics(responseTime, users, ontologySize) {
+    const estimatedResponse = Math.max(50, responseTime * 0.8);
+    const estimatedUsers = Math.min(users * 1.2, 2000);
+    const estimatedMemory = Math.ceil(ontologySize / 10000 + 2);
+    const estimatedCache = Math.min(95, 70 + (users / 1000) * 5);
+    
+    const elements = {
+        'estimated-response': `${estimatedResponse}ms`,
+        'estimated-users': `${estimatedUsers.toLocaleString()}명`,
+        'estimated-memory': `${estimatedMemory}GB`,
+        'estimated-cache': `${estimatedCache}%`
+    };
+    
+    Object.entries(elements).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    });
+}
+
+// 구현 탭 전환
+function showImplementation(implType) {
+    // 모든 탭 비활성화
+    document.querySelectorAll('.impl-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 모든 콘텐츠 숨기기
+    document.querySelectorAll('.implementation-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // 선택된 탭 활성화
+    event.target.closest('.impl-tab').classList.add('active');
+    
+    // 해당 콘텐츠 표시
+    const content = document.getElementById(implType + '-impl');
+    if (content) {
+        content.style.display = 'block';
+    }
+}
+
+// 코드 복사
+function copyCode(codeId) {
+    const codeElement = document.getElementById(codeId);
+    if (codeElement) {
+        const text = codeElement.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            // 복사 완료 피드백
+            const btn = event.target.closest('.action-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="btn-icon">✓</span><span>복사됨</span>';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        });
+    }
+}
+
+// 코드 실행 시뮬레이션
+function runCode(serviceType) {
+    const btn = event.target.closest('.action-btn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="btn-icon">⏳</span><span>실행중...</span>';
+    
+    setTimeout(() => {
+        btn.innerHTML = '<span class="btn-icon">✓</span><span>실행완료</span>';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 3000);
+    }, 2000);
+}
+
+// 최적화 적용
+function applyOptimizations() {
+    const btn = event.target;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="btn-icon">⏳</span><span>적용 중...</span>';
+    btn.disabled = true;
+    
+    setTimeout(() => {
+        btn.innerHTML = '<span class="btn-icon">✓</span><span>적용 완료</span>';
+        
+        // 성능 예측 값 업데이트
+        document.getElementById('predicted-response').textContent = '68ms';
+        document.getElementById('predicted-throughput').textContent = '1,850 req/s';
+        document.getElementById('predicted-memory').textContent = '6.2GB';
+        
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }, 3000);
+    }, 2000);
+}
+
+// 학습 진도 추적
+function updateMasteryProgress() {
+    const checkboxes = document.querySelectorAll('.mastery-item input[type="checkbox"]');
+    const checkedBoxes = document.querySelectorAll('.mastery-item input[type="checkbox"]:checked');
+    
+    const progress = (checkedBoxes.length / checkboxes.length) * 100;
+    
+    if (progress >= 100) {
+        // 마스터 달성 축하
+        setTimeout(() => {
+            alert('🎉 축하합니다! 추론 시스템 마스터가 되셨습니다! 🎉');
+        }, 500);
+    }
+}
+
+// 차트 그리기
+function drawResponseTimeChart() {
+    const canvas = document.getElementById('responseTimeChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const data = [20, 35, 45, 30, 25, 40, 35, 30, 28, 32];
+    const max = Math.max(...data);
+    const height = canvas.height - 20;
+    const width = canvas.width - 20;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#3b82f6';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    
+    data.forEach((value, index) => {
+        const x = 10 + (index * (width / (data.length - 1)));
+        const y = height - (value / max * height) + 10;
+        
+        if (index === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    });
+    
+    ctx.stroke();
+}
+
+function drawHealthTrendChart() {
+    const canvas = document.getElementById('healthTrendChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const data = [98, 99, 98.5, 99.2, 99.8, 98.8, 99.1, 99.5];
+    const height = canvas.height - 10;
+    const width = canvas.width - 10;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#10b981';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    
+    data.forEach((value, index) => {
+        const x = 5 + (index * (width / (data.length - 1)));
+        const y = height - ((value - 97) / 3 * height) + 5;
+        
+        if (index === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    });
+    
+    ctx.stroke();
+}
+
+function drawPerformanceChart() {
+    const canvas = document.getElementById('performanceChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const throughput = [1100, 1150, 1200, 1180, 1220, 1248, 1260, 1240];
+    const latency = [95, 92, 88, 90, 85, 92, 89, 87];
+    
+    const height = canvas.height - 20;
+    const width = canvas.width - 20;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // 처리량 그래프
+    ctx.strokeStyle = '#10b981';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    
+    throughput.forEach((value, index) => {
+        const x = 10 + (index * (width / (throughput.length - 1)));
+        const y = height - ((value - 1000) / 300 * height) + 10;
+        
+        if (index === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    });
+    
+    ctx.stroke();
+    
+    // 지연시간 그래프
+    ctx.strokeStyle = '#ef4444';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    
+    latency.forEach((value, index) => {
+        const x = 10 + (index * (width / (latency.length - 1)));
+        const y = height - ((value - 80) / 20 * height / 2) + 10;
+        
+        if (index === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    });
+    
+    ctx.stroke();
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 슬라이더 초기화
+    updateSliderValue('response-time-slider', 'response-time-value', v => v + 'ms');
+    updateSliderValue('concurrent-users-slider', 'concurrent-users-value', v => parseInt(v).toLocaleString() + '명');
+    updateSliderValue('ontology-size-slider', 'ontology-size-value', v => parseInt(v).toLocaleString() + '개');
+    updateSliderValue('availability-slider', 'availability-value', v => v + '%');
+    updateSliderValue('thread-pool-size', 'thread-pool-value');
+    updateSliderValue('cache-ttl', 'cache-ttl-value');
+    updateSliderValue('batch-size', 'batch-size-value');
+    
+    // 체크박스 이벤트 리스너
+    const checkboxes = document.querySelectorAll('.mastery-item input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateMasteryProgress);
+    });
+    
+    // 차트 그리기
+    setTimeout(() => {
+        drawResponseTimeChart();
+        drawHealthTrendChart();
+        drawPerformanceChart();
+    }, 500);
+    
+    // 초기 아키텍처 추천 설정
+    updateArchitectureRecommendation();
+});
+</script>

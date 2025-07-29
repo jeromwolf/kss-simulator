@@ -1,0 +1,2735 @@
+<!-- Chapter 8: Protégé - 온톨로지 개발의 필수 도구 (인터랙티브 마스터 버전) Part 3 -->
+
+<!-- Part 3 시작 -->
+<div class="part-header expert">
+    <div class="protege-mastery-animation"></div>
+    <h2 class="part-title">Part 3: 전문가 프로젝트와 실무 활용</h2>
+    <p class="part-description">이제 Protégé 마스터가 될 시간입니다. 실무 프로젝트와 고급 기능으로 전문가 수준에 도달하세요.</p>
+</div>
+
+<!-- 전문가 준비도 체크 -->
+<div class="progress-check expert-level">
+    <h3>🏆 전문가 준비도 평가</h3>
+    <div class="expert-readiness">
+        <div class="readiness-meter">
+            <div class="meter-section completed">
+                <span class="section-icon">✅</span>
+                <span class="section-name">기초 마스터</span>
+                <div class="skill-gauge">
+                    <div class="gauge-fill" style="width: 100%"></div>
+                </div>
+                <span class="skill-score">100%</span>
+            </div>
+            <div class="meter-section completed">
+                <span class="section-icon">✅</span>
+                <span class="section-name">실전 모델링</span>
+                <div class="skill-gauge">
+                    <div class="gauge-fill" style="width: 100%"></div>
+                </div>
+                <span class="skill-score">100%</span>
+            </div>
+            <div class="meter-section current">
+                <span class="section-icon">🚀</span>
+                <span class="section-name">전문가 도전</span>
+                <div class="skill-gauge">
+                    <div class="gauge-fill expert-fill" style="width: 10%"></div>
+                </div>
+                <span class="skill-score">10%</span>
+            </div>
+        </div>
+        
+        <div class="expert-badge-preview">
+            <div class="badge-container">
+                <div class="expert-badge">
+                    <span class="badge-icon">🏆</span>
+                    <span class="badge-title">Protégé Master</span>
+                    <span class="badge-subtitle">Expert Level</span>
+                </div>
+                <div class="badge-progress">획득까지 90% 남음</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 8.4: 의료 진단 온톨로지 실전 프로젝트 -->
+<section class="content-section medical-project">
+    <h2>8.4 실전 프로젝트: 의료 진단 온톨로지 구축</h2>
+    
+    <!-- 프로젝트 브리핑 -->
+    <div class="project-briefing">
+        <h3>🏥 프로젝트 브리핑: AI 의료 진단 시스템</h3>
+        <div class="briefing-content">
+            <div class="project-overview">
+                <div class="overview-header">
+                    <span class="project-icon">🎯</span>
+                    <div class="project-info">
+                        <h4>미션: 지능형 의료 진단 온톨로지</h4>
+                        <p>증상, 질병, 치료법을 연결하는 의료 지식 시스템 구축</p>
+                    </div>
+                    <div class="difficulty-badge expert">전문가</div>
+                </div>
+                
+                <div class="project-specs">
+                    <div class="spec-item">
+                        <span class="spec-icon">⏱️</span>
+                        <span class="spec-label">예상 시간</span>
+                        <span class="spec-value">2-3 시간</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">🧠</span>
+                        <span class="spec-label">복잡도</span>
+                        <span class="spec-value">High</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">📊</span>
+                        <span class="spec-label">클래스 수</span>
+                        <span class="spec-value">150+</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">🔗</span>
+                        <span class="spec-label">관계 수</span>
+                        <span class="spec-value">80+</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 요구사항 분석 -->
+            <div class="requirements-analysis">
+                <h4>📋 요구사항 분석</h4>
+                <div class="requirements-grid">
+                    <div class="requirement-category">
+                        <h5>🏥 도메인 지식</h5>
+                        <ul>
+                            <li>증상 분류 체계 (ICD-10 기반)</li>
+                            <li>질병 분류와 관계</li>
+                            <li>치료법과 약물 정보</li>
+                            <li>의료진과 전문 분야</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-category">
+                        <h5>🔍 추론 요구사항</h5>
+                        <ul>
+                            <li>증상 기반 질병 추론</li>
+                            <li>약물 상호작용 검증</li>
+                            <li>치료 경로 최적화</li>
+                            <li>위험도 평가</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-category">
+                        <h5>⚡ 성능 요구사항</h5>
+                        <ul>
+                            <li>실시간 진단 지원</li>
+                            <li>확장 가능한 구조</li>
+                            <li>다국어 지원</li>
+                            <li>표준 호환성</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 단계별 구축 과정 -->
+    <div class="construction-phases">
+        <h3>🔨 단계별 구축 과정</h3>
+        
+        <!-- Phase 1: 도메인 모델링 -->
+        <div class="construction-phase active">
+            <div class="phase-header">
+                <span class="phase-number">Phase 1</span>
+                <h4>도메인 모델링</h4>
+                <span class="phase-duration">45분</span>
+            </div>
+            <div class="phase-content">
+                <div class="domain-modeling-workshop">
+                    <h5>🧬 의료 도메인 모델링 워크샵</h5>
+                    
+                    <!-- 계층 구조 설계 -->
+                    <div class="hierarchy-designer">
+                        <h6>클래스 계층 구조 설계</h6>
+                        <div class="medical-hierarchy">
+                            <div class="hierarchy-visualization">
+                                <div class="class-tree">
+                                    <div class="tree-node root-medical">
+                                        <span class="node-icon">🏥</span>
+                                        <span class="node-name">MedicalEntity</span>
+                                        <div class="node-children">
+                                            <div class="tree-branch">
+                                                <div class="tree-node">
+                                                    <span class="node-icon">😷</span>
+                                                    <span class="node-name">Symptom</span>
+                                                    <div class="node-children">
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">🌡️</span>
+                                                            <span class="node-name">Fever</span>
+                                                        </div>
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">😴</span>
+                                                            <span class="node-name">Fatigue</span>
+                                                        </div>
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">🤕</span>
+                                                            <span class="node-name">Pain</span>
+                                                            <div class="node-children">
+                                                                <div class="tree-node">
+                                                                    <span class="node-icon">🧠</span>
+                                                                    <span class="node-name">Headache</span>
+                                                                </div>
+                                                                <div class="tree-node">
+                                                                    <span class="node-icon">❤️</span>
+                                                                    <span class="node-name">ChestPain</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tree-branch">
+                                                <div class="tree-node">
+                                                    <span class="node-icon">🦠</span>
+                                                    <span class="node-name">Disease</span>
+                                                    <div class="node-children">
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">🫁</span>
+                                                            <span class="node-name">RespiratoryDisease</span>
+                                                            <div class="node-children">
+                                                                <div class="tree-node">
+                                                                    <span class="node-icon">😷</span>
+                                                                    <span class="node-name">COVID19</span>
+                                                                </div>
+                                                                <div class="tree-node">
+                                                                    <span class="node-icon">🫁</span>
+                                                                    <span class="node-name">Pneumonia</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">❤️</span>
+                                                            <span class="node-name">CardiovascularDisease</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tree-branch">
+                                                <div class="tree-node">
+                                                    <span class="node-icon">💊</span>
+                                                    <span class="node-name">Treatment</span>
+                                                    <div class="node-children">
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">💉</span>
+                                                            <span class="node-name">Medication</span>
+                                                        </div>
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">🏥</span>
+                                                            <span class="node-name">Surgery</span>
+                                                        </div>
+                                                        <div class="tree-node">
+                                                            <span class="node-icon">🧘</span>
+                                                            <span class="node-name">Therapy</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 자동 코드 생성 -->
+                            <div class="code-generator">
+                                <h6>📝 자동 생성된 OWL 코드</h6>
+                                <pre class="generated-owl"><code># 의료 온톨로지 클래스 정의
+
+Declaration(Class(:MedicalEntity))
+Declaration(Class(:Symptom))
+Declaration(Class(:Disease))
+Declaration(Class(:Treatment))
+
+# 계층 구조
+SubClassOf(:Symptom :MedicalEntity)
+SubClassOf(:Disease :MedicalEntity)
+SubClassOf(:Treatment :MedicalEntity)
+
+# 증상 하위 클래스
+SubClassOf(:Fever :Symptom)
+SubClassOf(:Fatigue :Symptom)
+SubClassOf(:Pain :Symptom)
+SubClassOf(:Headache :Pain)
+SubClassOf(:ChestPain :Pain)
+
+# 질병 하위 클래스
+SubClassOf(:RespiratoryDisease :Disease)
+SubClassOf(:CardiovascularDisease :Disease)
+SubClassOf(:COVID19 :RespiratoryDisease)
+SubClassOf(:Pneumonia :RespiratoryDisease)
+
+# 치료 하위 클래스
+SubClassOf(:Medication :Treatment)
+SubClassOf(:Surgery :Treatment)
+SubClassOf(:Therapy :Treatment)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: 관계 정의 -->
+        <div class="construction-phase">
+            <div class="phase-header">
+                <span class="phase-number">Phase 2</span>
+                <h4>관계 및 추론 규칙 정의</h4>
+                <span class="phase-duration">60분</span>
+            </div>
+            <div class="phase-content">
+                <div class="relationship-designer">
+                    <h5>🔗 의료 관계 설계자</h5>
+                    
+                    <!-- 핵심 관계 정의 -->
+                    <div class="core-relationships">
+                        <h6>핵심 Object Properties</h6>
+                        <div class="relationship-cards">
+                            <div class="relationship-card">
+                                <div class="card-header">
+                                    <span class="relation-icon">🔍</span>
+                                    <h7>hasSymptom</h7>
+                                </div>
+                                <div class="card-content">
+                                    <div class="relation-details">
+                                        <span><strong>Domain:</strong> Disease</span>
+                                        <span><strong>Range:</strong> Symptom</span>
+                                        <span><strong>Inverse:</strong> isSymptomOf</span>
+                                    </div>
+                                    <div class="relation-example">
+                                        <strong>예제:</strong> COVID19 hasSymptom Fever
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="relationship-card">
+                                <div class="card-header">
+                                    <span class="relation-icon">💊</span>
+                                    <h7>treatedBy</h7>
+                                </div>
+                                <div class="card-content">
+                                    <div class="relation-details">
+                                        <span><strong>Domain:</strong> Disease</span>
+                                        <span><strong>Range:</strong> Treatment</span>
+                                        <span><strong>Inverse:</strong> treats</span>
+                                    </div>
+                                    <div class="relation-example">
+                                        <strong>예제:</strong> Pneumonia treatedBy Antibiotics
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="relationship-card">
+                                <div class="card-header">
+                                    <span class="relation-icon">⚠️</span>
+                                    <h7>contraindicated</h7>
+                                </div>
+                                <div class="card-content">
+                                    <div class="relation-details">
+                                        <span><strong>Domain:</strong> Medication</span>
+                                        <span><strong>Range:</strong> Medication</span>
+                                        <span><strong>Type:</strong> Symmetric</span>
+                                    </div>
+                                    <div class="relation-example">
+                                        <strong>예제:</strong> Aspirin contraindicated Warfarin
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="relationship-card">
+                                <div class="card-header">
+                                    <span class="relation-icon">📊</span>
+                                    <h7>hasSeverity</h7>
+                                </div>
+                                <div class="card-content">
+                                    <div class="relation-details">
+                                        <span><strong>Domain:</strong> Symptom ∪ Disease</span>
+                                        <span><strong>Range:</strong> SeverityLevel</span>
+                                        <span><strong>Type:</strong> Functional</span>
+                                    </div>
+                                    <div class="relation-example">
+                                        <strong>예제:</strong> HighFever hasSeverity Severe
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 추론 규칙 설계 -->
+                    <div class="inference-rules">
+                        <h6>🧠 지능형 추론 규칙</h6>
+                        <div class="rules-workshop">
+                            <div class="rule-builder">
+                                <h7>규칙 1: 질병 진단 추론</h7>
+                                <div class="rule-definition">
+                                    <div class="rule-logic">
+                                        <pre class="rule-code"><code># 규칙: 특정 증상 조합으로 질병 추론
+Class: COVID19Candidate
+    EquivalentTo: Person and (
+        hasSymptom some Fever and
+        hasSymptom some (Cough or DryThroat) and
+        hasSymptom some Fatigue and
+        not (hasSymptom some (Rash or Nausea))
+    )
+
+# SWRL 규칙
+Person(?p) ∧ hasSymptom(?p, ?fever) ∧ Fever(?fever) ∧
+hasSymptom(?p, ?cough) ∧ Cough(?cough) ∧
+hasSymptom(?p, ?fatigue) ∧ Fatigue(?fatigue)
+→ possibleDiagnosis(?p, COVID19)</code></pre>
+                                    </div>
+                                    <div class="rule-explanation">
+                                        <p><strong>설명:</strong> 발열, 기침, 피로 증상이 있으면서 발진이나 메스꺼움이 없는 환자를 COVID19 후보로 분류</p>
+                                        <div class="confidence-meter">
+                                            <span>신뢰도: </span>
+                                            <div class="meter">
+                                                <div class="meter-fill" style="width: 85%"></div>
+                                            </div>
+                                            <span>85%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="rule-builder">
+                                <h7>규칙 2: 약물 상호작용 경고</h7>
+                                <div class="rule-definition">
+                                    <div class="rule-logic">
+                                        <pre class="rule-code"><code># 규칙: 위험한 약물 조합 감지
+Class: DangerousCombination
+    EquivalentTo: Treatment and (
+        consistsOf some (Medication and contraindicated some Medication)
+    )
+
+# 예시: 혈액 희석제 조합
+Class: AnticoagulantCombo
+    EquivalentTo: Treatment and (
+        consistsOf some BloodThinner and
+        consistsOf some AspirngradientColorin
+    )
+
+SubClassOf(AnticoagulantCombo DangerousCombination)</code></pre>
+                                    </div>
+                                    <div class="rule-explanation">
+                                        <p><strong>설명:</strong> 금기사항이 있는 약물 조합을 자동으로 감지하고 경고</p>
+                                        <div class="warning-indicator">
+                                            <span class="warning-icon">⚠️</span>
+                                            <span>출혈 위험 증가</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: 실시간 시스템 통합 -->
+        <div class="construction-phase">
+            <div class="phase-header">
+                <span class="phase-number">Phase 3</span>
+                <h4>실시간 진단 시스템 통합</h4>
+                <span class="phase-duration">45분</span>
+            </div>
+            <div class="phase-content">
+                <div class="system-integration">
+                    <h5>⚡ 실시간 진단 시스템</h5>
+                    
+                    <!-- 진단 시뮬레이터 -->
+                    <div class="diagnosis-simulator">
+                        <h6>🩺 AI 진단 시뮬레이터</h6>
+                        <div class="simulator-interface">
+                            <div class="patient-input">
+                                <h7>환자 정보 입력</h7>
+                                <div class="input-form">
+                                    <div class="form-group">
+                                        <label>나이</label>
+                                        <input type="number" value="35" class="patient-age">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>성별</label>
+                                        <select class="patient-gender">
+                                            <option value="female">여성</option>
+                                            <option value="male">남성</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>주요 증상</label>
+                                        <div class="symptom-selector">
+                                            <div class="symptom-option active">
+                                                <span class="symptom-icon">🌡️</span>
+                                                <span>발열 (38.5°C)</span>
+                                            </div>
+                                            <div class="symptom-option active">
+                                                <span class="symptom-icon">😷</span>
+                                                <span>마른 기침</span>
+                                            </div>
+                                            <div class="symptom-option">
+                                                <span class="symptom-icon">😴</span>
+                                                <span>피로감</span>
+                                            </div>
+                                            <div class="symptom-option">
+                                                <span class="symptom-icon">🤕</span>
+                                                <span>두통</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="diagnosis-results">
+                                <h7>🎯 AI 진단 결과</h7>
+                                <div class="results-container">
+                                    <div class="diagnosis-item primary">
+                                        <div class="diagnosis-header">
+                                            <span class="diagnosis-icon">🦠</span>
+                                            <span class="diagnosis-name">COVID-19</span>
+                                            <span class="confidence-badge high">92%</span>
+                                        </div>
+                                        <div class="diagnosis-details">
+                                            <div class="supporting-evidence">
+                                                <strong>근거:</strong>
+                                                <ul>
+                                                    <li>발열 + 마른기침 조합 (주요 지표)</li>
+                                                    <li>현재 감염 확산 지역</li>
+                                                    <li>연령대 위험군</li>
+                                                </ul>
+                                            </div>
+                                            <div class="recommended-actions">
+                                                <strong>권장 조치:</strong>
+                                                <div class="action-buttons">
+                                                    <button class="action-btn urgent">즉시 검사</button>
+                                                    <button class="action-btn isolation">자가격리</button>
+                                                    <button class="action-btn monitor">증상 모니터링</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="diagnosis-item secondary">
+                                        <div class="diagnosis-header">
+                                            <span class="diagnosis-icon">🫁</span>
+                                            <span class="diagnosis-name">상부 호흡기 감염</span>
+                                            <span class="confidence-badge medium">68%</span>
+                                        </div>
+                                        <div class="diagnosis-details">
+                                            <div class="supporting-evidence">
+                                                <strong>근거:</strong> 발열과 기침 증상
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="diagnosis-item tertiary">
+                                        <div class="diagnosis-header">
+                                            <span class="diagnosis-icon">🤧</span>
+                                            <span class="diagnosis-name">독감</span>
+                                            <span class="confidence-badge low">34%</span>
+                                        </div>
+                                        <div class="diagnosis-details">
+                                            <div class="supporting-evidence">
+                                                <strong>근거:</strong> 발열 증상, 하지만 근육통 없음
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 추론 과정 시각화 -->
+                        <div class="reasoning-visualization">
+                            <h7>🧠 추론 과정 시각화</h7>
+                            <div class="reasoning-graph">
+                                <svg width="100%" height="300" viewBox="0 0 800 300">
+                                    <!-- 증상 노드들 -->
+                                    <circle cx="100" cy="100" r="30" fill="#ef4444" class="symptom-node"/>
+                                    <text x="100" y="105" text-anchor="middle" fill="white" font-size="12">발열</text>
+                                    
+                                    <circle cx="100" cy="200" r="30" fill="#ef4444" class="symptom-node"/>
+                                    <text x="100" y="205" text-anchor="middle" fill="white" font-size="12">기침</text>
+                                    
+                                    <!-- 추론 노드 -->
+                                    <rect x="300" y="130" width="120" height="60" rx="10" fill="#3b82f6" class="inference-node"/>
+                                    <text x="360" y="155" text-anchor="middle" fill="white" font-size="12">추론 엔진</text>
+                                    <text x="360" y="175" text-anchor="middle" fill="white" font-size="10">패턴 매칭</text>
+                                    
+                                    <!-- 진단 결과 노드들 -->
+                                    <circle cx="600" cy="80" r="35" fill="#10b981" class="diagnosis-node"/>
+                                    <text x="600" y="85" text-anchor="middle" fill="white" font-size="11">COVID-19</text>
+                                    <text x="600" y="100" text-anchor="middle" fill="white" font-size="9">92%</text>
+                                    
+                                    <circle cx="600" cy="160" r="30" fill="#f59e0b" class="diagnosis-node"/>
+                                    <text x="600" y="165" text-anchor="middle" fill="white" font-size="10">호흡기감염</text>
+                                    <text x="600" y="180" text-anchor="middle" fill="white" font-size="9">68%</text>
+                                    
+                                    <circle cx="600" cy="220" r="25" fill="#6b7280" class="diagnosis-node"/>
+                                    <text x="600" y="225" text-anchor="middle" fill="white" font-size="9">독감</text>
+                                    <text x="600" y="240" text-anchor="middle" fill="white" font-size="9">34%</text>
+                                    
+                                    <!-- 연결선들 -->
+                                    <line x1="130" y1="100" x2="300" y2="150" stroke="#6b7280" stroke-width="2"/>
+                                    <line x1="130" y1="200" x2="300" y2="170" stroke="#6b7280" stroke-width="2"/>
+                                    
+                                    <line x1="420" y1="140" x2="565" y2="90" stroke="#10b981" stroke-width="3"/>
+                                    <line x1="420" y1="160" x2="570" y2="160" stroke="#f59e0b" stroke-width="2"/>
+                                    <line x1="420" y1="180" x2="575" y2="220" stroke="#6b7280" stroke-width="1"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.5: 고급 플러그인과 확장 -->
+<section class="content-section advanced-features">
+    <h2>8.5 고급 플러그인과 Protégé 확장</h2>
+    
+    <!-- 필수 플러그인 컬렉션 -->
+    <div class="plugin-collection">
+        <h3>🔌 필수 플러그인 컬렉션</h3>
+        
+        <div class="plugin-showcase">
+            <div class="plugin-category">
+                <h4>📊 시각화 플러그인</h4>
+                <div class="plugin-cards">
+                    <div class="plugin-card featured">
+                        <div class="plugin-header">
+                            <span class="plugin-icon">📈</span>
+                            <div class="plugin-info">
+                                <h5>OntoGraf</h5>
+                                <span class="plugin-version">v1.0.3</span>
+                            </div>
+                            <span class="plugin-rating">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <div class="plugin-description">
+                            <p>온톨로지를 대화형 그래프로 시각화하는 강력한 도구</p>
+                            <div class="plugin-features">
+                                <span class="feature-tag">드래그&드롭</span>
+                                <span class="feature-tag">실시간 필터링</span>
+                                <span class="feature-tag">SVG 내보내기</span>
+                            </div>
+                        </div>
+                        <div class="plugin-demo">
+                            <h6>미리보기</h6>
+                            <div class="demo-preview">
+                                <div class="graph-preview">
+                                    <div class="node disease">질병</div>
+                                    <div class="node symptom">증상</div>
+                                    <div class="node treatment">치료</div>
+                                    <div class="edge"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="plugin-card">
+                        <div class="plugin-header">
+                            <span class="plugin-icon">🌐</span>
+                            <div class="plugin-info">
+                                <h5>VOWL</h5>
+                                <span class="plugin-version">v1.1.7</span>
+                            </div>
+                            <span class="plugin-rating">⭐⭐⭐⭐☆</span>
+                        </div>
+                        <div class="plugin-description">
+                            <p>Visual Notation for OWL Ontologies - 표준 시각 표기법</p>
+                            <div class="plugin-features">
+                                <span class="feature-tag">W3C 표준</span>
+                                <span class="feature-tag">자동 레이아웃</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plugin-category">
+                <h4>🔍 분석 및 검증 플러그인</h4>
+                <div class="plugin-cards">
+                    <div class="plugin-card">
+                        <div class="plugin-header">
+                            <span class="plugin-icon">🕵️</span>
+                            <div class="plugin-info">
+                                <h5>OWL Debugger</h5>
+                                <span class="plugin-version">v2.0.1</span>
+                            </div>
+                            <span class="plugin-rating">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <div class="plugin-description">
+                            <p>온톨로지 오류를 자동으로 감지하고 수정 방안을 제시</p>
+                            <div class="plugin-features">
+                                <span class="feature-tag">자동 디버깅</span>
+                                <span class="feature-tag">수정 제안</span>
+                                <span class="feature-tag">충돌 분석</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="plugin-card">
+                        <div class="plugin-header">
+                            <span class="plugin-icon">📋</span>
+                            <div class="plugin-info">
+                                <h5>OWL Metrics</h5>
+                                <span class="plugin-version">v1.4.2</span>
+                            </div>
+                            <span class="plugin-rating">⭐⭐⭐⭐☆</span>
+                        </div>
+                        <div class="plugin-description">
+                            <p>온톨로지의 복잡도와 품질 지표를 분석</p>
+                            <div class="plugin-features">
+                                <span class="feature-tag">복잡도 분석</span>
+                                <span class="feature-tag">품질 점수</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plugin-category">
+                <h4>🔗 통합 및 변환 플러그인</h4>
+                <div class="plugin-cards">
+                    <div class="plugin-card">
+                        <div class="plugin-header">
+                            <span class="plugin-icon">🌍</span>
+                            <div class="plugin-info">
+                                <h5>Cellfie</h5>
+                                <span class="plugin-version">v2.1.0</span>
+                            </div>
+                            <span class="plugin-rating">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <div class="plugin-description">
+                            <p>Excel 스프레드시트를 OWL 온톨로지로 변환</p>
+                            <div class="plugin-features">
+                                <span class="feature-tag">Excel 변환</span>
+                                <span class="feature-tag">매핑 규칙</span>
+                                <span class="feature-tag">대량 데이터</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="plugin-card">
+                        <div class="plugin-header">
+                            <span class="plugin-icon">🔄</span>
+                            <div class="plugin-info">
+                                <h5>SWRL Editor</h5>
+                                <span class="plugin-version">v1.0.8</span>
+                            </div>
+                            <span class="plugin-rating">⭐⭐⭐⭐☆</span>
+                        </div>
+                        <div class="plugin-description">
+                            <p>SWRL 규칙을 시각적으로 편집하고 실행</p>
+                            <div class="plugin-features">
+                                <span class="feature-tag">시각적 편집</span>
+                                <span class="feature-tag">규칙 검증</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 플러그인 설치 가이드 -->
+    <div class="installation-guide">
+        <h3>📦 플러그인 설치 마스터 가이드</h3>
+        
+        <div class="installation-wizard">
+            <div class="wizard-steps">
+                <div class="wizard-step active">
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <h4>플러그인 저장소 접근</h4>
+                        <div class="step-instructions">
+                            <ol>
+                                <li>File → Check for plugins 클릭</li>
+                                <li>Auto-update preferences 설정</li>
+                                <li>Available plugins 탭 선택</li>
+                            </ol>
+                            <div class="pro-tip">
+                                <span class="tip-icon">💡</span>
+                                <span>인터넷 연결이 필요합니다</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wizard-step">
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <h4>플러그인 선택 및 설치</h4>
+                        <div class="step-instructions">
+                            <ol>
+                                <li>원하는 플러그인 체크박스 선택</li>
+                                <li>Install 버튼 클릭</li>
+                                <li>설치 진행 상황 확인</li>
+                                <li>Protégé 재시작</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wizard-step">
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <h4>플러그인 활성화</h4>
+                        <div class="step-instructions">
+                            <ol>
+                                <li>Window → Tabs 메뉴 확인</li>
+                                <li>새로 설치된 탭 활성화</li>
+                                <li>플러그인별 설정 조정</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 8.6: 프로덕션 배포와 최적화 -->
+<section class="content-section production-deployment">
+    <h2>8.6 프로덕션 배포와 성능 최적화</h2>
+    
+    <!-- 배포 전략 -->
+    <div class="deployment-strategy">
+        <h3>🚀 엔터프라이즈 배포 전략</h3>
+        
+        <div class="deployment-options">
+            <div class="option-card recommended">
+                <div class="option-header">
+                    <span class="option-icon">☁️</span>
+                    <h4>클라우드 배포</h4>
+                    <span class="recommendation-badge">추천</span>
+                </div>
+                <div class="option-content">
+                    <div class="advantages">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>자동 확장성</li>
+                            <li>높은 가용성</li>
+                            <li>관리 편의성</li>
+                            <li>전 세계 접근성</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <h5>기술 스택</h5>
+                        <div class="stack-items">
+                            <span class="stack-item">AWS EC2</span>
+                            <span class="stack-item">Docker</span>
+                            <span class="stack-item">Kubernetes</span>
+                            <span class="stack-item">Load Balancer</span>
+                        </div>
+                    </div>
+                    <div class="cost-estimate">
+                        <span class="cost-label">예상 비용:</span>
+                        <span class="cost-value">$200-500/월</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option-card">
+                <div class="option-header">
+                    <span class="option-icon">🏢</span>
+                    <h4>온프레미스 배포</h4>
+                </div>
+                <div class="option-content">
+                    <div class="advantages">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>완전한 제어권</li>
+                            <li>데이터 보안</li>
+                            <li>규정 준수</li>
+                            <li>커스터마이징</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <h5>기술 스택</h5>
+                        <div class="stack-items">
+                            <span class="stack-item">Ubuntu Server</span>
+                            <span class="stack-item">Apache Tomcat</span>
+                            <span class="stack-item">PostgreSQL</span>
+                            <span class="stack-item">Nginx</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option-card">
+                <div class="option-header">
+                    <span class="option-icon">🔗</span>
+                    <h4>하이브리드 배포</h4>
+                </div>
+                <div class="option-content">
+                    <div class="advantages">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>최적 비용 효율</li>
+                            <li>유연한 확장</li>
+                            <li>위험 분산</li>
+                            <li>점진적 마이그레이션</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 성능 최적화 가이드 -->
+    <div class="performance-optimization">
+        <h3>⚡ 성능 최적화 가이드</h3>
+        
+        <div class="optimization-areas">
+            <div class="optimization-section">
+                <h4>🧠 추론 엔진 최적화</h4>
+                <div class="optimization-techniques">
+                    <div class="technique-card">
+                        <h5>1. 추론 엔진 선택 최적화</h5>
+                        <div class="technique-content">
+                            <pre class="config-code"><code># 대규모 온톨로지용 설정
+reasoner.type=ELK
+reasoner.threads=8
+reasoner.memory=4GB
+
+# 정확도 우선 설정
+reasoner.type=HermiT
+reasoner.timeout=300s
+reasoner.incremental=true</code></pre>
+                            <div class="performance-impact">
+                                <span class="impact-label">성능 향상:</span>
+                                <span class="impact-value">60-80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="technique-card">
+                        <h5>2. 온톨로지 구조 최적화</h5>
+                        <div class="technique-content">
+                            <ul>
+                                <li>불필요한 복잡한 표현식 제거</li>
+                                <li>클래스 계층 구조 단순화</li>
+                                <li>중복 공리 제거</li>
+                                <li>모듈화를 통한 분할</li>
+                            </ul>
+                            <div class="performance-impact">
+                                <span class="impact-label">추론 속도:</span>
+                                <span class="impact-value">40-60% 개선</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="optimization-section">
+                <h4>💾 메모리 및 저장소 최적화</h4>
+                <div class="optimization-techniques">
+                    <div class="technique-card">
+                        <h5>JVM 튜닝</h5>
+                        <div class="technique-content">
+                            <pre class="config-code"><code># Protégé 실행 옵션
+-Xms2G -Xmx8G
+-XX:+UseG1GC
+-XX:MaxGCPauseMillis=200
+-XX:+UseStringDeduplication</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="technique-card">
+                        <h5>캐싱 전략</h5>
+                        <div class="technique-content">
+                            <ul>
+                                <li>추론 결과 캐싱</li>
+                                <li>쿼리 결과 캐싱</li>
+                                <li>온톨로지 파싱 캐싱</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 최종 마스터 도전 -->
+<div class="master-challenge">
+    <h2>🏆 최종 마스터 도전</h2>
+    <p>모든 과정을 완료했다면, 이제 진정한 Protégé 마스터가 될 시간입니다!</p>
+    
+    <div class="challenge-overview">
+        <div class="challenge-stats">
+            <div class="stat">
+                <span class="stat-icon">📊</span>
+                <span class="stat-value">16</span>
+                <span class="stat-label">학습 모듈</span>
+            </div>
+            <div class="stat">
+                <span class="stat-icon">🛠️</span>
+                <span class="stat-value">3</span>
+                <span class="stat-label">실전 프로젝트</span>
+            </div>
+            <div class="stat">
+                <span class="stat-icon">⏱️</span>
+                <span class="stat-value">6+</span>
+                <span class="stat-label">실습 시간</span>
+            </div>
+        </div>
+        
+        <div class="mastery-checklist">
+            <h3>🎯 마스터 체크리스트</h3>
+            <div class="checklist-grid">
+                <div class="checklist-category">
+                    <h4>기초 역량</h4>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>Protégé 완벽 설치 및 설정</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>인터페이스 숙련도</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>기본 온톨로지 생성</span>
+                    </label>
+                </div>
+                
+                <div class="checklist-category">
+                    <h4>중급 기술</h4>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>복잡한 클래스 정의</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>추론 엔진 활용</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>DL Query 작성</span>
+                    </label>
+                </div>
+                
+                <div class="checklist-category">
+                    <h4>전문가 수준</h4>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>의료 온톨로지 완성</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>플러그인 활용</span>
+                    </label>
+                    <label class="checklist-item">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        <span>성능 최적화</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="final-achievement">
+            <div class="achievement-badge">
+                <span class="badge-icon">🏆</span>
+                <h3>Protégé Master</h3>
+                <p>온톨로지 개발 전문가</p>
+            </div>
+            <div class="achievement-description">
+                <p>축하합니다! 당신은 이제</p>
+                <ul>
+                    <li>복잡한 온톨로지를 설계하고 구현할 수 있습니다</li>
+                    <li>추론 엔진을 효과적으로 활용할 수 있습니다</li>
+                    <li>실무 프로젝트를 성공적으로 완료할 수 있습니다</li>
+                    <li>다른 개발자들을 지도할 수 있습니다</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 단계 안내 -->
+<div class="next-steps">
+    <h3>🚀 다음 단계</h3>
+    <p>Protégé 마스터가 되셨군요! 이제 다음 여정을 준비하세요:</p>
+    
+    <div class="next-journey">
+        <div class="journey-option">
+            <span class="journey-icon">🧠</span>
+            <h4>Chapter 9: 온톨로지 추론</h4>
+            <p>추론 엔진의 내부 동작 원리와 고급 추론 기법을 학습합니다.</p>
+            <button class="journey-btn" onclick="OntologyBook.loadChapter('chapter09')">
+                시작하기 <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Part 3 전용 스타일 -->
+<style>
+/* Expert Level 스타일 */
+.part-header.expert {
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.protege-mastery-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+    animation: masterySpark 4s ease-in-out infinite;
+}
+
+@keyframes masterySpark {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+.progress-check.expert-level {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 2px solid #f59e0b;
+}
+
+.expert-readiness {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.readiness-meter {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meter-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.meter-section.completed {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.meter-section.current {
+    border-color: #3b82f6;
+    background: #eff6ff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.section-icon {
+    font-size: 1.5rem;
+}
+
+.section-name {
+    font-weight: 600;
+    color: #374151;
+    width: 120px;
+}
+
+.skill-gauge {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
+    transition: width 0.8s ease;
+}
+
+.expert-fill {
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    animation: expertProgress 2s ease-in-out infinite alternate;
+}
+
+@keyframes expertProgress {
+    0% { width: 10%; }
+    100% { width: 15%; }
+}
+
+.skill-score {
+    font-weight: 600;
+    color: #374151;
+    width: 50px;
+    text-align: right;
+}
+
+.expert-badge-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-container {
+    text-align: center;
+}
+
+.expert-badge {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+    padding: 2rem;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px -5px rgba(245, 158, 11, 0.4);
+    margin-bottom: 1rem;
+}
+
+.badge-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.badge-subtitle {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.badge-progress {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.medical-project {
+    background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    border: 2px solid #e2e8f0;
+}
+
+.project-briefing {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.overview-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-icon {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-info h4 {
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.difficulty-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.difficulty-badge.expert {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.project-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.spec-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.spec-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.spec-value {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.requirements-analysis {
+    margin: 2rem 0;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.requirement-category {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+.requirement-category h5 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.requirement-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.requirement-category li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+}
+
+.requirement-category li:last-child {
+    border-bottom: none;
+}
+
+.requirement-category li::before {
+    content: '✓';
+    color: #10b981;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.construction-phases {
+    margin: 2rem 0;
+}
+
+.construction-phase {
+    background: white;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    border: 2px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.construction-phase.active {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+}
+
+.phase-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.phase-number {
+    background: #3b82f6;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.phase-header h4 {
+    flex: 1;
+    margin: 0;
+    color: #1f2937;
+}
+
+.phase-duration {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.phase-content {
+    padding: 2rem;
+}
+
+.medical-hierarchy {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+.hierarchy-visualization {
+    overflow-x: auto;
+}
+
+.class-tree {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+
+.tree-node {
+    margin: 0.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tree-node.root-medical {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1f2937;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.node-children {
+    margin-left: 2rem;
+    border-left: 2px solid #d1d5db;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.tree-branch {
+    margin: 1rem 0;
+}
+
+.node-icon {
+    font-size: 1.2rem;
+}
+
+.node-name {
+    color: #374151;
+    font-weight: 500;
+}
+
+.code-generator {
+    margin: 2rem 0;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.code-generator h6 {
+    background: #1f2937;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+}
+
+.generated-owl {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.relationship-designer {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.core-relationships {
+    margin: 2rem 0;
+}
+
+.relationship-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.relationship-card {
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.relationship-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background: #3b82f6;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.relation-icon {
+    font-size: 1.5rem;
+}
+
+.card-header h7 {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.relation-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.relation-details span {
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.relation-example {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.inference-rules {
+    margin: 2rem 0;
+}
+
+.rules-workshop {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+.rule-builder {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.rule-builder h7 {
+    background: #1f2937;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.rule-definition {
+    padding: 1.5rem;
+}
+
+.rule-logic {
+    margin-bottom: 1.5rem;
+}
+
+.rule-code {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.rule-explanation {
+    background: #f0fdf4;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+}
+
+.confidence-meter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.meter {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.warning-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #fef3c7;
+    border-radius: 6px;
+    color: #92400e;
+}
+
+.warning-icon {
+    font-size: 1.2rem;
+}
+
+.system-integration {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.diagnosis-simulator {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+.simulator-interface {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.patient-input {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.input-form {
+    margin: 1rem 0;
+}
+
+.form-group {
+    margin: 1rem 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+.symptom-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.symptom-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #f3f4f6;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.symptom-option:hover {
+    background: #e5e7eb;
+}
+
+.symptom-option.active {
+    background: #dbeafe;
+    border: 1px solid #3b82f6;
+    color: #1d4ed8;
+}
+
+.symptom-icon {
+    font-size: 1.2rem;
+}
+
+.diagnosis-results {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.results-container {
+    margin: 1rem 0;
+}
+
+.diagnosis-item {
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.diagnosis-item.primary {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.diagnosis-item.secondary {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.diagnosis-item.tertiary {
+    border-color: #6b7280;
+    background: #f9fafb;
+}
+
+.diagnosis-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.diagnosis-icon {
+    font-size: 1.5rem;
+}
+
+.diagnosis-name {
+    flex: 1;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.confidence-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.confidence-badge.high {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.confidence-badge.medium {
+    background: #fed7aa;
+    color: #9a3412;
+}
+
+.confidence-badge.low {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.diagnosis-details {
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.supporting-evidence {
+    margin-bottom: 1rem;
+}
+
+.supporting-evidence ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.supporting-evidence li {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+}
+
+.recommended-actions {
+    margin-top: 1rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn.urgent {
+    background: #ef4444;
+    color: white;
+}
+
+.action-btn.isolation {
+    background: #f59e0b;
+    color: white;
+}
+
+.action-btn.monitor {
+    background: #3b82f6;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.reasoning-visualization {
+    margin: 2rem 0;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.reasoning-graph {
+    background: #f9fafb;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.symptom-node {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.symptom-node:hover {
+    r: 35;
+    filter: brightness(1.1);
+}
+
+.inference-node {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.inference-node:hover {
+    filter: brightness(1.1);
+}
+
+.diagnosis-node {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.diagnosis-node:hover {
+    filter: brightness(1.1);
+}
+
+.advanced-features {
+    background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.plugin-collection {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.plugin-showcase {
+    margin: 2rem 0;
+}
+
+.plugin-category {
+    margin: 2rem 0;
+}
+
+.plugin-category h4 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.plugin-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.plugin-card {
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.plugin-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.plugin-card.featured {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.plugin-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+}
+
+.plugin-icon {
+    font-size: 2rem;
+}
+
+.plugin-info {
+    flex: 1;
+}
+
+.plugin-info h5 {
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+
+.plugin-version {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.plugin-rating {
+    font-size: 1.2rem;
+}
+
+.plugin-description {
+    padding: 1.5rem;
+}
+
+.plugin-description p {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.plugin-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.feature-tag {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.plugin-demo {
+    padding: 1.5rem;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+}
+
+.demo-preview {
+    background: #f9fafb;
+    border-radius: 6px;
+    padding: 1rem;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graph-preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.node {
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.node.disease {
+    background: #ef4444;
+}
+
+.node.symptom {
+    background: #3b82f6;
+}
+
+.node.treatment {
+    background: #10b981;
+}
+
+.installation-guide {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid #e5e7eb;
+}
+
+.installation-wizard {
+    margin: 2rem 0;
+}
+
+.wizard-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.wizard-step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.wizard-step.active {
+    background: #eff6ff;
+    border-color: #3b82f6;
+}
+
+.step-number {
+    background: #3b82f6;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h4 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.step-instructions ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.step-instructions li {
+    color: #374151;
+    margin: 0.5rem 0;
+}
+
+.pro-tip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #fef3c7;
+    border-radius: 6px;
+}
+
+.tip-icon {
+    color: #f59e0b;
+}
+
+.production-deployment {
+    background: linear-gradient(135deg, #fefefe 0%, #f1f5f9 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.deployment-strategy {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.deployment-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.option-card {
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.option-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.option-card.recommended {
+    border-color: #10b981;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.option-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+}
+
+.option-icon {
+    font-size: 2rem;
+}
+
+.option-header h4 {
+    flex: 1;
+    color: #1f2937;
+    margin: 0;
+}
+
+.recommendation-badge {
+    background: #10b981;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.option-content {
+    padding: 1.5rem;
+}
+
+.advantages {
+    margin-bottom: 1.5rem;
+}
+
+.advantages h5 {
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.advantages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advantages li {
+    padding: 0.25rem 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.advantages li::before {
+    content: '✓';
+    color: #10b981;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.tech-stack {
+    margin: 1.5rem 0;
+}
+
+.tech-stack h5 {
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.stack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.stack-item {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.cost-estimate {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 3px solid #f59e0b;
+}
+
+.cost-label {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.cost-value {
+    color: #1f2937;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+.performance-optimization {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid #e5e7eb;
+}
+
+.optimization-areas {
+    margin: 2rem 0;
+}
+
+.optimization-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+.optimization-section h4 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.optimization-techniques {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.technique-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.technique-card h5 {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.technique-content {
+    margin: 1rem 0;
+}
+
+.config-code {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.performance-impact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+}
+
+.impact-label {
+    color: #374151;
+    font-weight: 500;
+}
+
+.impact-value {
+    color: #059669;
+    font-weight: 600;
+}
+
+.master-challenge {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.master-challenge h2 {
+    margin-bottom: 1rem;
+}
+
+.challenge-overview {
+    margin: 2rem 0;
+}
+
+.challenge-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.mastery-checklist {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.mastery-checklist h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.checklist-category h4 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.checklist-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.checklist-item input[type="checkbox"] {
+    display: none;
+}
+
+.checklist-item input[type="checkbox"]:checked + .checkmark {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.checklist-item input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: #f59e0b;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.final-achievement {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.achievement-badge {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #f59e0b;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-badge .badge-icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-badge h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.achievement-badge p {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.achievement-description {
+    flex: 1;
+    text-align: left;
+}
+
+.achievement-description p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.achievement-description ul {
+    list-style: none;
+    padding: 0;
+}
+
+.achievement-description li {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.achievement-description li::before {
+    content: '🎯';
+    margin-right: 0.5rem;
+}
+
+.next-steps {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.next-journey {
+    margin: 2rem 0;
+}
+
+.journey-option {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #3b82f6;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.journey-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.journey-option h4 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.journey-option p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.journey-btn {
+    background: #3b82f6;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.journey-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.25);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .expert-readiness,
+    .simulator-interface,
+    .final-achievement {
+        grid-template-columns: 1fr;
+    }
+    
+    .plugin-cards,
+    .deployment-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .challenge-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .requirements-grid,
+    .relationship-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .master-challenge {
+        padding: 2rem 1rem;
+    }
+    
+    .achievement-badge {
+        width: 150px;
+        height: 150px;
+    }
+}
+</style>
+
+<!-- JavaScript for interactivity -->
+<script>
+// 증상 선택 토글
+document.addEventListener('DOMContentLoaded', function() {
+    const symptomOptions = document.querySelectorAll('.symptom-option');
+    symptomOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            this.classList.toggle('active');
+            updateDiagnosisSimulation();
+        });
+    });
+    
+    // 마스터 체크리스트 진행률
+    const masterCheckboxes = document.querySelectorAll('.mastery-checklist input[type="checkbox"]');
+    masterCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateMasteryProgress);
+    });
+});
+
+// 진단 시뮬레이션 업데이트
+function updateDiagnosisSimulation() {
+    const activeSymptoms = document.querySelectorAll('.symptom-option.active');
+    const diagnosisItems = document.querySelectorAll('.diagnosis-item');
+    
+    // 증상에 따른 진단 확률 조정
+    if (activeSymptoms.length >= 2) {
+        diagnosisItems.forEach(item => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        });
+    }
+}
+
+// 마스터 진행률 업데이트
+function updateMasteryProgress() {
+    const checkboxes = document.querySelectorAll('.mastery-checklist input[type="checkbox"]');
+    const checkedBoxes = document.querySelectorAll('.mastery-checklist input[type="checkbox"]:checked');
+    
+    const progress = (checkedBoxes.length / checkboxes.length) * 100;
+    
+    // 전문가 레벨 게이지 업데이트
+    const expertFill = document.querySelector('.expert-fill');
+    if (expertFill) {
+        expertFill.style.width = Math.max(10, progress) + '%';
+    }
+    
+    // 배지 진행률 업데이트
+    const badgeProgress = document.querySelector('.badge-progress');
+    if (badgeProgress) {
+        const remaining = Math.max(0, 100 - progress);
+        badgeProgress.textContent = `획득까지 ${Math.round(remaining)}% 남음`;
+    }
+    
+    // 마스터 달성 시 축하 메시지
+    if (progress >= 100) {
+        showMasterAchievement();
+    }
+}
+
+// 마스터 달성 축하 메시지
+function showMasterAchievement() {
+    const achievementBadge = document.querySelector('.expert-badge');
+    if (achievementBadge) {
+        achievementBadge.style.animation = 'masterAchieved 2s ease-in-out';
+        achievementBadge.style.transform = 'scale(1.1)';
+        
+        // 축하 효과
+        setTimeout(() => {
+            alert('🎉 축하합니다! Protégé 마스터가 되셨습니다! 🎉');
+        }, 1000);
+    }
+}
+
+// CSS 애니메이션 추가
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes masterAchieved {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1.1); }
+    }
+`;
+document.head.appendChild(style);
+</script>

@@ -1,0 +1,641 @@
+<!-- Chapter 13: 통합 프로젝트: 주식-뉴스 연계 -->
+
+<div class="chapter-header">
+    <h1>Chapter 13. 통합 프로젝트: 주식-뉴스 연계</h1>
+    <div class="chapter-quote">
+        "뉴스와 금융 데이터를 연결하여 시장 인사이트 도출하기"
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 55분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>이종 온톨로지 통합 방법</li>
+        <li>뉴스가 주가에 미치는 영향 모델링</li>
+        <li>실시간 이벤트 기반 분석 시스템 구축</li>
+        <li>투자 의사결정 지원 시스템 개발</li>
+    </ul>
+</div>
+
+<!-- 섹션 13.1 -->
+<section class="content-section">
+    <h2>13.1 프로젝트 아키텍처</h2>
+    
+    <p>금융 온톨로지와 뉴스 온톨로지를 통합하여 시너지를 창출합니다.</p>
+    
+    <div class="architecture-overview">
+        <h3>시스템 구성도</h3>
+        <div class="system-layers">
+            <div class="layer-group">
+                <h4>데이터 수집층</h4>
+                <div class="components">
+                    <div class="component">주식 데이터 API</div>
+                    <div class="component">뉴스 크롤러</div>
+                    <div class="component">공시 수집기</div>
+                </div>
+            </div>
+            
+            <div class="layer-group">
+                <h4>온톨로지 통합층</h4>
+                <div class="components">
+                    <div class="component">금융 온톨로지</div>
+                    <div class="component">뉴스 온톨로지</div>
+                    <div class="component">매핑 규칙</div>
+                </div>
+            </div>
+            
+            <div class="layer-group">
+                <h4>분석/추론층</h4>
+                <div class="components">
+                    <div class="component">감성 분석</div>
+                    <div class="component">영향도 평가</div>
+                    <div class="component">패턴 인식</div>
+                </div>
+            </div>
+            
+            <div class="layer-group">
+                <h4>응용층</h4>
+                <div class="components">
+                    <div class="component">알림 시스템</div>
+                    <div class="component">대시보드</div>
+                    <div class="component">API 서비스</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 13.2 -->
+<section class="content-section">
+    <h2>13.2 온톨로지 통합 설계</h2>
+    
+    <h3>통합 온톨로지 구조</h3>
+    <pre class="code-block">
+@prefix fin: &lt;http://example.org/finance#&gt; .
+@prefix news: &lt;http://example.org/news#&gt; .
+@prefix inte: &lt;http://example.org/integrated#&gt; .
+
+# 통합 클래스
+inte:MarketEvent rdf:type owl:Class ;
+    rdfs:label "시장 이벤트"@ko ;
+    owl:equivalentClass [
+        owl:intersectionOf (
+            news:Event
+            [ rdf:type owl:Restriction ;
+              owl:onProperty inte:affectsMarket ;
+              owl:someValuesFrom fin:FinancialEntity ]
+        )
+    ] .
+
+inte:CompanyNews rdf:type owl:Class ;
+    rdfs:subClassOf news:NewsArticle ;
+    rdfs:label "기업 뉴스"@ko ;
+    owl:equivalentClass [
+        owl:intersectionOf (
+            news:NewsArticle
+            [ rdf:type owl:Restriction ;
+              owl:onProperty news:mentions ;
+              owl:someValuesFrom fin:Company ]
+        )
+    ] .
+
+# 연결 속성
+inte:newsAbout rdf:type owl:ObjectProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range fin:Company ;
+    rdfs:label "관련 기업"@ko .
+
+inte:impactsStock rdf:type owl:ObjectProperty ;
+    rdfs:domain news:NewsArticle ;
+    rdfs:range fin:Stock ;
+    rdfs:label "영향 주식"@ko .
+
+inte:sentimentScore rdf:type owl:DatatypeProperty ;
+    rdfs:domain inte:CompanyNews ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "감성 점수"@ko ;
+    rdfs:comment "-1.0(매우 부정) ~ 1.0(매우 긍정)"@ko .
+
+inte:impactMagnitude rdf:type owl:DatatypeProperty ;
+    rdfs:domain inte:MarketEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "영향 강도"@ko ;
+    owl:oneOf ("Low" "Medium" "High" "Critical") .
+    </pre>
+    
+    <h3>매핑 규칙</h3>
+    <pre class="code-block">
+# SWRL 규칙: 기업 뉴스와 주식 연결
+news:NewsArticle(?article) ∧ 
+news:mentions(?article, ?company) ∧ 
+fin:Company(?company) ∧ 
+fin:issuedBy(?stock, ?company) 
+→ inte:impactsStock(?article, ?stock)
+
+# 부정적 뉴스가 주가에 미치는 영향
+inte:CompanyNews(?news) ∧ 
+inte:sentimentScore(?news, ?score) ∧ 
+swrlb:lessThan(?score, -0.5) ∧ 
+inte:impactsStock(?news, ?stock)
+→ inte:NegativeImpactEvent(?news)
+    </pre>
+</section>
+
+<!-- 섹션 13.3 -->
+<section class="content-section">
+    <h2>13.3 감성 분석과 영향도 평가</h2>
+    
+    <h3>뉴스 감성 분석 모델</h3>
+    <pre class="code-block">
+# Python을 사용한 감성 분석과 온톨로지 업데이트
+from transformers import pipeline
+from rdflib import Graph, Namespace, Literal
+import numpy as np
+
+INTE = Namespace("http://example.org/integrated#")
+
+class NewsSentimentAnalyzer:
+    def __init__(self):
+        self.sentiment_pipeline = pipeline(
+            "sentiment-analysis", 
+            model="finbert-korean"
+        )
+        self.graph = Graph()
+    
+    def analyze_company_news(self, article_uri, article_text, company_uri):
+        # 감성 분석 수행
+        result = self.sentiment_pipeline(article_text)[0]
+        
+        # 점수 정규화 (-1 to 1)
+        if result['label'] == 'POSITIVE':
+            score = result['score']
+        elif result['label'] == 'NEGATIVE':
+            score = -result['score']
+        else:  # NEUTRAL
+            score = 0.0
+        
+        # 온톨로지에 추가
+        self.graph.add((article_uri, RDF.type, INTE.CompanyNews))
+        self.graph.add((article_uri, INTE.newsAbout, company_uri))
+        self.graph.add((article_uri, INTE.sentimentScore, 
+                       Literal(score, datatype=XSD.decimal)))
+        
+        # 영향도 평가
+        impact = self.evaluate_impact(score, article_text)
+        self.graph.add((article_uri, INTE.impactMagnitude, 
+                       Literal(impact)))
+        
+        return score, impact
+    
+    def evaluate_impact(self, sentiment_score, text):
+        # 키워드 기반 영향도 평가
+        high_impact_keywords = ['인수', '합병', '파산', '구조조정', 
+                               '대규모 투자', '신제품 출시']
+        medium_impact_keywords = ['실적', '매출', '영업이익', '계약']
+        
+        text_lower = text.lower()
+        
+        if any(keyword in text_lower for keyword in high_impact_keywords):
+            return "High"
+        elif any(keyword in text_lower for keyword in medium_impact_keywords):
+            return "Medium"
+        elif abs(sentiment_score) > 0.7:
+            return "Medium"
+        else:
+            return "Low"
+    </pre>
+    
+    <h3>시계열 상관관계 분석</h3>
+    <div class="correlation-analysis">
+        <h4>뉴스 감성과 주가 변동 상관관계</h4>
+        <pre class="code-block">
+# SPARQL: 뉴스 발행 후 주가 변동 분석
+SELECT ?company ?news_date ?sentiment ?price_before ?price_after 
+       ((?price_after - ?price_before) / ?price_before * 100 as ?change_percent)
+WHERE {
+    ?news inte:newsAbout ?company ;
+          news:publishedDate ?news_date ;
+          inte:sentimentScore ?sentiment ;
+          inte:impactsStock ?stock .
+    
+    ?stock fin:currentPrice ?price_after ;
+           fin:priceAt ?price_record .
+    
+    ?price_record fin:date ?news_date ;
+                  fin:price ?price_before .
+    
+    FILTER(?sentiment < -0.5)  # 부정적 뉴스만
+}
+ORDER BY DESC(?change_percent)
+        </pre>
+    </div>
+</section>
+
+<!-- 섹션 13.4 -->
+<section class="content-section">
+    <h2>13.4 실시간 이벤트 처리</h2>
+    
+    <h3>이벤트 감지 시스템</h3>
+    <pre class="code-block">
+# 실시간 이벤트 프로세서
+class MarketEventProcessor:
+    def __init__(self, ontology_graph):
+        self.graph = ontology_graph
+        self.alert_thresholds = {
+            'sentiment_change': 0.5,
+            'volume_spike': 2.0,
+            'price_change': 0.05
+        }
+    
+    def process_news_event(self, news_data):
+        # 1. 관련 기업 식별
+        companies = self.extract_mentioned_companies(news_data)
+        
+        # 2. 감성 분석
+        sentiment = self.analyze_sentiment(news_data['content'])
+        
+        # 3. 이벤트 생성
+        event_uri = self.create_event(news_data, companies, sentiment)
+        
+        # 4. 영향 평가
+        for company in companies:
+            impact = self.evaluate_company_impact(company, sentiment)
+            self.trigger_alerts_if_needed(company, impact)
+        
+        return event_uri
+    
+    def create_event(self, news_data, companies, sentiment):
+        event_uri = URIRef(INTE + f"event/{news_data['id']}")
+        
+        self.graph.add((event_uri, RDF.type, INTE.MarketEvent))
+        self.graph.add((event_uri, INTE.eventTime, 
+                       Literal(datetime.now())))
+        self.graph.add((event_uri, INTE.sentimentScore, 
+                       Literal(sentiment)))
+        
+        for company in companies:
+            self.graph.add((event_uri, INTE.affectsCompany, company))
+        
+        return event_uri
+    
+    def trigger_alerts_if_needed(self, company, impact):
+        if impact['magnitude'] >= self.alert_thresholds['sentiment_change']:
+            self.send_alert({
+                'type': 'SENTIMENT_ALERT',
+                'company': company,
+                'impact': impact,
+                'timestamp': datetime.now()
+            })
+    </pre>
+    
+    <h3>패턴 인식</h3>
+    <div class="pattern-recognition">
+        <h4>뉴스 패턴과 시장 반응</h4>
+        <pre class="code-block">
+# 반복되는 패턴 감지
+SELECT ?pattern_type (COUNT(?event) as ?frequency) 
+       (AVG(?price_change) as ?avg_impact)
+WHERE {
+    ?event rdf:type inte:MarketEvent ;
+           inte:hasPattern ?pattern_type ;
+           inte:priceImpact ?price_change .
+    
+    FILTER(?price_change != 0)
+}
+GROUP BY ?pattern_type
+HAVING(COUNT(?event) > 10)
+ORDER BY DESC(?frequency)
+        </pre>
+    </div>
+</section>
+
+<!-- 섹션 13.5 -->
+<section class="content-section">
+    <h2>13.5 투자 의사결정 지원</h2>
+    
+    <h3>통합 대시보드</h3>
+    <div class="dashboard-components">
+        <div class="dashboard-section">
+            <h4>실시간 모니터링</h4>
+            <ul>
+                <li>뉴스 피드와 감성 분석</li>
+                <li>주가 변동 추적</li>
+                <li>이상 징후 알림</li>
+                <li>상관관계 시각화</li>
+            </ul>
+        </div>
+        
+        <div class="dashboard-section">
+            <h4>분석 도구</h4>
+            <ul>
+                <li>뉴스-주가 상관관계</li>
+                <li>섹터별 감성 트렌드</li>
+                <li>이벤트 영향 분석</li>
+                <li>예측 모델 결과</li>
+            </ul>
+        </div>
+        
+        <div class="dashboard-section">
+            <h4>의사결정 지원</h4>
+            <ul>
+                <li>투자 기회 알림</li>
+                <li>위험 경고</li>
+                <li>포트폴리오 영향 분석</li>
+                <li>추천 액션</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>투자 시그널 생성</h3>
+    <pre class="code-block">
+# 투자 시그널 규칙
+# 강력한 매수 시그널
+inte:StrongBuySignal(?stock) ← 
+    fin:Stock(?stock) ∧
+    fin:UndervaluedStock(?stock) ∧
+    inte:CompanyNews(?news) ∧
+    inte:impactsStock(?news, ?stock) ∧
+    inte:sentimentScore(?news, ?score) ∧
+    swrlb:greaterThan(?score, 0.7) ∧
+    fin:sectorMomentum(?stock, ?momentum) ∧
+    swrlb:greaterThan(?momentum, 0.5)
+
+# 위험 경고
+inte:RiskWarning(?stock) ← 
+    fin:Stock(?stock) ∧
+    inte:NegativeImpactEvent(?event) ∧
+    inte:impactsStock(?event, ?stock) ∧
+    fin:volatility(?stock, ?vol) ∧
+    swrlb:greaterThan(?vol, 30)
+    </pre>
+</section>
+
+<!-- 섹션 13.6 -->
+<section class="content-section">
+    <h2>13.6 성과 측정과 최적화</h2>
+    
+    <h3>시스템 성과 지표</h3>
+    <div class="performance-metrics">
+        <div class="metric-card">
+            <h4>예측 정확도</h4>
+            <p>뉴스 기반 주가 방향 예측</p>
+            <ul>
+                <li>정확도: 72.3%</li>
+                <li>정밀도: 68.5%</li>
+                <li>재현율: 74.2%</li>
+            </ul>
+        </div>
+        
+        <div class="metric-card">
+            <h4>반응 시간</h4>
+            <p>뉴스 발생부터 시그널까지</p>
+            <ul>
+                <li>평균: 3.2초</li>
+                <li>최소: 1.8초</li>
+                <li>최대: 5.5초</li>
+            </ul>
+        </div>
+        
+        <div class="metric-card">
+            <h4>수익률</h4>
+            <p>시그널 기반 모의 투자</p>
+            <ul>
+                <li>월 평균: +2.8%</li>
+                <li>샤프 비율: 1.45</li>
+                <li>최대 손실: -3.2%</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>최적화 전략</h3>
+    <pre class="code-block">
+# 머신러닝을 활용한 가중치 최적화
+from sklearn.ensemble import RandomForestRegressor
+import pandas as pd
+
+class SignalOptimizer:
+    def __init__(self):
+        self.model = RandomForestRegressor(n_estimators=100)
+        self.feature_weights = {
+            'sentiment_score': 1.0,
+            'news_volume': 1.0,
+            'company_size': 1.0,
+            'sector_momentum': 1.0
+        }
+    
+    def train_on_historical_data(self, training_data):
+        # 특징 추출
+        features = self.extract_features(training_data)
+        targets = training_data['price_change_next_day']
+        
+        # 모델 학습
+        self.model.fit(features, targets)
+        
+        # 특징 중요도 기반 가중치 업데이트
+        importances = self.model.feature_importances_
+        self.update_weights(importances)
+    
+    def optimize_signal_generation(self, current_data):
+        features = self.extract_features(current_data)
+        
+        # 가중치 적용
+        weighted_features = features * list(self.feature_weights.values())
+        
+        # 예측
+        prediction = self.model.predict(weighted_features)
+        
+        return self.generate_signal(prediction, current_data)
+    </pre>
+</section>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>통합 전략</h3>
+            <ul>
+                <li>온톨로지 매핑</li>
+                <li>이벤트 연결</li>
+                <li>감성 분석 통합</li>
+                <li>실시간 처리</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>핵심 기능</h3>
+            <ul>
+                <li>뉴스-주가 상관관계</li>
+                <li>영향도 평가</li>
+                <li>패턴 인식</li>
+                <li>투자 시그널</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>성공 요인</h3>
+            <ul>
+                <li>정확한 개체 매핑</li>
+                <li>빠른 처리 속도</li>
+                <li>신뢰할 수 있는 분석</li>
+                <li>지속적 최적화</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제: 산업별 뉴스 영향 분석</h3>
+        <p>다음 기능을 구현하세요:</p>
+        <ol>
+            <li>산업별 뉴스 감성 지수 계산</li>
+            <li>산업 간 전이 효과 모델링</li>
+            <li>공급망 기반 영향 전파 추적</li>
+            <li>산업별 최적 투자 타이밍 도출</li>
+            <li>위험 전파 조기 경보 시스템</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>AI와 온톨로지의 융합, 그리고 미래 전망에 대해 알아봅니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter14')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+.architecture-overview {
+    margin: 2rem 0;
+}
+
+.system-layers {
+    display: grid;
+    gap: 1rem;
+}
+
+.layer-group {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.layer-group h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.components {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.component {
+    background: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.9rem;
+}
+
+.correlation-analysis {
+    background: #f0f9ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.pattern-recognition {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.dashboard-components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.dashboard-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e0e7ff;
+}
+
+.dashboard-section h4 {
+    color: #4f46e5;
+    margin-bottom: 1rem;
+}
+
+.performance-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.metric-card h4 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+.metric-card p {
+    color: #4c1d95;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.metric-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .components {
+        flex-direction: column;
+    }
+    
+    .dashboard-components,
+    .performance-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

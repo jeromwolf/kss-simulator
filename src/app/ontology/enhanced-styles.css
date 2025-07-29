@@ -4,12 +4,37 @@
 .chapter-content {
   @apply text-base;
   font-family: var(--font-inter), 'Noto Sans KR', system-ui, sans-serif;
-  color: #374151;
+  color: #111827 !important; /* gray-900 */
   line-height: 1.8;
 }
 
 .dark .chapter-content {
-  color: #d1d5db;
+  color: #f3f4f6 !important; /* gray-100 */
+}
+
+/* Fix intro content visibility */
+.feature-card h3,
+.feature-card p,
+.roadmap-item h3,
+.roadmap-item p,
+.tech-card h4,
+.tech-card p,
+.tool-card h4,
+.tool-card p {
+  color: #111827 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.dark .feature-card h3,
+.dark .feature-card p,
+.dark .roadmap-item h3,
+.dark .roadmap-item p,
+.dark .tech-card h4,
+.dark .tech-card p,
+.dark .tool-card h4,
+.dark .tool-card p {
+  color: #f3f4f6 !important;
 }
 
 /* Typography improvements */
@@ -20,7 +45,7 @@
 }
 
 .chapter-content strong, .chapter-content b {
-  @apply font-semibold text-gray-900 dark:text-gray-100;
+  @apply font-semibold text-black dark:text-white;
 }
 
 /* Better spacing for sections */
@@ -42,12 +67,12 @@
 }
 
 .chapter-quote {
-  @apply text-lg md:text-xl italic opacity-80 mt-4;
-  color: #6b7280;
+  @apply text-lg md:text-xl italic mt-4;
+  color: #4b5563; /* gray-600 */
 }
 
 .dark .chapter-quote {
-  color: #9ca3af;
+  color: #d1d5db; /* gray-300 */
 }
 
 /* Reading time indicator */
@@ -57,7 +82,7 @@
 
 /* Learning objectives card */
 .learning-objectives {
-  @apply bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 mb-8 border border-blue-200 dark:border-blue-800;
+  @apply bg-gradient-to-br from-blue-50/95 to-indigo-50/95 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-2xl p-6 md:p-8 mb-8 border border-blue-200/70 dark:border-blue-800/50 backdrop-blur-sm shadow-sm;
 }
 
 .learning-objectives h3 {
@@ -69,17 +94,17 @@
 }
 
 .learning-objectives li {
-  @apply flex items-start gap-2 text-blue-800 dark:text-blue-200;
+  @apply flex items-start gap-2 text-blue-900 dark:text-blue-100;
 }
 
 .learning-objectives li::before {
-  content: "✓";
-  @apply text-green-500 font-bold mt-0.5;
+  content: "▸";
+  @apply text-indigo-500 font-bold mt-0.5;
 }
 
 /* Content sections with cards */
 .content-section {
-  @apply mb-12 p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 transition-all hover:shadow-xl;
+  @apply mb-12 p-8 bg-white/90 dark:bg-gray-800/90 rounded-2xl border border-indigo-200/50 dark:border-gray-700/50 backdrop-blur-sm shadow-sm;
 }
 
 .content-section h2 {
@@ -87,18 +112,18 @@
 }
 
 .content-section h3 {
-  @apply text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100;
+  @apply text-2xl font-semibold mb-4 text-gray-900 dark:text-white;
 }
 
 /* Concept boxes */
 .concept-box {
-  @apply relative bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-6 mb-6 border-l-4 border-yellow-500;
+  @apply relative bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-8 md:p-10 mb-6 border-l-4 border-yellow-500;
   overflow: hidden;
 }
 
 .concept-box::before {
   content: "💡";
-  @apply absolute top-2 right-2 text-4xl opacity-20;
+  @apply absolute top-4 right-4 text-4xl opacity-20;
 }
 
 .concept-box h4 {
@@ -106,16 +131,16 @@
 }
 
 .concept-box p {
-  @apply text-yellow-800 dark:text-yellow-200;
+  @apply text-yellow-900 dark:text-yellow-100;
 }
 
 /* Example boxes */
 .example {
-  @apply bg-gray-50 dark:bg-gray-900 rounded-xl p-6 mb-6 border-2 border-dashed border-gray-300 dark:border-gray-600;
+  @apply bg-gray-50 dark:bg-gray-900 rounded-xl p-8 md:p-10 mb-6 border-2 border-dashed border-gray-300 dark:border-gray-600;
 }
 
 .example h4 {
-  @apply text-lg font-semibold mb-3 text-gray-700 dark:text-gray-200;
+  @apply text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100;
 }
 
 /* Code blocks with syntax highlighting feel */
@@ -149,7 +174,7 @@
 
 /* Interactive demo sections */
 .interactive-demo {
-  @apply bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-indigo-900/20 rounded-2xl p-8 mb-8 border-2 border-purple-200 dark:border-purple-700;
+  @apply bg-gradient-to-br from-purple-50/95 via-pink-50/95 to-indigo-50/95 dark:from-purple-900/30 dark:via-pink-900/30 dark:to-indigo-900/30 rounded-2xl p-6 md:p-8 mb-8 border border-purple-200/70 dark:border-purple-700/50 backdrop-blur-sm shadow-sm;
 }
 
 .interactive-demo h3 {
@@ -158,21 +183,21 @@
 
 /* Note and warning boxes */
 .note {
-  @apply relative bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-6 rounded-r-xl;
+  @apply relative bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-8 md:p-10 mb-6 rounded-r-xl;
 }
 
 .note::before {
   content: "ℹ️";
-  @apply absolute -left-3 top-6 bg-white dark:bg-gray-800 px-1;
+  @apply absolute -left-3 top-8 bg-white dark:bg-gray-800 px-1;
 }
 
 .warning {
-  @apply relative bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-6 mb-6 rounded-r-xl;
+  @apply relative bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 p-8 md:p-10 mb-6 rounded-r-xl;
 }
 
 .warning::before {
   content: "⚠️";
-  @apply absolute -left-3 top-6 bg-white dark:bg-gray-800 px-1;
+  @apply absolute -left-3 top-8 bg-white dark:bg-gray-800 px-1;
 }
 
 /* Tables with better styling */
@@ -185,7 +210,7 @@ thead {
 }
 
 th {
-  @apply px-6 py-4 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-600;
+  @apply px-6 py-4 text-left font-semibold text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-600;
 }
 
 td {
@@ -209,10 +234,7 @@ ul li {
   @apply relative pl-6;
 }
 
-ul li::before {
-  content: "▸";
-  @apply absolute left-0 text-purple-500 font-bold;
-}
+/* Removed list bullet styles to prevent visual artifacts */
 
 ol li {
   @apply relative pl-6;
@@ -260,11 +282,32 @@ a:hover::after {
 }
 
 .card {
-  @apply bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700;
+  @apply bg-white/95 dark:bg-gray-800/95 rounded-xl p-6 md:p-8 border border-indigo-200/50 dark:border-gray-700/50 backdrop-blur-sm hover:bg-white dark:hover:bg-gray-800 transition-all shadow-sm;
 }
 
 .card h4 {
-  @apply text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100;
+  @apply text-lg font-semibold mb-3 text-gray-900 dark:text-white;
+}
+
+/* Additional content boxes */
+.example-box {
+  @apply bg-gray-50 dark:bg-gray-900 rounded-xl p-8 md:p-10 mb-6 border border-gray-200 dark:border-gray-700;
+}
+
+.definition-box {
+  @apply bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-xl p-8 md:p-10 mb-6 border border-indigo-200 dark:border-indigo-700;
+}
+
+.reason-card, .component-card, .problem-card {
+  @apply bg-white dark:bg-gray-800 rounded-xl p-8 md:p-10 shadow-md hover:shadow-lg transition-all border border-gray-100 dark:border-gray-700;
+}
+
+.case-study {
+  @apply bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-8 md:p-10 mb-6 border border-green-200 dark:border-green-700;
+}
+
+.learning-path {
+  @apply bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-8 md:p-10 mb-6 border border-purple-200 dark:border-purple-700;
 }
 
 /* Stage cards for process flows */
@@ -273,7 +316,7 @@ a:hover::after {
 }
 
 .stage-card {
-  @apply relative bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-6 min-w-[200px] text-center shadow-md hover:shadow-xl transition-all;
+  @apply relative bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-8 md:p-10 min-w-[200px] text-center shadow-md hover:shadow-xl transition-all;
 }
 
 .stage-number {

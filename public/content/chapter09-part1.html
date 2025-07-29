@@ -1,0 +1,2283 @@
+<!-- Chapter 9: 온톨로지 추론과 추론 엔진 (인터랙티브 마스터 버전) Part 1 -->
+
+<!-- Part 1 시작 -->
+<div class="part-header reasoning-mastery">
+    <div class="reasoning-neural-animation"></div>
+    <h2 class="part-title">Part 1: 추론의 철학과 Description Logic 기초</h2>
+    <p class="part-description">논리적 사고의 기초부터 수학적 추론 시스템까지, 추론의 본질을 탐구합니다.</p>
+</div>
+
+<!-- 추론 마스터 준비도 -->
+<div class="progress-check reasoning-level">
+    <h3>🧠 추론 마스터 준비도 평가</h3>
+    <div class="master-readiness">
+        <div class="cognitive-skills">
+            <div class="skill-assessment">
+                <div class="skill-item">
+                    <span class="skill-icon">🤔</span>
+                    <span class="skill-name">논리적 사고</span>
+                    <div class="skill-meter">
+                        <div class="meter-fill" style="width: 70%"></div>
+                    </div>
+                    <span class="skill-score">70%</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🔢</span>
+                    <span class="skill-name">수학적 기초</span>
+                    <div class="skill-meter">
+                        <div class="meter-fill" style="width: 60%"></div>
+                    </div>
+                    <span class="skill-score">60%</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🧮</span>
+                    <span class="skill-name">집합론 이해</span>
+                    <div class="skill-meter">
+                        <div class="meter-fill" style="width: 50%"></div>
+                    </div>
+                    <span class="skill-score">50%</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-icon">💻</span>
+                    <span class="skill-name">알고리즘 사고</span>
+                    <div class="skill-meter">
+                        <div class="meter-fill" style="width: 65%"></div>
+                    </div>
+                    <span class="skill-score">65%</span>
+                </div>
+            </div>
+            
+            <div class="readiness-indicator">
+                <div class="indicator-circle">
+                    <div class="progress-ring">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="50" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                            <circle cx="60" cy="60" r="50" stroke="#3b82f6" stroke-width="8" fill="none" 
+                                    stroke-dasharray="314" stroke-dashoffset="125" 
+                                    style="transform: rotate(-90deg); transform-origin: 50% 50%;"/>
+                        </svg>
+                        <div class="progress-text">
+                            <span class="progress-value">61%</span>
+                            <span class="progress-label">준비도</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="readiness-message">
+                    <p><strong>추론 학습 준비 완료!</strong></p>
+                    <p>논리적 사고력이 충분합니다. 고급 추론 개념을 학습할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 9.1: 추론의 철학적 기초 -->
+<section class="content-section philosophical-foundation">
+    <h2>9.1 추론의 철학적 기초: 아리스토텔레스부터 AI까지</h2>
+    
+    <!-- 철학자들의 여정 -->
+    <div class="philosophical-journey">
+        <h3>🏛️ 위대한 사상가들의 추론 여정</h3>
+        
+        <div class="timeline-philosophers">
+            <div class="philosopher-era">
+                <div class="era-marker ancient">
+                    <span class="era-period">고대</span>
+                    <span class="era-year">384-322 BC</span>
+                </div>
+                <div class="philosopher-card aristotle">
+                    <div class="philosopher-avatar">
+                        <span class="avatar-icon">🏛️</span>
+                    </div>
+                    <div class="philosopher-info">
+                        <h4>아리스토텔레스</h4>
+                        <p class="philosopher-title">논리학의 아버지</p>
+                        <div class="key-contribution">
+                            <strong>핵심 기여:</strong> 삼단논법 (Syllogism) 창시
+                        </div>
+                        <div class="philosophical-quote">
+                            "모든 사람은 죽는다. 소크라테스는 사람이다. 따라서 소크라테스는 죽는다."
+                        </div>
+                        <div class="modern-impact">
+                            <span class="impact-icon">🔗</span>
+                            <span>현대 영향: Description Logic의 기초</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="philosopher-era">
+                <div class="era-marker modern">
+                    <span class="era-period">근대</span>
+                    <span class="era-year">1815-1864</span>
+                </div>
+                <div class="philosopher-card boole">
+                    <div class="philosopher-avatar">
+                        <span class="avatar-icon">🔢</span>
+                    </div>
+                    <div class="philosopher-info">
+                        <h4>조지 불 (George Boole)</h4>
+                        <p class="philosopher-title">불린 논리의 창시자</p>
+                        <div class="key-contribution">
+                            <strong>핵심 기여:</strong> 논리를 수학으로 형식화
+                        </div>
+                        <div class="philosophical-quote">
+                            "논리는 수학이고, 수학은 논리다."
+                        </div>
+                        <div class="modern-impact">
+                            <span class="impact-icon">💻</span>
+                            <span>현대 영향: 모든 컴퓨터 논리의 기초</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="philosopher-era">
+                <div class="era-marker contemporary">
+                    <span class="era-period">현대</span>
+                    <span class="era-year">1936-</span>
+                </div>
+                <div class="philosopher-card mccarthy">
+                    <div class="philosopher-avatar">
+                        <span class="avatar-icon">🤖</span>
+                    </div>
+                    <div class="philosopher-info">
+                        <h4>존 매카시 (John McCarthy)</h4>
+                        <p class="philosopher-title">AI의 아버지</p>
+                        <div class="key-contribution">
+                            <strong>핵심 기여:</strong> "인공지능" 용어 창조, 논리 프로그래밍
+                        </div>
+                        <div class="philosophical-quote">
+                            "AI는 지능적인 기계를 만드는 과학이자 공학이다."
+                        </div>
+                        <div class="modern-impact">
+                            <span class="impact-icon">🧠</span>
+                            <span>현대 영향: 현대 AI 추론 시스템</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추론의 근본 원리 -->
+    <div class="reasoning-principles">
+        <h3>🎯 추론의 근본 원리</h3>
+        
+        <div class="principles-explorer">
+            <div class="principle-tabs">
+                <button class="principle-tab active" onclick="showPrinciple('deduction')">연역 추론</button>
+                <button class="principle-tab" onclick="showPrinciple('induction')">귀납 추론</button>
+                <button class="principle-tab" onclick="showPrinciple('abduction')">가설 추론</button>
+                <button class="principle-tab" onclick="showPrinciple('monotonic')">단조성</button>
+            </div>
+            
+            <div class="principle-content" id="deduction-principle">
+                <div class="principle-header">
+                    <span class="principle-icon">⬇️</span>
+                    <h4>연역 추론 (Deductive Reasoning)</h4>
+                    <span class="certainty-badge high">확실성: 100%</span>
+                </div>
+                <div class="principle-explanation">
+                    <p><strong>정의:</strong> 일반적 원리에서 특수한 경우를 도출하는 논리적 추론</p>
+                    <p><strong>특징:</strong> 전제가 참이면 결론도 반드시 참</p>
+                </div>
+                
+                <div class="reasoning-simulator">
+                    <h5>🧪 연역 추론 시뮬레이터</h5>
+                    <div class="syllogism-builder">
+                        <div class="premise major">
+                            <span class="premise-label">대전제</span>
+                            <div class="premise-input">
+                                <select class="premise-selector">
+                                    <option>모든 포유류는 심장이 있다</option>
+                                    <option>모든 새는 날 수 있다</option>
+                                    <option>모든 금속은 전기를 전도한다</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="premise minor">
+                            <span class="premise-label">소전제</span>
+                            <div class="premise-input">
+                                <select class="premise-selector">
+                                    <option>고래는 포유류다</option>
+                                    <option>펭귄은 새다</option>
+                                    <option>구리는 금속이다</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="conclusion">
+                            <span class="conclusion-label">결론</span>
+                            <div class="conclusion-output">
+                                <span id="deduction-result">따라서 고래는 심장이 있다</span>
+                                <span class="validity-indicator valid">✓ 논리적으로 유효</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formal-representation">
+                        <h6>형식 논리 표현</h6>
+                        <pre class="logic-formula"><code>∀x (Mammal(x) → HasHeart(x))    // 모든 포유류는 심장이 있다
+Mammal(whale)                     // 고래는 포유류다
+─────────────────────────────────
+∴ HasHeart(whale)                // 따라서 고래는 심장이 있다</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="principle-content" id="induction-principle" style="display: none;">
+                <div class="principle-header">
+                    <span class="principle-icon">⬆️</span>
+                    <h4>귀납 추론 (Inductive Reasoning)</h4>
+                    <span class="certainty-badge medium">확실성: 가능성</span>
+                </div>
+                <div class="principle-explanation">
+                    <p><strong>정의:</strong> 특수한 관찰에서 일반적 원리를 도출하는 추론</p>
+                    <p><strong>특징:</strong> 결론이 전제보다 더 많은 정보를 담음</p>
+                </div>
+                
+                <div class="induction-lab">
+                    <h5>🔬 귀납 추론 실험실</h5>
+                    <div class="observation-collector">
+                        <h6>관찰 데이터 수집</h6>
+                        <div class="observations">
+                            <div class="observation-item">
+                                <span class="obs-icon">🦢</span>
+                                <span class="obs-text">백조 #1: 흰색</span>
+                                <span class="obs-confidence">100%</span>
+                            </div>
+                            <div class="observation-item">
+                                <span class="obs-icon">🦢</span>
+                                <span class="obs-text">백조 #2: 흰색</span>
+                                <span class="obs-confidence">100%</span>
+                            </div>
+                            <div class="observation-item">
+                                <span class="obs-icon">🦢</span>
+                                <span class="obs-text">백조 #3: 흰색</span>
+                                <span class="obs-confidence">100%</span>
+                            </div>
+                            <div class="observation-item">
+                                <span class="obs-icon">🦢</span>
+                                <span class="obs-text">백조 #4: 흰색</span>
+                                <span class="obs-confidence">100%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="induction-process">
+                            <div class="process-arrow">↓</div>
+                            <div class="generalization">
+                                <h6>일반화 과정</h6>
+                                <div class="hypothesis">
+                                    <span class="hyp-text">"모든 백조는 흰색이다"</span>
+                                    <div class="confidence-meter">
+                                        <span>신뢰도: </span>
+                                        <div class="meter">
+                                            <div class="meter-fill" style="width: 85%"></div>
+                                        </div>
+                                        <span>85%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="black-swan-revelation">
+                            <h6>⚠️ 검은 백조의 등장</h6>
+                            <div class="revelation-content">
+                                <span class="swan-icon">🦢</span>
+                                <span class="revelation-text">호주에서 검은 백조 발견!</span>
+                                <div class="hypothesis-update">
+                                    <span class="old-hyp">기존: "모든 백조는 흰색"</span>
+                                    <span class="arrow">→</span>
+                                    <span class="new-hyp">수정: "일부 백조는 검정색"</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="principle-content" id="abduction-principle" style="display: none;">
+                <div class="principle-header">
+                    <span class="principle-icon">🔍</span>
+                    <h4>가설 추론 (Abductive Reasoning)</h4>
+                    <span class="certainty-badge low">확실성: 추측</span>
+                </div>
+                <div class="principle-explanation">
+                    <p><strong>정의:</strong> 관찰된 현상을 가장 잘 설명하는 가설을 추론</p>
+                    <p><strong>특징:</strong> "최선의 설명으로의 추론"</p>
+                </div>
+                
+                <div class="detective-scenario">
+                    <h5>🕵️ 탐정 추론 시나리오</h5>
+                    <div class="crime-scene">
+                        <h6>사건 현장</h6>
+                        <div class="evidence-board">
+                            <div class="evidence-item">
+                                <span class="evidence-icon">👣</span>
+                                <span class="evidence-desc">젖은 발자국</span>
+                            </div>
+                            <div class="evidence-item">
+                                <span class="evidence-icon">☔</span>
+                                <span class="evidence-desc">우산이 젖어있음</span>
+                            </div>
+                            <div class="evidence-item">
+                                <span class="evidence-icon">🌧️</span>
+                                <span class="evidence-desc">바깥 날씨가 흐림</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hypothesis-generation">
+                            <h6>가설 생성</h6>
+                            <div class="hypotheses">
+                                <div class="hypothesis-card best">
+                                    <div class="hyp-header">
+                                        <span class="hyp-icon">🌧️</span>
+                                        <span class="hyp-title">가설 1: 비가 왔다</span>
+                                        <span class="likelihood">가능성: 95%</span>
+                                    </div>
+                                    <div class="hyp-explanation">
+                                        모든 증거가 이 가설을 뒷받침함
+                                    </div>
+                                </div>
+                                <div class="hypothesis-card">
+                                    <div class="hyp-header">
+                                        <span class="hyp-icon">🚿</span>
+                                        <span class="hyp-title">가설 2: 스프링클러 작동</span>
+                                        <span class="likelihood">가능성: 30%</span>
+                                    </div>
+                                    <div class="hyp-explanation">
+                                        발자국은 설명되지만 우산이 젖은 이유는 불분명
+                                    </div>
+                                </div>
+                                <div class="hypothesis-card">
+                                    <div class="hyp-header">
+                                        <span class="hyp-icon">🏊</span>
+                                        <span class="hyp-title">가설 3: 수영장에서 왔다</span>
+                                        <span class="likelihood">가능성: 15%</span>
+                                    </div>
+                                    <div class="hyp-explanation">
+                                        우산이 젖은 이유를 설명하기 어려움
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="principle-content" id="monotonic-principle" style="display: none;">
+                <div class="principle-header">
+                    <span class="principle-icon">📈</span>
+                    <h4>단조성 (Monotonicity)</h4>
+                    <span class="certainty-badge system">시스템 특성</span>
+                </div>
+                <div class="principle-explanation">
+                    <p><strong>정의:</strong> 새로운 정보가 추가되어도 기존 결론이 변하지 않는 성질</p>
+                    <p><strong>특징:</strong> Classical Logic은 단조적, Human Reasoning은 비단조적</p>
+                </div>
+                
+                <div class="monotonicity-comparison">
+                    <h5>⚖️ 단조 vs 비단조 추론 비교</h5>
+                    <div class="comparison-grid">
+                        <div class="reasoning-type monotonic">
+                            <h6>🔒 단조 추론 (Classical Logic)</h6>
+                            <div class="reasoning-flow">
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>초기 지식:</strong> 새는 날 수 있다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>관찰:</strong> 펭귄은 새다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>결론:</strong> 펭귄은 날 수 있다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>새 정보:</strong> 펭귄은 날지 못한다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content problem">
+                                        <strong>문제:</strong> 모순 발생! 🚫
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="reasoning-type nonmonotonic">
+                            <h6>🔄 비단조 추론 (Human-like)</h6>
+                            <div class="reasoning-flow">
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>초기 가정:</strong> 새는 보통 날 수 있다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>관찰:</strong> 펭귄은 새다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>임시 결론:</strong> 펭귄은 아마 날 수 있다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content">
+                                        <strong>새 정보:</strong> 펭귄은 날지 못한다
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-content solution">
+                                        <strong>수정 결론:</strong> 펭귄은 예외적인 새 ✅
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 9.2: Description Logic의 수학적 기초 -->
+<section class="content-section mathematical-foundation">
+    <h2>9.2 Description Logic: 추론의 수학적 기초</h2>
+    
+    <!-- DL 개념 소개 -->
+    <div class="dl-introduction">
+        <h3>🧮 Description Logic이란?</h3>
+        
+        <div class="dl-definition-card">
+            <div class="definition-header">
+                <span class="definition-icon">📐</span>
+                <h4>Definition</h4>
+            </div>
+            <div class="definition-content">
+                <p><strong>Description Logic (DL)</strong>은 개념, 역할, 개체들 사이의 관계를 형식적으로 표현하고 추론하기 위한 논리 체계입니다.</p>
+                <div class="dl-components">
+                    <div class="component">
+                        <span class="comp-icon">🏷️</span>
+                        <span class="comp-name">Concepts (개념)</span>
+                        <span class="comp-desc">클래스, 집합</span>
+                    </div>
+                    <div class="component">
+                        <span class="comp-icon">🔗</span>
+                        <span class="comp-name">Roles (역할)</span>
+                        <span class="comp-desc">관계, 속성</span>
+                    </div>
+                    <div class="component">
+                        <span class="comp-icon">👤</span>
+                        <span class="comp-name">Individuals (개체)</span>
+                        <span class="comp-desc">인스턴스</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DL 표현력 탐색기 -->
+    <div class="dl-expressivity-explorer">
+        <h3>🎛️ DL 표현력 탐색기</h3>
+        
+        <div class="expressivity-dashboard">
+            <div class="complexity-selector">
+                <h4>복잡도 레벨 선택</h4>
+                <div class="complexity-buttons">
+                    <button class="complexity-btn active" onclick="showDLLevel('basic')">
+                        <span class="level-icon">🌱</span>
+                        <span class="level-name">Basic (ALC)</span>
+                    </button>
+                    <button class="complexity-btn" onclick="showDLLevel('intermediate')">
+                        <span class="level-icon">🌿</span>
+                        <span class="level-name">Intermediate (ALCN)</span>
+                    </button>
+                    <button class="complexity-btn" onclick="showDLLevel('advanced')">
+                        <span class="level-icon">🌳</span>
+                        <span class="level-name">Advanced (SHOIN)</span>
+                    </button>
+                    <button class="complexity-btn" onclick="showDLLevel('expert')">
+                        <span class="level-icon">🦄</span>
+                        <span class="level-name">Expert (SROIQ)</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="dl-level-content" id="basic-dl">
+                <div class="level-header">
+                    <h4>🌱 Basic Level: ALC (Attributive Language with Complements)</h4>
+                    <div class="complexity-indicator low">복잡도: EXPTIME</div>
+                </div>
+                
+                <div class="dl-syntax-builder">
+                    <h5>구문 구성기</h5>
+                    <div class="syntax-playground">
+                        <div class="syntax-elements">
+                            <div class="syntax-category">
+                                <h6>기본 구조</h6>
+                                <div class="syntax-items">
+                                    <div class="syntax-item" draggable="true" data-syntax="concept">
+                                        <span class="syntax-symbol">A</span>
+                                        <span class="syntax-desc">개념</span>
+                                    </div>
+                                    <div class="syntax-item" draggable="true" data-syntax="role">
+                                        <span class="syntax-symbol">r</span>
+                                        <span class="syntax-desc">역할</span>
+                                    </div>
+                                    <div class="syntax-item" draggable="true" data-syntax="top">
+                                        <span class="syntax-symbol">⊤</span>
+                                        <span class="syntax-desc">전체</span>
+                                    </div>
+                                    <div class="syntax-item" draggable="true" data-syntax="bottom">
+                                        <span class="syntax-symbol">⊥</span>
+                                        <span class="syntax-desc">공집합</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="syntax-category">
+                                <h6>논리 연산자</h6>
+                                <div class="syntax-items">
+                                    <div class="syntax-item" draggable="true" data-syntax="and">
+                                        <span class="syntax-symbol">⊓</span>
+                                        <span class="syntax-desc">교집합</span>
+                                    </div>
+                                    <div class="syntax-item" draggable="true" data-syntax="or">
+                                        <span class="syntax-symbol">⊔</span>
+                                        <span class="syntax-desc">합집합</span>
+                                    </div>
+                                    <div class="syntax-item" draggable="true" data-syntax="not">
+                                        <span class="syntax-symbol">¬</span>
+                                        <span class="syntax-desc">부정</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="syntax-category">
+                                <h6>양화사</h6>
+                                <div class="syntax-items">
+                                    <div class="syntax-item" draggable="true" data-syntax="exists">
+                                        <span class="syntax-symbol">∃r.C</span>
+                                        <span class="syntax-desc">존재</span>
+                                    </div>
+                                    <div class="syntax-item" draggable="true" data-syntax="forall">
+                                        <span class="syntax-symbol">∀r.C</span>
+                                        <span class="syntax-desc">전칭</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="expression-builder">
+                            <h6>표현식 만들기</h6>
+                            <div class="builder-canvas" id="expression-canvas">
+                                <div class="canvas-placeholder">
+                                    여기에 DL 구문 요소를 드래그하세요
+                                </div>
+                            </div>
+                            
+                            <div class="expression-examples">
+                                <h6>예제 표현식</h6>
+                                <div class="example-list">
+                                    <div class="example-item" onclick="loadExample('parent')">
+                                        <span class="example-dl">Person ⊓ ∃hasChild.Person</span>
+                                        <span class="example-desc">부모 (사람이면서 자식이 있는)</span>
+                                    </div>
+                                    <div class="example-item" onclick="loadExample('happy-parent')">
+                                        <span class="example-dl">Parent ⊓ ∀hasChild.HappyPerson</span>
+                                        <span class="example-desc">행복한 부모 (모든 자식이 행복한 부모)</span>
+                                    </div>
+                                    <div class="example-item" onclick="loadExample('vegetarian')">
+                                        <span class="example-dl">Person ⊓ ¬∃eats.Meat</span>
+                                        <span class="example-desc">채식주의자 (고기를 먹지 않는 사람)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="semantic-interpreter">
+                    <h5>🧠 의미 해석기</h5>
+                    <div class="interpretation-panel">
+                        <div class="current-expression">
+                            <h6>현재 표현식</h6>
+                            <div class="expression-display" id="current-expression">
+                                Person ⊓ ∃hasChild.Person
+                            </div>
+                        </div>
+                        
+                        <div class="semantic-explanation">
+                            <h6>의미 해석</h6>
+                            <div class="interpretation-steps">
+                                <div class="step">
+                                    <span class="step-icon">1️⃣</span>
+                                    <div class="step-content">
+                                        <strong>Person</strong>: 사람 개념의 집합
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <span class="step-icon">2️⃣</span>
+                                    <div class="step-content">
+                                        <strong>∃hasChild.Person</strong>: 적어도 한 명의 사람 자식을 가진 개체들의 집합
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <span class="step-icon">3️⃣</span>
+                                    <div class="step-content">
+                                        <strong>⊓</strong>: 두 집합의 교집합
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <span class="step-icon">💡</span>
+                                    <div class="step-content result">
+                                        <strong>결과</strong>: 사람이면서 동시에 자식을 가진 개체들 = 부모
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visual-interpretation">
+                            <h6>시각적 표현</h6>
+                            <div class="venn-diagram">
+                                <svg width="300" height="200" viewBox="0 0 300 200">
+                                    <!-- Person 집합 -->
+                                    <circle cx="120" cy="100" r="70" fill="#3b82f6" fill-opacity="0.3" stroke="#3b82f6" stroke-width="2"/>
+                                    <text x="80" y="60" font-size="12" fill="#1e40af">Person</text>
+                                    
+                                    <!-- hasChild 집합 -->
+                                    <circle cx="180" cy="100" r="70" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="2"/>
+                                    <text x="220" y="60" font-size="12" fill="#047857">∃hasChild.Person</text>
+                                    
+                                    <!-- 교집합 영역 -->
+                                    <text x="135" y="105" font-size="12" font-weight="bold" fill="#7c2d12">Parent</text>
+                                    
+                                    <!-- 예제 개체들 -->
+                                    <circle cx="100" cy="100" r="3" fill="#1e40af"/>
+                                    <text x="85" y="120" font-size="10" fill="#1e40af">John (사람)</text>
+                                    
+                                    <circle cx="150" cy="100" r="3" fill="#7c2d12"/>
+                                    <text x="135" y="135" font-size="10" fill="#7c2d12">Mary (부모)</text>
+                                    
+                                    <circle cx="200" cy="100" r="3" fill="#047857"/>
+                                    <text x="185" y="120" font-size="10" fill="#047857">Peter (자식있음)</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 다른 레벨들은 JavaScript로 동적 로딩 -->
+        </div>
+    </div>
+</section>
+
+<!-- 학습 진도 체크포인트 -->
+<div class="learning-checkpoint">
+    <h3>🎯 Part 1 학습 체크포인트</h3>
+    
+    <div class="checkpoint-dashboard">
+        <div class="philosophical-mastery">
+            <h4>🏛️ 철학적 기초</h4>
+            <div class="mastery-items">
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">아리스토텔레스의 삼단논법 이해</span>
+                </label>
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">연역/귀납/가설 추론 구분</span>
+                </label>
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">단조성 개념 파악</span>
+                </label>
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">논리학 역사 개관</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="dl-mastery">
+            <h4>🧮 Description Logic</h4>
+            <div class="mastery-items">
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">DL 기본 구조 (개념, 역할, 개체)</span>
+                </label>
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">ALC 구문 작성</span>
+                </label>
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">DL 표현식 의미 해석</span>
+                </label>
+                <label class="mastery-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="item-text">표현력 레벨 구분</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="progress-summary">
+        <div class="summary-stats">
+            <div class="stat-item">
+                <span class="stat-icon">📚</span>
+                <span class="stat-value" id="completed-topics">0</span>
+                <span class="stat-label">완료 주제</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">🎯</span>
+                <span class="stat-value" id="mastery-percentage">0%</span>
+                <span class="stat-label">숙련도</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">⏱️</span>
+                <span class="stat-value">~45분</span>
+                <span class="stat-label">학습 시간</span>
+            </div>
+        </div>
+        
+        <div class="next-step-guidance">
+            <div class="guidance-message" id="guidance-message">
+                체크리스트를 완료하여 Part 2로 진행할 준비를 하세요!
+            </div>
+            <button class="next-part-btn" id="next-part-btn" onclick="proceedToPart2()" disabled>
+                Part 2로 진행 <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Part 1 전용 스타일 -->
+<style>
+/* Reasoning Mastery Theme */
+.part-header.reasoning-mastery {
+    background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #c084fc 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.reasoning-neural-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 30%),
+        radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 30%);
+    animation: neuralPulse 3s ease-in-out infinite;
+}
+
+@keyframes neuralPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.progress-check.reasoning-level {
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 2px solid #7c3aed;
+}
+
+.master-readiness {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.cognitive-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill-assessment {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.skill-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+}
+
+.skill-name {
+    font-weight: 600;
+    color: #374151;
+    width: 120px;
+}
+
+.skill-meter {
+    flex: 1;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #7c3aed, #a855f7);
+    transition: width 1s ease;
+}
+
+.skill-score {
+    font-weight: 600;
+    color: #374151;
+    width: 50px;
+    text-align: right;
+}
+
+.readiness-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.indicator-circle {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.progress-ring {
+    position: relative;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3b82f6;
+    display: block;
+}
+
+.progress-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.readiness-message {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #10b981;
+}
+
+.readiness-message p {
+    margin: 0.5rem 0;
+}
+
+.philosophical-foundation {
+    background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.philosophical-journey {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-philosophers {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.philosopher-era {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.philosopher-era::after {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 2px;
+    height: calc(100% + 2rem);
+    background: linear-gradient(to bottom, #e5e7eb, #d1d5db);
+}
+
+.philosopher-era:last-child::after {
+    display: none;
+}
+
+.era-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    flex-shrink: 0;
+}
+
+.era-period {
+    background: #4f46e5;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.era-marker.ancient .era-period { background: #8b5cf6; }
+.era-marker.modern .era-period { background: #3b82f6; }
+.era-marker.contemporary .era-period { background: #10b981; }
+
+.era-year {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.philosopher-card {
+    flex: 1;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.philosopher-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.philosopher-card.aristotle { border-left: 4px solid #8b5cf6; }
+.philosopher-card.boole { border-left: 4px solid #3b82f6; }
+.philosopher-card.mccarthy { border-left: 4px solid #10b981; }
+
+.philosopher-avatar {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.avatar-icon {
+    font-size: 3rem;
+    display: block;
+}
+
+.philosopher-info {
+    padding: 1.5rem;
+}
+
+.philosopher-info h4 {
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.philosopher-title {
+    color: #6b7280;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.key-contribution {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    border-left: 3px solid #4f46e5;
+}
+
+.philosophical-quote {
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 6px;
+    font-style: italic;
+    color: #1e40af;
+    margin: 1rem 0;
+    border-left: 3px solid #3b82f6;
+}
+
+.modern-impact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+}
+
+.impact-icon {
+    color: #10b981;
+}
+
+.reasoning-principles {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid #e5e7eb;
+}
+
+.principles-explorer {
+    margin: 2rem 0;
+}
+
+.principle-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.principle-tab {
+    padding: 0.75rem 1.5rem;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #374151;
+    transition: all 0.2s;
+}
+
+.principle-tab:hover {
+    background: #e5e7eb;
+}
+
+.principle-tab.active {
+    background: #4f46e5;
+    color: white;
+}
+
+.principle-content {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.principle-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.principle-icon {
+    font-size: 2rem;
+}
+
+.principle-header h4 {
+    flex: 1;
+    color: #1f2937;
+    margin: 0;
+}
+
+.certainty-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.certainty-badge.high {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.certainty-badge.medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.certainty-badge.low {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.certainty-badge.system {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.principle-explanation {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #4f46e5;
+}
+
+.reasoning-simulator {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.syllogism-builder {
+    margin: 1.5rem 0;
+}
+
+.premise {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.premise-label {
+    font-weight: 600;
+    color: #374151;
+    width: 80px;
+}
+
+.premise-input {
+    flex: 1;
+}
+
+.premise-selector {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+}
+
+.conclusion {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f0fdf4;
+    border-radius: 8px;
+    border-left: 4px solid #10b981;
+}
+
+.conclusion-label {
+    font-weight: 600;
+    color: #166534;
+    width: 80px;
+}
+
+.conclusion-output {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.validity-indicator {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.validity-indicator.valid {
+    color: #166534;
+}
+
+.formal-representation {
+    margin: 2rem 0;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.formal-representation h6 {
+    background: #1f2937;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+}
+
+.logic-formula {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.induction-lab {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.observation-collector {
+    margin: 1.5rem 0;
+}
+
+.observations {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.observation-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+}
+
+.obs-icon {
+    font-size: 1.5rem;
+}
+
+.obs-text {
+    flex: 1;
+    color: #374151;
+}
+
+.obs-confidence {
+    font-weight: 600;
+    color: #166534;
+}
+
+.induction-process {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.process-arrow {
+    font-size: 2rem;
+    color: #6b7280;
+    margin: 1rem 0;
+}
+
+.generalization {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #f59e0b;
+}
+
+.hypothesis {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hyp-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #92400e;
+}
+
+.confidence-meter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.meter {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.black-swan-revelation {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #fecaca;
+    border-radius: 8px;
+    border-left: 4px solid #ef4444;
+}
+
+.revelation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+}
+
+.swan-icon {
+    font-size: 2rem;
+}
+
+.revelation-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #991b1b;
+}
+
+.hypothesis-update {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.old-hyp {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: line-through;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    color: #991b1b;
+}
+
+.new-hyp {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.detective-scenario {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.crime-scene {
+    margin: 1.5rem 0;
+}
+
+.evidence-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.evidence-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 6px;
+    border-left: 3px solid #3b82f6;
+}
+
+.evidence-icon {
+    font-size: 1.5rem;
+}
+
+.evidence-desc {
+    color: #374151;
+    font-weight: 500;
+}
+
+.hypothesis-generation {
+    margin: 2rem 0;
+}
+
+.hypotheses {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.hypothesis-card {
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.hypothesis-card.best {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.hyp-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.hyp-icon {
+    font-size: 1.5rem;
+}
+
+.hyp-title {
+    flex: 1;
+    font-weight: 600;
+    color: #374151;
+}
+
+.likelihood {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.hyp-explanation {
+    padding: 1rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.monotonicity-comparison {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.reasoning-type {
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 2px solid #e5e7eb;
+}
+
+.reasoning-type.monotonic {
+    background: #fef2f2;
+    border-color: #ef4444;
+}
+
+.reasoning-type.nonmonotonic {
+    background: #f0fdf4;
+    border-color: #10b981;
+}
+
+.reasoning-type h6 {
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.reasoning-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.step {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.step-content {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.step-content.problem {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.step-content.solution {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.mathematical-foundation {
+    background: linear-gradient(135deg, #fefefe 0%, #f1f5f9 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.dl-introduction {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dl-definition-card {
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    margin: 1.5rem 0;
+}
+
+.definition-header {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.definition-icon {
+    font-size: 1.5rem;
+}
+
+.definition-content {
+    padding: 1.5rem;
+}
+
+.dl-components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.comp-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.comp-name {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.comp-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.dl-expressivity-explorer {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid #e5e7eb;
+}
+
+.expressivity-dashboard {
+    margin: 2rem 0;
+}
+
+.complexity-selector {
+    margin-bottom: 2rem;
+}
+
+.complexity-selector h4 {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.complexity-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.complexity-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.complexity-btn:hover {
+    background: #f3f4f6;
+    transform: translateY(-1px);
+}
+
+.complexity-btn.active {
+    background: #eff6ff;
+    border-color: #3b82f6;
+}
+
+.level-icon {
+    font-size: 2rem;
+}
+
+.level-name {
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+}
+
+.dl-level-content {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.level-header h4 {
+    color: #1f2937;
+    margin: 0;
+}
+
+.complexity-indicator {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.complexity-indicator.low {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.dl-syntax-builder {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    margin: 1.5rem 0;
+}
+
+.syntax-playground {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.syntax-elements {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.syntax-category {
+    margin-bottom: 1.5rem;
+}
+
+.syntax-category h6 {
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.syntax-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.syntax-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    cursor: move;
+    transition: all 0.2s;
+    min-width: 80px;
+}
+
+.syntax-item:hover {
+    background: #f3f4f6;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.syntax-symbol {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #4f46e5;
+    margin-bottom: 0.25rem;
+}
+
+.syntax-desc {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.expression-builder {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.builder-canvas {
+    min-height: 100px;
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.builder-canvas.drag-over {
+    border-color: #4f46e5;
+    background: #eff6ff;
+}
+
+.canvas-placeholder {
+    color: #9ca3af;
+    font-style: italic;
+    text-align: center;
+}
+
+.expression-examples {
+    margin: 1.5rem 0;
+}
+
+.expression-examples h6 {
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.example-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.example-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f0f9ff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid #3b82f6;
+}
+
+.example-item:hover {
+    background: #dbeafe;
+}
+
+.example-dl {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: #1e40af;
+}
+
+.example-desc {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.semantic-interpreter {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    margin: 1.5rem 0;
+}
+
+.interpretation-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.current-expression,
+.semantic-explanation,
+.visual-interpretation {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.current-expression h6,
+.semantic-explanation h6,
+.visual-interpretation h6 {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.expression-display {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4f46e5;
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.interpretation-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.step {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.step-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.step-content.result {
+    background: white;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+}
+
+.venn-diagram {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.learning-checkpoint {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    border: 2px solid #f59e0b;
+}
+
+.checkpoint-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.philosophical-mastery,
+.dl-mastery {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.philosophical-mastery h4,
+.dl-mastery h4 {
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.mastery-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mastery-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.mastery-item:hover {
+    background: #f9fafb;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.mastery-item input[type="checkbox"] {
+    display: none;
+}
+
+.mastery-item input[type="checkbox"]:checked + .checkmark {
+    background: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.mastery-item input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.item-text {
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+.progress-summary {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.next-step-guidance {
+    text-align: center;
+}
+
+.guidance-message {
+    color: #374151;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.next-part-btn {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.next-part-btn:hover:not(:disabled) {
+    background: #4338ca;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.25);
+}
+
+.next-part-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .master-readiness,
+    .comparison-grid,
+    .syntax-playground,
+    .interpretation-panel,
+    .checkpoint-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .philosopher-era {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .philosopher-era::after {
+        display: none;
+    }
+    
+    .principle-tabs {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .complexity-buttons {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<!-- JavaScript for interactivity -->
+<script>
+// 철학적 추론 원리 탭 전환
+function showPrinciple(principleType) {
+    // 모든 탭 비활성화
+    document.querySelectorAll('.principle-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 모든 콘텐츠 숨기기
+    document.querySelectorAll('.principle-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // 선택된 탭 활성화
+    event.target.classList.add('active');
+    
+    // 해당 콘텐츠 표시
+    const content = document.getElementById(principleType + '-principle');
+    if (content) {
+        content.style.display = 'block';
+    }
+}
+
+// DL 복잡도 레벨 전환
+function showDLLevel(level) {
+    // 모든 버튼 비활성화
+    document.querySelectorAll('.complexity-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // 모든 콘텐츠 숨기기
+    document.querySelectorAll('.dl-level-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    
+    // 선택된 버튼 활성화
+    event.target.closest('.complexity-btn').classList.add('active');
+    
+    // 해당 콘텐츠 표시
+    const content = document.getElementById(level + '-dl');
+    if (content) {
+        content.style.display = 'block';
+    }
+}
+
+// DL 예제 표현식 로드
+function loadExample(exampleType) {
+    const expressions = {
+        'parent': 'Person ⊓ ∃hasChild.Person',
+        'happy-parent': 'Parent ⊓ ∀hasChild.HappyPerson',
+        'vegetarian': 'Person ⊓ ¬∃eats.Meat'
+    };
+    
+    const canvas = document.getElementById('expression-canvas');
+    const currentExpr = document.getElementById('current-expression');
+    
+    if (canvas && currentExpr) {
+        canvas.innerHTML = `<div style="font-family: 'Courier New', monospace; font-weight: bold; color: #4f46e5;">${expressions[exampleType]}</div>`;
+        currentExpr.textContent = expressions[exampleType];
+    }
+}
+
+// 학습 진도 추적
+function updateLearningProgress() {
+    const checkboxes = document.querySelectorAll('.mastery-item input[type="checkbox"]');
+    const checkedBoxes = document.querySelectorAll('.mastery-item input[type="checkbox"]:checked');
+    
+    const completedTopics = checkedBoxes.length;
+    const totalTopics = checkboxes.length;
+    const percentage = Math.round((completedTopics / totalTopics) * 100);
+    
+    // 통계 업데이트
+    const completedElement = document.getElementById('completed-topics');
+    const percentageElement = document.getElementById('mastery-percentage');
+    
+    if (completedElement) completedElement.textContent = completedTopics;
+    if (percentageElement) percentageElement.textContent = percentage + '%';
+    
+    // 진행 메시지 업데이트
+    const guidanceMessage = document.getElementById('guidance-message');
+    const nextPartBtn = document.getElementById('next-part-btn');
+    
+    if (percentage >= 80) {
+        guidanceMessage.textContent = '🎉 훌륭합니다! Part 2로 진행할 준비가 되었습니다.';
+        nextPartBtn.disabled = false;
+    } else if (percentage >= 50) {
+        guidanceMessage.textContent = '👍 좋은 진전입니다. 조금 더 학습하시면 Part 2로 넘어갈 수 있습니다.';
+        nextPartBtn.disabled = true;
+    } else {
+        guidanceMessage.textContent = '📚 체크리스트를 더 완료하여 Part 2로 진행할 준비를 하세요!';
+        nextPartBtn.disabled = true;
+    }
+}
+
+// Part 2로 진행
+function proceedToPart2() {
+    // 실제 구현에서는 라우팅 처리
+    alert('🚀 Part 2: 추론 엔진과 알고리즘으로 이동합니다!');
+    // OntologyBook.loadChapter('chapter09-part2');
+}
+
+// 페이지 로드 시 이벤트 리스너 설정
+document.addEventListener('DOMContentLoaded', function() {
+    // 체크박스 이벤트 리스너
+    const checkboxes = document.querySelectorAll('.mastery-item input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateLearningProgress);
+    });
+    
+    // 초기 진행률 계산
+    updateLearningProgress();
+    
+    // 드래그 앤 드롭 설정 (간단한 시뮬레이션)
+    const syntaxItems = document.querySelectorAll('.syntax-item');
+    const canvas = document.getElementById('expression-canvas');
+    
+    if (canvas) {
+        canvas.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('drag-over');
+        });
+        
+        canvas.addEventListener('dragleave', function(e) {
+            this.classList.remove('drag-over');
+        });
+        
+        canvas.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+            
+            const syntaxType = e.dataTransfer.getData('text/plain');
+            // 간단한 드롭 처리
+            console.log('Dropped:', syntaxType);
+        });
+    }
+    
+    syntaxItems.forEach(item => {
+        item.addEventListener('dragstart', function(e) {
+            e.dataTransfer.setData('text/plain', this.dataset.syntax);
+        });
+    });
+});
+</script>

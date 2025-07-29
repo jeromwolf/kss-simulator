@@ -1,4 +1,4 @@
-<!-- Chapter 1: 온톨로지란 무엇인가? -->
+<!-- Chapter 1: 온톨로지란 무엇인가? (Enhanced Version) -->
 
 <div class="chapter-header">
     <h1>Chapter 1. 온톨로지란 무엇인가?</h1>
@@ -8,25 +8,50 @@
 </div>
 
 <div class="reading-time">
-    <i class="fas fa-clock"></i> 예상 학습 시간: 30분
+    <i class="fas fa-clock"></i> 예상 학습 시간: 2시간 30분
 </div>
 
 <!-- 학습 목표 -->
 <div class="learning-objectives card">
     <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
     <ul>
-        <li>온톨로지의 철학적 기원과 컴퓨터 과학으로의 전환 이해</li>
-        <li>온톨로지와 데이터베이스, 분류체계의 차이점 파악</li>
-        <li>일상생활 속 온톨로지 예시 인식</li>
-        <li>온톨로지가 필요한 이유와 활용 분야 이해</li>
+        <li>온톨로지의 철학적 기원과 컴퓨터 과학으로의 전환 과정 심층 이해</li>
+        <li>온톨로지와 데이터베이스, 분류체계, 시소러스의 차이점 상세 파악</li>
+        <li>일상생활과 다양한 산업 분야의 온톨로지 예시 분석</li>
+        <li>온톨로지가 필요한 이유와 활용 분야별 구체적 사례 학습</li>
+        <li>온톨로지 설계의 기본 원칙과 방법론 입문</li>
+        <li>실제 온톨로지 구축 도구 체험</li>
     </ul>
+</div>
+
+<!-- 학습 경로 가이드 -->
+<div class="learning-path card">
+    <h3><i class="fas fa-route"></i> 학습 경로</h3>
+    <div class="path-steps">
+        <div class="path-step active">
+            <span class="step-number">1</span>
+            <span class="step-title">기초 개념</span>
+        </div>
+        <div class="path-step">
+            <span class="step-number">2</span>
+            <span class="step-title">실습 예제</span>
+        </div>
+        <div class="path-step">
+            <span class="step-number">3</span>
+            <span class="step-title">심화 학습</span>
+        </div>
+        <div class="path-step">
+            <span class="step-number">4</span>
+            <span class="step-title">프로젝트</span>
+        </div>
+    </div>
 </div>
 
 <!-- 섹션 1.1 -->
 <section class="content-section">
     <h2>1.1 철학에서 컴퓨터과학으로: 온톨로지의 여행</h2>
     
-    <h3>철학의 뿌리</h3>
+    <h3>철학의 뿌리: 존재론의 탄생</h3>
     <p>온톨로지(Ontology)라는 단어를 처음 들으면 낯설고 어려워 보입니다. 하지만 이 개념은 우리 일상과 밀접한 관련이 있습니다.</p>
     
     <p>온톨로지는 그리스어 'ontos'(존재)와 'logia'(학문)가 결합된 말로, 원래는 <strong>"무엇이 존재하는가?"</strong>를 탐구하는 철학 분야였습니다.</p>
@@ -34,511 +59,377 @@
     <div class="concept-box">
         <h4><i class="fas fa-lightbulb"></i> 핵심 개념</h4>
         <p><strong>존재론(Ontology)</strong>: 세상에 존재하는 것들의 본질과 그들 간의 관계를 탐구하는 학문</p>
-    </div>
-    
-    <!-- 역사 타임라인 (정적) -->
-    <div class="timeline-static">
-        <h4>온톨로지의 역사적 여정</h4>
-        <div class="timeline-items">
-            <div class="timeline-item">
-                <div class="timeline-date">기원전 400년</div>
-                <div class="timeline-content">
-                    <h5>아리스토텔레스</h5>
-                    <p>존재의 범주 분류 체계 제안</p>
-                    <div class="timeline-detail">
-                        • 10가지 범주로 세상을 분류<br>
-                        • 실체, 양, 질, 관계, 장소, 시간 등<br>
-                        • 서양 철학의 기초가 됨
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">1600년대</div>
-                <div class="timeline-content">
-                    <h5>근대 철학</h5>
-                    <p>데카르트, 스피노자의 존재론</p>
-                    <div class="timeline-detail">
-                        • 데카르트: "나는 생각한다, 고로 존재한다"<br>
-                        • 스피노자: 실체의 일원론<br>
-                        • 칸트: 현상과 본질의 구분
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">1960년대</div>
-                <div class="timeline-content">
-                    <h5>인공지능 연구</h5>
-                    <p>지식 표현의 필요성 대두</p>
-                    <div class="timeline-detail">
-                        • 전문가 시스템 개발 시작<br>
-                        • 형식적 지식 표현 방법 모색<br>
-                        • 의미 네트워크, 프레임 이론 등장
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">1990년대</div>
-                <div class="timeline-content">
-                    <h5>온톨로지 공학</h5>
-                    <p>컴퓨터 과학 분야로 정착</p>
-                    <div class="timeline-detail">
-                        • Tom Gruber의 정의: "공유된 개념화의 명시적 명세"<br>
-                        • 온톨로지 언어 개발 (Ontolingua, KIF)<br>
-                        • 대규모 온톨로지 프로젝트 시작
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2000년대</div>
-                <div class="timeline-content">
-                    <h5>시맨틱 웹</h5>
-                    <p>웹 3.0의 핵심 기술로 부상</p>
-                    <div class="timeline-detail">
-                        • W3C 표준 제정 (RDF, OWL)<br>
-                        • DBpedia, YAGO 등 대규모 온톨로지<br>
-                        • Linked Open Data 운동
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">현재</div>
-                <div class="timeline-content">
-                    <h5>AI와 지식그래프</h5>
-                    <p>대규모 지식 기반 AI 시스템</p>
-                    <div class="timeline-detail">
-                        • Google Knowledge Graph<br>
-                        • Microsoft Satori<br>
-                        • ChatGPT와 LLM의 지식 표현
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <h3>컴퓨터과학으로의 전환</h3>
-    <p>1990년대, 인공지능 연구자들이 이 고대 철학 개념을 컴퓨터 세계로 가져왔습니다. 그들은 중요한 질문에 직면했습니다:</p>
-    
-    <div class="question-box">
-        <p>"컴퓨터가 인간처럼 지식을 이해하고 추론하려면 어떻게 해야 할까?"</p>
-    </div>
-    
-    <div class="evolution-diagram">
-        <div class="evolution-step">
-            <div class="step-icon">📚</div>
-            <h4>철학적 온톨로지</h4>
-            <p>"무엇이 존재하는가?"</p>
-            <div class="step-detail">
-                • 존재의 본질 탐구<br>
-                • 개념과 범주 분류<br>
-                • 인간의 사고 체계
-            </div>
-        </div>
-        <div class="evolution-arrow">→</div>
-        <div class="evolution-step">
-            <div class="step-icon">🤔</div>
-            <h4>문제 인식</h4>
-            <p>"컴퓨터가 지식을 어떻게 이해할까?"</p>
-            <div class="step-detail">
-                • 자연어의 모호성<br>
-                • 맥락 이해의 어려움<br>
-                • 추론 능력의 부재
-            </div>
-        </div>
-        <div class="evolution-arrow">→</div>
-        <div class="evolution-step">
-            <div class="step-icon">💻</div>
-            <h4>컴퓨터 온톨로지</h4>
-            <p>"형식적 지식 표현"</p>
-            <div class="step-detail">
-                • 논리 기반 표현<br>
-                • 기계 가독성<br>
-                • 자동 추론 가능
-            </div>
-        </div>
-    </div>
-    
-    <h3>현대적 정의</h3>
-    <div class="definition-box">
-        <h4>컴퓨터 과학에서의 온톨로지</h4>
-        <p class="definition-text">
-            특정 분야의 개념들과 그들 사이의 관계를 명확하고 형식적으로 정의한 명세서
-        </p>
-        <ul class="definition-components">
-            <li><strong>개념(Concepts)</strong>: 무엇이 있는지
-                <span class="example">예: 사람, 동물, 조직</span>
-            </li>
-            <li><strong>속성(Properties)</strong>: 어떤 성질을 가지는지
-                <span class="example">예: 이름, 나이, 색상</span>
-            </li>
-            <li><strong>관계(Relations)</strong>: 서로 어떻게 연결되는지
-                <span class="example">예: 부모이다, 소속된다, 소유한다</span>
-            </li>
-            <li><strong>규칙(Rules)</strong>: 어떤 제약이 있는지
-                <span class="example">예: 사람은 동시에 두 곳에 있을 수 없다</span>
-            </li>
+        <ul>
+            <li><strong>형이상학적 존재론</strong>: 존재 자체의 본질 탐구</li>
+            <li><strong>범주적 존재론</strong>: 존재하는 것들의 분류와 체계화</li>
+            <li><strong>형식적 존재론</strong>: 모든 영역에 적용 가능한 보편적 구조</li>
+            <li><strong>영역 존재론</strong>: 특정 분야의 개념과 관계 정의</li>
         </ul>
     </div>
     
-    <div class="comparison-box">
-        <h4>철학적 온톨로지 vs 컴퓨터 온톨로지</h4>
-        <table class="comparison-mini">
-            <tr>
-                <th>구분</th>
-                <th>철학적 온톨로지</th>
-                <th>컴퓨터 온톨로지</th>
-            </tr>
-            <tr>
-                <td>목적</td>
-                <td>존재의 본질 이해</td>
-                <td>지식의 형식적 표현</td>
-            </tr>
-            <tr>
-                <td>대상</td>
-                <td>인간의 사고</td>
-                <td>기계의 처리</td>
-            </tr>
-            <tr>
-                <td>방법</td>
-                <td>철학적 논증</td>
-                <td>논리와 수학</td>
-            </tr>
-            <tr>
-                <td>결과</td>
-                <td>이론과 통찰</td>
-                <td>실행 가능한 모델</td>
-            </tr>
-        </table>
+    <!-- 인터랙티브 역사 타임라인 -->
+    <div class="interactive-timeline" id="ontology-history">
+        <h4>온톨로지의 역사적 여정 (인터랙티브)</h4>
+        <div class="timeline-controls">
+            <button class="timeline-btn" data-era="ancient">고대</button>
+            <button class="timeline-btn" data-era="medieval">중세</button>
+            <button class="timeline-btn" data-era="modern">근대</button>
+            <button class="timeline-btn" data-era="contemporary">현대</button>
+        </div>
+        <div class="timeline-content-area">
+            <!-- 동적으로 로드될 컨텐츠 영역 -->
+        </div>
+    </div>
+
+    <!-- 철학적 사례 연구 -->
+    <div class="case-study card">
+        <h4><i class="fas fa-microscope"></i> 사례 연구: 플라톤의 이데아론</h4>
+        <p>플라톤은 현실 세계의 모든 것이 완벽한 '이데아(Idea)'의 불완전한 복사본이라고 주장했습니다.</p>
+        
+        <div class="example-box">
+            <h5>의자의 존재론적 분석</h5>
+            <ol>
+                <li><strong>이데아의 의자</strong>: 완벽한 의자의 개념</li>
+                <li><strong>목수의 의자</strong>: 이데아를 모방한 실제 의자</li>
+                <li><strong>화가의 의자</strong>: 실제 의자를 그린 그림</li>
+            </ol>
+            <p>이 계층구조는 현대 온톨로지의 클래스-인스턴스 관계의 기원이 되었습니다.</p>
+        </div>
+    </div>
+
+    <h3>컴퓨터 과학으로의 전환</h3>
+    
+    <div class="transformation-section">
+        <h4>왜 컴퓨터 과학자들이 온톨로지에 관심을 가졌을까?</h4>
+        
+        <div class="reason-cards">
+            <div class="reason-card">
+                <i class="fas fa-database"></i>
+                <h5>데이터 통합의 필요성</h5>
+                <p>서로 다른 시스템 간 데이터 교환과 통합을 위한 공통 언어가 필요했습니다.</p>
+            </div>
+            
+            <div class="reason-card">
+                <i class="fas fa-brain"></i>
+                <h5>인공지능의 발전</h5>
+                <p>기계가 인간처럼 지식을 이해하고 추론하기 위한 구조화된 지식 표현이 필요했습니다.</p>
+            </div>
+            
+            <div class="reason-card">
+                <i class="fas fa-globe"></i>
+                <h5>웹의 진화</h5>
+                <p>단순한 문서 연결에서 의미 있는 데이터 연결로 발전하는 시맨틱 웹의 등장</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실습: 간단한 온톨로지 만들기 -->
+    <div class="practice-section">
+        <h4><i class="fas fa-laptop-code"></i> 실습 1: 나만의 첫 온톨로지</h4>
+        <p>가족 관계를 표현하는 간단한 온톨로지를 만들어봅시다.</p>
+        
+        <div class="code-editor">
+            <pre><code class="language-turtle">
+# Turtle 형식으로 작성하는 가족 온톨로지
+@prefix family: &lt;http://example.org/family#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+# 클래스 정의
+family:Person rdf:type rdfs:Class ;
+    rdfs:label "사람"@ko .
+
+family:Male rdfs:subClassOf family:Person ;
+    rdfs:label "남성"@ko .
+
+family:Female rdfs:subClassOf family:Person ;
+    rdfs:label "여성"@ko .
+
+# 속성 정의
+family:hasParent rdf:type rdf:Property ;
+    rdfs:domain family:Person ;
+    rdfs:range family:Person ;
+    rdfs:label "부모를 가짐"@ko .
+
+family:hasChild rdf:type rdf:Property ;
+    rdfs:inverseOf family:hasParent ;
+    rdfs:label "자녀를 가짐"@ko .
+
+# 인스턴스 예제
+family:김철수 rdf:type family:Male ;
+    family:hasParent family:김영희 .
+
+family:김영희 rdf:type family:Female ;
+    family:hasChild family:김철수 .
+            </code></pre>
+        </div>
+        
+        <div class="exercise-tasks">
+            <h5>연습 문제:</h5>
+            <ol>
+                <li>형제/자매 관계를 나타내는 속성을 추가해보세요.</li>
+                <li>조부모-손자 관계를 추론할 수 있는 규칙을 생각해보세요.</li>
+                <li>결혼 관계를 표현하는 방법을 설계해보세요.</li>
+            </ol>
+        </div>
     </div>
 </section>
 
 <!-- 섹션 1.2 -->
 <section class="content-section">
-    <h2>1.2 일상 속 온톨로지 찾기</h2>
+    <h2>1.2 온톨로지의 정의와 특징</h2>
     
-    <p>온톨로지는 추상적인 개념처럼 보이지만, 실제로는 우리 주변 어디에나 있습니다. 우리가 매일 사용하는 분류 체계와 개념 구조가 바로 온톨로지의 예입니다.</p>
-    
-    <!-- 가족 관계 예시 -->
-    <div class="example-container">
-        <h3>예시 1: 가족 관계 온톨로지</h3>
-        <div class="family-diagram">
-            <div class="diagram-description">
-                <p>가족 관계는 가장 기본적인 온톨로지 예시입니다. 각 개념(부모, 자녀)과 관계(부모이다, 형제이다)가 명확히 정의됩니다.</p>
-            </div>
-            <div class="family-structure">
-                <div class="concept-hierarchy">
-                    <div class="hierarchy-title">클래스 계층구조</div>
-                    <div class="concept-level">
-                        <div class="concept-node root">사람</div>
-                    </div>
-                    <div class="concept-connector">│</div>
-                    <div class="concept-level">
-                        <div class="concept-node">남성</div>
-                        <div class="concept-node">여성</div>
-                    </div>
-                    <div class="concept-connector">│ │</div>
-                    <div class="concept-level">
-                        <div class="concept-node sub">아버지</div>
-                        <div class="concept-node sub">어머니</div>
-                        <div class="concept-node sub">아들</div>
-                        <div class="concept-node sub">딸</div>
-                    </div>
-                </div>
-                <div class="relationship-examples">
-                    <h5>관계 예시:</h5>
-                    <ul>
-                        <li>철수 <span class="relation">아버지이다</span> 영희</li>
-                        <li>영희 <span class="relation">형제이다</span> 민수</li>
-                        <li>순희 <span class="relation">어머니이다</span> 영희</li>
-                        <li>민수 <span class="relation">조카이다</span> 철수형</li>
-                    </ul>
-                    
-                    <h5>속성 예시:</h5>
-                    <ul>
-                        <li>철수: 나이(45), 직업(회사원), 거주지(서울)</li>
-                        <li>영희: 나이(20), 학교(서울대), 전공(컴퓨터공학)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="ontology-rules">
-                <h5>온톨로지 규칙 예시:</h5>
-                <div class="rule-item">
-                    <span class="rule-icon">📐</span>
-                    <span class="rule-text">아버지는 남성이다 (클래스 제약)</span>
-                </div>
-                <div class="rule-item">
-                    <span class="rule-icon">📐</span>
-                    <span class="rule-text">부모의 부모는 조부모이다 (관계 추론)</span>
-                </div>
-                <div class="rule-item">
-                    <span class="rule-icon">📐</span>
-                    <span class="rule-text">형제의 자녀는 조카이다 (관계 추론)</span>
-                </div>
-            </div>
-        </div>
+    <div class="definition-box">
+        <h4>컴퓨터 과학에서의 온톨로지 정의</h4>
+        <blockquote>
+            "온톨로지는 특정 영역에 존재하는 개념들과 그들 간의 관계를 <strong>명시적으로(explicit)</strong> 그리고 <strong>형식적으로(formal)</strong> 표현한 것이다."
+            <cite>- Tom Gruber, 1993</cite>
+        </blockquote>
     </div>
+
+    <h3>온톨로지의 핵심 구성 요소</h3>
     
-    <!-- 음식 분류 예시 -->
-    <div class="example-container">
-        <h3>예시 2: 한국 음식 분류 온톨로지</h3>
-        <div class="food-ontology">
-            <div class="food-hierarchy">
-                <div class="food-root">한국음식</div>
-                <div class="food-branches">
-                    <div class="food-branch">
-                        <div class="branch-title">조리법별</div>
-                        <div class="branch-items">
-                            <span>구이</span>
-                            <span>찜</span>
-                            <span>탕</span>
-                            <span>전</span>
-                        </div>
-                    </div>
-                    <div class="food-branch">
-                        <div class="branch-title">재료별</div>
-                        <div class="branch-items">
-                            <span>육류</span>
-                            <span>해산물</span>
-                            <span>채소</span>
-                            <span>곡류</span>
-                        </div>
-                    </div>
-                    <div class="food-branch">
-                        <div class="branch-title">용도별</div>
-                        <div class="branch-items">
-                            <span>주식</span>
-                            <span>반찬</span>
-                            <span>국물</span>
-                            <span>후식</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="component-grid">
+        <div class="component-card">
+            <div class="component-icon">
+                <i class="fas fa-cubes"></i>
             </div>
-            
-            <div class="food-categories">
-                <div class="category-card" data-category="주식">
-                    <i class="fas fa-bowl-rice"></i>
-                    <h4>주식</h4>
-                    <p>밥류, 면류, 죽류</p>
-                    <div class="category-details">
-                        <h5>하위 분류:</h5>
-                        <ul>
-                            <li><strong>밥류</strong>: 흰밥, 볶음밥, 비빔밥, 김밥
-                                <div class="property-list">
-                                    속성: 주재료(쌀), 조리시간, 칼로리
-                                </div>
-                            </li>
-                            <li><strong>면류</strong>: 냉면, 국수, 라면, 잔치국수
-                                <div class="property-list">
-                                    속성: 면종류, 국물유무, 온도
-                                </div>
-                            </li>
-                            <li><strong>죽류</strong>: 팥죽, 호박죽, 전복죽, 잣죽
-                                <div class="property-list">
-                                    속성: 농도, 주재료, 계절성
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="category-card" data-category="국물요리">
-                    <i class="fas fa-bowl-food"></i>
-                    <h4>국물요리</h4>
-                    <p>국, 찌개, 탕</p>
-                    <div class="category-details">
-                        <h5>하위 분류:</h5>
-                        <ul>
-                            <li><strong>국</strong>: 미역국, 콩나물국, 시래기국
-                                <div class="property-list">
-                                    속성: 맑기, 간(싱겁다/짜다), 주재료
-                                </div>
-                            </li>
-                            <li><strong>찌개</strong>: 김치찌개, 된장찌개, 순두부찌개
-                                <div class="property-list">
-                                    속성: 매운정도, 걸쭉함, 주재료
-                                </div>
-                            </li>
-                            <li><strong>탕</strong>: 갈비탕, 삼계탕, 설렁탕
-                                <div class="property-list">
-                                    속성: 국물색, 조리시간, 특별재료
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="category-card" data-category="반찬">
-                    <i class="fas fa-utensils"></i>
-                    <h4>반찬</h4>
-                    <p>김치류, 나물류, 구이류</p>
-                    <div class="category-details">
-                        <h5>하위 분류:</h5>
-                        <ul>
-                            <li><strong>김치류</strong>: 배추김치, 깍두기, 오이소박이
-                                <div class="property-list">
-                                    속성: 숙성도, 매운정도, 계절
-                                </div>
-                            </li>
-                            <li><strong>나물류</strong>: 시금치나물, 콩나물, 고사리나물
-                                <div class="property-list">
-                                    속성: 조리법(데치기/볶기), 양념종류
-                                </div>
-                            </li>
-                            <li><strong>구이류</strong>: 불고기, 갈비구이, 생선구이
-                                <div class="property-list">
-                                    속성: 양념유무, 굽기정도, 부위
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="food-relationships">
-                <h4>음식 온톨로지의 관계 예시</h4>
-                <div class="relation-grid">
-                    <div class="relation-example">
-                        <span class="entity">김치찌개</span>
-                        <span class="arrow">→</span>
-                        <span class="relation-type">주재료</span>
-                        <span class="arrow">→</span>
-                        <span class="entity">김치</span>
-                    </div>
-                    <div class="relation-example">
-                        <span class="entity">비빔밥</span>
-                        <span class="arrow">→</span>
-                        <span class="relation-type">포함</span>
-                        <span class="arrow">→</span>
-                        <span class="entity">나물류</span>
-                    </div>
-                    <div class="relation-example">
-                        <span class="entity">삼계탕</span>
-                        <span class="arrow">→</span>
-                        <span class="relation-type">계절</span>
-                        <span class="arrow">→</span>
-                        <span class="entity">여름</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="interactive-quiz">
-        <h3>🤔 생각해보기: 일상의 온톨로지</h3>
-        <p>우리가 일상에서 사용하는 분류 체계를 온톨로지로 표현해보세요:</p>
-        <div class="quiz-examples">
-            <div class="quiz-example">
-                <h4>📱 온라인 쇼핑몰</h4>
-                <div class="ontology-structure">
-                    <div class="structure-section">
-                        <h5>주요 개념(클래스)</h5>
-                        <div class="concept-list">
-                            <span class="concept">상품</span>
-                            <span class="concept">카테고리</span>
-                            <span class="concept">브랜드</span>
-                            <span class="concept">고객</span>
-                            <span class="concept">주문</span>
-                            <span class="concept">리뷰</span>
-                        </div>
-                    </div>
-                    <div class="structure-section">
-                        <h5>관계</h5>
-                        <ul>
-                            <li>상품 <em>속한다</em> 카테고리</li>
-                            <li>고객 <em>구매한다</em> 상품</li>
-                            <li>브랜드 <em>제조한다</em> 상품</li>
-                            <li>고객 <em>작성한다</em> 리뷰</li>
-                        </ul>
-                    </div>
-                    <div class="structure-section">
-                        <h5>속성</h5>
-                        <ul>
-                            <li>상품: 가격, 재고, 할인율, 배송비</li>
-                            <li>고객: 등급, 포인트, 구매이력</li>
-                            <li>리뷰: 평점, 작성일, 추천수</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quiz-example">
-                <h4>📚 도서관 분류</h4>
-                <div class="ontology-structure">
-                    <div class="structure-section">
-                        <h5>주요 개념(클래스)</h5>
-                        <div class="concept-list">
-                            <span class="concept">도서</span>
-                            <span class="concept">저자</span>
-                            <span class="concept">출판사</span>
-                            <span class="concept">장르</span>
-                            <span class="concept">대출자</span>
-                            <span class="concept">서가</span>
-                        </div>
-                    </div>
-                    <div class="structure-section">
-                        <h5>관계</h5>
-                        <ul>
-                            <li>저자 <em>저술한다</em> 도서</li>
-                            <li>출판사 <em>출판한다</em> 도서</li>
-                            <li>도서 <em>분류된다</em> 장르</li>
-                            <li>대출자 <em>대출한다</em> 도서</li>
-                            <li>도서 <em>위치한다</em> 서가</li>
-                        </ul>
-                    </div>
-                    <div class="structure-section">
-                        <h5>속성</h5>
-                        <ul>
-                            <li>도서: ISBN, 출판연도, 페이지수, 대출가능여부</li>
-                            <li>저자: 국적, 생년월일, 대표작</li>
-                            <li>대출자: 회원번호, 대출한도, 연체일수</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quiz-example">
-                <h4>🏢 회사 조직</h4>
-                <div class="ontology-structure">
-                    <div class="structure-section">
-                        <h5>주요 개념(클래스)</h5>
-                        <div class="concept-list">
-                            <span class="concept">직원</span>
-                            <span class="concept">부서</span>
-                            <span class="concept">직급</span>
-                            <span class="concept">프로젝트</span>
-                            <span class="concept">역할</span>
-                            <span class="concept">팀</span>
-                        </div>
-                    </div>
-                    <div class="structure-section">
-                        <h5>관계</h5>
-                        <ul>
-                            <li>직원 <em>소속된다</em> 부서</li>
-                            <li>직원 <em>관리한다</em> 팀</li>
-                            <li>직원 <em>참여한다</em> 프로젝트</li>
-                            <li>직원 <em>보고한다</em> 상급자</li>
-                            <li>프로젝트 <em>수행된다</em> 팀</li>
-                        </ul>
-                    </div>
-                    <div class="structure-section">
-                        <h5>속성</h5>
-                        <ul>
-                            <li>직원: 사번, 입사일, 급여, 전문분야</li>
-                            <li>부서: 예산, 인원수, 위치</li>
-                            <li>프로젝트: 시작일, 종료일, 예산, 진행률</li>
-                        </ul>
-                    </div>
-                </div>
+            <h4>클래스(Classes)</h4>
+            <p>개념이나 사물의 집합</p>
+            <div class="example">
+                <strong>예시:</strong>
+                <ul>
+                    <li>동물, 포유류, 개</li>
+                    <li>자동차, 승용차, 전기차</li>
+                    <li>질병, 감염병, 바이러스성질환</li>
+                </ul>
             </div>
         </div>
         
-        <div class="thinking-exercise">
-            <h4>💡 더 생각해보기</h4>
-            <p>위의 예시들에서 온톨로지가 어떤 역할을 하는지 생각해보세요:</p>
-            <ol>
-                <li>각 시스템에서 정보를 체계적으로 관리하는 방법</li>
-                <li>서로 다른 개념들 간의 관계를 명확히 정의하는 방법</li>
-                <li>새로운 정보를 추론할 수 있는 규칙들</li>
-            </ol>
+        <div class="component-card">
+            <div class="component-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <h4>인스턴스(Instances)</h4>
+            <p>클래스에 속하는 개별 객체</p>
+            <div class="example">
+                <strong>예시:</strong>
+                <ul>
+                    <li>우리집 강아지 '뽀삐'</li>
+                    <li>테슬라 모델 3 (VIN: 5YJ3...)</li>
+                    <li>COVID-19</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="component-card">
+            <div class="component-icon">
+                <i class="fas fa-link"></i>
+            </div>
+            <h4>관계(Relations)</h4>
+            <p>개념들 간의 연결</p>
+            <div class="example">
+                <strong>예시:</strong>
+                <ul>
+                    <li>is-a (계층 관계)</li>
+                    <li>part-of (부분-전체)</li>
+                    <li>causes (인과 관계)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="component-card">
+            <div class="component-icon">
+                <i class="fas fa-tag"></i>
+            </div>
+            <h4>속성(Properties)</h4>
+            <p>객체의 특성</p>
+            <div class="example">
+                <strong>예시:</strong>
+                <ul>
+                    <li>나이, 무게, 색상</li>
+                    <li>최고속도, 연비</li>
+                    <li>증상, 전염성</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="component-card">
+            <div class="component-icon">
+                <i class="fas fa-gavel"></i>
+            </div>
+            <h4>공리(Axioms)</h4>
+            <p>항상 참인 명제</p>
+            <div class="example">
+                <strong>예시:</strong>
+                <ul>
+                    <li>모든 개는 포유류다</li>
+                    <li>전기차는 배기가스를 배출하지 않는다</li>
+                    <li>바이러스는 숙주 없이 번식할 수 없다</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="component-card">
+            <div class="component-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h4>규칙(Rules)</h4>
+            <p>추론을 위한 논리</p>
+            <div class="example">
+                <strong>예시:</strong>
+                <ul>
+                    <li>A가 B의 부모이고 B가 C의 부모면, A는 C의 조부모다</li>
+                    <li>증상이 3개 이상 일치하면 특정 질병 의심</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 인터랙티브 온톨로지 구성요소 탐색기 -->
+    <div class="interactive-explorer">
+        <h4><i class="fas fa-search"></i> 온톨로지 구성요소 탐색기</h4>
+        <div class="explorer-container">
+            <div class="explorer-sidebar">
+                <button class="explorer-btn" data-component="class">클래스 탐색</button>
+                <button class="explorer-btn" data-component="property">속성 탐색</button>
+                <button class="explorer-btn" data-component="relation">관계 탐색</button>
+                <button class="explorer-btn" data-component="axiom">공리 탐색</button>
+            </div>
+            <div class="explorer-content">
+                <!-- 동적 콘텐츠 영역 -->
+            </div>
+        </div>
+    </div>
+
+    <h3>온톨로지 vs 다른 지식 표현 방법</h3>
+    
+    <div class="comparison-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>특징</th>
+                    <th>온톨로지</th>
+                    <th>데이터베이스 스키마</th>
+                    <th>분류체계(Taxonomy)</th>
+                    <th>시소러스(Thesaurus)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>주요 목적</td>
+                    <td>지식 공유와 추론</td>
+                    <td>데이터 저장과 검색</td>
+                    <td>계층적 분류</td>
+                    <td>용어 관계 정의</td>
+                </tr>
+                <tr>
+                    <td>표현력</td>
+                    <td>매우 높음 (복잡한 관계)</td>
+                    <td>중간 (구조화된 데이터)</td>
+                    <td>낮음 (계층 관계만)</td>
+                    <td>중간 (동의어, 상하위어)</td>
+                </tr>
+                <tr>
+                    <td>추론 능력</td>
+                    <td>강력한 추론 지원</td>
+                    <td>제한적 (SQL 쿼리)</td>
+                    <td>단순 상속</td>
+                    <td>용어 확장</td>
+                </tr>
+                <tr>
+                    <td>형식성</td>
+                    <td>형식 논리 기반</td>
+                    <td>관계형 모델</td>
+                    <td>트리 구조</td>
+                    <td>그래프 구조</td>
+                </tr>
+                <tr>
+                    <td>사용 예시</td>
+                    <td>의료 진단, AI 추론</td>
+                    <td>업무 시스템, ERP</td>
+                    <td>생물 분류, 도서 분류</td>
+                    <td>검색 엔진, 도서관</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 실습: 온톨로지와 데이터베이스 비교 -->
+    <div class="practice-section">
+        <h4><i class="fas fa-laptop-code"></i> 실습 2: 온톨로지 vs 데이터베이스</h4>
+        <p>같은 정보를 데이터베이스와 온톨로지로 표현하는 차이를 알아봅시다.</p>
+        
+        <div class="code-comparison">
+            <div class="code-column">
+                <h5>데이터베이스 (SQL)</h5>
+                <pre><code class="language-sql">
+-- 테이블 생성
+CREATE TABLE Person (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    job_id INT
+);
+
+CREATE TABLE Job (
+    id INT PRIMARY KEY,
+    title VARCHAR(100),
+    department VARCHAR(100)
+);
+
+-- 데이터 삽입
+INSERT INTO Person VALUES (1, '김철수', 30, 1);
+INSERT INTO Job VALUES (1, '개발자', 'IT부서');
+
+-- 조회
+SELECT p.name, j.title 
+FROM Person p 
+JOIN Job j ON p.job_id = j.id;
+                </code></pre>
+            </div>
+            
+            <div class="code-column">
+                <h5>온톨로지 (OWL/RDF)</h5>
+                <pre><code class="language-turtle">
+# 클래스 정의
+:Person rdf:type owl:Class .
+:Job rdf:type owl:Class .
+:Developer rdfs:subClassOf :Job .
+
+# 속성 정의
+:hasJob rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Job .
+
+:worksIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Job ;
+    rdfs:range :Department .
+
+# 추론 규칙
+:Developer rdfs:subClassOf 
+    [ rdf:type owl:Restriction ;
+      owl:onProperty :worksIn ;
+      owl:hasValue :ITDepartment ] .
+
+# 인스턴스
+:김철수 rdf:type :Person ;
+    :hasJob :개발자직무 .
+
+:개발자직무 rdf:type :Developer .
+# 자동 추론: 김철수는 IT부서에서 일한다
+                </code></pre>
+            </div>
+        </div>
+        
+        <div class="comparison-insights">
+            <h5>주요 차이점:</h5>
+            <ul>
+                <li><strong>스키마 유연성:</strong> 온톨로지는 런타임에 새로운 관계와 속성 추가 가능</li>
+                <li><strong>추론 능력:</strong> 온톨로지는 명시하지 않은 사실도 추론 가능</li>
+                <li><strong>의미 표현:</strong> 온톨로지는 개념의 의미와 제약사항을 더 풍부하게 표현</li>
+                <li><strong>상호운용성:</strong> 온톨로지는 표준화된 형식으로 시스템 간 공유 용이</li>
+            </ul>
         </div>
     </div>
 </section>
@@ -547,229 +438,250 @@
 <section class="content-section">
     <h2>1.3 왜 온톨로지가 필요한가?</h2>
     
-    <h3>문제 상황: 정보의 모호성</h3>
-    
-    <p>현재의 컴퓨터 시스템은 인간이 당연하게 이해하는 맥락과 의미를 파악하지 못합니다. 간단한 예를 통해 이 문제를 살펴보겠습니다.</p>
-    
-    <!-- 검색 예시 -->
-    <div class="search-simulation">
-        <h4>검색어 "사과"의 모호성</h4>
-        <div class="search-demo">
-            <div class="search-input-box">
-                <i class="fas fa-search"></i>
-                <span class="search-text">사과</span>
-            </div>
-            
-            <div class="search-results-comparison">
-                <div class="results-column">
-                    <h5>❌ 현재의 검색 결과</h5>
-                    <div class="result-list mixed">
-                        <div class="result-item">
-                            <span class="rank">1</span>
-                            <span class="title">사과나무 재배법</span>
-                            <span class="context">과일</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="rank">2</span>
-                            <span class="title">애플 아이폰 15 출시</span>
-                            <span class="context">기업</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="rank">3</span>
-                            <span class="title">진심어린 사과의 방법</span>
-                            <span class="context">행동</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="rank">4</span>
-                            <span class="title">사과잼 만들기</span>
-                            <span class="context">과일</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="rank">5</span>
-                            <span class="title">팀 쿡의 사과(Apple) 경영</span>
-                            <span class="context">기업</span>
-                        </div>
-                    </div>
-                    <p class="result-problem">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        서로 다른 의미가 뒤섞여 있음
-                    </p>
+    <div class="problem-solution">
+        <h3>현대 정보 시스템의 문제점</h3>
+        
+        <div class="problem-cards">
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <i class="fas fa-language"></i>
                 </div>
-                
-                <div class="results-column">
-                    <h5>✅ 온톨로지 기반 검색</h5>
-                    <div class="result-categories">
-                        <div class="category-section">
-                            <h6>🍎 과일 &gt; 사과</h6>
-                            <div class="result-item">
-                                <span class="title">사과나무 재배법</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="title">사과잼 만들기</span>
-                            </div>
-                        </div>
-                        <div class="category-section">
-                            <h6>🏢 기업 &gt; Apple Inc.</h6>
-                            <div class="result-item">
-                                <span class="title">애플 아이폰 15 출시</span>
-                            </div>
-                            <div class="result-item">
-                                <span class="title">팀 쿡의 Apple 경영</span>
-                            </div>
-                        </div>
-                        <div class="category-section">
-                            <h6>🤝 사회적 행동 &gt; 사과하다</h6>
-                            <div class="result-item">
-                                <span class="title">진심어린 사과의 방법</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="result-success">
-                        <i class="fas fa-check-circle"></i>
-                        의미별로 명확히 분류됨
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <h3>온톨로지의 해결책</h3>
-    
-    <p>온톨로지는 각 개념의 의미를 명확히 정의하고, 컴퓨터가 이해할 수 있는 형식으로 표현합니다.</p>
-    
-    <!-- 온톨로지 적용 전후 비교 -->
-    <div class="solution-comparison">
-        <h4>온톨로지를 통한 의미 구분</h4>
-        <div class="comparison-grid">
-            <div class="before-ontology">
-                <h4>❌ 온톨로지 없이</h4>
-                <div class="code-example">
-                    <pre>검색어: "사과"
-
-컴퓨터의 처리:
-- "사과"라는 문자열 매칭
-- 문맥 이해 불가
-- 의미 구분 불가
-
-결과:
-- 모든 "사과" 포함 문서
-- 관련 없는 결과 혼재
-- 사용자 의도 파악 실패</pre>
-                </div>
-            </div>
-            <div class="after-ontology">
-                <h4>✅ 온톨로지 적용</h4>
-                <div class="code-example">
-                    <pre>&lt;fruit:Apple&gt; rdf:type &lt;Food&gt;
-  rdfs:label "사과"@ko
-  hasColor "빨간색"
-  hasNutrient "비타민C"
-  grownIn "과수원"
-  
-&lt;company:Apple&gt; rdf:type &lt;Organization&gt;
-  rdfs:label "애플"@ko
-  foundedYear "1976"
-  industry "Technology"
-  hasProduct "iPhone"
-  
-&lt;action:Apologize&gt; rdf:type &lt;SocialAction&gt;
-  rdfs:label "사과하다"@ko
-  hasObject "상대방"
-  hasPurpose "화해"
-  expressedBy "언어", "행동"</pre>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 실제 활용 예시 -->
-    <div class="real-world-benefits">
-        <h3>온톨로지의 실제 효과</h3>
-        <div class="benefit-cards">
-            <div class="benefit-card">
-                <div class="benefit-icon">🎯</div>
-                <h4>정확한 검색</h4>
-                <p>사용자 의도에 맞는 정확한 결과 제공</p>
-                <div class="benefit-example">
-                    예: "사과 영양소" → 과일 사과의 영양 정보만 검색
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🤖</div>
-                <h4>자동 추론</h4>
-                <p>명시되지 않은 지식도 자동으로 유추</p>
-                <div class="benefit-example">
-                    예: "포유류는 온혈동물" + "고양이는 포유류" → "고양이는 온혈동물"
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🔗</div>
-                <h4>지식 연결</h4>
-                <p>분산된 정보를 의미있게 연결</p>
-                <div class="benefit-example">
-                    예: 환자 증상 + 의학 온톨로지 → 가능한 진단 추천
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🌐</div>
-                <h4>상호 운용</h4>
-                <p>서로 다른 시스템 간 지식 공유</p>
-                <div class="benefit-example">
-                    예: 병원 A의 진료기록 ↔ 병원 B의 시스템
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 구체적인 활용 사례 -->
-    <div class="use-cases">
-        <h3>온톨로지 활용 사례</h3>
-        <div class="case-grid">
-            <div class="use-case">
-                <div class="case-header">
-                    <i class="fas fa-hospital"></i>
-                    <h4>의료 분야</h4>
-                </div>
-                <div class="case-content">
-                    <h5>SNOMED CT</h5>
-                    <p>전 세계에서 사용하는 의학 용어 온톨로지</p>
+                <h4>의미의 모호성</h4>
+                <p>같은 단어가 다른 의미로 사용되는 문제</p>
+                <div class="example">
+                    <strong>예시: "Bank"</strong>
                     <ul>
-                        <li>370,000개 이상의 의학 개념</li>
-                        <li>증상, 질병, 치료법 체계화</li>
-                        <li>정확한 진단과 처방 지원</li>
+                        <li>금융기관 (은행)</li>
+                        <li>강둑</li>
+                        <li>저장소 (데이터 뱅크)</li>
                     </ul>
                 </div>
             </div>
             
-            <div class="use-case">
-                <div class="case-header">
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <h4>데이터 사일로</h4>
+                <p>시스템 간 데이터 통합의 어려움</p>
+                <div class="example">
+                    <strong>예시: 병원 시스템</strong>
+                    <ul>
+                        <li>진료 기록: "환자번호"</li>
+                        <li>검사 시스템: "수진자ID"</li>
+                        <li>약국 시스템: "처방대상자"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="problem-card">
+                <div class="problem-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h4>지능적 검색의 한계</h4>
+                <p>단순 키워드 매칭의 한계</p>
+                <div class="example">
+                    <strong>예시: 검색 쿼리</strong>
+                    <ul>
+                        <li>"저렴한 차" → 자동차? 차(tea)?</li>
+                        <li>"파리 여행" → 프랑스? 곤충?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>온톨로지가 제공하는 해결책</h3>
+    
+    <div class="solution-features">
+        <div class="feature-card">
+            <h4>1. 명확한 의미 정의</h4>
+            <p>각 개념의 정확한 의미와 범위를 명시적으로 정의</p>
+            <div class="code-example">
+                <pre><code class="language-turtle">
+:FinancialBank rdf:type owl:Class ;
+    rdfs:label "금융기관"@ko ;
+    rdfs:comment "돈을 예치하고 대출하는 기관"@ko ;
+    owl:disjointWith :RiverBank .
+
+:RiverBank rdf:type owl:Class ;
+    rdfs:label "강둑"@ko ;
+    rdfs:comment "강이나 하천의 가장자리"@ko .
+                </code></pre>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <h4>2. 지식 공유와 재사용</h4>
+            <p>표준화된 형식으로 지식을 공유하고 재사용 가능</p>
+            <div class="integration-example">
+                <img src="/images/ontology-integration.svg" alt="온톨로지 통합 예시">
+                <p>서로 다른 시스템이 공통 온톨로지를 통해 소통</p>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <h4>3. 자동 추론</h4>
+            <p>명시되지 않은 지식도 논리적으로 추론</p>
+            <div class="inference-demo">
+                <h5>추론 예시</h5>
+                <div class="inference-steps">
+                    <div class="step">
+                        <strong>사실 1:</strong> 모든 포유류는 온혈동물이다
+                    </div>
+                    <div class="step">
+                        <strong>사실 2:</strong> 고래는 포유류다
+                    </div>
+                    <div class="step inference-result">
+                        <strong>추론:</strong> 고래는 온혈동물이다
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <h4>4. 일관성 검증</h4>
+            <p>지식베이스의 논리적 일관성 자동 검증</p>
+            <div class="consistency-check">
+                <h5>모순 검출 예시</h5>
+                <pre><code class="language-turtle">
+# 모순되는 정의
+:Bird rdf:type owl:Class ;
+    rdfs:subClassOf :CanFly .
+
+:Penguin rdf:type owl:Class ;
+    rdfs:subClassOf :Bird ;
+    rdfs:subClassOf :CannotFly .
+
+# 온톨로지 추론기가 모순 감지!
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실제 활용 사례 -->
+    <div class="real-world-applications">
+        <h3>온톨로지의 실제 활용 분야</h3>
+        
+        <div class="application-grid">
+            <div class="application-card healthcare">
+                <div class="app-header">
+                    <i class="fas fa-heartbeat"></i>
+                    <h4>의료 및 헬스케어</h4>
+                </div>
+                <div class="app-content">
+                    <h5>SNOMED CT</h5>
+                    <p>세계 최대 의료 온톨로지</p>
+                    <ul>
+                        <li>30만개 이상의 의료 개념</li>
+                        <li>150만개의 관계 정의</li>
+                        <li>전자의무기록(EMR) 표준화</li>
+                        <li>임상 의사결정 지원</li>
+                    </ul>
+                    <div class="case-example">
+                        <strong>활용 예:</strong> COVID-19 증상과 관련 질환 자동 연결
+                    </div>
+                </div>
+            </div>
+            
+            <div class="application-card ecommerce">
+                <div class="app-header">
                     <i class="fas fa-shopping-cart"></i>
                     <h4>전자상거래</h4>
                 </div>
-                <div class="case-content">
-                    <h5>GoodRelations</h5>
-                    <p>제품과 서비스를 위한 온톨로지</p>
+                <div class="app-content">
+                    <h5>Schema.org</h5>
+                    <p>웹 콘텐츠 구조화 표준</p>
                     <ul>
                         <li>제품 정보 표준화</li>
-                        <li>가격, 재고, 배송 정보 통합</li>
-                        <li>다양한 쇼핑 플랫폼 간 호환</li>
+                        <li>검색엔진 최적화</li>
+                        <li>리치 스니펫 생성</li>
+                        <li>음성 검색 지원</li>
                     </ul>
+                    <div class="case-example">
+                        <strong>활용 예:</strong> 구글 쇼핑의 제품 정보 통합
+                    </div>
                 </div>
             </div>
             
-            <div class="use-case">
-                <div class="case-header">
+            <div class="application-card biotech">
+                <div class="app-header">
                     <i class="fas fa-dna"></i>
-                    <h4>생명과학</h4>
+                    <h4>생명공학</h4>
                 </div>
-                <div class="case-content">
-                    <h5>Gene Ontology</h5>
-                    <p>유전자 기능 분류 온톨로지</p>
+                <div class="app-content">
+                    <h5>Gene Ontology (GO)</h5>
+                    <p>유전자 기능 표준 온톨로지</p>
                     <ul>
-                        <li>유전자와 단백질 기능 체계화</li>
-                        <li>생물학적 프로세스 분류</li>
-                        <li>연구 결과 통합과 공유</li>
+                        <li>4만개 이상의 생물학적 개념</li>
+                        <li>유전자 기능 주석</li>
+                        <li>종간 비교 연구</li>
+                        <li>신약 개발 지원</li>
                     </ul>
+                    <div class="case-example">
+                        <strong>활용 예:</strong> 특정 질병 관련 유전자 네트워크 분석
+                    </div>
+                </div>
+            </div>
+            
+            <div class="application-card finance">
+                <div class="app-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>금융</h4>
+                </div>
+                <div class="app-content">
+                    <h5>FIBO (Financial Industry Business Ontology)</h5>
+                    <p>금융 산업 표준 온톨로지</p>
+                    <ul>
+                        <li>금융 상품 분류 체계</li>
+                        <li>규제 준수 자동화</li>
+                        <li>리스크 관리</li>
+                        <li>거래 데이터 통합</li>
+                    </ul>
+                    <div class="case-example">
+                        <strong>활용 예:</strong> 복잡한 파생상품의 리스크 자동 계산
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 인터랙티브 데모: 온톨로지의 힘 -->
+    <div class="interactive-demo">
+        <h3><i class="fas fa-magic"></i> 인터랙티브 데모: 온톨로지의 추론 능력</h3>
+        <div class="demo-container">
+            <div class="demo-input">
+                <h4>지식 입력</h4>
+                <div class="knowledge-input">
+                    <label>주체:</label>
+                    <select id="subject">
+                        <option>김철수</option>
+                        <option>이영희</option>
+                        <option>박민수</option>
+                    </select>
+                    
+                    <label>관계:</label>
+                    <select id="relation">
+                        <option>부모이다</option>
+                        <option>형제이다</option>
+                        <option>일한다</option>
+                    </select>
+                    
+                    <label>대상:</label>
+                    <select id="object">
+                        <option>김영수</option>
+                        <option>이민정</option>
+                        <option>삼성전자</option>
+                    </select>
+                    
+                    <button id="addKnowledge">지식 추가</button>
+                </div>
+            </div>
+            
+            <div class="demo-output">
+                <h4>추론 결과</h4>
+                <div id="inferenceResults">
+                    <!-- 동적으로 생성되는 추론 결과 -->
                 </div>
             </div>
         </div>
@@ -778,1908 +690,1077 @@
 
 <!-- 섹션 1.4 -->
 <section class="content-section">
-    <h2>1.4 온톨로지 vs 데이터베이스 vs 분류체계</h2>
+    <h2>1.4 온톨로지의 실생활 예시</h2>
     
-    <p>온톨로지는 데이터베이스나 단순한 분류체계와는 근본적으로 다릅니다. 각각의 특징과 차이점을 자세히 살펴보겠습니다.</p>
-    
-    <!-- 비교 테이블 -->
-    <div class="comparison-section">
-        <h3>세 가지 접근법의 비교</h3>
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>구분</th>
-                    <th>데이터베이스</th>
-                    <th>분류체계</th>
-                    <th>온톨로지</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="feature">목적</td>
-                    <td>데이터 저장/관리</td>
-                    <td>체계적 분류</td>
-                    <td>지식 표현/추론</td>
-                </tr>
-                <tr>
-                    <td class="feature">구조</td>
-                    <td>테이블/관계형</td>
-                    <td>계층형 트리</td>
-                    <td>그래프/네트워크</td>
-                </tr>
-                <tr>
-                    <td class="feature">관계 표현</td>
-                    <td>외래키 참조</td>
-                    <td>상하위 관계만</td>
-                    <td>다양한 의미 관계</td>
-                </tr>
-                <tr>
-                    <td class="feature">추론 능력</td>
-                    <td class="capability-low">없음</td>
-                    <td class="capability-medium">제한적</td>
-                    <td class="capability-high">자동 추론</td>
-                </tr>
-                <tr>
-                    <td class="feature">의미 이해</td>
-                    <td class="capability-low">사람만</td>
-                    <td class="capability-low">사람만</td>
-                    <td class="capability-high">컴퓨터도</td>
-                </tr>
-                <tr>
-                    <td class="feature">유연성</td>
-                    <td class="capability-medium">스키마 고정</td>
-                    <td class="capability-low">구조 고정</td>
-                    <td class="capability-high">확장 가능</td>
-                </tr>
-                <tr>
-                    <td class="feature">표현력</td>
-                    <td class="capability-medium">데이터 중심</td>
-                    <td class="capability-low">분류만</td>
-                    <td class="capability-high">의미+규칙</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="everyday-examples">
+        <h3>우리 주변의 숨은 온톨로지들</h3>
+        
+        <!-- 스마트폰 앱 예시 -->
+        <div class="example-scenario">
+            <h4><i class="fas fa-mobile-alt"></i> 시나리오 1: 스마트폰 음성 비서</h4>
+            <div class="scenario-content">
+                <div class="conversation">
+                    <div class="user-message">
+                        "내일 오전 10시에 치과 예약 잡아줘"
+                    </div>
+                    <div class="assistant-process">
+                        <h5>온톨로지 기반 처리 과정:</h5>
+                        <ol>
+                            <li><strong>개체 인식:</strong> "내일" → 날짜 개체</li>
+                            <li><strong>시간 추론:</strong> "오전 10시" → 10:00 AM</li>
+                            <li><strong>장소 분류:</strong> "치과" → 의료기관 → 병원</li>
+                            <li><strong>행동 이해:</strong> "예약" → 일정 생성 액션</li>
+                            <li><strong>관계 추론:</strong> 사용자 → has_appointment → 치과</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="ontology-visualization">
+                    <pre><code class="language-turtle">
+:Appointment rdf:type owl:Class .
+:MedicalAppointment rdfs:subClassOf :Appointment .
+:DentalAppointment rdfs:subClassOf :MedicalAppointment .
+
+:User_Kim :hasAppointment [
+    rdf:type :DentalAppointment ;
+    :scheduledTime "2024-01-15T10:00:00"^^xsd:dateTime ;
+    :location :NearestDentalClinic
+] .
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 온라인 쇼핑 예시 -->
+        <div class="example-scenario">
+            <h4><i class="fas fa-shopping-bag"></i> 시나리오 2: 온라인 쇼핑 추천</h4>
+            <div class="scenario-content">
+                <div class="shopping-flow">
+                    <h5>상품 검색: "여름 운동화"</h5>
+                    <div class="recommendation-process">
+                        <div class="step-card">
+                            <h6>1. 개념 확장</h6>
+                            <ul>
+                                <li>여름 → 계절 → 더운 날씨</li>
+                                <li>운동화 → 신발 → 스포츠용품</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h6>2. 속성 추론</h6>
+                            <ul>
+                                <li>통기성이 좋은</li>
+                                <li>가벼운 소재</li>
+                                <li>밝은 색상</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <h6>3. 관련 상품 연결</h6>
+                            <ul>
+                                <li>러닝화</li>
+                                <li>스니커즈</li>
+                                <li>에어 메쉬 신발</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 네비게이션 예시 -->
+        <div class="example-scenario">
+            <h4><i class="fas fa-map-marked-alt"></i> 시나리오 3: 스마트 네비게이션</h4>
+            <div class="scenario-content">
+                <div class="navigation-example">
+                    <h5>목적지 검색: "아이와 갈만한 곳"</h5>
+                    <div class="navigation-ontology">
+                        <pre><code class="language-turtle">
+:FamilyFriendlyPlace rdf:type owl:Class ;
+    owl:equivalentClass [
+        owl:intersectionOf (
+            :PublicPlace
+            [ rdf:type owl:Restriction ;
+              owl:onProperty :hasFacility ;
+              owl:someValuesFrom :ChildrenFacility ]
+            [ rdf:type owl:Restriction ;
+              owl:onProperty :safetyLevel ;
+              owl:hasValue :High ]
+        )
+    ] .
+
+# 추론 결과
+:ChildrenMuseum rdf:type :FamilyFriendlyPlace .
+:ThemePark rdf:type :FamilyFriendlyPlace .
+:KidssCafe rdf:type :FamilyFriendlyPlace .
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- 실습: 일상 온톨로지 설계 -->
+    <div class="practice-section">
+        <h4><i class="fas fa-laptop-code"></i> 실습 3: 카페 메뉴 온톨로지 만들기</h4>
+        <p>여러분이 좋아하는 카페의 메뉴를 온톨로지로 표현해봅시다.</p>
+        
+        <div class="ontology-builder">
+            <div class="builder-steps">
+                <div class="builder-step">
+                    <h5>Step 1: 클래스 계층 구조</h5>
+                    <pre><code class="language-turtle">
+# 최상위 클래스
+:MenuItem rdf:type owl:Class .
+
+# 음료 카테고리
+:Beverage rdfs:subClassOf :MenuItem .
+:Coffee rdfs:subClassOf :Beverage .
+:Tea rdfs:subClassOf :Beverage .
+:Juice rdfs:subClassOf :Beverage .
+
+# 커피 세부 분류
+:Espresso rdfs:subClassOf :Coffee .
+:Americano rdfs:subClassOf :Coffee .
+:Latte rdfs:subClassOf :Coffee .
+:Cappuccino rdfs:subClassOf :Coffee .
+
+# 디저트 카테고리
+:Dessert rdfs:subClassOf :MenuItem .
+:Cake rdfs:subClassOf :Dessert .
+:Cookie rdfs:subClassOf :Dessert .
+:Sandwich rdfs:subClassOf :MenuItem .
+                    </code></pre>
+                </div>
+                
+                <div class="builder-step">
+                    <h5>Step 2: 속성 정의</h5>
+                    <pre><code class="language-turtle">
+# 데이터 속성
+:hasPrice rdf:type owl:DatatypeProperty ;
+    rdfs:domain :MenuItem ;
+    rdfs:range xsd:decimal .
+
+:hasCalories rdf:type owl:DatatypeProperty ;
+    rdfs:domain :MenuItem ;
+    rdfs:range xsd:integer .
+
+:isHot rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Beverage ;
+    rdfs:range xsd:boolean .
+
+:hasCaffeine rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Beverage ;
+    rdfs:range xsd:boolean .
+
+# 객체 속성
+:hasIngredient rdf:type owl:ObjectProperty ;
+    rdfs:domain :MenuItem ;
+    rdfs:range :Ingredient .
+
+:hasAllergen rdf:type owl:ObjectProperty ;
+    rdfs:domain :MenuItem ;
+    rdfs:range :Allergen .
+                    </code></pre>
+                </div>
+                
+                <div class="builder-step">
+                    <h5>Step 3: 규칙과 제약사항</h5>
+                    <pre><code class="language-turtle">
+# 모든 커피는 카페인을 포함한다
+:Coffee rdfs:subClassOf
+    [ rdf:type owl:Restriction ;
+      owl:onProperty :hasCaffeine ;
+      owl:hasValue true ] .
+
+# 디카페인 커피는 예외
+:DecafCoffee rdfs:subClassOf :Coffee ;
+    rdfs:subClassOf
+    [ rdf:type owl:Restriction ;
+      owl:onProperty :hasCaffeine ;
+      owl:hasValue false ] .
+
+# 라떼는 우유를 포함해야 한다
+:Latte rdfs:subClassOf
+    [ rdf:type owl:Restriction ;
+      owl:onProperty :hasIngredient ;
+      owl:someValuesFrom :Milk ] .
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="exercise-challenge">
+            <h5>도전 과제:</h5>
+            <ol>
+                <li>계절 메뉴를 표현하는 방법을 추가하세요</li>
+                <li>사이즈(Tall, Grande, Venti) 개념을 모델링하세요</li>
+                <li>세트 메뉴의 관계를 정의하세요</li>
+                <li>할인 규칙을 온톨로지로 표현하세요</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 1.5 -->
+<section class="content-section">
+    <h2>1.5 온톨로지 개발 도구 소개</h2>
     
-    <!-- 시각적 비교 -->
-    <div class="visual-comparison">
-        <h3>구조적 차이점</h3>
-        <div class="structure-examples">
-            <div class="structure-item">
-                <h4>📊 데이터베이스</h4>
-                <div class="structure-visual db-structure">
-                    <div class="db-diagram">
-                        <div class="db-table">
-                            <div class="table-name">직원 테이블</div>
-                            <div class="table-row header">ID | 이름 | 부서ID | 급여</div>
-                            <div class="table-row">001 | 김철수 | D01 | 5000</div>
-                            <div class="table-row">002 | 이영희 | D02 | 4500</div>
-                            <div class="table-row">003 | 박민수 | D01 | 4000</div>
+    <div class="tools-overview">
+        <h3>주요 온톨로지 개발 도구</h3>
+        
+        <div class="tool-cards">
+            <div class="tool-card protege">
+                <div class="tool-header">
+                    <img src="/images/protege-logo.png" alt="Protégé">
+                    <h4>Protégé</h4>
+                    <span class="tool-badge">무료 오픈소스</span>
+                </div>
+                <div class="tool-content">
+                    <p>스탠포드 대학에서 개발한 가장 인기 있는 온톨로지 편집기</p>
+                    <div class="tool-features">
+                        <h5>주요 기능:</h5>
+                        <ul>
+                            <li>그래픽 기반 온톨로지 편집</li>
+                            <li>OWL 2.0 완벽 지원</li>
+                            <li>추론기(Reasoner) 통합</li>
+                            <li>플러그인 확장 가능</li>
+                        </ul>
+                    </div>
+                    <div class="tool-pros-cons">
+                        <div class="pros">
+                            <h6>장점:</h6>
+                            <ul>
+                                <li>직관적인 UI</li>
+                                <li>강력한 기능</li>
+                                <li>활발한 커뮤니티</li>
+                            </ul>
                         </div>
-                        <div class="db-relation">↔ 외래키</div>
-                        <div class="db-table">
-                            <div class="table-name">부서 테이블</div>
-                            <div class="table-row header">부서ID | 부서명 | 위치</div>
-                            <div class="table-row">D01 | 개발팀 | 3층</div>
-                            <div class="table-row">D02 | 기획팀 | 2층</div>
+                        <div class="cons">
+                            <h6>단점:</h6>
+                            <ul>
+                                <li>초기 학습곡선</li>
+                                <li>대용량 처리 한계</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="structure-characteristics">
-                        <h5>특징:</h5>
+                </div>
+            </div>
+            
+            <div class="tool-card topbraid">
+                <div class="tool-header">
+                    <img src="/images/topbraid-logo.png" alt="TopBraid">
+                    <h4>TopBraid Composer</h4>
+                    <span class="tool-badge">상용</span>
+                </div>
+                <div class="tool-content">
+                    <p>기업용 온톨로지 개발 및 관리 플랫폼</p>
+                    <div class="tool-features">
+                        <h5>주요 기능:</h5>
                         <ul>
-                            <li>정형화된 스키마</li>
-                            <li>JOIN을 통한 관계 표현</li>
-                            <li>SQL 질의</li>
-                            <li>무결성 제약</li>
+                            <li>엔터프라이즈급 기능</li>
+                            <li>SPARQL 쿼리 빌더</li>
+                            <li>데이터 통합 도구</li>
+                            <li>버전 관리 시스템</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <div class="structure-item">
-                <h4>🌳 분류체계 (Taxonomy)</h4>
-                <div class="structure-visual taxonomy-structure">
-                    <div class="taxonomy-tree">
-                        <div class="tree-node level-0">생물
-                            <div class="tree-node level-1">├─ 동물
-                                <div class="tree-node level-2">│  ├─ 척추동물
-                                    <div class="tree-node level-3">│  │  ├─ 포유류</div>
-                                    <div class="tree-node level-3">│  │  ├─ 조류</div>
-                                    <div class="tree-node level-3">│  │  └─ 어류</div>
-                                </div>
-                                <div class="tree-node level-2">│  └─ 무척추동물
-                                    <div class="tree-node level-3">│     ├─ 곤충</div>
-                                    <div class="tree-node level-3">│     └─ 연체동물</div>
-                                </div>
-                            </div>
-                            <div class="tree-node level-1">└─ 식물
-                                <div class="tree-node level-2">   ├─ 현화식물</div>
-                                <div class="tree-node level-2">   └─ 은화식물</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="structure-characteristics">
-                        <h5>특징:</h5>
-                        <ul>
-                            <li>계층적 구조</li>
-                            <li>상하위 관계만 표현</li>
-                            <li>단순 분류</li>
-                            <li>고정된 체계</li>
-                        </ul>
-                    </div>
+            <div class="tool-card webprotege">
+                <div class="tool-header">
+                    <img src="/images/webprotege-logo.png" alt="WebProtégé">
+                    <h4>WebProtégé</h4>
+                    <span class="tool-badge">웹 기반</span>
                 </div>
-            </div>
-            
-            <div class="structure-item">
-                <h4>🔗 온톨로지</h4>
-                <div class="structure-visual ontology-structure">
-                    <div class="ontology-diagram">
-                        <div class="onto-nodes">
-                            <div class="onto-node class">Person</div>
-                            <div class="onto-node class">Organization</div>
-                            <div class="onto-node instance">김철수</div>
-                            <div class="onto-node instance">ABC회사</div>
-                            <div class="onto-node property">worksFor</div>
-                            <div class="onto-node property">hasAge</div>
-                            <div class="onto-node property">locatedIn</div>
-                        </div>
-                        <div class="onto-relations">
-                            <div class="relation">김철수 --worksFor--> ABC회사</div>
-                            <div class="relation">김철수 --type--> Person</div>
-                            <div class="relation">ABC회사 --type--> Organization</div>
-                            <div class="relation">김철수 --hasAge--> 30</div>
-                            <div class="relation">ABC회사 --locatedIn--> 서울</div>
-                        </div>
-                    </div>
-                    <div class="structure-characteristics">
-                        <h5>특징:</h5>
+                <div class="tool-content">
+                    <p>웹 브라우저에서 사용하는 협업 온톨로지 개발 도구</p>
+                    <div class="tool-features">
+                        <h5>주요 기능:</h5>
                         <ul>
-                            <li>그래프 구조</li>
-                            <li>다양한 관계 표현</li>
-                            <li>의미와 규칙 포함</li>
-                            <li>추론 가능</li>
-                            <li>동적 확장</li>
+                            <li>설치 불필요</li>
+                            <li>실시간 협업</li>
+                            <li>버전 이력 관리</li>
+                            <li>토론 및 주석</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- 구체적인 예시 -->
-    <div class="concrete-example">
-        <h3>실제 예시: "김철수는 서울에 있는 ABC회사에서 일한다"</h3>
-        <div class="example-representations">
-            <div class="representation">
-                <h4>데이터베이스 표현</h4>
-                <div class="code-block">
-                    <pre>-- 직원 테이블에 삽입
-INSERT INTO employees (id, name, company_id) 
-VALUES (1, '김철수', 101);
 
--- 회사 테이블에서 조회
-SELECT * FROM companies WHERE id = 101;
--- 결과: {id: 101, name: 'ABC회사', location: '서울'}</pre>
+    <!-- 실습: Protégé 첫걸음 -->
+    <div class="hands-on-tutorial">
+        <h3><i class="fas fa-graduation-cap"></i> 따라하기: Protégé로 첫 온톨로지 만들기</h3>
+        
+        <div class="tutorial-steps">
+            <div class="tutorial-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Protégé 설치</h4>
+                    <ol>
+                        <li>https://protege.stanford.edu 방문</li>
+                        <li>운영체제에 맞는 버전 다운로드</li>
+                        <li>설치 후 실행</li>
+                    </ol>
+                    <img src="/images/protege-download.png" alt="Protégé 다운로드">
                 </div>
-                <p class="limitation">⚠️ 한계: 관계의 의미가 명시되지 않음</p>
             </div>
             
-            <div class="representation">
-                <h4>분류체계 표현</h4>
-                <div class="code-block">
-                    <pre>조직
-├─ 기업
-│  └─ IT기업
-│     └─ ABC회사
-인력
-└─ 직원
-   └─ 김철수</pre>
+            <div class="tutorial-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>새 온톨로지 생성</h4>
+                    <ol>
+                        <li>File → New 선택</li>
+                        <li>온톨로지 IRI 입력: http://example.org/pizza</li>
+                        <li>Save as: pizza.owl</li>
+                    </ol>
+                    <img src="/images/protege-new.png" alt="새 온톨로지 생성">
                 </div>
-                <p class="limitation">⚠️ 한계: 김철수와 ABC회사의 관계 표현 불가</p>
             </div>
             
-            <div class="representation">
-                <h4>온톨로지 표현</h4>
-                <div class="code-block">
-                    <pre>:김철수 rdf:type :Person ;
-    :worksFor :ABC회사 ;
-    :hasRole "개발자" .
-
-:ABC회사 rdf:type :Company ;
-    :locatedIn :서울 ;
-    :industry "IT" .
-
-:worksFor rdfs:domain :Person ;
-    rdfs:range :Organization .</pre>
+            <div class="tutorial-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>클래스 생성</h4>
+                    <ol>
+                        <li>Classes 탭 선택</li>
+                        <li>Thing 선택 후 Add subclass</li>
+                        <li>Pizza, Topping 클래스 생성</li>
+                    </ol>
+                    <div class="code-snippet">
+                        <pre><code>
+Thing
+├── Pizza
+│   ├── MargheritaPizza
+│   ├── PepperoniPizza
+│   └── VeggiePizza
+└── Topping
+    ├── CheeseTopping
+    ├── MeatTopping
+    └── VegetableTopping
+                        </code></pre>
+                    </div>
                 </div>
-                <p class="advantage">✅ 장점: 의미와 관계가 명확히 표현되고 추론 가능</p>
+            </div>
+            
+            <div class="tutorial-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>속성 추가</h4>
+                    <ol>
+                        <li>Object Properties 탭 선택</li>
+                        <li>hasTopping 속성 생성</li>
+                        <li>Domain: Pizza, Range: Topping 설정</li>
+                    </ol>
+                    <img src="/images/protege-properties.png" alt="속성 추가">
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- 온톨로지 언어 소개 -->
+    <div class="languages-section">
+        <h3>온톨로지 표현 언어</h3>
+        
+        <div class="language-comparison">
+            <div class="language-card">
+                <h4>RDF (Resource Description Framework)</h4>
+                <p>가장 기본적인 온톨로지 표현 언어</p>
+                <div class="language-example">
+                    <h5>특징:</h5>
+                    <ul>
+                        <li>주어-술어-목적어 트리플</li>
+                        <li>그래프 기반 모델</li>
+                        <li>웹 표준 (W3C)</li>
+                    </ul>
+                    <pre><code class="language-turtle">
+@prefix : &lt;http://example.org/&gt; .
+
+:Pizza123 rdf:type :MargheritaPizza ;
+    :hasTopping :Mozzarella ;
+    :hasTopping :Tomato ;
+    :hasPrice "12000"^^xsd:integer .
+                    </code></pre>
+                </div>
+            </div>
+            
+            <div class="language-card">
+                <h4>RDFS (RDF Schema)</h4>
+                <p>RDF에 클래스와 속성 정의 추가</p>
+                <div class="language-example">
+                    <h5>추가 기능:</h5>
+                    <ul>
+                        <li>클래스 계층구조</li>
+                        <li>속성 도메인/레인지</li>
+                        <li>기본 제약사항</li>
+                    </ul>
+                    <pre><code class="language-turtle">
+:MargheritaPizza rdfs:subClassOf :Pizza .
+:hasTopping rdfs:domain :Pizza ;
+    rdfs:range :Topping .
+                    </code></pre>
+                </div>
+            </div>
+            
+            <div class="language-card">
+                <h4>OWL (Web Ontology Language)</h4>
+                <p>가장 표현력이 높은 온톨로지 언어</p>
+                <div class="language-example">
+                    <h5>고급 기능:</h5>
+                    <ul>
+                        <li>복잡한 클래스 표현</li>
+                        <li>카디널리티 제약</li>
+                        <li>논리적 추론</li>
+                    </ul>
+                    <pre><code class="language-turtle">
+:VeggiePizza owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf (
+        :Pizza
+        [ rdf:type owl:Restriction ;
+          owl:onProperty :hasTopping ;
+          owl:allValuesFrom :VegetableTopping ]
+    )
+] .
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 연습 문제 섹션 -->
+<section class="content-section">
+    <h2>1.6 연습 문제와 퀴즈</h2>
     
-    <!-- 추론 예시 -->
-    <div class="inference-example">
-        <h3>온톨로지의 추론 능력</h3>
-        <div class="inference-demo">
-            <div class="given-facts">
-                <h4>주어진 사실</h4>
+    <div class="quiz-section">
+        <h3><i class="fas fa-question-circle"></i> 개념 확인 퀴즈</h3>
+        
+        <div class="quiz-container">
+            <div class="quiz-question">
+                <h4>문제 1: 온톨로지의 정의</h4>
+                <p>다음 중 온톨로지에 대한 설명으로 가장 적절한 것은?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> 단순한 데이터 저장소</label>
+                    <label><input type="radio" name="q1" value="b"> 개념과 관계를 명시적으로 표현한 지식 모델</label>
+                    <label><input type="radio" name="q1" value="c"> 프로그래밍 언어의 한 종류</label>
+                    <label><input type="radio" name="q1" value="d"> 데이터베이스 관리 시스템</label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <h4>문제 2: 온톨로지 구성요소</h4>
+                <p>온톨로지의 기본 구성요소가 아닌 것은?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> 클래스(Classes)</label>
+                    <label><input type="radio" name="q2" value="b"> 인스턴스(Instances)</label>
+                    <label><input type="radio" name="q2" value="c"> 컴파일러(Compiler)</label>
+                    <label><input type="radio" name="q2" value="d"> 속성(Properties)</label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <h4>문제 3: 추론 능력</h4>
+                <p>다음 온톨로지에서 추론할 수 있는 사실은?</p>
+                <div class="code-box">
+                    <pre><code>
+:Dog rdfs:subClassOf :Mammal .
+:Mammal rdfs:subClassOf :Animal .
+:Buddy rdf:type :Dog .
+                    </code></pre>
+                </div>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a"> Buddy는 식물이다</label>
+                    <label><input type="radio" name="q3" value="b"> Buddy는 Animal이다</label>
+                    <label><input type="radio" name="q3" value="c"> Buddy는 새다</label>
+                    <label><input type="radio" name="q3" value="d"> 추론할 수 없다</label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="check-answers-btn">정답 확인</button>
+        <div class="quiz-results" style="display: none;">
+            <!-- 결과 표시 영역 -->
+        </div>
+    </div>
+
+    <!-- 실전 연습 문제 -->
+    <div class="practice-problems">
+        <h3><i class="fas fa-tasks"></i> 실전 연습 문제</h3>
+        
+        <div class="problem-set">
+            <div class="problem">
+                <h4>연습 1: 도서관 온톨로지 설계</h4>
+                <p>도서관 시스템을 위한 온톨로지를 설계하세요.</p>
+                <div class="problem-requirements">
+                    <h5>요구사항:</h5>
+                    <ul>
+                        <li>도서, 저자, 출판사의 관계 표현</li>
+                        <li>도서 분류 체계 (소설, 과학, 역사 등)</li>
+                        <li>대출 관계 모델링</li>
+                        <li>도서 위치 정보</li>
+                    </ul>
+                </div>
+                <div class="problem-hints">
+                    <details>
+                        <summary>힌트 보기</summary>
+                        <ul>
+                            <li>Book, Author, Publisher를 주요 클래스로</li>
+                            <li>writtenBy, publishedBy 같은 관계 정의</li>
+                            <li>BookCategory를 계층구조로 설계</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+            
+            <div class="problem">
+                <h4>연습 2: 레스토랑 추천 온톨로지</h4>
+                <p>음식점 추천 시스템을 위한 온톨로지를 구축하세요.</p>
+                <div class="problem-requirements">
+                    <h5>요구사항:</h5>
+                    <ul>
+                        <li>음식 종류별 분류 (한식, 중식, 일식 등)</li>
+                        <li>가격대, 위치, 분위기 속성</li>
+                        <li>사용자 선호도 모델링</li>
+                        <li>메뉴와 재료 관계</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="problem">
+                <h4>연습 3: 스마트홈 온톨로지</h4>
+                <p>IoT 기반 스마트홈을 위한 온톨로지를 만드세요.</p>
+                <div class="problem-requirements">
+                    <h5>요구사항:</h5>
+                    <ul>
+                        <li>가전제품 분류와 기능</li>
+                        <li>방과 기기의 위치 관계</li>
+                        <li>자동화 규칙 표현</li>
+                        <li>에너지 소비 정보</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 그룹 프로젝트 -->
+    <div class="group-project">
+        <h3><i class="fas fa-users"></i> 그룹 프로젝트: 대학 캠퍼스 온톨로지</h3>
+        <div class="project-description">
+            <p>팀을 구성하여 대학 캠퍼스의 모든 측면을 포함하는 종합적인 온톨로지를 개발하세요.</p>
+            
+            <div class="project-scope">
+                <h4>프로젝트 범위:</h4>
+                <div class="scope-areas">
+                    <div class="scope-area">
+                        <h5>학사 정보</h5>
+                        <ul>
+                            <li>학과, 과목, 교수</li>
+                            <li>수강신청 규칙</li>
+                            <li>졸업 요건</li>
+                        </ul>
+                    </div>
+                    <div class="scope-area">
+                        <h5>시설 정보</h5>
+                        <ul>
+                            <li>건물, 강의실, 연구실</li>
+                            <li>도서관, 식당, 체육시설</li>
+                            <li>위치와 수용인원</li>
+                        </ul>
+                    </div>
+                    <div class="scope-area">
+                        <h5>구성원 정보</h5>
+                        <ul>
+                            <li>학생, 교수, 직원</li>
+                            <li>소속과 역할</li>
+                            <li>권한과 접근</li>
+                        </ul>
+                    </div>
+                    <div class="scope-area">
+                        <h5>이벤트와 일정</h5>
+                        <ul>
+                            <li>학사일정</li>
+                            <li>특별행사</li>
+                            <li>시험기간</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-deliverables">
+                <h4>제출물:</h4>
                 <ol>
-                    <li>김철수는 ABC회사에서 일한다</li>
-                    <li>ABC회사는 서울에 위치한다</li>
-                    <li>서울은 한국의 도시이다</li>
+                    <li>온톨로지 설계 문서 (클래스 다이어그램 포함)</li>
+                    <li>OWL 파일 (Protégé로 작성)</li>
+                    <li>SPARQL 쿼리 예제 10개</li>
+                    <li>활용 시나리오 3개</li>
                 </ol>
             </div>
-            <div class="inference-arrow">→ 추론 →</div>
-            <div class="inferred-facts">
-                <h4>추론된 지식</h4>
-                <ol>
-                    <li>김철수는 서울에서 일한다</li>
-                    <li>김철수는 한국에서 일한다</li>
-                    <li>ABC회사는 한국 회사이다</li>
-                </ol>
-            </div>
         </div>
-        <p class="inference-note">
-            <i class="fas fa-info-circle"></i>
-            데이터베이스나 분류체계에서는 이러한 추론이 자동으로 이루어지지 않습니다.
-        </p>
     </div>
 </section>
 
-<!-- 핵심 정리 -->
-<section class="summary-section">
-    <h2>💡 이 장의 핵심 정리</h2>
+<!-- 추가 학습 자료 -->
+<section class="content-section">
+    <h2>1.7 추가 학습 자료</h2>
     
-    <div class="key-points">
-        <div class="point-card">
-            <div class="point-number">1</div>
-            <div class="point-content">
-                <h4>온톨로지의 정의</h4>
-                <p>특정 영역의 개념과 관계를 형식적으로 정의한 명세서</p>
-                <ul>
-                    <li>철학적 기원: 존재론</li>
-                    <li>컴퓨터 과학적 적용: 지식 표현</li>
-                </ul>
+    <div class="additional-resources">
+        <h3><i class="fas fa-book"></i> 추천 도서</h3>
+        <div class="book-list">
+            <div class="book-item">
+                <h4>온톨로지 학습 가이드 (국문)</h4>
+                <p>저자: 김우주 | 출판사: 멘토르</p>
+                <p>초보자를 위한 온톨로지 입문서</p>
+            </div>
+            <div class="book-item">
+                <h4>Semantic Web for the Working Ontologist</h4>
+                <p>저자: Allemang & Hendler | 출판사: Morgan Kaufmann</p>
+                <p>실무자를 위한 시맨틱 웹과 온톨로지</p>
             </div>
         </div>
         
-        <div class="point-card">
-            <div class="point-number">2</div>
-            <div class="point-content">
-                <h4>구성 요소</h4>
-                <p>온톨로지를 이루는 4가지 핵심 요소</p>
-                <ul>
-                    <li>개념(Class): 사물의 범주</li>
-                    <li>속성(Property): 특성과 관계</li>
-                    <li>인스턴스(Instance): 구체적 개체</li>
-                    <li>규칙(Rule): 제약과 추론</li>
-                </ul>
+        <h3><i class="fas fa-video"></i> 온라인 강좌</h3>
+        <div class="course-list">
+            <div class="course-item">
+                <h4>Introduction to Ontology Engineering</h4>
+                <p>플랫폼: Coursera | 제공: University of Cape Town</p>
+            </div>
+            <div class="course-item">
+                <h4>Knowledge Graphs</h4>
+                <p>플랫폼: edX | 제공: TU Wien</p>
             </div>
         </div>
         
-        <div class="point-card">
-            <div class="point-number">3</div>
-            <div class="point-content">
-                <h4>핵심 가치</h4>
-                <p>온톨로지가 제공하는 고유한 가치</p>
-                <ul>
-                    <li>컴퓨터의 의미 이해</li>
-                    <li>자동 추론과 지식 확장</li>
-                    <li>시스템 간 상호운용성</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="point-card">
-            <div class="point-number">4</div>
-            <div class="point-content">
-                <h4>차별점</h4>
-                <p>기존 방식과의 근본적 차이</p>
-                <ul>
-                    <li>DB: 데이터 저장 → 지식 표현</li>
-                    <li>분류: 계층 구조 → 네트워크 구조</li>
-                    <li>의미: 암묵적 → 명시적</li>
-                </ul>
-            </div>
+        <h3><i class="fas fa-globe"></i> 유용한 웹사이트</h3>
+        <div class="website-list">
+            <ul>
+                <li><a href="https://www.w3.org/TR/owl2-primer/">W3C OWL 2 입문서</a></li>
+                <li><a href="https://protege.stanford.edu/publications/ontology_development/ontology101.pdf">Ontology Development 101</a></li>
+                <li><a href="http://www.semantic-web-journal.net/">Semantic Web Journal</a></li>
+            </ul>
         </div>
     </div>
+</section>
+
+<!-- 학습 요약 -->
+<section class="chapter-summary">
+    <h2><i class="fas fa-bookmark"></i> Chapter 1 학습 요약</h2>
     
-    <div class="chapter-recap">
-        <h3>학습 내용 요약</h3>
-        <div class="recap-timeline">
-            <div class="recap-item">
-                <span class="recap-number">1.1</span>
-                <span class="recap-title">철학에서 컴퓨터과학으로</span>
-                <span class="recap-desc">온톨로지의 역사와 발전</span>
-            </div>
-            <div class="recap-item">
-                <span class="recap-number">1.2</span>
-                <span class="recap-title">일상 속 온톨로지</span>
-                <span class="recap-desc">가족관계, 음식분류 등 실제 예시</span>
-            </div>
-            <div class="recap-item">
-                <span class="recap-number">1.3</span>
-                <span class="recap-title">온톨로지의 필요성</span>
-                <span class="recap-desc">정보 모호성 해결과 지식 추론</span>
-            </div>
-            <div class="recap-item">
-                <span class="recap-number">1.4</span>
-                <span class="recap-title">다른 방식과의 비교</span>
-                <span class="recap-desc">DB, 분류체계와의 차이점</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 실습 과제 -->
-<section class="practice-section">
-    <h2>🎯 실습 과제</h2>
-    
-    <div class="practice-container">
-        <div class="practice-task">
-            <h3>미니 온톨로지 설계하기</h3>
-            <p>자신이 잘 아는 분야를 선택하여 간단한 온톨로지를 설계해보세요.</p>
-            
-            <div class="task-steps">
-                <h4>설계 단계:</h4>
-                <ol>
-                    <li>
-                        <strong>도메인 선택</strong>
-                        <p>예: 커피숍, 영화, 운동, 요리, 음악 등</p>
-                        <div class="step-tip">
-                            💡 자신이 잘 아는 분야를 선택하면 개념과 관계를 정의하기 쉽습니다.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>주요 개념 정의</strong>
-                        <p>최소 5개 이상의 핵심 개념(클래스) 도출</p>
-                        <div class="step-tip">
-                            💡 너무 세부적이거나 너무 포괄적이지 않은 적절한 수준의 개념을 선택하세요.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>속성 정의</strong>
-                        <p>각 개념별 2-3개의 속성 정의</p>
-                        <div class="step-tip">
-                            💡 데이터 속성(값)과 객체 속성(관계)을 구분하여 정의하세요.
-                        </div>
-                    </li>
-                    <li>
-                        <strong>관계 정의</strong>
-                        <p>개념 간 관계를 명확히 정의</p>
-                        <div class="step-tip">
-                            💡 관계의 방향성과 의미를 명확히 표현하세요.
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            
-            <div class="example-template">
-                <h4>템플릿 예시: 커피숍 온톨로지</h4>
-                <div class="template-content">
-                    <div class="template-section">
-                        <h5>1. 주요 개념(클래스)</h5>
-                        <div class="concept-list">
-                            <span class="concept">커피</span>
-                            <span class="concept">바리스타</span>
-                            <span class="concept">고객</span>
-                            <span class="concept">메뉴</span>
-                            <span class="concept">매장</span>
-                            <span class="concept">원두</span>
-                        </div>
-                    </div>
-                    
-                    <div class="template-section">
-                        <h5>2. 속성 정의</h5>
-                        <div class="property-definitions">
-                            <div class="property-def">
-                                <strong>커피</strong>
-                                <ul>
-                                    <li>데이터 속성: 가격, 용량, 온도</li>
-                                    <li>객체 속성: 사용원두, 제조자</li>
-                                </ul>
-                            </div>
-                            <div class="property-def">
-                                <strong>바리스타</strong>
-                                <ul>
-                                    <li>데이터 속성: 이름, 경력, 자격증</li>
-                                    <li>객체 속성: 근무매장, 전문메뉴</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="template-section">
-                        <h5>3. 관계 정의</h5>
-                        <div class="relation-examples">
-                            <div class="relation-item">바리스타 <em>제조한다</em> 커피</div>
-                            <div class="relation-item">고객 <em>주문한다</em> 메뉴</div>
-                            <div class="relation-item">커피 <em>사용한다</em> 원두</div>
-                            <div class="relation-item">매장 <em>보유한다</em> 메뉴</div>
-                            <div class="relation-item">바리스타 <em>근무한다</em> 매장</div>
-                        </div>
-                    </div>
-                    
-                    <div class="template-section">
-                        <h5>4. 규칙 예시</h5>
-                        <ul>
-                            <li>에스프레소 기반 음료는 모두 커피 클래스에 속한다</li>
-                            <li>바리스타는 최소 1개 이상의 매장에 소속되어야 한다</li>
-                            <li>디카페인 커피는 카페인 함량이 0.1% 이하여야 한다</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="practice-tips">
-                <h4>💡 실습 팁</h4>
-                <ul>
-                    <li>처음에는 작은 범위로 시작하세요</li>
-                    <li>실제로 사용할 수 있는 관계를 정의하세요</li>
-                    <li>모호한 표현을 피하고 명확히 정의하세요</li>
-                    <li>다른 사람이 이해할 수 있도록 설명을 추가하세요</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 다음 장 예고 -->
-<section class="next-chapter">
-    <h2>다음 장에서는...</h2>
-    <div class="next-preview">
-        <h3>Chapter 2: 온톨로지의 핵심 개념</h3>
-        <p>이제 온톨로지가 무엇인지 이해했으니, 온톨로지를 구성하는 핵심 요소들을 자세히 살펴보겠습니다:</p>
-        
-        <div class="next-topics">
-            <div class="topic-card">
-                <div class="topic-icon">📦</div>
-                <h4>클래스와 인스턴스</h4>
-                <p>개념의 범주화와 구체적 개체 표현</p>
-            </div>
-            <div class="topic-card">
-                <div class="topic-icon">🔗</div>
-                <h4>속성의 종류</h4>
-                <p>데이터 속성과 객체 속성의 활용</p>
-            </div>
-            <div class="topic-card">
-                <div class="topic-icon">🔄</div>
-                <h4>관계의 특성</h4>
-                <p>대칭성, 이행성, 함수성 등</p>
-            </div>
-            <div class="topic-card">
-                <div class="topic-icon">📐</div>
-                <h4>공리와 추론</h4>
-                <p>규칙 정의와 자동 추론 메커니즘</p>
-            </div>
+    <div class="summary-content">
+        <div class="key-takeaways">
+            <h3>핵심 내용 정리</h3>
+            <ul>
+                <li>온톨로지는 특정 영역의 지식을 컴퓨터가 이해할 수 있도록 형식화한 모델입니다</li>
+                <li>철학적 존재론에서 시작하여 컴퓨터 과학의 핵심 기술로 발전했습니다</li>
+                <li>클래스, 인스턴스, 속성, 관계, 공리로 구성됩니다</li>
+                <li>데이터베이스와 달리 추론 능력과 의미 표현이 가능합니다</li>
+                <li>의료, 전자상거래, 생명공학 등 다양한 분야에서 활용됩니다</li>
+            </ul>
         </div>
         
-        <button class="next-button" onclick="OntologyBook.loadChapter('chapter02')">
-            다음 장으로 <i class="fas fa-arrow-right"></i>
-        </button>
+        <div class="next-chapter-preview">
+            <h3>다음 장 미리보기</h3>
+            <p><strong>Chapter 2: 온톨로지의 핵심 개념</strong>에서는 온톨로지를 구성하는 요소들을 더 깊이 있게 다룹니다. 클래스와 인스턴스의 관계, 속성의 종류, 추론 메커니즘 등을 상세히 학습합니다.</p>
+        </div>
     </div>
 </section>
 
-<!-- 스타일 -->
+<!-- JavaScript for Interactive Elements -->
+<script>
+// 인터랙티브 타임라인
+document.querySelectorAll('.timeline-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const era = this.getAttribute('data-era');
+        loadTimelineContent(era);
+    });
+});
+
+// 온톨로지 탐색기
+document.querySelectorAll('.explorer-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const component = this.getAttribute('data-component');
+        loadExplorerContent(component);
+    });
+});
+
+// 퀴즈 정답 확인
+document.querySelector('.check-answers-btn').addEventListener('click', function() {
+    checkQuizAnswers();
+});
+
+// 추론 데모
+document.getElementById('addKnowledge').addEventListener('click', function() {
+    addKnowledgeAndInfer();
+});
+
+function loadTimelineContent(era) {
+    // 타임라인 콘텐츠 동적 로드
+    const content = getTimelineContent(era);
+    document.querySelector('.timeline-content-area').innerHTML = content;
+}
+
+function loadExplorerContent(component) {
+    // 탐색기 콘텐츠 동적 로드
+    const content = getExplorerContent(component);
+    document.querySelector('.explorer-content').innerHTML = content;
+}
+
+function checkQuizAnswers() {
+    // 퀴즈 정답 확인 로직
+    const answers = {q1: 'b', q2: 'c', q3: 'b'};
+    let score = 0;
+    // ... 채점 로직
+}
+
+function addKnowledgeAndInfer() {
+    // 추론 엔진 시뮬레이션
+    const subject = document.getElementById('subject').value;
+    const relation = document.getElementById('relation').value;
+    const object = document.getElementById('object').value;
+    // ... 추론 로직
+}
+</script>
+
 <style>
-/* 기본 스타일 */
-.chapter-header {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    border-radius: 16px;
-    margin-bottom: 3rem;
-}
-
-.chapter-header h1 {
-    font-size: 2.5rem;
-    color: #1e293b;
-    margin-bottom: 1rem;
-}
-
-.chapter-quote {
-    font-style: italic;
-    color: #64748b;
-    font-size: 1.2rem;
-}
-
-.reading-time {
-    text-align: center;
-    color: #64748b;
-    margin-bottom: 2rem;
-}
-
-/* 학습 목표 */
-.learning-objectives {
-    background: #f0f9ff;
-    border-left: 4px solid #3b82f6;
+/* Enhanced Styles for Chapter 1 */
+.learning-path {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 3rem;
-}
-
-.learning-objectives ul {
-    list-style: none;
-    padding: 0;
-}
-
-.learning-objectives li {
-    position: relative;
-    padding-left: 2rem;
-    margin: 0.75rem 0;
-}
-
-.learning-objectives li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #10b981;
-    font-weight: bold;
-}
-
-/* 타임라인 */
-.timeline-static {
-    background: #f8fafc;
-    padding: 2rem;
-    border-radius: 12px;
+    border-radius: 1rem;
     margin: 2rem 0;
 }
 
-.timeline-items {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline-items::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, #6366f1, #8b5cf6);
-}
-
-.timeline-item {
-    position: relative;
-    margin: 2rem 0;
-    padding-left: 2rem;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -2.5rem;
-    top: 0;
-    width: 12px;
-    height: 12px;
-    background: #6366f1;
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px #f8fafc, 0 0 0 6px #e0e7ff;
-}
-
-.timeline-date {
-    color: #6366f1;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.timeline-content h5 {
-    margin: 0 0 0.5rem 0;
-    color: #1e293b;
-}
-
-.timeline-content p {
-    color: #64748b;
-    margin: 0;
-}
-
-.timeline-detail {
-    margin-top: 0.5rem;
-    padding: 0.75rem;
-    background: white;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: #64748b;
-    display: none;
-}
-
-.timeline-item:hover .timeline-detail {
-    display: block;
-}
-
-/* 개념 박스 */
-.concept-box {
-    background: #fef3c7;
-    border: 2px solid #f59e0b;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-}
-
-.concept-box h4 {
-    color: #92400e;
-    margin-bottom: 0.5rem;
-}
-
-.question-box {
-    background: #ddd6fe;
-    border-left: 4px solid #7c3aed;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: #4c1d95;
-}
-
-/* 진화 다이어그램 */
-.evolution-diagram {
+.path-steps {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    margin: 3rem 0;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1.5rem;
 }
 
-.evolution-step {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.path-step {
     text-align: center;
-    flex: 1;
-    min-width: 200px;
-    transition: all 0.3s ease;
-    position: relative;
+    opacity: 0.6;
+    transition: opacity 0.3s;
 }
 
-.evolution-step:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-.evolution-step:hover .step-detail {
+.path-step.active {
     opacity: 1;
-    transform: translateY(0);
 }
 
-.step-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.step-detail {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #f8fafc;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: #64748b;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.evolution-arrow {
-    font-size: 2rem;
-    color: #6366f1;
-    align-self: center;
-}
-
-/* 정의 박스 */
-.definition-box {
-    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 2rem 0;
-}
-
-.definition-text {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #4338ca;
-    margin: 1rem 0;
-}
-
-.definition-components {
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-top: 1rem;
-}
-
-.definition-components li {
-    margin: 0.75rem 0;
-}
-
-.definition-components .example {
+.step-number {
     display: block;
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-left: 2rem;
-    font-style: italic;
-}
-
-/* 비교 박스 */
-.comparison-box {
-    margin: 2rem 0;
-}
-
-.comparison-mini {
-    width: 100%;
-    border-collapse: collapse;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
     background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.comparison-mini th {
-    background: #6366f1;
-    color: white;
-    padding: 1rem;
-    text-align: left;
-}
-
-.comparison-mini td {
-    padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.comparison-mini tr:last-child td {
-    border-bottom: none;
-}
-
-/* 가족 다이어그램 */
-.family-diagram {
-    background: #f8fafc;
-    padding: 2rem;
-    border-radius: 12px;
-}
-
-.family-structure {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.concept-hierarchy {
-    text-align: center;
-}
-
-.hierarchy-title {
-    font-weight: 600;
-    color: #6366f1;
-    margin-bottom: 1rem;
-}
-
-.concept-level {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 1rem 0;
-}
-
-.concept-connector {
-    color: #cbd5e1;
-    font-family: monospace;
-    margin: -0.5rem 0;
-}
-
-.concept-node {
-    background: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    border: 2px solid #6366f1;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.concept-node:hover {
-    background: #6366f1;
-    color: white;
-    transform: scale(1.05);
-}
-
-.concept-node.root {
-    background: #6366f1;
-    color: white;
-}
-
-.concept-node.sub {
-    border-color: #8b5cf6;
-}
-
-.relationship-examples {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-}
-
-.relation {
-    color: #6366f1;
-    font-weight: 600;
-    margin: 0 0.5rem;
-}
-
-.ontology-rules {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #fef3c7;
-    border-radius: 8px;
-}
-
-.rule-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 0.5rem 0;
-}
-
-.rule-icon {
-    font-size: 1.5rem;
-}
-
-/* 음식 온톨로지 */
-.food-ontology {
-    margin-top: 2rem;
-}
-
-.food-hierarchy {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.food-root {
-    background: #6366f1;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.2rem;
-    display: inline-block;
-    margin-bottom: 2rem;
-}
-
-.food-branches {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-}
-
-.food-branch {
-    text-align: center;
-}
-
-.branch-title {
-    background: #8b5cf6;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-}
-
-.branch-items span {
-    display: block;
-    background: #f3f4f6;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem 0;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.branch-items span:hover {
-    background: #e5e7eb;
-    transform: translateX(5px);
-}
-
-/* 음식 카테고리 카드 */
-.food-categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-
-.category-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    text-align: center;
-    border: 2px solid #e5e7eb;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.category-card:hover {
-    border-color: #6366f1;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.category-card i {
-    font-size: 3rem;
-    color: #6366f1;
-    margin-bottom: 1rem;
-}
-
-.category-details {
-    text-align: left;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e5e7eb;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.category-card:hover .category-details {
-    max-height: 300px;
-}
-
-.property-list {
-    font-size: 0.85rem;
-    color: #64748b;
-    margin-left: 1rem;
-    padding: 0.5rem;
-    background: #f8fafc;
-    border-radius: 4px;
-    margin-top: 0.25rem;
-}
-
-.food-relationships {
-    background: #f8fafc;
-    padding: 2rem;
-    border-radius: 12px;
-    margin-top: 2rem;
-}
-
-.relation-grid {
-    display: grid;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.relation-example {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-}
-
-.relation-example .entity {
-    background: #e0e7ff;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-weight: 500;
-}
-
-.relation-example .relation-type {
-    color: #6366f1;
-    font-weight: 600;
-}
-
-.relation-example .arrow {
-    color: #cbd5e1;
-}
-
-/* 퀴즈 예시 */
-.quiz-examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.quiz-example {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s ease;
-}
-
-.quiz-example:hover {
-    border-color: #6366f1;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.quiz-example h4 {
-    color: #6366f1;
-    margin-bottom: 1rem;
-}
-
-.ontology-structure {
-    margin-top: 1rem;
-}
-
-.structure-section {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: #f8fafc;
-    border-radius: 6px;
-}
-
-.structure-section h5 {
-    color: #4b5563;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.concept-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.concept-list .concept {
-    background: #e0e7ff;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-}
-
-.structure-section ul {
-    margin: 0;
-    padding-left: 1.5rem;
-}
-
-.structure-section li {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-}
-
-.structure-section em {
-    color: #6366f1;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.thinking-exercise {
-    background: #f0fdf4;
-    border: 2px solid #10b981;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-top: 2rem;
-}
-
-/* 검색 시뮬레이션 */
-.search-simulation {
-    background: #1e293b;
-    color: white;
-    padding: 2rem;
-    border-radius: 16px;
-    margin: 2rem 0;
-}
-
-.search-input-box {
-    background: white;
-    color: #1e293b;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-}
-
-.search-results-comparison {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
-.results-column h5 {
-    margin-bottom: 1rem;
-}
-
-.result-list {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.result-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-}
-
-.result-item .rank {
-    background: rgba(255, 255, 255, 0.2);
-    width: 30px;
-    height: 30px;
+    color: #667eea;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
+    font-weight: bold;
+    margin: 0 auto 0.5rem;
 }
 
-.result-item .title {
-    flex: 1;
-}
-
-.result-item .context {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-}
-
-.result-problem {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: rgba(239, 68, 68, 0.2);
-    border-radius: 6px;
-    text-align: center;
-}
-
-.result-success {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: rgba(16, 185, 129, 0.2);
-    border-radius: 6px;
-    text-align: center;
-}
-
-.result-categories {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.category-section {
-    margin: 1rem 0;
-}
-
-.category-section h6 {
-    color: #a5b4fc;
-    margin-bottom: 0.5rem;
-}
-
-.category-section .result-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
-    margin: 0.25rem 0;
-}
-
-/* 솔루션 비교 */
-.solution-comparison {
-    margin: 2rem 0;
-}
-
-.comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 1rem;
-}
-
-.before-ontology, .after-ontology {
-    background: #f8fafc;
-    padding: 2rem;
-    border-radius: 12px;
-}
-
-.before-ontology h4 {
-    color: #ef4444;
-}
-
-.after-ontology h4 {
-    color: #10b981;
-}
-
-.code-example {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    border: 1px solid #e5e7eb;
-}
-
-.code-example pre {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    white-space: pre-wrap;
-}
-
-/* 혜택 카드 */
-.benefit-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.benefit-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.benefit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-.benefit-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.benefit-example {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #f8fafc;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: #64748b;
-}
-
-/* 사용 사례 */
-.use-cases {
-    margin-top: 3rem;
-}
-
-.case-grid {
+.component-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-top: 1.5rem;
+    margin: 2rem 0;
 }
 
-.use-case {
+.component-card {
     background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.use-case:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.case-header {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
     padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.component-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.component-icon {
+    font-size: 3rem;
+    color: #667eea;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.interactive-timeline {
+    background: #f7fafc;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.timeline-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.timeline-btn {
+    padding: 0.5rem 1.5rem;
+    background: white;
+    border: 2px solid #667eea;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.timeline-btn:hover,
+.timeline-btn.active {
+    background: #667eea;
+    color: white;
+}
+
+.reason-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.reason-card {
+    background: #f0f4ff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
     text-align: center;
 }
 
-.case-header i {
+.reason-card i {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    color: #667eea;
+    margin-bottom: 1rem;
 }
 
-.case-content {
-    padding: 1.5rem;
+.practice-section {
+    background: #f7fafc;
+    border-left: 4px solid #667eea;
+    padding: 2rem;
+    margin: 2rem 0;
 }
 
-.case-content h5 {
-    color: #6366f1;
-    margin-bottom: 0.5rem;
+.code-editor {
+    background: #2d3748;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
 }
 
-.case-content ul {
-    margin-top: 1rem;
-}
-
-/* 비교 테이블 */
 .comparison-table {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.comparison-table table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 1rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #e2e8f0;
 }
 
 .comparison-table th {
-    background: #6366f1;
+    background: #667eea;
     color: white;
-    padding: 1rem;
-    text-align: left;
     font-weight: 600;
 }
 
-.comparison-table td {
-    padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
+.comparison-table tr:nth-child(even) {
+    background: #f7fafc;
 }
 
-.comparison-table tr:last-child td {
-    border-bottom: none;
+.application-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
 }
 
-.comparison-table tr:hover {
-    background: #f8fafc;
+.application-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
 }
 
-.feature {
-    font-weight: 600;
-    color: #1e293b;
-    background: #f1f5f9;
+.application-card:hover {
+    transform: translateY(-4px);
 }
 
-.capability-low {
-    color: #ef4444;
-    font-weight: 600;
+.app-header {
+    padding: 1.5rem;
+    text-align: center;
+    color: white;
 }
 
-.capability-medium {
-    color: #f59e0b;
-    font-weight: 600;
+.healthcare .app-header { background: #e53e3e; }
+.ecommerce .app-header { background: #38a169; }
+.biotech .app-header { background: #3182ce; }
+.finance .app-header { background: #805ad5; }
+
+.app-header i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
 }
 
-.capability-high {
-    color: #10b981;
-    font-weight: 600;
+.app-content {
+    padding: 1.5rem;
 }
 
-/* 구조 시각화 */
-.structure-examples {
+.interactive-demo {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.demo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.knowledge-input select,
+.knowledge-input button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.quiz-section {
+    background: #f7fafc;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.quiz-question {
+    background: white;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.quiz-options label {
+    display: block;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.quiz-options label:hover {
+    background: #f0f4ff;
+}
+
+.check-answers-btn {
+    background: #667eea;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.check-answers-btn:hover {
+    background: #5a5cd6;
+}
+
+.tool-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
+    margin: 2rem 0;
 }
 
-.structure-item {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 12px;
-}
-
-.structure-item h4 {
-    margin-bottom: 1rem;
-    color: #4b5563;
-}
-
-.db-diagram {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.db-table {
+.tool-card {
     background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
     overflow: hidden;
+    transition: box-shadow 0.3s;
 }
 
-.table-name {
-    background: #6366f1;
-    color: white;
-    padding: 0.5rem;
-    text-align: center;
-    font-weight: 600;
+.tool-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.table-row {
-    padding: 0.5rem;
-    font-size: 0.85rem;
-    border-bottom: 1px solid #e5e7eb;
-    font-family: monospace;
-}
-
-.table-row.header {
-    background: #f3f4f6;
-    font-weight: 600;
-}
-
-.db-relation {
-    font-size: 1.5rem;
-    color: #6366f1;
-}
-
-.taxonomy-tree {
-    font-family: monospace;
-    background: white;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.tree-node {
-    white-space: pre;
-}
-
-.ontology-diagram {
-    text-align: center;
-}
-
-.onto-nodes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.onto-node {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.onto-node.class {
-    background: #ddd6fe;
-    color: #4c1d95;
-}
-
-.onto-node.instance {
-    background: #fde68a;
-    color: #78350f;
-}
-
-.onto-node.property {
-    background: #bfdbfe;
-    color: #1e3a8a;
-}
-
-.onto-relations {
-    font-family: monospace;
-    font-size: 0.85rem;
-    color: #64748b;
-}
-
-.structure-characteristics {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 6px;
-}
-
-.structure-characteristics h5 {
-    color: #4b5563;
-    margin-bottom: 0.5rem;
-}
-
-.structure-characteristics ul {
-    margin: 0;
-    padding-left: 1.5rem;
-}
-
-/* 구체적 예시 */
-.concrete-example {
-    margin-top: 3rem;
-    padding: 2rem;
-    background: #fef3c7;
-    border-radius: 12px;
-}
-
-.example-representations {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.representation {
-    background: white;
+.tool-header {
     padding: 1.5rem;
-    border-radius: 8px;
-}
-
-.code-block {
-    background: #1e293b;
-    color: #e2e8f0;
-    padding: 1rem;
-    border-radius: 6px;
-    margin: 1rem 0;
-}
-
-.code-block pre {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
-    line-height: 1.6;
-}
-
-.limitation {
-    color: #dc2626;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-}
-
-.advantage {
-    color: #059669;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-}
-
-/* 추론 예시 */
-.inference-example {
-    margin-top: 2rem;
-    padding: 2rem;
-    background: #f0f9ff;
-    border-radius: 12px;
-}
-
-.inference-demo {
+    background: #f7fafc;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin: 1.5rem 0;
-}
-
-.given-facts, .inferred-facts {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    flex: 1;
-}
-
-.given-facts {
-    border-left: 4px solid #6366f1;
-}
-
-.inferred-facts {
-    border-left: 4px solid #10b981;
-}
-
-.inference-arrow {
-    font-size: 1.5rem;
-    color: #6366f1;
-    font-weight: bold;
-}
-
-.inference-note {
-    text-align: center;
-    color: #64748b;
-    margin-top: 1rem;
-}
-
-/* 핵심 정리 */
-.summary-section {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    padding: 3rem;
-    border-radius: 16px;
-    margin: 3rem 0;
-}
-
-.key-points {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.point-card {
-    display: flex;
     gap: 1rem;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.point-number {
-    background: #6366f1;
+.tool-header img {
+    width: 50px;
+    height: 50px;
+}
+
+.tool-badge {
+    background: #667eea;
     color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    flex-shrink: 0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    margin-left: auto;
 }
 
-.point-content h4 {
-    color: #1e293b;
-    margin-bottom: 0.5rem;
-}
-
-.point-content ul {
-    margin: 0.5rem 0 0 0;
-    padding-left: 1.5rem;
-}
-
-.chapter-recap {
-    margin-top: 2rem;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-}
-
-.recap-timeline {
+.tool-pros-cons {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-top: 1rem;
 }
 
-.recap-item {
-    display: grid;
-    grid-template-columns: auto 1fr 2fr;
-    gap: 1rem;
-    align-items: center;
+.pros, .cons {
     padding: 1rem;
-    background: #f8fafc;
-    border-radius: 8px;
+    border-radius: 0.5rem;
 }
 
-.recap-number {
-    background: #6366f1;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-weight: 600;
+.pros {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
 }
 
-.recap-title {
-    font-weight: 600;
-    color: #1e293b;
-}
-
-.recap-desc {
-    color: #64748b;
-}
-
-/* 실습 섹션 */
-.practice-section {
-    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
-    padding: 3rem;
-    border-radius: 16px;
-    margin: 3rem 0;
-}
-
-.practice-task {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    margin-top: 1rem;
-}
-
-.task-steps ol {
-    margin: 1rem 0;
-}
-
-.task-steps li {
-    margin: 1.5rem 0;
-}
-
-.step-tip {
-    background: #f0f9ff;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #1e40af;
-}
-
-.example-template {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-}
-
-.template-content {
-    margin-top: 1rem;
-}
-
-.template-section {
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background: white;
-    border-radius: 6px;
-}
-
-.template-section h5 {
-    color: #6366f1;
-    margin-bottom: 1rem;
-}
-
-.property-definitions {
-    display: grid;
-    gap: 1rem;
-}
-
-.property-def {
-    padding: 1rem;
-    background: #f8fafc;
-    border-radius: 6px;
-}
-
-.relation-examples {
-    display: grid;
-    gap: 0.5rem;
-}
-
-.relation-item {
-    padding: 0.5rem 1rem;
-    background: #f8fafc;
-    border-radius: 6px;
-}
-
-.relation-item em {
-    color: #6366f1;
-    font-weight: 600;
-    font-style: normal;
-    margin: 0 0.5rem;
-}
-
-.practice-tips {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #f0f9ff;
-    border-radius: 8px;
-}
-
-/* 다음 장 */
-.next-chapter {
-    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-    padding: 3rem;
-    border-radius: 16px;
-    margin: 3rem 0;
-    text-align: center;
-}
-
-.next-preview {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    margin-top: 1rem;
-    text-align: left;
-}
-
-.next-topics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.topic-card {
-    padding: 1.5rem;
-    background: #f8fafc;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.topic-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.next-button {
-    background: #6366f1;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-}
-
-.next-button:hover {
-    background: #4f46e5;
-    transform: translateX(5px);
+.cons {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
 }
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-    .chapter-header h1 {
-        font-size: 2rem;
-    }
-    
-    .evolution-diagram {
-        flex-direction: column;
-    }
-    
-    .evolution-arrow {
-        transform: rotate(90deg);
-    }
-    
-    .family-structure,
-    .comparison-grid,
-    .structure-examples,
-    .example-representations,
-    .search-results-comparison {
-        grid-template-columns: 1fr;
-    }
-    
-    .db-diagram {
-        flex-direction: column;
-    }
-    
-    .db-relation {
-        transform: rotate(90deg);
-    }
-    
-    .food-branches {
+    .path-steps {
         flex-direction: column;
         gap: 1rem;
     }
     
-    .inference-demo {
-        flex-direction: column;
+    .demo-container {
+        grid-template-columns: 1fr;
     }
     
-    .inference-arrow {
-        transform: rotate(90deg);
-    }
-}
-
-/* 인쇄 스타일 */
-@media print {
-    .next-chapter,
-    .practice-section {
-        page-break-before: always;
+    .comparison-table {
+        font-size: 0.875rem;
     }
     
-    .category-details,
-    .timeline-detail,
-    .step-detail {
-        display: block !important;
-        opacity: 1 !important;
-        transform: none !important;
-        position: static !important;
-    }
-}
-
-/* 다크 모드 지원 */
-@media (prefers-color-scheme: dark) {
-    body.dark-mode .chapter-header {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
-    }
-    
-    body.dark-mode .concept-box {
-        background: #422006;
-        border-color: #d97706;
-    }
-    
-    body.dark-mode .timeline-static,
-    body.dark-mode .family-diagram,
-    body.dark-mode .food-ontology {
-        background: #1e293b;
-    }
-    
-    body.dark-mode .concept-node,
-    body.dark-mode .timeline-detail,
-    body.dark-mode .category-card {
-        background: #334155;
-        color: #e2e8f0;
+    .tool-pros-cons {
+        grid-template-columns: 1fr;
     }
 }
 </style>

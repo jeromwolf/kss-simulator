@@ -1,0 +1,2281 @@
+<!-- Chapter 10: 온톨로지 설계 방법론 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header methodology-advanced">
+    <div class="methodology-comparison-animation"></div>
+    <h2 class="part-title">Part 2: 주요 설계 방법론과 비교 분석</h2>
+    <p class="part-description">세계적으로 검증된 온톨로지 설계 방법론들을 깊이 있게 분석하고 실제 적용해보는 시간입니다.</p>
+</div>
+
+<!-- 방법론 마스터 준비도 -->
+<div class="progress-check methodology-expert">
+    <h3>🎯 방법론 전문가 준비도</h3>
+    <div class="expert-assessment">
+        <div class="methodology-matrix">
+            <div class="matrix-categories">
+                <div class="category-assessment">
+                    <h4>📚 이론적 이해</h4>
+                    <div class="theory-radar">
+                        <div class="theory-aspect">
+                            <span class="aspect-name">방법론 원리</span>
+                            <div class="aspect-meter">
+                                <div class="meter-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="aspect-score">85%</span>
+                        </div>
+                        <div class="theory-aspect">
+                            <span class="aspect-name">단계별 프로세스</span>
+                            <div class="aspect-meter">
+                                <div class="meter-fill" style="width: 78%"></div>
+                            </div>
+                            <span class="aspect-score">78%</span>
+                        </div>
+                        <div class="theory-aspect">
+                            <span class="aspect-name">산출물 이해</span>
+                            <div class="aspect-meter">
+                                <div class="meter-fill" style="width: 82%"></div>
+                            </div>
+                            <span class="aspect-score">82%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-assessment">
+                    <h4>⚡ 실무 경험</h4>
+                    <div class="experience-levels">
+                        <div class="exp-item">
+                            <span class="exp-icon">🏛️</span>
+                            <span class="exp-name">전통적 접근</span>
+                            <div class="exp-level intermediate">중급</div>
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-icon">⚡</span>
+                            <span class="exp-name">애자일 방식</span>
+                            <div class="exp-level advanced">고급</div>
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-icon">🌐</span>
+                            <span class="exp-name">협업 개발</span>
+                            <div class="exp-level beginner">초급</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="readiness-conclusion">
+                <div class="conclusion-card">
+                    <div class="conclusion-icon">🚀</div>
+                    <div class="conclusion-content">
+                        <h4>방법론 비교 분석 준비 완료!</h4>
+                        <p>이론적 기반이 탄탄하여 고급 방법론 분석이 가능합니다.</p>
+                        <div class="next-challenge">
+                            <span class="challenge-icon">🎯</span>
+                            <span>목표: 방법론 컨설턴트 레벨 달성</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 10.4: 방법론 비교 매트릭스 -->
+<section class="content-section methodology-comparison">
+    <h2>10.4 설계 방법론 비교 매트릭스</h2>
+    
+    <!-- 대화형 방법론 비교기 -->
+    <div class="methodology-comparator">
+        <h3>⚖️ 방법론 비교 분석기</h3>
+        <div class="comparator-interface">
+            <div class="methodology-selector">
+                <h4>비교할 방법론 선택</h4>
+                <div class="selector-grid">
+                    <label class="methodology-option">
+                        <input type="checkbox" value="uschold" checked>
+                        <div class="option-card">
+                            <div class="option-icon">🏛️</div>
+                            <h5>Uschold & King</h5>
+                            <p>엔터프라이즈 온톨로지의 선구자</p>
+                            <div class="option-year">1995년</div>
+                        </div>
+                    </label>
+                    
+                    <label class="methodology-option">
+                        <input type="checkbox" value="gruninger" checked>
+                        <div class="option-card">
+                            <div class="option-icon">❓</div>
+                            <h5>Grüninger & Fox</h5>
+                            <p>역량 질문 중심 접근</p>
+                            <div class="option-year">1995년</div>
+                        </div>
+                    </label>
+                    
+                    <label class="methodology-option">
+                        <input type="checkbox" value="methontology" checked>
+                        <div class="option-card">
+                            <div class="option-icon">🔧</div>
+                            <h5>METHONTOLOGY</h5>
+                            <p>소프트웨어 공학 기반</p>
+                            <div class="option-year">1997년</div>
+                        </div>
+                    </label>
+                    
+                    <label class="methodology-option">
+                        <input type="checkbox" value="otk">
+                        <div class="option-card">
+                            <div class="option-icon">💼</div>
+                            <h5>On-To-Knowledge</h5>
+                            <p>비즈니스 중심 접근</p>
+                            <div class="option-year">2002년</div>
+                        </div>
+                    </label>
+                    
+                    <label class="methodology-option">
+                        <input type="checkbox" value="diligent">
+                        <div class="option-card">
+                            <div class="option-icon">👥</div>
+                            <h5>DILIGENT</h5>
+                            <p>분산 협업 개발</p>
+                            <div class="option-year">2004년</div>
+                        </div>
+                    </label>
+                </div>
+                
+                <button class="compare-btn" onclick="generateComparison()">
+                    선택된 방법론 비교하기
+                </button>
+            </div>
+            
+            <div class="comparison-results">
+                <div id="comparisonMatrix" class="comparison-matrix">
+                    <p class="placeholder-text">방법론을 선택하고 '비교하기' 버튼을 눌러주세요.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.5: 방법론 심화 탐구 -->
+<section class="content-section methodology-deep-dive">
+    <h2>10.5 방법론 심화 탐구</h2>
+    
+    <!-- 방법론 상세 분석기 -->
+    <div class="methodology-analyzer">
+        <h3>🔬 방법론 상세 분석기</h3>
+        <div class="analyzer-interface">
+            <div class="methodology-tabs">
+                <button class="method-tab active" onclick="showMethodology('uschold')">
+                    <span class="tab-icon">🏛️</span>
+                    <span>Uschold & King</span>
+                </button>
+                <button class="method-tab" onclick="showMethodology('gruninger')">
+                    <span class="tab-icon">❓</span>
+                    <span>Grüninger & Fox</span>
+                </button>
+                <button class="method-tab" onclick="showMethodology('methontology')">
+                    <span class="tab-icon">🔧</span>
+                    <span>METHONTOLOGY</span>
+                </button>
+                <button class="method-tab" onclick="showMethodology('otk')">
+                    <span class="tab-icon">💼</span>
+                    <span>On-To-Knowledge</span>
+                </button>
+                <button class="method-tab" onclick="showMethodology('diligent')">
+                    <span class="tab-icon">👥</span>
+                    <span>DILIGENT</span>
+                </button>
+            </div>
+            
+            <div class="methodology-content-area">
+                <!-- Uschold & King 상세 -->
+                <div class="methodology-detail active" id="uschold-detail">
+                    <div class="method-header">
+                        <div class="method-title">
+                            <h4>🏛️ Uschold & King 방법론</h4>
+                            <div class="method-tags">
+                                <span class="tag traditional">전통적</span>
+                                <span class="tag simple">단순함</span>
+                                <span class="tag pioneer">선구자</span>
+                            </div>
+                        </div>
+                        <div class="method-overview">
+                            <p>최초의 체계적인 온톨로지 개발 방법론으로, 엔터프라이즈 모델링에서 출발하여 단순하고 직관적인 접근을 제시합니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="method-process-flow">
+                        <h5>📋 개발 프로세스</h5>
+                        <div class="process-steps">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h6>목적 식별</h6>
+                                    <p>온톨로지의 용도와 사용자 명확화</p>
+                                    <div class="step-activities">
+                                        <span class="activity">• 이해관계자 식별</span>
+                                        <span class="activity">• 사용 목적 정의</span>
+                                        <span class="activity">• 범위 설정</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h6>온톨로지 구축</h6>
+                                    <p>핵심 개념과 관계 파악 및 정의</p>
+                                    <div class="step-activities">
+                                        <span class="activity">• 핵심 용어 식별</span>
+                                        <span class="activity">• 정확한 정의 작성</span>
+                                        <span class="activity">• 형식 언어로 코딩</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h6>평가</h6>
+                                    <p>요구사항 충족 여부 검증</p>
+                                    <div class="step-activities">
+                                        <span class="activity">• 일관성 검사</span>
+                                        <span class="activity">• 완전성 평가</span>
+                                        <span class="activity">• 사용성 테스트</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="step-item">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h6>문서화</h6>
+                                    <p>가정과 설계 결정 기록</p>
+                                    <div class="step-activities">
+                                        <span class="activity">• 설계 근거 문서화</span>
+                                        <span class="activity">• 사용 가이드 작성</span>
+                                        <span class="activity">• 예제 제공</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="method-evaluation">
+                        <div class="evaluation-grid">
+                            <div class="evaluation-aspect">
+                                <h6>👍 장점</h6>
+                                <ul>
+                                    <li>단순하고 이해하기 쉬움</li>
+                                    <li>초보자도 쉽게 적용 가능</li>
+                                    <li>빠른 프로토타이핑 지원</li>
+                                    <li>최소한의 자원으로 시작 가능</li>
+                                </ul>
+                            </div>
+                            <div class="evaluation-aspect">
+                                <h6>👎 단점</h6>
+                                <ul>
+                                    <li>세부 지침이 부족함</li>
+                                    <li>복잡한 도메인에 한계</li>
+                                    <li>재사용성 고려 미흡</li>
+                                    <li>품질 보증 절차 부족</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="method-use-cases">
+                        <h6>🎯 적용 사례</h6>
+                        <div class="use-case-grid">
+                            <div class="use-case-item">
+                                <div class="case-icon">🏢</div>
+                                <h7>기업 프로세스 모델링</h7>
+                                <p>비즈니스 프로세스와 조직 구조 정의</p>
+                            </div>
+                            <div class="use-case-item">
+                                <div class="case-icon">📚</div>
+                                <h7>교육용 온톨로지</h7>
+                                <p>학습 목적의 간단한 도메인 모델링</p>
+                            </div>
+                            <div class="use-case-item">
+                                <div class="case-icon">🚀</div>
+                                <h7>프로토타입 개발</h7>
+                                <p>개념 검증을 위한 초기 모델 구축</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Grüninger & Fox 상세 -->
+                <div class="methodology-detail" id="gruninger-detail">
+                    <div class="method-header">
+                        <div class="method-title">
+                            <h4>❓ Grüninger & Fox 방법론</h4>
+                            <div class="method-tags">
+                                <span class="tag question-based">질문 중심</span>
+                                <span class="tag formal">형식적</span>
+                                <span class="tag rigorous">엄밀함</span>
+                            </div>
+                        </div>
+                        <div class="method-overview">
+                            <p>역량 질문(Competency Questions)을 중심으로 온톨로지 개발을 체계화한 방법론으로, 형식적 접근을 강조합니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="competency-question-builder">
+                        <h5>❓ 역량 질문 빌더</h5>
+                        <div class="question-builder-interface">
+                            <div class="domain-selector">
+                                <label>도메인 선택:</label>
+                                <select id="domainSelect" onchange="generateQuestions()">
+                                    <option value="university">대학교 관리</option>
+                                    <option value="hospital">병원 시스템</option>
+                                    <option value="ecommerce">전자상거래</option>
+                                    <option value="library">도서관 관리</option>
+                                </select>
+                            </div>
+                            
+                            <div class="generated-questions">
+                                <h6>생성된 역량 질문들</h6>
+                                <div id="questionList" class="question-list">
+                                    <!-- 동적으로 생성될 질문들 -->
+                                </div>
+                            </div>
+                            
+                            <div class="question-formalization">
+                                <h6>질문 형식화 도구</h6>
+                                <textarea id="informalQuestion" placeholder="비형식 질문을 입력하세요..." rows="3"></textarea>
+                                <button onclick="formalizeQuestion()">형식화 하기</button>
+                                <div id="formalizedResult" class="formalized-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="method-process-flow">
+                        <h5>📋 개발 프로세스</h5>
+                        <div class="process-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker">1</div>
+                                <div class="timeline-content">
+                                    <h6>동기 시나리오 작성</h6>
+                                    <p>온톨로지 필요성을 보여주는 구체적 사례</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">2</div>
+                                <div class="timeline-content">
+                                    <h6>비형식 역량 질문</h6>
+                                    <p>온톨로지가 답해야 할 질문들을 자연어로 작성</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">3</div>
+                                <div class="timeline-content">
+                                    <h6>형식 용어 정의</h6>
+                                    <p>일차 논리를 사용한 정확한 개념 정의</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">4</div>
+                                <div class="timeline-content">
+                                    <h6>형식 역량 질문</h6>
+                                    <p>질문을 논리식으로 변환</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">5</div>
+                                <div class="timeline-content">
+                                    <h6>형식 공리 정의</h6>
+                                    <p>온톨로지의 제약 조건과 규칙 명시</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker">6</div>
+                                <div class="timeline-content">
+                                    <h6>완전성 정리</h6>
+                                    <p>역량 질문 답변 가능성 수학적 증명</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- METHONTOLOGY 상세 -->
+                <div class="methodology-detail" id="methontology-detail">
+                    <div class="method-header">
+                        <div class="method-title">
+                            <h4>🔧 METHONTOLOGY</h4>
+                            <div class="method-tags">
+                                <span class="tag comprehensive">종합적</span>
+                                <span class="tag engineering">공학적</span>
+                                <span class="tag structured">구조화</span>
+                            </div>
+                        </div>
+                        <div class="method-overview">
+                            <p>소프트웨어 공학의 원칙과 기법을 온톨로지 개발에 적용한 가장 체계적이고 포괄적인 방법론입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="methontology-framework">
+                        <h5>🏗️ METHONTOLOGY 프레임워크</h5>
+                        <div class="framework-visualization">
+                            <div class="activity-layer management">
+                                <h6>관리 활동 (Management Activities)</h6>
+                                <div class="activity-items">
+                                    <div class="activity-item">📅 일정 계획</div>
+                                    <div class="activity-item">👥 팀 구성</div>
+                                    <div class="activity-item">✅ 품질 보증</div>
+                                    <div class="activity-item">📊 진행 제어</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-layer development">
+                                <h6>개발 활동 (Development Activities)</h6>
+                                <div class="development-flow">
+                                    <div class="dev-phase">명세화</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="dev-phase">개념화</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="dev-phase">형식화</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="dev-phase">통합</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="dev-phase">구현</div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="dev-phase">유지보수</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-layer support">
+                                <h6>지원 활동 (Support Activities)</h6>
+                                <div class="activity-items">
+                                    <div class="activity-item">🧠 지식 획득</div>
+                                    <div class="activity-item">⚖️ 평가</div>
+                                    <div class="activity-item">📝 문서화</div>
+                                    <div class="activity-item">🔧 구성 관리</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="conceptualization-techniques">
+                        <h6>💡 개념화 기법</h6>
+                        <div class="technique-grid">
+                            <div class="technique-card">
+                                <div class="technique-icon">🗂️</div>
+                                <h7>분류 체계</h7>
+                                <p>개념들의 계층적 구조화</p>
+                            </div>
+                            <div class="technique-card">
+                                <div class="technique-icon">🔗</div>
+                                <h7>관계 매트릭스</h7>
+                                <p>개념 간 관계 체계적 정의</p>
+                            </div>
+                            <div class="technique-card">
+                                <div class="technique-icon">📏</div>
+                                <h7>속성 명세</h7>
+                                <p>개념의 특성과 제약 정의</p>
+                            </div>
+                            <div class="technique-card">
+                                <div class="technique-icon">🏷️</div>
+                                <h7>인스턴스 테이블</h7>
+                                <p>구체적 사례들의 체계적 관리</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- On-To-Knowledge 상세 -->
+                <div class="methodology-detail" id="otk-detail">
+                    <div class="method-header">
+                        <div class="method-title">
+                            <h4>💼 On-To-Knowledge (OTK)</h4>
+                            <div class="method-tags">
+                                <span class="tag business">비즈니스</span>
+                                <span class="tag practical">실용적</span>
+                                <span class="tag value-driven">가치 중심</span>
+                            </div>
+                        </div>
+                        <div class="method-overview">
+                            <p>비즈니스 가치 창출에 초점을 맞춘 온톨로지 개발 방법론으로, 실용적이고 경제적 접근을 강조합니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="otk-lifecycle">
+                        <h5>🔄 OTK 생명주기</h5>
+                        <div class="lifecycle-wheel">
+                            <div class="phase-item feasibility">
+                                <div class="phase-icon">🎯</div>
+                                <h6>타당성 연구</h6>
+                                <p>비즈니스 기회와 기술적 실현가능성 분석</p>
+                                <div class="phase-deliverables">
+                                    <span class="deliverable">• 비즈니스 케이스</span>
+                                    <span class="deliverable">• ROI 분석</span>
+                                    <span class="deliverable">• 리스크 평가</span>
+                                </div>
+                            </div>
+                            
+                            <div class="phase-item kickoff">
+                                <div class="phase-icon">🚀</div>
+                                <h6>킥오프</h6>
+                                <p>요구사항 수집과 기준선 설정</p>
+                                <div class="phase-deliverables">
+                                    <span class="deliverable">• 이해관계자 매핑</span>
+                                    <span class="deliverable">• 요구사항 명세</span>
+                                    <span class="deliverable">• 프로젝트 계획</span>
+                                </div>
+                            </div>
+                            
+                            <div class="phase-item refinement">
+                                <div class="phase-icon">⚙️</div>
+                                <h6>정제</h6>
+                                <p>온톨로지 상세 개발과 반복적 개선</p>
+                                <div class="phase-deliverables">
+                                    <span class="deliverable">• 온톨로지 모델</span>
+                                    <span class="deliverable">• 애플리케이션</span>
+                                    <span class="deliverable">• 테스트 결과</span>
+                                </div>
+                            </div>
+                            
+                            <div class="phase-item evaluation">
+                                <div class="phase-icon">📊</div>
+                                <h6>평가</h6>
+                                <p>기술적 평가와 사용자 만족도 조사</p>
+                                <div class="phase-deliverables">
+                                    <span class="deliverable">• 성능 평가</span>
+                                    <span class="deliverable">• 사용성 테스트</span>
+                                    <span class="deliverable">• 개선 계획</span>
+                                </div>
+                            </div>
+                            
+                            <div class="phase-item maintenance">
+                                <div class="phase-icon">🔧</div>
+                                <h6>유지보수</h6>
+                                <p>진화와 지속적 업데이트 관리</p>
+                                <div class="phase-deliverables">
+                                    <span class="deliverable">• 버전 관리</span>
+                                    <span class="deliverable">• 변경 관리</span>
+                                    <span class="deliverable">• 사용자 지원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="business-alignment">
+                        <h6>💰 비즈니스 정렬</h6>
+                        <div class="alignment-matrix">
+                            <div class="alignment-aspect">
+                                <h7>가치 제안</h7>
+                                <ul>
+                                    <li>명확한 ROI 계산</li>
+                                    <li>단기/장기 효익 분석</li>
+                                    <li>리스크 대비 수익 평가</li>
+                                </ul>
+                            </div>
+                            <div class="alignment-aspect">
+                                <h7>성공 지표</h7>
+                                <ul>
+                                    <li>비즈니스 KPI 연동</li>
+                                    <li>사용자 만족도</li>
+                                    <li>운영 효율성 개선</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- DILIGENT 상세 -->
+                <div class="methodology-detail" id="diligent-detail">
+                    <div class="method-header">
+                        <div class="method-title">
+                            <h4>👥 DILIGENT</h4>
+                            <div class="method-tags">
+                                <span class="tag collaborative">협업</span>
+                                <span class="tag distributed">분산</span>
+                                <span class="tag consensus">합의</span>
+                            </div>
+                        </div>
+                        <div class="method-overview">
+                            <p>분산 환경에서 다수의 전문가가 협업하여 온톨로지를 개발하는 방법론으로, 합의 형성과 변경 관리에 중점을 둡니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="collaboration-simulator">
+                        <h5>👥 협업 개발 시뮬레이터</h5>
+                        <div class="simulator-setup">
+                            <div class="participant-config">
+                                <h6>참여자 설정</h6>
+                                <div class="participant-list">
+                                    <div class="participant-item">
+                                        <div class="participant-avatar">👨‍💻</div>
+                                        <div class="participant-info">
+                                            <span class="participant-name">온톨로지 아키텍트</span>
+                                            <span class="participant-role">설계 총괄</span>
+                                        </div>
+                                        <div class="participant-location">🇰🇷 서울</div>
+                                    </div>
+                                    <div class="participant-item">
+                                        <div class="participant-avatar">👩‍🔬</div>
+                                        <div class="participant-info">
+                                            <span class="participant-name">도메인 전문가</span>
+                                            <span class="participant-role">지식 제공</span>
+                                        </div>
+                                        <div class="participant-location">🇺🇸 뉴욕</div>
+                                    </div>
+                                    <div class="participant-item">
+                                        <div class="participant-avatar">👨‍💼</div>
+                                        <div class="participant-info">
+                                            <span class="participant-name">비즈니스 분석가</span>
+                                            <span class="participant-role">요구사항 분석</span>
+                                        </div>
+                                        <div class="participant-location">🇩🇪 베를린</div>
+                                    </div>
+                                    <div class="participant-item">
+                                        <div class="participant-avatar">👩‍💻</div>
+                                        <div class="participant-info">
+                                            <span class="participant-name">개발자</span>
+                                            <span class="participant-role">구현</span>
+                                        </div>
+                                        <div class="participant-location">🇯🇵 도쿄</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="consensus-tracker">
+                                <h6>합의 진행 상황</h6>
+                                <div class="consensus-topics">
+                                    <div class="topic-item">
+                                        <div class="topic-name">핵심 클래스 정의</div>
+                                        <div class="consensus-bar">
+                                            <div class="consensus-fill" style="width: 85%"></div>
+                                        </div>
+                                        <div class="consensus-percentage">85%</div>
+                                    </div>
+                                    <div class="topic-item">
+                                        <div class="topic-name">관계 속성 명명</div>
+                                        <div class="consensus-bar">
+                                            <div class="consensus-fill" style="width: 92%"></div>
+                                        </div>
+                                        <div class="consensus-percentage">92%</div>
+                                    </div>
+                                    <div class="topic-item">
+                                        <div class="topic-name">제약 조건 설정</div>
+                                        <div class="consensus-bar">
+                                            <div class="consensus-fill" style="width: 67%"></div>
+                                        </div>
+                                        <div class="consensus-percentage">67%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="collaboration-features">
+                            <div class="feature-grid">
+                                <div class="feature-card">
+                                    <div class="feature-icon">💬</div>
+                                    <h7>논의 관리</h7>
+                                    <p>체계적인 의견 수렴과 결정 과정</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon">🔄</div>
+                                    <h7>버전 제어</h7>
+                                    <p>분산 개발을 위한 변경 추적</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon">⚖️</div>
+                                    <h7>충돌 해결</h7>
+                                    <p>의견 차이의 체계적 조율</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon">🎯</div>
+                                    <h7>로컬 적응</h7>
+                                    <p>지역별 요구사항 반영</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diligent-process">
+                        <h6>🔄 DILIGENT 프로세스</h6>
+                        <div class="process-stages">
+                            <div class="stage-box">
+                                <h7>1. 구축 (Build)</h7>
+                                <p>초기 온톨로지 구축</p>
+                            </div>
+                            <div class="stage-box">
+                                <h7>2. 로컬 적응 (Local Adaptation)</h7>
+                                <p>지역별 요구사항 적용</p>
+                            </div>
+                            <div class="stage-box">
+                                <h7>3. 분석 (Analysis)</h7>
+                                <p>변경사항 분석 및 평가</p>
+                            </div>
+                            <div class="stage-box">
+                                <h7>4. 개정 (Revision)</h7>
+                                <p>합의된 변경사항 적용</p>
+                            </div>
+                            <div class="stage-box">
+                                <h7>5. 통합 (Integration)</h7>
+                                <p>변경사항의 중앙 통합</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.6: 방법론 선택 가이드 -->
+<section class="content-section methodology-selection">
+    <h2>10.6 방법론 선택 가이드</h2>
+    
+    <!-- 대화형 방법론 추천기 -->
+    <div class="methodology-recommender">
+        <h3>🎯 방법론 추천 시스템</h3>
+        <div class="recommender-interface">
+            <div class="project-questionnaire">
+                <h4>프로젝트 특성 평가</h4>
+                <div class="question-group">
+                    <label class="question-label">프로젝트 규모는?</label>
+                    <div class="answer-options">
+                        <label class="option">
+                            <input type="radio" name="scale" value="small">
+                            <span>소규모 (< 100 클래스)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="scale" value="medium">
+                            <span>중규모 (100-1000 클래스)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="scale" value="large">
+                            <span>대규모 (> 1000 클래스)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">팀 구성은?</label>
+                    <div class="answer-options">
+                        <label class="option">
+                            <input type="radio" name="team" value="single">
+                            <span>개인 개발자</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="team" value="small">
+                            <span>소규모 팀 (2-5명)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="team" value="distributed">
+                            <span>분산 팀 (5명 이상)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">도메인 복잡도는?</label>
+                    <div class="answer-options">
+                        <label class="option">
+                            <input type="radio" name="complexity" value="simple">
+                            <span>단순 (잘 정의된 도메인)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="complexity" value="moderate">
+                            <span>보통 (일부 모호함 존재)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="complexity" value="complex">
+                            <span>복잡 (고도로 전문적)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">비즈니스 중요도는?</label>
+                    <div class="answer-options">
+                        <label class="option">
+                            <input type="radio" name="business" value="low">
+                            <span>연구/학습 목적</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="business" value="medium">
+                            <span>부서별 활용</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="business" value="high">
+                            <span>기업 핵심 시스템</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">개발 일정은?</label>
+                    <div class="answer-options">
+                        <label class="option">
+                            <input type="radio" name="timeline" value="urgent">
+                            <span>긴급 (1-2개월)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="timeline" value="normal">
+                            <span>보통 (3-6개월)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="timeline" value="flexible">
+                            <span>여유 (6개월 이상)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button class="recommend-btn" onclick="generateRecommendation()">
+                    최적 방법론 추천받기
+                </button>
+            </div>
+            
+            <div class="recommendation-result">
+                <div id="recommendationOutput" class="recommendation-display">
+                    <p class="placeholder-text">질문에 답변하고 추천 버튼을 눌러주세요.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 방법론 실습 챌린지 -->
+<div class="methodology-challenge">
+    <h3>🏆 방법론 마스터 챌린지</h3>
+    <div class="challenge-interface">
+        <div class="challenge-scenarios">
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <h4>시나리오 1: 스타트업 MVP</h4>
+                    <div class="difficulty-badge easy">초급</div>
+                </div>
+                <div class="scenario-description">
+                    <p>AI 스타트업에서 3개월 내에 제품 추천 시스템용 온톨로지가 필요합니다. 개발자 2명, 도메인 전문가 1명으로 구성된 팀입니다.</p>
+                </div>
+                <div class="scenario-question">
+                    <strong>어떤 방법론을 선택하시겠습니까?</strong>
+                </div>
+                <div class="scenario-options">
+                    <button class="scenario-btn" onclick="checkAnswer(1, 'uschold')">Uschold & King</button>
+                    <button class="scenario-btn" onclick="checkAnswer(1, 'methontology')">METHONTOLOGY</button>
+                    <button class="scenario-btn" onclick="checkAnswer(1, 'diligent')">DILIGENT</button>
+                </div>
+                <div id="answer1" class="answer-feedback"></div>
+            </div>
+            
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <h4>시나리오 2: 글로벌 표준화</h4>
+                    <div class="difficulty-badge hard">고급</div>
+                </div>
+                <div class="scenario-description">
+                    <p>국제 의료 기관들이 협력하여 의료 데이터 교환을 위한 표준 온톨로지를 개발합니다. 6개국 12개 기관이 참여하며, 18개월 프로젝트입니다.</p>
+                </div>
+                <div class="scenario-question">
+                    <strong>가장 적합한 방법론은?</strong>
+                </div>
+                <div class="scenario-options">
+                    <button class="scenario-btn" onclick="checkAnswer(2, 'gruninger')">Grüninger & Fox</button>
+                    <button class="scenario-btn" onclick="checkAnswer(2, 'diligent')">DILIGENT</button>
+                    <button class="scenario-btn" onclick="checkAnswer(2, 'otk')">On-To-Knowledge</button>
+                </div>
+                <div id="answer2" class="answer-feedback"></div>
+            </div>
+            
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <h4>시나리오 3: 기업 지식관리</h4>
+                    <div class="difficulty-badge medium">중급</div>
+                </div>
+                <div class="scenario-description">
+                    <p>대기업에서 기존 업무 프로세스를 체계화하고 ROI를 명확히 입증해야 하는 지식관리 시스템을 구축합니다.</p>
+                </div>
+                <div class="scenario-question">
+                    <strong>비즈니스 가치를 중시하는 방법론은?</strong>
+                </div>
+                <div class="scenario-options">
+                    <button class="scenario-btn" onclick="checkAnswer(3, 'otk')">On-To-Knowledge</button>
+                    <button class="scenario-btn" onclick="checkAnswer(3, 'methontology')">METHONTOLOGY</button>
+                    <button class="scenario-btn" onclick="checkAnswer(3, 'uschold')">Uschold & King</button>
+                </div>
+                <div id="answer3" class="answer-feedback"></div>
+            </div>
+        </div>
+        
+        <div class="challenge-progress">
+            <div class="progress-header">
+                <h4>챌린지 진행률</h4>
+                <div class="score-display">
+                    <span id="currentScore">0</span>/<span id="totalScore">3</span>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="mastery-level">
+                <span id="masteryLevel">방법론 탐험가</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 챕터 전용 스타일과 스크립트 -->
+<style>
+/* Part 2 헤더 애니메이션 */
+.methodology-comparison-animation {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(45deg, 
+        #6366f1 0%, 
+        #8b5cf6 20%, 
+        #a855f7 40%, 
+        #d946ef 60%, 
+        #ec4899 80%, 
+        #f97316 100%);
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.methodology-comparison-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        transparent 100%);
+    animation: comparisonFlow 3s ease-in-out infinite;
+}
+
+@keyframes comparisonFlow {
+    0% { left: -200px; }
+    100% { left: 100%; }
+}
+
+/* 방법론 전문가 평가 */
+.expert-assessment {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.methodology-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+}
+
+.category-assessment {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.theory-radar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.theory-aspect {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.aspect-name {
+    min-width: 120px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.aspect-meter {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.aspect-score {
+    font-weight: bold;
+    color: #6366f1;
+    min-width: 40px;
+    text-align: right;
+}
+
+.experience-levels {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.exp-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.exp-icon {
+    font-size: 1.5rem;
+}
+
+.exp-name {
+    flex: 1;
+    font-weight: 600;
+    color: #374151;
+}
+
+.exp-level {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.exp-level.beginner {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.exp-level.intermediate {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.exp-level.advanced {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.readiness-conclusion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conclusion-card {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.conclusion-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.next-challenge {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* 방법론 비교기 */
+.methodology-comparator {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.comparator-interface {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 2rem;
+}
+
+.methodology-selector {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.selector-grid {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.methodology-option {
+    cursor: pointer;
+}
+
+.methodology-option input[type="checkbox"] {
+    display: none;
+}
+
+.option-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.methodology-option input[type="checkbox"]:checked + .option-card {
+    border-color: #6366f1;
+    background: #f0f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+}
+
+.option-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.option-card h5 {
+    margin: 0.5rem 0;
+    color: #1f2937;
+}
+
+.option-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.option-year {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #6366f1;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.compare-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.compare-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+}
+
+.comparison-results {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.comparison-matrix {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-text {
+    color: #6b7280;
+    font-style: italic;
+    text-align: center;
+}
+
+/* 방법론 상세 분석기 */
+.methodology-analyzer {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.methodology-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.method-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.method-tab:hover {
+    border-color: #6366f1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.method-tab.active {
+    background: #6366f1;
+    color: white;
+    border-color: #6366f1;
+}
+
+.methodology-detail {
+    display: none;
+    animation: fadeInUp 0.5s ease;
+}
+
+.methodology-detail.active {
+    display: block;
+}
+
+.method-header {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.method-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.method-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.tag.traditional { background: #fef3c7; color: #92400e; }
+.tag.simple { background: #d1fae5; color: #065f46; }
+.tag.pioneer { background: #e0e7ff; color: #3730a3; }
+.tag.question-based { background: #fecaca; color: #991b1b; }
+.tag.formal { background: #ddd6fe; color: #5b21b6; }
+.tag.rigorous { background: #f3e8ff; color: #7c2d12; }
+.tag.comprehensive { background: #dcfce7; color: #166534; }
+.tag.engineering { background: #fef2f2; color: #b91c1c; }
+.tag.structured { background: #eff6ff; color: #1e40af; }
+.tag.business { background: #fdf4ff; color: #a21caf; }
+.tag.practical { background: #f0fdfa; color: #047857; }
+.tag.value-driven { background: #fff7ed; color: #ea580c; }
+.tag.collaborative { background: #ecfdf5; color: #059669; }
+.tag.distributed { background: #f0f9ff; color: #0284c7; }
+.tag.consensus { background: #fefce8; color: #a16207; }
+
+.method-overview {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* 프로세스 플로우 */
+.method-process-flow {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 2px solid #e5e7eb;
+}
+
+.process-steps {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.step-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: #6366f1;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h6 {
+    margin: 0 0 0.5rem 0;
+    color: #1f2937;
+}
+
+.step-activities {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.activity {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* 평가 그리드 */
+.method-evaluation {
+    margin: 2rem 0;
+}
+
+.evaluation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.evaluation-aspect {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.evaluation-aspect h6 {
+    margin: 0 0 1rem 0;
+    color: #1f2937;
+}
+
+.evaluation-aspect ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.evaluation-aspect li {
+    padding: 0.5rem 0;
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.evaluation-aspect li:last-child {
+    border-bottom: none;
+}
+
+/* 사용 사례 */
+.method-use-cases {
+    background: #f0f9ff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.use-case-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid #e0f2fe;
+}
+
+.case-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.use-case-item h7 {
+    display: block;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.use-case-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* 역량 질문 빌더 */
+.competency-question-builder {
+    background: #fef3c7;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 2px solid #f59e0b;
+}
+
+.question-builder-interface {
+    display: grid;
+    gap: 2rem;
+}
+
+.domain-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.domain-selector select {
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+}
+
+.question-list {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.question-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.question-item:hover {
+    background: #f8fafc;
+}
+
+.question-item:last-child {
+    border-bottom: none;
+}
+
+.question-formalization {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.question-formalization textarea {
+    width: 100%;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.question-formalization button {
+    background: #f59e0b;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.formalized-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+/* METHONTOLOGY 프레임워크 */
+.methontology-framework {
+    background: #f0fdf4;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 2px solid #16a34a;
+}
+
+.framework-visualization {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.activity-layer {
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.activity-layer.management {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    border: 2px solid #3b82f6;
+}
+
+.activity-layer.development {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 2px solid #16a34a;
+}
+
+.activity-layer.support {
+    background: linear-gradient(135deg, #fef3c7, #fed7aa);
+    border: 2px solid #f59e0b;
+}
+
+.activity-layer h6 {
+    margin: 0 0 1rem 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.activity-Items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.activity-item {
+    background: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.development-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.dev-phase {
+    background: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    color: #16a34a;
+}
+
+/* 개념화 기법 */
+.conceptualization-techniques {
+    margin: 2rem 0;
+}
+
+.technique-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.technique-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.technique-card:hover {
+    border-color: #16a34a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.2);
+}
+
+.technique-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.technique-card h7 {
+    display: block;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+/* 방법론 추천기 */
+.methodology-recommender {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.recommender-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.project-questionnaire {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.question-group {
+    margin-bottom: 2rem;
+}
+
+.question-label {
+    display: block;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.answer-options .option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.answer-options .option:hover {
+    border-color: #6366f1;
+    background: #f0f9ff;
+}
+
+.answer-options .option input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 50%;
+    position: relative;
+}
+
+.answer-options .option input[type="radio"]:checked {
+    border-color: #6366f1;
+    background: #6366f1;
+}
+
+.answer-options .option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+.recommend-btn {
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recommend-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+}
+
+.recommendation-result {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recommendation-display {
+    width: 100%;
+    text-align: center;
+}
+
+/* 방법론 챌린지 */
+.methodology-challenge {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.challenge-interface {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+}
+
+.challenge-scenarios {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.scenario-card {
+    background: white;
+    color: #1f2937;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.scenario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.difficulty-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.difficulty-badge.easy {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.difficulty-badge.medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.difficulty-badge.hard {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.scenario-description {
+    margin-bottom: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.scenario-question {
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.scenario-options {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.scenario-btn {
+    padding: 0.75rem 1rem;
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.scenario-btn:hover {
+    border-color: #6366f1;
+    background: #f0f9ff;
+}
+
+.scenario-btn.correct {
+    background: #d1fae5;
+    border-color: #10b981;
+    color: #065f46;
+}
+
+.scenario-btn.incorrect {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+.answer-feedback {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border-left: 4px solid #6366f1;
+}
+
+.challenge-progress {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.score-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #34d399);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+
+.mastery-level {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #34d399;
+    margin-top: 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .methodology-matrix,
+    .comparator-interface,
+    .challenge-interface {
+        grid-template-columns: 1fr;
+    }
+    
+    .recommender-interface {
+        grid-template-columns: 1fr;
+    }
+    
+    .methodology-tabs {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .evaluation-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .development-flow {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .scenario-options {
+        flex-direction: column;
+    }
+    
+    .scenario-btn {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+// 방법론 탭 전환
+function showMethodology(methodType) {
+    // 모든 탭 비활성화
+    document.querySelectorAll('.method-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 모든 상세 내용 숨기기
+    document.querySelectorAll('.methodology-detail').forEach(detail => {
+        detail.classList.remove('active');
+    });
+    
+    // 선택된 탭과 상세 내용 활성화
+    event.target.closest('.method-tab').classList.add('active');
+    const detail = document.getElementById(methodType + '-detail');
+    if (detail) {
+        detail.classList.add('active');
+    }
+}
+
+// 역량 질문 생성
+function generateQuestions() {
+    const domain = document.getElementById('domainSelect').value;
+    const questionList = document.getElementById('questionList');
+    
+    const domainQuestions = {
+        university: [
+            "특정 학생이 수강 중인 모든 과목은?",
+            "특정 교수가 담당하는 모든 강의는?",
+            "특정 과목의 선수과목은?",
+            "졸업요건을 만족하는 학생들은?",
+            "특정 학과의 모든 교수는?"
+        ],
+        hospital: [
+            "특정 환자의 모든 진료기록은?",
+            "특정 질병의 치료법은?",
+            "특정 의사가 전문으로 하는 질병은?",
+            "특정 약물의 부작용은?",
+            "응급실에 있는 모든 환자는?"
+        ],
+        ecommerce: [
+            "특정 고객의 주문 내역은?",
+            "특정 카테고리의 모든 상품은?",
+            "특정 상품의 리뷰는?",
+            "배송 중인 모든 주문은?",
+            "할인 중인 모든 상품은?"
+        ],
+        library: [
+            "특정 저자의 모든 도서는?",
+            "특정 주제의 도서는?",
+            "대출 중인 모든 도서는?",
+            "연체된 도서는?",
+            "특정 회원의 대출 이력은?"
+        ]
+    };
+    
+    const questions = domainQuestions[domain] || [];
+    questionList.innerHTML = questions.map(q => 
+        `<div class="question-item">${q}</div>`
+    ).join('');
+}
+
+// 질문 형식화
+function formalizeQuestion() {
+    const informal = document.getElementById('informalQuestion').value;
+    const result = document.getElementById('formalizedResult');
+    
+    if (!informal.trim()) {
+        result.innerHTML = "질문을 입력해주세요.";
+        return;
+    }
+    
+    // 간단한 형식화 예시
+    const formalized = `
+        <h6>형식화된 질문:</h6>
+        <div class="formalized-query">
+            <strong>자연어:</strong> ${informal}<br>
+            <strong>논리식:</strong> ∀x (Student(x) ∧ EnrolledIn(x, course) → HasGrade(x, course, grade))<br>
+            <strong>SPARQL:</strong> SELECT ?student ?grade WHERE { ?student rdf:type :Student . ?student :enrolledIn ?course . ?student :hasGrade ?grade }
+        </div>
+        <div class="formalization-note">
+            <em>실제 형식화는 도메인 온톨로지와 구체적 요구사항에 따라 달라집니다.</em>
+        </div>
+    `;
+    
+    result.innerHTML = formalized;
+}
+
+// 방법론 비교 생성
+function generateComparison() {
+    const selectedMethods = [];
+    document.querySelectorAll('.methodology-option input[type="checkbox"]:checked').forEach(cb => {
+        selectedMethods.push(cb.value);
+    });
+    
+    if (selectedMethods.length < 2) {
+        document.getElementById('comparisonMatrix').innerHTML = 
+            '<p class="placeholder-text">최소 2개 이상의 방법론을 선택해주세요.</p>';
+        return;
+    }
+    
+    const methodNames = {
+        uschold: 'Uschold & King',
+        gruninger: 'Grüninger & Fox',
+        methontology: 'METHONTOLOGY',
+        otk: 'On-To-Knowledge',
+        diligent: 'DILIGENT'
+    };
+    
+    const criteria = [
+        { name: '단순성', key: 'simplicity' },
+        { name: '형식성', key: 'formality' },
+        { name: '완전성', key: 'completeness' },
+        { name: '실용성', key: 'practicality' },
+        { name: '협업성', key: 'collaboration' }
+    ];
+    
+    const scores = {
+        uschold: { simplicity: 5, formality: 2, completeness: 3, practicality: 4, collaboration: 2 },
+        gruninger: { simplicity: 3, formality: 5, completeness: 4, practicality: 3, collaboration: 2 },
+        methontology: { simplicity: 2, formality: 4, completeness: 5, practicality: 4, collaboration: 3 },
+        otk: { simplicity: 3, formality: 3, completeness: 4, practicality: 5, collaboration: 3 },
+        diligent: { simplicity: 3, formality: 3, completeness: 4, practicality: 4, collaboration: 5 }
+    };
+    
+    let tableHTML = `
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>평가 기준</th>
+                    ${selectedMethods.map(m => `<th>${methodNames[m]}</th>`).join('')}
+                </tr>
+            </thead>
+            <tbody>
+    `;
+    
+    criteria.forEach(criterion => {
+        tableHTML += `
+            <tr>
+                <td><strong>${criterion.name}</strong></td>
+                ${selectedMethods.map(m => {
+                    const score = scores[m][criterion.key];
+                    const stars = '★'.repeat(score) + '☆'.repeat(5-score);
+                    return `<td><span class="score-stars">${stars}</span> (${score}/5)</td>`;
+                }).join('')}
+            </tr>
+        `;
+    });
+    
+    tableHTML += `
+            </tbody>
+        </table>
+        <div class="comparison-summary">
+            <h5>📊 비교 요약</h5>
+            <p>선택된 방법론들의 특성을 5점 척도로 비교했습니다. 프로젝트 요구사항에 맞는 방법론을 선택하세요.</p>
+        </div>
+    `;
+    
+    document.getElementById('comparisonMatrix').innerHTML = tableHTML;
+}
+
+// 방법론 추천 생성
+function generateRecommendation() {
+    const formData = new FormData();
+    const inputs = document.querySelectorAll('.project-questionnaire input[type="radio"]:checked');
+    
+    if (inputs.length < 5) {
+        document.getElementById('recommendationOutput').innerHTML = 
+            '<p class="error-text">모든 질문에 답변해주세요.</p>';
+        return;
+    }
+    
+    const answers = {};
+    inputs.forEach(input => {
+        answers[input.name] = input.value;
+    });
+    
+    // 추천 로직
+    let recommendedMethod = '';
+    let explanation = '';
+    let confidence = 0;
+    
+    if (answers.scale === 'small' && answers.team === 'single' && answers.timeline === 'urgent') {
+        recommendedMethod = 'Uschold & King';
+        explanation = '소규모 프로젝트에 적합한 단순하고 빠른 방법론입니다.';
+        confidence = 90;
+    } else if (answers.complexity === 'complex' && answers.business === 'high') {
+        recommendedMethod = 'METHONTOLOGY';
+        explanation = '복잡한 도메인과 높은 비즈니스 중요도에 적합한 체계적 방법론입니다.';
+        confidence = 85;
+    } else if (answers.team === 'distributed') {
+        recommendedMethod = 'DILIGENT';
+        explanation = '분산 팀 환경에서 협업 개발에 최적화된 방법론입니다.';
+        confidence = 88;
+    } else if (answers.business === 'high' && answers.timeline === 'flexible') {
+        recommendedMethod = 'On-To-Knowledge';
+        explanation = '비즈니스 가치와 ROI를 중시하는 프로젝트에 적합합니다.';
+        confidence = 82;
+    } else {
+        recommendedMethod = 'Grüninger & Fox';
+        explanation = '형식적이고 체계적인 접근이 필요한 프로젝트에 적합합니다.';
+        confidence = 75;
+    }
+    
+    const recommendationHTML = `
+        <div class="recommendation-card">
+            <div class="recommendation-header">
+                <h4>🎯 추천 방법론</h4>
+                <div class="confidence-score">신뢰도: ${confidence}%</div>
+            </div>
+            <div class="recommended-method">
+                <h5>${recommendedMethod}</h5>
+                <p>${explanation}</p>
+            </div>
+            <div class="recommendation-details">
+                <div class="detail-section">
+                    <h6>주요 장점</h6>
+                    <ul id="methodAdvantages"></ul>
+                </div>
+                <div class="detail-section">
+                    <h6>고려사항</h6>
+                    <ul id="methodConsiderations"></ul>
+                </div>
+            </div>
+            <div class="confidence-bar">
+                <div class="confidence-fill" style="width: ${confidence}%"></div>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('recommendationOutput').innerHTML = recommendationHTML;
+}
+
+// 챌린지 답안 체크
+let challengeScore = 0;
+const correctAnswers = {
+    1: 'uschold',  // 스타트업 MVP - 단순하고 빠른 개발
+    2: 'diligent', // 글로벌 표준화 - 분산 협업
+    3: 'otk'       // 기업 지식관리 - 비즈니스 가치 중심
+};
+
+function checkAnswer(scenario, answer) {
+    const isCorrect = correctAnswers[scenario] === answer;
+    const answerDiv = document.getElementById('answer' + scenario);
+    const buttons = document.querySelectorAll(`#answer${scenario}`).parentElement.previousElementSibling.querySelectorAll('.scenario-btn');
+    
+    // 모든 버튼 비활성화
+    buttons.forEach(btn => {
+        btn.disabled = true;
+        if (btn.onclick.toString().includes(answer)) {
+            btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+        }
+    });
+    
+    if (isCorrect) {
+        challengeScore++;
+        answerDiv.innerHTML = `
+            <div class="feedback correct">
+                <strong>✅ 정답입니다!</strong><br>
+                ${getExplanation(scenario, answer)}
+            </div>
+        `;
+        answerDiv.style.background = '#d1fae5';
+        answerDiv.style.borderColor = '#10b981';
+    } else {
+        answerDiv.innerHTML = `
+            <div class="feedback incorrect">
+                <strong>❌ 틀렸습니다.</strong><br>
+                정답: ${getMethodName(correctAnswers[scenario])}<br>
+                ${getExplanation(scenario, correctAnswers[scenario])}
+            </div>
+        `;
+        answerDiv.style.background = '#fee2e2';
+        answerDiv.style.borderColor = '#ef4444';
+    }
+    
+    updateChallengeProgress();
+}
+
+function getMethodName(methodKey) {
+    const names = {
+        uschold: 'Uschold & King',
+        gruninger: 'Grüninger & Fox',
+        methontology: 'METHONTOLOGY',
+        otk: 'On-To-Knowledge',
+        diligent: 'DILIGENT'
+    };
+    return names[methodKey];
+}
+
+function getExplanation(scenario, answer) {
+    const explanations = {
+        1: {
+            uschold: '스타트업의 MVP 개발에는 단순하고 빠른 Uschold & King 방법론이 적합합니다. 최소한의 자원으로 빠른 프로토타이핑이 가능합니다.'
+        },
+        2: {
+            diligent: '다국가 기관이 참여하는 표준화 프로젝트에는 분산 협업과 합의 형성에 특화된 DILIGENT가 최적입니다.'
+        },
+        3: {
+            otk: '기업 환경에서 ROI와 비즈니스 가치를 중시하는 프로젝트에는 On-To-Knowledge가 가장 적합합니다.'
+        }
+    };
+    
+    return explanations[scenario][answer] || '';
+}
+
+function updateChallengeProgress() {
+    const percentage = (challengeScore / 3) * 100;
+    document.getElementById('currentScore').textContent = challengeScore;
+    document.getElementById('progressFill').style.width = percentage + '%';
+    
+    const levels = ['방법론 탐험가', '방법론 학습자', '방법론 전문가', '방법론 마스터'];
+    const level = Math.min(Math.floor(percentage / 25), 3);
+    document.getElementById('masteryLevel').textContent = levels[level];
+}
+
+// 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    generateQuestions();
+});
+</script>

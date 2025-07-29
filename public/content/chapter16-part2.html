@@ -1,0 +1,1451 @@
+<!-- Chapter 16: 생태계와 커뮤니티 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header community-mastery">
+    <div class="community-animation"></div>
+    <h2 class="part-title">Part 2: 글로벌 커뮤니티와 학습의 여정</h2>
+    <p class="part-description">전 세계 온톨로지 커뮤니티와 함께 성장하고 배우는 방법을 탐험합니다!</p>
+</div>
+
+<!-- 커뮤니티 리더 준비도 -->
+<div class="progress-check community-leader">
+    <h3>🌍 글로벌 커뮤니티 리더 준비도</h3>
+    <div class="community-readiness">
+        <div class="global-presence">
+            <h4>글로벌 활동 현황</h4>
+            <div class="world-map" id="worldMap">
+                <!-- 세계 지도 시각화 -->
+                <div class="continent" data-region="north-america">
+                    <span class="continent-name">북미</span>
+                    <span class="activity-level high">●●●●●</span>
+                </div>
+                <div class="continent" data-region="europe">
+                    <span class="continent-name">유럽</span>
+                    <span class="activity-level high">●●●●●</span>
+                </div>
+                <div class="continent" data-region="asia">
+                    <span class="continent-name">아시아</span>
+                    <span class="activity-level medium">●●●○○</span>
+                </div>
+                <div class="continent" data-region="south-america">
+                    <span class="continent-name">남미</span>
+                    <span class="activity-level low">●●○○○</span>
+                </div>
+                <div class="continent" data-region="africa">
+                    <span class="continent-name">아프리카</span>
+                    <span class="activity-level low">●○○○○</span>
+                </div>
+                <div class="continent" data-region="oceania">
+                    <span class="continent-name">오세아니아</span>
+                    <span class="activity-level medium">●●●○○</span>
+                </div>
+            </div>
+            <div class="activity-stats">
+                <div class="stat">
+                    <span class="stat-number">156</span>
+                    <span class="stat-label">활동 국가</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">42K+</span>
+                    <span class="stat-label">커뮤니티 멤버</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8.5K</span>
+                    <span class="stat-label">월간 기여</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="community-achievements">
+            <h4>커뮤니티 성취도</h4>
+            <div class="achievement-badges">
+                <div class="badge earned">
+                    <span class="badge-icon">🎯</span>
+                    <span class="badge-title">First Contribution</span>
+                    <span class="badge-date">2024.01</span>
+                </div>
+                <div class="badge earned">
+                    <span class="badge-icon">💬</span>
+                    <span class="badge-title">Forum Helper</span>
+                    <span class="badge-date">2024.03</span>
+                </div>
+                <div class="badge earned">
+                    <span class="badge-icon">📝</span>
+                    <span class="badge-title">Wiki Editor</span>
+                    <span class="badge-date">2024.05</span>
+                </div>
+                <div class="badge earned">
+                    <span class="badge-icon">🎤</span>
+                    <span class="badge-title">Conference Speaker</span>
+                    <span class="badge-date">2024.09</span>
+                </div>
+                <div class="badge upcoming">
+                    <span class="badge-icon">🏆</span>
+                    <span class="badge-title">Community Leader</span>
+                    <span class="badge-date">목표</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 16.4: 컨퍼런스와 이벤트 -->
+<section class="content-section conference-interactive">
+    <h2>16.4 온톨로지 컨퍼런스 가상 체험관</h2>
+    
+    <!-- 가상 컨퍼런스 시뮬레이터 -->
+    <div class="virtual-conference">
+        <h3>🎪 ISWC 2024 가상 참가 체험</h3>
+        <div class="conference-interface">
+            <div class="conference-schedule">
+                <h4>컨퍼런스 일정</h4>
+                <div class="schedule-tabs">
+                    <button class="tab-btn active" data-day="day1">Day 1</button>
+                    <button class="tab-btn" data-day="day2">Day 2</button>
+                    <button class="tab-btn" data-day="day3">Day 3</button>
+                </div>
+                
+                <div class="schedule-content" id="scheduleContent">
+                    <div class="day-schedule active" data-schedule="day1">
+                        <div class="session">
+                            <div class="session-time">09:00 - 10:00</div>
+                            <div class="session-info">
+                                <h5>Keynote: Future of Knowledge Graphs</h5>
+                                <p>Dr. Tim Berners-Lee</p>
+                                <button class="attend-btn" onclick="attendSession('keynote1')">참가하기</button>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div class="session-time">10:30 - 12:00</div>
+                            <div class="session-info">
+                                <h5>Workshop: Advanced SPARQL Techniques</h5>
+                                <p>실습 중심 워크샵</p>
+                                <button class="attend-btn" onclick="attendSession('workshop1')">참가하기</button>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div class="session-time">14:00 - 15:30</div>
+                            <div class="session-info">
+                                <h5>Paper Session: Ontology Learning</h5>
+                                <p>최신 연구 발표</p>
+                                <button class="attend-btn" onclick="attendSession('papers1')">참가하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conference-experience">
+                <h4>세션 체험</h4>
+                <div class="session-viewer" id="sessionViewer">
+                    <div class="viewer-placeholder">
+                        <span class="placeholder-icon">🎥</span>
+                        <p>세션을 선택하면 여기서 체험할 수 있습니다</p>
+                    </div>
+                </div>
+                
+                <div class="interaction-panel">
+                    <h5>실시간 상호작용</h5>
+                    <div class="qa-section">
+                        <input type="text" id="questionInput" placeholder="발표자에게 질문하기...">
+                        <button onclick="askQuestion()">질문 전송</button>
+                    </div>
+                    <div class="chat-area" id="chatArea">
+                        <!-- 실시간 채팅 시뮬레이션 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 네트워킹 시뮬레이터 -->
+        <div class="networking-simulator">
+            <h3>🤝 가상 네트워킹 라운지</h3>
+            <div class="networking-space">
+                <div class="attendee-grid" id="attendeeGrid">
+                    <!-- 동적으로 참가자 생성 -->
+                </div>
+                <div class="networking-chat" id="networkingChat">
+                    <h4>네트워킹 대화</h4>
+                    <div class="chat-messages" id="chatMessages">
+                        <p class="system-message">네트워킹 라운지에 오신 것을 환영합니다!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 16.5: 온라인 학습 리소스 -->
+<section class="content-section learning-interactive">
+    <h2>16.5 온톨로지 학습 경로 설계기</h2>
+    
+    <!-- 개인화된 학습 경로 생성기 -->
+    <div class="learning-path-designer">
+        <h3>🎓 나만의 온톨로지 학습 경로 만들기</h3>
+        <div class="path-builder">
+            <div class="learner-profile">
+                <h4>학습자 프로필 설정</h4>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label>현재 수준:</label>
+                        <select id="currentLevel">
+                            <option value="beginner">입문자</option>
+                            <option value="intermediate">중급자</option>
+                            <option value="advanced">고급자</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>학습 목표:</label>
+                        <select id="learningGoal">
+                            <option value="academic">학술 연구</option>
+                            <option value="industry">산업 응용</option>
+                            <option value="developer">개발자 도구</option>
+                            <option value="data-science">데이터 사이언스</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>주당 학습 시간:</label>
+                        <input type="range" id="weeklyHours" min="1" max="20" value="5">
+                        <span id="hoursDisplay">5시간</span>
+                    </div>
+                    <button onclick="generateLearningPath()">학습 경로 생성</button>
+                </div>
+            </div>
+            
+            <div class="generated-path" id="generatedPath">
+                <h4>추천 학습 경로</h4>
+                <div class="path-timeline">
+                    <!-- 동적으로 생성되는 학습 경로 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실시간 학습 리소스 탐색기 -->
+    <div class="resource-explorer">
+        <h3>📚 온톨로지 학습 리소스 라이브러리</h3>
+        <div class="resource-filters">
+            <button class="filter-btn active" data-type="all">전체</button>
+            <button class="filter-btn" data-type="courses">온라인 강좌</button>
+            <button class="filter-btn" data-type="tutorials">튜토리얼</button>
+            <button class="filter-btn" data-type="papers">논문</button>
+            <button class="filter-btn" data-type="tools">도구</button>
+        </div>
+        
+        <div class="resource-grid" id="resourceGrid">
+            <!-- 강좌 카드 -->
+            <div class="resource-card courses">
+                <div class="resource-type">온라인 강좌</div>
+                <h4>Knowledge Graphs Fundamentals</h4>
+                <div class="resource-meta">
+                    <span class="provider">Coursera</span>
+                    <span class="duration">6주</span>
+                    <span class="level">초급</span>
+                </div>
+                <div class="resource-rating">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <span class="rating-num">4.8/5.0</span>
+                </div>
+                <p class="resource-desc">지식 그래프의 기초부터 실제 구현까지 체계적으로 학습합니다.</p>
+                <div class="resource-actions">
+                    <button onclick="previewResource('course1')">미리보기</button>
+                    <button onclick="enrollResource('course1')">수강신청</button>
+                </div>
+            </div>
+            
+            <!-- 튜토리얼 카드 -->
+            <div class="resource-card tutorials">
+                <div class="resource-type">튜토리얼</div>
+                <h4>Build Your First Ontology</h4>
+                <div class="resource-meta">
+                    <span class="provider">W3C</span>
+                    <span class="duration">2시간</span>
+                    <span class="level">초급</span>
+                </div>
+                <div class="resource-rating">
+                    <span class="stars">⭐⭐⭐⭐</span>
+                    <span class="rating-num">4.5/5.0</span>
+                </div>
+                <p class="resource-desc">Protégé를 사용하여 첫 온톨로지를 만드는 실습 튜토리얼입니다.</p>
+                <div class="resource-actions">
+                    <button onclick="startTutorial('tutorial1')">시작하기</button>
+                </div>
+            </div>
+            
+            <!-- 더 많은 리소스 카드들... -->
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 16.6: 한국 온톨로지 생태계 -->
+<section class="content-section korea-interactive">
+    <h2>16.6 한국 온톨로지 생태계 네트워크</h2>
+    
+    <!-- 한국 생태계 맵 -->
+    <div class="korea-ecosystem-map">
+        <h3>🇰🇷 국내 온톨로지 연구 기관 및 프로젝트</h3>
+        <div class="korea-network">
+            <div class="institution-nodes">
+                <!-- KISTI -->
+                <div class="institution-node" data-inst="kisti">
+                    <div class="inst-logo">KISTI</div>
+                    <div class="inst-name">한국과학기술정보연구원</div>
+                    <div class="inst-projects">
+                        <span class="project-tag">EDISON</span>
+                        <span class="project-tag">과학기술 온톨로지</span>
+                        <span class="project-tag">연구데이터</span>
+                    </div>
+                </div>
+                
+                <!-- ETRI -->
+                <div class="institution-node" data-inst="etri">
+                    <div class="inst-logo">ETRI</div>
+                    <div class="inst-name">한국전자통신연구원</div>
+                    <div class="inst-projects">
+                        <span class="project-tag">엑소브레인</span>
+                        <span class="project-tag">한국어 KB</span>
+                        <span class="project-tag">언어자원</span>
+                    </div>
+                </div>
+                
+                <!-- 대학 연구실 -->
+                <div class="institution-node" data-inst="kaist">
+                    <div class="inst-logo">KAIST</div>
+                    <div class="inst-name">시맨틱웹연구센터</div>
+                    <div class="inst-projects">
+                        <span class="project-tag">지식그래프</span>
+                        <span class="project-tag">추론시스템</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 협업 네트워크 시각화 -->
+            <svg class="collaboration-network" id="koreaNetwork">
+                <!-- D3.js로 동적 생성 -->
+            </svg>
+        </div>
+    </div>
+    
+    <!-- 한국어 리소스 허브 -->
+    <div class="korean-resources">
+        <h3>📖 한국어 온톨로지 학습 자료</h3>
+        <div class="kr-resource-categories">
+            <div class="kr-category">
+                <h4>입문 자료</h4>
+                <ul class="kr-resource-list">
+                    <li>
+                        <a href="#" onclick="openKoreanResource('intro1')">
+                            온톨로지 개념과 활용 (KISTI 교육자료)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="openKoreanResource('intro2')">
+                            시맨틱 웹 입문 (서울대 공개강좌)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="kr-category">
+                <h4>실무 가이드</h4>
+                <ul class="kr-resource-list">
+                    <li>
+                        <a href="#" onclick="openKoreanResource('practice1')">
+                            한국어 온톨로지 구축 가이드라인
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="openKoreanResource('practice2')">
+                            산업별 온톨로지 적용 사례집
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="kr-category">
+                <h4>커뮤니티</h4>
+                <ul class="kr-resource-list">
+                    <li>
+                        <a href="#" onclick="joinKoreanCommunity('forum')">
+                            한국 시맨틱웹 포럼
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="joinKoreanCommunity('slack')">
+                            온톨로지 개발자 Slack
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 미니 프로젝트: 커뮤니티 이벤트 조직 -->
+<div class="mini-project community-event">
+    <h2>🎉 미니 프로젝트: 온톨로지 해커톤 조직하기</h2>
+    <div class="hackathon-organizer">
+        <h3>온톨로지 해커톤 기획 시뮬레이터</h3>
+        <div class="hackathon-planner">
+            <div class="planning-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-name">주제 선정</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-name">참가자 모집</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-name">멘토 섭외</span>
+                </div>
+                <div class="step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-name">이벤트 진행</span>
+                </div>
+                <div class="step" data-step="5">
+                    <span class="step-number">5</span>
+                    <span class="step-name">성과 공유</span>
+                </div>
+            </div>
+            
+            <div class="planning-content">
+                <!-- Step 1: 주제 선정 -->
+                <div class="step-content active" data-content="1">
+                    <h4>해커톤 주제 선정</h4>
+                    <div class="theme-options">
+                        <div class="theme-card" onclick="selectTheme(this, 'healthcare')">
+                            <span class="theme-icon">🏥</span>
+                            <h5>헬스케어 온톨로지</h5>
+                            <p>의료 데이터 통합을 위한 온톨로지 개발</p>
+                        </div>
+                        <div class="theme-card" onclick="selectTheme(this, 'smartcity')">
+                            <span class="theme-icon">🏙️</span>
+                            <h5>스마트시티 온톨로지</h5>
+                            <p>도시 인프라 지능화를 위한 온톨로지</p>
+                        </div>
+                        <div class="theme-card" onclick="selectTheme(this, 'education')">
+                            <span class="theme-icon">🎓</span>
+                            <h5>교육 온톨로지</h5>
+                            <p>개인화 학습을 위한 지식 모델링</p>
+                        </div>
+                    </div>
+                    <button class="next-step-btn" onclick="nextPlanningStep()">다음 단계</button>
+                </div>
+                
+                <!-- 다른 단계들... -->
+            </div>
+        </div>
+        
+        <div class="hackathon-results">
+            <h4>해커톤 성과 대시보드</h4>
+            <div class="results-metrics">
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">참가팀</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">제출 프로젝트</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">생성된 트리플</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0</span>
+                    <span class="metric-label">커뮤니티 평점</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 학습 성과 요약 -->
+<div class="learning-summary">
+    <h2>📊 Part 2 학습 성과</h2>
+    <div class="achievement-grid">
+        <div class="achievement-card">
+            <div class="achievement-icon">🌍</div>
+            <h3>글로벌 네트워크</h3>
+            <p>전 세계 커뮤니티 연결</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+            </div>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon">🎓</div>
+            <h3>학습 경로 설계</h3>
+            <p>개인화된 학습 계획 수립</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%"></div>
+            </div>
+        </div>
+        <div class="achievement-card">
+            <div class="achievement-icon">🇰🇷</div>
+            <h3>한국 생태계</h3>
+            <p>국내 네트워크 구축</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 88%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript 코드 -->
+<script>
+// 컨퍼런스 스케줄 탭
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const day = this.dataset.day;
+        showSchedule(day);
+    });
+});
+
+function showSchedule(day) {
+    // 스케줄 전환 로직
+    console.log(`Showing schedule for ${day}`);
+}
+
+// 세션 참가
+function attendSession(sessionId) {
+    const viewer = document.getElementById('sessionViewer');
+    const sessions = {
+        keynote1: {
+            title: 'Future of Knowledge Graphs',
+            speaker: 'Dr. Tim Berners-Lee',
+            content: '지식 그래프의 미래와 웹 3.0의 비전을 공유합니다...'
+        },
+        workshop1: {
+            title: 'Advanced SPARQL Techniques',
+            type: 'interactive',
+            content: 'SPARQL 고급 기법을 실습해봅시다...'
+        }
+    };
+    
+    const session = sessions[sessionId];
+    if (session) {
+        viewer.innerHTML = `
+            <div class="session-content">
+                <h3>${session.title}</h3>
+                <p>${session.speaker || '실습 워크샵'}</p>
+                <div class="session-video">
+                    <div class="video-placeholder">🎥 세션 진행중...</div>
+                </div>
+                ${session.type === 'interactive' ? `
+                    <div class="workshop-area">
+                        <h4>실습 공간</h4>
+                        <textarea placeholder="SPARQL 쿼리를 작성해보세요..."></textarea>
+                        <button onclick="runQuery()">실행</button>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+        
+        // 채팅에 참가 메시지 추가
+        addChatMessage('system', `${session.title} 세션에 참가했습니다.`);
+    }
+}
+
+// 질문하기
+function askQuestion() {
+    const input = document.getElementById('questionInput');
+    const question = input.value.trim();
+    
+    if (question) {
+        addChatMessage('user', question);
+        input.value = '';
+        
+        // 시뮬레이션: 발표자 답변
+        setTimeout(() => {
+            addChatMessage('speaker', '좋은 질문입니다! 이에 대해 설명드리겠습니다...');
+        }, 2000);
+    }
+}
+
+function addChatMessage(type, message) {
+    const chatArea = document.getElementById('chatArea');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${type}`;
+    messageDiv.innerHTML = `
+        <span class="message-author">${type === 'user' ? '나' : type === 'speaker' ? '발표자' : '시스템'}</span>
+        <span class="message-text">${message}</span>
+    `;
+    chatArea.appendChild(messageDiv);
+    chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+// 네트워킹 시뮬레이터
+function initNetworking() {
+    const attendeeGrid = document.getElementById('attendeeGrid');
+    const attendees = [
+        { name: 'Dr. Kim', affiliation: 'KAIST', interest: 'Knowledge Graphs' },
+        { name: 'Prof. Lee', affiliation: 'Seoul National Univ.', interest: 'Ontology Learning' },
+        { name: 'Ms. Park', affiliation: 'Samsung Research', interest: 'AI & Ontology' },
+        { name: 'Mr. Choi', affiliation: 'ETRI', interest: 'Korean NLP' }
+    ];
+    
+    attendees.forEach(attendee => {
+        const card = document.createElement('div');
+        card.className = 'attendee-card';
+        card.innerHTML = `
+            <div class="attendee-avatar">👤</div>
+            <h5>${attendee.name}</h5>
+            <p class="affiliation">${attendee.affiliation}</p>
+            <p class="interest">${attendee.interest}</p>
+            <button onclick="connectWith('${attendee.name}')">연결하기</button>
+        `;
+        attendeeGrid.appendChild(card);
+    });
+}
+
+function connectWith(name) {
+    const chatMessages = document.getElementById('chatMessages');
+    const message = document.createElement('div');
+    message.className = 'network-message';
+    message.innerHTML = `<strong>${name}</strong>님과 연결되었습니다! 대화를 시작해보세요.`;
+    chatMessages.appendChild(message);
+}
+
+// 학습 경로 생성
+function generateLearningPath() {
+    const level = document.getElementById('currentLevel').value;
+    const goal = document.getElementById('learningGoal').value;
+    const hours = document.getElementById('weeklyHours').value;
+    
+    const pathDiv = document.getElementById('generatedPath');
+    const timeline = pathDiv.querySelector('.path-timeline');
+    
+    // 학습 경로 생성 로직
+    const paths = {
+        beginner: [
+            { week: 1, topic: 'RDF 기초', hours: 5 },
+            { week: 2, topic: 'RDFS 이해', hours: 5 },
+            { week: 3, topic: 'OWL 입문', hours: 5 },
+            { week: 4, topic: 'SPARQL 기초', hours: 5 }
+        ],
+        intermediate: [
+            { week: 1, topic: 'OWL 고급', hours: 5 },
+            { week: 2, topic: '추론 엔진', hours: 5 },
+            { week: 3, topic: '온톨로지 설계', hours: 5 },
+            { week: 4, topic: '실전 프로젝트', hours: 5 }
+        ]
+    };
+    
+    const selectedPath = paths[level] || paths.beginner;
+    
+    timeline.innerHTML = selectedPath.map((item, index) => `
+        <div class="path-item">
+            <div class="week-number">Week ${item.week}</div>
+            <div class="topic-info">
+                <h5>${item.topic}</h5>
+                <p>${item.hours}시간 학습</p>
+            </div>
+            <div class="completion-status">
+                <input type="checkbox" id="week${index}">
+                <label for="week${index}">완료</label>
+            </div>
+        </div>
+    `).join('');
+    
+    pathDiv.style.display = 'block';
+}
+
+// 주당 시간 슬라이더
+document.getElementById('weeklyHours').addEventListener('input', function() {
+    document.getElementById('hoursDisplay').textContent = this.value + '시간';
+});
+
+// 리소스 필터링
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const type = this.dataset.type;
+        filterResources(type);
+    });
+});
+
+function filterResources(type) {
+    const cards = document.querySelectorAll('.resource-card');
+    cards.forEach(card => {
+        if (type === 'all' || card.classList.contains(type)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// 리소스 미리보기
+function previewResource(resourceId) {
+    alert(`${resourceId} 리소스의 미리보기 창이 열립니다.`);
+}
+
+function enrollResource(resourceId) {
+    alert(`${resourceId} 강좌에 등록되었습니다!`);
+}
+
+function startTutorial(tutorialId) {
+    alert(`${tutorialId} 튜토리얼을 시작합니다!`);
+}
+
+// 한국 기관 상호작용
+document.querySelectorAll('.institution-node').forEach(node => {
+    node.addEventListener('click', function() {
+        const inst = this.dataset.inst;
+        showInstitutionDetails(inst);
+    });
+});
+
+function showInstitutionDetails(inst) {
+    const details = {
+        kisti: '한국과학기술정보연구원은 국가 과학기술 정보 인프라를 구축하고 있습니다.',
+        etri: '한국전자통신연구원은 엑소브레인 프로젝트를 통해 한국어 지식베이스를 개발합니다.',
+        kaist: 'KAIST 시맨틱웹연구센터는 차세대 지식 표현 기술을 연구합니다.'
+    };
+    
+    alert(details[inst] || '기관 정보');
+}
+
+// 해커톤 기획
+function selectTheme(element, theme) {
+    document.querySelectorAll('.theme-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+    element.classList.add('selected');
+}
+
+function nextPlanningStep() {
+    const currentStep = document.querySelector('.step.active');
+    const currentContent = document.querySelector('.step-content.active');
+    const nextStep = currentStep.nextElementSibling;
+    
+    if (nextStep) {
+        currentStep.classList.remove('active');
+        currentContent.classList.remove('active');
+        
+        nextStep.classList.add('active');
+        const nextStepNum = nextStep.dataset.step;
+        const nextContent = document.querySelector(`.step-content[data-content="${nextStepNum}"]`);
+        if (nextContent) {
+            nextContent.classList.add('active');
+        }
+        
+        // 메트릭 업데이트
+        updateHackathonMetrics(nextStepNum);
+    }
+}
+
+function updateHackathonMetrics(step) {
+    const metrics = {
+        '2': { teams: 15, projects: 0, triples: 0, rating: 0 },
+        '3': { teams: 15, projects: 0, triples: 0, rating: 0 },
+        '4': { teams: 15, projects: 12, triples: 50000, rating: 0 },
+        '5': { teams: 15, projects: 12, triples: 50000, rating: 4.7 }
+    };
+    
+    const stepMetrics = metrics[step];
+    if (stepMetrics) {
+        document.querySelectorAll('.metric-value')[0].textContent = stepMetrics.teams;
+        document.querySelectorAll('.metric-value')[1].textContent = stepMetrics.projects;
+        document.querySelectorAll('.metric-value')[2].textContent = stepMetrics.triples.toLocaleString();
+        document.querySelectorAll('.metric-value')[3].textContent = stepMetrics.rating;
+    }
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    initNetworking();
+});
+</script>
+
+<!-- Part 2 전용 스타일 -->
+<style>
+/* 헤더 스타일 */
+.part-header.community-mastery {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 3rem;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.community-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    background: radial-gradient(circle at 20% 50%, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.2); opacity: 0.2; }
+}
+
+/* 글로벌 활동 현황 */
+.global-presence {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.world-map {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f0f9ff;
+    border-radius: 12px;
+}
+
+.continent {
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continent:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.continent-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.activity-level {
+    display: block;
+    color: #10b981;
+    font-size: 1.25rem;
+}
+
+.activity-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #10b981;
+}
+
+/* 커뮤니티 성취도 */
+.achievement-badges {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    overflow-x: auto;
+}
+
+.badge {
+    min-width: 120px;
+    padding: 1rem;
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.badge.upcoming {
+    border-style: dashed;
+}
+
+.badge-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.badge-date {
+    display: block;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* 가상 컨퍼런스 */
+.conference-interface {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.conference-schedule {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.schedule-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+.session {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.session-time {
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 100px;
+}
+
+.attend-btn {
+    margin-top: 0.5rem;
+    padding: 0.25rem 1rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.attend-btn:hover {
+    background: #2563eb;
+}
+
+/* 세션 뷰어 */
+.conference-experience {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.session-viewer {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 2rem;
+    min-height: 300px;
+    margin-bottom: 1.5rem;
+}
+
+.viewer-placeholder {
+    text-align: center;
+    color: #94a3b8;
+}
+
+.placeholder-icon {
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.session-content {
+    color: white;
+}
+
+.video-placeholder {
+    background: #0f172a;
+    padding: 4rem;
+    text-align: center;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-size: 2rem;
+}
+
+/* 채팅 영역 */
+.qa-section {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#questionInput {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.chat-area {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem;
+    height: 150px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 6px;
+}
+
+.message-author {
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* 네트워킹 시뮬레이터 */
+.networking-space {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.attendee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.attendee-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.attendee-card:hover {
+    border-color: #10b981;
+    transform: translateY(-5px);
+}
+
+.attendee-avatar {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.affiliation {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.interest {
+    font-size: 0.875rem;
+    color: #3b82f6;
+    margin: 0.5rem 0;
+}
+
+/* 학습 경로 설계기 */
+.path-builder {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.learner-profile {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.generated-path {
+    display: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.path-timeline {
+    margin-top: 1.5rem;
+}
+
+.path-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #10b981;
+}
+
+.week-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #10b981;
+}
+
+/* 리소스 탐색기 */
+.resource-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.resource-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.1);
+}
+
+.resource-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #e0e7ff;
+    color: #4338ca;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.resource-meta {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.resource-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.resource-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.resource-actions button {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.resource-actions button:hover {
+    background: #f8fafc;
+}
+
+/* 한국 생태계 */
+.korea-network {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.institution-nodes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.institution-node {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.institution-node:hover {
+    border-color: #3b82f6;
+    transform: scale(1.05);
+}
+
+.inst-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+}
+
+.inst-projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.project-tag {
+    padding: 0.25rem 0.5rem;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+/* 한국어 리소스 */
+.kr-resource-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.kr-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.kr-resource-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.kr-resource-list li {
+    margin-bottom: 0.75rem;
+}
+
+.kr-resource-list a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.kr-resource-list a:hover {
+    text-decoration: underline;
+}
+
+/* 해커톤 기획 */
+.hackathon-planner {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.planning-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.step {
+    text-align: center;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step-number {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    margin: 0 auto 0.5rem;
+    font-weight: 700;
+}
+
+.step.active .step-number {
+    background: #10b981;
+    color: white;
+}
+
+.theme-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.theme-card {
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-card:hover,
+.theme-card.selected {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.theme-icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.next-step-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.next-step-btn:hover {
+    background: #059669;
+}
+
+/* 해커톤 결과 */
+.results-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.metric-card {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.metric-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #10b981;
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .conference-interface,
+    .path-builder,
+    .networking-space {
+        grid-template-columns: 1fr;
+    }
+    
+    .world-map {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .results-metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .achievement-badges {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+</style>

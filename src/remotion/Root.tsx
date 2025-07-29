@@ -4,6 +4,8 @@ import { OntologyExplainer } from './compositions/OntologyExplainer';
 import { ChapterExplainer } from './compositions/ChapterExplainer';
 import { ChapterExplainerWithAudio } from './compositions/ChapterExplainerWithAudio';
 import { ModernChapterExplainer } from './compositions/ModernChapterExplainer';
+import { StockChapterExplainer } from './compositions/StockChapterExplainer';
+import { TestAudio } from './compositions/TestAudio';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -92,8 +94,7 @@ export const RemotionRoot: React.FC = () => {
               content: "KSS 플랫폼에서 직접 온톨로지를 만들어보세요.",
               narration: "이제 배운 내용을 직접 실습해봅시다.",
             }
-          ],
-          backgroundMusic: "background-music.mp3"
+          ]
         }}
       />
       
@@ -142,6 +143,51 @@ export const RemotionRoot: React.FC = () => {
           ],
           backgroundMusic: "background-music.mp3"
         }}
+      />
+      
+      <Composition
+        id="StockChapterExplainer"
+        component={StockChapterExplainer}
+        durationInFrames={1200}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          topicTitle: "주식시장의 기본 구조",
+          sections: [
+            {
+              title: "주식시장 개요",
+              content: "주식시장은 기업과 투자자를 연결하는 중요한 금융 인프라입니다.",
+              narration: "오늘은 주식시장의 기본 구조에 대해 알아보겠습니다.",
+              keyPoints: [
+                "KOSPI - 대기업 중심 시장",
+                "KOSDAQ - 중소·벤처기업 시장",
+                "거래 시간: 09:00 ~ 15:30"
+              ]
+            },
+            {
+              title: "시장 참여자",
+              content: "개인투자자, 기관투자자, 외국인투자자가 주요 참여자입니다.",
+              narration: "각 투자 주체별 특징과 투자 패턴을 이해하는 것이 중요합니다.",
+              keyPoints: [
+                "개인투자자 - 단기 투자 성향",
+                "기관투자자 - 장기 투자 전략",
+                "외국인투자자 - 시장 영향력 크다"
+              ]
+            }
+          ],
+          style: "educational",
+          moduleColor: "from-blue-500 to-indigo-600"
+        }}
+      />
+      
+      <Composition
+        id="TestAudio"
+        component={TestAudio}
+        durationInFrames={180}
+        fps={30}
+        width={1920}
+        height={1080}
       />
     </>
   );

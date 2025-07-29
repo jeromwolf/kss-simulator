@@ -1,0 +1,1384 @@
+<!-- Chapter 5: RDFS - RDF 스키마 (심화 버전) Part 1 -->
+
+<div class="chapter-header">
+    <h1>Chapter 5. RDFS - RDF Schema</h1>
+    <div class="chapter-subtitle">의미적 계층구조의 시작</div>
+    <div class="chapter-quote">
+        "RDFS는 데이터에 의미를 부여하고 추론을 가능하게 하는 첫 번째 단계입니다." <br>
+        <span class="quote-author">- Dan Brickley, RDFS 공동 개발자</span>
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 3시간 | <i class="fas fa-brain"></i> 추론 실습 포함
+</div>
+
+<!-- 인터랙티브 소개 -->
+<div class="interactive-intro">
+    <h3>🎯 당신이 해결할 문제</h3>
+    <div class="problem-cards">
+        <div class="problem-card">
+            <div class="card-header">
+                <span class="problem-number">문제 1</span>
+                <span class="difficulty">난이도: ⭐⭐</span>
+            </div>
+            <h4>스마트 도서관 시스템</h4>
+            <p>수백만 권의 책을 어떻게 체계적으로 분류하고, 컴퓨터가 자동으로 추천할 수 있게 만들까요?</p>
+            <div class="hint">
+                💡 힌트: 책의 장르, 저자, 주제를 계층적으로 구조화하면...
+            </div>
+        </div>
+        <div class="problem-card">
+            <div class="card-header">
+                <span class="problem-number">문제 2</span>
+                <span class="difficulty">난이도: ⭐⭐⭐</span>
+            </div>
+            <h4>의료 지식 통합</h4>
+            <p>다양한 병원의 서로 다른 의료 용어를 어떻게 통합하여 AI가 진단을 도울 수 있게 할까요?</p>
+            <div class="hint">
+                💡 힌트: 질병, 증상, 치료법 간의 관계를 명확히 정의하면...
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 사전 지식 체크 (인터랙티브) -->
+<div class="prerequisite-check card interactive">
+    <h3><i class="fas fa-check-circle"></i> 사전 지식 퀴즈</h3>
+    <div class="quiz-container">
+        <div class="quiz-item">
+            <p class="quiz-question">Q1. RDF 트리플의 구성 요소는?</p>
+            <div class="quiz-options">
+                <button class="quiz-option" onclick="checkAnswer(this, true)">주어, 술어, 목적어</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">클래스, 속성, 인스턴스</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">도메인, 레인지, 타입</button>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+        <div class="quiz-item">
+            <p class="quiz-question">Q2. 객체지향에서 상속(inheritance)의 의미는?</p>
+            <div class="quiz-options">
+                <button class="quiz-option" onclick="checkAnswer(this, false)">객체 간 메시지 전달</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">하위 클래스가 상위 클래스의 속성을 물려받음</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">데이터 캡슐화</button>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
+    <div class="prereq-result" style="display: none;">
+        <p class="result-message"></p>
+        <button class="continue-btn" onclick="continueLesson()">학습 시작하기</button>
+    </div>
+</div>
+
+<!-- 학습 목표 (게임화) -->
+<div class="learning-objectives card gamified">
+    <h3><i class="fas fa-trophy"></i> 학습 미션</h3>
+    <div class="mission-board">
+        <div class="mission-track">
+            <div class="mission beginner">
+                <div class="mission-icon">🥉</div>
+                <h4>Bronze Mission</h4>
+                <ul class="mission-tasks">
+                    <li class="task" data-complete="false">RDFS의 기본 개념 이해</li>
+                    <li class="task" data-complete="false">클래스와 속성 구분하기</li>
+                    <li class="task" data-complete="false">간단한 계층구조 만들기</li>
+                </ul>
+                <div class="reward">🎁 보상: RDFS 기초 인증서</div>
+            </div>
+            <div class="mission intermediate">
+                <div class="mission-icon">🥈</div>
+                <h4>Silver Mission</h4>
+                <ul class="mission-tasks">
+                    <li class="task" data-complete="false">도메인과 레인지 마스터</li>
+                    <li class="task" data-complete="false">추론 규칙 활용하기</li>
+                    <li class="task" data-complete="false">실제 온톨로지 설계</li>
+                </ul>
+                <div class="reward">🎁 보상: RDFS 실무자 뱃지</div>
+            </div>
+            <div class="mission advanced">
+                <div class="mission-icon">🥇</div>
+                <h4>Gold Mission</h4>
+                <ul class="mission-tasks">
+                    <li class="task" data-complete="false">복잡한 지식 그래프 구축</li>
+                    <li class="task" data-complete="false">추론 엔진 최적화</li>
+                    <li class="task" data-complete="false">실전 프로젝트 완성</li>
+                </ul>
+                <div class="reward">🎁 보상: RDFS 마스터 타이틀</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 학습 로드맵 (인터랙티브) -->
+<div class="learning-journey interactive">
+    <h3><i class="fas fa-map-marked-alt"></i> 인터랙티브 학습 여정</h3>
+    <div class="journey-map">
+        <svg class="journey-svg" viewBox="0 0 800 300">
+            <!-- 경로 -->
+            <path d="M 100,150 Q 250,100 400,150 T 700,150" stroke="#a855f7" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+            
+            <!-- 스테이지 1 -->
+            <g class="stage-group" transform="translate(100,150)">
+                <circle r="40" fill="#a855f7" class="stage-circle active"/>
+                <text y="5" text-anchor="middle" fill="white" font-weight="bold">1</text>
+                <text y="70" text-anchor="middle" class="stage-label">기초 이해</text>
+            </g>
+            
+            <!-- 스테이지 2 -->
+            <g class="stage-group" transform="translate(400,150)">
+                <circle r="40" fill="#d4d4d8" class="stage-circle"/>
+                <text y="5" text-anchor="middle" fill="white" font-weight="bold">2</text>
+                <text y="70" text-anchor="middle" class="stage-label">실습 마스터</text>
+            </g>
+            
+            <!-- 스테이지 3 -->
+            <g class="stage-group" transform="translate(700,150)">
+                <circle r="40" fill="#d4d4d8" class="stage-circle"/>
+                <text y="5" text-anchor="middle" fill="white" font-weight="bold">3</text>
+                <text y="70" text-anchor="middle" class="stage-label">프로젝트</text>
+            </g>
+        </svg>
+        
+        <div class="stage-details">
+            <div class="stage-detail active" data-stage="1">
+                <h4>🎯 Stage 1: 기초 이해 (40분)</h4>
+                <div class="stage-content">
+                    <div class="mini-lessons">
+                        <div class="mini-lesson">
+                            <span class="lesson-icon">📖</span>
+                            <span>RDFS의 탄생 배경</span>
+                            <span class="duration">10분</span>
+                        </div>
+                        <div class="mini-lesson">
+                            <span class="lesson-icon">🧩</span>
+                            <span>핵심 개념 퍼즐</span>
+                            <span class="duration">15분</span>
+                        </div>
+                        <div class="mini-lesson">
+                            <span class="lesson-icon">🎮</span>
+                            <span>계층구조 게임</span>
+                            <span class="duration">15분</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 5.1: 스토리텔링 방식 -->
+<section class="content-section enhanced">
+    <h2>5.1 RDFS의 탄생 이야기</h2>
+    
+    <!-- 몰입형 스토리 -->
+    <div class="story-container">
+        <div class="story-scene">
+            <div class="scene-year">1999년, MIT 연구실</div>
+            <div class="scene-content">
+                <p class="dialogue">"팀, 우리가 만든 RDF는 훌륭하지만... 뭔가 부족해요."</p>
+                <p class="narrator">젊은 연구원이 화이트보드 앞에서 고민에 빠졌다. 보드에는 수많은 RDF 트리플이 그려져 있었다.</p>
+                <div class="whiteboard">
+                    <pre>
+:Tim :knows :Dan .
+:Tim :age 35 .
+:Dan :worksAt :W3C .
+:W3C :type :Organization .
+                    </pre>
+                </div>
+                <p class="dialogue">"맞아, 데이터는 표현할 수 있지만... 컴퓨터가 Tim과 Dan이 같은 '사람'이라는 걸 어떻게 알지?"</p>
+            </div>
+        </div>
+        
+        <div class="story-revelation">
+            <h4>💡 깨달음의 순간</h4>
+            <p>바로 그때, 그들은 깨달았습니다. <strong>데이터에 구조와 의미를 부여하는 새로운 층</strong>이 필요하다는 것을!</p>
+        </div>
+    </div>
+    
+    <!-- 인터랙티브 문제 해결 -->
+    <div class="problem-solving-interactive">
+        <h3>🎯 함께 해결해봅시다</h3>
+        <div class="problem-workspace">
+            <div class="problem-statement">
+                <p>다음 RDF 데이터에서 발견되는 문제점을 찾아보세요:</p>
+                <pre class="rdf-data">
+:김철수 :이름 "김철수" .
+:김철수 :나이 "스물다섯" .  # 문제 1
+:이영희 :name "이영희" .      # 문제 2
+:박민수 :친구 :김철수 .
+:박민수 :친구 :이영희 .
+                </pre>
+            </div>
+            <div class="problem-hints">
+                <button class="hint-btn" onclick="showHint(1)">힌트 1</button>
+                <button class="hint-btn" onclick="showHint(2)">힌트 2</button>
+                <button class="hint-btn" onclick="showHint(3)">해답 보기</button>
+            </div>
+            <div class="hint-display" id="hintDisplay"></div>
+        </div>
+    </div>
+    
+    <!-- RDFS 철학 (비주얼 강화) -->
+    <div class="philosophy-visual">
+        <h3>RDFS의 4대 철학</h3>
+        <div class="philosophy-wheel">
+            <div class="wheel-center">RDFS</div>
+            <div class="philosophy-quadrant" data-quadrant="1">
+                <div class="quadrant-icon">🏗️</div>
+                <h4>구조적 의미</h4>
+                <p>무질서한 데이터를 체계적으로 조직화</p>
+                <div class="example-popup">
+                    <p>예시: 동물 → 포유류 → 개 → 시바견</p>
+                </div>
+            </div>
+            <div class="philosophy-quadrant" data-quadrant="2">
+                <div class="quadrant-icon">🔗</div>
+                <h4>의미적 연결</h4>
+                <p>개념 간 관계를 명확히 정의</p>
+                <div class="example-popup">
+                    <p>예시: "가르치다"는 교수와 과목을 연결</p>
+                </div>
+            </div>
+            <div class="philosophy-quadrant" data-quadrant="3">
+                <div class="quadrant-icon">🤖</div>
+                <h4>기계 추론</h4>
+                <p>명시되지 않은 사실도 자동 도출</p>
+                <div class="example-popup">
+                    <p>예시: A는 B의 자식 → A는 B의 후손</p>
+                </div>
+            </div>
+            <div class="philosophy-quadrant" data-quadrant="4">
+                <div class="quadrant-icon">🌐</div>
+                <h4>상호운용성</h4>
+                <p>서로 다른 시스템 간 의미 공유</p>
+                <div class="example-popup">
+                    <p>예시: 병원A와 병원B의 의료 데이터 통합</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 레이어 구조 (애니메이션) -->
+    <div class="layer-architecture-animated">
+        <h3>RDFS 아키텍처 탐험</h3>
+        <div class="architecture-viewer">
+            <div class="layer-container">
+                <div class="layer application-layer">
+                    <h4>Application Layer</h4>
+                    <p>스마트 검색, AI 추천, 지식 그래프</p>
+                    <div class="layer-examples">
+                        <span class="example-tag">Google Knowledge Graph</span>
+                        <span class="example-tag">Amazon 추천</span>
+                    </div>
+                </div>
+                <div class="layer rdfs-layer highlighted">
+                    <h4>RDFS Layer ← 우리가 있는 곳!</h4>
+                    <p>스키마, 클래스, 속성, 추론 규칙</p>
+                    <div class="layer-components">
+                        <div class="component">rdfs:Class</div>
+                        <div class="component">rdfs:subClassOf</div>
+                        <div class="component">rdfs:domain</div>
+                        <div class="component">rdfs:range</div>
+                    </div>
+                </div>
+                <div class="layer rdf-layer">
+                    <h4>RDF Layer</h4>
+                    <p>트리플, URI, 리터럴</p>
+                    <div class="triple-animation">
+                        <span class="subject">Subject</span>
+                        <span class="predicate">→ Predicate →</span>
+                        <span class="object">Object</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-interaction">
+                <button class="layer-btn" onclick="exploreLayer('application')">응용 계층 탐험</button>
+                <button class="layer-btn active" onclick="exploreLayer('rdfs')">RDFS 계층 탐험</button>
+                <button class="layer-btn" onclick="exploreLayer('rdf')">RDF 계층 탐험</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 진화 타임라인 (인터랙티브) -->
+    <div class="evolution-timeline-interactive">
+        <h3>시맨틱 웹의 진화</h3>
+        <div class="timeline-container">
+            <div class="timeline-track">
+                <div class="timeline-item" data-year="1989">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h4>웹의 탄생</h4>
+                        <p>팀 버너스리가 월드와이드웹 발명</p>
+                        <div class="impact">💥 영향: 정보의 자유로운 공유</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="1999">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h4>RDF 1.0</h4>
+                        <p>구조화된 데이터 표현 시작</p>
+                        <div class="impact">💥 영향: 기계가 읽을 수 있는 웹</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2000" class="highlight">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h4>RDFS 등장</h4>
+                        <p>데이터에 의미와 구조 부여</p>
+                        <div class="impact">💥 영향: 지능형 데이터 처리</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2004">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h4>OWL 1.0</h4>
+                        <p>더 강력한 표현력</p>
+                        <div class="impact">💥 영향: 복잡한 추론 가능</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2012">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h4>지식 그래프 시대</h4>
+                        <p>Google Knowledge Graph 출시</p>
+                        <div class="impact">💥 영향: 검색의 혁명</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="현재" class="current">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <h4>AI + 온톨로지</h4>
+                        <p>ChatGPT, 지식 그래프 융합</p>
+                        <div class="impact">💥 영향: 진정한 지능형 시스템</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실전 사례 (상호작용) -->
+    <div class="real-world-explorer">
+        <h3>🌍 RDFS 실전 탐험</h3>
+        <div class="case-selector">
+            <button class="case-btn active" onclick="showCase('google')">Google</button>
+            <button class="case-btn" onclick="showCase('medical')">의료</button>
+            <button class="case-btn" onclick="showCase('ecommerce')">이커머스</button>
+            <button class="case-btn" onclick="showCase('research')">연구</button>
+        </div>
+        
+        <div class="case-display">
+            <div class="case-content active" id="case-google">
+                <h4>🔍 Google Knowledge Graph</h4>
+                <div class="case-demo">
+                    <div class="search-box">
+                        <input type="text" value="아인슈타인" readonly>
+                        <button>검색</button>
+                    </div>
+                    <div class="knowledge-panel">
+                        <div class="entity-card">
+                            <img src="/api/placeholder/100/100" alt="Einstein">
+                            <div class="entity-info">
+                                <h5>알베르트 아인슈타인</h5>
+                                <p class="entity-type">인물 (rdfs:type :Physicist)</p>
+                                <div class="properties">
+                                    <div class="property">
+                                        <span class="prop-name">출생</span>
+                                        <span class="prop-value">1879년 3월 14일</span>
+                                    </div>
+                                    <div class="property">
+                                        <span class="prop-name">업적</span>
+                                        <span class="prop-value">상대성 이론</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="related-entities">
+                            <h6>관련 인물 (rdfs:seeAlso)</h6>
+                            <div class="related-list">
+                                <span class="related-item">막스 플랑크</span>
+                                <span class="related-item">닐스 보어</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rdfs-explanation">
+                        <h6>RDFS가 만든 마법:</h6>
+                        <ul>
+                            <li>아인슈타인 → 물리학자 → 과학자 → 인물 (계층 추론)</li>
+                            <li>상대성 이론 → 물리학 이론 → 과학 이론 (분류)</li>
+                            <li>관련 인물 자동 연결 (속성 관계)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 연속 Part 2로 이어짐을 표시 -->
+<div class="part-navigation">
+    <p class="part-indicator">Part 1 완료 - RDFS의 기초 이해</p>
+    <button class="continue-to-part2" onclick="loadPart2()">
+        Part 2로 계속: RDFS 핵심 구성요소 마스터하기 →
+    </button>
+</div>
+
+<!-- 스크립트 -->
+<script>
+// 퀴즈 답변 체크
+function checkAnswer(button, isCorrect) {
+    const feedback = button.closest('.quiz-item').querySelector('.quiz-feedback');
+    if (isCorrect) {
+        button.classList.add('correct');
+        feedback.innerHTML = '<span class="correct-feedback">✅ 정답입니다!</span>';
+    } else {
+        button.classList.add('incorrect');
+        feedback.innerHTML = '<span class="incorrect-feedback">❌ 다시 생각해보세요.</span>';
+    }
+    
+    // 모든 퀴즈 완료 체크
+    const allQuizzes = document.querySelectorAll('.quiz-item');
+    const answered = document.querySelectorAll('.correct').length;
+    if (answered === allQuizzes.length) {
+        document.querySelector('.prereq-result').style.display = 'block';
+        document.querySelector('.result-message').textContent = 
+            '훌륭합니다! RDFS 학습을 시작할 준비가 되었습니다! 🎉';
+    }
+}
+
+// 힌트 표시
+function showHint(level) {
+    const hintDisplay = document.getElementById('hintDisplay');
+    const hints = {
+        1: '💡 데이터 타입을 확인해보세요. 나이는 보통 어떤 형식이어야 할까요?',
+        2: '💡 속성 이름의 일관성을 확인해보세요. 같은 의미의 속성이 다르게 표현되어 있나요?',
+        3: '🎯 해답: 1) 나이는 숫자여야 하는데 문자열로 되어있음 2) "이름"과 "name"이 혼재되어 일관성 부족'
+    };
+    hintDisplay.innerHTML = `<div class="hint-content">${hints[level]}</div>`;
+}
+
+// 레이어 탐험
+function exploreLayer(layer) {
+    // 레이어별 상세 정보 표시
+    console.log('Exploring layer:', layer);
+}
+
+// 사례 표시
+function showCase(caseName) {
+    // 사례별 콘텐츠 전환
+    document.querySelectorAll('.case-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.case-content').forEach(content => content.classList.remove('active'));
+    
+    event.target.classList.add('active');
+    document.getElementById(`case-${caseName}`).classList.add('active');
+}
+
+// Part 2 로드
+function loadPart2() {
+    // Part 2로 스크롤 또는 페이지 전환
+    console.log('Loading Part 2...');
+}
+
+// 미션 진행도 업데이트
+function updateMissionProgress() {
+    const tasks = document.querySelectorAll('.task');
+    tasks.forEach((task, index) => {
+        // 학습 진행에 따라 자동 완료 처리
+        if (index < 2) {
+            task.setAttribute('data-complete', 'true');
+            task.style.textDecoration = 'line-through';
+            task.style.opacity = '0.6';
+        }
+    });
+}
+
+// 페이지 로드 시 애니메이션
+document.addEventListener('DOMContentLoaded', function() {
+    // 타임라인 애니메이션
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('visible');
+        }, index * 200);
+    });
+    
+    // 철학 휠 회전
+    const wheel = document.querySelector('.philosophy-wheel');
+    if (wheel) {
+        wheel.addEventListener('mouseover', function(e) {
+            if (e.target.classList.contains('philosophy-quadrant')) {
+                e.target.querySelector('.example-popup').style.display = 'block';
+            }
+        });
+    }
+});
+</script>
+
+<!-- 추가 스타일 -->
+<style>
+/* 인터랙티브 소개 */
+.interactive-intro {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.problem-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.problem-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.problem-number {
+    background: #6366f1;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+.difficulty {
+    color: #fbbf24;
+}
+
+.hint {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 퀴즈 스타일 */
+.quiz-container {
+    margin-top: 1.5rem;
+}
+
+.quiz-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.quiz-question {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.quiz-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.quiz-option {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quiz-option:hover {
+    background: #f1f5f9;
+    border-color: #6366f1;
+}
+
+.quiz-option.correct {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+.quiz-option.incorrect {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.quiz-feedback {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.correct-feedback {
+    color: #10b981;
+}
+
+.incorrect-feedback {
+    color: #ef4444;
+}
+
+/* 미션 보드 */
+.mission-board {
+    margin-top: 1.5rem;
+}
+
+.mission-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.mission {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 3px solid;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.mission.beginner {
+    border-color: #cd7f32;
+}
+
+.mission.intermediate {
+    border-color: #c0c0c0;
+}
+
+.mission.advanced {
+    border-color: #ffd700;
+}
+
+.mission:hover {
+    transform: translateY(-4px);
+}
+
+.mission-icon {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.mission-tasks {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.task {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.task::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+}
+
+.task[data-complete="true"]::before {
+    content: '☑';
+    color: #10b981;
+}
+
+.reward {
+    background: #fef3c7;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* 인터랙티브 여정 */
+.journey-map {
+    margin-top: 2rem;
+}
+
+.journey-svg {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.stage-circle {
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.stage-circle:hover {
+    r: 45;
+}
+
+.stage-circle.active {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.stage-label {
+    font-size: 14px;
+    fill: #64748b;
+}
+
+.stage-details {
+    margin-top: 2rem;
+}
+
+.stage-detail {
+    display: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.stage-detail.active {
+    display: block;
+}
+
+.mini-lessons {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mini-lesson {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.lesson-icon {
+    font-size: 1.5rem;
+}
+
+.duration {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* 스토리 컨테이너 */
+.story-container {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.story-scene {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.scene-year {
+    font-size: 0.875rem;
+    color: #92400e;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.dialogue {
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #0ea5e9;
+    font-style: italic;
+    margin: 1rem 0;
+}
+
+.narrator {
+    color: #64748b;
+    font-style: italic;
+    margin: 1rem 0;
+}
+
+.whiteboard {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+}
+
+.story-revelation {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* 문제 해결 워크스페이스 */
+.problem-workspace {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.rdf-data {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    margin: 1rem 0;
+}
+
+.problem-hints {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.hint-btn {
+    padding: 0.5rem 1rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.hint-btn:hover {
+    background: #4f46e5;
+}
+
+.hint-display {
+    margin-top: 1rem;
+}
+
+.hint-content {
+    background: #e0f2fe;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #0ea5e9;
+}
+
+/* 철학 휠 */
+.philosophy-wheel {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 2rem auto;
+}
+
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #6366f1;
+    color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.philosophy-quadrant {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: white;
+    border: 3px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.philosophy-quadrant[data-quadrant="1"] {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.philosophy-quadrant[data-quadrant="2"] {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.philosophy-quadrant[data-quadrant="3"] {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.philosophy-quadrant[data-quadrant="4"] {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.philosophy-quadrant:hover {
+    transform: scale(1.1) translateX(-50%) translateY(-50%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+}
+
+.quadrant-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.example-popup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e293b;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    width: 200px;
+    margin-top: 0.5rem;
+    z-index: 20;
+}
+
+/* 레이어 아키텍처 */
+.architecture-viewer {
+    margin-top: 2rem;
+}
+
+.layer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.layer {
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.application-layer {
+    background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+    border: 3px solid #a78bfa;
+}
+
+.rdfs-layer {
+    background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+    border: 3px solid #60a5fa;
+}
+
+.rdfs-layer.highlighted {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(96, 165, 250, 0.3);
+}
+
+.rdf-layer {
+    background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+    border: 3px solid #4ade80;
+}
+
+.layer-components {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.component {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-family: 'Courier New', monospace;
+}
+
+.triple-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+.layer-interaction {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.layer-btn {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.layer-btn:hover {
+    background: #f8fafc;
+    border-color: #6366f1;
+}
+
+.layer-btn.active {
+    background: #6366f1;
+    color: white;
+    border-color: #6366f1;
+}
+
+/* 타임라인 인터랙티브 */
+.timeline-container {
+    margin-top: 2rem;
+    overflow-x: auto;
+    padding: 2rem 0;
+}
+
+.timeline-track {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    padding: 0 2rem;
+    min-width: 800px;
+}
+
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #e5e7eb;
+    z-index: 0;
+}
+
+.timeline-item {
+    position: relative;
+    flex: 1;
+    min-width: 150px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-point {
+    width: 20px;
+    height: 20px;
+    background: #6366f1;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-item.highlight .timeline-point {
+    width: 30px;
+    height: 30px;
+    background: #f59e0b;
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+    border: 2px solid #e5e7eb;
+    text-align: center;
+}
+
+.timeline-item.highlight .timeline-content {
+    border-color: #f59e0b;
+}
+
+.impact {
+    background: #fef3c7;
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #92400e;
+}
+
+/* 실전 탐험 */
+.real-world-explorer {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.case-selector {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.case-btn {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.case-btn:hover {
+    background: #f1f5f9;
+}
+
+.case-btn.active {
+    background: #6366f1;
+    color: white;
+    border-color: #6366f1;
+}
+
+.case-content {
+    display: none;
+}
+
+.case-content.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.case-demo {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.search-box {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    padding: 0.75rem 2rem;
+    background: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.knowledge-panel {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.entity-card {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.entity-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.entity-info h5 {
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+}
+
+.entity-type {
+    color: #6366f1;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.properties {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.property {
+    display: flex;
+    gap: 1rem;
+}
+
+.prop-name {
+    font-weight: 600;
+    color: #64748b;
+    min-width: 80px;
+}
+
+.prop-value {
+    color: #1e293b;
+}
+
+.related-entities {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.related-list {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.related-item {
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    border: 1px solid #e5e7eb;
+}
+
+.rdfs-explanation {
+    background: #e0f2fe;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.rdfs-explanation h6 {
+    margin-bottom: 0.5rem;
+    color: #0369a1;
+}
+
+.rdfs-explanation ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+/* Part 네비게이션 */
+.part-navigation {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.part-indicator {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.continue-to-part2 {
+    background: white;
+    color: #6366f1;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.continue-to-part2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .philosophy-wheel {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .philosophy-quadrant {
+        width: 120px;
+        height: 120px;
+        font-size: 0.875rem;
+    }
+    
+    .quadrant-icon {
+        font-size: 1.5rem;
+    }
+    
+    .timeline-track {
+        flex-direction: column;
+        min-width: auto;
+    }
+    
+    .timeline-track::before {
+        width: 3px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+    }
+    
+    .case-demo {
+        padding: 1rem;
+    }
+    
+    .entity-card {
+        flex-direction: column;
+    }
+}
+</style>

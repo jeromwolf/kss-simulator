@@ -1,0 +1,1451 @@
+<!-- Chapter 12: 뉴스 온톨로지: 지식 그래프 (인터랙티브 마스터 버전) Part 3 -->
+
+<!-- Part 3 시작 -->
+<div class="part-header news-application-mastery">
+    <div class="news-ecosystem-animation"></div>
+    <h2 class="part-title">Part 3: 실전 뉴스 인텔리전스 시스템</h2>
+    <p class="part-description">뉴스 지식 그래프를 활용한 혁신적인 애플리케이션을 구축하고 실시간 인사이트를 창출합니다!</p>
+</div>
+
+<!-- 뉴스 인텔리전스 아키텍트 준비도 -->
+<div class="progress-check news-architect">
+    <h3>🚀 뉴스 인텔리전스 아키텍트 준비도</h3>
+    <div class="architect-readiness">
+        <div class="competency-matrix">
+            <div class="matrix-header">
+                <h4>핵심 역량 매트릭스</h4>
+                <div class="matrix-legend">
+                    <span class="legend-item expert">전문가 (90-100%)</span>
+                    <span class="legend-item advanced">고급 (80-89%)</span>
+                    <span class="legend-item intermediate">중급 (70-79%)</span>
+                </div>
+            </div>
+            
+            <div class="competency-grid">
+                <div class="competency-area">
+                    <h5>🛡️ 팩트 체킹</h5>
+                    <div class="skills-matrix">
+                        <div class="skill-cell expert">정보 검증</div>
+                        <div class="skill-cell advanced">출처 신뢰도</div>
+                        <div class="skill-cell advanced">교차 검증</div>
+                        <div class="skill-cell intermediate">편향 감지</div>
+                    </div>
+                </div>
+                
+                <div class="competency-area">
+                    <h5>🎯 개인화</h5>
+                    <div class="skills-matrix">
+                        <div class="skill-cell expert">프로파일링</div>
+                        <div class="skill-cell advanced">추천 알고리즘</div>
+                        <div class="skill-cell expert">관심사 분석</div>
+                        <div class="skill-cell advanced">다양성 보장</div>
+                    </div>
+                </div>
+                
+                <div class="competency-area">
+                    <h5>📊 모니터링</h5>
+                    <div class="skills-matrix">
+                        <div class="skill-cell expert">실시간 추적</div>
+                        <div class="skill-cell advanced">이슈 탐지</div>
+                        <div class="skill-cell expert">트렌드 예측</div>
+                        <div class="skill-cell advanced">영향력 분석</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="achievement-showcase">
+            <h4>🏆 달성 업적</h4>
+            <div class="achievement-cards">
+                <div class="achievement-card legendary">
+                    <div class="achievement-icon">💎</div>
+                    <h5>지식 그래프 마스터</h5>
+                    <p>1000만+ 트리플 처리</p>
+                </div>
+                <div class="achievement-card epic">
+                    <div class="achievement-icon">🔮</div>
+                    <h5>트렌드 예언자</h5>
+                    <p>95% 예측 정확도</p>
+                </div>
+                <div class="achievement-card rare">
+                    <div class="achievement-icon">⚡</div>
+                    <h5>실시간 분석가</h5>
+                    <p>&lt;100ms 응답 시간</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 12.7: 팩트 체킹 시스템 -->
+<section class="content-section fact-checking-system">
+    <h2>12.7 지능형 팩트 체킹 시스템 구현</h2>
+    
+    <!-- 팩트 체킹 엔진 -->
+    <div class="fact-checking-engine">
+        <h3>🛡️ 실시간 팩트 체킹 플랫폼</h3>
+        <div class="fact-checker-interface">
+            <div class="input-section">
+                <h4>검증할 뉴스 입력</h4>
+                <textarea id="newsInput" placeholder="검증하고 싶은 뉴스 내용을 입력하세요...
+예: '삼성전자가 2024년 AI 반도체 시장 점유율 1위를 달성했다'"></textarea>
+                <button class="verify-btn" onclick="verifyFacts()">
+                    <i class="fas fa-shield-alt"></i> 팩트 체크 시작
+                </button>
+            </div>
+            
+            <div class="verification-process" id="verificationProcess">
+                <div class="process-stage" data-stage="1">
+                    <div class="stage-header">
+                        <span class="stage-number">1</span>
+                        <h5>개체 추출</h5>
+                    </div>
+                    <div class="stage-content">
+                        <div class="entity-list">
+                            <span class="entity organization">삼성전자</span>
+                            <span class="entity date">2024년</span>
+                            <span class="entity topic">AI 반도체</span>
+                            <span class="entity metric">시장 점유율 1위</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-stage" data-stage="2">
+                    <div class="stage-header">
+                        <span class="stage-number">2</span>
+                        <h5>출처 검색</h5>
+                    </div>
+                    <div class="stage-content">
+                        <div class="source-search">
+                            <div class="source-item">
+                                <span class="source-type official">공식 발표</span>
+                                <span class="source-name">삼성전자 IR</span>
+                                <span class="relevance high">98%</span>
+                            </div>
+                            <div class="source-item">
+                                <span class="source-type media">언론 보도</span>
+                                <span class="source-name">연합뉴스</span>
+                                <span class="relevance medium">75%</span>
+                            </div>
+                            <div class="source-item">
+                                <span class="source-type research">시장 조사</span>
+                                <span class="source-name">가트너</span>
+                                <span class="relevance high">88%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-stage" data-stage="3">
+                    <div class="stage-header">
+                        <span class="stage-number">3</span>
+                        <h5>교차 검증</h5>
+                    </div>
+                    <div class="stage-content">
+                        <div class="cross-validation">
+                            <div class="validation-chart">
+                                <canvas id="validationChart" width="300" height="200"></canvas>
+                            </div>
+                            <div class="validation-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">일치하는 출처</span>
+                                    <span class="detail-value">5/7</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">상충되는 정보</span>
+                                    <span class="detail-value">2건</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">시간 일관성</span>
+                                    <span class="detail-value">85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-stage" data-stage="4">
+                    <div class="stage-header">
+                        <span class="stage-number">4</span>
+                        <h5>최종 판정</h5>
+                    </div>
+                    <div class="stage-content">
+                        <div class="final-verdict">
+                            <div class="verdict-indicator partially-true">
+                                <span class="verdict-icon">⚠️</span>
+                                <h5>부분적 사실</h5>
+                            </div>
+                            <div class="verdict-explanation">
+                                <p>삼성전자가 AI 반도체 분야에서 선도적 위치에 있는 것은 사실이나, 
+                                   2024년 시장 점유율 1위는 아직 확정되지 않은 예측 데이터입니다.</p>
+                                <div class="evidence-summary">
+                                    <h6>주요 근거:</h6>
+                                    <ul>
+                                        <li>2023년 4분기 기준 시장 점유율 2위 (28.5%)</li>
+                                        <li>2024년 예상 투자 규모 10조원 발표</li>
+                                        <li>가트너 예측: 2024년 말 1위 가능성 65%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 신뢰도 네트워크 시각화 -->
+        <div class="trust-network-viz">
+            <h4>📊 출처 신뢰도 네트워크</h4>
+            <div class="network-container">
+                <svg id="trustNetwork" width="100%" height="400">
+                    <!-- 동적으로 생성되는 네트워크 그래프 -->
+                </svg>
+                <div class="network-legend">
+                    <div class="legend-item">
+                        <span class="node-color official"></span>
+                        <span>공식 출처</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="node-color media"></span>
+                        <span>언론사</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="node-color research"></span>
+                        <span>연구기관</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="node-color social"></span>
+                        <span>소셜미디어</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 12.8: 개인화 뉴스 추천 -->
+<section class="content-section personalized-news">
+    <h2>12.8 AI 기반 개인화 뉴스 추천 엔진</h2>
+    
+    <!-- 추천 시스템 대시보드 -->
+    <div class="recommendation-dashboard">
+        <h3>🎯 스마트 뉴스 큐레이션 시스템</h3>
+        
+        <!-- 사용자 프로파일 분석 -->
+        <div class="user-profile-analysis">
+            <h4>사용자 관심사 프로파일</h4>
+            <div class="interest-cloud">
+                <div class="interest-bubble tech large">기술</div>
+                <div class="interest-bubble economy medium">경제</div>
+                <div class="interest-bubble ai large">AI</div>
+                <div class="interest-bubble startup small">스타트업</div>
+                <div class="interest-bubble semiconductor large">반도체</div>
+                <div class="interest-bubble climate small">기후</div>
+                <div class="interest-bubble health medium">건강</div>
+            </div>
+            
+            <div class="reading-patterns">
+                <h5>독서 패턴 분석</h5>
+                <div class="pattern-charts">
+                    <div class="pattern-item">
+                        <canvas id="timePattern" width="200" height="100"></canvas>
+                        <span>시간대별 활동</span>
+                    </div>
+                    <div class="pattern-item">
+                        <canvas id="categoryPattern" width="200" height="100"></canvas>
+                        <span>카테고리 선호도</span>
+                    </div>
+                    <div class="pattern-item">
+                        <canvas id="depthPattern" width="200" height="100"></canvas>
+                        <span>읽기 깊이</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 추천 알고리즘 시뮬레이터 -->
+        <div class="recommendation-simulator">
+            <h4>추천 알고리즘 작동 원리</h4>
+            <div class="algorithm-flow">
+                <div class="algo-step">
+                    <div class="step-icon">📥</div>
+                    <h5>입력 데이터</h5>
+                    <ul>
+                        <li>읽기 이력</li>
+                        <li>검색 키워드</li>
+                        <li>체류 시간</li>
+                        <li>상호작용</li>
+                    </ul>
+                </div>
+                
+                <div class="algo-arrow">→</div>
+                
+                <div class="algo-step">
+                    <div class="step-icon">🧮</div>
+                    <h5>특징 추출</h5>
+                    <ul>
+                        <li>토픽 모델링</li>
+                        <li>감성 분석</li>
+                        <li>개체 빈도</li>
+                        <li>시간 패턴</li>
+                    </ul>
+                </div>
+                
+                <div class="algo-arrow">→</div>
+                
+                <div class="algo-step">
+                    <div class="step-icon">🤖</div>
+                    <h5>ML 모델</h5>
+                    <ul>
+                        <li>협업 필터링</li>
+                        <li>콘텐츠 기반</li>
+                        <li>하이브리드</li>
+                        <li>강화 학습</li>
+                    </ul>
+                </div>
+                
+                <div class="algo-arrow">→</div>
+                
+                <div class="algo-step">
+                    <div class="step-icon">⚖️</div>
+                    <h5>균형 조정</h5>
+                    <ul>
+                        <li>다양성 확보</li>
+                        <li>필터 버블 방지</li>
+                        <li>신선도 가중치</li>
+                        <li>중요도 점수</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 실시간 추천 결과 -->
+        <div class="live-recommendations">
+            <h4>맞춤형 뉴스 피드</h4>
+            <div class="recommendation-controls">
+                <div class="control-item">
+                    <label>관련성 vs 다양성</label>
+                    <input type="range" id="diversitySlider" min="0" max="100" value="70">
+                    <span class="control-value">70%</span>
+                </div>
+                <div class="control-item">
+                    <label>최신순 vs 중요도순</label>
+                    <input type="range" id="freshnessSlider" min="0" max="100" value="50">
+                    <span class="control-value">50%</span>
+                </div>
+            </div>
+            
+            <div class="news-feed">
+                <div class="news-item recommended">
+                    <div class="recommendation-score">
+                        <span class="score">95%</span>
+                        <span class="label">추천도</span>
+                    </div>
+                    <div class="news-content">
+                        <h5>OpenAI, GPT-5 개발 완료 임박</h5>
+                        <p>차세대 AI 모델의 성능이 기존 대비 10배 향상될 것으로 예상...</p>
+                        <div class="news-meta">
+                            <span class="category">AI</span>
+                            <span class="time">5분 전</span>
+                            <span class="source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-reason">
+                        <i class="fas fa-lightbulb"></i>
+                        AI 관심사 + 최신 기술 동향 + 신뢰할 수 있는 출처
+                    </div>
+                </div>
+                
+                <div class="news-item serendipity">
+                    <div class="recommendation-score">
+                        <span class="score">72%</span>
+                        <span class="label">의외성</span>
+                    </div>
+                    <div class="news-content">
+                        <h5>기후 변화가 반도체 생산에 미치는 영향</h5>
+                        <p>극한 기후로 인한 공급망 차질이 기술 산업에 새로운 도전...</p>
+                        <div class="news-meta">
+                            <span class="category">환경</span>
+                            <span class="time">1시간 전</span>
+                            <span class="source">Nature</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-reason">
+                        <i class="fas fa-random"></i>
+                        관심 분야 교차점 + 시야 확장 + 다양성 증진
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 12.9: 실시간 이슈 모니터링 -->
+<section class="content-section realtime-monitoring">
+    <h2>12.9 실시간 이슈 모니터링 & 트렌드 분석</h2>
+    
+    <!-- 이슈 모니터링 대시보드 -->
+    <div class="issue-monitoring-dashboard">
+        <h3>📡 글로벌 뉴스 레이더</h3>
+        
+        <!-- 실시간 이슈 트래커 -->
+        <div class="realtime-tracker">
+            <div class="tracker-header">
+                <h4>핫 이슈 실시간 추적</h4>
+                <div class="update-indicator">
+                    <span class="pulse"></span>
+                    <span>실시간 업데이트 중</span>
+                </div>
+            </div>
+            
+            <div class="issue-heatmap">
+                <div class="heatmap-grid">
+                    <div class="heatmap-cell hot" data-region="북미" data-intensity="95">
+                        <span class="region">북미</span>
+                        <span class="topic">AI 규제</span>
+                        <span class="intensity">🔥 95</span>
+                    </div>
+                    <div class="heatmap-cell warm" data-region="유럽" data-intensity="78">
+                        <span class="region">유럽</span>
+                        <span class="topic">에너지 위기</span>
+                        <span class="intensity">♨️ 78</span>
+                    </div>
+                    <div class="heatmap-cell hot" data-region="아시아" data-intensity="88">
+                        <span class="region">아시아</span>
+                        <span class="topic">반도체 경쟁</span>
+                        <span class="intensity">🔥 88</span>
+                    </div>
+                    <div class="heatmap-cell mild" data-region="중동" data-intensity="65">
+                        <span class="region">중동</span>
+                        <span class="topic">신재생에너지</span>
+                        <span class="intensity">☀️ 65</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 이슈 생명주기 -->
+            <div class="issue-lifecycle">
+                <h5>이슈 생명주기 분석</h5>
+                <div class="lifecycle-visualization">
+                    <canvas id="lifecycleChart" width="600" height="300"></canvas>
+                    <div class="lifecycle-stages">
+                        <div class="stage emerging">
+                            <span class="stage-icon">🌱</span>
+                            <h6>부상</h6>
+                            <ul>
+                                <li>양자 컴퓨팅 돌파구</li>
+                                <li>새로운 팬데믹 변종</li>
+                            </ul>
+                        </div>
+                        <div class="stage growing">
+                            <span class="stage-icon">📈</span>
+                            <h6>성장</h6>
+                            <ul>
+                                <li>생성 AI 윤리</li>
+                                <li>전기차 배터리 혁신</li>
+                            </ul>
+                        </div>
+                        <div class="stage peak">
+                            <span class="stage-icon">🔝</span>
+                            <h6>정점</h6>
+                            <ul>
+                                <li>AI 일자리 대체</li>
+                                <li>기후 변화 대응</li>
+                            </ul>
+                        </div>
+                        <div class="stage declining">
+                            <span class="stage-icon">📉</span>
+                            <h6>쇠퇴</h6>
+                            <ul>
+                                <li>메타버스 과대광고</li>
+                                <li>NFT 시장</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 영향력 분석 -->
+        <div class="impact-analysis">
+            <h4>🌊 이슈 파급 효과 분석</h4>
+            <div class="ripple-effect-viz">
+                <div class="central-issue">
+                    <span class="issue-name">AI 규제 법안</span>
+                </div>
+                <div class="impact-rings">
+                    <div class="impact-ring primary">
+                        <div class="impact-node tech">기술 기업</div>
+                        <div class="impact-node research">연구기관</div>
+                        <div class="impact-node startup">스타트업</div>
+                        <div class="impact-node investor">투자자</div>
+                    </div>
+                    <div class="impact-ring secondary">
+                        <div class="impact-node job">일자리</div>
+                        <div class="impact-node education">교육</div>
+                        <div class="impact-node economy">경제</div>
+                        <div class="impact-node ethics">윤리</div>
+                    </div>
+                    <div class="impact-ring tertiary">
+                        <div class="impact-node society">사회</div>
+                        <div class="impact-node culture">문화</div>
+                        <div class="impact-node policy">정책</div>
+                        <div class="impact-node global">국제관계</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="impact-metrics">
+                <div class="metric-card">
+                    <span class="metric-icon">👥</span>
+                    <h6>영향받는 인구</h6>
+                    <span class="metric-value">2.3억명</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-icon">💰</span>
+                    <h6>경제적 영향</h6>
+                    <span class="metric-value">$850B</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-icon">🏢</span>
+                    <h6>관련 기업</h6>
+                    <span class="metric-value">15,000+</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-icon">🌍</span>
+                    <h6>영향 국가</h6>
+                    <span class="metric-value">87개국</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 최종 프로젝트: 뉴스 인사이트 대시보드 -->
+<section class="content-section final-project">
+    <h2>🎓 최종 프로젝트: 통합 뉴스 인텔리전스 플랫폼</h2>
+    
+    <div class="project-overview">
+        <h3>종합 뉴스 인사이트 대시보드 구축</h3>
+        <p>지금까지 학습한 모든 기술을 통합하여 실시간 뉴스 인텔리전스 플랫폼을 완성합니다!</p>
+        
+        <div class="project-simulator">
+            <div class="dashboard-header">
+                <h4>News Intelligence Command Center</h4>
+                <div class="dashboard-controls">
+                    <button class="control-btn active" data-view="overview">전체 보기</button>
+                    <button class="control-btn" data-view="analysis">심층 분석</button>
+                    <button class="control-btn" data-view="prediction">예측 모델</button>
+                    <button class="control-btn" data-view="alerts">알림 설정</button>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- 실시간 뉴스 스트림 -->
+                <div class="dashboard-widget news-stream">
+                    <h5>📰 실시간 뉴스 스트림</h5>
+                    <div class="stream-container">
+                        <div class="news-ticker">
+                            <div class="ticker-item breaking">
+                                <span class="ticker-time">14:32</span>
+                                <span class="ticker-badge">속보</span>
+                                <span class="ticker-text">EU, AI Act 최종 승인</span>
+                            </div>
+                            <div class="ticker-item trending">
+                                <span class="ticker-time">14:28</span>
+                                <span class="ticker-badge">화제</span>
+                                <span class="ticker-text">테슬라 자율주행 라이센스 획득</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 지식 그래프 시각화 -->
+                <div class="dashboard-widget knowledge-graph">
+                    <h5>🧠 실시간 지식 그래프</h5>
+                    <div class="graph-container">
+                        <svg id="knowledgeGraphViz" width="100%" height="300"></svg>
+                    </div>
+                </div>
+                
+                <!-- 감성 분석 -->
+                <div class="dashboard-widget sentiment-analysis">
+                    <h5>😊 글로벌 감성 지표</h5>
+                    <div class="sentiment-gauge">
+                        <div class="gauge-meter" data-sentiment="positive">
+                            <div class="gauge-fill" style="width: 68%"></div>
+                        </div>
+                        <div class="sentiment-breakdown">
+                            <span class="positive">긍정 68%</span>
+                            <span class="neutral">중립 24%</span>
+                            <span class="negative">부정 8%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 예측 모델 -->
+                <div class="dashboard-widget prediction-model">
+                    <h5>🔮 24시간 트렌드 예측</h5>
+                    <div class="prediction-chart">
+                        <canvas id="predictionChart" width="100%" height="200"></canvas>
+                    </div>
+                    <div class="prediction-alerts">
+                        <div class="alert-item high">
+                            <span class="alert-icon">⚡</span>
+                            <span>AI 규제 관련 뉴스 300% 증가 예상</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 인사이트 생성기 -->
+            <div class="insight-generator">
+                <h5>💡 AI 생성 인사이트</h5>
+                <div class="generated-insights">
+                    <div class="insight-card">
+                        <div class="insight-header">
+                            <span class="insight-type">🔗 연관성 발견</span>
+                            <span class="insight-confidence">신뢰도 92%</span>
+                        </div>
+                        <p>EU AI Act 승인과 테슬라 자율주행 라이센스 획득 간 높은 상관관계 감지. 
+                           규제 명확화가 기업 투자 증가로 이어지는 패턴 확인.</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-header">
+                            <span class="insight-type">📈 트렌드 예측</span>
+                            <span class="insight-confidence">신뢰도 87%</span>
+                        </div>
+                        <p>향후 48시간 내 AI 윤리 및 안전성 관련 뉴스 급증 예상. 
+                           관련 주식 및 투자 움직임 주목 필요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 학습 완료 및 다음 단계 -->
+<div class="chapter-completion">
+    <h2>🎊 Chapter 12 완료!</h2>
+    <div class="completion-summary">
+        <h3>학습 성과</h3>
+        <div class="achievement-grid">
+            <div class="achievement-item completed">
+                <i class="fas fa-check-circle"></i>
+                <span>뉴스 온톨로지 설계</span>
+            </div>
+            <div class="achievement-item completed">
+                <i class="fas fa-check-circle"></i>
+                <span>NER & 관계 추출</span>
+            </div>
+            <div class="achievement-item completed">
+                <i class="fas fa-check-circle"></i>
+                <span>시공간 모델링</span>
+            </div>
+            <div class="achievement-item completed">
+                <i class="fas fa-check-circle"></i>
+                <span>팩트 체킹 시스템</span>
+            </div>
+            <div class="achievement-item completed">
+                <i class="fas fa-check-circle"></i>
+                <span>개인화 추천</span>
+            </div>
+            <div class="achievement-item completed">
+                <i class="fas fa-check-circle"></i>
+                <span>실시간 모니터링</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="next-steps">
+        <h3>다음 Chapter 예고</h3>
+        <p>Chapter 13에서는 금융 온톨로지와 뉴스 온톨로지를 통합한 대규모 프로젝트를 진행합니다!</p>
+        <div class="preview-topics">
+            <span class="topic-badge">금융 지식 그래프</span>
+            <span class="topic-badge">뉴스-금융 통합</span>
+            <span class="topic-badge">투자 인사이트</span>
+            <span class="topic-badge">리스크 분석</span>
+        </div>
+    </div>
+</div>
+
+<!-- Part 3 전용 스타일 -->
+<style>
+/* 파트 헤더 애니메이션 */
+.news-ecosystem-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.1;
+}
+
+.news-ecosystem-animation::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, 
+        transparent 0%, 
+        rgba(59, 130, 246, 0.1) 20%, 
+        transparent 40%);
+    animation: ecosystemPulse 4s ease-in-out infinite;
+}
+
+@keyframes ecosystemPulse {
+    0%, 100% { transform: scale(0.8) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+}
+
+/* 역량 매트릭스 */
+.competency-matrix {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.matrix-legend {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.legend-item {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.legend-item.expert { background: #10b981; color: white; }
+.legend-item.advanced { background: #3b82f6; color: white; }
+.legend-item.intermediate { background: #f59e0b; color: white; }
+
+.competency-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.skills-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.skill-cell {
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.skill-cell.expert { background: #10b981; color: white; }
+.skill-cell.advanced { background: #3b82f6; color: white; }
+.skill-cell.intermediate { background: #f59e0b; color: white; }
+
+/* 업적 카드 */
+.achievement-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.achievement-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card.legendary {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+}
+
+.achievement-card.epic {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+}
+
+.achievement-card.rare {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 팩트 체킹 인터페이스 */
+.fact-checker-interface {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+#newsInput {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.verify-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.verify-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.verification-process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.process-stage {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.process-stage[data-stage="1"] { border-color: #3b82f6; }
+.process-stage[data-stage="2"] { border-color: #10b981; }
+.process-stage[data-stage="3"] { border-color: #f59e0b; }
+.process-stage[data-stage="4"] { border-color: #8b5cf6; }
+
+.stage-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+/* 개체 태그 */
+.entity {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.entity.organization { background: #dbeafe; color: #1e40af; }
+.entity.date { background: #fef3c7; color: #92400e; }
+.entity.topic { background: #d1fae5; color: #065f46; }
+.entity.metric { background: #ede9fe; color: #5b21b6; }
+
+/* 최종 판정 */
+.verdict-indicator {
+    text-align: center;
+    padding: 2rem;
+}
+
+.verdict-indicator.partially-true {
+    background: #fef3c7;
+    border-radius: 12px;
+}
+
+.verdict-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* 신뢰도 네트워크 */
+.trust-network-viz {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.node-color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.node-color.official { background: #3b82f6; }
+.node-color.media { background: #10b981; }
+.node-color.research { background: #8b5cf6; }
+.node-color.social { background: #f59e0b; }
+
+/* 관심사 클라우드 */
+.interest-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.interest-bubble {
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.interest-bubble.large {
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.interest-bubble.medium {
+    font-size: 1rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.interest-bubble.small {
+    font-size: 0.85rem;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+}
+
+.interest-bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* 알고리즘 플로우 */
+.algorithm-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: 16px;
+}
+
+.algo-step {
+    flex: 1;
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.algo-arrow {
+    font-size: 2rem;
+    color: #cbd5e1;
+    margin: 0 1rem;
+}
+
+/* 뉴스 피드 */
+.news-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.recommendation-score {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border-radius: 8px;
+    min-width: 80px;
+}
+
+.recommendation-score .score {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.news-item.serendipity .recommendation-score {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.recommendation-reason {
+    padding: 0.75rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #1e40af;
+    margin-top: 0.5rem;
+}
+
+/* 히트맵 */
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.heatmap-cell {
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.heatmap-cell.hot {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.heatmap-cell.warm {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.heatmap-cell.mild {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.heatmap-cell .region {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.heatmap-cell .topic {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.heatmap-cell .intensity {
+    display: block;
+    font-size: 1.3rem;
+}
+
+/* 이슈 생명주기 */
+.lifecycle-stages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.stage {
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stage.emerging { background: #d1fae5; }
+.stage.growing { background: #dbeafe; }
+.stage.peak { background: #fef3c7; }
+.stage.declining { background: #fecaca; }
+
+.stage-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* 파급 효과 시각화 */
+.ripple-effect-viz {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.central-issue {
+    position: absolute;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 50%;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.impact-rings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.impact-ring {
+    position: absolute;
+    border: 2px solid #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.impact-ring.primary {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.impact-ring.secondary {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.impact-ring.tertiary {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.impact-node {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* 대시보드 위젯 */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.dashboard-widget {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.dashboard-widget h5 {
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+/* 뉴스 티커 */
+.news-ticker {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.ticker-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.ticker-item.breaking .ticker-badge {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.ticker-item.trending .ticker-badge {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+/* 감성 게이지 */
+.sentiment-gauge {
+    text-align: center;
+}
+
+.gauge-meter {
+    width: 100%;
+    height: 30px;
+    background: #e5e7eb;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #3b82f6);
+    transition: width 0.5s ease;
+}
+
+.sentiment-breakdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.sentiment-breakdown .positive { color: #10b981; }
+.sentiment-breakdown .neutral { color: #6b7280; }
+.sentiment-breakdown .negative { color: #ef4444; }
+
+/* 인사이트 카드 */
+.generated-insights {
+    display: grid;
+    gap: 1rem;
+}
+
+.insight-card {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #bfdbfe;
+}
+
+.insight-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.insight-type {
+    font-weight: 600;
+    color: #1e40af;
+}
+
+.insight-confidence {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* 완료 섹션 */
+.chapter-completion {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: 16px;
+    padding: 3rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.achievement-item {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.achievement-item.completed {
+    color: #10b981;
+    border: 2px solid #10b981;
+}
+
+.achievement-item i {
+    font-size: 1.5rem;
+}
+
+.preview-topics {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.topic-badge {
+    padding: 0.5rem 1rem;
+    background: #3b82f6;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .competency-grid,
+    .verification-process,
+    .lifecycle-stages,
+    .achievement-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .algorithm-flow {
+        flex-direction: column;
+    }
+    
+    .algo-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .preview-topics {
+        flex-wrap: wrap;
+    }
+}
+
+/* 인터랙티브 효과 */
+.pulse {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+</style>
+
+<!-- JavaScript 초기화 -->
+<script>
+// 팩트 체킹 시뮬레이션
+function verifyFacts() {
+    const stages = document.querySelectorAll('.process-stage');
+    stages.forEach((stage, index) => {
+        setTimeout(() => {
+            stage.style.borderColor = '#10b981';
+            stage.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                stage.style.transform = 'scale(1)';
+            }, 300);
+        }, index * 1000);
+    });
+}
+
+// 차트 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 검증 차트
+    const validationCtx = document.getElementById('validationChart');
+    if (validationCtx) {
+        // 차트 그리기 로직
+    }
+    
+    // 시간 패턴 차트
+    const timeCtx = document.getElementById('timePattern');
+    if (timeCtx) {
+        // 차트 그리기 로직
+    }
+    
+    // 생명주기 차트
+    const lifecycleCtx = document.getElementById('lifecycleChart');
+    if (lifecycleCtx) {
+        // 차트 그리기 로직
+    }
+    
+    // 예측 차트
+    const predictionCtx = document.getElementById('predictionChart');
+    if (predictionCtx) {
+        // 차트 그리기 로직
+    }
+});
+
+// 대시보드 뷰 전환
+document.querySelectorAll('.control-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        // 뷰 전환 로직
+    });
+});
+
+// 다양성 슬라이더
+document.getElementById('diversitySlider')?.addEventListener('input', function(e) {
+    const value = e.target.value;
+    e.target.nextElementSibling.textContent = value + '%';
+    // 추천 알고리즘 업데이트
+});
+
+// 신선도 슬라이더
+document.getElementById('freshnessSlider')?.addEventListener('input', function(e) {
+    const value = e.target.value;
+    e.target.nextElementSibling.textContent = value + '%';
+    // 추천 알고리즘 업데이트
+});
+</script>

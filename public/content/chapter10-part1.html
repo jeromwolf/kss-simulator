@@ -1,0 +1,1672 @@
+<!-- Chapter 10: 온톨로지 설계 방법론 (인터랙티브 마스터 버전) Part 1 -->
+
+<!-- Part 1 시작 -->
+<div class="part-header methodology-mastery">
+    <div class="methodology-flow-animation"></div>
+    <h2 class="part-title">Part 1: 온톨로지 설계의 철학과 생명주기</h2>
+    <p class="part-description">체계적인 방법론과 설계 원칙의 기초를 다지는 시간입니다. 우연이 아닌 계획으로 만드는 온톨로지!</p>
+</div>
+
+<!-- 설계 마스터 준비도 -->
+<div class="progress-check methodology-level">
+    <h3>🏗️ 설계 마스터 준비도 평가</h3>
+    <div class="methodology-readiness">
+        <div class="design-competency-radar">
+            <div class="competency-center">
+                <h4>설계 역량 레이더</h4>
+                <div class="radar-visualization">
+                    <canvas id="designRadar" width="300" height="300"></canvas>
+                    <div class="radar-skills">
+                        <div class="skill-axis" data-skill="planning">
+                            <span class="skill-label">프로젝트 계획</span>
+                            <div class="skill-meter">
+                                <div class="meter-progress" style="width: 75%"></div>
+                            </div>
+                            <span class="skill-value">75%</span>
+                        </div>
+                        <div class="skill-axis" data-skill="modeling">
+                            <span class="skill-label">개념 모델링</span>
+                            <div class="skill-meter">
+                                <div class="meter-progress" style="width: 80%"></div>
+                            </div>
+                            <span class="skill-value">80%</span>
+                        </div>
+                        <div class="skill-axis" data-skill="evaluation">
+                            <span class="skill-label">품질 평가</span>
+                            <div class="skill-meter">
+                                <div class="meter-progress" style="width: 60%"></div>
+                            </div>
+                            <span class="skill-value">60%</span>
+                        </div>
+                        <div class="skill-axis" data-skill="collaboration">
+                            <span class="skill-label">협업 설계</span>
+                            <div class="skill-meter">
+                                <div class="meter-progress" style="width: 70%"></div>
+                            </div>
+                            <span class="skill-value">70%</span>
+                        </div>
+                        <div class="skill-axis" data-skill="documentation">
+                            <span class="skill-label">문서화</span>
+                            <div class="skill-meter">
+                                <div class="meter-progress" style="width: 65%"></div>
+                            </div>
+                            <span class="skill-value">65%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="readiness-verdict">
+            <div class="verdict-panel">
+                <div class="verdict-icon">🎯</div>
+                <div class="verdict-content">
+                    <h4>설계 방법론 학습 준비 완료!</h4>
+                    <p>프로젝트 경험과 이론적 기반이 충분합니다. 체계적인 방법론 마스터리에 도전하세요!</p>
+                    <div class="next-milestone">
+                        <span class="milestone-icon">🏆</span>
+                        <span>목표: 온톨로지 아키텍트 달성</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 10.1: 온톨로지 설계의 철학 -->
+<section class="content-section philosophical-design">
+    <h2>10.1 온톨로지 설계의 철학과 원칙</h2>
+    
+    <!-- 설계 철학 탐구기 -->
+    <div class="philosophy-explorer">
+        <h3>🤔 설계 철학 탐구기</h3>
+        <div class="philosophy-dimensions">
+            <div class="philosophy-tab-controls">
+                <button class="philosophy-tab active" onclick="showPhilosophy('aristotelian')">
+                    <span class="tab-icon">🏛️</span>
+                    <span>아리스토텔레스적</span>
+                </button>
+                <button class="philosophy-tab" onclick="showPhilosophy('pragmatic')">
+                    <span class="tab-icon">🔧</span>
+                    <span>실용주의적</span>
+                </button>
+                <button class="philosophy-tab" onclick="showPhilosophy('systems')">
+                    <span class="tab-icon">🌐</span>
+                    <span>시스템 사고</span>
+                </button>
+                <button class="philosophy-tab" onclick="showPhilosophy('agile')">
+                    <span class="tab-icon">⚡</span>
+                    <span>애자일</span>
+                </button>
+            </div>
+            
+            <div class="philosophy-content-area">
+                <div class="philosophy-content active" id="aristotelian-philosophy">
+                    <div class="philosophy-header">
+                        <h4>🏛️ 아리스토텔레스적 접근</h4>
+                        <p class="philosophy-motto">"존재하는 모든 것의 본질을 정확히 분류하라"</p>
+                    </div>
+                    <div class="philosophy-principles">
+                        <div class="principle-item">
+                            <div class="principle-icon">📏</div>
+                            <div class="principle-text">
+                                <h5>명확한 정의</h5>
+                                <p>모든 개념은 필요충분조건으로 정의되어야 함</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">🌳</div>
+                            <div class="principle-text">
+                                <h5>계층적 분류</h5>
+                                <p>상위 개념에서 하위 개념으로의 체계적 구조화</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">⚖️</div>
+                            <div class="principle-text">
+                                <h5>논리적 일관성</h5>
+                                <p>모순 없는 완벽한 논리 체계 구축</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="philosophy-example">
+                        <h5>적용 예시</h5>
+                        <div class="example-case">
+                            <strong>생물학적 분류체계:</strong> 계 → 문 → 강 → 목 → 과 → 속 → 종의 엄격한 위계질서
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="philosophy-content" id="pragmatic-philosophy">
+                    <div class="philosophy-header">
+                        <h4>🔧 실용주의적 접근</h4>
+                        <p class="philosophy-motto">"작동하는 것이 진리다"</p>
+                    </div>
+                    <div class="philosophy-principles">
+                        <div class="principle-item">
+                            <div class="principle-icon">🎯</div>
+                            <div class="principle-text">
+                                <h5>목적 중심</h5>
+                                <p>사용 목적에 맞는 최적화된 설계</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">⚡</div>
+                            <div class="principle-text">
+                                <h5>성능 우선</h5>
+                                <p>이론적 완벽함보다 실무적 효율성</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">🔄</div>
+                            <div class="principle-text">
+                                <h5>진화적 개선</h5>
+                                <p>점진적 개선과 지속적 최적화</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="philosophy-example">
+                        <h5>적용 예시</h5>
+                        <div class="example-case">
+                            <strong>기업 비즈니스 온톨로지:</strong> 완벽한 모델보다 당장 필요한 업무 프로세스에 집중
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="philosophy-content" id="systems-philosophy">
+                    <div class="philosophy-header">
+                        <h4>🌐 시스템 사고 접근</h4>
+                        <p class="philosophy-motto">"전체는 부분의 합보다 크다"</p>
+                    </div>
+                    <div class="philosophy-principles">
+                        <div class="principle-item">
+                            <div class="principle-icon">🔗</div>
+                            <div class="principle-text">
+                                <h5>관계 중심</h5>
+                                <p>개체보다 관계와 상호작용에 주목</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">🌊</div>
+                            <div class="principle-text">
+                                <h5>창발적 속성</h5>
+                                <p>시스템 전체에서 나타나는 새로운 특성 인식</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">🎛️</div>
+                            <div class="principle-text">
+                                <h5>동적 균형</h5>
+                                <p>변화하는 환경에 적응하는 유연한 구조</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="philosophy-example">
+                        <h5>적용 예시</h5>
+                        <div class="example-case">
+                            <strong>스마트 시티 온톨로지:</strong> 교통, 에너지, 주거, 환경의 복합적 상호작용 모델링
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="philosophy-content" id="agile-philosophy">
+                    <div class="philosophy-header">
+                        <h4>⚡ 애자일 접근</h4>
+                        <p class="philosophy-motto">"빠른 피드백과 지속적 개선"</p>
+                    </div>
+                    <div class="philosophy-principles">
+                        <div class="principle-item">
+                            <div class="principle-icon">🚀</div>
+                            <div class="principle-text">
+                                <h5>빠른 프로토타이핑</h5>
+                                <p>최소 기능 제품(MVP)으로 시작</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">👥</div>
+                            <div class="principle-text">
+                                <h5>사용자 중심</h5>
+                                <p>문서보다 실제 사용자와의 협업</p>
+                            </div>
+                        </div>
+                        <div class="principle-item">
+                            <div class="principle-icon">🔄</div>
+                            <div class="principle-text">
+                                <h5>반복적 개선</h5>
+                                <p>짧은 스프린트로 점진적 발전</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="philosophy-example">
+                        <h5>적용 예시</h5>
+                        <div class="example-case">
+                            <strong>AI 어시스턴트 온톨로지:</strong> 사용자 대화 데이터로 지속적인 지식베이스 개선
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.2: 온톨로지 개발 생명주기 시뮬레이터 -->
+<section class="content-section lifecycle-simulation">
+    <h2>10.2 온톨로지 개발 생명주기 시뮬레이터</h2>
+    
+    <!-- 생명주기 시뮬레이터 -->
+    <div class="lifecycle-simulator">
+        <h3>🔄 프로젝트 생명주기 시뮬레이터</h3>
+        <div class="simulator-interface">
+            <div class="project-config">
+                <h4>프로젝트 설정</h4>
+                <div class="config-group">
+                    <label>도메인 선택:</label>
+                    <select id="domainSelect">
+                        <option value="medical">의료 시스템</option>
+                        <option value="ecommerce">전자상거래</option>
+                        <option value="education">교육 관리</option>
+                        <option value="finance">금융 서비스</option>
+                    </select>
+                </div>
+                <div class="config-group">
+                    <label>팀 규모:</label>
+                    <input type="range" id="teamSize" min="1" max="10" value="5">
+                    <span id="teamSizeValue">5명</span>
+                </div>
+                <div class="config-group">
+                    <label>복잡도:</label>
+                    <div class="complexity-buttons">
+                        <button class="complexity-btn active" data-level="simple">단순</button>
+                        <button class="complexity-btn" data-level="medium">보통</button>
+                        <button class="complexity-btn" data-level="complex">복잡</button>
+                    </div>
+                </div>
+                <button class="start-simulation-btn" onclick="startLifecycleSimulation()">
+                    시뮬레이션 시작
+                </button>
+            </div>
+            
+            <div class="lifecycle-stages-interactive">
+                <div class="stage-flow">
+                    <div class="stage-node" data-stage="feasibility">
+                        <div class="stage-icon">🎯</div>
+                        <div class="stage-info">
+                            <h5>타당성 검토</h5>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="0"></div>
+                                </div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <div class="stage-details">
+                                <div class="time-estimate">예상: 1-2주</div>
+                                <div class="deliverables">
+                                    <span>산출물:</span>
+                                    <ul>
+                                        <li>요구사항 명세서</li>
+                                        <li>비용-편익 분석</li>
+                                        <li>프로젝트 계획서</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stage-connector"></div>
+                    
+                    <div class="stage-node" data-stage="specification">
+                        <div class="stage-icon">📋</div>
+                        <div class="stage-info">
+                            <h5>명세화</h5>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="0"></div>
+                                </div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <div class="stage-details">
+                                <div class="time-estimate">예상: 2-3주</div>
+                                <div class="deliverables">
+                                    <span>산출물:</span>
+                                    <ul>
+                                        <li>역량 질문 목록</li>
+                                        <li>사용 시나리오</li>
+                                        <li>평가 기준</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stage-connector"></div>
+                    
+                    <div class="stage-node" data-stage="knowledge">
+                        <div class="stage-icon">🧠</div>
+                        <div class="stage-info">
+                            <h5>지식 획득</h5>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="0"></div>
+                                </div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <div class="stage-details">
+                                <div class="time-estimate">예상: 3-4주</div>
+                                <div class="deliverables">
+                                    <span>산출물:</span>
+                                    <ul>
+                                        <li>도메인 지식 모음</li>
+                                        <li>전문가 인터뷰</li>
+                                        <li>기존 자원 분석</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stage-connector"></div>
+                    
+                    <div class="stage-node" data-stage="conceptualization">
+                        <div class="stage-icon">💡</div>
+                        <div class="stage-info">
+                            <h5>개념화</h5>
+                            <div class="stage-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="0"></div>
+                                </div>
+                                <span class="progress-text">0%</span>
+                            </div>
+                            <div class="stage-details">
+                                <div class="time-estimate">예상: 4-6주</div>
+                                <div class="deliverables">
+                                    <span>산출물:</span>
+                                    <ul>
+                                        <li>개념 계층 구조</li>
+                                        <li>관계 정의</li>
+                                        <li>제약 조건</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="simulation-controls">
+                    <button class="sim-btn" onclick="advanceStage()">다음 단계</button>
+                    <button class="sim-btn" onclick="resetSimulation()">리셋</button>
+                    <button class="sim-btn" onclick="autoPlay()">자동 실행</button>
+                </div>
+                
+                <div class="simulation-feedback">
+                    <div id="currentFeedback">시뮬레이션을 시작하여 각 단계의 활동을 체험해보세요!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 10.3: 설계 원칙 실습 워크벤치 -->
+<section class="content-section design-principles-lab">
+    <h2>10.3 설계 원칙 실습 워크벤치</h2>
+    
+    <!-- 원칙 실습기 -->
+    <div class="principles-workbench">
+        <h3>⚗️ 설계 원칙 실습 워크벤치</h3>
+        <div class="workbench-interface">
+            <div class="principle-selector">
+                <h4>실습할 원칙 선택</h4>
+                <div class="principle-cards">
+                    <div class="principle-card active" data-principle="clarity">
+                        <div class="card-icon">💎</div>
+                        <h5>명확성</h5>
+                        <p>정의의 명확함</p>
+                    </div>
+                    <div class="principle-card" data-principle="coherence">
+                        <div class="card-icon">⚖️</div>
+                        <h5>일관성</h5>
+                        <p>논리적 모순 없음</p>
+                    </div>
+                    <div class="principle-card" data-principle="extensibility">
+                        <div class="card-icon">🔧</div>
+                        <h5>확장성</h5>
+                        <p>쉬운 확장 가능</p>
+                    </div>
+                    <div class="principle-card" data-principle="minimalism">
+                        <div class="card-icon">✂️</div>
+                        <h5>최소주의</h5>
+                        <p>꼭 필요한 것만</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="principle-lab-area">
+                <div class="lab-content active" id="clarity-lab">
+                    <h4>💎 명확성 원칙 실습</h4>
+                    <div class="lab-exercise">
+                        <div class="exercise-scenario">
+                            <h5>시나리오: 직원 클래스 정의</h5>
+                            <p>다음 중 더 명확한 정의는?</p>
+                        </div>
+                        <div class="definition-comparison">
+                            <div class="definition-option" data-correctness="bad">
+                                <div class="option-header">
+                                    <span class="option-label">정의 A</span>
+                                    <span class="correctness-badge bad">모호함</span>
+                                </div>
+                                <div class="definition-text">
+                                    "직원은 회사에서 일하는 사람이다."
+                                </div>
+                                <div class="definition-analysis">
+                                    <strong>문제점:</strong> "일한다"의 정의가 모호함. 자원봉사자, 인턴, 컨설턴트 등과 구분 불가
+                                </div>
+                            </div>
+                            <div class="definition-option" data-correctness="good">
+                                <div class="option-header">
+                                    <span class="option-label">정의 B</span>
+                                    <span class="correctness-badge good">명확함</span>
+                                </div>
+                                <div class="definition-text">
+                                    "직원은 회사와 공식적인 고용 계약을 체결하고 정기적인 급여를 받는 사람이다."
+                                </div>
+                                <div class="definition-analysis">
+                                    <strong>장점:</strong> 고용 계약과 급여라는 명확한 기준 제시. 다른 관계와 구분 가능
+                                </div>
+                            </div>
+                        </div>
+                        <div class="interactive-editor">
+                            <h5>직접 정의해보기</h5>
+                            <textarea id="clarityDefinition" placeholder="'학생' 클래스를 명확하게 정의해보세요..."></textarea>
+                            <button onclick="evaluateClarity()">정의 평가하기</button>
+                            <div id="clarityFeedback" class="feedback-area"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lab-content" id="coherence-lab">
+                    <h4>⚖️ 일관성 원칙 실습</h4>
+                    <div class="lab-exercise">
+                        <div class="contradiction-detector">
+                            <h5>모순 탐지기</h5>
+                            <p>다음 정의들에서 논리적 모순을 찾아보세요:</p>
+                            <div class="definitions-set">
+                                <div class="definition-item">
+                                    <strong>정의 1:</strong> 모든 관리자는 직원이다.
+                                </div>
+                                <div class="definition-item">
+                                    <strong>정의 2:</strong> 모든 직원은 상사가 있다.
+                                </div>
+                                <div class="definition-item">
+                                    <strong>정의 3:</strong> CEO는 관리자이다.
+                                </div>
+                                <div class="definition-item">
+                                    <strong>정의 4:</strong> CEO는 상사가 없다.
+                                </div>
+                            </div>
+                            <div class="contradiction-analysis">
+                                <button onclick="analyzeContradiction()">모순 분석</button>
+                                <div id="contradictionResult" class="analysis-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lab-content" id="extensibility-lab">
+                    <h4>🔧 확장성 원칙 실습</h4>
+                    <div class="lab-exercise">
+                        <div class="extensibility-builder">
+                            <h5>확장 가능한 구조 설계</h5>
+                            <div class="base-structure">
+                                <h6>기본 동물 온톨로지</h6>
+                                <div class="class-hierarchy">
+                                    <div class="class-node">동물</div>
+                                    <div class="subclass-level">
+                                        <div class="class-node">포유류</div>
+                                        <div class="class-node">조류</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="extension-challenge">
+                                <h6>확장 도전: 해양동물 추가</h6>
+                                <p>기존 구조를 최대한 변경하지 않고 해양동물을 추가하세요.</p>
+                                <div class="extension-options">
+                                    <div class="option-card" onclick="selectExtension('bad')">
+                                        <h6>옵션 A: 기존 구조 변경</h6>
+                                        <p>포유류를 "육상포유류"로 변경</p>
+                                        <span class="option-badge bad">비추천</span>
+                                    </div>
+                                    <div class="option-card" onclick="selectExtension('good')">
+                                        <h6>옵션 B: 새로운 분류 추가</h6>
+                                        <p>서식지별 분류를 별도 속성으로</p>
+                                        <span class="option-badge good">추천</span>
+                                    </div>
+                                </div>
+                                <div id="extensionFeedback" class="feedback-area"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lab-content" id="minimalism-lab">
+                    <h4>✂️ 최소주의 원칙 실습</h4>
+                    <div class="lab-exercise">
+                        <div class="minimalism-optimizer">
+                            <h5>온톨로지 다이어트</h5>
+                            <p>불필요한 제약과 정의를 제거하여 온톨로지를 최적화하세요.</p>
+                            <div class="bloated-ontology">
+                                <h6>비대한 온톨로지 예시</h6>
+                                <div class="constraint-list">
+                                    <div class="constraint-item" data-necessary="true">
+                                        <input type="checkbox" id="c1">
+                                        <label for="c1">모든 사람은 정확히 하나의 이름을 가진다</label>
+                                        <span class="necessity-indicator necessary">필수</span>
+                                    </div>
+                                    <div class="constraint-item" data-necessary="false">
+                                        <input type="checkbox" id="c2">
+                                        <label for="c2">모든 사람의 이름은 20자를 초과할 수 없다</label>
+                                        <span class="necessity-indicator unnecessary">불필요</span>
+                                    </div>
+                                    <div class="constraint-item" data-necessary="true">
+                                        <input type="checkbox" id="c3">
+                                        <label for="c3">모든 직원은 하나의 부서에 속한다</label>
+                                        <span class="necessity-indicator necessary">필수</span>
+                                    </div>
+                                    <div class="constraint-item" data-necessary="false">
+                                        <input type="checkbox" id="c4">
+                                        <label for="c4">모든 직원은 월요일부터 금요일까지 근무한다</label>
+                                        <span class="necessity-indicator unnecessary">불필요</span>
+                                    </div>
+                                    <div class="constraint-item" data-necessary="false">
+                                        <input type="checkbox" id="c5">
+                                        <label for="c5">모든 관리자는 정확히 검은색 정장을 입는다</label>
+                                        <span class="necessity-indicator unnecessary">불필요</span>
+                                    </div>
+                                </div>
+                                <button onclick="optimizeOntology()">최적화 실행</button>
+                                <div id="optimizationResult" class="optimization-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 대화형 원칙 체크리스트 -->
+<div class="interactive-checklist">
+    <h3>📋 설계 원칙 체크리스트</h3>
+    <div class="checklist-interface">
+        <div class="principle-category">
+            <h4>💎 명확성 체크포인트</h4>
+            <div class="checklist-items">
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    모든 클래스에 명확한 정의가 있는가?
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    정의에 주관적 표현이 없는가?
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    경계 사례가 명확히 처리되는가?
+                </label>
+            </div>
+        </div>
+        
+        <div class="principle-category">
+            <h4>⚖️ 일관성 체크포인트</h4>
+            <div class="checklist-items">
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    논리적 모순이 없는가?
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    추론 결과가 정의와 일치하는가?
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    용어 사용이 일관적인가?
+                </label>
+            </div>
+        </div>
+        
+        <div class="checklist-score">
+            <div class="score-display">
+                <span class="score-value">0/6</span>
+                <span class="score-label">완료</span>
+            </div>
+            <div class="score-gauge">
+                <div class="gauge-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 챕터 전용 스타일과 스크립트 -->
+<style>
+/* Part 헤더 애니메이션 */
+.methodology-flow-animation {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(90deg, 
+        #3b82f6 0%, 
+        #6366f1 25%, 
+        #8b5cf6 50%, 
+        #a855f7 75%, 
+        #d946ef 100%);
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.methodology-flow-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        transparent 100%);
+    animation: flowAnimation 2s ease-in-out infinite;
+}
+
+@keyframes flowAnimation {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* 설계 역량 레이더 */
+.design-competency-radar {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.radar-visualization {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.radar-skills {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.skill-axis {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.skill-axis:nth-child(1) { top: 10%; left: 50%; transform: translateX(-50%); }
+.skill-axis:nth-child(2) { top: 25%; right: 5%; }
+.skill-axis:nth-child(3) { bottom: 25%; right: 5%; }
+.skill-axis:nth-child(4) { bottom: 10%; left: 50%; transform: translateX(-50%); }
+.skill-axis:nth-child(5) { top: 25%; left: 5%; }
+
+.skill-meter {
+    width: 80px;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.meter-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.skill-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+.skill-value {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+/* 철학 탐구기 */
+.philosophy-explorer {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.philosophy-tab-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.philosophy-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.philosophy-tab:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.philosophy-tab.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+.philosophy-content {
+    display: none;
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.philosophy-content.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+.philosophy-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.philosophy-motto {
+    font-style: italic;
+    color: #6b7280;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.philosophy-principles {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.principle-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    border-left: 4px solid #3b82f6;
+}
+
+.principle-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.principle-text h5 {
+    margin: 0 0 0.5rem 0;
+    color: #1f2937;
+}
+
+.principle-text p {
+    margin: 0;
+    color: #6b7280;
+}
+
+.philosophy-example {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #f59e0b;
+}
+
+.example-case {
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* 생명주기 시뮬레이터 */
+.lifecycle-simulator {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.simulator-interface {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+.project-config {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 16px;
+    height: fit-content;
+}
+
+.config-group {
+    margin-bottom: 1.5rem;
+}
+
+.config-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.config-group select,
+.config-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.complexity-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.complexity-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.complexity-btn.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+.start-simulation-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-simulation-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.stage-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stage-node {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.stage-node.active {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+    transform: scale(1.02);
+}
+
+.stage-node.completed {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.stage-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.stage-icon {
+    font-size: 2rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stage-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.stage-details {
+    grid-column: 1 / -1;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 1rem;
+}
+
+.deliverables ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0;
+}
+
+.deliverables li {
+    padding: 0.25rem 0;
+    color: #6b7280;
+}
+
+.deliverables li:before {
+    content: "📄";
+    margin-right: 0.5rem;
+}
+
+.simulation-controls {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+.sim-btn {
+    padding: 0.75rem 1.5rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.sim-btn:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+.simulation-feedback {
+    background: #f0f9ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #3b82f6;
+    margin-top: 1rem;
+}
+
+/* 설계 원칙 워크벤치 */
+.principles-workbench {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.workbench-interface {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+}
+
+.principle-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.principle-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.principle-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.principle-card.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.principle-card h5 {
+    margin: 0.5rem 0;
+}
+
+.principle-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.lab-content {
+    display: none;
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.lab-content.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+.definition-comparison {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.definition-option {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px solid #e5e7eb;
+}
+
+.option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.correctness-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.correctness-badge.good {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.correctness-badge.bad {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.definition-text {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.definition-analysis {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.interactive-editor {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.interactive-editor textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.interactive-editor button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.feedback-area {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+    background: #f0f9ff;
+}
+
+/* 대화형 체크리스트 */
+.interactive-checklist {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.checklist-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr 200px;
+    gap: 2rem;
+    align-items: start;
+}
+
+.principle-category {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.principle-category h4 {
+    margin: 0 0 1rem 0;
+    color: #1f2937;
+}
+
+.checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.checklist-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.checklist-item input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.checklist-item input[type="checkbox"]:checked + .checkmark {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.checklist-item input[type="checkbox"]:checked + .checkmark:after {
+    content: "✓";
+    color: white;
+    font-weight: bold;
+}
+
+.checklist-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: white;
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.score-display {
+    margin-bottom: 1rem;
+}
+
+.score-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+.score-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.score-gauge {
+    width: 100px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: white;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .simulator-interface,
+    .workbench-interface {
+        grid-template-columns: 1fr;
+    }
+    
+    .checklist-interface {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-axis {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .philosophy-tab-controls {
+        flex-direction: column;
+    }
+    
+    .stage-info {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .definition-comparison {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// 철학 탐구기 함수들
+function showPhilosophy(philosophyType) {
+    // 모든 탭 비활성화
+    document.querySelectorAll('.philosophy-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 모든 콘텐츠 숨기기
+    document.querySelectorAll('.philosophy-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // 선택된 탭과 콘텐츠 활성화
+    event.target.closest('.philosophy-tab').classList.add('active');
+    const content = document.getElementById(philosophyType + '-philosophy');
+    if (content) {
+        content.classList.add('active');
+    }
+}
+
+// 생명주기 시뮬레이터 함수들
+let currentStage = 0;
+let simulationStages = ['feasibility', 'specification', 'knowledge', 'conceptualization'];
+let isAutoPlaying = false;
+
+function startLifecycleSimulation() {
+    const domain = document.getElementById('domainSelect').value;
+    const teamSize = document.getElementById('teamSize').value;
+    const complexity = document.querySelector('.complexity-btn.active').dataset.level;
+    
+    document.getElementById('currentFeedback').innerHTML = `
+        <strong>${domain}</strong> 도메인, <strong>${teamSize}명</strong> 팀, <strong>${complexity}</strong> 복잡도로 시뮬레이션을 시작합니다!
+    `;
+    
+    resetSimulation();
+}
+
+function advanceStage() {
+    if (currentStage < simulationStages.length) {
+        const stage = simulationStages[currentStage];
+        const stageNode = document.querySelector(`[data-stage="${stage}"]`);
+        const progressFill = stageNode.querySelector('.progress-fill');
+        const progressText = stageNode.querySelector('.progress-text');
+        
+        // 진행률 애니메이션
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 5;
+            progressFill.style.width = progress + '%';
+            progressText.textContent = progress + '%';
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                stageNode.classList.add('completed');
+                currentStage++;
+                
+                if (currentStage < simulationStages.length) {
+                    document.querySelector(`[data-stage="${simulationStages[currentStage]}"]`).classList.add('active');
+                }
+                
+                updateFeedback(stage);
+            }
+        }, 50);
+    }
+}
+
+function resetSimulation() {
+    currentStage = 0;
+    document.querySelectorAll('.stage-node').forEach(node => {
+        node.classList.remove('active', 'completed');
+        node.querySelector('.progress-fill').style.width = '0%';
+        node.querySelector('.progress-text').textContent = '0%';
+    });
+    
+    if (simulationStages.length > 0) {
+        document.querySelector(`[data-stage="${simulationStages[0]}"]`).classList.add('active');
+    }
+}
+
+function autoPlay() {
+    if (!isAutoPlaying) {
+        isAutoPlaying = true;
+        const autoInterval = setInterval(() => {
+            if (currentStage >= simulationStages.length) {
+                clearInterval(autoInterval);
+                isAutoPlaying = false;
+                return;
+            }
+            advanceStage();
+        }, 3000);
+    }
+}
+
+function updateFeedback(stage) {
+    const feedbacks = {
+        feasibility: "타당성 검토 완료! 프로젝트의 기술적, 경제적 실현 가능성을 확인했습니다.",
+        specification: "명세화 완료! 구체적인 요구사항과 역량 질문을 정의했습니다.", 
+        knowledge: "지식 획득 완료! 도메인 전문가들과의 협업으로 풍부한 지식을 수집했습니다.",
+        conceptualization: "개념화 완료! 체계적인 개념 모델과 관계 구조를 설계했습니다."
+    };
+    
+    document.getElementById('currentFeedback').innerHTML = feedbacks[stage] || "단계 완료!";
+}
+
+// 설계 원칙 워크벤치 함수들
+function evaluateClarity() {
+    const definition = document.getElementById('clarityDefinition').value;
+    const feedback = document.getElementById('clarityFeedback');
+    
+    if (definition.length < 10) {
+        feedback.innerHTML = "정의가 너무 짧습니다. 더 구체적으로 작성해주세요.";
+        feedback.style.background = "#fee2e2";
+        feedback.style.borderColor = "#dc2626";
+    } else if (definition.includes("공부하는") || definition.includes("배우는")) {
+        feedback.innerHTML = "좋은 시도입니다! 하지만 '공부하는'이나 '배우는'은 너무 모호한 표현입니다. 더 구체적인 기준을 제시해보세요.";
+        feedback.style.background = "#fef3c7";
+        feedback.style.borderColor = "#f59e0b";
+    } else if (definition.includes("등록") || definition.includes("재학")) {
+        feedback.innerHTML = "훌륭합니다! '등록'이나 '재학'과 같은 명확한 기준을 사용하셨네요. 이런 정의가 명확성 원칙을 잘 따른 예시입니다.";
+        feedback.style.background = "#d1fae5";
+        feedback.style.borderColor = "#10b981";
+    } else {
+        feedback.innerHTML = "괜찮은 정의입니다. 더 명확하게 하려면 구체적인 조건이나 기준을 추가해보세요.";
+        feedback.style.background = "#f0f9ff";
+        feedback.style.borderColor = "#3b82f6";
+    }
+}
+
+function analyzeContradiction() {
+    const result = document.getElementById('contradictionResult');
+    result.innerHTML = `
+        <div class="contradiction-found">
+            <h5>🚨 논리적 모순 발견!</h5>
+            <p><strong>모순:</strong> CEO는 관리자이고(정의 3), 모든 관리자는 직원이며(정의 1), 모든 직원은 상사가 있어야 하는데(정의 2), CEO는 상사가 없다고 정의되어 있습니다(정의 4).</p>
+            <div class="solution">
+                <h6>해결 방법:</h6>
+                <p>정의 2를 "모든 직원은 자신보다 상위 직급자가 있다. 단, 최고 경영진은 제외한다"로 수정하거나, CEO를 별도 클래스로 분리할 수 있습니다.</p>
+            </div>
+        </div>
+    `;
+    result.style.background = "#fee2e2";
+    result.style.borderColor = "#dc2626";
+}
+
+function selectExtension(type) {
+    const feedback = document.getElementById('extensionFeedback');
+    
+    if (type === 'good') {
+        feedback.innerHTML = `
+            <h5>✅ 훌륭한 선택!</h5>
+            <p>서식지를 별도 속성으로 분리하면 기존 분류 체계를 변경하지 않고도 새로운 차원의 분류가 가능합니다. 이는 확장성 원칙의 좋은 예시입니다.</p>
+        `;
+        feedback.style.background = "#d1fae5";
+        feedback.style.borderColor = "#10b981";
+    } else {
+        feedback.innerHTML = `
+            <h5>⚠️ 개선이 필요합니다</h5>
+            <p>기존 클래스명을 변경하면 이미 구축된 시스템에 영향을 줄 수 있습니다. 확장성을 위해서는 기존 구조를 최대한 보존하는 것이 좋습니다.</p>
+        `;
+        feedback.style.background = "#fef3c7";
+        feedback.style.borderColor = "#f59e0b";
+    }
+}
+
+function optimizeOntology() {
+    const checkboxes = document.querySelectorAll('.constraint-item input[type="checkbox"]');
+    const result = document.getElementById('optimizationResult');
+    
+    let removedUnnecessary = 0;
+    let keptNecessary = 0;
+    let incorrectChoices = 0;
+    
+    checkboxes.forEach((checkbox, index) => {
+        const item = checkbox.closest('.constraint-item');
+        const isNecessary = item.dataset.necessary === 'true';
+        const isChecked = checkbox.checked;
+        
+        if (isNecessary && !isChecked) {
+            keptNecessary++;
+        } else if (!isNecessary && isChecked) {
+            removedUnnecessary++;
+        } else if (isNecessary && isChecked) {
+            incorrectChoices++;
+        }
+    });
+    
+    const score = ((keptNecessary + removedUnnecessary) / 5) * 100;
+    
+    result.innerHTML = `
+        <h5>최적화 결과</h5>
+        <div class="optimization-stats">
+            <div class="stat-item">
+                <span class="stat-icon">✅</span>
+                <span>필수 제약 유지: ${keptNecessary}/3</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">🗑️</span>
+                <span>불필요 제약 제거: ${removedUnnecessary}/2</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">❌</span>
+                <span>잘못된 선택: ${incorrectChoices}</span>
+            </div>
+        </div>
+        <div class="optimization-score">
+            <strong>최적화 점수: ${score.toFixed(0)}%</strong>
+        </div>
+    `;
+    
+    if (score >= 80) {
+        result.style.background = "#d1fae5";
+        result.style.borderColor = "#10b981";
+    } else if (score >= 60) {
+        result.style.background = "#fef3c7";
+        result.style.borderColor = "#f59e0b";
+    } else {
+        result.style.background = "#fee2e2";
+        result.style.borderColor = "#dc2626";
+    }
+}
+
+// 체크리스트 점수 업데이트
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+    const scoreValue = document.querySelector('.score-value');
+    const gaugeFill = document.querySelector('.gauge-fill');
+    
+    function updateScore() {
+        const totalItems = checkboxes.length;
+        const checkedItems = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').length;
+        const percentage = (checkedItems / totalItems) * 100;
+        
+        scoreValue.textContent = `${checkedItems}/${totalItems}`;
+        gaugeFill.style.width = percentage + '%';
+    }
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateScore);
+    });
+    
+    // 슬라이더 값 업데이트
+    const teamSizeSlider = document.getElementById('teamSize');
+    const teamSizeValue = document.getElementById('teamSizeValue');
+    
+    if (teamSizeSlider && teamSizeValue) {
+        teamSizeSlider.addEventListener('input', function() {
+            teamSizeValue.textContent = this.value + '명';
+        });
+    }
+    
+    // 복잡도 버튼 이벤트
+    document.querySelectorAll('.complexity-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.complexity-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // 원칙 카드 이벤트
+    document.querySelectorAll('.principle-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const principle = this.dataset.principle;
+            
+            // 모든 카드 비활성화
+            document.querySelectorAll('.principle-card').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 모든 랩 콘텐츠 숨기기
+            document.querySelectorAll('.lab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 선택된 랩 콘텐츠 표시
+            const labContent = document.getElementById(principle + '-lab');
+            if (labContent) {
+                labContent.classList.add('active');
+            }
+        });
+    });
+});
+</script>

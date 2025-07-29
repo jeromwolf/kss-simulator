@@ -1,0 +1,1049 @@
+<!-- Chapter 4: RDF - 자원 기술 프레임워크 -->
+
+<div class="chapter-header">
+    <h1>Chapter 4. RDF - 자원 기술 프레임워크</h1>
+    <div class="chapter-quote">
+        "트리플은 지식을 표현하는 가장 단순하면서도 강력한 방법입니다."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 50분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>RDF의 기본 개념과 데이터 모델 이해</li>
+        <li>트리플 구조와 URI의 역할 파악</li>
+        <li>다양한 RDF 직렬화 형식 학습</li>
+        <li>실제 RDF 데이터 작성 및 활용 능력 습득</li>
+    </ul>
+</div>
+
+<!-- 섹션 4.1 -->
+<section class="content-section">
+    <h2>4.1 RDF란 무엇인가?</h2>
+    
+    <p>RDF(Resource Description Framework)는 웹 상의 자원을 기술하기 위한 W3C 표준 프레임워크입니다. 이는 기계가 이해할 수 있는 형태로 정보를 표현하는 데이터 모델입니다.</p>
+    
+    <div class="concept-box">
+        <h4><i class="fas fa-lightbulb"></i> 핵심 개념</h4>
+        <p><strong>RDF</strong>: 웹 자원의 메타데이터를 표현하기 위한 표준 데이터 모델로, 주어-서술어-목적어의 트리플 구조를 사용합니다.</p>
+    </div>
+    
+    <h3>RDF의 탄생 배경</h3>
+    <div class="history-context">
+        <div class="problem-solution">
+            <div class="problem">
+                <h4>🔴 문제</h4>
+                <ul>
+                    <li>웹 페이지의 내용을 기계가 이해할 수 없음</li>
+                    <li>정보의 의미가 명확하지 않음</li>
+                    <li>서로 다른 시스템 간 데이터 교환 어려움</li>
+                </ul>
+            </div>
+            <div class="arrow">→</div>
+            <div class="solution">
+                <h4>🟢 해결</h4>
+                <ul>
+                    <li>표준화된 메타데이터 형식 제공</li>
+                    <li>명시적인 의미 표현</li>
+                    <li>상호운용성 보장</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 4.2 -->
+<section class="content-section">
+    <h2>4.2 RDF 트리플: 지식의 원자</h2>
+    
+    <p>RDF의 핵심은 모든 지식을 <strong>주어(Subject) - 서술어(Predicate) - 목적어(Object)</strong>의 트리플로 표현하는 것입니다.</p>
+    
+    <div class="triple-structure">
+        <h3>트리플의 구조</h3>
+        <div class="triple-diagram">
+            <div class="triple-component subject">
+                <h4>주어 (Subject)</h4>
+                <p>설명하고자 하는 자원</p>
+                <div class="example">예: 홍길동</div>
+            </div>
+            <div class="triple-arrow">→</div>
+            <div class="triple-component predicate">
+                <h4>서술어 (Predicate)</h4>
+                <p>자원의 속성이나 관계</p>
+                <div class="example">예: 직업은</div>
+            </div>
+            <div class="triple-arrow">→</div>
+            <div class="triple-component object">
+                <h4>목적어 (Object)</h4>
+                <p>속성 값이나 다른 자원</p>
+                <div class="example">예: 개발자</div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>실제 트리플 예시</h3>
+    <div class="triple-examples">
+        <div class="triple-example">
+            <div class="natural-language">
+                <strong>자연어:</strong> "세종대왕은 한글을 창제했다"
+            </div>
+            <div class="rdf-triple">
+                <strong>RDF 트리플:</strong>
+                <div class="triple-parts">
+                    <span class="subject">세종대왕</span>
+                    <span class="predicate">창제했다</span>
+                    <span class="object">한글</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="triple-example">
+            <div class="natural-language">
+                <strong>자연어:</strong> "서울은 대한민국의 수도이다"
+            </div>
+            <div class="rdf-triple">
+                <strong>RDF 트리플:</strong>
+                <div class="triple-parts">
+                    <span class="subject">서울</span>
+                    <span class="predicate">수도이다</span>
+                    <span class="object">대한민국</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>트리플의 연결: 지식 그래프 구성</h3>
+    <div class="knowledge-graph-example">
+        <h4>여러 트리플이 연결되어 복잡한 지식을 표현</h4>
+        <div class="connected-triples">
+            <div class="triple-set">
+                <p>① 이순신 - 직업 - 장군</p>
+                <p>② 이순신 - 활동시기 - 조선시대</p>
+                <p>③ 이순신 - 주요업적 - 임진왜란승리</p>
+                <p>④ 임진왜란 - 발생년도 - 1592년</p>
+                <p>⑤ 임진왜란 - 상대국가 - 일본</p>
+            </div>
+            <div class="graph-visualization">
+                <div class="node central">이순신</div>
+                <div class="node">장군</div>
+                <div class="node">조선시대</div>
+                <div class="node highlight">임진왜란승리</div>
+                <div class="node">1592년</div>
+                <div class="node">일본</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- RDF 에디터 링크 추가 -->
+    <div class="practice-box" style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white;">
+        <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-code"></i> 직접 실습해보기
+        </h3>
+        <p style="margin-bottom: 1rem;">RDF 트리플의 개념을 이해했다면, 이제 직접 트리플을 만들어보세요!</p>
+        <a href="/rdf-editor" target="_blank" style="display: inline-block; padding: 0.75rem 1.5rem; background: white; color: #667eea; text-decoration: none; border-radius: 5px; font-weight: bold; transition: transform 0.2s;">
+            RDF 비주얼 에디터 열기 →
+        </a>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+            💡 에디터에서 주어-서술어-목적어를 입력하고, 실시간으로 지식 그래프가 만들어지는 것을 확인할 수 있습니다.
+        </p>
+    </div>
+</section>
+
+<!-- 섹션 4.3 -->
+<section class="content-section">
+    <h2>4.3 URI/IRI: 웹 상의 고유 식별자</h2>
+    
+    <p>RDF에서는 모든 자원을 고유하게 식별하기 위해 URI(Uniform Resource Identifier) 또는 IRI(Internationalized Resource Identifier)를 사용합니다.</p>
+    
+    <div class="uri-explanation">
+        <h3>URI의 역할</h3>
+        <div class="uri-roles">
+            <div class="role-card">
+                <h4>🏷️ 고유 식별</h4>
+                <p>전 세계에서 유일한 이름 부여</p>
+                <div class="example">
+                    http://example.org/people/홍길동
+                </div>
+            </div>
+            <div class="role-card">
+                <h4>🔗 연결 가능</h4>
+                <p>웹을 통해 접근 가능한 주소</p>
+                <div class="example">
+                    http://dbpedia.org/resource/Seoul
+                </div>
+            </div>
+            <div class="role-card">
+                <h4>🌍 글로벌 범위</h4>
+                <p>전 세계 어디서나 동일한 의미</p>
+                <div class="example">
+                    http://schema.org/Person
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>URI 설계 모범 사례</h3>
+    <div class="uri-best-practices">
+        <div class="practice-item good">
+            <h4>✅ 좋은 예</h4>
+            <ul>
+                <li>http://data.example.org/person/john-doe</li>
+                <li>http://vocab.example.org/terms/hasName</li>
+                <li>http://id.example.org/book/isbn/978-89-123-4567-8</li>
+            </ul>
+        </div>
+        <div class="practice-item bad">
+            <h4>❌ 피해야 할 예</h4>
+            <ul>
+                <li>http://example.org/12345 (의미 불명확)</li>
+                <li>http://example.org/temp/data (임시적)</li>
+                <li>http://example.org/person?id=123 (쿼리 파라미터)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 4.4 -->
+<section class="content-section">
+    <h2>4.4 RDF 직렬화 형식</h2>
+    
+    <p>RDF 데이터는 다양한 형식으로 표현될 수 있습니다. 각 형식은 고유한 장단점이 있어 용도에 따라 선택합니다.</p>
+    
+    <h3>주요 직렬화 형식</h3>
+    <div class="serialization-formats">
+        <div class="format-card">
+            <h4>Turtle (Terse RDF Triple Language)</h4>
+            <p>가장 읽기 쉬운 형식</p>
+            <pre class="code-block">
+@prefix ex: &lt;http://example.org/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+ex:홍길동 a foaf:Person ;
+    foaf:name "홍길동"@ko ;
+    foaf:age 30 ;
+    foaf:knows ex:김철수 .
+            </pre>
+            <div class="format-features">
+                <span class="feature">👍 인간 친화적</span>
+                <span class="feature">📝 간결한 문법</span>
+                <span class="feature">🎯 학습 용이</span>
+            </div>
+        </div>
+        
+        <div class="format-card">
+            <h4>RDF/XML</h4>
+            <p>최초의 W3C 표준 형식</p>
+            <pre class="code-block">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"&gt;
+  &lt;foaf:Person rdf:about="http://example.org/홍길동"&gt;
+    &lt;foaf:name xml:lang="ko"&gt;홍길동&lt;/foaf:name&gt;
+    &lt;foaf:age rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"&gt;30&lt;/foaf:age&gt;
+    &lt;foaf:knows rdf:resource="http://example.org/김철수"/&gt;
+  &lt;/foaf:Person&gt;
+&lt;/rdf:RDF&gt;
+            </pre>
+            <div class="format-features">
+                <span class="feature">📋 표준 준수</span>
+                <span class="feature">🔧 도구 지원</span>
+                <span class="feature">⚠️ 장황함</span>
+            </div>
+        </div>
+        
+        <div class="format-card">
+            <h4>JSON-LD</h4>
+            <p>웹 개발자 친화적 형식</p>
+            <pre class="code-block">
+{
+  "@context": {
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "ex": "http://example.org/"
+  },
+  "@id": "ex:홍길동",
+  "@type": "foaf:Person",
+  "foaf:name": {
+    "@value": "홍길동",
+    "@language": "ko"
+  },
+  "foaf:age": 30,
+  "foaf:knows": {
+    "@id": "ex:김철수"
+  }
+}
+            </pre>
+            <div class="format-features">
+                <span class="feature">🌐 웹 친화적</span>
+                <span class="feature">💻 JavaScript 호환</span>
+                <span class="feature">🔄 REST API</span>
+            </div>
+        </div>
+        
+        <div class="format-card">
+            <h4>N-Triples</h4>
+            <p>가장 단순한 형식</p>
+            <pre class="code-block">
+&lt;http://example.org/홍길동&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://xmlns.com/foaf/0.1/Person&gt; .
+&lt;http://example.org/홍길동&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; "홍길동"@ko .
+&lt;http://example.org/홍길동&gt; &lt;http://xmlns.com/foaf/0.1/age&gt; "30"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://example.org/홍길동&gt; &lt;http://xmlns.com/foaf/0.1/knows&gt; &lt;http://example.org/김철수&gt; .
+            </pre>
+            <div class="format-features">
+                <span class="feature">⚡ 처리 속도</span>
+                <span class="feature">📦 스트리밍</span>
+                <span class="feature">😵 가독성 낮음</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 4.5 -->
+<section class="content-section">
+    <h2>4.5 RDF 데이터 타입과 리터럴</h2>
+    
+    <h3>리터럴 값의 표현</h3>
+    <div class="literal-types">
+        <div class="literal-category">
+            <h4>단순 리터럴</h4>
+            <pre class="code-example">
+"홍길동"
+"Hello World"
+"안녕하세요"
+            </pre>
+        </div>
+        
+        <div class="literal-category">
+            <h4>언어 태그 리터럴</h4>
+            <pre class="code-example">
+"홍길동"@ko
+"Hong Gildong"@en
+"洪吉童"@zh
+            </pre>
+        </div>
+        
+        <div class="literal-category">
+            <h4>타입 리터럴</h4>
+            <pre class="code-example">
+"30"^^xsd:integer
+"2024-01-15"^^xsd:date
+"true"^^xsd:boolean
+"3.14159"^^xsd:double
+            </pre>
+        </div>
+    </div>
+    
+    <h3>주요 XSD 데이터 타입</h3>
+    <div class="xsd-types-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>데이터 타입</th>
+                    <th>설명</th>
+                    <th>예시</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>xsd:string</td>
+                    <td>문자열</td>
+                    <td>"Hello World"</td>
+                </tr>
+                <tr>
+                    <td>xsd:integer</td>
+                    <td>정수</td>
+                    <td>"42"^^xsd:integer</td>
+                </tr>
+                <tr>
+                    <td>xsd:decimal</td>
+                    <td>십진수</td>
+                    <td>"3.14"^^xsd:decimal</td>
+                </tr>
+                <tr>
+                    <td>xsd:boolean</td>
+                    <td>불린</td>
+                    <td>"true"^^xsd:boolean</td>
+                </tr>
+                <tr>
+                    <td>xsd:date</td>
+                    <td>날짜</td>
+                    <td>"2024-01-15"^^xsd:date</td>
+                </tr>
+                <tr>
+                    <td>xsd:dateTime</td>
+                    <td>날짜시간</td>
+                    <td>"2024-01-15T10:30:00"^^xsd:dateTime</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- 섹션 4.6 -->
+<section class="content-section">
+    <h2>4.6 RDF 어휘와 네임스페이스</h2>
+    
+    <p>RDF에서는 재사용 가능한 어휘를 정의하고 네임스페이스를 통해 구분합니다.</p>
+    
+    <h3>주요 표준 어휘</h3>
+    <div class="vocabulary-cards">
+        <div class="vocab-card">
+            <h4>FOAF (Friend of a Friend)</h4>
+            <p>사람과 소셜 네트워크 기술</p>
+            <div class="vocab-prefix">@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt;</div>
+            <ul class="vocab-terms">
+                <li>foaf:Person - 사람</li>
+                <li>foaf:name - 이름</li>
+                <li>foaf:knows - 아는 사람</li>
+                <li>foaf:homepage - 홈페이지</li>
+            </ul>
+        </div>
+        
+        <div class="vocab-card">
+            <h4>Dublin Core</h4>
+            <p>메타데이터 기술</p>
+            <div class="vocab-prefix">@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt;</div>
+            <ul class="vocab-terms">
+                <li>dc:title - 제목</li>
+                <li>dc:creator - 작성자</li>
+                <li>dc:date - 날짜</li>
+                <li>dc:subject - 주제</li>
+            </ul>
+        </div>
+        
+        <div class="vocab-card">
+            <h4>Schema.org</h4>
+            <p>구조화된 데이터 마크업</p>
+            <div class="vocab-prefix">@prefix schema: &lt;http://schema.org/&gt;</div>
+            <ul class="vocab-terms">
+                <li>schema:Person - 사람</li>
+                <li>schema:Organization - 조직</li>
+                <li>schema:Event - 이벤트</li>
+                <li>schema:Product - 제품</li>
+            </ul>
+        </div>
+        
+        <div class="vocab-card">
+            <h4>SKOS</h4>
+            <p>지식 조직 체계</p>
+            <div class="vocab-prefix">@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;</div>
+            <ul class="vocab-terms">
+                <li>skos:Concept - 개념</li>
+                <li>skos:broader - 상위 개념</li>
+                <li>skos:narrower - 하위 개념</li>
+                <li>skos:related - 관련 개념</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 4.7 -->
+<section class="content-section">
+    <h2>4.7 실전 RDF 데이터 작성</h2>
+    
+    <h3>예제: 도서관 목록 RDF</h3>
+    <div class="practical-example">
+        <h4>시나리오</h4>
+        <p>도서관의 책 정보를 RDF로 표현해봅시다.</p>
+        
+        <div class="example-code">
+            <h5>Turtle 형식으로 작성</h5>
+            <pre class="code-block">
+@prefix ex: &lt;http://example.org/library/&gt; .
+@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# 책 정보
+ex:book001 a ex:Book ;
+    dc:title "온톨로지 입문"@ko ;
+    dc:creator ex:author001 ;
+    dc:date "2024-01-15"^^xsd:date ;
+    dc:subject "컴퓨터과학", "시맨틱웹" ;
+    ex:isbn "978-89-123-4567-8" ;
+    ex:pages 350 ;
+    ex:price "25000"^^xsd:integer ;
+    ex:location ex:shelf_A3 .
+
+# 저자 정보
+ex:author001 a foaf:Person ;
+    foaf:name "김철수"@ko ;
+    foaf:mbox &lt;mailto:kimcs@example.org&gt; ;
+    ex:affiliation "한국대학교" .
+
+# 서가 위치
+ex:shelf_A3 a ex:Shelf ;
+    ex:floor 2 ;
+    ex:section "컴퓨터과학" ;
+    ex:capacity 100 .
+            </pre>
+        </div>
+        
+        <div class="example-explanation">
+            <h5>코드 설명</h5>
+            <ul>
+                <li><strong>네임스페이스 선언:</strong> @prefix로 약어 정의</li>
+                <li><strong>타입 지정:</strong> 'a'는 rdf:type의 약어</li>
+                <li><strong>속성 나열:</strong> 세미콜론(;)으로 구분</li>
+                <li><strong>다중 값:</strong> 쉼표(,)로 구분</li>
+                <li><strong>언어 태그:</strong> @ko로 한국어 명시</li>
+                <li><strong>데이터 타입:</strong> ^^xsd:date로 날짜 타입 지정</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 실습 문제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제 1: 음식점 정보 RDF 작성</h3>
+        <p>다음 정보를 RDF Turtle 형식으로 작성하세요:</p>
+        <ul>
+            <li>음식점명: 맛있는 김치찌개</li>
+            <li>주소: 서울시 강남구 테헤란로 123</li>
+            <li>전화번호: 02-1234-5678</li>
+            <li>영업시간: 10:00-22:00</li>
+            <li>대표메뉴: 김치찌개 (8,000원)</li>
+        </ul>
+        
+        <div class="hint-box">
+            <h4>💡 힌트</h4>
+            <ul>
+                <li>schema.org의 Restaurant 클래스 활용</li>
+                <li>주소는 schema:PostalAddress 사용</li>
+                <li>메뉴는 schema:MenuItem으로 표현</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="practice-task">
+        <h3>과제 2: RDF 그래프 그리기</h3>
+        <p>위에서 작성한 RDF를 그래프 형태로 시각화하세요. 노드는 자원과 리터럴을, 엣지는 속성을 나타냅니다.</p>
+    </div>
+</div>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>RDF 기본 개념</h3>
+            <ul>
+                <li>트리플 기반 데이터 모델</li>
+                <li>주어-서술어-목적어 구조</li>
+                <li>URI를 통한 고유 식별</li>
+                <li>그래프 형태의 지식 표현</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>직렬화 형식</h3>
+            <ul>
+                <li>Turtle: 인간 친화적</li>
+                <li>RDF/XML: 표준 XML 형식</li>
+                <li>JSON-LD: 웹 개발 친화적</li>
+                <li>N-Triples: 단순하고 빠름</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>실무 팁</h3>
+            <ul>
+                <li>의미 있는 URI 설계</li>
+                <li>표준 어휘 재사용</li>
+                <li>적절한 데이터 타입 사용</li>
+                <li>네임스페이스로 충돌 방지</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>RDF의 확장인 RDFS(RDF Schema)에 대해 학습합니다. 클래스와 속성을 정의하고 계층구조를 만드는 방법을 알아봅니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter05')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+/* RDF 트리플 구조 스타일 */
+.triple-structure {
+    margin: 2rem 0;
+}
+
+.triple-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 1.5rem 0;
+}
+
+.triple-component {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    transition: transform 0.3s;
+}
+
+.triple-component:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.triple-component.subject {
+    border: 3px solid #3b82f6;
+}
+
+.triple-component.predicate {
+    border: 3px solid #10b981;
+}
+
+.triple-component.object {
+    border: 3px solid #f59e0b;
+}
+
+.triple-component h4 {
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+}
+
+.triple-component .example {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #64748b;
+}
+
+.triple-arrow {
+    font-size: 2rem;
+    color: #64748b;
+    margin: 0 1rem;
+}
+
+/* 트리플 예시 스타일 */
+.triple-examples {
+    margin: 2rem 0;
+}
+
+.triple-example {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.natural-language {
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+.triple-parts {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+.triple-parts .subject {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.triple-parts .predicate {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.triple-parts .object {
+    background: #fed7aa;
+    color: #92400e;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+/* 지식 그래프 시각화 */
+.connected-triples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.triple-set {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.triple-set p {
+    margin: 0.5rem 0;
+    font-family: 'Courier New', monospace;
+}
+
+.graph-visualization {
+    position: relative;
+    height: 300px;
+    background: #f0f9ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.node {
+    position: absolute;
+    background: white;
+    border: 2px solid #6366f1;
+    border-radius: 50%;
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.node:hover {
+    transform: scale(1.1);
+    background: #e0e7ff;
+}
+
+.node.central {
+    background: #4f46e5;
+    color: white;
+    font-weight: bold;
+}
+
+.node.highlight {
+    background: #fbbf24;
+    border-color: #f59e0b;
+}
+
+/* URI 설명 카드 */
+.uri-roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.role-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e0e7ff;
+    transition: transform 0.3s;
+}
+
+.role-card:hover {
+    transform: translateY(-4px);
+    border-color: #6366f1;
+}
+
+.role-card h4 {
+    margin-bottom: 0.5rem;
+    color: #4f46e5;
+}
+
+.role-card .example {
+    background: #f8fafc;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* URI 모범 사례 */
+.uri-best-practices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.practice-item {
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.practice-item.good {
+    background: #f0fdf4;
+    border: 2px solid #10b981;
+}
+
+.practice-item.bad {
+    background: #fef2f2;
+    border: 2px solid #ef4444;
+}
+
+.practice-item ul {
+    margin-top: 1rem;
+    list-style: none;
+}
+
+.practice-item li {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 4px;
+}
+
+/* 직렬화 형식 카드 */
+.serialization-formats {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.format-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.format-card h4 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.format-card .code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    margin: 1rem 0;
+}
+
+.format-features {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.feature {
+    background: #f0f9ff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* 데이터 타입 표 */
+.xsd-types-table {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.xsd-types-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.xsd-types-table th {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.xsd-types-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.xsd-types-table tr:hover {
+    background: #f8fafc;
+}
+
+/* 어휘 카드 */
+.vocabulary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.vocab-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.vocab-card:hover {
+    transform: scale(1.02);
+}
+
+.vocab-card h4 {
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+.vocab-prefix {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    margin: 1rem 0;
+}
+
+.vocab-terms {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.vocab-terms li {
+    background: white;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* 실전 예제 */
+.practical-example {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.example-code {
+    margin: 1.5rem 0;
+}
+
+.example-explanation {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.example-explanation ul {
+    margin-top: 1rem;
+}
+
+.example-explanation li {
+    margin: 0.5rem 0;
+}
+
+/* 문제 해결 다이어그램 */
+.problem-solution {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.problem, .solution {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.problem {
+    border: 3px solid #ef4444;
+}
+
+.solution {
+    border: 3px solid #10b981;
+}
+
+.arrow {
+    font-size: 2rem;
+    color: #64748b;
+}
+
+/* 리터럴 타입 */
+.literal-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.literal-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.code-example {
+    background: #1e293b;
+    color: #10b981;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* 힌트 박스 */
+.hint-box {
+    background: #fef3c7;
+    border: 2px solid #fbbf24;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.hint-box h4 {
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .triple-diagram {
+        flex-direction: column;
+    }
+    
+    .triple-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+    
+    .uri-best-practices,
+    .connected-triples,
+    .problem-solution {
+        grid-template-columns: 1fr;
+    }
+    
+    .graph-visualization {
+        display: none;
+    }
+}
+</style>

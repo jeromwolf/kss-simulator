@@ -1,0 +1,2018 @@
+<!-- Chapter 7: SPARQL - RDF 질의 언어 (인터랙티브 마스터 버전) Part 1 -->
+
+<div class="chapter-header epic-sparql">
+    <div class="sparql-animation"></div>
+    <h1 class="chapter-title electric" data-text="Chapter 7. SPARQL">Chapter 7. SPARQL - The Key to Knowledge Graphs</h1>
+    <div class="chapter-subtitle">데이터에서 지혜로, 질의에서 통찰로</div>
+    <div class="chapter-quote">
+        "SPARQL은 단순한 질의 언어가 아니라, 지식을 탐험하고 발견하는 도구입니다." <br>
+        <span class="quote-author">- Eric Prud'hommeaux, SPARQL 표준 공동 저자</span>
+    </div>
+    <div class="sparql-mascot">🔍</div>
+</div>
+
+<!-- 게임화된 학습 시작 -->
+<div class="sparql-game-intro">
+    <h2>🎮 SPARQL 마스터 아카데미에 오신 것을 환영합니다!</h2>
+    <div class="academy-interface">
+        <div class="player-profile">
+            <div class="avatar">🧑‍💻</div>
+            <div class="profile-info">
+                <h4>당신의 현재 상태</h4>
+                <div class="skill-bars">
+                    <div class="skill-bar">
+                        <span class="skill-name">RDF 이해도</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-name">OWL 숙련도</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <span class="skill-name">SPARQL 레벨</span>
+                        <div class="progress-bar">
+                            <div class="progress sparql-new" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mission-board">
+            <h4>🎯 오늘의 미션</h4>
+            <div class="missions-list">
+                <div class="mission-item unlocked">
+                    <span class="mission-icon">🔓</span>
+                    <span class="mission-name">Mission 1: SPARQL 기초 마스터</span>
+                    <span class="mission-reward">🏆 쿼리 초보자</span>
+                </div>
+                <div class="mission-item locked">
+                    <span class="mission-icon">🔒</span>
+                    <span class="mission-name">Mission 2: 고급 패턴 정복</span>
+                    <span class="mission-reward">🏆 패턴 헌터</span>
+                </div>
+                <div class="mission-item locked">
+                    <span class="mission-icon">🔒</span>
+                    <span class="mission-name">Mission 3: 실전 프로젝트</span>
+                    <span class="mission-reward">🏆 SPARQL 마스터</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 인터랙티브 학습 목표 -->
+<div class="learning-objectives interactive-style">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표 대시보드</h3>
+    <div class="objectives-dashboard">
+        <div class="objective-card beginner active">
+            <div class="card-header">
+                <span class="level-icon">🌱</span>
+                <h4>Level 1: 기초 마스터</h4>
+                <span class="time-badge">60분</span>
+            </div>
+            <div class="card-content">
+                <ul class="objective-list">
+                    <li class="objective-item">
+                        <span class="status">⏳</span>
+                        <span>SPARQL 탄생 배경과 철학 이해</span>
+                    </li>
+                    <li class="objective-item">
+                        <span class="status">⏳</span>
+                        <span>4가지 질의 형식 완전 정복</span>
+                    </li>
+                    <li class="objective-item">
+                        <span class="status">⏳</span>
+                        <span>기본 트리플 패턴 매칭</span>
+                    </li>
+                    <li class="objective-item">
+                        <span class="status">⏳</span>
+                        <span>첫 번째 실전 쿼리 작성</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="objective-card intermediate">
+            <div class="card-header">
+                <span class="level-icon">🌿</span>
+                <h4>Level 2: 중급 테크닉</h4>
+                <span class="time-badge">90분</span>
+            </div>
+            <div class="card-content locked-content">
+                <div class="unlock-message">Level 1 완료 후 잠금 해제</div>
+            </div>
+        </div>
+        
+        <div class="objective-card advanced">
+            <div class="card-header">
+                <span class="level-icon">🌳</span>
+                <h4>Level 3: 고급 실무</h4>
+                <span class="time-badge">120분</span>
+            </div>
+            <div class="card-content locked-content">
+                <div class="unlock-message">Level 2 완료 후 잠금 해제</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 학습 전 지식 체크 게임 -->
+<div class="knowledge-check-game">
+    <h3>🎲 지식 체크 미니 게임</h3>
+    <div class="game-interface">
+        <div class="game-board">
+            <div class="question-panel">
+                <h4>Question 1/5</h4>
+                <p class="question-text">다음 중 RDF 트리플의 구성 요소가 아닌 것은?</p>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">
+                        <span class="option-letter">A</span>
+                        <span class="option-text">Subject (주어)</span>
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">
+                        <span class="option-letter">B</span>
+                        <span class="option-text">Predicate (술어)</span>
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">
+                        <span class="option-text">Object (목적어)</span>
+                    </button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">
+                        <span class="option-letter">D</span>
+                        <span class="option-text">Context (맥락)</span>
+                    </button>
+                </div>
+            </div>
+            <div class="score-panel">
+                <div class="current-score">
+                    <span class="score-label">현재 점수</span>
+                    <span class="score-value">0/5</span>
+                </div>
+                <div class="progress-ring">
+                    <svg class="progress-ring-svg" width="60" height="60">
+                        <circle class="progress-ring-circle-bg" cx="30" cy="30" r="25" fill="transparent" stroke="#374151" stroke-width="4"/>
+                        <circle class="progress-ring-circle" cx="30" cy="30" r="25" fill="transparent" stroke="#6366f1" stroke-width="4" stroke-dasharray="157" stroke-dashoffset="157"/>
+                    </svg>
+                    <span class="progress-percentage">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 7.1: SPARQL 탄생 스토리 (인터랙티브) -->
+<section class="content-section story-mode">
+    <h2>7.1 SPARQL의 탄생: 혁신의 순간들</h2>
+    
+    <!-- 스토리텔링 모드 -->
+    <div class="origin-story-interactive">
+        <h3>🌟 2004년, W3C 회의실에서 시작된 혁명</h3>
+        
+        <div class="story-player">
+            <div class="story-scene active" data-scene="1">
+                <div class="scene-background">
+                    <img src="/assets/w3c-meeting.jpg" alt="W3C Meeting" class="scene-image">
+                </div>
+                <div class="scene-content">
+                    <div class="narrator">📖 내레이터</div>
+                    <p class="story-text">
+                        2004년 가을, MIT의 한 회의실. 세계 최고의 시맨틱 웹 연구자들이 모여 있었습니다. 
+                        RDF 그래프가 웹에 급속도로 퍼지고 있었지만, 이를 효과적으로 검색할 표준 방법이 없어 큰 문제였습니다.
+                    </p>
+                    <div class="story-characters">
+                        <div class="character">
+                            <img src="/assets/eric-prud.jpg" alt="Eric Prud'hommeaux" class="character-img">
+                            <span class="character-name">Eric Prud'hommeaux</span>
+                        </div>
+                        <div class="character">
+                            <img src="/assets/andy-seaborne.jpg" alt="Andy Seaborne" class="character-img">
+                            <span class="character-name">Andy Seaborne</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="story-next" onclick="nextScene()">다음 장면 →</button>
+            </div>
+            
+            <div class="story-scene" data-scene="2">
+                <div class="scene-content">
+                    <div class="speaker-bubble eric">
+                        <div class="speaker-name">Eric Prud'hommeaux</div>
+                        <p>"SQL은 테이블을 위한 언어입니다. 하지만 우리가 다루는 건 그래프예요. 
+                        완전히 다른 접근이 필요합니다."</p>
+                    </div>
+                    <div class="speaker-bubble andy">
+                        <div class="speaker-name">Andy Seaborne</div>
+                        <p>"맞습니다. 우리에게는 패턴 매칭 기반의 새로운 사고방식이 필요해요. 
+                        마치 퍼즐 조각을 맞추듯이 그래프에서 원하는 모양을 찾아내는 것이죠."</p>
+                    </div>
+                </div>
+                <button class="story-next" onclick="nextScene()">다음 장면 →</button>
+            </div>
+            
+            <div class="story-scene" data-scene="3">
+                <div class="scene-content">
+                    <div class="breakthrough-moment">
+                        <h4>💡 혁신의 순간</h4>
+                        <p>바로 그 순간, SPARQL의 핵심 철학이 탄생했습니다:</p>
+                        <div class="philosophy-cards">
+                            <div class="philosophy-card" onclick="revealPhilosophy(1)">
+                                <div class="card-icon">🔍</div>
+                                <h5>패턴 매칭</h5>
+                                <div class="card-detail hidden">
+                                    "원하는 데이터의 모양을 그려라. 시스템이 찾아줄 것이다."
+                                </div>
+                            </div>
+                            <div class="philosophy-card" onclick="revealPhilosophy(2)">
+                                <div class="card-icon">🌐</div>
+                                <h5>개방성</h5>
+                                <div class="card-detail hidden">
+                                    "모르는 것은 거짓이 아니라 단지 모를 뿐이다."
+                                </div>
+                            </div>
+                            <div class="philosophy-card" onclick="revealPhilosophy(3)">
+                                <div class="card-icon">🔗</div>
+                                <h5>연결성</h5>
+                                <div class="card-detail hidden">
+                                    "관계는 데이터만큼 중요하다."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="story-next" onclick="completeStory()">스토리 완료 ✨</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 진화 타임라인 (인터랙티브) -->
+    <div class="evolution-timeline">
+        <h3>📈 SPARQL 진화의 발자취</h3>
+        <div class="timeline-interactive">
+            <div class="timeline-event" data-year="2004" onclick="showTimelineDetail(2004)">
+                <div class="event-marker">
+                    <div class="year-badge">2004</div>
+                </div>
+                <div class="event-content">
+                    <h5>태동</h5>
+                    <p>RDF Data Access Working Group 결성</p>
+                </div>
+            </div>
+            
+            <div class="timeline-event" data-year="2008" onclick="showTimelineDetail(2008)">
+                <div class="event-marker">
+                    <div class="year-badge">2008</div>
+                </div>
+                <div class="event-content">
+                    <h5>탄생</h5>
+                    <p>SPARQL 1.0 W3C 표준</p>
+                </div>
+            </div>
+            
+            <div class="timeline-event" data-year="2013" onclick="showTimelineDetail(2013)">
+                <div class="event-marker">
+                    <div class="year-badge">2013</div>
+                </div>
+                <div class="event-content">
+                    <h5>진화</h5>
+                    <p>SPARQL 1.1 혁신</p>
+                </div>
+            </div>
+            
+            <div class="timeline-event" data-year="2024" onclick="showTimelineDetail(2024)">
+                <div class="event-marker">
+                    <div class="year-badge">2024</div>
+                </div>
+                <div class="event-content">
+                    <h5>융합</h5>
+                    <p>AI와 만나다</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 타임라인 상세 정보 패널 -->
+        <div class="timeline-detail-panel" id="timelineDetail">
+            <div class="detail-content">
+                <!-- JavaScript로 동적 생성 -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.2: SQL vs SPARQL 인터랙티브 비교 -->
+<section class="content-section comparison-lab">
+    <h2>7.2 SQL에서 SPARQL로: 패러다임 전환 체험실</h2>
+    
+    <!-- 비교 실험실 -->
+    <div class="paradigm-lab">
+        <h3>🔬 패러다임 비교 실험실</h3>
+        
+        <div class="lab-interface">
+            <div class="data-model-comparison">
+                <h4>데이터 모델 비교</h4>
+                <div class="model-tabs">
+                    <button class="model-tab active" onclick="switchModel('sql')">SQL 테이블</button>
+                    <button class="model-tab" onclick="switchModel('sparql')">RDF 그래프</button>
+                </div>
+                
+                <div class="model-visualization" id="modelViz">
+                    <div class="sql-model active">
+                        <h5>관계형 데이터베이스</h5>
+                        <div class="table-structure">
+                            <table class="sample-table">
+                                <thead>
+                                    <tr>
+                                        <th>person_id</th>
+                                        <th>name</th>
+                                        <th>age</th>
+                                        <th>company_id</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>김개발</td>
+                                        <td>30</td>
+                                        <td>100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>이데이터</td>
+                                        <td>28</td>
+                                        <td>100</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="model-characteristics">
+                                <span class="char-tag">고정 스키마</span>
+                                <span class="char-tag">테이블 구조</span>
+                                <span class="char-tag">정규화</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rdf-model">
+                        <h5>RDF 그래프</h5>
+                        <div class="graph-visualization">
+                            <svg viewBox="0 0 400 200" class="graph-svg">
+                                <!-- 노드들 -->
+                                <circle cx="80" cy="100" r="25" class="entity-node" />
+                                <text x="80" y="105" text-anchor="middle" class="node-label">김개발</text>
+                                
+                                <circle cx="320" cy="100" r="25" class="entity-node" />
+                                <text x="320" y="105" text-anchor="middle" class="node-label">네이버</text>
+                                
+                                <!-- 관계 -->
+                                <line x1="105" y1="100" x2="295" y2="100" class="relationship-edge" />
+                                <text x="200" y="95" text-anchor="middle" class="edge-label">worksAt</text>
+                                
+                                <!-- 속성들 -->
+                                <circle cx="80" cy="50" r="20" class="property-node" />
+                                <text x="80" y="55" text-anchor="middle" class="prop-label">30</text>
+                                <line x1="80" y1="75" x2="80" y2="70" class="property-edge" />
+                                <text x="90" y="65" class="prop-edge-label">age</text>
+                            </svg>
+                            <div class="model-characteristics">
+                                <span class="char-tag">유연한 구조</span>
+                                <span class="char-tag">그래프 모델</span>
+                                <span class="char-tag">연결 중심</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 쿼리 비교 실습 -->
+            <div class="query-comparison">
+                <h4>쿼리 문법 비교</h4>
+                <div class="comparison-scenario">
+                    <p class="scenario-text">
+                        📋 <strong>시나리오:</strong> "네이버에서 일하는 30세 이상 직원의 이름을 찾아보세요"
+                    </p>
+                </div>
+                
+                <div class="query-editors">
+                    <div class="query-editor sql-editor">
+                        <div class="editor-header">
+                            <span class="language-tag">SQL</span>
+                            <button class="run-query" onclick="runSQLQuery()">실행</button>
+                        </div>
+                        <pre class="code-editor"><code>SELECT p.name 
+FROM person p
+JOIN company c ON p.company_id = c.id
+WHERE c.name = '네이버' 
+  AND p.age >= 30;</code></pre>
+                        <div class="query-explanation">
+                            <h6>SQL 특징:</h6>
+                            <ul>
+                                <li>JOIN으로 테이블 연결</li>
+                                <li>WHERE 절로 조건 필터링</li>
+                                <li>고정된 스키마 의존</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="query-editor sparql-editor">
+                        <div class="editor-header">
+                            <span class="language-tag">SPARQL</span>
+                            <button class="run-query" onclick="runSPARQLQuery()">실행</button>
+                        </div>
+                        <pre class="code-editor"><code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX org: &lt;http://www.w3.org/ns/org#&gt;
+
+SELECT ?name WHERE {
+  ?person foaf:name ?name ;
+          foaf:age ?age ;
+          org:memberOf ?company .
+  ?company foaf:name "네이버" .
+  FILTER(?age >= 30)
+}</code></pre>
+                        <div class="query-explanation">
+                            <h6>SPARQL 특징:</h6>
+                            <ul>
+                                <li>패턴 매칭으로 그래프 탐색</li>
+                                <li>세미콜론으로 속성 연결</li>
+                                <li>유연한 데이터 구조</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 결과 비교 -->
+                <div class="results-comparison">
+                    <h5>실행 결과</h5>
+                    <div class="results-panel">
+                        <div class="result-sql">
+                            <h6>SQL 결과</h6>
+                            <div class="result-table">
+                                <table>
+                                    <thead><tr><th>name</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>김개발</td></tr>
+                                        <tr><td>박시스템</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="result-sparql">
+                            <h6>SPARQL 결과</h6>
+                            <div class="result-bindings">
+                                <div class="binding">
+                                    <span class="var">?name</span>
+                                    <span class="value">"김개발"</span>
+                                </div>
+                                <div class="binding">
+                                    <span class="var">?name</span>
+                                    <span class="value">"박시스템"</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.3: 첫 번째 SPARQL 쿼리 체험 -->
+<section class="content-section hands-on-lab">
+    <h2>7.3 첫 번째 SPARQL 쿼리: 실습으로 배우기</h2>
+    
+    <!-- 인터랙티브 쿼리 빌더 -->
+    <div class="query-builder-lab">
+        <h3>🛠️ SPARQL 쿼리 빌더</h3>
+        
+        <div class="builder-interface">
+            <!-- 데이터셋 선택 -->
+            <div class="dataset-selector">
+                <h4>1단계: 데이터셋 선택</h4>
+                <div class="dataset-options">
+                    <button class="dataset-btn active" onclick="selectDataset('dbpedia')">
+                        <span class="dataset-icon">🌍</span>
+                        <span class="dataset-name">DBpedia</span>
+                        <span class="dataset-desc">위키피디아 지식 그래프</span>
+                    </button>
+                    <button class="dataset-btn" onclick="selectDataset('wikidata')">
+                        <span class="dataset-icon">📊</span>
+                        <span class="dataset-name">Wikidata</span>
+                        <span class="dataset-desc">구조화된 데이터</span>
+                    </button>
+                    <button class="dataset-btn" onclick="selectDataset('sample')">
+                        <span class="dataset-icon">🧪</span>
+                        <span class="dataset-name">샘플</span>
+                        <span class="dataset-desc">학습용 데이터</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 쿼리 타입 선택 -->
+            <div class="query-type-selector">
+                <h4>2단계: 쿼리 타입 선택</h4>
+                <div class="query-types">
+                    <div class="query-type-card active" onclick="selectQueryType('select')">
+                        <div class="type-icon">📋</div>
+                        <h5>SELECT</h5>
+                        <p>데이터 조회</p>
+                    </div>
+                    <div class="query-type-card" onclick="selectQueryType('construct')">
+                        <div class="type-icon">🏗️</div>
+                        <h5>CONSTRUCT</h5>
+                        <p>그래프 생성</p>
+                    </div>
+                    <div class="query-type-card" onclick="selectQueryType('ask')">
+                        <div class="type-icon">❓</div>
+                        <h5>ASK</h5>
+                        <p>존재 여부</p>
+                    </div>
+                    <div class="query-type-card" onclick="selectQueryType('describe')">
+                        <div class="type-icon">📖</div>
+                        <h5>DESCRIBE</h5>
+                        <p>리소스 설명</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 비주얼 쿼리 빌더 -->
+            <div class="visual-query-builder">
+                <h4>3단계: 비주얼 쿼리 구성</h4>
+                <div class="builder-canvas">
+                    <div class="canvas-area" id="queryCanvas">
+                        <!-- 드래그 앤 드롭 쿼리 구성 영역 -->
+                        <div class="canvas-placeholder">
+                            <p>아래에서 구성 요소를 드래그해서 쿼리를 만들어보세요</p>
+                        </div>
+                    </div>
+                    
+                    <div class="component-palette">
+                        <h5>구성 요소</h5>
+                        <div class="palette-sections">
+                            <div class="palette-section">
+                                <h6>변수</h6>
+                                <div class="palette-items">
+                                    <div class="palette-item" draggable="true" data-type="variable">
+                                        <span class="item-icon">📍</span>
+                                        <span>?person</span>
+                                    </div>
+                                    <div class="palette-item" draggable="true" data-type="variable">
+                                        <span class="item-icon">📍</span>
+                                        <span>?name</span>
+                                    </div>
+                                    <div class="palette-item" draggable="true" data-type="variable">
+                                        <span class="item-icon">📍</span>
+                                        <span>?age</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="palette-section">
+                                <h6>속성</h6>
+                                <div class="palette-items">
+                                    <div class="palette-item" draggable="true" data-type="property">
+                                        <span class="item-icon">🔗</span>
+                                        <span>foaf:name</span>
+                                    </div>
+                                    <div class="palette-item" draggable="true" data-type="property">
+                                        <span class="item-icon">🔗</span>
+                                        <span>foaf:age</span>
+                                    </div>
+                                    <div class="palette-item" draggable="true" data-type="property">
+                                        <span class="item-icon">🔗</span>
+                                        <span>rdf:type</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="palette-section">
+                                <h6>필터</h6>
+                                <div class="palette-items">
+                                    <div class="palette-item" draggable="true" data-type="filter">
+                                        <span class="item-icon">🔍</span>
+                                        <span>FILTER</span>
+                                    </div>
+                                    <div class="palette-item" draggable="true" data-type="optional">
+                                        <span class="item-icon">❓</span>
+                                        <span>OPTIONAL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 생성된 쿼리 -->
+            <div class="generated-query">
+                <h4>4단계: 생성된 SPARQL 쿼리</h4>
+                <div class="query-editor-container">
+                    <pre class="query-display" id="generatedQuery">
+<code>SELECT ?name WHERE {
+  ?person foaf:name ?name .
+  ?person rdf:type foaf:Person .
+}</code>
+                    </pre>
+                    <div class="query-actions">
+                        <button class="action-btn validate" onclick="validateQuery()">
+                            <span class="btn-icon">✓</span>
+                            <span>검증</span>
+                        </button>
+                        <button class="action-btn execute" onclick="executeQuery()">
+                            <span class="btn-icon">▶</span>
+                            <span>실행</span>
+                        </button>
+                        <button class="action-btn explain" onclick="explainQuery()">
+                            <span class="btn-icon">💡</span>
+                            <span>설명</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 실행 결과 -->
+            <div class="query-results" id="queryResults">
+                <h4>실행 결과</h4>
+                <div class="results-container">
+                    <!-- JavaScript로 동적 생성 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 스타일 정의 -->
+<style>
+/* Chapter 7 Part 1 특별 스타일 */
+.chapter-header.epic-sparql {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.sparql-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 49%, rgba(99, 102, 241, 0.1) 50%, transparent 51%);
+    background-size: 20px 20px;
+    animation: sparqlMove 20s linear infinite;
+}
+
+.chapter-title.electric {
+    color: #60a5fa;
+    text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+    animation: electricPulse 3s ease-in-out infinite;
+}
+
+.sparql-mascot {
+    font-size: 4rem;
+    animation: searchPulse 2s ease-in-out infinite;
+}
+
+/* 게임화된 인트로 */
+.sparql-game-intro {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.academy-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.player-profile {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 2px solid #334155;
+}
+
+.avatar {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.skill-bars {
+    margin-top: 1rem;
+}
+
+.skill-bar {
+    margin: 1rem 0;
+}
+
+.skill-name {
+    display: block;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    height: 10px;
+    background: #334155;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+    transition: width 2s ease;
+}
+
+.progress.sparql-new {
+    animation: fillProgress 3s ease-out forwards;
+}
+
+.mission-board {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 2px solid #334155;
+}
+
+.missions-list {
+    margin-top: 1rem;
+}
+
+.mission-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    transition: all 0.3s;
+}
+
+.mission-item.unlocked {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid #22c55e;
+}
+
+.mission-item.locked {
+    background: rgba(107, 114, 128, 0.1);
+    border: 1px solid #6b7280;
+    opacity: 0.6;
+}
+
+.mission-icon {
+    font-size: 1.5rem;
+}
+
+.mission-name {
+    flex: 1;
+}
+
+.mission-reward {
+    font-size: 0.9rem;
+    color: #fbbf24;
+}
+
+/* 학습 목표 대시보드 */
+.objectives-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.objective-card {
+    background: #1f2937;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.objective-card.active {
+    border: 2px solid #6366f1;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.card-header {
+    background: linear-gradient(to right, #4c1d95, #6366f1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.level-icon {
+    font-size: 2rem;
+}
+
+.time-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    margin-left: auto;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.objective-list {
+    list-style: none;
+}
+
+.objective-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.locked-content {
+    text-align: center;
+    opacity: 0.6;
+}
+
+.unlock-message {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* 지식 체크 게임 */
+.knowledge-check-game {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.question-panel {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.question-text {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #e5e7eb;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.option-btn {
+    background: #374151;
+    border: 2px solid transparent;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.option-btn:hover {
+    border-color: #6366f1;
+    background: #4b5563;
+}
+
+.option-letter {
+    background: #6366f1;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.score-panel {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.current-score {
+    margin-bottom: 2rem;
+}
+
+.score-label {
+    display: block;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.score-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6366f1;
+}
+
+.progress-ring {
+    position: relative;
+    display: inline-block;
+}
+
+.progress-ring-svg {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: #6366f1;
+}
+
+/* 스토리 모드 */
+.story-player {
+    background: #111827;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+.story-scene {
+    display: none;
+    padding: 2rem;
+}
+
+.story-scene.active {
+    display: block;
+}
+
+.scene-background {
+    margin-bottom: 2rem;
+}
+
+.scene-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.narrator {
+    color: #fbbf24;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.story-characters {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.character {
+    text-align: center;
+}
+
+.character-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.character-name {
+    display: block;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+.speaker-bubble {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.speaker-bubble.eric {
+    border-left: 4px solid #6366f1;
+}
+
+.speaker-bubble.andy {
+    border-left: 4px solid #22c55e;
+}
+
+.speaker-name {
+    color: #fbbf24;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.story-next {
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    float: right;
+}
+
+.story-next:hover {
+    background: #4f46e5;
+    transform: translateX(5px);
+}
+
+.breakthrough-moment {
+    text-align: center;
+    padding: 2rem;
+}
+
+.philosophy-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.philosophy-card {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.philosophy-card .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.philosophy-card h5 {
+    color: #6366f1;
+    margin-bottom: 1rem;
+}
+
+.card-detail {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #cbd5e1;
+    transition: all 0.3s;
+}
+
+.card-detail.hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+}
+
+/* 진화 타임라인 */
+.timeline-interactive {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.timeline-interactive::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #374151;
+    z-index: 1;
+}
+
+.timeline-event {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.timeline-event:hover {
+    transform: translateY(-5px);
+}
+
+.event-marker {
+    background: #1f2937;
+    border: 3px solid #6366f1;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.year-badge {
+    font-weight: bold;
+    color: #6366f1;
+}
+
+.event-content {
+    text-align: center;
+    max-width: 150px;
+}
+
+.event-content h5 {
+    color: #fbbf24;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-detail-panel {
+    background: #111827;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-top: 2rem;
+    display: none;
+}
+
+.timeline-detail-panel.active {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+/* 패러다임 비교 실험실 */
+.paradigm-lab {
+    background: #0f172a;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.data-model-comparison {
+    margin-bottom: 3rem;
+}
+
+.model-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.model-tab {
+    background: #374151;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.model-tab.active {
+    background: #6366f1;
+}
+
+.model-visualization {
+    position: relative;
+    min-height: 300px;
+}
+
+.sql-model, .rdf-model {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.5s;
+}
+
+.sql-model.active, .rdf-model.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sample-table {
+    width: 100%;
+    background: #1f2937;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.sample-table th, .sample-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #374151;
+}
+
+.sample-table th {
+    background: #374151;
+    color: #fbbf24;
+}
+
+.model-characteristics {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.char-tag {
+    background: #374151;
+    color: #e5e7eb;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+.graph-svg {
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    background: #1f2937;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.entity-node {
+    fill: #6366f1;
+    stroke: #4f46e5;
+    stroke-width: 2;
+}
+
+.property-node {
+    fill: #22c55e;
+    stroke: #16a34a;
+    stroke-width: 2;
+}
+
+.relationship-edge, .property-edge {
+    stroke: #94a3b8;
+    stroke-width: 2;
+    marker-end: url(#arrowhead);
+}
+
+.node-label, .edge-label, .prop-label, .prop-edge-label {
+    fill: white;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+/* 쿼리 비교 */
+.query-editors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.query-editor {
+    background: #111827;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.editor-header {
+    background: #1f2937;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.language-tag {
+    background: #6366f1;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.run-query {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.run-query:hover {
+    background: #16a34a;
+}
+
+.code-editor {
+    padding: 1.5rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+    background: #0f172a;
+}
+
+.query-explanation {
+    padding: 1rem;
+    background: #1f2937;
+    border-top: 1px solid #374151;
+}
+
+.query-explanation h6 {
+    color: #fbbf24;
+    margin-bottom: 0.5rem;
+}
+
+.query-explanation ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.query-explanation li {
+    padding: 0.25rem 0;
+    color: #cbd5e1;
+}
+
+/* 결과 비교 */
+.results-comparison {
+    background: #111827;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.results-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.result-sql, .result-sparql {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.result-table table {
+    width: 100%;
+    background: #0f172a;
+    border-radius: 0.25rem;
+}
+
+.result-table th, .result-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #374151;
+}
+
+.result-table th {
+    background: #374151;
+    color: #fbbf24;
+}
+
+.result-bindings {
+    font-family: monospace;
+}
+
+.binding {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #374151;
+}
+
+.var {
+    color: #6366f1;
+}
+
+.value {
+    color: #22c55e;
+}
+
+/* 쿼리 빌더 실습 */
+.query-builder-lab {
+    background: #0f172a;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.builder-interface > div {
+    margin: 2rem 0;
+}
+
+/* 데이터셋 선택 */
+.dataset-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.dataset-btn {
+    background: #1f2937;
+    border: 2px solid #374151;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.dataset-btn.active {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.dataset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.dataset-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dataset-name {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #6366f1;
+}
+
+.dataset-desc {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+/* 쿼리 타입 선택 */
+.query-types {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.query-type-card {
+    background: #1f2937;
+    border: 2px solid #374151;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.query-type-card.active {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.query-type-card:hover {
+    transform: translateY(-2px);
+}
+
+.type-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.query-type-card h5 {
+    color: #6366f1;
+    margin-bottom: 0.5rem;
+}
+
+.query-type-card p {
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* 비주얼 쿼리 빌더 */
+.builder-canvas {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.canvas-area {
+    background: #111827;
+    border: 2px dashed #374151;
+    border-radius: 1rem;
+    min-height: 400px;
+    padding: 2rem;
+    position: relative;
+}
+
+.canvas-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.component-palette {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.palette-sections {
+    margin-top: 1rem;
+}
+
+.palette-section {
+    margin-bottom: 2rem;
+}
+
+.palette-section h6 {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #374151;
+}
+
+.palette-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.palette-item {
+    background: #374151;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: grab;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.palette-item:hover {
+    background: #4b5563;
+    transform: translateX(5px);
+}
+
+.palette-item:active {
+    cursor: grabbing;
+}
+
+.item-icon {
+    font-size: 1.2rem;
+}
+
+/* 생성된 쿼리 */
+.query-editor-container {
+    background: #111827;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.query-display {
+    background: #0f172a;
+    padding: 2rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+    margin: 0;
+}
+
+.query-actions {
+    background: #1f2937;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    background: #374151;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-btn.validate {
+    background: #22c55e;
+}
+
+.action-btn.execute {
+    background: #6366f1;
+}
+
+.action-btn.explain {
+    background: #f59e0b;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* 애니메이션 */
+@keyframes sparqlMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+@keyframes electricPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(96, 165, 250, 0.5); }
+    50% { text-shadow: 0 0 30px rgba(96, 165, 250, 0.8), 0 0 40px rgba(96, 165, 250, 0.6); }
+}
+
+@keyframes searchPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes fillProgress {
+    from { width: 0%; }
+    to { width: 15%; }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .academy-interface {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .game-board {
+        grid-template-columns: 1fr;
+    }
+    
+    .query-editors {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-panel {
+        grid-template-columns: 1fr;
+    }
+    
+    .builder-canvas {
+        grid-template-columns: 1fr;
+    }
+    
+    .query-types {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .philosophy-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-interactive {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .timeline-interactive::before {
+        display: none;
+    }
+}
+</style>
+
+<!-- 스크립트 -->
+<script>
+// 전역 변수
+let currentScene = 1;
+let currentScore = 0;
+let totalQuestions = 5;
+let selectedDataset = 'dbpedia';
+let selectedQueryType = 'select';
+
+// 지식 체크 게임
+function checkAnswer(element, isCorrect) {
+    const options = document.querySelectorAll('.option-btn');
+    options.forEach(opt => opt.style.pointerEvents = 'none');
+    
+    if (isCorrect) {
+        element.style.background = '#22c55e';
+        element.style.borderColor = '#16a34a';
+        currentScore++;
+        
+        // 점수 업데이트
+        document.querySelector('.score-value').textContent = `${currentScore}/${totalQuestions}`;
+        
+        // 진행률 업데이트
+        const percentage = (currentScore / totalQuestions) * 100;
+        const circle = document.querySelector('.progress-ring-circle');
+        const circumference = 2 * Math.PI * 25;
+        const offset = circumference - (percentage / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+        document.querySelector('.progress-percentage').textContent = `${Math.round(percentage)}%`;
+        
+        setTimeout(() => {
+            alert('정답입니다! 🎉');
+            // 다음 문제로 이동 (실제로는 더 많은 문제가 있을 것)
+        }, 500);
+    } else {
+        element.style.background = '#ef4444';
+        element.style.borderColor = '#dc2626';
+        setTimeout(() => {
+            alert('틀렸습니다. 다시 생각해보세요! 🤔');
+        }, 500);
+    }
+}
+
+// 스토리 진행
+function nextScene() {
+    const currentSceneEl = document.querySelector(`.story-scene[data-scene="${currentScene}"]`);
+    const nextSceneEl = document.querySelector(`.story-scene[data-scene="${currentScene + 1}"]`);
+    
+    if (nextSceneEl) {
+        currentSceneEl.classList.remove('active');
+        nextSceneEl.classList.add('active');
+        currentScene++;
+    }
+}
+
+function completeStory() {
+    alert('스토리 완료! 🎊\n\nSPARQL의 탄생 배경을 이해하셨습니다.\n이제 본격적인 학습을 시작할 준비가 되었어요!');
+    
+    // 첫 번째 미션 완료 표시
+    const firstObjective = document.querySelector('.objective-item .status');
+    if (firstObjective) {
+        firstObjective.textContent = '✅';
+        firstObjective.style.color = '#22c55e';
+    }
+}
+
+// 철학 카드 공개
+function revealPhilosophy(cardNumber) {
+    const card = document.querySelectorAll('.philosophy-card')[cardNumber - 1];
+    const detail = card.querySelector('.card-detail');
+    
+    detail.classList.toggle('hidden');
+    card.style.transform = detail.classList.contains('hidden') ? 'scale(1)' : 'scale(1.05)';
+}
+
+// 타임라인 상세 정보
+function showTimelineDetail(year) {
+    const detailPanel = document.getElementById('timelineDetail');
+    const detailContent = detailPanel.querySelector('.detail-content');
+    
+    const details = {
+        2004: {
+            title: '2004년: SPARQL의 태동',
+            content: `
+                <h4>RDF Data Access Working Group 결성</h4>
+                <ul>
+                    <li>기존 RDF 질의 언어들의 한계 분석</li>
+                    <li>RDQL, SeRQL, N3QL 등의 장점 통합</li>
+                    <li>그래프 중심 사고방식 도입</li>
+                    <li>패턴 매칭 개념 확립</li>
+                </ul>
+                <p><strong>핵심 인물:</strong> Eric Prud'hommeaux, Andy Seaborne, Dave Beckett</p>
+            `
+        },
+        2008: {
+            title: '2008년: SPARQL 1.0 표준화',
+            content: `
+                <h4>W3C 권고안 발표</h4>
+                <ul>
+                    <li>4가지 질의 형식 확립 (SELECT, CONSTRUCT, ASK, DESCRIBE)</li>
+                    <li>기본 그래프 패턴 (BGP) 정의</li>
+                    <li>FILTER와 OPTIONAL 기능</li>
+                    <li>다양한 구현체 등장</li>
+                </ul>
+                <p><strong>영향:</strong> 시맨틱 웹 생태계 활성화의 전환점</p>
+            `
+        },
+        2013: {
+            title: '2013년: SPARQL 1.1 혁신',
+            content: `
+                <h4>대폭적인 기능 강화</h4>
+                <ul>
+                    <li>UPDATE 기능 추가 (INSERT, DELETE)</li>
+                    <li>집계 함수와 GROUP BY</li>
+                    <li>서브쿼리와 BINDINGS</li>
+                    <li>Property Path로 그래프 탐색 강화</li>
+                    <li>Federated Query 지원</li>
+                </ul>
+                <p><strong>결과:</strong> 실용적인 엔터프라이즈급 질의 언어로 발전</p>
+            `
+        },
+        2024: {
+            title: '2024년: AI와의 만남',
+            content: `
+                <h4>차세대 지능형 시스템</h4>
+                <ul>
+                    <li>LLM과 지식 그래프 통합</li>
+                    <li>자연어-SPARQL 자동 변환</li>
+                    <li>GraphQL과의 융합</li>
+                    <li>실시간 스트리밍 SPARQL</li>
+                    <li>설명가능한 AI 시스템</li>
+                </ul>
+                <p><strong>전망:</strong> 지식 중심 AI의 핵심 기술로 부상</p>
+            `
+        }
+    };
+    
+    const detail = details[year];
+    if (detail) {
+        detailContent.innerHTML = `
+            <h3>${detail.title}</h3>
+            ${detail.content}
+        `;
+        detailPanel.classList.add('active');
+    }
+}
+
+// 모델 전환
+function switchModel(model) {
+    const tabs = document.querySelectorAll('.model-tab');
+    const models = document.querySelectorAll('.sql-model, .rdf-model');
+    
+    tabs.forEach(tab => tab.classList.remove('active'));
+    models.forEach(m => m.classList.remove('active'));
+    
+    event.target.classList.add('active');
+    document.querySelector(`.${model}-model`).classList.add('active');
+}
+
+// 쿼리 실행 시뮬레이션
+function runSQLQuery() {
+    alert('SQL 쿼리 실행 중...\n\n결과: 2건의 레코드를 찾았습니다.\n- 김개발\n- 박시스템');
+}
+
+function runSPARQLQuery() {
+    alert('SPARQL 쿼리 실행 중...\n\n결과: 2개의 바인딩을 찾았습니다.\n?name = "김개발"\n?name = "박시스템"');
+}
+
+// 데이터셋 선택
+function selectDataset(dataset) {
+    selectedDataset = dataset;
+    const buttons = document.querySelectorAll('.dataset-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.closest('.dataset-btn').classList.add('active');
+    
+    updateGeneratedQuery();
+}
+
+// 쿼리 타입 선택
+function selectQueryType(type) {
+    selectedQueryType = type;
+    const cards = document.querySelectorAll('.query-type-card');
+    cards.forEach(card => card.classList.remove('active'));
+    event.target.closest('.query-type-card').classList.add('active');
+    
+    updateGeneratedQuery();
+}
+
+// 생성된 쿼리 업데이트
+function updateGeneratedQuery() {
+    const queryDisplay = document.getElementById('generatedQuery');
+    
+    const queries = {
+        dbpedia: {
+            select: `PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?name WHERE {
+  ?person a dbo:Person ;
+          rdfs:label ?name .
+  FILTER(LANG(?name) = "ko")
+}`,
+            construct: `PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+CONSTRUCT {
+  ?person foaf:name ?name
+} WHERE {
+  ?person a dbo:Person ;
+          rdfs:label ?name .
+}`,
+            ask: `PREFIX dbo: <http://dbpedia.org/ontology/>
+
+ASK {
+  ?person a dbo:Person .
+}`,
+            describe: `PREFIX dbo: <http://dbpedia.org/ontology/>
+
+DESCRIBE ?person WHERE {
+  ?person a dbo:Person .
+}`
+        }
+    };
+    
+    const query = queries[selectedDataset]?.[selectedQueryType] || queries.dbpedia.select;
+    queryDisplay.innerHTML = `<code>${query}</code>`;
+}
+
+// 쿼리 기능들
+function validateQuery() {
+    alert('쿼리 검증 중...\n\n✅ 구문 검사: 통과\n✅ 네임스페이스: 유효\n✅ 변수 바인딩: 정상');
+}
+
+function executeQuery() {
+    alert('쿼리 실행 중...\n\n🔍 엔드포인트 연결 중...\n📊 결과: 1,247개의 바인딩을 찾았습니다.');
+    
+    // 결과 표시
+    const resultsContainer = document.querySelector('#queryResults .results-container');
+    resultsContainer.innerHTML = `
+        <div class="execution-results">
+            <h5>실행 결과 (상위 10개)</h5>
+            <div class="result-table">
+                <table>
+                    <thead>
+                        <tr><th>?name</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>"김영희"@ko</td></tr>
+                        <tr><td>"이철수"@ko</td></tr>
+                        <tr><td>"박민수"@ko</td></tr>
+                        <tr><td>"최수진"@ko</td></tr>
+                        <tr><td>"정다은"@ko</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="result-stats">
+                <span>총 1,247건 | 실행시간: 127ms | 엔드포인트: DBpedia</span>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById('queryResults').style.display = 'block';
+}
+
+function explainQuery() {
+    alert(`쿼리 설명:\n\n1. PREFIX로 네임스페이스 정의\n2. SELECT로 반환할 변수 지정\n3. WHERE 절에서 그래프 패턴 매칭\n4. 트리플 패턴으로 데이터 검색\n5. FILTER로 조건 필터링`);
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 진행률 애니메이션
+    setTimeout(() => {
+        const sparqlProgress = document.querySelector('.progress.sparql-new');
+        if (sparqlProgress) {
+            sparqlProgress.style.width = '15%';
+        }
+    }, 1000);
+    
+    // 초기 쿼리 업데이트
+    updateGeneratedQuery();
+});
+</script>

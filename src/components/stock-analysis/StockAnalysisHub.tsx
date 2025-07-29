@@ -1,13 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { LineChart, RotateCcw, MessageSquare } from 'lucide-react';
+import { LineChart, RotateCcw, MessageSquare, Book, PlayCircle, Video } from 'lucide-react';
 import { CurriculumRenderer } from './CurriculumRenderer';
 import { AdvancedSimulator } from './AdvancedSimulator';
 import { AIMentor } from './AIMentor';
+import { VideoLearning } from './VideoLearning';
+import { VideoCreator } from './VideoCreator';
+import Link from 'next/link';
 
 export function StockAnalysisHub() {
-  const [viewMode, setViewMode] = useState<'overview' | 'detail' | 'simulator'>('overview');
+  const [viewMode, setViewMode] = useState<'overview' | 'detail' | 'simulator' | 'videos' | 'creator'>('overview');
   const [isMentorOpen, setIsMentorOpen] = useState(false);
 
   return (
@@ -51,6 +54,35 @@ export function StockAnalysisHub() {
                 상세 커리큘럼
               </button>
               <button
+                onClick={() => setViewMode('videos')}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
+                  viewMode === 'videos'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200'
+                }`}
+              >
+                <PlayCircle className="w-4 h-4" />
+                비디오 강의
+              </button>
+              <button
+                onClick={() => setViewMode('creator')}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
+                  viewMode === 'creator'
+                    ? 'bg-purple-600 text-white'
+                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200'
+                }`}
+              >
+                <Video className="w-4 h-4" />
+                비디오 생성
+              </button>
+              <Link
+                href="/stock-dictionary"
+                className="px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                <Book className="w-4 h-4" />
+                용어 사전
+              </Link>
+              <button
                 onClick={() => setViewMode('simulator')}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
                   viewMode === 'simulator'
@@ -91,10 +123,19 @@ export function StockAnalysisHub() {
           </div>
           <AdvancedSimulator />
         </section>
+      ) : viewMode === 'videos' ? (
+        <section className="max-w-7xl mx-auto px-4 py-8">
+          <VideoLearning />
+        </section>
+      ) : viewMode === 'creator' ? (
+        <section className="max-w-7xl mx-auto px-4 py-8">
+          <VideoCreator />
+        </section>
       ) : (
         <CurriculumRenderer 
           viewMode={viewMode} 
           onSimulatorClick={() => setViewMode('simulator')}
+          setViewMode={setViewMode}
         />
       )}
       

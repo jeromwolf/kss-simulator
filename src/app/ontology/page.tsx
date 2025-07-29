@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Menu, X, Home } from 'lucide-react'
 import ContentWrapper from './ContentWrapper'
-import ProgressTracker from '@/components/ProgressTracker'
 import TableOfContents from '@/components/TableOfContents'
 import styles from './ontology.module.css'
 import './style-override.css'
@@ -39,10 +38,22 @@ export default function OntologyPage() {
   const [chapterContent, setChapterContent] = useState('')
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
-
+  
   useEffect(() => {
     loadChapter(currentChapter)
   }, [currentChapter])
+
+  useEffect(() => {
+    const handleChapterChange = (event: any) => {
+      setCurrentChapter(event.detail)
+    }
+    
+    window.addEventListener('changeChapter', handleChapterChange)
+    
+    return () => {
+      window.removeEventListener('changeChapter', handleChapterChange)
+    }
+  }, [])
 
   const loadChapter = async (chapterId: string) => {
     setIsLoading(true)
@@ -74,7 +85,7 @@ export default function OntologyPage() {
   }
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="flex h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900/20">
       {/* Mobile overlay */}
       {isSidebarOpen && (
         <div 
@@ -86,26 +97,27 @@ export default function OntologyPage() {
       {/* Sidebar */}
       <aside className={`${
         isSidebarOpen ? 'w-80' : 'w-0'
-      } transition-all duration-300 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border-r border-gray-200/50 dark:border-gray-700/50 overflow-hidden shadow-xl
+      } transition-all duration-300 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md border-r border-indigo-200/30 dark:border-indigo-700/30 overflow-hidden shadow-2xl
       fixed md:relative inset-y-0 left-0 z-40 md:z-auto`}>
         <div className="p-6 h-full overflow-y-auto">
           <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-kss-primary to-kss-secondary bg-clip-text text-transparent">
-            온톨로지 마스터클래스
+            온톨로지 시뮬레이터
           </h2>
+          
           <nav className="space-y-1">
             {chapters.map((chapter, index) => (
               <div key={chapter.id}>
                 {chapter.part && (
-                  <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-8 mb-3 px-4 first:mt-0">
+                  <div className="text-xs font-medium text-indigo-500 dark:text-indigo-400 uppercase tracking-wide mt-4 mb-2 px-2 py-1 first:mt-0">
                     {chapter.part}
                   </div>
                 )}
                 <button
                   onClick={() => setCurrentChapter(chapter.id)}
-                  className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-200 group ${
+                  className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-200 group relative ${
                     currentChapter === chapter.id
-                      ? 'bg-gradient-to-r from-kss-primary to-kss-secondary text-white shadow-lg scale-[1.02]'
-                      : 'hover:bg-gray-100 dark:hover:bg-gray-700/50 hover:translate-x-1'
+                      ? 'bg-gradient-to-r from-kss-primary to-kss-secondary text-white shadow-lg scale-[1.02] border border-indigo-300/50'
+                      : 'hover:bg-indigo-50/80 dark:hover:bg-indigo-900/20 hover:translate-x-1 hover:border-indigo-200/50 dark:hover:border-indigo-700/50 border border-transparent'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -119,7 +131,7 @@ export default function OntologyPage() {
                       <span className={`text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 ${
                         currentChapter === chapter.id 
                           ? 'bg-white/20 text-white' 
-                          : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                          : 'bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-300'
                       }`}>
                         {index}
                       </span>
@@ -127,6 +139,7 @@ export default function OntologyPage() {
                     <span className="text-sm font-medium flex-1">
                       {chapter.title}
                     </span>
+                    {/* Remove check marks - they were showing completion status */}
                   </div>
                 </button>
               </div>
@@ -138,15 +151,17 @@ export default function OntologyPage() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50 px-6 py-4 flex items-center justify-between shadow-sm">
-          <div className="flex items-center gap-4">
+        <header className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-b border-indigo-200/30 dark:border-indigo-700/30 px-6 py-4 flex items-center justify-between shadow-lg">
+          <div className="flex items-center gap-6">
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="p-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors"
+              className="p-2.5 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-xl transition-colors"
+              title={isSidebarOpen ? "사이드바 숨기기" : "사이드바 보기"}
             >
               {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+            <div className="h-6 w-px bg-indigo-200 dark:bg-indigo-700"></div>
+            <h3 className="text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               {chapters.find(ch => ch.id === currentChapter)?.title}
             </h3>
           </div>
@@ -155,17 +170,17 @@ export default function OntologyPage() {
             <button
               onClick={() => navigateChapter('prev')}
               disabled={getCurrentChapterIndex() === 0}
-              className="p-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+              className="p-2.5 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
             >
               <ChevronLeft size={20} />
             </button>
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-lg">
+            <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300 px-3 py-1 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200/50 dark:border-indigo-700/50">
               {getCurrentChapterIndex() + 1} / {chapters.length}
             </span>
             <button
               onClick={() => navigateChapter('next')}
               disabled={getCurrentChapterIndex() === chapters.length - 1}
-              className="p-2.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+              className="p-2.5 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
             >
               <ChevronRight size={20} />
             </button>
@@ -190,11 +205,7 @@ export default function OntologyPage() {
         </div>
       </main>
       
-      {/* Table of Contents */}
-      {!isLoading && chapterContent && <TableOfContents />}
-      
-      {/* Progress Tracker */}
-      <ProgressTracker currentChapter={currentChapter} totalChapters={chapters.length} />
+      {/* Table of Contents - Removed to avoid duplication */}
     </div>
   )
 }

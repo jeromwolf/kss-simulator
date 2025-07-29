@@ -1,0 +1,15 @@
+/* Stock Analysis specific styles */
+
+/* Override ontology list styles for stock analysis page */
+.stock-analysis-content ul li::before {
+  content: none !important;
+}
+
+.stock-analysis-content ul {
+  list-style: none !important;
+}
+
+/* Ensure proper spacing for custom icons */
+.stock-analysis-content ul li {
+  padding-left: 0 !important;
+}

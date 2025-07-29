@@ -1,0 +1,2170 @@
+<!-- Chapter 15: 산업별 활용사례 (인터랙티브 마스터 버전) Part 1 -->
+
+<!-- Part 1 시작 -->
+<div class="part-header healthcare-finance-mastery">
+    <div class="industry-animation"></div>
+    <h2 class="part-title">Part 1: 의료와 금융 산업의 온톨로지 혁명</h2>
+    <p class="part-description">생명을 구하고 금융을 혁신하는 온톨로지의 실제 적용 사례를 체험합니다!</p>
+</div>
+
+<!-- 산업별 온톨로지 전문가 준비도 -->
+<div class="progress-check industry-expert">
+    <h3>🏭 산업별 온톨로지 전문가 준비도</h3>
+    <div class="industry-readiness">
+        <div class="industry-radar">
+            <h4>산업 전문성 레이더</h4>
+            <canvas id="industryRadar" width="300" height="300"></canvas>
+            <div class="radar-legend">
+                <div class="legend-item"><span class="color healthcare"></span> 의료/생명과학</div>
+                <div class="legend-item"><span class="color finance"></span> 금융 서비스</div>
+                <div class="legend-item"><span class="color manufacturing"></span> 제조업</div>
+                <div class="legend-item"><span class="color ecommerce"></span> 전자상거래</div>
+                <div class="legend-item"><span class="color education"></span> 교육</div>
+                <div class="legend-item"><span class="color smartcity"></span> 스마트시티</div>
+            </div>
+        </div>
+        
+        <div class="implementation-skills">
+            <h4>실무 구현 역량</h4>
+            <div class="skill-meters">
+                <div class="skill-meter">
+                    <span class="skill-name">도메인 분석</span>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 85%"></div>
+                    </div>
+                    <span class="skill-value">85%</span>
+                </div>
+                <div class="skill-meter">
+                    <span class="skill-name">표준 통합</span>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 78%"></div>
+                    </div>
+                    <span class="skill-value">78%</span>
+                </div>
+                <div class="skill-meter">
+                    <span class="skill-name">시스템 연동</span>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 82%"></div>
+                    </div>
+                    <span class="skill-value">82%</span>
+                </div>
+                <div class="skill-meter">
+                    <span class="skill-name">ROI 분석</span>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="skill-value">75%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 15.1: 의료 및 생명과학 인터랙티브 -->
+<section class="content-section healthcare-interactive">
+    <h2>15.1 의료 및 생명과학 온톨로지 체험관</h2>
+    
+    <!-- 의료 온톨로지 탐색기 -->
+    <div class="medical-ontology-explorer">
+        <h3>🏥 실시간 의료 온톨로지 탐색기</h3>
+        <div class="explorer-interface">
+            <!-- 질병 검색 및 탐색 -->
+            <div class="disease-search">
+                <h4>질병 온톨로지 검색</h4>
+                <div class="search-box">
+                    <input type="text" id="diseaseSearch" placeholder="질병명을 입력하세요 (예: 당뇨병, 고혈압)">
+                    <button onclick="searchDisease()">검색</button>
+                </div>
+                <div class="search-results" id="diseaseResults">
+                    <!-- 동적으로 결과 표시 -->
+                </div>
+            </div>
+            
+            <!-- 온톨로지 시각화 -->
+            <div class="ontology-visualization">
+                <h4>의료 지식 그래프</h4>
+                <div class="graph-container">
+                    <svg id="medicalGraph" width="600" height="400"></svg>
+                </div>
+                <div class="node-info" id="nodeInfo">
+                    <h5>노드 정보</h5>
+                    <p>그래프의 노드를 클릭하면 상세 정보가 표시됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI 진단 시뮬레이터 -->
+    <div class="ai-diagnosis-simulator">
+        <h3>🤖 AI 진단 지원 시스템 시뮬레이터</h3>
+        <div class="diagnosis-interface">
+            <!-- 환자 정보 입력 -->
+            <div class="patient-input">
+                <h4>환자 정보</h4>
+                <div class="info-grid">
+                    <div class="info-field">
+                        <label>나이</label>
+                        <input type="number" id="patientAge" value="45">
+                    </div>
+                    <div class="info-field">
+                        <label>성별</label>
+                        <select id="patientGender">
+                            <option value="male">남성</option>
+                            <option value="female">여성</option>
+                        </select>
+                    </div>
+                    <div class="info-field">
+                        <label>주요 증상</label>
+                        <input type="text" id="mainSymptom" placeholder="예: 흉통, 호흡곤란">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 증상 선택기 -->
+            <div class="symptom-selector">
+                <h4>증상 선택 (해당하는 모든 증상 선택)</h4>
+                <div class="symptom-grid">
+                    <label class="symptom-item">
+                        <input type="checkbox" value="chest_pain"> 흉통
+                    </label>
+                    <label class="symptom-item">
+                        <input type="checkbox" value="shortness_breath"> 호흡곤란
+                    </label>
+                    <label class="symptom-item">
+                        <input type="checkbox" value="fatigue"> 피로감
+                    </label>
+                    <label class="symptom-item">
+                        <input type="checkbox" value="dizziness"> 어지러움
+                    </label>
+                    <label class="symptom-item">
+                        <input type="checkbox" value="nausea"> 메스꺼움
+                    </label>
+                    <label class="symptom-item">
+                        <input type="checkbox" value="sweating"> 발한
+                    </label>
+                    <label class="symptom-item">
+                        <input type="checkbox" value="palpitation"> 심계항진
+                    </label>
+                    <label class="symptom-item">
+                        <input type="checkbox" value="fever"> 발열
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 진단 실행 -->
+            <button class="diagnose-btn" onclick="runDiagnosis()">
+                <span class="btn-icon">🔬</span>
+                AI 진단 분석 실행
+            </button>
+            
+            <!-- 진단 결과 -->
+            <div class="diagnosis-results" id="diagnosisResults">
+                <h4>진단 분석 결과</h4>
+                <div class="results-placeholder">
+                    진단을 실행하면 결과가 여기에 표시됩니다.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SNOMED CT 체험 -->
+    <div class="snomed-ct-experience">
+        <h3>🌍 SNOMED CT 글로벌 의료 용어 체험</h3>
+        <div class="snomed-demo">
+            <div class="concept-browser">
+                <h4>개념 브라우저</h4>
+                <div class="concept-tree">
+                    <div class="tree-node root" onclick="toggleNode(this)">
+                        <span class="node-icon">📁</span>
+                        <span class="node-name">SNOMED CT 루트</span>
+                        <div class="child-nodes">
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="node-icon">📁</span>
+                                <span class="node-name">임상 소견</span>
+                                <div class="child-nodes">
+                                    <div class="tree-node">
+                                        <span class="node-icon">📄</span>
+                                        <span class="node-name">질병</span>
+                                    </div>
+                                    <div class="tree-node">
+                                        <span class="node-icon">📄</span>
+                                        <span class="node-name">장애</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tree-node" onclick="toggleNode(this)">
+                                <span class="node-icon">📁</span>
+                                <span class="node-name">시술</span>
+                                <div class="child-nodes">
+                                    <div class="tree-node">
+                                        <span class="node-icon">📄</span>
+                                        <span class="node-name">수술</span>
+                                    </div>
+                                    <div class="tree-node">
+                                        <span class="node-icon">📄</span>
+                                        <span class="node-name">진단 절차</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tree-node">
+                                <span class="node-icon">📁</span>
+                                <span class="node-name">해부학적 구조</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="concept-details">
+                <h4>개념 상세 정보</h4>
+                <div class="detail-view" id="conceptDetail">
+                    <p>개념을 선택하면 상세 정보가 표시됩니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="snomed-stats">
+            <h4>SNOMED CT 통계</h4>
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <span class="stat-number">350,000+</span>
+                    <span class="stat-label">개념</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1.5M+</span>
+                    <span class="stat-label">관계</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">지원 언어</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">80+</span>
+                    <span class="stat-label">사용 국가</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gene Ontology 인터랙티브 -->
+    <div class="gene-ontology-interactive">
+        <h3>🧬 Gene Ontology 인터랙티브 탐색</h3>
+        <div class="go-explorer">
+            <div class="go-categories">
+                <button class="category-btn active" onclick="showGOCategory('biological')">
+                    생물학적 프로세스
+                </button>
+                <button class="category-btn" onclick="showGOCategory('molecular')">
+                    분자 기능
+                </button>
+                <button class="category-btn" onclick="showGOCategory('cellular')">
+                    세포 구성요소
+                </button>
+            </div>
+            
+            <div class="go-visualization" id="goVisualization">
+                <div class="go-network biological">
+                    <h4>생물학적 프로세스</h4>
+                    <div class="process-flow">
+                        <div class="process-node">세포 분열</div>
+                        <div class="process-arrow">→</div>
+                        <div class="process-node">DNA 복제</div>
+                        <div class="process-arrow">→</div>
+                        <div class="process-node">세포 성장</div>
+                    </div>
+                </div>
+                <div class="go-network molecular" style="display: none;">
+                    <h4>분자 기능</h4>
+                    <div class="function-grid">
+                        <div class="function-card">촉매 활성</div>
+                        <div class="function-card">결합</div>
+                        <div class="function-card">수송</div>
+                        <div class="function-card">신호 전달</div>
+                    </div>
+                </div>
+                <div class="go-network cellular" style="display: none;">
+                    <h4>세포 구성요소</h4>
+                    <div class="cell-diagram">
+                        <div class="cell-component nucleus">핵</div>
+                        <div class="cell-component mitochondria">미토콘드리아</div>
+                        <div class="cell-component er">소포체</div>
+                        <div class="cell-component membrane">세포막</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 15.2: 금융 서비스 인터랙티브 -->
+<section class="content-section finance-interactive">
+    <h2>15.2 금융 서비스 온톨로지 실습실</h2>
+    
+    <!-- FIBO 온톨로지 시뮬레이터 -->
+    <div class="fibo-simulator">
+        <h3>💰 FIBO (금융 산업 비즈니스 온톨로지) 시뮬레이터</h3>
+        <div class="fibo-interface">
+            <!-- 금융 개체 모델러 -->
+            <div class="entity-modeler">
+                <h4>금융 개체 모델링</h4>
+                <div class="entity-builder">
+                    <div class="entity-type-selector">
+                        <label>개체 유형</label>
+                        <select id="entityType" onchange="updateEntityForm()">
+                            <option value="corporation">주식회사</option>
+                            <option value="bank">은행</option>
+                            <option value="fund">펀드</option>
+                            <option value="security">증권</option>
+                        </select>
+                    </div>
+                    
+                    <div class="entity-form" id="entityForm">
+                        <div class="form-field">
+                            <label>회사명</label>
+                            <input type="text" id="corpName" placeholder="예: 삼성전자">
+                        </div>
+                        <div class="form-field">
+                            <label>법인번호</label>
+                            <input type="text" id="corpId" placeholder="110111-0000000">
+                        </div>
+                        <div class="form-field">
+                            <label>상장 거래소</label>
+                            <select id="exchange">
+                                <option value="krx">한국거래소</option>
+                                <option value="nasdaq">NASDAQ</option>
+                                <option value="nyse">NYSE</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="create-entity-btn" onclick="createFinancialEntity()">
+                        금융 개체 생성
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 관계 시각화 -->
+            <div class="relationship-visualizer">
+                <h4>금융 관계 그래프</h4>
+                <div class="graph-view" id="fiboGraph">
+                    <canvas id="fiboCanvas" width="500" height="400"></canvas>
+                </div>
+                <div class="relationship-legend">
+                    <div class="legend-item">
+                        <span class="line owns"></span> 소유
+                    </div>
+                    <div class="legend-item">
+                        <span class="line invests"></span> 투자
+                    </div>
+                    <div class="legend-item">
+                        <span class="line regulates"></span> 규제
+                    </div>
+                    <div class="legend-item">
+                        <span class="line trades"></span> 거래
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- RegTech 규제 준수 체커 -->
+    <div class="regtech-compliance-checker">
+        <h3>⚖️ RegTech 규제 준수 자동 검사기</h3>
+        <div class="compliance-interface">
+            <!-- 거래 입력 -->
+            <div class="transaction-input">
+                <h4>거래 정보 입력</h4>
+                <div class="transaction-form">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>거래 유형</label>
+                            <select id="transType">
+                                <option value="transfer">자금 이체</option>
+                                <option value="deposit">입금</option>
+                                <option value="withdrawal">출금</option>
+                                <option value="investment">투자</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label>거래 금액</label>
+                            <input type="number" id="transAmount" placeholder="10000000">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label>송금인</label>
+                            <input type="text" id="sender" placeholder="홍길동">
+                        </div>
+                        <div class="form-field">
+                            <label>수취인</label>
+                            <input type="text" id="receiver" placeholder="김철수">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>거래 목적</label>
+                        <input type="text" id="transPurpose" placeholder="사업 자금">
+                    </div>
+                </div>
+                
+                <button class="check-compliance-btn" onclick="checkCompliance()">
+                    <span class="btn-icon">🔍</span>
+                    규제 준수 검사
+                </button>
+            </div>
+            
+            <!-- 검사 결과 -->
+            <div class="compliance-results" id="complianceResults">
+                <h4>규제 준수 검사 결과</h4>
+                <div class="results-dashboard">
+                    <div class="compliance-score">
+                        <div class="score-circle">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#e0e0e0" stroke-width="10"/>
+                                <circle cx="60" cy="60" r="50" fill="none" stroke="#4caf50" stroke-width="10"
+                                        stroke-dasharray="314" stroke-dashoffset="314" class="score-progress"/>
+                            </svg>
+                            <div class="score-text">0%</div>
+                        </div>
+                        <span class="score-label">준수율</span>
+                    </div>
+                    
+                    <div class="compliance-details">
+                        <div class="check-item">
+                            <span class="check-icon pending">⏳</span>
+                            <span class="check-name">AML 검사</span>
+                            <span class="check-status">대기중</span>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon pending">⏳</span>
+                            <span class="check-name">KYC 확인</span>
+                            <span class="check-status">대기중</span>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon pending">⏳</span>
+                            <span class="check-name">거래 한도</span>
+                            <span class="check-status">대기중</span>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon pending">⏳</span>
+                            <span class="check-name">제재 명단</span>
+                            <span class="check-status">대기중</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 리스크 관리 대시보드 -->
+    <div class="risk-management-dashboard">
+        <h3>📊 통합 리스크 관리 대시보드</h3>
+        <div class="risk-interface">
+            <!-- 리스크 입력 -->
+            <div class="risk-parameters">
+                <h4>포트폴리오 리스크 분석</h4>
+                <div class="portfolio-input">
+                    <div class="asset-list">
+                        <div class="asset-item">
+                            <input type="text" placeholder="자산명" class="asset-name">
+                            <input type="number" placeholder="금액" class="asset-amount">
+                            <select class="asset-type">
+                                <option value="stock">주식</option>
+                                <option value="bond">채권</option>
+                                <option value="commodity">원자재</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="add-asset-btn" onclick="addAsset()">+ 자산 추가</button>
+                </div>
+                
+                <button class="analyze-risk-btn" onclick="analyzeRisk()">
+                    <span class="btn-icon">📈</span>
+                    리스크 분석 실행
+                </button>
+            </div>
+            
+            <!-- 리스크 시각화 -->
+            <div class="risk-visualization">
+                <h4>리스크 분석 결과</h4>
+                <div class="risk-charts">
+                    <div class="risk-chart">
+                        <h5>리스크 유형별 분포</h5>
+                        <canvas id="riskTypeChart" width="250" height="200"></canvas>
+                    </div>
+                    <div class="risk-chart">
+                        <h5>VaR (Value at Risk)</h5>
+                        <div class="var-display">
+                            <span class="var-value">0</span>
+                            <span class="var-label">원</span>
+                        </div>
+                        <div class="var-confidence">95% 신뢰수준</div>
+                    </div>
+                </div>
+                
+                <div class="risk-recommendations">
+                    <h5>리스크 관리 권고사항</h5>
+                    <ul id="riskRecommendations">
+                        <li>리스크 분석을 실행하면 권고사항이 표시됩니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실제 사례: JP Morgan COIN -->
+    <div class="case-study-coin">
+        <h3>💼 사례 연구: JP Morgan COIN</h3>
+        <div class="coin-demo">
+            <h4>계약 지능화 온톨로지 체험</h4>
+            <div class="contract-analyzer">
+                <div class="contract-upload">
+                    <h5>상업 대출 계약서 분석</h5>
+                    <textarea id="contractText" placeholder="계약서 텍스트를 붙여넣으세요...
+예: 본 대출 계약은 2024년 1월 1일부터 효력이 발생하며, 대출 금액은 10억원, 이자율은 연 5.5%입니다..."></textarea>
+                    <button class="analyze-contract-btn" onclick="analyzeContract()">
+                        계약서 분석
+                    </button>
+                </div>
+                
+                <div class="contract-results" id="contractResults">
+                    <h5>추출된 핵심 정보</h5>
+                    <div class="extracted-info">
+                        <div class="info-item">
+                            <span class="info-label">계약 유형</span>
+                            <span class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">대출 금액</span>
+                            <span class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">이자율</span>
+                            <span class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">리스크 등급</span>
+                            <span class="info-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="coin-impact">
+                <h5>COIN 시스템 영향</h5>
+                <div class="impact-metrics">
+                    <div class="impact-card">
+                        <span class="impact-number">360,000</span>
+                        <span class="impact-label">시간/년 절감</span>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number">150+</span>
+                        <span class="impact-label">계약 유형</span>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number">99.9%</span>
+                        <span class="impact-label">정확도</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Part 1 마무리 미니 게임 -->
+<div class="mini-game healthcare-finance-quiz">
+    <h3>🎮 의료-금융 온톨로지 마스터 퀴즈</h3>
+    <div class="quiz-container">
+        <div class="quiz-question" id="quizQuestion">
+            <h4>문제 1/5</h4>
+            <p>SNOMED CT에서 가장 많은 개념을 포함하는 카테고리는?</p>
+        </div>
+        <div class="quiz-options" id="quizOptions">
+            <button class="option-btn" onclick="checkAnswer(0)">임상 소견</button>
+            <button class="option-btn" onclick="checkAnswer(1)">시술</button>
+            <button class="option-btn" onclick="checkAnswer(2)">해부학적 구조</button>
+            <button class="option-btn" onclick="checkAnswer(3)">약물</button>
+        </div>
+        <div class="quiz-score">
+            <span>점수: <span id="quizScore">0</span>/5</span>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 파트 예고 -->
+<div class="next-part-preview">
+    <h3>다음 파트에서는...</h3>
+    <p>제조업과 전자상거래에서 온톨로지가 어떻게 혁신을 이끌고 있는지 살펴봅니다!</p>
+    <button class="continue-btn" onclick="goToPart2()">
+        Part 2로 계속 <span class="arrow">→</span>
+    </button>
+</div>
+
+<style>
+/* Part 1 헤더 스타일 */
+.part-header.healthcare-finance-mastery {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #f59e0b 100%);
+    padding: 4rem 2rem;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    background: 
+        radial-gradient(circle at 30% 50%, #ffffff 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, #ffffff 0%, transparent 50%);
+    animation: industryPulse 4s ease-in-out infinite;
+}
+
+@keyframes industryPulse {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.1); opacity: 0.15; }
+}
+
+/* 산업별 전문가 준비도 스타일 */
+.industry-expert {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.industry-radar {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#industryRadar {
+    max-width: 100%;
+    height: auto;
+}
+
+.radar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.legend-item .color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.color.healthcare { background: #0891b2; }
+.color.finance { background: #f59e0b; }
+.color.manufacturing { background: #10b981; }
+.color.ecommerce { background: #8b5cf6; }
+.color.education { background: #ec4899; }
+.color.smartcity { background: #3b82f6; }
+
+/* 스킬 미터 스타일 */
+.skill-meters {
+    display: grid;
+    gap: 1rem;
+}
+
+.skill-meter {
+    display: grid;
+    grid-template-columns: 120px 1fr 50px;
+    align-items: center;
+    gap: 1rem;
+}
+
+.meter-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0891b2, #06b6d4);
+    transition: width 0.3s ease;
+}
+
+/* 의료 온톨로지 탐색기 스타일 */
+.medical-ontology-explorer {
+    background: #f0fdfa;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.explorer-interface {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.disease-search {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.search-box {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.search-box button {
+    padding: 0.75rem 1.5rem;
+    background: #0891b2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #0e7490;
+}
+
+.search-results {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.result-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.result-item:hover {
+    background: #f3f4f6;
+}
+
+/* 온톨로지 시각화 스타일 */
+.graph-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#medicalGraph {
+    width: 100%;
+    height: 100%;
+}
+
+.node-info {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* AI 진단 시뮬레이터 스타일 */
+.ai-diagnosis-simulator {
+    background: #fef3c7;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.diagnosis-interface {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-field label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.info-field input,
+.info-field select {
+    padding: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.symptom-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #f3f4f6;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.symptom-item:hover {
+    background: #e5e7eb;
+}
+
+.symptom-item input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.diagnose-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.diagnose-btn:hover {
+    transform: translateY(-2px);
+}
+
+.diagnosis-results {
+    margin-top: 2rem;
+    background: #fffbeb;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #fbbf24;
+}
+
+/* SNOMED CT 체험 스타일 */
+.snomed-ct-experience {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.snomed-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.concept-tree {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.tree-node {
+    margin-left: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tree-node .child-nodes {
+    margin-left: 20px;
+    display: none;
+}
+
+.tree-node.expanded .child-nodes {
+    display: block;
+}
+
+.node-icon {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+.node-name {
+    margin-left: 0.5rem;
+}
+
+.concept-details {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.stat-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid #e0e7ff;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+/* Gene Ontology 스타일 */
+.gene-ontology-interactive {
+    background: #ecfdf5;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.go-categories {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.category-btn {
+    flex: 1;
+    padding: 0.75rem;
+    background: white;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #10b981;
+    color: white;
+}
+
+.go-network {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.process-node {
+    padding: 1rem 1.5rem;
+    background: #d1fae5;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.process-arrow {
+    font-size: 1.5rem;
+    color: #10b981;
+}
+
+.function-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.function-card {
+    padding: 1.5rem;
+    background: #d1fae5;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cell-diagram {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 2rem auto;
+    background: #fef3c7;
+    border-radius: 50%;
+}
+
+.cell-component {
+    position: absolute;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nucleus {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fbbf24;
+}
+
+.mitochondria {
+    top: 30%;
+    right: 20%;
+}
+
+.er {
+    bottom: 30%;
+    left: 20%;
+}
+
+.membrane {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* FIBO 시뮬레이터 스타일 */
+.fibo-simulator {
+    background: #fffbeb;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.fibo-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.entity-builder {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.entity-form {
+    margin-top: 1rem;
+}
+
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.form-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.create-entity-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.create-entity-btn:hover {
+    background: #d97706;
+}
+
+.graph-view {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+#fiboCanvas {
+    width: 100%;
+    height: auto;
+}
+
+.relationship-legend {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.relationship-legend .line {
+    display: inline-block;
+    width: 30px;
+    height: 3px;
+    margin-right: 0.5rem;
+}
+
+.line.owns { background: #3b82f6; }
+.line.invests { background: #10b981; }
+.line.regulates { background: #ef4444; }
+.line.trades { background: #8b5cf6; }
+
+/* RegTech 규제 준수 체커 스타일 */
+.regtech-compliance-checker {
+    background: #eff6ff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.transaction-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.check-compliance-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.check-compliance-btn:hover {
+    transform: translateY(-2px);
+}
+
+.compliance-results {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.results-dashboard {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+}
+
+.compliance-score {
+    text-align: center;
+}
+
+.score-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.score-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.score-progress {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.compliance-details {
+    display: grid;
+    gap: 1rem;
+}
+
+.check-item {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+
+.check-icon {
+    font-size: 1.2rem;
+}
+
+.check-icon.pending { color: #6b7280; }
+.check-icon.pass { color: #10b981; }
+.check-icon.fail { color: #ef4444; }
+.check-icon.warning { color: #f59e0b; }
+
+/* 리스크 관리 대시보드 스타일 */
+.risk-management-dashboard {
+    background: #fef3c7;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.portfolio-input {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.asset-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.asset-item input,
+.asset-item select {
+    padding: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.add-asset-btn {
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 2px dashed #d97706;
+    border-radius: 6px;
+    color: #d97706;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.add-asset-btn:hover {
+    background: #fef3c7;
+}
+
+.analyze-risk-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.risk-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.risk-chart {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.var-display {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.var-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #dc2626;
+}
+
+.var-confidence {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+.risk-recommendations {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+/* JP Morgan COIN 사례 스타일 */
+.case-study-coin {
+    background: #f0f9ff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contract-analyzer {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+#contractText {
+    width: 100%;
+    height: 150px;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.analyze-contract-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.analyze-contract-btn:hover {
+    background: #1d4ed8;
+}
+
+.contract-results {
+    margin-top: 2rem;
+}
+
+.extracted-info {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: #f3f4f6;
+    border-radius: 6px;
+}
+
+.info-label {
+    font-weight: bold;
+}
+
+.info-value {
+    color: #2563eb;
+}
+
+.impact-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.impact-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid #dbeafe;
+}
+
+.impact-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.impact-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+/* 미니 게임 스타일 */
+.healthcare-finance-quiz {
+    background: linear-gradient(135deg, #e0f2fe 0%, #fef3c7 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 3rem 0;
+}
+
+.quiz-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.quiz-question {
+    margin-bottom: 2rem;
+}
+
+.quiz-question h4 {
+    color: #1e40af;
+    margin-bottom: 1rem;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+}
+
+.option-btn {
+    padding: 1rem;
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s;
+}
+
+.option-btn:hover {
+    background: #e5e7eb;
+    border-color: #9ca3af;
+}
+
+.option-btn.correct {
+    background: #d1fae5;
+    border-color: #10b981;
+}
+
+.option-btn.incorrect {
+    background: #fee2e2;
+    border-color: #ef4444;
+}
+
+.quiz-score {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* 다음 파트 예고 스타일 */
+.next-part-preview {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.continue-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+}
+
+.continue-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.continue-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .explorer-interface,
+    .fibo-interface,
+    .snomed-demo,
+    .results-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .risk-charts {
+        grid-template-columns: 1fr;
+    }
+    
+    .impact-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+// 산업별 레이더 차트 초기화
+function initIndustryRadar() {
+    const canvas = document.getElementById('industryRadar');
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 100;
+    
+    // 산업별 데이터
+    const industries = [
+        { name: '의료', value: 85, color: '#0891b2' },
+        { name: '금융', value: 78, color: '#f59e0b' },
+        { name: '제조', value: 72, color: '#10b981' },
+        { name: '전자상거래', value: 68, color: '#8b5cf6' },
+        { name: '교육', value: 65, color: '#ec4899' },
+        { name: '스마트시티', value: 70, color: '#3b82f6' }
+    ];
+    
+    // 배경 그리드 그리기
+    ctx.strokeStyle = '#e5e7eb';
+    ctx.lineWidth = 1;
+    for (let i = 1; i <= 5; i++) {
+        ctx.beginPath();
+        for (let j = 0; j < industries.length; j++) {
+            const angle = (j * 2 * Math.PI) / industries.length - Math.PI / 2;
+            const x = centerX + Math.cos(angle) * radius * (i / 5);
+            const y = centerY + Math.sin(angle) * radius * (i / 5);
+            if (j === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+    }
+    
+    // 축 그리기
+    industries.forEach((_, i) => {
+        const angle = (i * 2 * Math.PI) / industries.length - Math.PI / 2;
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(
+            centerX + Math.cos(angle) * radius,
+            centerY + Math.sin(angle) * radius
+        );
+        ctx.stroke();
+    });
+    
+    // 데이터 영역 그리기
+    ctx.fillStyle = 'rgba(99, 102, 241, 0.2)';
+    ctx.strokeStyle = '#6366f1';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    industries.forEach((industry, i) => {
+        const angle = (i * 2 * Math.PI) / industries.length - Math.PI / 2;
+        const x = centerX + Math.cos(angle) * radius * (industry.value / 100);
+        const y = centerY + Math.sin(angle) * radius * (industry.value / 100);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    });
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    
+    // 라벨 그리기
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'center';
+    industries.forEach((industry, i) => {
+        const angle = (i * 2 * Math.PI) / industries.length - Math.PI / 2;
+        const x = centerX + Math.cos(angle) * (radius + 20);
+        const y = centerY + Math.sin(angle) * (radius + 20);
+        ctx.fillStyle = '#374151';
+        ctx.fillText(industry.name, x, y);
+    });
+}
+
+// 의료 지식 그래프 초기화
+function initMedicalGraph() {
+    const svg = document.getElementById('medicalGraph');
+    
+    // 노드 데이터
+    const nodes = [
+        { id: 1, label: '당뇨병', type: 'disease', x: 300, y: 100 },
+        { id: 2, label: '인슐린 저항성', type: 'symptom', x: 150, y: 200 },
+        { id: 3, label: '고혈당', type: 'symptom', x: 450, y: 200 },
+        { id: 4, label: '메트포르민', type: 'drug', x: 300, y: 300 },
+        { id: 5, label: '식이요법', type: 'treatment', x: 150, y: 300 },
+        { id: 6, label: '운동요법', type: 'treatment', x: 450, y: 300 }
+    ];
+    
+    // 엣지 데이터
+    const edges = [
+        { source: 1, target: 2, label: '원인' },
+        { source: 1, target: 3, label: '증상' },
+        { source: 1, target: 4, label: '치료약' },
+        { source: 1, target: 5, label: '치료법' },
+        { source: 1, target: 6, label: '치료법' }
+    ];
+    
+    // 엣지 그리기
+    edges.forEach(edge => {
+        const source = nodes.find(n => n.id === edge.source);
+        const target = nodes.find(n => n.id === edge.target);
+        
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', source.x);
+        line.setAttribute('y1', source.y);
+        line.setAttribute('x2', target.x);
+        line.setAttribute('y2', target.y);
+        line.setAttribute('stroke', '#cbd5e1');
+        line.setAttribute('stroke-width', '2');
+        svg.appendChild(line);
+    });
+    
+    // 노드 그리기
+    nodes.forEach(node => {
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        g.setAttribute('transform', `translate(${node.x}, ${node.y})`);
+        g.style.cursor = 'pointer';
+        
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('r', '30');
+        circle.setAttribute('fill', getNodeColor(node.type));
+        circle.setAttribute('stroke', 'white');
+        circle.setAttribute('stroke-width', '3');
+        
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('y', '5');
+        text.setAttribute('fill', 'white');
+        text.setAttribute('font-size', '12');
+        text.setAttribute('font-weight', 'bold');
+        text.textContent = node.label;
+        
+        g.appendChild(circle);
+        g.appendChild(text);
+        svg.appendChild(g);
+        
+        // 클릭 이벤트
+        g.addEventListener('click', () => showNodeInfo(node));
+    });
+}
+
+function getNodeColor(type) {
+    const colors = {
+        disease: '#ef4444',
+        symptom: '#f59e0b',
+        drug: '#3b82f6',
+        treatment: '#10b981'
+    };
+    return colors[type] || '#6b7280';
+}
+
+function showNodeInfo(node) {
+    const nodeInfo = document.getElementById('nodeInfo');
+    nodeInfo.innerHTML = `
+        <h5>${node.label}</h5>
+        <p>유형: ${getNodeTypeName(node.type)}</p>
+        <p>ID: ${node.id}</p>
+        <p>관련 정보: 온톨로지 기반 상세 정보</p>
+    `;
+}
+
+function getNodeTypeName(type) {
+    const names = {
+        disease: '질병',
+        symptom: '증상',
+        drug: '약물',
+        treatment: '치료법'
+    };
+    return names[type] || '기타';
+}
+
+// 질병 검색 함수
+function searchDisease() {
+    const searchTerm = document.getElementById('diseaseSearch').value;
+    const resultsDiv = document.getElementById('diseaseResults');
+    
+    // 샘플 검색 결과
+    const diseases = [
+        { name: '당뇨병', code: 'E11', category: '내분비 질환' },
+        { name: '고혈압', code: 'I10', category: '순환기 질환' },
+        { name: '천식', code: 'J45', category: '호흡기 질환' }
+    ];
+    
+    const results = diseases.filter(d => 
+        d.name.includes(searchTerm) || searchTerm === ''
+    );
+    
+    resultsDiv.innerHTML = results.map(d => `
+        <div class="result-item" onclick="selectDisease('${d.name}')">
+            <strong>${d.name}</strong> (${d.code})
+            <br><small>${d.category}</small>
+        </div>
+    `).join('');
+}
+
+function selectDisease(name) {
+    document.getElementById('diseaseSearch').value = name;
+    // 그래프 업데이트 로직
+}
+
+// AI 진단 시뮬레이션
+function runDiagnosis() {
+    const age = document.getElementById('patientAge').value;
+    const gender = document.getElementById('patientGender').value;
+    const symptoms = Array.from(document.querySelectorAll('.symptom-item input:checked'))
+        .map(cb => cb.value);
+    
+    const resultsDiv = document.getElementById('diagnosisResults');
+    
+    // 시뮬레이션 로딩
+    resultsDiv.innerHTML = `
+        <h4>진단 분석 중...</h4>
+        <div class="loading-animation">⏳ AI가 증상을 분석하고 있습니다...</div>
+    `;
+    
+    setTimeout(() => {
+        // 시뮬레이션 결과
+        resultsDiv.innerHTML = `
+            <h4>진단 분석 결과</h4>
+            <div class="diagnosis-report">
+                <div class="diagnosis-item">
+                    <h5>가능성 높은 진단</h5>
+                    <div class="diagnosis-card">
+                        <span class="diagnosis-name">관상동맥질환</span>
+                        <span class="confidence">신뢰도: 78%</span>
+                        <p>증상 패턴이 관상동맥질환과 일치합니다.</p>
+                    </div>
+                </div>
+                <div class="diagnosis-item">
+                    <h5>추가 검사 권고</h5>
+                    <ul>
+                        <li>심전도 (ECG)</li>
+                        <li>혈액 검사 (Troponin)</li>
+                        <li>흉부 X-ray</li>
+                    </ul>
+                </div>
+                <div class="diagnosis-item">
+                    <h5>온톨로지 추론 경로</h5>
+                    <div class="reasoning-path">
+                        흉통 + 호흡곤란 → 심혈관계 질환 → 관상동맥질환
+                    </div>
+                </div>
+            </div>
+        `;
+    }, 2000);
+}
+
+// SNOMED CT 트리 토글
+function toggleNode(element) {
+    element.classList.toggle('expanded');
+    const childNodes = element.querySelector('.child-nodes');
+    if (childNodes) {
+        childNodes.style.display = element.classList.contains('expanded') ? 'block' : 'none';
+    }
+    
+    // 상세 정보 표시
+    const conceptName = element.querySelector('.node-name').textContent;
+    document.getElementById('conceptDetail').innerHTML = `
+        <h5>${conceptName}</h5>
+        <p><strong>개념 ID:</strong> ${Math.floor(Math.random() * 1000000)}</p>
+        <p><strong>정의:</strong> ${conceptName}에 대한 SNOMED CT 정의</p>
+        <p><strong>동의어:</strong> 관련 용어들...</p>
+        <p><strong>상위 개념:</strong> 부모 개념들...</p>
+    `;
+}
+
+// Gene Ontology 카테고리 표시
+function showGOCategory(category) {
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    document.querySelectorAll('.go-network').forEach(network => {
+        network.style.display = 'none';
+    });
+    document.querySelector(`.go-network.${category}`).style.display = 'block';
+}
+
+// 금융 개체 폼 업데이트
+function updateEntityForm() {
+    const entityType = document.getElementById('entityType').value;
+    const formDiv = document.getElementById('entityForm');
+    
+    // 개체 유형에 따라 폼 필드 변경
+    const forms = {
+        corporation: `
+            <div class="form-field">
+                <label>회사명</label>
+                <input type="text" id="corpName" placeholder="예: 삼성전자">
+            </div>
+            <div class="form-field">
+                <label>법인번호</label>
+                <input type="text" id="corpId" placeholder="110111-0000000">
+            </div>
+            <div class="form-field">
+                <label>상장 거래소</label>
+                <select id="exchange">
+                    <option value="krx">한국거래소</option>
+                    <option value="nasdaq">NASDAQ</option>
+                    <option value="nyse">NYSE</option>
+                </select>
+            </div>
+        `,
+        bank: `
+            <div class="form-field">
+                <label>은행명</label>
+                <input type="text" id="bankName" placeholder="예: 국민은행">
+            </div>
+            <div class="form-field">
+                <label>금융기관코드</label>
+                <input type="text" id="bankCode" placeholder="004">
+            </div>
+            <div class="form-field">
+                <label>은행 유형</label>
+                <select id="bankType">
+                    <option value="commercial">시중은행</option>
+                    <option value="regional">지방은행</option>
+                    <option value="special">특수은행</option>
+                </select>
+            </div>
+        `
+    };
+    
+    formDiv.innerHTML = forms[entityType] || forms.corporation;
+}
+
+// 금융 개체 생성
+function createFinancialEntity() {
+    // FIBO 그래프에 노드 추가 시뮬레이션
+    const canvas = document.getElementById('fiboCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 새 노드 그리기
+    const x = Math.random() * 400 + 50;
+    const y = Math.random() * 300 + 50;
+    
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath();
+    ctx.arc(x, y, 20, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.fillStyle = 'white';
+    ctx.font = '12px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('새 개체', x, y + 5);
+    
+    alert('금융 개체가 생성되었습니다!');
+}
+
+// 규제 준수 검사
+function checkCompliance() {
+    const amount = document.getElementById('transAmount').value;
+    const resultsDiv = document.getElementById('complianceResults');
+    
+    // 검사 애니메이션
+    const checkItems = document.querySelectorAll('.check-item');
+    let score = 0;
+    
+    checkItems.forEach((item, index) => {
+        setTimeout(() => {
+            const icon = item.querySelector('.check-icon');
+            const status = item.querySelector('.check-status');
+            
+            // 랜덤하게 결과 결정
+            const passed = Math.random() > 0.2;
+            if (passed) {
+                icon.textContent = '✅';
+                icon.className = 'check-icon pass';
+                status.textContent = '통과';
+                score += 25;
+            } else {
+                icon.textContent = '❌';
+                icon.className = 'check-icon fail';
+                status.textContent = '실패';
+            }
+            
+            // 점수 업데이트
+            updateComplianceScore(score);
+        }, (index + 1) * 500);
+    });
+}
+
+function updateComplianceScore(score) {
+    const scoreText = document.querySelector('.score-text');
+    const scoreProgress = document.querySelector('.score-progress');
+    
+    scoreText.textContent = score + '%';
+    const offset = 314 - (314 * score / 100);
+    scoreProgress.style.strokeDashoffset = offset;
+    
+    // 색상 변경
+    if (score >= 75) {
+        scoreProgress.style.stroke = '#4caf50';
+    } else if (score >= 50) {
+        scoreProgress.style.stroke = '#f59e0b';
+    } else {
+        scoreProgress.style.stroke = '#ef4444';
+    }
+}
+
+// 자산 추가
+function addAsset() {
+    const assetList = document.querySelector('.asset-list');
+    const newAsset = document.createElement('div');
+    newAsset.className = 'asset-item';
+    newAsset.innerHTML = `
+        <input type="text" placeholder="자산명" class="asset-name">
+        <input type="number" placeholder="금액" class="asset-amount">
+        <select class="asset-type">
+            <option value="stock">주식</option>
+            <option value="bond">채권</option>
+            <option value="commodity">원자재</option>
+        </select>
+    `;
+    assetList.appendChild(newAsset);
+}
+
+// 리스크 분석
+function analyzeRisk() {
+    // 리스크 유형별 차트 그리기
+    const canvas = document.getElementById('riskTypeChart');
+    const ctx = canvas.getContext('2d');
+    
+    // 파이 차트 그리기
+    const data = [
+        { label: '시장 리스크', value: 35, color: '#ef4444' },
+        { label: '신용 리스크', value: 25, color: '#f59e0b' },
+        { label: '유동성 리스크', value: 20, color: '#3b82f6' },
+        { label: '운영 리스크', value: 20, color: '#10b981' }
+    ];
+    
+    let currentAngle = -Math.PI / 2;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 80;
+    
+    data.forEach(segment => {
+        const angle = (segment.value / 100) * Math.PI * 2;
+        
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + angle);
+        ctx.closePath();
+        ctx.fillStyle = segment.color;
+        ctx.fill();
+        
+        currentAngle += angle;
+    });
+    
+    // VaR 계산
+    document.querySelector('.var-value').textContent = '15,234,000';
+    
+    // 권고사항 업데이트
+    document.getElementById('riskRecommendations').innerHTML = `
+        <li>시장 리스크가 높습니다. 포트폴리오 다각화를 권장합니다.</li>
+        <li>채권 비중을 늘려 변동성을 줄이는 것을 고려하세요.</li>
+        <li>헤지 전략 수립이 필요합니다.</li>
+    `;
+}
+
+// 계약서 분석
+function analyzeContract() {
+    const contractText = document.getElementById('contractText').value;
+    const resultsDiv = document.getElementById('contractResults');
+    
+    // 시뮬레이션 결과
+    setTimeout(() => {
+        resultsDiv.querySelector('.extracted-info').innerHTML = `
+            <div class="info-item">
+                <span class="info-label">계약 유형</span>
+                <span class="info-value">상업 대출</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">대출 금액</span>
+                <span class="info-value">10억원</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">이자율</span>
+                <span class="info-value">5.5%</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">리스크 등급</span>
+                <span class="info-value">중간</span>
+            </div>
+        `;
+    }, 1000);
+}
+
+// 퀴즈 시스템
+const quizData = [
+    {
+        question: "SNOMED CT에서 가장 많은 개념을 포함하는 카테고리는?",
+        options: ["임상 소견", "시술", "해부학적 구조", "약물"],
+        correct: 0
+    },
+    {
+        question: "FIBO는 무엇의 약자인가요?",
+        options: ["Financial Industry Business Ontology", "Finance Integration Base Ontology", "Financial Information Basic Ontology", "Finance Industry Binary Ontology"],
+        correct: 0
+    },
+    {
+        question: "Gene Ontology의 3가지 주요 카테고리가 아닌 것은?",
+        options: ["생물학적 프로세스", "분자 기능", "세포 구성요소", "유전자 변이"],
+        correct: 3
+    },
+    {
+        question: "JP Morgan COIN 시스템이 연간 절감한 시간은?",
+        options: ["180,000시간", "240,000시간", "360,000시간", "480,000시간"],
+        correct: 2
+    },
+    {
+        question: "RegTech에서 AML은 무엇을 의미하나요?",
+        options: ["Anti-Money Laundering", "Automated Machine Learning", "Asset Management Law", "Advanced Market Logic"],
+        correct: 0
+    }
+];
+
+let currentQuiz = 0;
+let quizScore = 0;
+
+function checkAnswer(selected) {
+    const options = document.querySelectorAll('.option-btn');
+    const correct = quizData[currentQuiz].correct;
+    
+    options.forEach((btn, index) => {
+        btn.disabled = true;
+        if (index === correct) {
+            btn.classList.add('correct');
+        } else if (index === selected && index !== correct) {
+            btn.classList.add('incorrect');
+        }
+    });
+    
+    if (selected === correct) {
+        quizScore++;
+        document.getElementById('quizScore').textContent = quizScore;
+    }
+    
+    setTimeout(() => {
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+            loadQuiz();
+        } else {
+            showQuizResult();
+        }
+    }, 1500);
+}
+
+function loadQuiz() {
+    const quiz = quizData[currentQuiz];
+    document.getElementById('quizQuestion').innerHTML = `
+        <h4>문제 ${currentQuiz + 1}/${quizData.length}</h4>
+        <p>${quiz.question}</p>
+    `;
+    
+    const optionsHtml = quiz.options.map((option, index) => 
+        `<button class="option-btn" onclick="checkAnswer(${index})">${option}</button>`
+    ).join('');
+    
+    document.getElementById('quizOptions').innerHTML = optionsHtml;
+}
+
+function showQuizResult() {
+    document.querySelector('.quiz-container').innerHTML = `
+        <div class="quiz-result">
+            <h3>퀴즈 완료!</h3>
+            <p>최종 점수: ${quizScore}/${quizData.length}</p>
+            <p>${quizScore >= 4 ? '훌륭합니다! 의료-금융 온톨로지 전문가입니다!' : '좋습니다! 계속 학습하세요!'}</p>
+        </div>
+    `;
+}
+
+// Part 2로 이동
+function goToPart2() {
+    alert('Part 2: 제조업과 전자상거래 온톨로지로 이동합니다!');
+    // 실제 구현 시 페이지 이동 로직
+}
+
+// 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    initIndustryRadar();
+    initMedicalGraph();
+    
+    // FIBO 캔버스 초기화
+    const fiboCanvas = document.getElementById('fiboCanvas');
+    const ctx = fiboCanvas.getContext('2d');
+    ctx.fillStyle = '#f3f4f6';
+    ctx.fillRect(0, 0, fiboCanvas.width, fiboCanvas.height);
+    
+    // 리스크 차트 초기화
+    const riskCanvas = document.getElementById('riskTypeChart');
+    const riskCtx = riskCanvas.getContext('2d');
+    riskCtx.fillStyle = '#f3f4f6';
+    riskCtx.fillRect(0, 0, riskCanvas.width, riskCanvas.height);
+});
+</script>

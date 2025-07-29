@@ -1,0 +1,1045 @@
+<!-- Chapter 11: 온톨로지 통합과 매핑 -->
+
+<div class="chapter-header">
+    <h1>Chapter 11. 온톨로지 통합과 매핑</h1>
+    <div class="chapter-quote">
+        "서로 다른 온톨로지들이 소통하고 통합될 때, 진정한 시맨틱 웹이 실현됩니다."
+    </div>
+</div>
+
+<div class="reading-time">
+    <i class="fas fa-clock"></i> 예상 학습 시간: 60분
+</div>
+
+<!-- 학습 목표 -->
+<div class="learning-objectives card">
+    <h3><i class="fas fa-bullseye"></i> 학습 목표</h3>
+    <ul>
+        <li>온톨로지 통합의 필요성과 도전 과제 이해</li>
+        <li>온톨로지 이질성 문제와 해결 방법 학습</li>
+        <li>매핑 기법과 도구 활용법 습득</li>
+        <li>실제 통합 프로젝트 수행 능력 개발</li>
+    </ul>
+</div>
+
+<!-- 섹션 11.1 -->
+<section class="content-section">
+    <h2>11.1 온톨로지 통합이 필요한 이유</h2>
+    
+    <p>현실 세계에서는 동일한 도메인에 대해 서로 다른 관점과 목적으로 만들어진 다양한 온톨로지가 존재합니다. 이들을 통합하는 것은 시맨틱 웹 실현의 핵심 과제입니다.</p>
+    
+    <div class="concept-box">
+        <h4><i class="fas fa-lightbulb"></i> 핵심 개념</h4>
+        <p><strong>온톨로지 통합(Ontology Integration)</strong>: 서로 다른 온톨로지들 간의 의미적 연결을 구축하여 상호운용성을 확보하는 과정</p>
+    </div>
+    
+    <h3>통합의 필요성</h3>
+    <div class="integration-needs">
+        <div class="need-card">
+            <h4>1. 데이터 사일로 해소</h4>
+            <p>독립적으로 개발된 시스템들 간의 장벽 제거</p>
+            <div class="example">
+                <p><strong>예시:</strong> 병원 A의 의료 온톨로지와 병원 B의 의료 온톨로지 통합으로 환자 정보 공유</p>
+            </div>
+        </div>
+        
+        <div class="need-card">
+            <h4>2. 지식 확장</h4>
+            <p>여러 소스의 지식을 결합하여 더 풍부한 정보 제공</p>
+            <div class="example">
+                <p><strong>예시:</strong> 제품 온톨로지 + 고객 리뷰 온톨로지 = 향상된 추천 시스템</p>
+            </div>
+        </div>
+        
+        <div class="need-card">
+            <h4>3. 재사용성 향상</h4>
+            <p>기존 온톨로지를 활용하여 개발 비용 절감</p>
+            <div class="example">
+                <p><strong>예시:</strong> 표준 산업 분류 온톨로지를 기업별로 확장 사용</p>
+            </div>
+        </div>
+        
+        <div class="need-card">
+            <h4>4. 글로벌 상호운용성</h4>
+            <p>국제적 데이터 교환과 협업 가능</p>
+            <div class="example">
+                <p><strong>예시:</strong> 다국가 전자상거래 플랫폼의 제품 분류 통합</p>
+            </div>
+        </div>
+    </div>
+    
+    <h3>통합 시나리오</h3>
+    <div class="integration-scenarios">
+        <div class="scenario">
+            <h4>시나리오 1: 기업 인수합병</h4>
+            <p>두 회사의 제품 카탈로그와 고객 데이터베이스를 통합해야 하는 상황</p>
+        </div>
+        
+        <div class="scenario">
+            <h4>시나리오 2: 의료 정보 시스템</h4>
+            <p>여러 병원의 환자 기록을 통합하여 종합적인 의료 서비스 제공</p>
+        </div>
+        
+        <div class="scenario">
+            <h4>시나리오 3: 스마트 시티</h4>
+            <p>교통, 에너지, 환경 등 다양한 도시 서비스 온톨로지 통합</p>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 11.2 -->
+<section class="content-section">
+    <h2>11.2 온톨로지 이질성 문제</h2>
+    
+    <p>온톨로지 통합의 가장 큰 도전은 서로 다른 온톨로지 간의 이질성(Heterogeneity)을 해결하는 것입니다.</p>
+    
+    <h3>이질성의 유형</h3>
+    <div class="heterogeneity-types">
+        <div class="heterogeneity-card">
+            <h4>1. 구문적 이질성 (Syntactic)</h4>
+            <div class="content">
+                <p><strong>문제:</strong> 서로 다른 형식과 언어 사용</p>
+                <div class="example-box">
+                    <p><strong>예시:</strong></p>
+                    <ul>
+                        <li>온톨로지 A: OWL/XML 형식</li>
+                        <li>온톨로지 B: RDF/Turtle 형식</li>
+                    </ul>
+                </div>
+                <p><strong>해결:</strong> 표준 형식으로 변환</p>
+            </div>
+        </div>
+        
+        <div class="heterogeneity-card">
+            <h4>2. 구조적 이질성 (Structural)</h4>
+            <div class="content">
+                <p><strong>문제:</strong> 동일한 개념을 다른 구조로 표현</p>
+                <div class="example-box">
+                    <p><strong>예시:</strong></p>
+                    <pre class="code-example">
+# 온톨로지 A
+Person
+  ├── hasName (속성)
+  └── hasAddress (속성)
+
+# 온톨로지 B  
+Person
+  ├── PersonalInfo
+  │     ├── Name
+  │     └── Address
+                    </pre>
+                </div>
+                <p><strong>해결:</strong> 구조 변환 규칙 정의</p>
+            </div>
+        </div>
+        
+        <div class="heterogeneity-card">
+            <h4>3. 의미적 이질성 (Semantic)</h4>
+            <div class="content">
+                <p><strong>문제:</strong> 같은 용어가 다른 의미, 다른 용어가 같은 의미</p>
+                <div class="example-box">
+                    <p><strong>예시:</strong></p>
+                    <ul>
+                        <li>"Customer" vs "Client" vs "고객"</li>
+                        <li>"Price" (세금 포함) vs "Price" (세금 미포함)</li>
+                    </ul>
+                </div>
+                <p><strong>해결:</strong> 의미 매핑과 컨텍스트 정의</p>
+            </div>
+        </div>
+        
+        <div class="heterogeneity-card">
+            <h4>4. 개념적 이질성 (Conceptual)</h4>
+            <div class="content">
+                <p><strong>문제:</strong> 도메인에 대한 서로 다른 관점과 추상화 수준</p>
+                <div class="example-box">
+                    <p><strong>예시:</strong></p>
+                    <ul>
+                        <li>의료 온톨로지: 질병 중심 vs 증상 중심</li>
+                        <li>제품 분류: 기능 기반 vs 용도 기반</li>
+                    </ul>
+                </div>
+                <p><strong>해결:</strong> 상위 레벨 온톨로지 사용</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 11.3 -->
+<section class="content-section">
+    <h2>11.3 온톨로지 매핑 기법</h2>
+    
+    <p>온톨로지 매핑은 서로 다른 온톨로지의 요소들 간의 대응 관계를 찾고 정의하는 과정입니다.</p>
+    
+    <h3>매핑의 유형</h3>
+    <div class="mapping-types">
+        <div class="mapping-type">
+            <h4>1. 어휘 기반 매핑 (Lexical)</h4>
+            <pre class="code-block">
+# 문자열 유사도 기반 매핑
+온톨로지A:Customer ≡ 온톨로지B:Client
+  (유사도: 0.8, 동의어 사전 활용)
+
+온톨로지A:Product ≡ 온톨로지B:Item
+  (유사도: 0.7, 도메인 용어집 활용)
+            </pre>
+        </div>
+        
+        <div class="mapping-type">
+            <h4>2. 구조 기반 매핑 (Structural)</h4>
+            <pre class="code-block">
+# 계층 구조 유사성 기반
+IF A:Person → A:Employee → A:Manager
+AND B:Human → B:Worker → B:Supervisor
+THEN 구조적 유사성으로 매핑 가능
+            </pre>
+        </div>
+        
+        <div class="mapping-type">
+            <h4>3. 인스턴스 기반 매핑 (Instance-based)</h4>
+            <pre class="code-block">
+# 공통 인스턴스 분석
+A:Company의 인스턴스: {Samsung, Apple, Google}
+B:Corporation의 인스턴스: {Samsung, Apple, Microsoft}
+→ 높은 중복도로 A:Company ≡ B:Corporation 추론
+            </pre>
+        </div>
+        
+        <div class="mapping-type">
+            <h4>4. 의미 기반 매핑 (Semantic)</h4>
+            <pre class="code-block">
+# Description Logic 추론 활용
+A:Parent ≡ A:Person ⊓ ∃hasChild.A:Person
+B:Father ⊑ B:Male ⊓ ∃hasOffspring.B:Human
+→ 부분 매핑: B:Father ⊑ A:Parent
+            </pre>
+        </div>
+    </div>
+    
+    <h3>매핑 관계의 종류</h3>
+    <div class="mapping-relations">
+        <div class="relation-card">
+            <h4>동등 관계 (≡)</h4>
+            <p>두 개념이 완전히 같은 의미</p>
+            <code>A:Car ≡ B:Automobile</code>
+        </div>
+        
+        <div class="relation-card">
+            <h4>포함 관계 (⊑)</h4>
+            <p>한 개념이 다른 개념에 포함됨</p>
+            <code>A:Sedan ⊑ B:Vehicle</code>
+        </div>
+        
+        <div class="relation-card">
+            <h4>겹침 관계 (⊓)</h4>
+            <p>두 개념이 부분적으로 겹침</p>
+            <code>A:Student ⊓ B:Employee ≠ ∅</code>
+        </div>
+        
+        <div class="relation-card">
+            <h4>분리 관계 (⊥)</h4>
+            <p>두 개념이 서로 배타적</p>
+            <code>A:Living ⊥ B:Dead</code>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 11.4 -->
+<section class="content-section">
+    <h2>11.4 온톨로지 통합 방법론</h2>
+    
+    <h3>통합 접근법</h3>
+    <div class="integration-approaches">
+        <div class="approach-card">
+            <h4>1. 병합 (Merging)</h4>
+            <div class="approach-content">
+                <p>여러 온톨로지를 하나의 통합 온톨로지로 결합</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>단일 온톨로지로 관리 간편</li>
+                            <li>중복 제거 가능</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>단점</h5>
+                        <ul>
+                            <li>원본 구조 손실 가능</li>
+                            <li>복잡도 증가</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="approach-card">
+            <h4>2. 정렬 (Alignment)</h4>
+            <div class="approach-content">
+                <p>온톨로지들을 독립적으로 유지하며 매핑 관계만 정의</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>원본 온톨로지 보존</li>
+                            <li>유연한 통합</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>단점</h5>
+                        <ul>
+                            <li>매핑 관리 필요</li>
+                            <li>질의 처리 복잡</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="approach-card">
+            <h4>3. 통합 (Integration)</h4>
+            <div class="approach-content">
+                <p>응용 프로그램 레벨에서 가상 통합</p>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h5>장점</h5>
+                        <ul>
+                            <li>온톨로지 독립성</li>
+                            <li>동적 통합 가능</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h5>단점</h5>
+                        <ul>
+                            <li>런타임 오버헤드</li>
+                            <li>복잡한 구현</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h3>통합 프로세스</h3>
+    <div class="integration-process">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <h4>준비 단계</h4>
+            <ul>
+                <li>온톨로지 분석</li>
+                <li>요구사항 정의</li>
+                <li>통합 범위 설정</li>
+            </ul>
+        </div>
+        
+        <div class="process-arrow">→</div>
+        
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <h4>매칭 단계</h4>
+            <ul>
+                <li>후보 매핑 발견</li>
+                <li>유사도 계산</li>
+                <li>매핑 검증</li>
+            </ul>
+        </div>
+        
+        <div class="process-arrow">→</div>
+        
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <h4>매핑 단계</h4>
+            <ul>
+                <li>매핑 관계 정의</li>
+                <li>변환 규칙 작성</li>
+                <li>일관성 검사</li>
+            </ul>
+        </div>
+        
+        <div class="process-arrow">→</div>
+        
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <h4>실행 단계</h4>
+            <ul>
+                <li>통합 수행</li>
+                <li>검증 및 테스트</li>
+                <li>최적화</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 11.5 -->
+<section class="content-section">
+    <h2>11.5 온톨로지 매핑 도구</h2>
+    
+    <p>다양한 자동화 도구들이 온톨로지 매핑 작업을 지원합니다.</p>
+    
+    <h3>주요 매핑 도구 비교</h3>
+    <div class="tools-comparison">
+        <div class="tool-card">
+            <h4>COMA++</h4>
+            <div class="tool-info">
+                <p><strong>개발:</strong> University of Leipzig</p>
+                <p><strong>특징:</strong></p>
+                <ul>
+                    <li>다양한 매칭 알고리즘 조합</li>
+                    <li>GUI 기반 인터페이스</li>
+                    <li>스키마와 온톨로지 모두 지원</li>
+                </ul>
+                <p><strong>장점:</strong> 직관적 UI, 다양한 매칭 전략</p>
+                <p><strong>단점:</strong> 대규모 온톨로지에서 성능 저하</p>
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <h4>AgreementMaker</h4>
+            <div class="tool-info">
+                <p><strong>개발:</strong> University of Illinois at Chicago</p>
+                <p><strong>특징:</strong></p>
+                <ul>
+                    <li>시각적 매핑 인터페이스</li>
+                    <li>다단계 매칭 프로세스</li>
+                    <li>사용자 피드백 통합</li>
+                </ul>
+                <p><strong>장점:</strong> 확장 가능한 아키텍처</p>
+                <p><strong>단점:</strong> 학습 곡선 존재</p>
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <h4>LogMap</h4>
+            <div class="tool-info">
+                <p><strong>개발:</strong> University of Oxford</p>
+                <p><strong>특징:</strong></p>
+                <ul>
+                    <li>논리 기반 매핑</li>
+                    <li>높은 정확도</li>
+                    <li>대규모 온톨로지 지원</li>
+                </ul>
+                <p><strong>장점:</strong> 빠른 처리 속도, 논리적 일관성 보장</p>
+                <p><strong>단점:</strong> 복잡한 설정</p>
+            </div>
+        </div>
+        
+        <div class="tool-card">
+            <h4>YAM++</h4>
+            <div class="tool-info">
+                <p><strong>개발:</strong> University of Montpellier</p>
+                <p><strong>특징:</strong></p>
+                <ul>
+                    <li>기계학습 기반</li>
+                    <li>자동 임계값 설정</li>
+                    <li>다국어 지원</li>
+                </ul>
+                <p><strong>장점:</strong> 높은 자동화 수준</p>
+                <p><strong>단점:</strong> 훈련 데이터 필요</p>
+            </div>
+        </div>
+    </div>
+    
+    <h3>도구 선택 가이드</h3>
+    <div class="tool-selection-guide">
+        <table>
+            <thead>
+                <tr>
+                    <th>시나리오</th>
+                    <th>추천 도구</th>
+                    <th>이유</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>소규모 온톨로지, 시각적 작업</td>
+                    <td>COMA++</td>
+                    <td>직관적 UI, 쉬운 사용</td>
+                </tr>
+                <tr>
+                    <td>대규모 바이오메디컬 온톨로지</td>
+                    <td>LogMap</td>
+                    <td>성능과 정확도</td>
+                </tr>
+                <tr>
+                    <td>반복적 개선이 필요한 프로젝트</td>
+                    <td>AgreementMaker</td>
+                    <td>사용자 피드백 통합</td>
+                </tr>
+                <tr>
+                    <td>다국어 온톨로지</td>
+                    <td>YAM++</td>
+                    <td>다국어 처리 능력</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- 섹션 11.6 -->
+<section class="content-section">
+    <h2>11.6 실전 프로젝트: 전자상거래 온톨로지 통합</h2>
+    
+    <p>두 개의 전자상거래 플랫폼 온톨로지를 통합하는 실제 예제를 살펴보겠습니다.</p>
+    
+    <h3>시나리오 설정</h3>
+    <div class="scenario-setup">
+        <div class="ontology-box">
+            <h4>온톨로지 A: 온라인 마켓플레이스</h4>
+            <pre class="code-block">
+@prefix marketA: &lt;http://marketplace-a.com/onto#&gt; .
+
+marketA:Product
+    ├── marketA:Electronics
+    │   ├── marketA:Smartphone
+    │   └── marketA:Laptop
+    ├── marketA:hasPrice (DataProperty)
+    ├── marketA:hasManufacturer (ObjectProperty)
+    └── marketA:inCategory (ObjectProperty)
+
+marketA:Customer
+    ├── marketA:hasEmail
+    └── marketA:hasPurchaseHistory
+            </pre>
+        </div>
+        
+        <div class="ontology-box">
+            <h4>온톨로지 B: B2B 플랫폼</h4>
+            <pre class="code-block">
+@prefix b2b: &lt;http://b2b-platform.com/onto#&gt; .
+
+b2b:Item
+    ├── b2b:TechProduct
+    │   ├── b2b:MobileDevice
+    │   └── b2b:Computer
+    ├── b2b:unitPrice (DataProperty)
+    ├── b2b:suppliedBy (ObjectProperty)
+    └── b2b:itemCategory (ObjectProperty)
+
+b2b:Client
+    ├── b2b:contactEmail
+    └── b2b:orderHistory
+            </pre>
+        </div>
+    </div>
+    
+    <h3>매핑 정의</h3>
+    <pre class="code-block">
+@prefix map: &lt;http://mapping.com/onto#&gt; .
+
+# 클래스 매핑
+marketA:Product owl:equivalentClass b2b:Item .
+marketA:Electronics map:narrowerThan b2b:TechProduct .
+marketA:Smartphone owl:equivalentClass b2b:MobileDevice .
+marketA:Laptop map:similarTo b2b:Computer .
+marketA:Customer owl:equivalentClass b2b:Client .
+
+# 속성 매핑
+marketA:hasPrice owl:equivalentProperty b2b:unitPrice .
+marketA:hasManufacturer map:similarTo b2b:suppliedBy .
+marketA:hasEmail owl:equivalentProperty b2b:contactEmail .
+
+# 변환 규칙
+map:priceConversion
+    map:fromProperty marketA:hasPrice ;
+    map:toProperty b2b:unitPrice ;
+    map:conversionRule "값 그대로 매핑" .
+
+map:categoryMapping
+    map:fromProperty marketA:inCategory ;
+    map:toProperty b2b:itemCategory ;
+    map:mappingTable [
+        map:entry ("Electronics", "TechProduct") ;
+        map:entry ("Fashion", "Apparel") ;
+        map:entry ("Home", "Household")
+    ] .
+    </pre>
+    
+    <h3>SPARQL 통합 질의</h3>
+    <div class="integrated-query">
+        <h4>통합된 제품 검색</h4>
+        <pre class="code-block">
+PREFIX marketA: &lt;http://marketplace-a.com/onto#&gt;
+PREFIX b2b: &lt;http://b2b-platform.com/onto#&gt;
+PREFIX map: &lt;http://mapping.com/onto#&gt;
+
+# 두 플랫폼에서 스마트폰 검색
+SELECT ?product ?price ?source
+WHERE {
+    {
+        # 마켓플레이스 A
+        ?product a marketA:Smartphone ;
+                 marketA:hasPrice ?price .
+        BIND("Marketplace A" AS ?source)
+    }
+    UNION
+    {
+        # B2B 플랫폼
+        ?product a b2b:MobileDevice ;
+                 b2b:unitPrice ?price .
+        BIND("B2B Platform" AS ?source)
+    }
+}
+ORDER BY ?price
+        </pre>
+    </div>
+    
+    <h3>통합 결과 검증</h3>
+    <div class="validation-checklist">
+        <h4>검증 체크리스트</h4>
+        <ul class="checklist">
+            <li>✓ 모든 제품이 올바르게 분류되는가?</li>
+            <li>✓ 가격 정보가 일관되게 표현되는가?</li>
+            <li>✓ 고객 정보가 중복 없이 통합되는가?</li>
+            <li>✓ 카테고리 매핑이 정확한가?</li>
+            <li>✓ 통합 후에도 원본 데이터 무결성이 유지되는가?</li>
+        </ul>
+    </div>
+</section>
+
+<!-- 핵심 정리 -->
+<div class="summary-section">
+    <h2>💡 핵심 정리</h2>
+    
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h3>통합의 중요성</h3>
+            <ul>
+                <li>데이터 사일로 해소</li>
+                <li>지식 확장과 재사용</li>
+                <li>상호운용성 확보</li>
+                <li>글로벌 협업 가능</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>주요 기법</h3>
+            <ul>
+                <li>어휘 기반 매핑</li>
+                <li>구조 기반 매핑</li>
+                <li>인스턴스 기반 매핑</li>
+                <li>의미 기반 매핑</li>
+            </ul>
+        </div>
+        
+        <div class="summary-card">
+            <h3>실무 고려사항</h3>
+            <ul>
+                <li>도구 선택과 활용</li>
+                <li>단계적 통합 접근</li>
+                <li>검증과 품질 관리</li>
+                <li>유지보수 계획</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 실습 과제 -->
+<div class="practice-section">
+    <h2>🎯 실습 과제</h2>
+    
+    <div class="practice-task">
+        <h3>과제 1: 의료 온톨로지 통합</h3>
+        <p>다음 두 의료 온톨로지를 통합하세요:</p>
+        <ol>
+            <li>병원 A: 질병 중심 온톨로지 (ICD-10 기반)</li>
+            <li>병원 B: 증상 중심 온톨로지 (SNOMED CT 기반)</li>
+        </ol>
+        <p>요구사항:</p>
+        <ul>
+            <li>주요 개념 간 매핑 관계 정의</li>
+            <li>환자 데이터 통합 규칙 작성</li>
+            <li>통합 질의 예제 3개 이상 작성</li>
+        </ul>
+    </div>
+    
+    <div class="practice-task">
+        <h3>과제 2: 매핑 도구 실습</h3>
+        <p>AgreementMaker나 COMA++를 사용하여:</p>
+        <ol>
+            <li>두 개의 샘플 온톨로지 로드</li>
+            <li>자동 매핑 실행 및 결과 분석</li>
+            <li>수동으로 매핑 개선</li>
+            <li>매핑 품질 평가 보고서 작성</li>
+        </ol>
+    </div>
+</div>
+
+<!-- 다음 장 예고 -->
+<div class="next-chapter">
+    <h3>다음 장에서는...</h3>
+    <p>지식 그래프와 온톨로지의 관계를 살펴보고, 대규모 지식 그래프 구축 방법을 학습합니다.</p>
+    <button class="next-btn" onclick="OntologyBook.loadChapter('chapter12')">
+        다음 장으로 <i class="fas fa-arrow-right"></i>
+    </button>
+</div>
+
+<!-- 챕터 전용 스타일 -->
+<style>
+/* 통합 필요성 카드 */
+.integration-needs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.need-card {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.need-card:hover {
+    transform: translateY(-4px);
+}
+
+.need-card h4 {
+    color: #0369a1;
+    margin-bottom: 0.5rem;
+}
+
+.need-card .example {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 통합 시나리오 */
+.integration-scenarios {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.scenario {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #6366f1;
+}
+
+.scenario h4 {
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+}
+
+/* 이질성 타입 카드 */
+.heterogeneity-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.heterogeneity-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.heterogeneity-card h4 {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+}
+
+.heterogeneity-card .content {
+    padding: 1.5rem;
+}
+
+.example-box {
+    background: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.code-example {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+}
+
+/* 매핑 타입 */
+.mapping-types {
+    margin: 2rem 0;
+}
+
+.mapping-type {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.mapping-type h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 매핑 관계 */
+.mapping-relations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.relation-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.relation-card h4 {
+    color: #92400e;
+    margin-bottom: 0.5rem;
+}
+
+.relation-card code {
+    display: block;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+/* 통합 접근법 */
+.integration-approaches {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.approach-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.approach-card h4 {
+    background: #6366f1;
+    color: white;
+    padding: 1rem;
+    margin: 0;
+}
+
+.approach-content {
+    padding: 1.5rem;
+}
+
+.pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.pros h5 {
+    color: #16a34a;
+}
+
+.cons h5 {
+    color: #dc2626;
+}
+
+/* 통합 프로세스 */
+.integration-process {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.process-step {
+    background: white;
+    border: 2px solid #e0e7ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    margin: 0.5rem;
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4f46e5;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.process-arrow {
+    font-size: 2rem;
+    color: #6366f1;
+    margin: 0 1rem;
+}
+
+/* 도구 비교 */
+.tools-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.tool-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.tool-card h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.tool-info p {
+    margin: 0.5rem 0;
+}
+
+.tool-info ul {
+    margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+/* 도구 선택 가이드 */
+.tool-selection-guide {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.tool-selection-guide table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tool-selection-guide th {
+    background: #4f46e5;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+.tool-selection-guide td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* 시나리오 설정 */
+.scenario-setup {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.ontology-box {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.ontology-box h4 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+/* 통합 질의 */
+.integrated-query {
+    background: #f0f9ff;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.integrated-query h4 {
+    color: #0369a1;
+    margin-bottom: 1rem;
+}
+
+/* 검증 체크리스트 */
+.validation-checklist {
+    background: #f0fdf4;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.validation-checklist h4 {
+    color: #166534;
+    margin-bottom: 1rem;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.5rem 0;
+    color: #16a34a;
+}
+
+/* 코드 블록 */
+.code-block {
+    background: #1e293b;
+    color: #f1f5f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .integration-needs,
+    .heterogeneity-types,
+    .mapping-relations,
+    .tools-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .pros-cons {
+        grid-template-columns: 1fr;
+    }
+    
+    .integration-process {
+        flex-direction: column;
+    }
+    
+    .process-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+}
+</style>

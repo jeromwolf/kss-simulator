@@ -1,0 +1,2168 @@
+<!-- Chapter 15: 산업별 활용사례 (인터랙티브 마스터 버전) Part 2 -->
+
+<!-- Part 2 시작 -->
+<div class="part-header manufacturing-ecommerce-mastery">
+    <div class="industry-flow-animation"></div>
+    <h2 class="part-title">Part 2: 제조업과 전자상거래의 디지털 혁신</h2>
+    <p class="part-description">스마트 팩토리와 인텔리전트 커머스를 구현하는 온톨로지의 힘을 체험합니다!</p>
+</div>
+
+<!-- 제조업-전자상거래 전문가 준비도 -->
+<div class="progress-check industry-transformation-expert">
+    <h3>🏭 디지털 변혁 전문가 준비도</h3>
+    <div class="transformation-readiness">
+        <div class="skill-matrix-advanced">
+            <h4>Industry 4.0 & E-Commerce 역량</h4>
+            <div class="matrix-grid">
+                <div class="matrix-cell header">역량</div>
+                <div class="matrix-cell header">제조업</div>
+                <div class="matrix-cell header">전자상거래</div>
+                
+                <div class="matrix-cell">IoT 통합</div>
+                <div class="matrix-cell"><div class="skill-bar manufacturing" style="width: 88%"></div></div>
+                <div class="matrix-cell"><div class="skill-bar ecommerce" style="width: 75%"></div></div>
+                
+                <div class="matrix-cell">AI/ML 활용</div>
+                <div class="matrix-cell"><div class="skill-bar manufacturing" style="width: 82%"></div></div>
+                <div class="matrix-cell"><div class="skill-bar ecommerce" style="width: 90%"></div></div>
+                
+                <div class="matrix-cell">실시간 분석</div>
+                <div class="matrix-cell"><div class="skill-bar manufacturing" style="width: 85%"></div></div>
+                <div class="matrix-cell"><div class="skill-bar ecommerce" style="width: 88%"></div></div>
+                
+                <div class="matrix-cell">자동화</div>
+                <div class="matrix-cell"><div class="skill-bar manufacturing" style="width: 92%"></div></div>
+                <div class="matrix-cell"><div class="skill-bar ecommerce" style="width: 80%"></div></div>
+            </div>
+        </div>
+        
+        <div class="transformation-badges">
+            <h4>획득한 배지</h4>
+            <div class="badge-collection">
+                <div class="badge earned">
+                    <span class="badge-icon">🏭</span>
+                    <span class="badge-name">스마트 팩토리 설계자</span>
+                </div>
+                <div class="badge earned">
+                    <span class="badge-icon">🛒</span>
+                    <span class="badge-name">E-Commerce 혁신가</span>
+                </div>
+                <div class="badge earned">
+                    <span class="badge-icon">🤖</span>
+                    <span class="badge-name">디지털 트윈 전문가</span>
+                </div>
+                <div class="badge locked">
+                    <span class="badge-icon">🏆</span>
+                    <span class="badge-name">Industry 4.0 마스터</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 15.3: 제조업 인터랙티브 -->
+<section class="content-section manufacturing-interactive">
+    <h2>15.3 Industry 4.0 스마트 팩토리 체험관</h2>
+    
+    <!-- 스마트 팩토리 시뮬레이터 -->
+    <div class="smart-factory-simulator">
+        <h3>🏭 디지털 트윈 기반 스마트 팩토리</h3>
+        <div class="factory-interface">
+            <!-- 공장 레이아웃 -->
+            <div class="factory-layout">
+                <h4>공장 실시간 모니터링</h4>
+                <div class="factory-floor" id="factoryFloor">
+                    <div class="production-line line-1">
+                        <div class="machine" id="machine1" data-status="running">
+                            <span class="machine-icon">🤖</span>
+                            <span class="machine-name">로봇 1</span>
+                            <div class="machine-status">
+                                <div class="status-indicator running"></div>
+                                <span class="status-text">가동중</span>
+                            </div>
+                            <div class="machine-metrics">
+                                <span>효율: 92%</span>
+                                <span>온도: 45°C</span>
+                            </div>
+                        </div>
+                        
+                        <div class="conveyor"></div>
+                        
+                        <div class="machine" id="machine2" data-status="running">
+                            <span class="machine-icon">⚙️</span>
+                            <span class="machine-name">CNC 1</span>
+                            <div class="machine-status">
+                                <div class="status-indicator running"></div>
+                                <span class="status-text">가동중</span>
+                            </div>
+                            <div class="machine-metrics">
+                                <span>효율: 88%</span>
+                                <span>진동: 2.3mm/s</span>
+                            </div>
+                        </div>
+                        
+                        <div class="conveyor"></div>
+                        
+                        <div class="machine" id="machine3" data-status="warning">
+                            <span class="machine-icon">🔧</span>
+                            <span class="machine-name">조립기 1</span>
+                            <div class="machine-status">
+                                <div class="status-indicator warning"></div>
+                                <span class="status-text">주의</span>
+                            </div>
+                            <div class="machine-metrics">
+                                <span>효율: 75%</span>
+                                <span>압력: 8.5bar</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="production-line line-2">
+                        <div class="machine" id="machine4" data-status="running">
+                            <span class="machine-icon">🎨</span>
+                            <span class="machine-name">도장기 1</span>
+                            <div class="machine-status">
+                                <div class="status-indicator running"></div>
+                                <span class="status-text">가동중</span>
+                            </div>
+                            <div class="machine-metrics">
+                                <span>효율: 90%</span>
+                                <span>습도: 55%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="conveyor"></div>
+                        
+                        <div class="machine" id="machine5" data-status="maintenance">
+                            <span class="machine-icon">📦</span>
+                            <span class="machine-name">포장기 1</span>
+                            <div class="machine-status">
+                                <div class="status-indicator maintenance"></div>
+                                <span class="status-text">정비중</span>
+                            </div>
+                            <div class="machine-metrics">
+                                <span>효율: 0%</span>
+                                <span>상태: 정비</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 생산 통계 -->
+                <div class="production-stats">
+                    <div class="stat-card">
+                        <span class="stat-label">일일 생산량</span>
+                        <span class="stat-value" id="dailyProduction">1,247</span>
+                        <span class="stat-unit">개</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">불량률</span>
+                        <span class="stat-value" id="defectRate">0.8</span>
+                        <span class="stat-unit">%</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">OEE</span>
+                        <span class="stat-value" id="oee">87.3</span>
+                        <span class="stat-unit">%</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">에너지 효율</span>
+                        <span class="stat-value" id="energyEff">92.1</span>
+                        <span class="stat-unit">%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 디지털 트윈 제어 -->
+            <div class="digital-twin-control">
+                <h4>디지털 트윈 제어판</h4>
+                <div class="twin-controls">
+                    <div class="control-section">
+                        <h5>시뮬레이션 모드</h5>
+                        <div class="simulation-modes">
+                            <button class="mode-btn active" onclick="setSimulationMode('realtime')">
+                                실시간
+                            </button>
+                            <button class="mode-btn" onclick="setSimulationMode('predictive')">
+                                예측
+                            </button>
+                            <button class="mode-btn" onclick="setSimulationMode('optimization')">
+                                최적화
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-section">
+                        <h5>예측 유지보수</h5>
+                        <div class="maintenance-prediction">
+                            <div class="prediction-item">
+                                <span class="equipment">로봇 1</span>
+                                <div class="prediction-bar">
+                                    <div class="bar-fill" style="width: 85%"></div>
+                                </div>
+                                <span class="days-left">15일</span>
+                            </div>
+                            <div class="prediction-item">
+                                <span class="equipment">CNC 1</span>
+                                <div class="prediction-bar">
+                                    <div class="bar-fill" style="width: 60%"></div>
+                                </div>
+                                <span class="days-left">8일</span>
+                            </div>
+                            <div class="prediction-item alert">
+                                <span class="equipment">조립기 1</span>
+                                <div class="prediction-bar">
+                                    <div class="bar-fill alert" style="width: 20%"></div>
+                                </div>
+                                <span class="days-left">2일</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-section">
+                        <h5>생산 최적화</h5>
+                        <button class="optimize-btn" onclick="runOptimization()">
+                            <span class="btn-icon">⚡</span>
+                            AI 최적화 실행
+                        </button>
+                        <div class="optimization-results" id="optimizationResults">
+                            <!-- 최적화 결과 표시 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 온톨로지 기반 생산 규칙 편집기 -->
+    <div class="production-rules-editor">
+        <h3>⚙️ 스마트 생산 규칙 편집기</h3>
+        <div class="rules-interface">
+            <div class="rule-builder">
+                <h4>규칙 생성기</h4>
+                <div class="rule-form">
+                    <div class="rule-condition">
+                        <label>조건 (IF)</label>
+                        <select id="conditionSubject">
+                            <option value="machine">설비</option>
+                            <option value="product">제품</option>
+                            <option value="environment">환경</option>
+                        </select>
+                        <select id="conditionProperty">
+                            <option value="temperature">온도</option>
+                            <option value="vibration">진동</option>
+                            <option value="efficiency">효율</option>
+                            <option value="quality">품질</option>
+                        </select>
+                        <select id="conditionOperator">
+                            <option value="greater">초과</option>
+                            <option value="less">미만</option>
+                            <option value="equal">동일</option>
+                        </select>
+                        <input type="number" id="conditionValue" placeholder="값">
+                    </div>
+                    
+                    <div class="rule-action">
+                        <label>동작 (THEN)</label>
+                        <select id="actionType">
+                            <option value="alert">경고 발생</option>
+                            <option value="adjust">파라미터 조정</option>
+                            <option value="stop">가동 중지</option>
+                            <option value="maintenance">정비 요청</option>
+                        </select>
+                        <input type="text" id="actionDetail" placeholder="상세 동작">
+                    </div>
+                    
+                    <button class="add-rule-btn" onclick="addProductionRule()">
+                        규칙 추가
+                    </button>
+                </div>
+            </div>
+            
+            <div class="active-rules">
+                <h4>활성 규칙</h4>
+                <div class="rules-list" id="rulesList">
+                    <div class="rule-item">
+                        <div class="rule-text">
+                            IF 설비.온도 > 60°C THEN 경고 발생 "과열 위험"
+                        </div>
+                        <button class="rule-delete" onclick="deleteRule(this)">삭제</button>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-text">
+                            IF 제품.불량률 > 2% THEN 파라미터 조정 "품질 개선"
+                        </div>
+                        <button class="rule-delete" onclick="deleteRule(this)">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Siemens MindSphere 사례 -->
+    <div class="mindsphere-case-study">
+        <h3>💡 사례: Siemens MindSphere IoT 플랫폼</h3>
+        <div class="mindsphere-demo">
+            <div class="iot-dashboard">
+                <h4>MindSphere 대시보드</h4>
+                <div class="dashboard-grid">
+                    <div class="widget energy-monitoring">
+                        <h5>에너지 모니터링</h5>
+                        <canvas id="energyChart" width="300" height="200"></canvas>
+                    </div>
+                    <div class="widget asset-health">
+                        <h5>자산 건전성</h5>
+                        <div class="health-indicators">
+                            <div class="health-item good">
+                                <span class="asset-name">터빈 A</span>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 92%"></div>
+                                </div>
+                                <span class="health-score">92%</span>
+                            </div>
+                            <div class="health-item warning">
+                                <span class="asset-name">컴프레서 B</span>
+                                <div class="health-bar">
+                                    <div class="health-fill warning" style="width: 68%"></div>
+                                </div>
+                                <span class="health-score">68%</span>
+                            </div>
+                            <div class="health-item critical">
+                                <span class="asset-name">펌프 C</span>
+                                <div class="health-bar">
+                                    <div class="health-fill critical" style="width: 45%"></div>
+                                </div>
+                                <span class="health-score">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget performance-metrics">
+                        <h5>성능 지표</h5>
+                        <div class="metric-grid">
+                            <div class="metric">
+                                <span class="metric-name">가동률</span>
+                                <span class="metric-value">94.5%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-name">품질률</span>
+                                <span class="metric-value">99.2%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-name">성능률</span>
+                                <span class="metric-value">87.8%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-name">OEE</span>
+                                <span class="metric-value">82.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mindsphere-benefits">
+                <h4>도입 효과</h4>
+                <div class="benefit-metrics">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-value">25%</div>
+                        <div class="benefit-label">생산성 향상</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏱️</div>
+                        <div class="benefit-value">30%</div>
+                        <div class="benefit-label">다운타임 감소</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-value">20%</div>
+                        <div class="benefit-label">유지보수 비용 절감</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🌱</div>
+                        <div class="benefit-value">15%</div>
+                        <div class="benefit-label">에너지 절감</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 15.4: 전자상거래 인터랙티브 -->
+<section class="content-section ecommerce-interactive">
+    <h2>15.4 인텔리전트 E-Commerce 플랫폼</h2>
+    
+    <!-- 상품 온톨로지 빌더 -->
+    <div class="product-ontology-builder">
+        <h3>🛍️ GS1 기반 상품 온톨로지 빌더</h3>
+        <div class="builder-interface">
+            <!-- 상품 카테고리 트리 -->
+            <div class="category-tree">
+                <h4>상품 카테고리 구조</h4>
+                <div class="tree-view">
+                    <div class="category-node root expanded">
+                        <span class="node-toggle">▼</span>
+                        <span class="node-icon">📦</span>
+                        <span class="node-name">전체 상품</span>
+                        <div class="subcategories">
+                            <div class="category-node expanded">
+                                <span class="node-toggle">▼</span>
+                                <span class="node-icon">📱</span>
+                                <span class="node-name">전자제품</span>
+                                <div class="subcategories">
+                                    <div class="category-node">
+                                        <span class="node-icon">💻</span>
+                                        <span class="node-name">컴퓨터</span>
+                                    </div>
+                                    <div class="category-node">
+                                        <span class="node-icon">📱</span>
+                                        <span class="node-name">스마트폰</span>
+                                    </div>
+                                    <div class="category-node">
+                                        <span class="node-icon">🎧</span>
+                                        <span class="node-name">오디오</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-node">
+                                <span class="node-toggle">▶</span>
+                                <span class="node-icon">👕</span>
+                                <span class="node-name">패션</span>
+                            </div>
+                            <div class="category-node">
+                                <span class="node-toggle">▶</span>
+                                <span class="node-icon">🏠</span>
+                                <span class="node-name">가전/가구</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 상품 속성 정의 -->
+            <div class="product-attributes">
+                <h4>상품 속성 정의</h4>
+                <div class="attribute-editor">
+                    <div class="selected-category">
+                        <span>선택된 카테고리: </span>
+                        <strong id="selectedCategory">스마트폰</strong>
+                    </div>
+                    <div class="attributes-list">
+                        <div class="attribute-item">
+                            <input type="text" value="브랜드" class="attr-name">
+                            <select class="attr-type">
+                                <option value="string">텍스트</option>
+                                <option value="number">숫자</option>
+                                <option value="boolean">예/아니오</option>
+                            </select>
+                            <label>
+                                <input type="checkbox" checked> 필수
+                            </label>
+                        </div>
+                        <div class="attribute-item">
+                            <input type="text" value="화면 크기" class="attr-name">
+                            <select class="attr-type">
+                                <option value="number" selected>숫자</option>
+                            </select>
+                            <input type="text" placeholder="단위: 인치" class="attr-unit">
+                        </div>
+                        <div class="attribute-item">
+                            <input type="text" value="메모리" class="attr-name">
+                            <select class="attr-type">
+                                <option value="number" selected>숫자</option>
+                            </select>
+                            <input type="text" placeholder="단위: GB" class="attr-unit">
+                        </div>
+                    </div>
+                    <button class="add-attribute-btn" onclick="addAttribute()">
+                        + 속성 추가
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI 추천 시스템 시뮬레이터 -->
+    <div class="ai-recommendation-simulator">
+        <h3>🤖 지능형 상품 추천 시스템</h3>
+        <div class="recommendation-interface">
+            <!-- 사용자 프로필 -->
+            <div class="user-profile">
+                <h4>사용자 프로필</h4>
+                <div class="profile-data">
+                    <div class="profile-field">
+                        <label>연령대</label>
+                        <select id="userAge">
+                            <option value="20s">20대</option>
+                            <option value="30s" selected>30대</option>
+                            <option value="40s">40대</option>
+                            <option value="50s">50대 이상</option>
+                        </select>
+                    </div>
+                    <div class="profile-field">
+                        <label>관심사</label>
+                        <div class="interests">
+                            <label><input type="checkbox" value="tech" checked> 기술</label>
+                            <label><input type="checkbox" value="fashion"> 패션</label>
+                            <label><input type="checkbox" value="sports" checked> 스포츠</label>
+                            <label><input type="checkbox" value="cooking"> 요리</label>
+                        </div>
+                    </div>
+                    <div class="profile-field">
+                        <label>구매 이력</label>
+                        <div class="purchase-history">
+                            <div class="history-item">노트북 (2개월 전)</div>
+                            <div class="history-item">무선 이어폰 (1개월 전)</div>
+                            <div class="history-item">운동화 (2주 전)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 추천 엔진 -->
+            <div class="recommendation-engine">
+                <h4>추천 알고리즘</h4>
+                <div class="algorithm-selector">
+                    <label>
+                        <input type="radio" name="algo" value="collaborative" checked>
+                        협업 필터링
+                    </label>
+                    <label>
+                        <input type="radio" name="algo" value="content">
+                        콘텐츠 기반
+                    </label>
+                    <label>
+                        <input type="radio" name="algo" value="hybrid">
+                        하이브리드 (온톨로지 + ML)
+                    </label>
+                </div>
+                
+                <button class="generate-recommendations-btn" onclick="generateRecommendations()">
+                    <span class="btn-icon">✨</span>
+                    추천 생성
+                </button>
+                
+                <div class="recommendations-display" id="recommendationsDisplay">
+                    <h5>추천 상품</h5>
+                    <div class="recommendations-placeholder">
+                        추천 생성 버튼을 클릭하세요
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Amazon Product Graph 체험 -->
+    <div class="amazon-product-graph">
+        <h3>🌐 Amazon Product Graph 체험</h3>
+        <div class="product-graph-explorer">
+            <div class="search-interface">
+                <h4>상품 검색 & 탐색</h4>
+                <div class="search-bar">
+                    <input type="text" id="productSearch" placeholder="상품을 검색하세요... (예: 노트북, 헤드폰)">
+                    <button onclick="searchProducts()">검색</button>
+                </div>
+                
+                <div class="search-filters">
+                    <select class="filter-category">
+                        <option value="">전체 카테고리</option>
+                        <option value="electronics">전자제품</option>
+                        <option value="fashion">패션</option>
+                        <option value="home">홈&리빙</option>
+                    </select>
+                    <select class="filter-price">
+                        <option value="">가격대</option>
+                        <option value="0-50000">5만원 이하</option>
+                        <option value="50000-200000">5-20만원</option>
+                        <option value="200000+">20만원 이상</option>
+                    </select>
+                    <select class="filter-rating">
+                        <option value="">평점</option>
+                        <option value="4">★★★★ 이상</option>
+                        <option value="3">★★★ 이상</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="graph-visualization">
+                <h4>상품 관계 그래프</h4>
+                <div class="graph-container">
+                    <svg id="productGraphSvg" width="600" height="400"></svg>
+                </div>
+                <div class="relationship-types">
+                    <span class="rel-type frequently-bought">함께 구매</span>
+                    <span class="rel-type similar">유사 상품</span>
+                    <span class="rel-type complementary">보완 상품</span>
+                    <span class="rel-type upgrade">업그레이드</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="graph-statistics">
+            <h4>Amazon Product Graph 규모</h4>
+            <div class="stat-counters">
+                <div class="counter">
+                    <div class="counter-value" data-target="1000000000">0</div>
+                    <div class="counter-label">상품 노드</div>
+                </div>
+                <div class="counter">
+                    <div class="counter-value" data-target="10000000000">0</div>
+                    <div class="counter-label">관계</div>
+                </div>
+                <div class="counter">
+                    <div class="counter-value" data-target="40">0</div>
+                    <div class="counter-label">언어 지원</div>
+                </div>
+                <div class="counter">
+                    <div class="counter-value" data-target="185">0</div>
+                    <div class="counter-label">국가</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실시간 상품 추천 대시보드 -->
+    <div class="realtime-recommendation-dashboard">
+        <h3>📊 실시간 추천 성과 대시보드</h3>
+        <div class="dashboard-metrics">
+            <div class="metric-card live">
+                <h5>실시간 지표</h5>
+                <div class="live-metrics">
+                    <div class="metric-row">
+                        <span class="metric-name">CTR (클릭률)</span>
+                        <span class="metric-value" id="ctrValue">12.4%</span>
+                        <span class="metric-trend up">↑ 2.1%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-name">전환율</span>
+                        <span class="metric-value" id="conversionValue">3.8%</span>
+                        <span class="metric-trend up">↑ 0.5%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-name">평균 주문 금액</span>
+                        <span class="metric-value" id="aovValue">89,500원</span>
+                        <span class="metric-trend down">↓ 2,300원</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="metric-card performance">
+                <h5>추천 알고리즘 성능</h5>
+                <canvas id="performanceChart" width="300" height="200"></canvas>
+            </div>
+            
+            <div class="metric-card ab-test">
+                <h5>A/B 테스트 결과</h5>
+                <div class="ab-results">
+                    <div class="variant variant-a">
+                        <h6>A: 기존 알고리즘</h6>
+                        <div class="variant-metrics">
+                            <span>CTR: 10.3%</span>
+                            <span>전환율: 3.3%</span>
+                        </div>
+                    </div>
+                    <div class="variant variant-b winner">
+                        <h6>B: 온톨로지 강화</h6>
+                        <div class="variant-metrics">
+                            <span>CTR: 12.4%</span>
+                            <span>전환율: 3.8%</span>
+                        </div>
+                        <div class="winner-badge">🏆 Winner!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Part 2 마무리 챌린지 -->
+<div class="manufacturing-ecommerce-challenge">
+    <h3>🏆 제조-커머스 통합 챌린지</h3>
+    <div class="challenge-scenario">
+        <h4>시나리오: 스마트 팩토리 → E-Commerce 통합</h4>
+        <p>당신은 제조업체의 디지털 전환 책임자입니다. 스마트 팩토리에서 생산된 제품을 온라인으로 직접 판매하는 D2C(Direct-to-Consumer) 플랫폼을 구축해야 합니다.</p>
+        
+        <div class="challenge-tasks">
+            <h5>과제</h5>
+            <div class="task-list">
+                <div class="task-item" id="task1">
+                    <input type="checkbox" id="check1" onchange="updateProgress()">
+                    <label for="check1">생산 데이터와 재고 시스템 통합</label>
+                </div>
+                <div class="task-item" id="task2">
+                    <input type="checkbox" id="check2" onchange="updateProgress()">
+                    <label for="check2">품질 데이터 기반 상품 등급 자동화</label>
+                </div>
+                <div class="task-item" id="task3">
+                    <input type="checkbox" id="check3" onchange="updateProgress()">
+                    <label for="check3">실시간 생산 상태 고객 공유</label>
+                </div>
+                <div class="task-item" id="task4">
+                    <input type="checkbox" id="check4" onchange="updateProgress()">
+                    <label for="check4">맞춤형 생산 주문 시스템 구현</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="challenge-progress">
+            <h5>진행도</h5>
+            <div class="progress-bar">
+                <div class="progress-fill" id="challengeProgress" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progressText">0% 완료</span>
+            </div>
+        </div>
+        
+        <div class="challenge-reward" id="challengeReward" style="display: none;">
+            <h4>🎉 축하합니다!</h4>
+            <p>제조-커머스 통합 전문가 인증을 획득했습니다!</p>
+            <div class="reward-badge">
+                <span class="badge-icon">🏅</span>
+                <span class="badge-title">Industry 4.0 & E-Commerce Master</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 다음 파트 예고 -->
+<div class="next-part-preview">
+    <h3>다음 파트에서는...</h3>
+    <p>교육과 스마트시티에서 온톨로지가 만드는 미래를 탐험합니다!</p>
+    <button class="continue-btn" onclick="goToPart3()">
+        Part 3로 계속 <span class="arrow">→</span>
+    </button>
+</div>
+
+<style>
+/* Part 2 헤더 스타일 */
+.part-header.manufacturing-ecommerce-mastery {
+    background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #8b5cf6 100%);
+    padding: 4rem 2rem;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-flow-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    background: 
+        linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+    animation: flowAnimation 3s linear infinite;
+}
+
+@keyframes flowAnimation {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 디지털 변혁 전문가 스타일 */
+.industry-transformation-expert {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.matrix-grid {
+    display: grid;
+    grid-template-columns: 150px 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.matrix-cell {
+    padding: 0.75rem;
+    background: #f3f4f6;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.matrix-cell.header {
+    background: #374151;
+    color: white;
+    font-weight: bold;
+}
+
+.skill-bar {
+    height: 20px;
+    background: linear-gradient(90deg, #10b981, #059669);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-bar.ecommerce {
+    background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+}
+
+.skill-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 배지 컬렉션 스타일 */
+.badge-collection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.badge {
+    background: #f3f4f6;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.badge.earned {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+}
+
+.badge.locked {
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+.badge-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 스마트 팩토리 시뮬레이터 스타일 */
+.smart-factory-simulator {
+    background: #ecfdf5;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.factory-layout {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.factory-floor {
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.production-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.machine {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-width: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.machine:hover {
+    transform: translateY(-5px);
+}
+
+.machine-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.machine-status {
+    margin: 0.5rem 0;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    animation: pulse 2s infinite;
+}
+
+.status-indicator.running {
+    background: #10b981;
+}
+
+.status-indicator.warning {
+    background: #f59e0b;
+}
+
+.status-indicator.maintenance {
+    background: #ef4444;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.machine-metrics {
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.machine-metrics span {
+    display: block;
+}
+
+.conveyor {
+    flex: 1;
+    height: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        #6b7280,
+        #6b7280 10px,
+        #d1d5db 10px,
+        #d1d5db 20px
+    );
+    margin: 0 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.conveyor::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    animation: conveyorMove 1s linear infinite;
+}
+
+@keyframes conveyorMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+/* 생산 통계 스타일 */
+.production-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #10b981;
+    margin: 0.5rem 0;
+}
+
+.stat-unit {
+    display: block;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* 디지털 트윈 제어 스타일 */
+.digital-twin-control {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.simulation-modes {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 0.75rem;
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.mode-btn:hover,
+.mode-btn.active {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+.maintenance-prediction {
+    background: #f3f4f6;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.prediction-item {
+    display: grid;
+    grid-template-columns: 100px 1fr 60px;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.prediction-item.alert {
+    background: #fee2e2;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+.prediction-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #10b981;
+    transition: width 0.3s ease;
+}
+
+.bar-fill.alert {
+    background: #ef4444;
+}
+
+.optimize-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.optimize-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* 생산 규칙 편집기 스타일 */
+.production-rules-editor {
+    background: #f3f4f6;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.rules-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.rule-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.rule-condition,
+.rule-action {
+    margin-bottom: 1.5rem;
+}
+
+.rule-condition label,
+.rule-action label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.rule-condition select,
+.rule-condition input,
+.rule-action select,
+.rule-action input {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.add-rule-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-rule-btn:hover {
+    background: #059669;
+}
+
+.rules-list {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.rule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.rule-text {
+    flex: 1;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.rule-delete {
+    padding: 0.25rem 0.75rem;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.rule-delete:hover {
+    background: #dc2626;
+}
+
+/* MindSphere 사례 스타일 */
+.mindsphere-case-study {
+    background: #eff6ff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.widget {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.widget h5 {
+    margin-bottom: 1rem;
+    color: #1e40af;
+}
+
+#energyChart {
+    width: 100%;
+    height: auto;
+}
+
+.health-indicators {
+    display: grid;
+    gap: 1rem;
+}
+
+.health-item {
+    display: grid;
+    grid-template-columns: 100px 1fr 50px;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.health-bar {
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.health-fill {
+    height: 100%;
+    background: #10b981;
+    transition: width 0.3s ease;
+}
+
+.health-fill.warning {
+    background: #f59e0b;
+}
+
+.health-fill.critical {
+    background: #ef4444;
+}
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.metric {
+    text-align: center;
+    padding: 1rem;
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+
+.metric-name {
+    display: block;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.metric-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e40af;
+    margin-top: 0.5rem;
+}
+
+.benefit-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.benefit-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.benefit-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+/* 상품 온톨로지 빌더 스타일 */
+.product-ontology-builder {
+    background: #fef3c7;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.builder-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.tree-view {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.category-node {
+    margin-left: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.category-node .subcategories {
+    margin-left: 20px;
+    display: none;
+}
+
+.category-node.expanded .subcategories {
+    display: block;
+}
+
+.node-toggle {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+.attributes-list {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.attribute-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.attribute-item input[type="text"],
+.attribute-item select {
+    padding: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.attr-unit {
+    font-size: 0.9rem;
+}
+
+.add-attribute-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-attribute-btn:hover {
+    background: #d97706;
+}
+
+/* AI 추천 시뮬레이터 스타일 */
+.ai-recommendation-simulator {
+    background: #f0f9ff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.recommendation-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.profile-data {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.profile-field {
+    margin-bottom: 1.5rem;
+}
+
+.profile-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.interests {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.interests label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.purchase-history {
+    background: #f3f4f6;
+    padding: 0.75rem;
+    border-radius: 6px;
+}
+
+.history-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.algorithm-selector {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.algorithm-selector label {
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.generate-recommendations-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.generate-recommendations-btn:hover {
+    transform: translateY(-2px);
+}
+
+.recommendations-display {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+/* Amazon Product Graph 스타일 */
+.amazon-product-graph {
+    background: #fef3c7;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.search-bar button {
+    padding: 0.75rem 1.5rem;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background: #d97706;
+}
+
+.search-filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.search-filters select {
+    padding: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.graph-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#productGraphSvg {
+    width: 100%;
+    height: 100%;
+}
+
+.relationship-types {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.rel-type {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.rel-type.frequently-bought {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.rel-type.similar {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.rel-type.complementary {
+    background: #fce7f3;
+    color: #831843;
+}
+
+.rel-type.upgrade {
+    background: #e9d5ff;
+    color: #581c87;
+}
+
+.stat-counters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.counter {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.counter-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d97706;
+}
+
+.counter-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+/* 실시간 추천 대시보드 스타일 */
+.realtime-recommendation-dashboard {
+    background: #ecfdf5;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.metric-card h5 {
+    margin-bottom: 1rem;
+    color: #059669;
+}
+
+.metric-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.metric-row:last-child {
+    border-bottom: none;
+}
+
+.metric-trend {
+    font-size: 0.9rem;
+}
+
+.metric-trend.up {
+    color: #10b981;
+}
+
+.metric-trend.down {
+    color: #ef4444;
+}
+
+#performanceChart {
+    width: 100%;
+    height: auto;
+}
+
+.ab-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.variant {
+    padding: 1rem;
+    background: #f3f4f6;
+    border-radius: 8px;
+    position: relative;
+}
+
+.variant.winner {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+}
+
+.variant h6 {
+    margin-bottom: 0.5rem;
+}
+
+.variant-metrics {
+    font-size: 0.9rem;
+}
+
+.variant-metrics span {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.winner-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #10b981;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* 챌린지 스타일 */
+.manufacturing-ecommerce-challenge {
+    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 3rem 0;
+}
+
+.challenge-scenario {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.task-list {
+    margin: 1rem 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #f3f4f6;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.task-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.task-item input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-weight: bold;
+}
+
+.challenge-reward {
+    margin-top: 2rem;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reward-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* 다음 파트 예고 스타일 */
+.next-part-preview {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.continue-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+}
+
+.continue-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.continue-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .builder-interface,
+    .recommendation-interface,
+    .rules-interface,
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .factory-floor {
+        overflow-x: auto;
+    }
+    
+    .production-line {
+        min-width: 600px;
+    }
+    
+    .search-filters {
+        grid-template-columns: 1fr;
+    }
+    
+    .matrix-grid {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+<script>
+// 공장 시뮬레이션 모드 설정
+function setSimulationMode(mode) {
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    if (mode === 'predictive') {
+        // 예측 모드 활성화
+        alert('예측 모드: 향후 24시간 생산 예측을 표시합니다.');
+        updateProductionStats(1.1); // 10% 증가 예측
+    } else if (mode === 'optimization') {
+        // 최적화 모드
+        runOptimization();
+    }
+}
+
+// 생산 최적화 실행
+function runOptimization() {
+    const resultsDiv = document.getElementById('optimizationResults');
+    resultsDiv.innerHTML = '최적화 분석 중...';
+    
+    setTimeout(() => {
+        resultsDiv.innerHTML = `
+            <div class="optimization-result">
+                <h6>최적화 결과</h6>
+                <ul>
+                    <li>생산 라인 재배치로 15% 효율 향상</li>
+                    <li>에너지 소비 8% 절감 가능</li>
+                    <li>불량률 0.3% 감소 예상</li>
+                </ul>
+                <button class="apply-btn" onclick="applyOptimization()">최적화 적용</button>
+            </div>
+        `;
+    }, 2000);
+}
+
+function applyOptimization() {
+    // 생산 통계 업데이트
+    document.getElementById('dailyProduction').textContent = '1,434';
+    document.getElementById('defectRate').textContent = '0.5';
+    document.getElementById('oee').textContent = '92.1';
+    document.getElementById('energyEff').textContent = '95.3';
+    
+    alert('최적화가 적용되었습니다!');
+}
+
+// 생산 통계 업데이트
+function updateProductionStats(multiplier = 1) {
+    const production = Math.floor(1247 * multiplier);
+    document.getElementById('dailyProduction').textContent = production.toLocaleString();
+}
+
+// 생산 규칙 추가
+function addProductionRule() {
+    const subject = document.getElementById('conditionSubject').value;
+    const property = document.getElementById('conditionProperty').value;
+    const operator = document.getElementById('conditionOperator').value;
+    const value = document.getElementById('conditionValue').value;
+    const action = document.getElementById('actionType').value;
+    const detail = document.getElementById('actionDetail').value;
+    
+    const ruleText = `IF ${subject}.${property} ${operator} ${value} THEN ${action} "${detail}"`;
+    
+    const rulesList = document.getElementById('rulesList');
+    const newRule = document.createElement('div');
+    newRule.className = 'rule-item';
+    newRule.innerHTML = `
+        <div class="rule-text">${ruleText}</div>
+        <button class="rule-delete" onclick="deleteRule(this)">삭제</button>
+    `;
+    
+    rulesList.appendChild(newRule);
+}
+
+function deleteRule(button) {
+    button.parentElement.remove();
+}
+
+// MindSphere 에너지 차트 그리기
+function drawEnergyChart() {
+    const canvas = document.getElementById('energyChart');
+    const ctx = canvas.getContext('2d');
+    
+    // 간단한 라인 차트
+    ctx.strokeStyle = '#2563eb';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    
+    const data = [30, 45, 38, 52, 48, 65, 58, 72, 68, 80];
+    const width = canvas.width;
+    const height = canvas.height;
+    const step = width / (data.length - 1);
+    
+    data.forEach((value, index) => {
+        const x = index * step;
+        const y = height - (value / 100 * height);
+        
+        if (index === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    });
+    
+    ctx.stroke();
+}
+
+// 상품 속성 추가
+function addAttribute() {
+    const attributesList = document.querySelector('.attributes-list');
+    const newAttr = document.createElement('div');
+    newAttr.className = 'attribute-item';
+    newAttr.innerHTML = `
+        <input type="text" placeholder="속성명" class="attr-name">
+        <select class="attr-type">
+            <option value="string">텍스트</option>
+            <option value="number">숫자</option>
+            <option value="boolean">예/아니오</option>
+        </select>
+        <input type="text" placeholder="단위" class="attr-unit">
+    `;
+    
+    attributesList.appendChild(newAttr);
+}
+
+// 추천 생성
+function generateRecommendations() {
+    const algo = document.querySelector('input[name="algo"]:checked').value;
+    const displayDiv = document.getElementById('recommendationsDisplay');
+    
+    displayDiv.innerHTML = `
+        <h5>추천 상품 (${algo === 'hybrid' ? '하이브리드' : algo === 'collaborative' ? '협업 필터링' : '콘텐츠 기반'})</h5>
+        <div class="recommendations-list">
+            <div class="recommendation-item">
+                <div class="item-image">💻</div>
+                <div class="item-info">
+                    <h6>무선 키보드</h6>
+                    <p>노트북과 함께 많이 구매</p>
+                    <span class="confidence">신뢰도: 92%</span>
+                </div>
+            </div>
+            <div class="recommendation-item">
+                <div class="item-image">🖱️</div>
+                <div class="item-info">
+                    <h6>인체공학 마우스</h6>
+                    <p>유사한 사용자가 구매</p>
+                    <span class="confidence">신뢰도: 87%</span>
+                </div>
+            </div>
+            <div class="recommendation-item">
+                <div class="item-image">🎒</div>
+                <div class="item-info">
+                    <h6>노트북 백팩</h6>
+                    <p>보완 상품</p>
+                    <span class="confidence">신뢰도: 85%</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// 상품 검색
+function searchProducts() {
+    const searchTerm = document.getElementById('productSearch').value;
+    
+    // 상품 그래프 업데이트
+    drawProductGraph(searchTerm);
+}
+
+// 상품 관계 그래프 그리기
+function drawProductGraph(searchTerm) {
+    const svg = document.getElementById('productGraphSvg');
+    svg.innerHTML = ''; // 초기화
+    
+    // 중심 노드
+    const centerNode = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    centerNode.innerHTML = `
+        <circle cx="300" cy="200" r="40" fill="#f59e0b" stroke="white" stroke-width="3"/>
+        <text x="300" y="205" text-anchor="middle" fill="white" font-weight="bold">노트북</text>
+    `;
+    
+    // 관련 상품 노드들
+    const relatedProducts = [
+        { name: '마우스', x: 150, y: 100, type: 'frequently-bought' },
+        { name: '키보드', x: 450, y: 100, type: 'frequently-bought' },
+        { name: '모니터', x: 150, y: 300, type: 'complementary' },
+        { name: '노트북 프로', x: 450, y: 300, type: 'upgrade' }
+    ];
+    
+    // 연결선 그리기
+    relatedProducts.forEach(product => {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', '300');
+        line.setAttribute('y1', '200');
+        line.setAttribute('x2', product.x);
+        line.setAttribute('y2', product.y);
+        line.setAttribute('stroke', getRelationColor(product.type));
+        line.setAttribute('stroke-width', '2');
+        line.setAttribute('stroke-dasharray', product.type === 'upgrade' ? '5,5' : '0');
+        svg.appendChild(line);
+    });
+    
+    // 노드 그리기
+    relatedProducts.forEach(product => {
+        const node = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        node.innerHTML = `
+            <circle cx="${product.x}" cy="${product.y}" r="30" fill="${getRelationColor(product.type)}" stroke="white" stroke-width="2"/>
+            <text x="${product.x}" y="${product.y + 5}" text-anchor="middle" fill="white" font-size="12">${product.name}</text>
+        `;
+        svg.appendChild(node);
+    });
+    
+    svg.appendChild(centerNode);
+}
+
+function getRelationColor(type) {
+    const colors = {
+        'frequently-bought': '#3b82f6',
+        'similar': '#10b981',
+        'complementary': '#ec4899',
+        'upgrade': '#8b5cf6'
+    };
+    return colors[type] || '#6b7280';
+}
+
+// 카운터 애니메이션
+function animateCounters() {
+    const counters = document.querySelectorAll('.counter-value');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000;
+        const step = target / (duration / 50);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            counter.textContent = current.toLocaleString();
+        }, 50);
+    });
+}
+
+// 성능 차트 그리기
+function drawPerformanceChart() {
+    const canvas = document.getElementById('performanceChart');
+    const ctx = canvas.getContext('2d');
+    
+    // 막대 차트
+    const data = [
+        { label: '기존', value: 75 },
+        { label: '콘텐츠', value: 82 },
+        { label: '협업', value: 88 },
+        { label: '하이브리드', value: 94 }
+    ];
+    
+    const barWidth = 60;
+    const gap = 15;
+    const startX = 20;
+    
+    data.forEach((item, index) => {
+        const x = startX + (barWidth + gap) * index;
+        const height = (item.value / 100) * 150;
+        const y = 200 - height;
+        
+        // 막대
+        ctx.fillStyle = index === 3 ? '#10b981' : '#e5e7eb';
+        ctx.fillRect(x, y, barWidth, height);
+        
+        // 라벨
+        ctx.fillStyle = '#374151';
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(item.label, x + barWidth/2, 220);
+        
+        // 값
+        ctx.fillText(item.value + '%', x + barWidth/2, y - 5);
+    });
+}
+
+// 챌린지 진행도 업데이트
+function updateProgress() {
+    const checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
+    const checked = document.querySelectorAll('.task-item input[type="checkbox"]:checked');
+    const progress = (checked.length / checkboxes.length) * 100;
+    
+    document.getElementById('challengeProgress').style.width = progress + '%';
+    document.getElementById('progressText').textContent = Math.round(progress) + '% 완료';
+    
+    if (progress === 100) {
+        document.getElementById('challengeReward').style.display = 'block';
+    }
+}
+
+// Part 3로 이동
+function goToPart3() {
+    alert('Part 3: 교육과 스마트시티 온톨로지로 이동합니다!');
+    // 실제 구현 시 페이지 이동 로직
+}
+
+// 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    drawEnergyChart();
+    animateCounters();
+    drawPerformanceChart();
+    
+    // 실시간 지표 업데이트 시뮬레이션
+    setInterval(() => {
+        const ctr = document.getElementById('ctrValue');
+        const current = parseFloat(ctr.textContent);
+        const change = (Math.random() - 0.5) * 0.5;
+        ctr.textContent = (current + change).toFixed(1) + '%';
+    }, 3000);
+});
+</script>

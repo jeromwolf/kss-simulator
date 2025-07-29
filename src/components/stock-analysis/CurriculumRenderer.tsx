@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { Module, Topic, stockCurriculumData, difficultyLabels, difficultyColors } from '../../data/stockCurriculum';
 import { InteractiveLearning } from './InteractiveLearning';
+import { ChartExample } from './ChartExample';
 
 // 아이콘 매핑
 const iconMap = {
@@ -22,9 +23,10 @@ const iconMap = {
 interface CurriculumRendererProps {
   viewMode: 'overview' | 'detail';
   onSimulatorClick: () => void;
+  setViewMode?: (mode: 'overview' | 'detail') => void;
 }
 
-export function CurriculumRenderer({ viewMode, onSimulatorClick }: CurriculumRendererProps) {
+export function CurriculumRenderer({ viewMode, onSimulatorClick, setViewMode }: CurriculumRendererProps) {
   const [selectedModule, setSelectedModule] = useState<Module>(stockCurriculumData[0]);
   const [expandedTopics, setExpandedTopics] = useState<string[]>([]);
   const [completedModules] = useState(0);
@@ -116,8 +118,14 @@ export function CurriculumRenderer({ viewMode, onSimulatorClick }: CurriculumRen
                 return (
                   <div
                     key={module.id}
+                    onClick={() => {
+                      if (!isLocked && setViewMode) {
+                        setSelectedModule(module);
+                        setViewMode('detail');
+                      }
+                    }}
                     className={`bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all ${
-                      isLocked ? 'opacity-60' : 'hover:scale-105'
+                      isLocked ? 'opacity-60' : 'hover:scale-105 cursor-pointer'
                     }`}
                   >
                     {isLocked && (
@@ -325,6 +333,7 @@ export function CurriculumRenderer({ viewMode, onSimulatorClick }: CurriculumRen
                   {selectedModule.topics.map((topic, topicIndex) => (
                     <div
                       key={topicIndex}
+                      id={`topic-${topicIndex}`}
                       className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
                     >
                       <button
@@ -374,13 +383,53 @@ export function CurriculumRenderer({ viewMode, onSimulatorClick }: CurriculumRen
                               ))}
                             </ul>
                             
+                            {/* Chart Examples */}
+                            {topic.chartExamples && topic.chartExamples.length > 0 && (
+                              <div className="mt-6 space-y-4">
+                                <h4 className="font-medium text-sm text-gray-600 dark:text-gray-400 mb-3">
+                                  차트 예시
+                                </h4>
+                                {topic.chartExamples.map((chart, chartIndex) => (
+                                  <ChartExample
+                                    key={chartIndex}
+                                    title={chart.title}
+                                    description={chart.description}
+                                    imageUrl={chart.imageUrl}
+                                    notes={chart.notes}
+                                  />
+                                ))}
+                              </div>
+                            )}
+                            
                             {/* Interactive Learning Content */}
                             {(topic.quiz || topic.practiceCase || topic.keyPoints) && (
                               <div className="mt-6">
                                 <InteractiveLearning 
                                   topic={topic}
                                   onComplete={() => {
-                                    // 완료 시 처리
+                                    // 현재 토픽 인덱스 찾기
+                                    const currentTopicIndex = selectedModule.topics.findIndex(t => t.title === topic.title);
+                                    
+                                    // 다음 토픽이 있으면 확장
+                                    if (currentTopicIndex < selectedModule.topics.length - 1) {
+                                      const nextTopic = selectedModule.topics[currentTopicIndex + 1];
+                                      setExpandedTopics(prev => [...prev, nextTopic.title]);
+                                      
+                                      // 스크롤로 다음 토픽으로 이동
+                                      setTimeout(() => {
+                                        document.getElementById(`topic-${currentTopicIndex + 1}`)?.scrollIntoView({ 
+                                          behavior: 'smooth', 
+                                          block: 'center' 
+                                        });
+                                      }, 100);
+                                    } else {
+                                      // 현재 모듈의 모든 토픽 완료 시, 다음 모듈로 이동
+                                      const currentModuleIndex = stockCurriculumData.findIndex(m => m.id === selectedModule.id);
+                                      if (currentModuleIndex < stockCurriculumData.length - 1) {
+                                        setSelectedModule(stockCurriculumData[currentModuleIndex + 1]);
+                                        setExpandedTopics([]);
+                                      }
+                                    }
                                   }}
                                 />
                               </div>

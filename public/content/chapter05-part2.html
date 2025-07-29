@@ -1,0 +1,1558 @@
+<!-- Chapter 5: RDFS - RDF 스키마 (심화 버전) Part 2 -->
+
+<!-- Part 2 시작 표시 -->
+<div class="part-header">
+    <h2 class="part-title">Part 2: RDFS 핵심 구성요소 마스터하기</h2>
+    <p class="part-description">이제 RDFS의 실제 구성 요소들을 직접 만지고 실험해보겠습니다.</p>
+</div>
+
+<!-- 섹션 5.2: RDFS 핵심 클래스 (인터랙티브) -->
+<section class="content-section enhanced">
+    <h2>5.2 RDFS 핵심 클래스 탐험</h2>
+    
+    <!-- 클래스 탐험 게임 -->
+    <div class="class-explorer-game">
+        <h3>🎮 RDFS 클래스 빌더 게임</h3>
+        <div class="game-instructions">
+            <p>RDFS 클래스들을 조합하여 온톨로지를 만들어보세요!</p>
+        </div>
+        
+        <div class="game-board">
+            <div class="class-palette">
+                <h4>클래스 팔레트</h4>
+                <div class="draggable-classes">
+                    <div class="class-block" draggable="true" data-class="rdfs:Resource">
+                        <div class="class-icon">🌍</div>
+                        <div class="class-name">rdfs:Resource</div>
+                        <div class="class-tooltip">모든 것의 최상위</div>
+                    </div>
+                    <div class="class-block" draggable="true" data-class="rdfs:Class">
+                        <div class="class-icon">📦</div>
+                        <div class="class-name">rdfs:Class</div>
+                        <div class="class-tooltip">클래스를 만드는 클래스</div>
+                    </div>
+                    <div class="class-block" draggable="true" data-class="rdfs:Literal">
+                        <div class="class-icon">✏️</div>
+                        <div class="class-name">rdfs:Literal</div>
+                        <div class="class-tooltip">텍스트, 숫자 값</div>
+                    </div>
+                    <div class="class-block" draggable="true" data-class="rdfs:Datatype">
+                        <div class="class-icon">🔢</div>
+                        <div class="class-name">rdfs:Datatype</div>
+                        <div class="class-tooltip">데이터 타입 정의</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="construction-area">
+                <h4>온톨로지 구축 영역</h4>
+                <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <p class="drop-hint">클래스를 여기에 드래그하세요</p>
+                </div>
+                <div class="relationship-builder">
+                    <button onclick="addRelationship('subClassOf')">➕ subClassOf 관계 추가</button>
+                    <button onclick="addRelationship('type')">➕ type 관계 추가</button>
+                </div>
+            </div>
+            
+            <div class="result-viewer">
+                <h4>생성된 RDF</h4>
+                <pre class="rdf-output" id="rdfOutput">
+# 여기에 생성된 RDF가 표시됩니다
+                </pre>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 클래스 심화 학습 -->
+    <div class="class-deep-dive">
+        <h3>🔍 RDFS 클래스 완벽 분석</h3>
+        
+        <!-- rdfs:Resource 심화 -->
+        <div class="class-analysis" data-class="Resource">
+            <div class="analysis-header">
+                <div class="class-badge">
+                    <span class="badge-icon">🌍</span>
+                    <span class="badge-name">rdfs:Resource</span>
+                </div>
+                <div class="class-tagline">우주의 모든 것을 포함하는 클래스</div>
+            </div>
+            
+            <div class="analysis-content">
+                <div class="concept-visualization">
+                    <svg viewBox="0 0 400 300" class="hierarchy-svg">
+                        <circle cx="200" cy="50" r="40" fill="#6366f1" />
+                        <text x="200" y="55" text-anchor="middle" fill="white">rdfs:Resource</text>
+                        
+                        <!-- 하위 요소들 -->
+                        <line x1="200" y1="90" x2="100" y2="150" stroke="#6366f1" stroke-width="2" />
+                        <line x1="200" y1="90" x2="200" y2="150" stroke="#6366f1" stroke-width="2" />
+                        <line x1="200" y1="90" x2="300" y2="150" stroke="#6366f1" stroke-width="2" />
+                        
+                        <circle cx="100" cy="150" r="30" fill="#10b981" />
+                        <text x="100" y="155" text-anchor="middle" fill="white">사람</text>
+                        
+                        <circle cx="200" cy="150" r="30" fill="#10b981" />
+                        <text x="200" y="155" text-anchor="middle" fill="white">장소</text>
+                        
+                        <circle cx="300" cy="150" r="30" fill="#10b981" />
+                        <text x="300" y="155" text-anchor="middle" fill="white">개념</text>
+                        
+                        <text x="200" y="250" text-anchor="middle" class="svg-caption">
+                            모든 것이 rdfs:Resource의 인스턴스입니다
+                        </text>
+                    </svg>
+                </div>
+                
+                <div class="real-world-example">
+                    <h5>💼 실제 사용 예시</h5>
+                    <div class="example-tabs">
+                        <button class="tab-btn active" onclick="showExample('resource', 'basic')">기본</button>
+                        <button class="tab-btn" onclick="showExample('resource', 'advanced')">고급</button>
+                        <button class="tab-btn" onclick="showExample('resource', 'enterprise')">기업용</button>
+                    </div>
+                    <div class="example-content">
+                        <div class="example-pane active" id="resource-basic">
+                            <pre class="code-example">
+# 모든 것은 자동으로 rdfs:Resource
+:서울 rdf:type :도시 .
+:김철수 rdf:type :사람 .
+:사랑 rdf:type :감정 .
+
+# 명시적 선언 (선택사항)
+:우주 rdf:type rdfs:Resource .
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="common-mistakes">
+                    <h5>⚠️ 흔한 실수</h5>
+                    <div class="mistake-item">
+                        <span class="mistake-icon">❌</span>
+                        <span class="mistake-text">rdfs:Resource를 항상 명시적으로 선언</span>
+                        <span class="correction">→ 자동으로 적용되므로 불필요</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- rdfs:Class 심화 -->
+        <div class="class-analysis" data-class="Class">
+            <div class="analysis-header">
+                <div class="class-badge">
+                    <span class="badge-icon">📦</span>
+                    <span class="badge-name">rdfs:Class</span>
+                </div>
+                <div class="class-tagline">클래스를 만드는 메타클래스</div>
+            </div>
+            
+            <div class="analysis-content">
+                <div class="interactive-demo">
+                    <h5>🛠️ 인터랙티브 클래스 생성기</h5>
+                    <div class="class-creator">
+                        <input type="text" id="className" placeholder="클래스 이름 입력 (예: 동물)">
+                        <input type="text" id="classLabel" placeholder="레이블 (예: Animal)">
+                        <button onclick="createClass()">클래스 생성</button>
+                        
+                        <div class="created-class-display" id="createdClassDisplay"></div>
+                    </div>
+                </div>
+                
+                <div class="metaclass-explanation">
+                    <h5>🧠 메타클래스 이해하기</h5>
+                    <div class="analogy-box">
+                        <p><strong>비유:</strong> rdfs:Class는 "쿠키 틀을 만드는 틀"과 같습니다.</p>
+                        <ul>
+                            <li>쿠키 틀 = 일반 클래스 (예: Person, Car)</li>
+                            <li>쿠키 = 인스턴스 (예: 김철수, 내 차)</li>
+                            <li>쿠키 틀을 만드는 틀 = rdfs:Class</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- rdfs:Literal 심화 -->
+        <div class="class-analysis" data-class="Literal">
+            <div class="analysis-header">
+                <div class="class-badge">
+                    <span class="badge-icon">✏️</span>
+                    <span class="badge-name">rdfs:Literal</span>
+                </div>
+                <div class="class-tagline">데이터 값을 표현하는 클래스</div>
+            </div>
+            
+            <div class="analysis-content">
+                <div class="literal-playground">
+                    <h5>🎨 리터럴 실험실</h5>
+                    <div class="literal-types">
+                        <div class="literal-type">
+                            <h6>Plain Literal</h6>
+                            <input type="text" placeholder="Hello World" class="literal-input">
+                            <div class="literal-result">"Hello World"</div>
+                        </div>
+                        <div class="literal-type">
+                            <h6>Language Tagged</h6>
+                            <input type="text" placeholder="안녕하세요" class="literal-input">
+                            <select class="lang-select">
+                                <option value="ko">한국어</option>
+                                <option value="en">English</option>
+                                <option value="ja">日本語</option>
+                            </select>
+                            <div class="literal-result">"안녕하세요"@ko</div>
+                        </div>
+                        <div class="literal-type">
+                            <h6>Typed Literal</h6>
+                            <input type="number" placeholder="42" class="literal-input">
+                            <select class="type-select">
+                                <option value="xsd:integer">정수</option>
+                                <option value="xsd:decimal">실수</option>
+                                <option value="xsd:date">날짜</option>
+                            </select>
+                            <div class="literal-result">"42"^^xsd:integer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 5.3: RDFS 핵심 속성 (실습 중심) -->
+<section class="content-section enhanced">
+    <h2>5.3 RDFS 속성의 마법</h2>
+    
+    <!-- 속성 관계 시뮬레이터 -->
+    <div class="property-simulator">
+        <h3>🔮 속성 관계 시뮬레이터</h3>
+        <div class="simulator-container">
+            <div class="property-workshop">
+                <h4>속성 워크샵</h4>
+                <div class="property-builder">
+                    <div class="builder-step">
+                        <label>1. 속성 이름:</label>
+                        <input type="text" id="propName" placeholder="예: teaches">
+                    </div>
+                    <div class="builder-step">
+                        <label>2. 도메인 (주어):</label>
+                        <select id="propDomain">
+                            <option value="">선택하세요</option>
+                            <option value="Professor">Professor</option>
+                            <option value="Student">Student</option>
+                            <option value="Person">Person</option>
+                        </select>
+                    </div>
+                    <div class="builder-step">
+                        <label>3. 레인지 (목적어):</label>
+                        <select id="propRange">
+                            <option value="">선택하세요</option>
+                            <option value="Course">Course</option>
+                            <option value="Department">Department</option>
+                            <option value="Literal">Literal</option>
+                        </select>
+                    </div>
+                    <button onclick="createProperty()">속성 생성</button>
+                </div>
+            </div>
+            
+            <div class="simulation-area">
+                <h4>시뮬레이션 결과</h4>
+                <div class="simulation-display" id="simulationDisplay">
+                    <div class="simulation-visual">
+                        <svg viewBox="0 0 600 300" class="property-svg">
+                            <!-- 동적으로 생성될 시각화 -->
+                        </svg>
+                    </div>
+                    <div class="inference-results">
+                        <h5>🤖 자동 추론 결과:</h5>
+                        <ul id="inferenceList">
+                            <!-- 추론 결과가 여기에 표시됩니다 -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 도메인/레인지 완벽 이해 -->
+    <div class="domain-range-mastery">
+        <h3>🎯 도메인과 레인지 마스터하기</h3>
+        
+        <div class="interactive-explanation">
+            <div class="concept-cards">
+                <div class="concept-card domain-card">
+                    <h4>📍 도메인 (Domain)</h4>
+                    <div class="card-content">
+                        <p class="concept-definition">속성의 주어가 될 수 있는 클래스</p>
+                        <div class="visual-example">
+                            <div class="subject-box">주어 (도메인)</div>
+                            <div class="arrow">→</div>
+                            <div class="predicate-box">속성</div>
+                            <div class="arrow">→</div>
+                            <div class="object-box">목적어</div>
+                        </div>
+                        <div class="practical-example">
+                            <pre>
+ex:teaches rdfs:domain ex:Teacher .
+# "teaches"를 사용하는 주어는 Teacher여야 함
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-card range-card">
+                    <h4>🎯 레인지 (Range)</h4>
+                    <div class="card-content">
+                        <p class="concept-definition">속성의 목적어가 될 수 있는 클래스</p>
+                        <div class="visual-example">
+                            <div class="subject-box">주어</div>
+                            <div class="arrow">→</div>
+                            <div class="predicate-box">속성</div>
+                            <div class="arrow">→</div>
+                            <div class="object-box">목적어 (레인지)</div>
+                        </div>
+                        <div class="practical-example">
+                            <pre>
+ex:teaches rdfs:range ex:Course .
+# "teaches"의 목적어는 Course여야 함
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 실전 연습 -->
+            <div class="practice-exercise">
+                <h4>💪 실전 연습: 도서관 시스템</h4>
+                <div class="exercise-scenario">
+                    <p>도서관 대출 시스템을 RDFS로 모델링해봅시다.</p>
+                    <div class="scenario-workspace">
+                        <div class="requirements">
+                            <h5>요구사항:</h5>
+                            <ul>
+                                <li>사서가 책을 관리한다</li>
+                                <li>회원이 책을 대출한다</li>
+                                <li>책은 카테고리를 가진다</li>
+                            </ul>
+                        </div>
+                        <div class="solution-builder">
+                            <h5>RDFS 스키마 구축:</h5>
+                            <div class="code-editor">
+                                <textarea id="librarySchema" rows="10">
+# 클래스 정의
+:Librarian rdfs:subClassOf :Person .
+:Member rdfs:subClassOf :Person .
+:Book rdf:type rdfs:Class .
+
+# 속성을 정의해보세요...
+</textarea>
+                                <button onclick="validateSchema()">스키마 검증</button>
+                            </div>
+                            <div class="validation-result" id="validationResult"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 계층 관계 깊이 있게 -->
+    <div class="hierarchy-deep-dive">
+        <h3>🏗️ 계층 관계의 힘</h3>
+        
+        <div class="hierarchy-builder">
+            <h4>가족 트리 온톨로지 만들기</h4>
+            <div class="tree-builder-interface">
+                <div class="tree-canvas" id="treeCanvas">
+                    <!-- D3.js로 동적 트리 생성 -->
+                </div>
+                <div class="tree-controls">
+                    <button onclick="addNode()">➕ 노드 추가</button>
+                    <button onclick="addSubClass()">⬇️ 하위 클래스</button>
+                    <button onclick="addSubProperty()">🔗 하위 속성</button>
+                </div>
+                <div class="generated-rdfs">
+                    <h5>생성된 RDFS:</h5>
+                    <pre id="treeRDFS"></pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="transitivity-demo">
+            <h4>🔄 전이성(Transitivity) 이해하기</h4>
+            <div class="transitivity-visual">
+                <div class="chain-demo">
+                    <div class="chain-node">개</div>
+                    <div class="chain-arrow">rdfs:subClassOf</div>
+                    <div class="chain-node">포유류</div>
+                    <div class="chain-arrow">rdfs:subClassOf</div>
+                    <div class="chain-node">동물</div>
+                </div>
+                <div class="inference-arrow">⬇️ 추론</div>
+                <div class="inference-result">
+                    개 rdfs:subClassOf 동물 ✅
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 5.4: RDFS 추론 (게임화) -->
+<section class="content-section enhanced">
+    <h2>5.4 RDFS 추론의 마법</h2>
+    
+    <!-- 추론 게임 -->
+    <div class="inference-game">
+        <h3>🎮 추론 마스터 게임</h3>
+        <div class="game-container">
+            <div class="game-header">
+                <div class="score-board">
+                    <span class="score-label">점수:</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="level-indicator">
+                    <span class="level-label">레벨:</span>
+                    <span class="level-value" id="level">1</span>
+                </div>
+            </div>
+            
+            <div class="inference-puzzle">
+                <h4>추론 퍼즐 #<span id="puzzleNumber">1</span></h4>
+                <div class="given-facts">
+                    <h5>주어진 사실:</h5>
+                    <pre id="givenFacts">
+:Dog rdfs:subClassOf :Mammal .
+:Mammal rdfs:subClassOf :Animal .
+:myDog rdf:type :Dog .
+                    </pre>
+                </div>
+                
+                <div class="question">
+                    <h5>질문: 다음 중 추론 가능한 것은?</h5>
+                    <div class="answer-options">
+                        <button class="answer-btn" onclick="checkInference(this, true)">
+                            :myDog rdf:type :Animal
+                        </button>
+                        <button class="answer-btn" onclick="checkInference(this, false)">
+                            :Animal rdfs:subClassOf :Dog
+                        </button>
+                        <button class="answer-btn" onclick="checkInference(this, true)">
+                            :myDog rdf:type :Mammal
+                        </button>
+                        <button class="answer-btn" onclick="checkInference(this, false)">
+                            :Dog rdf:type :Animal
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="explanation-panel" id="explanationPanel" style="display: none;">
+                    <h5>💡 설명:</h5>
+                    <div class="explanation-content" id="explanationContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 추론 규칙 비주얼 가이드 -->
+    <div class="inference-rules-visual">
+        <h3>📐 RDFS 추론 규칙 비주얼 가이드</h3>
+        
+        <div class="rules-carousel">
+            <div class="rule-slide active" data-rule="rdfs2">
+                <h4>규칙 rdfs2: 도메인 추론</h4>
+                <div class="rule-visual">
+                    <svg viewBox="0 0 600 200" class="rule-svg">
+                        <text x="50" y="30" class="rule-if">IF:</text>
+                        <rect x="100" y="10" width="150" height="40" fill="#e0e7ff" />
+                        <text x="175" y="35" text-anchor="middle">P rdfs:domain C</text>
+                        
+                        <text x="280" y="30" class="rule-and">AND</text>
+                        
+                        <rect x="350" y="10" width="150" height="40" fill="#e0e7ff" />
+                        <text x="425" y="35" text-anchor="middle">X P Y</text>
+                        
+                        <line x1="300" y1="70" x2="300" y2="90" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)" />
+                        
+                        <text x="50" y="130" class="rule-then">THEN:</text>
+                        <rect x="200" y="110" width="150" height="40" fill="#dcfce7" />
+                        <text x="275" y="135" text-anchor="middle">X rdf:type C</text>
+                    </svg>
+                </div>
+                <div class="rule-example">
+                    <h5>실제 예시:</h5>
+                    <pre>
+:teaches rdfs:domain :Teacher .
+:John :teaches :Math .
+━━━━━━━━━━━━━━━━━━━━━
+추론: :John rdf:type :Teacher
+                    </pre>
+                </div>
+            </div>
+            
+            <div class="rule-slide" data-rule="rdfs3">
+                <h4>규칙 rdfs3: 레인지 추론</h4>
+                <!-- 유사한 구조로 다른 규칙들 -->
+            </div>
+            
+            <div class="rule-slide" data-rule="rdfs9">
+                <h4>규칙 rdfs9: 클래스 계층 추론</h4>
+                <!-- 유사한 구조로 다른 규칙들 -->
+            </div>
+        </div>
+        
+        <div class="carousel-controls">
+            <button onclick="previousRule()">◀ 이전</button>
+            <button onclick="nextRule()">다음 ▶</button>
+        </div>
+    </div>
+    
+    <!-- 추론 실험실 -->
+    <div class="inference-lab">
+        <h3>🧪 추론 실험실</h3>
+        <div class="lab-interface">
+            <div class="input-area">
+                <h4>입력 RDF/RDFS:</h4>
+                <textarea id="inferenceInput" rows="10">
+# 클래스 계층
+:Vehicle rdf:type rdfs:Class .
+:Car rdfs:subClassOf :Vehicle .
+:ElectricCar rdfs:subClassOf :Car .
+
+# 속성 정의
+:ownedBy rdf:type rdf:Property ;
+    rdfs:domain :Vehicle ;
+    rdfs:range :Person .
+
+# 인스턴스
+:Tesla3 rdf:type :ElectricCar .
+:John :owns :Tesla3 .
+                </textarea>
+            </div>
+            
+            <div class="control-panel">
+                <button onclick="runInference()" class="inference-btn">
+                    🚀 추론 실행
+                </button>
+                <div class="inference-options">
+                    <label>
+                        <input type="checkbox" checked> rdfs2 (도메인)
+                    </label>
+                    <label>
+                        <input type="checkbox" checked> rdfs3 (레인지)
+                    </label>
+                    <label>
+                        <input type="checkbox" checked> rdfs9 (subClassOf)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="output-area">
+                <h4>추론 결과:</h4>
+                <div class="inference-output" id="inferenceOutput">
+                    <div class="inferred-triples">
+                        <!-- 추론된 트리플이 여기에 표시됩니다 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Part 3로 이어짐 표시 -->
+<div class="part-navigation">
+    <p class="part-indicator">Part 2 완료 - RDFS 구성요소 마스터</p>
+    <button class="continue-to-part3" onclick="loadPart3()">
+        Part 3로 계속: 실전 프로젝트와 미래 →
+    </button>
+</div>
+
+<!-- 스크립트 -->
+<script>
+// 드래그 앤 드롭 기능
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    const dropZone = ev.target.closest('.drop-zone');
+    
+    // 클래스 블록 생성
+    const classElement = document.createElement('div');
+    classElement.className = 'dropped-class';
+    classElement.textContent = data;
+    dropZone.appendChild(classElement);
+    
+    // RDF 생성
+    updateRDFOutput();
+}
+
+// RDF 출력 업데이트
+function updateRDFOutput() {
+    const output = document.getElementById('rdfOutput');
+    const droppedClasses = document.querySelectorAll('.dropped-class');
+    
+    let rdf = '# Generated RDF\n';
+    droppedClasses.forEach(cls => {
+        rdf += `:MyClass rdf:type ${cls.textContent} .\n`;
+    });
+    
+    output.textContent = rdf;
+}
+
+// 클래스 생성
+function createClass() {
+    const name = document.getElementById('className').value;
+    const label = document.getElementById('classLabel').value;
+    
+    if (name && label) {
+        const display = document.getElementById('createdClassDisplay');
+        display.innerHTML = `
+            <div class="created-class">
+                <h6>생성된 클래스:</h6>
+                <pre>
+:${name} rdf:type rdfs:Class ;
+    rdfs:label "${label}"@ko .
+                </pre>
+            </div>
+        `;
+    }
+}
+
+// 속성 생성
+function createProperty() {
+    const name = document.getElementById('propName').value;
+    const domain = document.getElementById('propDomain').value;
+    const range = document.getElementById('propRange').value;
+    
+    if (name && domain && range) {
+        // 시각화 업데이트
+        const svg = document.querySelector('.property-svg');
+        svg.innerHTML = `
+            <rect x="50" y="100" width="100" height="60" fill="#e0e7ff" />
+            <text x="100" y="135" text-anchor="middle">${domain}</text>
+            
+            <line x1="150" y1="130" x2="250" y2="130" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowhead)" />
+            <text x="200" y="120" text-anchor="middle">${name}</text>
+            
+            <rect x="250" y="100" width="100" height="60" fill="#dcfce7" />
+            <text x="300" y="135" text-anchor="middle">${range}</text>
+            
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#6366f1" />
+                </marker>
+            </defs>
+        `;
+        
+        // 추론 결과 표시
+        const inferenceList = document.getElementById('inferenceList');
+        inferenceList.innerHTML = `
+            <li>✅ ${name}를 사용하는 주어는 자동으로 ${domain} 타입이 됩니다</li>
+            <li>✅ ${name}의 목적어는 자동으로 ${range} 타입이 됩니다</li>
+        `;
+    }
+}
+
+// 추론 게임 체크
+function checkInference(button, isCorrect) {
+    const score = document.getElementById('score');
+    const explanation = document.getElementById('explanationPanel');
+    const content = document.getElementById('explanationContent');
+    
+    if (isCorrect) {
+        button.classList.add('correct');
+        score.textContent = parseInt(score.textContent) + 10;
+        content.innerHTML = `
+            <p>✅ 정답입니다!</p>
+            <p>클래스 계층을 통해 추론이 전파됩니다:</p>
+            <ul>
+                <li>Dog → Mammal → Animal</li>
+                <li>myDog는 Dog이므로 Mammal과 Animal도 됩니다</li>
+            </ul>
+        `;
+    } else {
+        button.classList.add('incorrect');
+        content.innerHTML = `
+            <p>❌ 틀렸습니다.</p>
+            <p>이 추론은 성립하지 않습니다. RDFS에서는 상위 클래스로만 추론이 전파됩니다.</p>
+        `;
+    }
+    
+    explanation.style.display = 'block';
+}
+
+// 추론 실행
+function runInference() {
+    const input = document.getElementById('inferenceInput').value;
+    const output = document.getElementById('inferenceOutput');
+    
+    // 간단한 추론 시뮬레이션
+    const inferredTriples = [
+        ':Tesla3 rdf:type :Car .',
+        ':Tesla3 rdf:type :Vehicle .',
+        ':John rdf:type :Person .'
+    ];
+    
+    output.innerHTML = `
+        <div class="inference-result">
+            <h5>🎯 추론된 새로운 사실들:</h5>
+            <pre>${inferredTriples.join('\n')}</pre>
+            <div class="inference-explanation">
+                <p><strong>추론 과정:</strong></p>
+                <ul>
+                    <li>ElectricCar → Car → Vehicle (클래스 계층)</li>
+                    <li>owns의 레인지가 Person이므로 John은 Person</li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+// 캐러셀 제어
+let currentRule = 0;
+const rules = document.querySelectorAll('.rule-slide');
+
+function showRule(index) {
+    rules.forEach(rule => rule.classList.remove('active'));
+    rules[index].classList.add('active');
+}
+
+function nextRule() {
+    currentRule = (currentRule + 1) % rules.length;
+    showRule(currentRule);
+}
+
+function previousRule() {
+    currentRule = (currentRule - 1 + rules.length) % rules.length;
+    showRule(currentRule);
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 드래그 가능하게 설정
+    const draggables = document.querySelectorAll('.class-block');
+    draggables.forEach(block => {
+        block.addEventListener('dragstart', function(e) {
+            e.dataTransfer.setData('text', e.target.dataset.class);
+        });
+    });
+});
+</script>
+
+<!-- 추가 스타일 -->
+<style>
+/* Part 헤더 */
+.part-header {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.part-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.part-description {
+    font-size: 1.125rem;
+    opacity: 0.9;
+}
+
+/* 클래스 탐험 게임 */
+.class-explorer-game {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.class-palette {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.class-block {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    cursor: move;
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.class-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.class-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.class-name {
+    font-weight: 600;
+    color: #4c1d95;
+    margin-bottom: 0.25rem;
+}
+
+.class-tooltip {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.construction-area {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.drop-zone {
+    min-height: 200px;
+    background: #f3f4f6;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.drop-hint {
+    text-align: center;
+    color: #9ca3af;
+    margin: 3rem 0;
+}
+
+.dropped-class {
+    background: #6366f1;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin: 0.5rem;
+    display: inline-block;
+}
+
+.relationship-builder {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.relationship-builder button {
+    flex: 1;
+    padding: 0.75rem;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.relationship-builder button:hover {
+    background: #e5e7eb;
+}
+
+.result-viewer {
+    background: #1e293b;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.result-viewer h4 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.rdf-output {
+    color: #94a3b8;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+}
+
+/* 클래스 분석 */
+.class-analysis {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.analysis-header {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    padding: 1.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.class-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-icon {
+    font-size: 2rem;
+}
+
+.badge-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.class-tagline {
+    color: #64748b;
+    font-style: italic;
+}
+
+.analysis-content {
+    padding: 2rem;
+}
+
+.concept-visualization {
+    margin-bottom: 2rem;
+}
+
+.hierarchy-svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.svg-caption {
+    font-size: 14px;
+    fill: #64748b;
+}
+
+/* 탭 시스템 */
+.example-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    background: #e5e7eb;
+}
+
+.tab-btn.active {
+    background: #6366f1;
+    color: white;
+    border-color: #6366f1;
+}
+
+.example-pane {
+    display: none;
+}
+
+.example-pane.active {
+    display: block;
+}
+
+/* 실수 섹션 */
+.common-mistakes {
+    background: #fef2f2;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.mistake-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mistake-icon {
+    font-size: 1.5rem;
+}
+
+.mistake-text {
+    flex: 1;
+    color: #991b1b;
+}
+
+.correction {
+    color: #166534;
+    font-weight: 500;
+}
+
+/* 인터랙티브 데모 */
+.class-creator {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.class-creator input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.class-creator button {
+    width: 100%;
+    padding: 0.75rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.class-creator button:hover {
+    background: #4f46e5;
+}
+
+.created-class-display {
+    margin-top: 1.5rem;
+}
+
+.created-class {
+    background: #e0f2fe;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* 메타클래스 설명 */
+.analogy-box {
+    background: #fef3c7;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+/* 리터럴 플레이그라운드 */
+.literal-playground {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.literal-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.literal-type {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.literal-type h6 {
+    margin-bottom: 1rem;
+    color: #4c1d95;
+}
+
+.literal-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.lang-select,
+.type-select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+}
+
+.literal-result {
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+/* 속성 시뮬레이터 */
+.property-simulator {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.simulator-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.property-workshop {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.builder-step {
+    margin-bottom: 1.5rem;
+}
+
+.builder-step label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.builder-step input,
+.builder-step select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.simulation-area {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.property-svg {
+    width: 100%;
+    height: 200px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.inference-results {
+    margin-top: 1.5rem;
+    background: #e0f2fe;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* 개념 카드 */
+.concept-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.concept-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 3px solid;
+    transition: transform 0.3s;
+}
+
+.domain-card {
+    border-color: #60a5fa;
+}
+
+.range-card {
+    border-color: #34d399;
+}
+
+.concept-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.visual-example {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.subject-box,
+.predicate-box,
+.object-box {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.subject-box {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.predicate-box {
+    background: #e0e7ff;
+    color: #4c1d95;
+}
+
+.object-box {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.arrow {
+    color: #6b7280;
+    font-weight: bold;
+}
+
+/* 실전 연습 */
+.practice-exercise {
+    background: #f3f4f6;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.scenario-workspace {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.requirements {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.solution-builder {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.code-editor textarea {
+    width: 100%;
+    padding: 1rem;
+    background: #1e293b;
+    color: #e2e8f0;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    resize: vertical;
+}
+
+.validation-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* 추론 게임 */
+.inference-game {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.score-board,
+.level-indicator {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-value,
+.level-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f59e0b;
+}
+
+.inference-puzzle {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.given-facts {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.given-facts pre {
+    margin: 0;
+    color: #1e293b;
+}
+
+.answer-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.answer-btn {
+    padding: 1rem;
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Courier New', monospace;
+}
+
+.answer-btn:hover {
+    background: #e5e7eb;
+    transform: translateY(-2px);
+}
+
+.answer-btn.correct {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+}
+
+.answer-btn.incorrect {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.explanation-panel {
+    background: #e0f2fe;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+/* 추론 규칙 비주얼 */
+.rules-carousel {
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.rule-slide {
+    display: none;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.rule-slide.active {
+    display: block;
+}
+
+.rule-svg {
+    width: 100%;
+    height: 200px;
+    margin: 1rem 0;
+}
+
+.rule-if {
+    fill: #dc2626;
+    font-weight: bold;
+}
+
+.rule-and {
+    fill: #f59e0b;
+    font-weight: bold;
+}
+
+.rule-then {
+    fill: #10b981;
+    font-weight: bold;
+}
+
+.rule-example {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-controls button {
+    padding: 0.75rem 1.5rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.carousel-controls button:hover {
+    background: #4f46e5;
+}
+
+/* 추론 실험실 */
+.inference-lab {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+}
+
+.lab-interface {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.input-area,
+.output-area {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.input-area textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    resize: vertical;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.inference-btn {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.inference-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.inference-options {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.inference-options label {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.inference-output {
+    background: #f0fdf4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    min-height: 200px;
+}
+
+.inference-result h5 {
+    color: #166534;
+    margin-bottom: 1rem;
+}
+
+.inference-result pre {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    color: #1e293b;
+    margin: 1rem 0;
+}
+
+.inference-explanation {
+    background: #d1fae5;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .game-board {
+        grid-template-columns: 1fr;
+    }
+    
+    .simulator-container,
+    .scenario-workspace,
+    .lab-interface {
+        grid-template-columns: 1fr;
+    }
+    
+    .concept-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .answer-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .literal-types {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

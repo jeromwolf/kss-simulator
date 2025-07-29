@@ -1,0 +1,3057 @@
+<!-- Chapter 7: SPARQL - RDF 질의 언어 (인터랙티브 마스터 버전) Part 3 -->
+
+<!-- Part 3 시작 -->
+<div class="part-header expert">
+    <div class="expert-animation"></div>
+    <h2 class="part-title">Part 3: 전문가 레벨과 실전 프로젝트</h2>
+    <p class="part-description">이제 SPARQL 마스터가 될 시간입니다. 대규모 프로젝트와 최적화 기법을 정복하세요.</p>
+</div>
+
+<!-- 진도 체크 - 전문가 -->
+<div class="progress-check expert-level">
+    <h3>🏆 전문가 도전 준비</h3>
+    <div class="master-skills">
+        <div class="skill-achievement">
+            <span class="achievement-icon">✅</span>
+            <span class="achievement-name">SPARQL 기초</span>
+        </div>
+        <div class="skill-achievement">
+            <span class="achievement-icon">✅</span>
+            <span class="achievement-name">고급 패턴</span>
+        </div>
+        <div class="skill-achievement current">
+            <span class="achievement-icon">🔥</span>
+            <span class="achievement-name">전문가 도전</span>
+        </div>
+    </div>
+    <div class="expert-challenge-indicator">
+        <span class="challenge-text">최종 보스전 준비 완료!</span>
+    </div>
+</div>
+
+<!-- 섹션 7.7: 집계 함수와 고급 분석 -->
+<section class="content-section aggregation-mastery">
+    <h2>7.7 집계 함수 마스터: 빅데이터 분석의 핵심</h2>
+    
+    <!-- 집계 함수 실전 워크샵 -->
+    <div class="aggregation-workshop">
+        <h3>📊 빅데이터 분석 워크샵</h3>
+        
+        <div class="workshop-interface">
+            <!-- 데이터셋 시뮬레이터 -->
+            <div class="dataset-simulator">
+                <h4>데이터셋 시뮬레이터</h4>
+                <div class="dataset-stats">
+                    <div class="stat-card">
+                        <span class="stat-icon">👥</span>
+                        <span class="stat-value">1,247,893</span>
+                        <span class="stat-label">사용자</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">📱</span>
+                        <span class="stat-value">15,782,456</span>
+                        <span class="stat-label">소셜 포스트</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">🔗</span>
+                        <span class="stat-value">89,345,123</span>
+                        <span class="stat-label">관계</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">💬</span>
+                        <span class="stat-value">456,789,012</span>
+                        <span class="stat-label">상호작용</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 집계 함수 마스터 클래스 -->
+            <div class="aggregation-masterclass">
+                <h4>🎓 집계 함수 마스터 클래스</h4>
+                
+                <div class="masterclass-scenarios">
+                    <!-- 시나리오 1: 소셜 미디어 인플루언서 분석 -->
+                    <div class="scenario-masterclass">
+                        <h5>🌟 시나리오 1: 인플루언서 발굴 시스템</h5>
+                        <div class="scenario-brief">
+                            <p><strong>목표:</strong> 1억 개 이상의 소셜 미디어 데이터에서 진정한 인플루언서를 찾아라</p>
+                            <p><strong>조건:</strong> 팔로워 수, 참여도, 성장률, 신뢰도를 종합 고려</p>
+                        </div>
+                        
+                        <div class="advanced-query">
+                            <div class="query-tabs">
+                                <button class="query-tab active" onclick="showQuery('basic')">기본 분석</button>
+                                <button class="query-tab" onclick="showQuery('advanced')">고급 분석</button>
+                                <button class="query-tab" onclick="showQuery('ai')">AI 통합</button>
+                            </div>
+                            
+                            <div class="query-content" id="basic-query">
+                                <pre class="code-editor advanced"><code>PREFIX social: &lt;http://schema.org/social#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+SELECT ?influencer ?name
+       (COUNT(DISTINCT ?follower) AS ?followerCount)
+       (COUNT(DISTINCT ?post) AS ?postCount) 
+       (AVG(?likes) AS ?avgLikes)
+       (AVG(?comments) AS ?avgComments)
+       (AVG(?shares) AS ?avgShares)
+       # 참여도 점수 계산
+       ((?avgLikes + ?avgComments * 2 + ?avgShares * 3) / ?followerCount * 100 
+        AS ?engagementRate)
+       # 영향력 점수 (복합 지표)
+       (?followerCount * ?engagementRate / 100 AS ?influenceScore)
+WHERE {
+  # 기본 사용자 정보
+  ?influencer a social:Person ;
+              social:name ?name ;
+              social:verified ?verified .
+  
+  # 팔로워 관계
+  ?follower social:follows ?influencer .
+  
+  # 최근 3개월 게시물
+  ?post social:author ?influencer ;
+        social:datePosted ?postDate ;
+        social:interactionStatistic ?stats .
+  
+  ?stats social:interactionType social:LikeAction ;
+         social:userInteractionCount ?likes .
+  
+  ?stats social:interactionType social:CommentAction ;
+         social:userInteractionCount ?comments .
+         
+  ?stats social:interactionType social:ShareAction ;
+         social:userInteractionCount ?shares .
+  
+  # 최근 3개월 필터
+  FILTER(?postDate >= NOW() - "P90D"^^xsd:duration)
+  
+  # 인증된 계정만
+  FILTER(?verified = true)
+}
+GROUP BY ?influencer ?name
+HAVING(
+  COUNT(DISTINCT ?follower) >= 50000 &&  # 최소 5만 팔로워
+  COUNT(DISTINCT ?post) >= 30 &&         # 최소 30개 게시물
+  AVG(?likes) >= 1000 &&                 # 평균 1천 좋아요
+  ?engagementRate >= 3.0                 # 3% 이상 참여도
+)
+ORDER BY DESC(?influenceScore)
+LIMIT 100</code></pre>
+                            </div>
+                            
+                            <div class="query-content" id="advanced-query" style="display: none;">
+                                <pre class="code-editor advanced"><code># 고급 인플루언서 분석: 시간대별 성장률과 네트워크 효과 포함
+SELECT ?influencer ?name
+       ?currentScore
+       ?growthRate
+       ?networkEffect
+       (?currentScore * (1 + ?growthRate) * ?networkEffect AS ?predictiveScore)
+WHERE {
+  # 현재 영향력 점수 (서브쿼리 1)
+  {
+    SELECT ?influencer 
+           (AVG(?dailyScore) AS ?currentScore)
+    WHERE {
+      {
+        SELECT ?influencer 
+               (COUNT(DISTINCT ?interaction) / COUNT(DISTINCT ?follower) * 100 AS ?dailyScore)
+               ?date
+        WHERE {
+          ?influencer social:hasPost ?post .
+          ?post social:datePosted ?date ;
+                social:hasInteraction ?interaction .
+          ?follower social:follows ?influencer .
+          
+          # 최근 30일 일별 데이터
+          FILTER(?date >= NOW() - "P30D"^^xsd:duration)
+        }
+        GROUP BY ?influencer ?date
+      }
+    }
+    GROUP BY ?influencer
+  }
+  
+  # 성장률 계산 (서브쿼리 2)
+  {
+    SELECT ?influencer 
+           ((COUNT(?recentFollower) - COUNT(?oldFollower)) / 
+            COUNT(?oldFollower) AS ?growthRate)
+    WHERE {
+      {
+        SELECT ?influencer ?follower ?followDate
+        WHERE {
+          ?follower social:follows ?influencer ;
+                   social:followDate ?followDate .
+        }
+      }
+      
+      OPTIONAL {
+        ?recentFollower social:follows ?influencer ;
+                       social:followDate ?recentDate .
+        FILTER(?recentDate >= NOW() - "P30D"^^xsd:duration)
+      }
+      
+      OPTIONAL {
+        ?oldFollower social:follows ?influencer ;
+                    social:followDate ?oldDate .
+        FILTER(?oldDate < NOW() - "P30D"^^xsd:duration)
+      }
+    }
+    GROUP BY ?influencer
+  }
+  
+  # 네트워크 효과 (서브쿼리 3)
+  {
+    SELECT ?influencer 
+           (AVG(?connectionStrength) AS ?networkEffect)
+    WHERE {
+      ?influencer social:collaboratesWith ?collaborator .
+      ?collaborator social:influenceScore ?collabScore .
+      
+      # 협력자의 영향력을 네트워크 효과로 계산
+      BIND(?collabScore / 1000000 + 1 AS ?connectionStrength)
+    }
+    GROUP BY ?influencer
+  }
+  
+  ?influencer social:name ?name .
+}
+ORDER BY DESC(?predictiveScore)
+LIMIT 50</code></pre>
+                            </div>
+                            
+                            <div class="query-content" id="ai-query" style="display: none;">
+                                <pre class="code-editor advanced"><code># AI 통합 인플루언서 분석: 머신러닝 예측 모델과 결합
+SELECT ?influencer ?name
+       ?traditionalScore
+       ?aiPredictedScore
+       ?sentimentScore
+       ?contentQualityScore
+       # 최종 하이브리드 점수
+       (?traditionalScore * 0.4 + 
+        ?aiPredictedScore * 0.3 + 
+        ?sentimentScore * 0.2 + 
+        ?contentQualityScore * 0.1 AS ?hybridScore)
+WHERE {
+  # 전통적 영향력 점수
+  {
+    SELECT ?influencer (AVG(?engagement) AS ?traditionalScore)
+    WHERE {
+      ?influencer social:hasPost ?post .
+      ?post social:engagementRate ?engagement .
+    }
+    GROUP BY ?influencer
+  }
+  
+  # AI 예측 점수 (외부 ML 모델 결과)
+  ?influencer ai:predictedInfluenceScore ?aiPredictedScore .
+  
+  # 감정 분석 점수
+  {
+    SELECT ?influencer (AVG(?sentiment) AS ?sentimentScore)
+    WHERE {
+      ?influencer social:hasPost ?post .
+      ?post ai:sentimentAnalysis ?sentiment .
+      
+      # 최근 게시물만
+      ?post social:datePosted ?date .
+      FILTER(?date >= NOW() - "P30D"^^xsd:duration)
+    }
+    GROUP BY ?influencer
+  }
+  
+  # 콘텐츠 품질 점수 (NLP 분석 결과)
+  {
+    SELECT ?influencer (AVG(?quality) AS ?contentQualityScore)
+    WHERE {
+      ?influencer social:hasPost ?post .
+      ?post ai:contentQualityScore ?quality ;
+            ai:originalityScore ?originality ;
+            ai:expertiseScore ?expertise .
+      
+      # 고품질 콘텐츠만 (품질, 독창성, 전문성 모두 높은 것)
+      FILTER(?quality > 0.7 && ?originality > 0.6 && ?expertise > 0.5)
+    }
+    GROUP BY ?influencer
+  }
+  
+  ?influencer social:name ?name .
+  
+  # 최소 임계값 적용
+  FILTER(?hybridScore > 50)
+}
+ORDER BY DESC(?hybridScore)
+LIMIT 25</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- 실시간 결과 시뮬레이터 -->
+                        <div class="results-simulator">
+                            <h6>🔍 실시간 분석 결과</h6>
+                            <div class="simulation-controls">
+                                <button class="sim-btn" onclick="runSimulation('basic')">기본 분석 실행</button>
+                                <button class="sim-btn" onclick="runSimulation('advanced')">고급 분석 실행</button>
+                                <button class="sim-btn" onclick="runSimulation('ai')">AI 분석 실행</button>
+                            </div>
+                            <div class="simulation-results" id="simResults">
+                                <div class="sim-placeholder">분석을 실행하면 결과가 여기에 표시됩니다</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.8: 성능 최적화와 대규모 처리 -->
+<section class="content-section performance-optimization">
+    <h2>7.8 성능 최적화: 대규모 SPARQL의 비밀</h2>
+    
+    <!-- 성능 최적화 실험실 -->
+    <div class="optimization-lab">
+        <h3>⚡ 성능 최적화 실험실</h3>
+        
+        <div class="lab-dashboard">
+            <!-- 성능 모니터링 -->
+            <div class="performance-monitor">
+                <h4>📊 실시간 성능 모니터</h4>
+                <div class="monitor-grid">
+                    <div class="monitor-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">⏱️</span>
+                            <span class="metric-name">쿼리 응답시간</span>
+                        </div>
+                        <div class="metric-value" id="responseTime">2.3s</div>
+                        <div class="metric-trend up">↗ +15%</div>
+                        <canvas id="responseChart" class="metric-chart"></canvas>
+                    </div>
+                    
+                    <div class="monitor-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">💾</span>
+                            <span class="metric-name">메모리 사용량</span>
+                        </div>
+                        <div class="metric-value" id="memoryUsage">8.7GB</div>
+                        <div class="metric-trend stable">→ 0%</div>
+                        <canvas id="memoryChart" class="metric-chart"></canvas>
+                    </div>
+                    
+                    <div class="monitor-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">🔍</span>
+                            <span class="metric-name">쿼리 처리량</span>
+                        </div>
+                        <div class="metric-value" id="throughput">450/s</div>
+                        <div class="metric-trend down">↘ -8%</div>
+                        <canvas id="throughputChart" class="metric-chart"></canvas>
+                    </div>
+                    
+                    <div class="monitor-card">
+                        <div class="metric-header">
+                            <span class="metric-icon">🎯</span>
+                            <span class="metric-name">캐시 적중률</span>
+                        </div>
+                        <div class="metric-value" id="cacheHit">94.2%</div>
+                        <div class="metric-trend up">↗ +3%</div>
+                        <canvas id="cacheChart" class="metric-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 최적화 기법 워크샵 -->
+            <div class="optimization-workshop">
+                <h4>🛠️ 최적화 기법 워크샵</h4>
+                
+                <div class="optimization-techniques">
+                    <!-- 쿼리 재작성 기법 -->
+                    <div class="technique-section">
+                        <h5>🔄 쿼리 재작성 기법</h5>
+                        
+                        <div class="before-after-comparison">
+                            <div class="comparison-panel before">
+                                <h6>❌ 최적화 전 (17.8초)</h6>
+                                <pre class="code-editor slow"><code># 비효율적인 쿼리
+SELECT ?person ?name ?friendCount WHERE {
+  ?person foaf:name ?name .
+  
+  # 각 사람마다 친구 수를 개별적으로 계산 (비효율!)
+  {
+    SELECT ?person (COUNT(?friend) AS ?friendCount) WHERE {
+      ?person foaf:knows ?friend .
+    }
+    GROUP BY ?person
+  }
+  
+  # 추가 조건들...
+  ?person ex:age ?age .
+  ?person ex:city ?city .
+  
+  FILTER(?friendCount > 100)
+}</code></pre>
+                                <div class="performance-issues">
+                                    <div class="issue">🐌 서브쿼리가 메인 쿼리마다 실행</div>
+                                    <div class="issue">💾 중복 데이터 로드</div>
+                                    <div class="issue">🔍 비효율적인 필터링 순서</div>
+                                </div>
+                            </div>
+                            
+                            <div class="comparison-panel after">
+                                <h6>✅ 최적화 후 (0.8초)</h6>
+                                <pre class="code-editor fast"><code># 최적화된 쿼리
+SELECT ?person ?name ?friendCount WHERE {
+  # 먼저 필터링으로 후보 줄이기
+  ?person ex:age ?age ;
+          ex:city ?city ;
+          foaf:name ?name .
+  
+  # 인덱스가 있는 속성부터 필터링
+  FILTER(?age >= 18 && ?age <= 65)
+  
+  # 집계를 한 번에 처리
+  {
+    SELECT ?person (COUNT(DISTINCT ?friend) AS ?friendCount) WHERE {
+      ?person foaf:knows ?friend .
+      
+      # 이미 필터링된 사용자들에 대해서만 계산
+      ?person ex:age ?age .
+      FILTER(?age >= 18 && ?age <= 65)
+    }
+    GROUP BY ?person
+    HAVING(COUNT(DISTINCT ?friend) > 100)
+  }
+}
+ORDER BY DESC(?friendCount)</code></pre>
+                                <div class="performance-improvements">
+                                    <div class="improvement">⚡ 22배 속도 향상</div>
+                                    <div class="improvement">💾 85% 메모리 절약</div>
+                                    <div class="improvement">🎯 최적 실행 계획</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 인덱싱 전략 -->
+                    <div class="technique-section">
+                        <h5>📇 스마트 인덱싱 전략</h5>
+                        
+                        <div class="indexing-guide">
+                            <div class="index-types">
+                                <div class="index-type">
+                                    <h6>🔸 술어 인덱스 (Predicate Index)</h6>
+                                    <div class="index-explanation">
+                                        <p>가장 기본적인 인덱스. 특정 속성에 대한 빠른 접근 제공</p>
+                                        <code>CREATE INDEX ON (?subject ?predicate ?object) WHERE { ?subject foaf:name ?object }</code>
+                                    </div>
+                                    <div class="use-case">
+                                        <strong>사용 케이스:</strong> 특정 속성값으로 자주 검색하는 경우
+                                    </div>
+                                </div>
+                                
+                                <div class="index-type">
+                                    <h6>🔸 복합 인덱스 (Composite Index)</h6>
+                                    <div class="index-explanation">
+                                        <p>여러 속성을 조합한 인덱스. 복잡한 조건에 효과적</p>
+                                        <code>CREATE INDEX ON (?person ?age ?city) WHERE { 
+  ?person ex:age ?age ; ex:city ?city 
+}</code>
+                                    </div>
+                                    <div class="use-case">
+                                        <strong>사용 케이스:</strong> 나이와 도시로 함께 필터링하는 경우
+                                    </div>
+                                </div>
+                                
+                                <div class="index-type">
+                                    <h6>🔸 전문 검색 인덱스 (Full-text Index)</h6>
+                                    <div class="index-explanation">
+                                        <p>텍스트 검색을 위한 특수 인덱스</p>
+                                        <code>CREATE FULLTEXT INDEX ON (?content) WHERE { 
+  ?post ex:content ?content 
+}</code>
+                                    </div>
+                                    <div class="use-case">
+                                        <strong>사용 케이스:</strong> 게시물 내용에서 키워드 검색
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 인덱스 성능 시뮬레이터 -->
+                            <div class="index-simulator">
+                                <h6>🧪 인덱스 성능 시뮬레이터</h6>
+                                <div class="simulator-controls">
+                                    <div class="control-group">
+                                        <label>데이터 크기:</label>
+                                        <select id="dataSize" onchange="updateIndexSimulation()">
+                                            <option value="small">소규모 (1만 트리플)</option>
+                                            <option value="medium" selected>중규모 (100만 트리플)</option>
+                                            <option value="large">대규모 (1억 트리플)</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>인덱스 유형:</label>
+                                        <select id="indexType" onchange="updateIndexSimulation()">
+                                            <option value="none">인덱스 없음</option>
+                                            <option value="predicate">술어 인덱스</option>
+                                            <option value="composite" selected>복합 인덱스</option>
+                                            <option value="fulltext">전문검색 인덱스</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label>쿼리 복잡도:</label>
+                                        <select id="queryComplexity" onchange="updateIndexSimulation()">
+                                            <option value="simple">단순</option>
+                                            <option value="medium" selected>중간</option>
+                                            <option value="complex">복잡</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="simulation-result" id="indexSimResult">
+                                    <div class="sim-metric">
+                                        <span class="metric-label">예상 응답시간:</span>
+                                        <span class="metric-value" id="simResponseTime">1.2초</span>
+                                    </div>
+                                    <div class="sim-metric">
+                                        <span class="metric-label">메모리 사용량:</span>
+                                        <span class="metric-value" id="simMemoryUsage">450MB</span>
+                                    </div>
+                                    <div class="sim-metric">
+                                        <span class="metric-label">CPU 사용률:</span>
+                                        <span class="metric-value" id="simCpuUsage">23%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.9: Federated Query와 분산 처리 -->
+<section class="content-section federated-queries">
+    <h2>7.9 Federated Query: 분산 데이터의 통합</h2>
+    
+    <!-- Federated Query 마스터 클래스 -->
+    <div class="federated-masterclass">
+        <h3>🌐 분산 데이터 통합 마스터 클래스</h3>
+        
+        <div class="federation-architecture">
+            <h4>🏗️ Federated Query 아키텍처</h4>
+            
+            <!-- 아키텍처 다이어그램 -->
+            <div class="architecture-diagram">
+                <svg viewBox="0 0 1000 600" class="federation-diagram">
+                    <!-- 클라이언트 -->
+                    <rect x="450" y="50" width="100" height="60" class="client-node" />
+                    <text x="500" y="85" text-anchor="middle" class="node-label">Client</text>
+                    
+                    <!-- 연합 엔진 -->
+                    <rect x="420" y="200" width="160" height="80" class="federation-engine" />
+                    <text x="500" y="235" text-anchor="middle" class="node-label">Federation</text>
+                    <text x="500" y="255" text-anchor="middle" class="node-label">Engine</text>
+                    
+                    <!-- 로컬 데이터 소스들 -->
+                    <rect x="50" y="400" width="120" height="60" class="local-source" />
+                    <text x="110" y="430" text-anchor="middle" class="node-label">Local</text>
+                    <text x="110" y="450" text-anchor="middle" class="node-label">Knowledge Base</text>
+                    
+                    <!-- 원격 SPARQL 엔드포인트들 -->
+                    <rect x="250" y="400" width="120" height="60" class="remote-endpoint" />
+                    <text x="310" y="425" text-anchor="middle" class="node-label">DBpedia</text>
+                    <text x="310" y="445" text-anchor="middle" class="node-label">Endpoint</text>
+                    
+                    <rect x="450" y="400" width="120" height="60" class="remote-endpoint" />
+                    <text x="510" y="425" text-anchor="middle" class="node-label">Wikidata</text>
+                    <text x="510" y="445" text-anchor="middle" class="node-label">Endpoint</text>
+                    
+                    <rect x="650" y="400" width="120" height="60" class="remote-endpoint" />
+                    <text x="710" y="425" text-anchor="middle" class="node-label">GeoNames</text>
+                    <text x="710" y="445" text-anchor="middle" class="node-label">Endpoint</text>
+                    
+                    <rect x="850" y="400" width="120" height="60" class="remote-endpoint" />
+                    <text x="910" y="425" text-anchor="middle" class="node-label">Custom</text>
+                    <text x="910" y="445" text-anchor="middle" class="node-label">API</text>
+                    
+                    <!-- 연결선들 -->
+                    <line x1="500" y1="110" x2="500" y2="200" class="connection-line" />
+                    
+                    <line x1="460" y1="280" x2="110" y2="400" class="connection-line" />
+                    <line x1="480" y1="280" x2="310" y2="400" class="connection-line" />
+                    <line x1="500" y1="280" x2="510" y2="400" class="connection-line" />
+                    <line x1="520" y1="280" x2="710" y2="400" class="connection-line" />
+                    <line x1="540" y1="280" x2="910" y2="400" class="connection-line" />
+                    
+                    <!-- 데이터 플로우 애니메이션 -->
+                    <circle cx="500" cy="150" r="5" class="data-flow">
+                        <animate attributeName="cy" values="150;350;150" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+            </div>
+            
+            <!-- Federated Query 실전 예제 -->
+            <div class="federation-example">
+                <h5>🎯 실전 예제: 글로벌 연구자 네트워크 분석</h5>
+                <div class="example-scenario">
+                    <p><strong>시나리오:</strong> 
+                    전 세계 연구자들의 협업 네트워크를 분석하여 AI 분야의 숨은 영향력을 가진 연구자를 찾아라</p>
+                    <p><strong>데이터 소스:</strong> 
+                    로컬 연구소 DB + DBpedia + ORCID + Google Scholar + 정부 연구비 DB</p>
+                </div>
+                
+                <div class="federated-query-code">
+                    <pre class="code-editor federated"><code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+PREFIX orcid: &lt;https://orcid.org/&gt;
+PREFIX gs: &lt;http://scholar.google.com/&gt;
+PREFIX grant: &lt;http://grant.gov/&gt;
+
+SELECT ?researcher ?name ?institutionName ?hIndex ?totalFunding
+       (COUNT(DISTINCT ?coauthor) AS ?collaboratorCount)
+       (COUNT(DISTINCT ?crossBorderCollab) AS ?internationalCollabs)
+       # 영향력 점수 계산
+       (?hIndex * ?collaboratorCount * ?internationalCollabs / 1000 + 
+        ?totalFunding / 1000000 AS ?influenceScore)
+WHERE {
+  # 로컬 연구소 데이터
+  ?researcher foaf:name ?name ;
+              ex:affiliation ?institution ;
+              ex:researchArea "Artificial Intelligence" .
+  
+  # DBpedia에서 기관 정보 조회
+  SERVICE &lt;https://dbpedia.org/sparql&gt; {
+    ?institution dbo:officialName ?institutionName ;
+                 dbo:country ?country .
+  }
+  
+  # ORCID에서 연구자 상세 정보
+  SERVICE &lt;https://orcid.org/sparql&gt; {
+    ?researcher orcid:hasWork ?work .
+    ?work orcid:hasContributor ?coauthor .
+    
+    # 국제 협력 여부 확인
+    OPTIONAL {
+      ?coauthor orcid:affiliation ?coauthorInstitution .
+      ?coauthorInstitution orcid:country ?coauthorCountry .
+      FILTER(?coauthorCountry != ?country)
+      BIND(?coauthor AS ?crossBorderCollab)
+    }
+  }
+  
+  # Google Scholar에서 h-index 조회
+  SERVICE &lt;https://scholar.google.com/sparql&gt; {
+    ?researcher gs:hIndex ?hIndex .
+  }
+  
+  # 정부 연구비 데이터
+  SERVICE &lt;https://grants.gov/sparql&gt; {
+    {
+      SELECT ?researcher (SUM(?amount) AS ?totalFunding)
+      WHERE {
+        ?grant grant:principalInvestigator ?researcher ;
+               grant:awardAmount ?amount ;
+               grant:startDate ?startDate .
+        
+        # 최근 5년 연구비만
+        FILTER(?startDate >= "2019-01-01"^^xsd:date)
+      }
+      GROUP BY ?researcher
+    }
+  }
+  
+  # 최소 조건 필터
+  FILTER(?hIndex >= 20 && ?totalFunding >= 500000)
+}
+GROUP BY ?researcher ?name ?institutionName ?hIndex ?totalFunding
+HAVING(?collaboratorCount >= 10 && ?internationalCollabs >= 3)
+ORDER BY DESC(?influenceScore)
+LIMIT 50</code></pre>
+                </div>
+                
+                <!-- 실행 계획 시각화 -->
+                <div class="execution-plan">
+                    <h6>📋 실행 계획 분석</h6>
+                    <div class="plan-steps">
+                        <div class="plan-step">
+                            <div class="step-number">1</div>
+                            <div class="step-description">
+                                <strong>로컬 필터링:</strong> AI 연구자 후보 추출 (예상: 5,000명 → 1,200명)
+                            </div>
+                            <div class="step-cost">비용: 0.2초</div>
+                        </div>
+                        <div class="plan-step">
+                            <div class="step-number">2</div>
+                            <div class="step-description">
+                                <strong>DBpedia 조회:</strong> 기관 정보 보강 (병렬 처리)
+                            </div>
+                            <div class="step-cost">비용: 1.5초</div>
+                        </div>
+                        <div class="plan-step">
+                            <div class="step-number">3</div>
+                            <div class="step-description">
+                                <strong>ORCID 분석:</strong> 협력 네트워크 구축 (배치 처리)
+                            </div>
+                            <div class="step-cost">비용: 3.2초</div>
+                        </div>
+                        <div class="plan-step">
+                            <div class="step-number">4</div>
+                            <div class="step-description">
+                                <strong>최종 집계:</strong> 영향력 점수 계산 및 정렬
+                            </div>
+                            <div class="step-cost">비용: 0.8초</div>
+                        </div>
+                    </div>
+                    <div class="total-cost">
+                        <strong>총 예상 실행 시간: 5.7초</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.10: 최종 마스터 프로젝트 -->
+<section class="content-section master-project">
+    <h2>7.10 최종 마스터 프로젝트: 지능형 지식 그래프 플랫폼</h2>
+    
+    <!-- 프로젝트 브리핑 -->
+    <div class="project-briefing epic">
+        <h3>🎯 프로젝트 "KnowledgeAI": 차세대 지능형 플랫폼</h3>
+        
+        <div class="briefing-content">
+            <div class="project-overview">
+                <h4>📋 프로젝트 개요</h4>
+                <div class="overview-details">
+                    <div class="detail-card">
+                        <h5>🏢 클라이언트</h5>
+                        <p>글로벌 테크 컨소시엄</p>
+                        <p>예산: $10M | 기간: 18개월</p>
+                    </div>
+                    <div class="detail-card">
+                        <h5>🎯 미션</h5>
+                        <p>인간과 AI가 협업하는 지능형 지식 그래프 플랫폼 구축</p>
+                        <p>100억 트리플 + 실시간 추론</p>
+                    </div>
+                    <div class="detail-card">
+                        <h5>⚡ 요구사항</h5>
+                        <p>• 1ms 이하 추론 응답</p>
+                        <p>• 99.99% 가용성</p>
+                        <p>• 멀티모달 데이터 지원</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 기술 스택 아키텍처 -->
+            <div class="tech-architecture">
+                <h4>🏗️ 기술 아키텍처</h4>
+                <div class="architecture-layers">
+                    <div class="arch-layer frontend">
+                        <h5>프론트엔드 레이어</h5>
+                        <div class="tech-items">
+                            <span class="tech-item">React + TypeScript</span>
+                            <span class="tech-item">D3.js 그래프 시각화</span>
+                            <span class="tech-item">WebSocket 실시간</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer api">
+                        <h5>API 레이어</h5>
+                        <div class="tech-items">
+                            <span class="tech-item">GraphQL Federation</span>
+                            <span class="tech-item">SPARQL 1.1 엔드포인트</span>
+                            <span class="tech-item">REST API Gateway</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer ai">
+                        <h5>AI/ML 레이어</h5>
+                        <div class="tech-items">
+                            <span class="tech-item">GPT-4 통합</span>
+                            <span class="tech-item">Knowledge Graph Embeddings</span>
+                            <span class="tech-item">Neuro-Symbolic Reasoning</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer reasoning">
+                        <h5>추론 레이어</h5>
+                        <div class="tech-items">
+                            <span class="tech-item">Apache Jena Fuseki</span>
+                            <span class="tech-item">Pellet Reasoner</span>
+                            <span class="tech-item">Custom SPARQL Extensions</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer storage">
+                        <h5>저장소 레이어</h5>
+                        <div class="tech-items">
+                            <span class="tech-item">GraphDB Cluster</span>
+                            <span class="tech-item">Redis 캐시</span>
+                            <span class="tech-item">Hadoop HDFS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 핵심 SPARQL 쿼리들 -->
+            <div class="core-queries">
+                <h4>⚡ 핵심 SPARQL 쿼리 시스템</h4>
+                
+                <div class="query-showcase">
+                    <!-- 실시간 추천 시스템 -->
+                    <div class="showcase-query">
+                        <h5>🎯 실시간 지능형 추천 시스템</h5>
+                        <pre class="code-editor enterprise"><code># 사용자 행동, 지식 그래프, AI 예측을 결합한 하이브리드 추천
+PREFIX ai: &lt;http://knowledgeai.com/ai#&gt;
+PREFIX kb: &lt;http://knowledgeai.com/kb#&gt;
+PREFIX user: &lt;http://knowledgeai.com/user#&gt;
+
+SELECT ?item ?title ?relevanceScore ?explanationPath
+WHERE {
+  # 사용자 프로필과 현재 컨텍스트
+  ?user user:hasInterest ?interest ;
+        user:currentContext ?context ;
+        user:behaviorPattern ?pattern .
+  
+  # AI 예측 모델 결과
+  ?user ai:predictedInterest ?predictedTopic .
+  
+  # 지식 그래프에서 관련 아이템 탐색
+  ?item kb:topic ?topic ;
+        kb:title ?title ;
+        kb:difficulty ?difficulty .
+  
+  # 의미적 유사도 계산 (벡터 임베딩 활용)
+  ?interest ai:semanticSimilarity ?topic .
+  FILTER(?semanticSimilarity > 0.7)
+  
+  # 학습 경로 최적화
+  ?item kb:prerequisite* ?prereq .
+  ?user user:hasCompleted ?prereq .
+  
+  # 설명 가능한 추천 경로
+  ?interest kb:relatedTo+ ?item .
+  
+  # 동적 난이도 조정
+  ?user user:skillLevel ?userLevel .
+  FILTER(?difficulty >= ?userLevel - 1 && ?difficulty <= ?userLevel + 2)
+  
+  # 종합 점수 계산
+  BIND(
+    ?semanticSimilarity * 0.4 +
+    (1 / (1 + ?difficulty - ?userLevel)) * 0.3 +
+    ?aiPredictionConfidence * 0.3
+    AS ?relevanceScore
+  )
+  
+  # 설명 경로 생성
+  BIND(
+    CONCAT("관심사 '", STR(?interest), "'와 연결된 '", STR(?topic), "' 분야")
+    AS ?explanationPath
+  )
+}
+ORDER BY DESC(?relevanceScore)
+LIMIT 10</code></pre>
+                    </div>
+                    
+                    <!-- 자동 지식 추출 시스템 -->
+                    <div class="showcase-query">
+                        <h5>🧠 자동 지식 추출 및 검증 시스템</h5>
+                        <pre class="code-editor enterprise"><code># 다중 소스에서 지식을 추출하고 신뢰도를 계산
+SELECT ?newFact ?confidence ?sources ?validationStatus
+WHERE {
+  # 여러 소스에서 같은 사실 추출
+  {
+    SELECT ?newFact (COUNT(DISTINCT ?source) AS ?sourceCount)
+    WHERE {
+      ?extraction ai:extractedFrom ?source ;
+                  ai:extractedFact ?newFact ;
+                  ai:confidence ?extractionConfidence .
+      
+      # 신뢰할 수 있는 소스만
+      ?source kb:trustScore ?trustScore .
+      FILTER(?trustScore > 0.8 && ?extractionConfidence > 0.7)
+    }
+    GROUP BY ?newFact
+    HAVING(?sourceCount >= 3)  # 최소 3개 소스에서 확인
+  }
+  
+  # 기존 지식과의 일관성 검증
+  OPTIONAL {
+    ?newFact kb:contradicts ?existingFact .
+    ?existingFact kb:verificationLevel ?existingLevel .
+    BIND("CONFLICT" AS ?validationStatus)
+  }
+  
+  # 논리적 일관성 검증 (추론기 활용)
+  OPTIONAL {
+    ?newFact kb:logicallyInconsistentWith ?inconsistentFact .
+    BIND("LOGIC_ERROR" AS ?validationStatus)
+  }
+  
+  # 신뢰도 계산
+  BIND(
+    IF(BOUND(?validationStatus), 
+       0.1,  # 충돌이나 논리 오류가 있으면 낮은 신뢰도
+       MIN(1.0, ?sourceCount / 5.0 * AVG(?extractionConfidence))
+    ) AS ?confidence
+  )
+  
+  # 소스 목록 생성
+  {
+    SELECT ?newFact (GROUP_CONCAT(?sourceName; separator=", ") AS ?sources)
+    WHERE {
+      ?extraction ai:extractedFact ?newFact ;
+                  ai:extractedFrom ?source .
+      ?source kb:name ?sourceName .
+    }
+    GROUP BY ?newFact
+  }
+  
+  # 검증 상태가 없으면 "VALIDATED"
+  BIND(COALESCE(?validationStatus, "VALIDATED") AS ?finalStatus)
+  
+  # 높은 신뢰도만
+  FILTER(?confidence > 0.6)
+}
+ORDER BY DESC(?confidence)
+LIMIT 100</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 프로젝트 성과 시뮬레이터 -->
+    <div class="project-simulator">
+        <h3>📊 프로젝트 성과 시뮬레이터</h3>
+        
+        <div class="simulator-dashboard">
+            <div class="simulation-controls">
+                <h4>시뮬레이션 설정</h4>
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label>사용자 규모:</label>
+                        <select id="userScale">
+                            <option value="pilot">파일럿 (1만명)</option>
+                            <option value="production" selected>프로덕션 (100만명)</option>
+                            <option value="enterprise">엔터프라이즈 (1000만명)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>데이터 규모:</label>
+                        <select id="dataScale">
+                            <option value="small">소규모 (1억 트리플)</option>
+                            <option value="medium" selected>중규모 (10억 트리플)</option>
+                            <option value="large">대규모 (100억 트리플)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>AI 통합 수준:</label>
+                        <select id="aiLevel">
+                            <option value="basic">기본 (규칙 기반)</option>
+                            <option value="advanced" selected>고급 (ML 통합)</option>
+                            <option value="cutting-edge">최첨단 (Neuro-Symbolic)</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="run-simulation" onclick="runProjectSimulation()">시뮬레이션 실행</button>
+            </div>
+            
+            <div class="simulation-results" id="projectResults">
+                <div class="results-grid">
+                    <div class="result-metric">
+                        <div class="metric-icon">⚡</div>
+                        <div class="metric-details">
+                            <div class="metric-label">평균 응답시간</div>
+                            <div class="metric-value" id="avgResponseTime">0.8ms</div>
+                        </div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="metric-icon">🎯</div>
+                        <div class="metric-details">
+                            <div class="metric-label">추천 정확도</div>
+                            <div class="metric-value" id="accuracy">94.7%</div>
+                        </div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="metric-icon">👥</div>
+                        <div class="metric-details">
+                            <div class="metric-label">동시 사용자</div>
+                            <div class="metric-value" id="concurrentUsers">125,000</div>
+                        </div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="metric-icon">💡</div>
+                        <div class="metric-details">
+                            <div class="metric-label">지식 추출률</div>
+                            <div class="metric-value" id="extractionRate">15,000/일</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roi-analysis">
+                    <h5>💰 ROI 분석</h5>
+                    <div class="roi-metrics">
+                        <div class="roi-item">
+                            <span class="roi-label">개발 비용:</span>
+                            <span class="roi-value">$8.5M</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">연간 수익:</span>
+                            <span class="roi-value">$24.7M</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">ROI:</span>
+                            <span class="roi-value positive">290%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 7.11: SPARQL 마스터 완성 -->
+<section class="content-section mastery-completion">
+    <h2>7.11 축하합니다! SPARQL 그랜드마스터가 되셨습니다! 🎊</h2>
+    
+    <!-- 성취 요약 -->
+    <div class="achievement-summary epic">
+        <h3>🏆 당신의 SPARQL 마스터 여정</h3>
+        
+        <div class="journey-timeline">
+            <div class="journey-stage completed">
+                <div class="stage-icon">🌱</div>
+                <h4>기초 정복</h4>
+                <ul>
+                    <li>SPARQL 철학과 구조 이해</li>
+                    <li>4가지 쿼리 형식 마스터</li>
+                    <li>기본 패턴 매칭</li>
+                </ul>
+                <div class="completion-badge">완료 ✅</div>
+            </div>
+            
+            <div class="journey-stage completed">
+                <div class="stage-icon">🌿</div>
+                <h4>중급 테크닉</h4>
+                <ul>
+                    <li>OPTIONAL, UNION, MINUS 패턴</li>
+                    <li>FILTER와 정규식 마스터</li>
+                    <li>Property Path 그래프 탐색</li>
+                </ul>
+                <div class="completion-badge">완료 ✅</div>
+            </div>
+            
+            <div class="journey-stage completed">
+                <div class="stage-icon">🌳</div>
+                <h4>전문가 레벨</h4>
+                <ul>
+                    <li>집계 함수와 복잡한 분석</li>
+                    <li>성능 최적화와 인덱싱</li>
+                    <li>Federated Query 분산 처리</li>
+                </ul>
+                <div class="completion-badge">완료 ✅</div>
+            </div>
+            
+            <div class="journey-stage completed">
+                <div class="stage-icon">🏆</div>
+                <h4>마스터 프로젝트</h4>
+                <ul>
+                    <li>대규모 시스템 설계</li>
+                    <li>AI/ML과 SPARQL 융합</li>
+                    <li>실시간 지능형 플랫폼</li>
+                </ul>
+                <div class="completion-badge">완료 ✅</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 획득 스킬 -->
+    <div class="acquired-skills">
+        <h3>🎯 획득한 전문 스킬들</h3>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>📊 데이터 분석</h4>
+                <div class="skills">
+                    <span class="skill-tag master">복잡한 집계 쿼리</span>
+                    <span class="skill-tag master">통계 분석</span>
+                    <span class="skill-tag master">빅데이터 처리</span>
+                    <span class="skill-tag master">실시간 분석</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>⚡ 성능 최적화</h4>
+                <div class="skills">
+                    <span class="skill-tag expert">쿼리 최적화</span>
+                    <span class="skill-tag expert">인덱싱 전략</span>
+                    <span class="skill-tag expert">캐싱 시스템</span>
+                    <span class="skill-tag expert">분산 처리</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>🌐 시스템 통합</h4>
+                <div class="skills">
+                    <span class="skill-tag advanced">Federated Query</span>
+                    <span class="skill-tag advanced">API 통합</span>
+                    <span class="skill-tag advanced">마이크로서비스</span>
+                    <span class="skill-tag advanced">클라우드 배포</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h4>🤖 AI/ML 융합</h4>
+                <div class="skills">
+                    <span class="skill-tag cutting-edge">Neuro-Symbolic AI</span>
+                    <span class="skill-tag cutting-edge">지식 그래프 임베딩</span>
+                    <span class="skill-tag cutting-edge">자동 추론</span>
+                    <span class="skill-tag cutting-edge">설명가능한 AI</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 미래 로드맵 -->
+    <div class="future-roadmap">
+        <h3>🗺️ SPARQL 마스터의 미래 여정</h3>
+        
+        <div class="roadmap-paths">
+            <div class="path-option legendary">
+                <div class="path-icon">🌟</div>
+                <h4>Path 1: 데이터 사이언스 리더</h4>
+                <div class="path-description">
+                    빅데이터와 지식 그래프를 활용한 데이터 사이언스 분야의 전문가로 성장
+                </div>
+                <div class="path-skills">
+                    <span class="next-skill">Graph Neural Networks</span>
+                    <span class="next-skill">Causal Inference</span>
+                    <span class="next-skill">Explainable AI</span>
+                </div>
+                <div class="path-timeline">예상 기간: 12개월</div>
+            </div>
+            
+            <div class="path-option epic">
+                <div class="path-icon">🏗️</div>
+                <h4>Path 2: 시스템 아키텍트</h4>
+                <div class="path-description">
+                    대규모 지식 그래프 시스템과 플랫폼을 설계하는 아키텍트
+                </div>
+                <div class="path-skills">
+                    <span class="next-skill">분산 시스템</span>
+                    <span class="next-skill">클라우드 아키텍처</span>
+                    <span class="next-skill">DevOps</span>
+                </div>
+                <div class="path-timeline">예상 기간: 18개월</div>
+            </div>
+            
+            <div class="path-option rare">
+                <div class="path-icon">🔬</div>
+                <h4>Path 3: 연구개발 전문가</h4>
+                <div class="path-description">
+                    차세대 SPARQL과 시맨틱 웹 기술을 연구하는 전문가
+                </div>
+                <div class="path-skills">
+                    <span class="next-skill">논문 발표</span>
+                    <span class="next-skill">표준화 참여</span>
+                    <span class="next-skill">오픈소스 기여</span>
+                </div>
+                <div class="path-timeline">예상 기간: 연구자 경력</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 커뮤니티와 리소스 -->
+    <div class="community-resources">
+        <h3>🌍 SPARQL 마스터 커뮤니티</h3>
+        
+        <div class="resources-grid">
+            <div class="resource-category">
+                <h4>📚 지속 학습</h4>
+                <ul class="resource-list">
+                    <li><a href="#">SPARQL 1.2 Working Group</a></li>
+                    <li><a href="#">Semantic Web Journal</a></li>
+                    <li><a href="#">Knowledge Graph Conference</a></li>
+                    <li><a href="#">ISWC (국제 시맨틱 웹 컨퍼런스)</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-category">
+                <h4>👥 전문가 네트워크</h4>
+                <ul class="resource-list">
+                    <li><a href="#">SPARQL Masters Slack</a></li>
+                    <li><a href="#">한국 시맨틱 웹 연구회</a></li>
+                    <li><a href="#">LinkedIn SPARQL Group</a></li>
+                    <li><a href="#">GitHub SPARQL Projects</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-category">
+                <h4>🛠️ 실전 도구</h4>
+                <ul class="resource-list">
+                    <li><a href="#">Apache Jena 고급 가이드</a></li>
+                    <li><a href="#">GraphDB 마스터 클래스</a></li>
+                    <li><a href="#">SPARQL 성능 모니터링</a></li>
+                    <li><a href="#">오픈소스 기여 가이드</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-category">
+                <h4>💼 커리어</h4>
+                <ul class="resource-list">
+                    <li><a href="#">SPARQL 전문가 채용 정보</a></li>
+                    <li><a href="#">프리랜서 프로젝트</a></li>
+                    <li><a href="#">컨설팅 기회</a></li>
+                    <li><a href="#">멘토링 프로그램</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 최종 인증서 수여식 -->
+<div class="certification-ceremony epic">
+    <div class="ceremony-animation"></div>
+    
+    <div class="certificate sparql-master">
+        <div class="cert-border"></div>
+        <div class="cert-header">
+            <div class="cert-logo">
+                <div class="sparql-icon">🔍</div>
+                <div class="mastery-crown">👑</div>
+            </div>
+            <h2>SPARQL 그랜드마스터 인증서</h2>
+            <div class="cert-subtitle">차세대 지식 그래프 전문가</div>
+        </div>
+        
+        <div class="cert-body">
+            <p class="cert-intro">이 인증서는 다음을 증명합니다:</p>
+            <h3 class="recipient-name">[당신의 이름]</h3>
+            <p class="cert-content">
+                이 분은 SPARQL 웹 질의 언어의 모든 고급 개념을 완전히 마스터하고,<br>
+                대규모 지식 그래프 시스템을 설계하고 최적화할 수 있는<br>
+                <strong>전문가 수준의 능력</strong>을 갖추었음을 인증합니다.
+            </p>
+            
+            <div class="mastery-areas">
+                <div class="mastery-item">✅ 고급 쿼리 패턴과 최적화</div>
+                <div class="mastery-item">✅ 대규모 시스템 성능 튜닝</div>
+                <div class="mastery-item">✅ Federated Query 분산 처리</div>
+                <div class="mastery-item">✅ AI/ML과 SPARQL 융합</div>
+                <div class="mastery-item">✅ 실전 엔터프라이즈 프로젝트</div>
+            </div>
+            
+            <div class="cert-details">
+                <div class="detail-row">
+                    <span class="label">인증 레벨:</span>
+                    <span class="value legendary">그랜드마스터</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">완료일:</span>
+                    <span class="value" id="sparqlCompletionDate">2024년 7월 29일</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">유효기간:</span>
+                    <span class="value">평생</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cert-footer">
+            <div class="signature-section">
+                <div class="signature-line">
+                    <div class="signature">KSS 교육원장</div>
+                </div>
+            </div>
+            <div class="cert-seal">
+                <div class="seal-outer">
+                    <div class="seal-inner">
+                        <div class="seal-text">SPARQL</div>
+                        <div class="seal-text">MASTER</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="certificate-actions">
+        <button class="cert-action primary" onclick="downloadSPARQLCertificate()">
+            📥 인증서 다운로드
+        </button>
+        <button class="cert-action secondary" onclick="shareCertificate()">
+            🌐 LinkedIn에 공유
+        </button>
+        <button class="cert-action tertiary" onclick="joinMasterCommunity()">
+            👥 마스터 커뮤니티 가입
+        </button>
+    </div>
+</div>
+
+<!-- 스타일 정의 -->
+<style>
+/* Part 3 Expert 스타일 */
+.part-header.expert {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #fbbf24 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.expert-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+    animation: expertPulse 4s ease-in-out infinite;
+}
+
+.progress-check.expert-level {
+    background: linear-gradient(135deg, #7c3aed, #fbbf24);
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.master-skills {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.skill-achievement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    animation: achievementGlow 2s ease-in-out infinite;
+}
+
+.skill-achievement.current .achievement-icon {
+    animation: currentSkillPulse 1.5s ease-in-out infinite;
+}
+
+.expert-challenge-indicator {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    margin-top: 2rem;
+}
+
+.challenge-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    animation: challengeReady 3s ease-in-out infinite;
+}
+
+/* 집계 워크샵 */
+.aggregation-workshop {
+    background: #0c0a1e;
+    padding: 4rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.dataset-simulator {
+    background: #1a1332;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.dataset-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* 마스터 클래스 */
+.scenario-masterclass {
+    background: #1a1332;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    margin: 2rem 0;
+    border: 2px solid #7c3aed;
+}
+
+.scenario-brief {
+    background: rgba(124, 58, 237, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    border-left: 4px solid #7c3aed;
+}
+
+.advanced-query {
+    margin-top: 2rem;
+}
+
+.query-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.query-tab {
+    background: #374151;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.query-tab.active {
+    background: #7c3aed;
+    transform: translateY(-2px);
+}
+
+.code-editor.advanced {
+    background: linear-gradient(135deg, #0c0a1e, #1a1332);
+    border: 2px solid #7c3aed;
+    border-radius: 1rem;
+    padding: 2rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    overflow-x: auto;
+}
+
+/* 결과 시뮬레이터 */
+.results-simulator {
+    background: #0c0a1e;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.simulation-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.sim-btn {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.sim-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(124, 58, 237, 0.4);
+}
+
+.simulation-results {
+    background: #1a1332;
+    padding: 2rem;
+    border-radius: 1rem;
+    min-height: 200px;
+}
+
+.sim-placeholder {
+    text-align: center;
+    color: #9ca3af;
+    font-style: italic;
+    padding: 4rem;
+}
+
+/* 성능 최적화 */
+.optimization-lab {
+    background: #0c0a1e;
+    padding: 4rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.performance-monitor {
+    background: #1a1332;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.monitor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.monitor-card {
+    background: linear-gradient(135deg, #1f2937, #374151);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.monitor-card:hover {
+    border-color: #7c3aed;
+    transform: translateY(-4px);
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.metric-icon {
+    font-size: 1.5rem;
+}
+
+.metric-name {
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #7c3aed;
+    margin-bottom: 0.5rem;
+}
+
+.metric-trend {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.metric-trend.up {
+    color: #22c55e;
+}
+
+.metric-trend.down {
+    color: #ef4444;
+}
+
+.metric-trend.stable {
+    color: #6b7280;
+}
+
+.metric-chart {
+    width: 100%;
+    height: 60px;
+    margin-top: 1rem;
+}
+
+/* 비교 패널 */
+.before-after-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.comparison-panel {
+    background: #1a1332;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.comparison-panel.before {
+    border: 2px solid #ef4444;
+}
+
+.comparison-panel.after {
+    border: 2px solid #22c55e;
+}
+
+.comparison-panel h6 {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.comparison-panel.before h6 {
+    color: #ef4444;
+}
+
+.comparison-panel.after h6 {
+    color: #22c55e;
+}
+
+.code-editor.slow {
+    background: linear-gradient(135deg, #1f1f1f, #2d1b1b);
+}
+
+.code-editor.fast {
+    background: linear-gradient(135deg, #1f1f1f, #1b2d1b);
+}
+
+.performance-issues, .performance-improvements {
+    padding: 1rem;
+    background: rgba(0,0,0,0.2);
+}
+
+.issue, .improvement {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.issue {
+    color: #fca5a5;
+}
+
+.improvement {
+    color: #86efac;
+}
+
+/* 인덱싱 전략 */
+.indexing-guide {
+    background: #1a1332;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.index-types {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.index-type {
+    background: #374151;
+    padding: 2rem;
+    border-radius: 1rem;
+    border-left: 4px solid #7c3aed;
+}
+
+.index-explanation {
+    margin: 1rem 0;
+}
+
+.index-explanation code {
+    background: #1f2937;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 1rem 0;
+    font-family: monospace;
+    color: #22c55e;
+}
+
+.use-case {
+    background: rgba(124, 58, 237, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* 인덱스 시뮬레이터 */
+.index-simulator {
+    background: #0c0a1e;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.simulator-controls {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.control-group select {
+    background: #374151;
+    color: white;
+    border: 1px solid #6b7280;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.simulation-result {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.sim-metric {
+    background: #1a1332;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex: 1;
+    min-width: 150px;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #7c3aed;
+}
+
+/* Federated Query */
+.federated-masterclass {
+    background: #0c0a1e;
+    padding: 4rem 2rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.federation-architecture {
+    background: #1a1332;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.federation-diagram {
+    width: 100%;
+    height: 600px;
+    background: #1f2937;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.client-node {
+    fill: #7c3aed;
+    stroke: #a855f7;
+    stroke-width: 2;
+}
+
+.federation-engine {
+    fill: #dc2626;
+    stroke: #ef4444;
+    stroke-width: 2;
+}
+
+.local-source {
+    fill: #059669;
+    stroke: #10b981;
+    stroke-width: 2;
+}
+
+.remote-endpoint {
+    fill: #2563eb;
+    stroke: #3b82f6;
+    stroke-width: 2;
+}
+
+.connection-line {
+    stroke: #6b7280;
+    stroke-width: 2;
+}
+
+.node-label {
+    fill: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.data-flow {
+    fill: #fbbf24;
+    opacity: 0.8;
+}
+
+/* Federated Query 코드 */
+.code-editor.federated {
+    background: linear-gradient(135deg, #0c0a1e, #1a1332);
+    border: 2px solid #2563eb;
+    border-radius: 1rem;
+    padding: 2rem;
+    color: #e2e8f0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* 실행 계획 */
+.execution-plan {
+    background: #1a1332;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.plan-steps {
+    margin-top: 1rem;
+}
+
+.plan-step {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: #374151;
+    border-radius: 0.5rem;
+}
+
+.step-number {
+    background: #7c3aed;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step-description {
+    flex: 1;
+}
+
+.step-cost {
+    color: #fbbf24;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.total-cost {
+    background: #7c3aed;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* 마스터 프로젝트 */
+.master-project {
+    background: linear-gradient(135deg, #0c0a1e, #1a1332);
+    padding: 4rem 2rem;
+    margin: 3rem 0;
+}
+
+.project-briefing.epic {
+    background: linear-gradient(135deg, #7c3aed, #a855f7, #c084fc);
+    padding: 4rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-briefing.epic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    animation: starfield 20s linear infinite;
+}
+
+.overview-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.detail-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.detail-card h5 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* 기술 아키텍처 */
+.architecture-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.arch-layer {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.arch-layer h5 {
+    margin-bottom: 1rem;
+    color: #fbbf24;
+}
+
+.tech-items {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tech-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 엔터프라이즈 쿼리 */
+.code-editor.enterprise {
+    background: linear-gradient(135deg, #0c0a1e, #1a1332, #7c3aed);
+    border: 3px solid #fbbf24;
+    border-radius: 1rem;
+    padding: 2rem;
+    color: #e2e8f0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+}
+
+.code-editor.enterprise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+    animation: codeShimmer 3s infinite;
+}
+
+/* 프로젝트 시뮬레이터 */
+.project-simulator {
+    background: #1a1332;
+    padding: 3rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.simulator-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.run-simulation {
+    background: linear-gradient(135deg, #7c3aed, #fbbf24);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    transition: all 0.3s;
+}
+
+.run-simulation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(124, 58, 237, 0.4);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.result-metric {
+    background: linear-gradient(135deg, #374151, #4b5563);
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.metric-icon {
+    font-size: 2.5rem;
+}
+
+.metric-details {
+    flex: 1;
+}
+
+.metric-label {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #7c3aed;
+}
+
+/* ROI 분석 */
+.roi-analysis {
+    background: linear-gradient(135deg, #059669, #10b981);
+    padding: 2rem;
+    border-radius: 1rem;
+    color: white;
+}
+
+.roi-metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.roi-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.roi-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.roi-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.roi-value.positive {
+    color: #fbbf24;
+}
+
+/* 성취 요약 */
+.achievement-summary.epic {
+    background: linear-gradient(135deg, #7c3aed, #a855f7, #c084fc, #fbbf24);
+    padding: 4rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+    color: white;
+    text-align: center;
+}
+
+.journey-timeline {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.journey-timeline::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+.journey-stage {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+    z-index: 2;
+}
+
+.journey-stage.completed {
+    border: 2px solid #22c55e;
+}
+
+.stage-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.journey-stage h4 {
+    margin-bottom: 1rem;
+    color: #fbbf24;
+}
+
+.journey-stage ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.journey-stage li {
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+.completion-badge {
+    background: #22c55e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* 획득 스킬 */
+.acquired-skills {
+    background: #1a1332;
+    padding: 3rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-category {
+    background: #374151;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.skill-category h4 {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.skill-tag.master {
+    background: #7c3aed;
+    color: white;
+}
+
+.skill-tag.expert {
+    background: #dc2626;
+    color: white;
+}
+
+.skill-tag.advanced {
+    background: #059669;
+    color: white;
+}
+
+.skill-tag.cutting-edge {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #1f2937;
+}
+
+/* 미래 로드맵 */
+.future-roadmap {
+    background: #0c0a1e;
+    padding: 3rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.roadmap-paths {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.path-option {
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.path-option.legendary {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #1f2937;
+}
+
+.path-option.epic {
+    background: linear-gradient(135deg, #a855f7, #c084fc);
+    color: white;
+}
+
+.path-option.rare {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: white;
+}
+
+.path-option:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+}
+
+.path-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.path-description {
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.path-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.next-skill {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+}
+
+.path-timeline {
+    margin-top: 1rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+/* 커뮤니티 리소스 */
+.community-resources {
+    background: #1a1332;
+    padding: 3rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.resource-category {
+    background: #374151;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.resource-category h4 {
+    color: #fbbf24;
+    margin-bottom: 1rem;
+}
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+}
+
+.resource-list li {
+    padding: 0.5rem 0;
+}
+
+.resource-list a {
+    color: #93c5fd;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.resource-list a:hover {
+    color: #dbeafe;
+    text-decoration: underline;
+}
+
+/* 인증서 수여식 */
+.certification-ceremony.epic {
+    background: linear-gradient(135deg, #0c0a1e, #1a1332, #7c3aed, #fbbf24);
+    padding: 4rem;
+    border-radius: 2rem;
+    margin: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ceremony-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+    animation: ceremonyGlow 6s ease-in-out infinite;
+}
+
+.certificate.sparql-master {
+    background: white;
+    color: #1f2937;
+    padding: 4rem;
+    border-radius: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.cert-border {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 4px solid #7c3aed;
+    border-radius: 1.5rem;
+    background: linear-gradient(45deg, #7c3aed, #fbbf24, #7c3aed);
+    background-size: 200% 200%;
+    animation: borderShine 4s ease-in-out infinite;
+}
+
+.cert-header {
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.cert-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sparql-icon {
+    font-size: 4rem;
+    color: #7c3aed;
+}
+
+.mastery-crown {
+    font-size: 3rem;
+    animation: crownFloat 3s ease-in-out infinite;
+}
+
+.cert-header h2 {
+    font-size: 2.5rem;
+    color: #7c3aed;
+    margin-bottom: 0.5rem;
+}
+
+.cert-subtitle {
+    color: #6b7280;
+    font-size: 1.2rem;
+}
+
+.cert-body {
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.cert-intro {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.recipient-name {
+    font-size: 3rem;
+    color: #7c3aed;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.cert-content {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 2rem;
+}
+
+.mastery-areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.mastery-item {
+    background: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.cert-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-row .label {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.detail-row .value {
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.detail-row .value.legendary {
+    color: #7c3aed;
+    font-size: 1.2rem;
+}
+
+.cert-footer {
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signature-section {
+    text-align: center;
+}
+
+.signature {
+    border-top: 2px solid #4b5563;
+    padding-top: 0.5rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.cert-seal {
+    position: relative;
+}
+
+.seal-outer {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #fbbf24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: sealRotate 10s linear infinite;
+}
+
+.seal-inner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.seal-text {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #7c3aed;
+}
+
+/* 인증서 액션 */
+.certificate-actions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.cert-action {
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.cert-action.primary {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: white;
+}
+
+.cert-action.secondary {
+    background: linear-gradient(135deg, #0077b5, #0099cc);
+    color: white;
+}
+
+.cert-action.tertiary {
+    background: linear-gradient(135deg, #059669, #10b981);
+    color: white;
+}
+
+.cert-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* 애니메이션 */
+@keyframes expertPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes achievementGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(251, 191, 36, 0.8); }
+}
+
+@keyframes currentSkillPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes challengeReady {
+    0%, 100% { color: #fbbf24; }
+    50% { color: #f59e0b; }
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes codeShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes starfield {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100px); }
+}
+
+@keyframes ceremonyGlow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes borderShine {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+}
+
+@keyframes crownFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes sealRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .before-after-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .simulator-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .journey-timeline {
+        flex-direction: column;
+    }
+    
+    .journey-timeline::before {
+        display: none;
+    }
+    
+    .certificate-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cert-details {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cert-footer {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+</style>
+
+<!-- 스크립트 -->
+<script>
+// 전역 변수
+let currentQueryType = 'basic';
+
+// 쿼리 전환
+function showQuery(queryType) {
+    currentQueryType = queryType;
+    
+    // 탭 활성화
+    const tabs = document.querySelectorAll('.query-tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // 쿼리 내용 전환
+    const contents = document.querySelectorAll('.query-content');
+    contents.forEach(content => content.style.display = 'none');
+    
+    const targetContent = document.getElementById(`${queryType}-query`);
+    if (targetContent) {
+        targetContent.style.display = 'block';
+    }
+}
+
+// 시뮬레이션 실행
+function runSimulation(type) {
+    const resultsElement = document.getElementById('simResults');
+    
+    // 로딩 표시
+    resultsElement.innerHTML = `
+        <div class="simulation-loading">
+            <div class="loading-spinner"></div>
+            <p>시뮬레이션 실행 중...</p>
+        </div>
+    `;
+    
+    // 시뮬레이션 결과 생성 (실제로는 서버에서 처리)
+    setTimeout(() => {
+        const results = generateSimulationResults(type);
+        displaySimulationResults(results);
+    }, 2000);
+}
+
+function generateSimulationResults(type) {
+    const baseResults = {
+        influencers: Math.floor(Math.random() * 50) + 25,
+        avgScore: (Math.random() * 20 + 80).toFixed(1),
+        processingTime: (Math.random() * 5 + 2).toFixed(1),
+        dataPoints: Math.floor(Math.random() * 10000000) + 50000000
+    };
+    
+    switch(type) {
+        case 'basic':
+            return {
+                ...baseResults,
+                accuracy: '87.3%',
+                method: '기본 집계 분석'
+            };
+        case 'advanced':
+            return {
+                ...baseResults,
+                accuracy: '94.7%',
+                method: '고급 시계열 분석',
+                influencers: baseResults.influencers + 15
+            };
+        case 'ai':
+            return {
+                ...baseResults,
+                accuracy: '98.2%',
+                method: 'AI 하이브리드 분석',
+                influencers: baseResults.influencers + 25,
+                aiConfidence: '96.4%'
+            };
+        default:
+            return baseResults;
+    }
+}
+
+function displaySimulationResults(results) {
+    const resultsElement = document.getElementById('simResults');
+    
+    resultsElement.innerHTML = `
+        <div class="simulation-complete">
+            <h6>📊 시뮬레이션 완료</h6>
+            <div class="results-summary">
+                <div class="result-item">
+                    <span class="result-label">발굴된 인플루언서:</span>
+                    <span class="result-value">${results.influencers}명</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">평균 영향력 점수:</span>
+                    <span class="result-value">${results.avgScore}점</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">분석 정확도:</span>
+                    <span class="result-value">${results.accuracy}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">처리 시간:</span>
+                    <span class="result-value">${results.processingTime}초</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">분석 방법:</span>
+                    <span class="result-value">${results.method}</span>
+                </div>
+            </div>
+            ${results.aiConfidence ? `
+                <div class="ai-insights">
+                    <h6>🤖 AI 인사이트</h6>
+                    <p>AI 모델 신뢰도: ${results.aiConfidence}</p>
+                    <p>예측 정확도가 ${results.accuracy}로 매우 높습니다. 
+                    발굴된 인플루언서들은 향후 6개월 내 영향력이 더욱 증가할 것으로 예상됩니다.</p>
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+// 인덱스 시뮬레이션 업데이트
+function updateIndexSimulation() {
+    const dataSize = document.getElementById('dataSize').value;
+    const indexType = document.getElementById('indexType').value;
+    const queryComplexity = document.getElementById('queryComplexity').value;
+    
+    // 성능 계산 (실제로는 더 복잡한 모델)
+    let baseTime = 1000; // ms
+    let baseMemory = 100; // MB
+    let baseCpu = 50; // %
+    
+    // 데이터 크기 영향
+    const sizeMultiplier = {
+        'small': 0.1,
+        'medium': 1.0,
+        'large': 10.0
+    };
+    
+    // 인덱스 타입 영향
+    const indexMultiplier = {
+        'none': 1.0,
+        'predicate': 0.3,
+        'composite': 0.15,
+        'fulltext': 0.4
+    };
+    
+    // 쿼리 복잡도 영향
+    const complexityMultiplier = {
+        'simple': 0.5,
+        'medium': 1.0,
+        'complex': 2.5
+    };
+    
+    const finalTime = baseTime * sizeMultiplier[dataSize] * indexMultiplier[indexType] * complexityMultiplier[queryComplexity];
+    const finalMemory = baseMemory * sizeMultiplier[dataSize] * 0.8;
+    const finalCpu = baseCpu * complexityMultiplier[queryComplexity] * 0.6;
+    
+    // 결과 업데이트
+    document.getElementById('simResponseTime').textContent = finalTime < 1000 ? 
+        `${Math.round(finalTime)}ms` : `${(finalTime/1000).toFixed(1)}초`;
+    document.getElementById('simMemoryUsage').textContent = finalMemory < 1024 ? 
+        `${Math.round(finalMemory)}MB` : `${(finalMemory/1024).toFixed(1)}GB`;
+    document.getElementById('simCpuUsage').textContent = `${Math.round(finalCpu)}%`;
+}
+
+// 프로젝트 시뮬레이션
+function runProjectSimulation() {
+    const userScale = document.getElementById('userScale').value;
+    const dataScale = document.getElementById('dataScale').value;
+    const aiLevel = document.getElementById('aiLevel').value;
+    
+    // 시뮬레이션 로직 (실제로는 복잡한 계산)
+    const scaleFactors = {
+        'pilot': { users: 10000, cost: 1.0 },
+        'production': { users: 1000000, cost: 5.0 },
+        'enterprise': { users: 10000000, cost: 25.0 }
+    };
+    
+    const aiFactors = {
+        'basic': { accuracy: 85, cost: 1.0 },
+        'advanced': { accuracy: 94, cost: 2.5 },
+        'cutting-edge': { accuracy: 98, cost: 5.0 }
+    };
+    
+    const scale = scaleFactors[userScale];
+    const ai = aiFactors[aiLevel];
+    
+    // 결과 계산
+    const responseTime = Math.max(0.1, 2.0 / scale.cost);
+    const accuracy = ai.accuracy + Math.random() * 2 - 1;
+    const concurrentUsers = Math.floor(scale.users * 0.125);
+    const extractionRate = Math.floor(5000 * scale.cost * ai.cost);
+    
+    const developmentCost = 2.5 * scale.cost * ai.cost;
+    const annualRevenue = scale.users * 0.025 * (accuracy / 85);
+    const roi = ((annualRevenue - developmentCost) / developmentCost) * 100;
+    
+    // UI 업데이트
+    document.getElementById('avgResponseTime').textContent = `${responseTime.toFixed(1)}ms`;
+    document.getElementById('accuracy').textContent = `${accuracy.toFixed(1)}%`;
+    document.getElementById('concurrentUsers').textContent = concurrentUsers.toLocaleString();
+    document.getElementById('extractionRate').textContent = `${extractionRate.toLocaleString()}/일`;
+    
+    // ROI 업데이트
+    document.querySelector('.roi-metrics .roi-item:nth-child(1) .roi-value').textContent = `$${developmentCost.toFixed(1)}M`;
+    document.querySelector('.roi-metrics .roi-item:nth-child(2) .roi-value').textContent = `$${annualRevenue.toFixed(1)}M`;
+    document.querySelector('.roi-metrics .roi-item:nth-child(3) .roi-value').textContent = `${roi.toFixed(0)}%`;
+}
+
+// 인증서 기능들
+function downloadSPARQLCertificate() {
+    alert('🎉 축하합니다!\n\nSPARQL 그랜드마스터 인증서가 다운로드됩니다.\n\n당신은 이제 세계 최고 수준의 SPARQL 전문가입니다!');
+}
+
+function shareCertificate() {
+    const text = encodeURIComponent('SPARQL 그랜드마스터 인증을 받았습니다! 🏆 대규모 지식 그래프와 지능형 시스템 전문가로 인정받았습니다. #SPARQL #KnowledgeGraph #SemanticWeb #DataScience');
+    const url = `https://linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&summary=${text}`;
+    window.open(url, '_blank');
+}
+
+function joinMasterCommunity() {
+    alert('🌟 SPARQL 마스터 커뮤니티에 가입합니다!\n\n- 전 세계 SPARQL 전문가들과 네트워킹\n- 최신 기술 동향과 프로젝트 기회\n- 멘토링과 지속 학습 프로그램\n- 프리미엄 리소스와 도구 액세스');
+}
+
+// 성능 차트 그리기 (간단한 예시)
+function drawPerformanceCharts() {
+    const charts = ['responseChart', 'memoryChart', 'throughputChart', 'cacheChart'];
+    
+    charts.forEach(chartId => {
+        const canvas = document.getElementById(chartId);
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        canvas.width = 200;
+        canvas.height = 60;
+        
+        // 간단한 라인 차트
+        ctx.strokeStyle = '#7c3aed';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        
+        for (let i = 0; i < 20; i++) {
+            const x = (canvas.width / 19) * i;
+            const y = canvas.height - (Math.sin(i * 0.3) * 20 + 30);
+            
+            if (i === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        
+        ctx.stroke();
+    });
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // 인덱스 시뮬레이션 초기화
+    updateIndexSimulation();
+    
+    // 프로젝트 시뮬레이션 초기화
+    runProjectSimulation();
+    
+    // 성능 차트 그리기
+    drawPerformanceCharts();
+    
+    // 완료 날짜 설정
+    const today = new Date();
+    const dateStr = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+    const dateElement = document.getElementById('sparqlCompletionDate');
+    if (dateElement) {
+        dateElement.textContent = dateStr;
+    }
+});
+
+// 스타일 추가 (CSS 파일에 이미 포함됨)
+const additionalStyles = `
+.simulation-loading {
+    text-align: center;
+    padding: 2rem;
+    color: #9ca3af;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #374151;
+    border-top: 4px solid #7c3aed;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.simulation-complete {
+    background: #1a1332;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.results-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.result-item {
+    background: #374151;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.result-label {
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.result-value {
+    color: #7c3aed;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.ai-insights {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.ai-insights h6 {
+    margin-bottom: 1rem;
+}
+
+.ai-insights p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+`;
+
+// 동적 스타일 추가
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
+</script>

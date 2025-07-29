@@ -1,0 +1,1952 @@
+<!-- Chapter 6: OWL - 웹 온톨로지 언어 (인터랙티브 마스터 버전) Part 3 -->
+
+<!-- Part 3 시작 -->
+<div class="part-header epic-finale">
+    <div class="finale-animation"></div>
+    <h2 class="part-title">Part 3: 실전 프로젝트와 OWL의 미래</h2>
+    <p class="part-description">이제 진짜 전문가가 되는 시간. 대규모 프로젝트를 완성하고 미래를 준비합니다.</p>
+</div>
+
+<!-- 진도 체크 (최종) -->
+<div class="progress-check final">
+    <h3>🎯 최종 도전 준비</h3>
+    <div class="skill-completion">
+        <div class="completed-skills">
+            <span class="skill-badge">✅ Description Logic 마스터</span>
+            <span class="skill-badge">✅ OWL 프로파일 전문가</span>
+            <span class="skill-badge">✅ 클래스 표현식 장인</span>
+            <span class="skill-badge">✅ Protégé 숙련자</span>
+        </div>
+        <div class="final-challenge-ready">
+            <h4>🔥 최종 보스전 준비 완료!</h4>
+        </div>
+    </div>
+</div>
+
+<!-- 섹션 6.6: 대규모 프로젝트 - 엔터프라이즈 온톨로지 -->
+<section class="content-section enterprise-project">
+    <h2>6.6 최종 프로젝트: 글로벌 전자상거래 플랫폼 온톨로지</h2>
+    
+    <!-- 프로젝트 브리핑 (게임 스타일) -->
+    <div class="mission-briefing">
+        <div class="briefing-header">
+            <h3>🎯 미션 브리핑: "Project Marketplace"</h3>
+            <div class="difficulty-meter">
+                <span class="label">난이도:</span>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <span class="difficulty-text">전문가 레벨</span>
+            </div>
+        </div>
+        
+        <div class="briefing-details">
+            <div class="client-profile">
+                <img src="/assets/corp-logo.png" alt="GlobalShop Inc." class="client-logo">
+                <div class="client-info">
+                    <h4>클라이언트: GlobalShop Inc.</h4>
+                    <p class="company-size">월 거래액 100억원 | 상품 1000만개 | 20개국 서비스</p>
+                </div>
+            </div>
+            
+            <div class="mission-objectives">
+                <h4>🎯 미션 목표</h4>
+                <ul class="objective-list">
+                    <li class="critical">🔴 다국어 상품 카탈로그 온톨로지 구축</li>
+                    <li class="critical">🔴 지능형 상품 추천 시스템 지원</li>
+                    <li class="important">🟡 크로스보더 세금/규제 모델링</li>
+                    <li class="important">🟡 실시간 재고 추론 시스템</li>
+                    <li class="optional">🟢 고객 행동 패턴 온톨로지</li>
+                </ul>
+            </div>
+            
+            <div class="technical-requirements">
+                <h4>⚙️ 기술 요구사항</h4>
+                <div class="req-grid">
+                    <div class="req-item">
+                        <span class="icon">🚀</span>
+                        <span>10억 트리플 처리</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="icon">⚡</span>
+                        <span>100ms 추론 응답</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="icon">🌍</span>
+                        <span>20개 언어 지원</span>
+                    </div>
+                    <div class="req-item">
+                        <span class="icon">🔒</span>
+                        <span>GDPR 준수</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 단계별 구현 (인터랙티브 워크플로우) -->
+    <div class="implementation-workflow">
+        <h3>🏗️ 구현 워크플로우</h3>
+        
+        <!-- Phase 1: 도메인 분석 -->
+        <div class="workflow-phase" data-phase="1">
+            <div class="phase-header">
+                <span class="phase-number">Phase 1</span>
+                <h4>도메인 분석 & 모델링</h4>
+                <div class="phase-timer">예상 시간: 2주</div>
+            </div>
+            
+            <div class="phase-content">
+                <div class="domain-analysis-tool">
+                    <h5>🔍 도메인 분석 도구</h5>
+                    <div class="analysis-interface">
+                        <div class="entity-extractor">
+                            <h6>엔티티 추출기</h6>
+                            <textarea placeholder="비즈니스 문서를 입력하면 자동으로 온톨로지 개념을 추출합니다..." rows="4"></textarea>
+                            <button onclick="extractEntities()">엔티티 추출</button>
+                            <div class="extracted-entities">
+                                <div class="entity-group">
+                                    <h6>핵심 엔티티</h6>
+                                    <div class="entities">
+                                        <span class="entity core">Product</span>
+                                        <span class="entity core">Customer</span>
+                                        <span class="entity core">Order</span>
+                                        <span class="entity core">Payment</span>
+                                        <span class="entity core">Shipping</span>
+                                    </div>
+                                </div>
+                                <div class="entity-group">
+                                    <h6>보조 엔티티</h6>
+                                    <div class="entities">
+                                        <span class="entity">Category</span>
+                                        <span class="entity">Brand</span>
+                                        <span class="entity">Review</span>
+                                        <span class="entity">Inventory</span>
+                                        <span class="entity">Promotion</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relationship-mapper">
+                            <h6>관계 매핑</h6>
+                            <div class="relationship-canvas" id="relCanvas">
+                                <!-- D3.js 관계 시각화 -->
+                                <svg viewBox="0 0 600 400">
+                                    <defs>
+                                        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                                         refX="9" refY="3.5" orient="auto">
+                                            <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1" />
+                                        </marker>
+                                    </defs>
+                                    <!-- 노드와 엣지 렌더링 -->
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 모범 사례 체크리스트 -->
+                <div class="best-practices-checklist">
+                    <h5>✅ 모범 사례 체크리스트</h5>
+                    <div class="checklist">
+                        <label class="check-item">
+                            <input type="checkbox" checked>
+                            <span>재사용 가능한 상위 온톨로지 검토 (Schema.org, GoodRelations)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" checked>
+                            <span>다국어 레이블 설계 (rdfs:label with @lang)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox">
+                            <span>버전 관리 전략 수립 (owl:versionInfo)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox">
+                            <span>모듈화 설계 (owl:imports)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Phase 2: OWL 구현 -->
+        <div class="workflow-phase" data-phase="2">
+            <div class="phase-header">
+                <span class="phase-number">Phase 2</span>
+                <h4>OWL 온톨로지 구현</h4>
+                <div class="phase-timer">예상 시간: 3주</div>
+            </div>
+            
+            <div class="phase-content">
+                <div class="owl-implementation">
+                    <h5>🛠️ 구현 워크벤치</h5>
+                    
+                    <!-- 코드 에디터 (실제 OWL) -->
+                    <div class="code-editor-advanced">
+                        <div class="editor-header">
+                            <span class="file-name">ecommerce-ontology.ttl</span>
+                            <div class="editor-actions">
+                                <button onclick="validateOWL()">검증</button>
+                                <button onclick="visualizeOWL()">시각화</button>
+                                <button onclick="testInference()">추론 테스트</button>
+                            </div>
+                        </div>
+                        <pre class="editor-content"><code>@prefix : &lt;http://globalshop.com/ontology#&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# 온톨로지 헤더
+:EcommerceOntology a owl:Ontology ;
+    owl:versionIRI :v2.0 ;
+    rdfs:label "GlobalShop E-commerce Ontology"@en ,
+               "글로벌샵 전자상거래 온톨로지"@ko ;
+    rdfs:comment "엔터프라이즈급 전자상거래 플랫폼을 위한 OWL 온톨로지" .
+
+# 핵심 클래스 정의
+:Product a owl:Class ;
+    rdfs:label "Product"@en, "상품"@ko ;
+    rdfs:comment "판매 가능한 모든 상품의 기본 클래스" .
+
+:DigitalProduct a owl:Class ;
+    rdfs:subClassOf :Product ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasPhysicalDimension ;
+        owl:cardinality "0"^^xsd:nonNegativeInteger
+    ] ;
+    rdfs:comment "다운로드 가능한 디지털 상품" .
+
+:Customer a owl:Class ;
+    rdfs:label "Customer"@en, "고객"@ko ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:unionOf ( :Individual :Business )
+    ] .
+
+# 복잡한 클래스 표현식
+:PremiumCustomer a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Customer
+            [
+                a owl:Restriction ;
+                owl:onProperty :totalPurchaseAmount ;
+                owl:someValuesFrom [
+                    a rdfs:Datatype ;
+                    owl:onDatatype xsd:decimal ;
+                    owl:withRestrictions (
+                        [ xsd:minInclusive "1000000"^^xsd:decimal ]
+                    )
+                ]
+            ]
+            [
+                a owl:Restriction ;
+                owl:onProperty :membershipDuration ;
+                owl:someValuesFrom [
+                    a rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions (
+                        [ xsd:minInclusive "365"^^xsd:integer ]
+                    )
+                ]
+            ]
+        )
+    ] .
+
+# 속성 정의
+:hasProduct a owl:ObjectProperty ;
+    rdfs:domain :Order ;
+    rdfs:range :Product ;
+    owl:inverseOf :isProductOf .
+
+:totalAmount a owl:DatatypeProperty ;
+    rdfs:domain :Order ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "주문 총액" .
+
+# 추론 규칙 (SWRL 스타일)
+:DiscountEligible a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :Customer
+            [
+                a owl:Restriction ;
+                owl:onProperty :hasOrder ;
+                owl:minQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+                owl:onClass :CompletedOrder
+            ]
+        )
+    ] .</code></pre>
+                    </div>
+                    
+                    <!-- 실시간 검증 결과 -->
+                    <div class="validation-results">
+                        <h5>🔍 실시간 검증</h5>
+                        <div class="validation-panel">
+                            <div class="consistency-check">
+                                <h6>일관성 검사</h6>
+                                <div class="check-result success">
+                                    <span class="icon">✅</span>
+                                    <span>온톨로지가 일관성 있음</span>
+                                </div>
+                            </div>
+                            <div class="profile-check">
+                                <h6>OWL 프로파일</h6>
+                                <div class="profile-results">
+                                    <div class="profile-item">OWL 2 DL: ✅</div>
+                                    <div class="profile-item">OWL 2 EL: ❌ (카디널리티 제약)</div>
+                                    <div class="profile-item">OWL 2 QL: ❌ (복잡한 표현식)</div>
+                                    <div class="profile-item">OWL 2 RL: ✅</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Phase 3: 시스템 통합 -->
+        <div class="workflow-phase" data-phase="3">
+            <div class="phase-header">
+                <span class="phase-number">Phase 3</span>
+                <h4>시스템 통합 & 배포</h4>
+                <div class="phase-timer">예상 시간: 2주</div>
+            </div>
+            
+            <div class="phase-content">
+                <div class="integration-dashboard">
+                    <h5>🔌 통합 대시보드</h5>
+                    
+                    <!-- 아키텍처 다이어그램 -->
+                    <div class="architecture-diagram">
+                        <h6>시스템 아키텍처</h6>
+                        <div class="arch-visualization">
+                            <div class="layer frontend">
+                                <h6>Frontend Layer</h6>
+                                <div class="components">
+                                    <div class="component">React App</div>
+                                    <div class="component">Mobile App</div>
+                                    <div class="component">Admin Panel</div>
+                                </div>
+                            </div>
+                            <div class="layer api">
+                                <h6>API Layer</h6>
+                                <div class="components">
+                                    <div class="component">GraphQL API</div>
+                                    <div class="component">SPARQL Endpoint</div>
+                                    <div class="component">REST API</div>
+                                </div>
+                            </div>
+                            <div class="layer reasoning">
+                                <h6>Reasoning Layer</h6>
+                                <div class="components">
+                                    <div class="component active">Pellet</div>
+                                    <div class="component">HermiT</div>
+                                    <div class="component">Custom Rules</div>
+                                </div>
+                            </div>
+                            <div class="layer storage">
+                                <h6>Storage Layer</h6>
+                                <div class="components">
+                                    <div class="component">GraphDB</div>
+                                    <div class="component">PostgreSQL</div>
+                                    <div class="component">Redis Cache</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 성능 모니터링 -->
+                    <div class="performance-monitor">
+                        <h6>실시간 성능 모니터</h6>
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <div class="metric-label">추론 응답시간</div>
+                                <div class="metric-value">87ms</div>
+                                <div class="metric-chart">
+                                    <canvas id="inferenceChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">트리플 저장소</div>
+                                <div class="metric-value">1.2B</div>
+                                <div class="metric-progress">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">동시 사용자</div>
+                                <div class="metric-value">12,847</div>
+                                <div class="metric-indicator up">↑ 23%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">캐시 적중률</div>
+                                <div class="metric-value">94.3%</div>
+                                <div class="metric-indicator">최적</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 통합 코드 예시 -->
+                    <div class="integration-code">
+                        <h6>통합 코드 예시</h6>
+                        <div class="code-tabs">
+                            <button class="tab active" onclick="showIntegrationCode('java')">Java</button>
+                            <button class="tab" onclick="showIntegrationCode('python')">Python</button>
+                            <button class="tab" onclick="showIntegrationCode('js')">JavaScript</button>
+                        </div>
+                        <pre class="integration-example"><code id="integrationCode">// Java - OWL API 사용 예시
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.*;
+
+public class EcommerceReasoner {
+    private OWLOntologyManager manager;
+    private OWLOntology ontology;
+    private OWLReasoner reasoner;
+    
+    public void initializeOntology() {
+        manager = OWLManager.createOWLOntologyManager();
+        ontology = manager.loadOntologyFromOntologyDocument(
+            new File("ecommerce-ontology.owl")
+        );
+        
+        // Pellet 추론기 초기화
+        OWLReasonerFactory reasonerFactory = new PelletReasonerFactory();
+        reasoner = reasonerFactory.createReasoner(ontology);
+        reasoner.precomputeInferences();
+    }
+    
+    public Set<Customer> getPremiumCustomers() {
+        OWLClass premiumClass = factory.getOWLClass(
+            IRI.create("http://globalshop.com/ontology#PremiumCustomer")
+        );
+        
+        NodeSet<OWLNamedIndividual> instances = 
+            reasoner.getInstances(premiumClass, false);
+            
+        return instances.getFlattened().stream()
+            .map(this::mapToCustomer)
+            .collect(Collectors.toSet());
+    }
+    
+    public List<Product> getRecommendations(Customer customer) {
+        // AI/ML 모델과 온톨로지 추론 결합
+        List<Product> ontologyBased = getOntologyRecommendations(customer);
+        List<Product> mlBased = getMLRecommendations(customer);
+        
+        return combineRecommendations(ontologyBased, mlBased);
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 6.7: AI/ML과 OWL의 융합 -->
+<section class="content-section future-tech">
+    <h2>6.7 미래 기술: AI/ML과 OWL의 시너지</h2>
+    
+    <!-- 융합 기술 소개 -->
+    <div class="fusion-intro">
+        <h3>🤖 + 🦉 = 차세대 지능형 시스템</h3>
+        <p class="fusion-description">
+            2024년 현재, OWL과 AI/ML의 융합은 가장 핫한 연구 주제입니다. 
+            논리적 추론과 통계적 학습의 장점을 결합하여 설명 가능한 AI를 구현합니다.
+        </p>
+    </div>
+    
+    <!-- 융합 사례 쇼케이스 -->
+    <div class="fusion-showcase">
+        <h3>🌟 실제 융합 사례</h3>
+        
+        <div class="showcase-grid">
+            <!-- 사례 1: 의료 AI -->
+            <div class="showcase-item">
+                <div class="showcase-header">
+                    <span class="icon">🏥</span>
+                    <h4>의료 진단 AI</h4>
+                </div>
+                <div class="showcase-content">
+                    <div class="tech-stack">
+                        <span class="tech">OWL: SNOMED CT</span>
+                        <span class="tech">ML: Transformer</span>
+                    </div>
+                    <p class="description">
+                        의학 온톨로지와 딥러닝을 결합하여 98.7% 정확도의 진단 시스템 구현
+                    </p>
+                    <div class="benefits">
+                        <div class="benefit">✅ 설명 가능한 진단</div>
+                        <div class="benefit">✅ 의학 지식 기반</div>
+                        <div class="benefit">✅ 지속적 학습</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 사례 2: 자율주행 -->
+            <div class="showcase-item">
+                <div class="showcase-header">
+                    <span class="icon">🚗</span>
+                    <h4>자율주행 시스템</h4>
+                </div>
+                <div class="showcase-content">
+                    <div class="tech-stack">
+                        <span class="tech">OWL: 도로 규칙</span>
+                        <span class="tech">ML: Computer Vision</span>
+                    </div>
+                    <p class="description">
+                        교통 규칙 온톨로지와 비전 AI로 안전한 자율주행 실현
+                    </p>
+                    <div class="benefits">
+                        <div class="benefit">✅ 규칙 기반 안전성</div>
+                        <div class="benefit">✅ 실시간 적응</div>
+                        <div class="benefit">✅ 검증 가능성</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 사례 3: 금융 AI -->
+            <div class="showcase-item">
+                <div class="showcase-header">
+                    <span class="icon">💰</span>
+                    <h4>금융 리스크 분석</h4>
+                </div>
+                <div class="showcase-content">
+                    <div class="tech-stack">
+                        <span class="tech">OWL: FIBO</span>
+                        <span class="tech">ML: Graph Neural Networks</span>
+                    </div>
+                    <p class="description">
+                        금융 온톨로지와 그래프 신경망으로 정교한 리스크 예측
+                    </p>
+                    <div class="benefits">
+                        <div class="benefit">✅ 규제 준수</div>
+                        <div class="benefit">✅ 복잡한 관계 분석</div>
+                        <div class="benefit">✅ 실시간 모니터링</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실습: Neuro-Symbolic AI -->
+    <div class="neurosymbolic-lab">
+        <h3>🧪 실습: Neuro-Symbolic AI 구현</h3>
+        
+        <div class="lab-interface">
+            <div class="concept-explanation">
+                <h4>개념 설명</h4>
+                <p>Neuro-Symbolic AI는 신경망의 학습 능력과 심볼릭 AI의 추론 능력을 결합합니다.</p>
+                
+                <div class="architecture-flow">
+                    <div class="flow-step">
+                        <span class="step-icon">📊</span>
+                        <span class="step-name">데이터 입력</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <span class="step-icon">🧠</span>
+                        <span class="step-name">신경망 처리</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <span class="step-icon">🦉</span>
+                        <span class="step-name">OWL 추론</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <span class="step-icon">💡</span>
+                        <span class="step-name">통합 결과</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-implementation">
+                <h4>구현 예시</h4>
+                <pre><code>import torch
+import owlready2
+from transformers import AutoModel
+
+class NeuroSymbolicReasoner:
+    def __init__(self, owl_path, model_name):
+        # OWL 온톨로지 로드
+        self.onto = owlready2.get_ontology(owl_path).load()
+        
+        # 신경망 모델 로드
+        self.neural_model = AutoModel.from_pretrained(model_name)
+        
+    def hybrid_inference(self, input_data):
+        # Step 1: 신경망으로 특징 추출
+        embeddings = self.neural_model(input_data)
+        
+        # Step 2: 임베딩을 심볼로 변환
+        symbols = self.embedding_to_symbols(embeddings)
+        
+        # Step 3: OWL 추론 실행
+        with self.onto:
+            # 심볼을 온톨로지에 추가
+            for symbol in symbols:
+                individual = self.onto.Thing(symbol.name)
+                individual.is_a.append(symbol.type)
+            
+            # Pellet 추론기 실행
+            owlready2.sync_reasoner_pellet()
+            
+        # Step 4: 추론 결과 추출
+        inferences = self.extract_inferences()
+        
+        # Step 5: 신경망과 추론 결과 통합
+        final_result = self.combine_results(
+            neural_output=embeddings,
+            symbolic_output=inferences
+        )
+        
+        return final_result
+    
+    def explain_decision(self, result):
+        """결정에 대한 설명 생성"""
+        neural_explanation = self.get_neural_attention()
+        symbolic_explanation = self.get_reasoning_chain()
+        
+        return {
+            "neural_factors": neural_explanation,
+            "logical_reasoning": symbolic_explanation,
+            "confidence": result.confidence
+        }</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 6.8: OWL 전문가로의 여정 완성 -->
+<section class="content-section mastery-complete">
+    <h2>6.8 축하합니다! OWL 마스터가 되셨습니다! 🎊</h2>
+    
+    <!-- 성취 요약 -->
+    <div class="achievement-summary">
+        <h3>🏆 당신의 성취</h3>
+        
+        <div class="achievement-grid">
+            <div class="achievement-card legendary">
+                <div class="achievement-icon">🦉</div>
+                <h4>OWL 그랜드마스터</h4>
+                <p>모든 OWL 개념을 완벽히 마스터했습니다</p>
+                <div class="skills-gained">
+                    <span class="skill">Description Logic</span>
+                    <span class="skill">복잡한 추론</span>
+                    <span class="skill">대규모 온톨로지</span>
+                </div>
+            </div>
+            
+            <div class="achievement-card epic">
+                <div class="achievement-icon">🛠️</div>
+                <h4>도구 전문가</h4>
+                <p>Protégé와 추론기를 자유자재로 다룹니다</p>
+                <div class="tools-mastered">
+                    <span class="tool">Protégé 5.5</span>
+                    <span class="tool">Pellet</span>
+                    <span class="tool">OWL API</span>
+                </div>
+            </div>
+            
+            <div class="achievement-card rare">
+                <div class="achievement-icon">🚀</div>
+                <h4>실전 아키텍트</h4>
+                <p>엔터프라이즈급 시스템을 설계할 수 있습니다</p>
+                <div class="projects-completed">
+                    <span class="project">전자상거래 온톨로지</span>
+                    <span class="project">AI/ML 통합</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 다음 단계 로드맵 -->
+    <div class="next-steps-roadmap">
+        <h3>🗺️ 다음 모험을 위한 로드맵</h3>
+        
+        <div class="roadmap-paths">
+            <div class="path-option">
+                <h4>🌐 Path 1: 지식 그래프 전문가</h4>
+                <ul class="path-steps">
+                    <li>Google Knowledge Graph 아키텍처 학습</li>
+                    <li>Wikidata 기여자 되기</li>
+                    <li>기업용 지식 그래프 구축</li>
+                    <li>Graph ML과 결합</li>
+                </ul>
+                <div class="estimated-time">예상 기간: 6개월</div>
+            </div>
+            
+            <div class="path-option">
+                <h4>🤖 Path 2: AI 온톨로지스트</h4>
+                <ul class="path-steps">
+                    <li>LLM과 온톨로지 통합</li>
+                    <li>Prompt Engineering with Ontology</li>
+                    <li>설명가능한 AI 시스템 개발</li>
+                    <li>연구 논문 발표</li>
+                </ul>
+                <div class="estimated-time">예상 기간: 8개월</div>
+            </div>
+            
+            <div class="path-option">
+                <h4>💼 Path 3: 온톨로지 컨설턴트</h4>
+                <ul class="path-steps">
+                    <li>산업별 온톨로지 전문화</li>
+                    <li>대규모 마이그레이션 프로젝트</li>
+                    <li>온톨로지 거버넌스 수립</li>
+                    <li>기업 교육 프로그램 개발</li>
+                </ul>
+                <div class="estimated-time">예상 기간: 1년</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 실무 팁 모음 -->
+    <div class="pro-tips-collection">
+        <h3>💎 현업 전문가들의 꿀팁</h3>
+        
+        <div class="tips-carousel">
+            <div class="tip-card">
+                <div class="tip-author">
+                    <img src="/assets/expert1.jpg" alt="Expert">
+                    <div class="author-info">
+                        <span class="name">김OWL 수석</span>
+                        <span class="company">네이버 AI Lab</span>
+                    </div>
+                </div>
+                <p class="tip-content">
+                    "온톨로지는 처음부터 완벽할 수 없습니다. 반복적으로 개선하면서 
+                    실제 사용 피드백을 반영하는 것이 중요해요."
+                </p>
+            </div>
+            
+            <div class="tip-card">
+                <div class="tip-author">
+                    <img src="/assets/expert2.jpg" alt="Expert">
+                    <div class="author-info">
+                        <span class="name">이지식 리드</span>
+                        <span class="company">삼성 리서치</span>
+                    </div>
+                </div>
+                <p class="tip-content">
+                    "성능이 중요한 시스템에서는 OWL 프로파일 선택이 핵심입니다. 
+                    EL이나 QL로도 충분한 경우가 많아요."
+                </p>
+            </div>
+            
+            <div class="tip-card">
+                <div class="tip-author">
+                    <img src="/assets/expert3.jpg" alt="Expert">
+                    <div class="author-info">
+                        <span class="name">박추론 아키텍트</span>
+                        <span class="company">카카오 엔터프라이즈</span>
+                    </div>
+                </div>
+                <p class="tip-content">
+                    "추론 결과를 캐싱하고, 증분 추론을 활용하면 
+                    실시간 서비스에서도 OWL을 사용할 수 있습니다."
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 커뮤니티 연결 -->
+    <div class="community-connect">
+        <h3>🌍 글로벌 OWL 커뮤니티</h3>
+        
+        <div class="community-resources">
+            <div class="resource-item">
+                <h4>📚 학습 리소스</h4>
+                <ul>
+                    <li><a href="https://www.w3.org/TR/owl2-primer/">W3C OWL 2 Primer</a></li>
+                    <li><a href="https://protege.stanford.edu">Protégé 공식 사이트</a></li>
+                    <li><a href="https://github.com/owlcs">OWL API GitHub</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-item">
+                <h4>👥 커뮤니티</h4>
+                <ul>
+                    <li><a href="#">OWL Korea Slack</a></li>
+                    <li><a href="#">Semantic Web 포럼</a></li>
+                    <li><a href="#">온톨로지 연구회</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-item">
+                <h4>🎯 실전 프로젝트</h4>
+                <ul>
+                    <li><a href="#">DBpedia 기여하기</a></li>
+                    <li><a href="#">오픈 온톨로지 프로젝트</a></li>
+                    <li><a href="#">기업 챌린지 참여</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 최종 인증서 -->
+<div class="certification-ceremony">
+    <div class="certificate">
+        <div class="cert-header">
+            <h2>수료증</h2>
+            <div class="cert-logo">🦉</div>
+        </div>
+        
+        <div class="cert-body">
+            <p class="cert-text">이 분은</p>
+            <h3 class="recipient-name">[당신의 이름]</h3>
+            <p class="cert-text">
+                OWL 웹 온톨로지 언어의 모든 과정을 성공적으로 완료하고<br>
+                전문가 수준의 지식과 실무 능력을 갖추었음을 인증합니다.
+            </p>
+            
+            <div class="cert-details">
+                <div class="detail-item">
+                    <span class="label">완료일:</span>
+                    <span class="value" id="completionDate">2024년 7월 29일</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">등급:</span>
+                    <span class="value">OWL 그랜드마스터</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cert-footer">
+            <div class="signature">
+                <img src="/assets/signature.png" alt="Signature">
+                <p>KSS 온톨로지 교육원장</p>
+            </div>
+            <div class="cert-seal">
+                <div class="seal">🏆</div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="download-cert" onclick="downloadCertificate()">
+        📥 인증서 다운로드
+    </button>
+</div>
+
+<!-- 스타일 정의 -->
+<style>
+/* Part 3 특별 스타일 */
+.part-header.epic-finale {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.finale-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,...') repeat;
+    opacity: 0.1;
+    animation: float 20s infinite;
+}
+
+/* 진도 체크 - 최종 */
+.progress-check.final {
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
+    color: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.skill-completion {
+    text-align: center;
+}
+
+.completed-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.skill-badge {
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.final-challenge-ready {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+/* 미션 브리핑 */
+.mission-briefing {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 2px solid #6366f1;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.briefing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.difficulty-meter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stars {
+    color: #fbbf24;
+    font-size: 1.5rem;
+}
+
+.client-profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.client-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 1rem;
+    background: white;
+    padding: 1rem;
+}
+
+.mission-objectives ul {
+    list-style: none;
+}
+
+.objective-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.objective-list li.critical { font-weight: 600; }
+.objective-list li.important { font-weight: 500; }
+.objective-list li.optional { opacity: 0.8; }
+
+.technical-requirements {
+    margin-top: 2rem;
+}
+
+.req-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.req-item {
+    background: rgba(99, 102, 241, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.req-item .icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* 워크플로우 단계 */
+.workflow-phase {
+    background: #1f2937;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.phase-header {
+    background: linear-gradient(to right, #4c1d95, #6366f1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.phase-number {
+    background: white;
+    color: #4c1d95;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.phase-timer {
+    margin-left: auto;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.phase-content {
+    padding: 2rem;
+}
+
+/* 도메인 분석 도구 */
+.domain-analysis-tool {
+    background: #111827;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+}
+
+.analysis-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.entity-extractor textarea {
+    width: 100%;
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.extracted-entities {
+    margin-top: 1rem;
+}
+
+.entity-group {
+    margin: 1rem 0;
+}
+
+.entities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.entity {
+    background: #374151;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.entity.core {
+    background: #6366f1;
+    font-weight: 600;
+}
+
+.entity:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 관계 매핑 캔버스 */
+.relationship-canvas {
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 0.5rem;
+    height: 400px;
+    position: relative;
+}
+
+.relationship-canvas svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 체크리스트 */
+.best-practices-checklist {
+    background: #111827;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.checklist {
+    margin-top: 1rem;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+.check-item input[type="checkbox"] {
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+}
+
+/* OWL 코드 에디터 */
+.code-editor-advanced {
+    background: #0f172a;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.editor-header {
+    background: #1e293b;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-name {
+    color: #94a3b8;
+    font-family: monospace;
+}
+
+.editor-actions button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.editor-actions button:hover {
+    background: #2563eb;
+}
+
+.editor-content {
+    padding: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.editor-content code {
+    color: #e2e8f0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* 검증 결과 */
+.validation-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.validation-panel {
+    background: #111827;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.check-result {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.check-result.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.profile-results {
+    margin-top: 1rem;
+}
+
+.profile-item {
+    padding: 0.5rem 0;
+    font-family: monospace;
+}
+
+/* 아키텍처 다이어그램 */
+.architecture-diagram {
+    background: #111827;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.arch-visualization {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.layer {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid #374151;
+}
+
+.layer h6 {
+    color: #6366f1;
+    margin-bottom: 1rem;
+}
+
+.components {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.component {
+    background: #374151;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.component.active {
+    background: #6366f1;
+    animation: pulse 2s infinite;
+}
+
+/* 성능 모니터 */
+.performance-monitor {
+    background: #111827;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.metric {
+    background: #1f2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.metric-label {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #6366f1;
+    margin: 0.5rem 0;
+}
+
+.metric-progress {
+    height: 8px;
+    background: #374151;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #6366f1;
+    transition: width 0.3s;
+}
+
+.metric-indicator {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.metric-indicator.up {
+    color: #22c55e;
+}
+
+/* 통합 코드 */
+.integration-code {
+    margin-top: 2rem;
+}
+
+.code-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tab {
+    background: #374151;
+    color: #e5e7eb;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab.active {
+    background: #0f172a;
+    color: white;
+}
+
+.integration-example {
+    background: #0f172a;
+    padding: 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0.5rem;
+    overflow-x: auto;
+}
+
+/* 융합 쇼케이스 */
+.fusion-showcase {
+    margin: 2rem 0;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.showcase-item {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 1px solid #374151;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.showcase-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border-color: #6366f1;
+}
+
+.showcase-header {
+    background: linear-gradient(to right, #4c1d95, #6366f1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.showcase-header .icon {
+    font-size: 2rem;
+}
+
+.showcase-content {
+    padding: 1.5rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech {
+    background: #374151;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-family: monospace;
+}
+
+.benefits {
+    margin-top: 1rem;
+}
+
+.benefit {
+    padding: 0.25rem 0;
+    color: #22c55e;
+}
+
+/* Neuro-Symbolic 실습 */
+.neurosymbolic-lab {
+    background: #0f172a;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.architecture-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    background: #1f2937;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-icon {
+    font-size: 2rem;
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    margin: 0 1rem;
+    color: #6366f1;
+}
+
+/* 성취 요약 */
+.achievement-summary {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.achievement-card {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card.legendary {
+    border: 3px solid #fbbf24;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+}
+
+.achievement-card.epic {
+    border: 2px solid #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.achievement-card.rare {
+    border: 2px solid #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.achievement-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.skills-gained, .tools-mastered, .projects-completed {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.skills-gained span, .tools-mastered span, .projects-completed span {
+    background: rgba(99, 102, 241, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+/* 로드맵 경로 */
+.roadmap-paths {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.path-option {
+    background: #1f2937;
+    border: 2px solid #374151;
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s;
+}
+
+.path-option:hover {
+    border-color: #6366f1;
+    transform: translateY(-4px);
+}
+
+.path-steps {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.path-steps li {
+    padding: 0.5rem 0;
+    color: #e5e7eb;
+}
+
+.estimated-time {
+    background: #374151;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* 프로 팁 캐러셀 */
+.tips-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    margin-top: 1rem;
+}
+
+.tip-card {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 1px solid #374151;
+    border-radius: 1rem;
+    padding: 2rem;
+    min-width: 350px;
+    flex-shrink: 0;
+}
+
+.tip-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tip-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #374151;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-info .name {
+    font-weight: 600;
+    color: #6366f1;
+}
+
+.author-info .company {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.tip-content {
+    font-style: italic;
+    line-height: 1.6;
+    color: #e5e7eb;
+}
+
+/* 커뮤니티 리소스 */
+.community-resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.resource-item {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.resource-item h4 {
+    color: #6366f1;
+    margin-bottom: 1rem;
+}
+
+.resource-item ul {
+    list-style: none;
+}
+
+.resource-item li {
+    padding: 0.5rem 0;
+}
+
+.resource-item a {
+    color: #93c5fd;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.resource-item a:hover {
+    color: #dbeafe;
+    text-decoration: underline;
+}
+
+/* 인증서 */
+.certification-ceremony {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    padding: 3rem;
+    border-radius: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.certificate {
+    background: white;
+    color: #1f2937;
+    padding: 3rem;
+    border-radius: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.cert-header {
+    border-bottom: 3px solid #fbbf24;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.cert-header h2 {
+    font-size: 3rem;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.cert-logo {
+    font-size: 4rem;
+}
+
+.recipient-name {
+    font-size: 2.5rem;
+    color: #4c1d95;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.cert-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #4b5563;
+}
+
+.cert-details {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.detail-item {
+    text-align: left;
+}
+
+.detail-item .label {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.detail-item .value {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 3rem;
+}
+
+.signature img {
+    height: 60px;
+    margin-bottom: 0.5rem;
+}
+
+.cert-seal {
+    text-align: center;
+}
+
+.seal {
+    font-size: 3rem;
+    background: #fbbf24;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.download-cert {
+    background: #4c1d95;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.download-cert:hover {
+    background: #6366f1;
+    transform: translateY(-2px);
+}
+
+/* 애니메이션 */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+</style>
+
+<!-- 스크립트 -->
+<script>
+// 엔티티 추출 시뮬레이션
+function extractEntities() {
+    const extractedPanel = document.querySelector('.extracted-entities');
+    extractedPanel.style.opacity = '0';
+    
+    setTimeout(() => {
+        extractedPanel.style.opacity = '1';
+        extractedPanel.style.transition = 'opacity 0.5s';
+    }, 1000);
+}
+
+// OWL 검증
+function validateOWL() {
+    alert('온톨로지 검증 중...\n\n✅ 구문 검사: 통과\n✅ 일관성 검사: 통과\n✅ 프로파일 호환성: OWL 2 DL');
+}
+
+// OWL 시각화
+function visualizeOWL() {
+    alert('온톨로지 시각화 도구 열기...\n\n클래스 계층구조와 속성 관계를 그래프로 표시합니다.');
+}
+
+// 추론 테스트
+function testInference() {
+    alert('추론 엔진 테스트...\n\n새로운 추론:\n- PremiumCustomer 인스턴스 5개 발견\n- DiscountEligible 고객 12명 확인');
+}
+
+// 통합 코드 전환
+function showIntegrationCode(language) {
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    const codeElement = document.getElementById('integrationCode');
+    
+    const codes = {
+        java: `// Java - OWL API 사용 예시
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.*;
+
+public class EcommerceReasoner {
+    private OWLOntologyManager manager;
+    private OWLOntology ontology;
+    private OWLReasoner reasoner;
+    
+    public void initializeOntology() {
+        manager = OWLManager.createOWLOntologyManager();
+        ontology = manager.loadOntologyFromOntologyDocument(
+            new File("ecommerce-ontology.owl")
+        );
+        
+        // Pellet 추론기 초기화
+        OWLReasonerFactory reasonerFactory = new PelletReasonerFactory();
+        reasoner = reasonerFactory.createReasoner(ontology);
+        reasoner.precomputeInferences();
+    }
+    
+    public Set<Customer> getPremiumCustomers() {
+        OWLClass premiumClass = factory.getOWLClass(
+            IRI.create("http://globalshop.com/ontology#PremiumCustomer")
+        );
+        
+        NodeSet<OWLNamedIndividual> instances = 
+            reasoner.getInstances(premiumClass, false);
+            
+        return instances.getFlattened().stream()
+            .map(this::mapToCustomer)
+            .collect(Collectors.toSet());
+    }
+}`,
+        python: `# Python - Owlready2 사용 예시
+import owlready2 as owl
+from typing import List, Set
+
+class EcommerceReasoner:
+    def __init__(self, ontology_path: str):
+        # 온톨로지 로드
+        self.onto = owl.get_ontology(ontology_path).load()
+        
+        # Pellet 추론기 설정
+        owl.set_java_command("/usr/bin/java")
+        
+    def get_premium_customers(self) -> Set:
+        """프리미엄 고객 추론"""
+        with self.onto:
+            # 추론 실행
+            owl.sync_reasoner_pellet(infer_property_values=True)
+            
+            # PremiumCustomer 클래스 인스턴스 조회
+            premium_class = self.onto.PremiumCustomer
+            return set(premium_class.instances())
+    
+    def recommend_products(self, customer_id: str) -> List:
+        """온톨로지 기반 상품 추천"""
+        customer = self.onto.search_one(iri=f"*{customer_id}")
+        
+        # 고객 구매 이력 분석
+        purchase_history = customer.hasPurchased
+        
+        # 추론 기반 추천
+        recommendations = []
+        for product in self.onto.Product.instances():
+            if self._should_recommend(customer, product):
+                recommendations.append(product)
+                
+        return recommendations`,
+        js: `// JavaScript - rdflib.js 사용 예시
+import $rdf from 'rdflib';
+import { ReasonerFactory } from 'owl-reasoner-js';
+
+class EcommerceReasoner {
+    constructor(ontologyUrl) {
+        this.store = $rdf.graph();
+        this.fetcher = new $rdf.Fetcher(this.store);
+        this.ontologyUrl = ontologyUrl;
+        this.reasoner = null;
+    }
+    
+    async initialize() {
+        // 온톨로지 로드
+        await this.fetcher.load(this.ontologyUrl);
+        
+        // 추론기 초기화
+        this.reasoner = ReasonerFactory.create('pellet', this.store);
+        await this.reasoner.initialize();
+    }
+    
+    async getPremiumCustomers() {
+        const ONTO = $rdf.Namespace('http://globalshop.com/ontology#');
+        
+        // SPARQL 쿼리로 프리미엄 고객 조회
+        const query = \`
+            PREFIX onto: <http://globalshop.com/ontology#>
+            SELECT ?customer WHERE {
+                ?customer a onto:PremiumCustomer .
+            }
+        \`;
+        
+        const results = await this.store.query(query);
+        return results.map(r => r.customer.value);
+    }
+    
+    async getRecommendations(customerId) {
+        // 온톨로지와 ML 모델 결합
+        const ontologyRecs = await this.getOntologyBasedRecs(customerId);
+        const mlRecs = await this.getMLBasedRecs(customerId);
+        
+        return this.fuseRecommendations(ontologyRecs, mlRecs);
+    }
+}`
+    };
+    
+    codeElement.textContent = codes[language] || codes.java;
+}
+
+// 인증서 다운로드
+function downloadCertificate() {
+    // 실제로는 PDF 생성 로직
+    alert('축하합니다! 🎉\n\nOWL 마스터 인증서가 다운로드됩니다.\n이제 당신은 진정한 온톨로지 전문가입니다!');
+}
+
+// 완료 날짜 설정
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date();
+    const dateStr = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+    const dateElement = document.getElementById('completionDate');
+    if (dateElement) {
+        dateElement.textContent = dateStr;
+    }
+});
+
+// 성능 차트 시뮬레이션 (Canvas)
+function drawPerformanceChart() {
+    const canvas = document.getElementById('inferenceChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = 150;
+    canvas.height = 50;
+    
+    // 간단한 라인 차트
+    ctx.strokeStyle = '#6366f1';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    
+    const points = [45, 38, 42, 35, 40, 38, 35, 32, 30, 28];
+    const stepX = canvas.width / (points.length - 1);
+    
+    points.forEach((point, index) => {
+        const x = index * stepX;
+        const y = canvas.height - (point / 50 * canvas.height);
+        
+        if (index === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    });
+    
+    ctx.stroke();
+}
+
+// 페이지 로드 시 차트 그리기
+window.addEventListener('load', drawPerformanceChart);
+</script>
