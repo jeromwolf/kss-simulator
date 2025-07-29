@@ -53,30 +53,30 @@ export default function Navigation() {
             {/* 온톨로지 페이지에서만 도구 링크 표시 */}
             {pathname.startsWith('/ontology') && (
               <>
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('openRDFEditor'))}
-                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white cursor-pointer"
+                <Link
+                  href="/rdf-editor"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                 >
                   RDF 에디터
-                </button>
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('openSPARQLPlayground'))}
-                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white cursor-pointer"
+                </Link>
+                <Link
+                  href="/sparql-playground"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                 >
                   SPARQL
-                </button>
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('open3DGraph'))}
-                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white cursor-pointer"
+                </Link>
+                <Link
+                  href="/3d-graph"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                 >
                   3D 그래프
-                </button>
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('openVideoTutorial'))}
-                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white cursor-pointer"
+                </Link>
+                <Link
+                  href="/video-creator"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                 >
                   비디오
-                </button>
+                </Link>
               </>
             )}
           </div>
