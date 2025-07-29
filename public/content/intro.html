@@ -74,7 +74,7 @@
     <h2>🚀 온톨로지 도구 체험하기</h2>
     <div class="tools-grid">
         <!-- RDF 에디터 -->
-        <div class="tool-card" onclick="openRDFEditor()">
+        <div class="tool-card" onclick="window.location.href='/rdf-editor'">
             <div class="tool-icon">📝</div>
             <h4>RDF 에디터</h4>
             <p>실시간으로 RDF 트리플을 작성해보세요</p>
@@ -82,7 +82,7 @@
         </div>
         
         <!-- SPARQL 쿼리 -->
-        <div class="tool-card" onclick="openSPARQLPlayground()">
+        <div class="tool-card" onclick="window.location.href='/sparql-playground'">
             <div class="tool-icon">🔍</div>
             <h4>SPARQL 플레이그라운드</h4>
             <p>인터랙티브 쿼리로 데이터를 탐색하세요</p>
@@ -90,7 +90,7 @@
         </div>
         
         <!-- 3D 그래프 -->        
-        <div class="tool-card" onclick="open3DGraph()">
+        <div class="tool-card" onclick="window.location.href='/3d-graph'">
             <div class="tool-icon">🌐</div>
             <h4>3D 지식 그래프</h4>
             <p>3차원 공간에서 온톨로지를 탐험하세요</p>
@@ -98,11 +98,11 @@
         </div>
         
         <!-- 비디오 튜토리얼 -->
-        <div class="tool-card" onclick="openVideoTutorial()">
+        <div class="tool-card" onclick="window.location.href='/video-creator'">
             <div class="tool-icon">🎥</div>
-            <h4>비디오 튜토리얼</h4>
-            <p>단계별 동영상으로 배우는 온톨로지</p>
-            <span class="tool-badge">시청하기</span>
+            <h4>비디오 생성기</h4>
+            <p>AI로 온톨로지 설명 비디오를 만들어보세요</p>
+            <span class="tool-badge">생성하기</span>
         </div>
     </div>
 </section>
