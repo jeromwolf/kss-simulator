@@ -2,8 +2,15 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Play, Clock, Target, BookOpen, Zap, CheckCircle2 } from 'lucide-react'
 import { llmModule } from './metadata'
+
+// Dynamic import for LLM Simulators
+const LLMSimulators = dynamic(
+  () => import('@/components/llm-simulators/LLMSimulators'),
+  { loading: () => <div>시뮬레이터 로딩 중...</div> }
+)
 
 export default function LLMMainPage() {
   const [completedChapters, setCompletedChapters] = useState<string[]>([])
@@ -160,26 +167,8 @@ export default function LLMMainPage() {
       </section>
 
       {/* 시뮬레이터 */}
-      <section className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-8 border border-purple-200 dark:border-purple-700">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-          <Zap className="text-purple-500" size={24} />
-          인터랙티브 시뮬레이터
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {llmModule.simulators.map((simulator) => (
-            <div key={simulator.id} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                {simulator.name}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                {simulator.description}
-              </p>
-              <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200">
-                시뮬레이터 실행
-              </button>
-            </div>
-          ))}
-        </div>
+      <section>
+        <LLMSimulators />
       </section>
     </div>
   )

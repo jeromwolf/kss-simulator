@@ -1,0 +1,2142 @@
+.simulator {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Controls Section */
+.controls {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.inputSection {
+  margin-bottom: 1.5rem;
+}
+
+.inputSection label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.inputSection input,
+.inputSection textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  background: #ffffff;
+}
+
+.inputSection input:focus,
+.inputSection textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.exampleButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.exampleBtn {
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.exampleBtn:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.optionsRow {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tokenizationTypes,
+.viewControls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.tokenizationTypes label,
+.viewControls label {
+  font-weight: 600;
+  color: #374151;
+  margin-right: 0.5rem;
+}
+
+.tokenizationTypes button,
+.viewControls button {
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tokenizationTypes button.active,
+.viewControls button.active,
+.viewModes button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.toggles {
+  display: flex;
+  gap: 1rem;
+}
+
+.toggles label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.tokenizeBtn,
+.regenerateBtn,
+.startBtn,
+.generateBtn {
+  padding: 0.75rem 1.5rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.tokenizeBtn:hover,
+.regenerateBtn:hover,
+.startBtn:hover,
+.generateBtn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.stopBtn {
+  padding: 0.75rem 1.5rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resetBtn {
+  padding: 0.75rem 1.5rem;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Results Section */
+.results {
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.tokenStats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.tokenStats strong {
+  color: #374151;
+  font-weight: 600;
+}
+
+.tokenDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 6px;
+  min-height: 100px;
+}
+
+.token {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 2px solid;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.token.special {
+  background: #374151 !important;
+  border-color: #4b5563 !important;
+  color: #e5e7eb !important;
+}
+
+.token.special .tokenText {
+  color: #e5e7eb !important;
+}
+
+.token.special .tokenId {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+.tokenDisplay.animating .token {
+  animation: tokenAppear 0.3s ease-out;
+}
+
+@keyframes tokenAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tokenText {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.tokenId {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  background: #374151;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.explanation {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #eff6ff;
+  border-radius: 6px;
+  border: 1px solid #dbeafe;
+}
+
+.explanation h4 {
+  color: #1e40af;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.explanation p {
+  color: #3730a3;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.explanation ul {
+  margin-left: 1.5rem;
+  color: #3730a3;
+}
+
+.explanation li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.methodExplanation {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Attention Visualizer */
+.attentionContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.matrixSection h4,
+.tokenInteraction h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.attentionCanvas {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: crosshair;
+}
+
+.attentionCanvas.animating {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.matrixExplanation {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.tokenButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tokenBtn {
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.tokenBtn:hover {
+  background: #f3f4f6;
+}
+
+.tokenBtn.selected {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.tokenAnalysis {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.tokenAnalysis h5 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.attentionDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.attentionDetails > div {
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 4px;
+}
+
+.attentionDetails strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.scoreItem {
+  padding: 0.25rem 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Transformer Architecture 3D */
+.architectureContainer {
+  margin-bottom: 2rem;
+}
+
+.architectureCanvas {
+  width: 100%;
+  height: 600px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.layerInfo {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.layerInfo h4 {
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.layerInfo p {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.viewModes {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.animationControls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.toggleBtn {
+  padding: 0.5rem 1rem;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggleBtn:hover {
+  background: #4b5563;
+}
+
+.layerList {
+  margin-top: 2rem;
+}
+
+.layerList h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.layers {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.layerItem {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.layerItem:hover {
+  background: #f9fafb;
+}
+
+.layerItem.selected {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.layerDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Training Simulator */
+.hyperparameters h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.paramDisplay {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.paramCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.paramLabel {
+  display: block;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.paramValue {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.simulationNote {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+.paramGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.paramItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.paramItem label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.85rem;
+}
+
+.paramItem input,
+.paramItem select {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.trainingControls {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.metricsDisplay {
+  margin-bottom: 2rem;
+}
+
+.currentMetrics h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.metricCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metricCard {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.metricLabel {
+  display: block;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.metricValue {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.chartSection {
+  margin-top: 2rem;
+}
+
+.chartControls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chartControls button {
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chartControls button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.trainingChart {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.trainingProgress {
+  margin-top: 2rem;
+}
+
+.trainingProgress h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.progressBar {
+  width: 100%;
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  transition: width 0.3s ease-out;
+}
+
+/* Prompt Playground */
+.playgroundContainer {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mainPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.templatesSection h4,
+.settingsSection h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.templateCategories {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.templateCategory h5 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.templateBtn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 0.5rem;
+}
+
+.templateBtn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.templateBtn.active {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.templateBtn strong {
+  display: block;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.templateBtn span {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.settingItem {
+  margin-bottom: 1rem;
+}
+
+.settingItem label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.settingItem label span {
+  font-weight: 400;
+  color: #3b82f6;
+  margin-left: 0.5rem;
+}
+
+.settingHint {
+  display: block;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+
+.settingItem input[type="range"] {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.settingItem input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #3b82f6;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.promptSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.systemMessageArea {
+  margin-bottom: 1.5rem;
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.userPromptArea {
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.systemMessageArea label,
+.userPromptArea label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.systemMessageArea label::before {
+  content: '⚙️';
+  font-size: 1.1rem;
+}
+
+.userPromptArea label::before {
+  content: '💬';
+  font-size: 1.1rem;
+}
+
+.systemMessageArea textarea,
+.userPromptArea textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 60px;
+  background: #ffffff;
+  transition: all 0.2s;
+}
+
+.systemMessageArea textarea:focus,
+.userPromptArea textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.promptActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+.copyBtn,
+.generateBtn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copyBtn {
+  background: #ffffff;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.copyBtn:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.generateBtn {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.generateBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.generateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #94a3b8;
+  box-shadow: none;
+}
+
+.responseSection {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8ecf0 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.responseSection::before {
+  content: '🤖';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 100px;
+  opacity: 0.05;
+  transform: rotate(-15deg);
+}
+
+.responseSection h4 {
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.responseSection h4::before {
+  content: '💭';
+  font-size: 1.2rem;
+}
+
+.responseArea {
+  min-height: 250px;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #374151;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.tipsSection {
+  margin-top: 2rem;
+}
+
+.tipsSection h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.tip {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.tip strong {
+  display: block;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.tip p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Model Comparison */
+.modelSelection h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.viewModes {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0.25rem;
+  background: #1e293b;
+  border-radius: 10px;
+  border: 1px solid #334155;
+}
+
+.viewModes button {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.viewModes button:hover {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.viewModes button.active {
+  background: #475569;
+  color: #f1f5f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modelGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.modelSelectBtn {
+  padding: 0.75rem;
+  background: #1e293b;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.modelSelectBtn:hover:not(:disabled) {
+  background: #334155;
+  border-color: #475569;
+}
+
+.modelSelectBtn.selected {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.modelSelectBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modelCompany {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+.modelName {
+  display: block;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.modelSelectBtn.selected .modelCompany {
+  color: #e0f2fe;
+}
+
+.modelSelectBtn.selected .modelName {
+  color: #ffffff;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.overviewComparison {
+  overflow-x: auto;
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.comparisonTable th {
+  background: #0f172a;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.comparisonTable td {
+  color: #cbd5e1;
+}
+
+.comparisonTable tr:last-child td {
+  border-bottom: none;
+}
+
+.benchmarkComparison {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.benchmarkGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.radarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+.radarSection h4 {
+  margin-bottom: 1rem;
+  color: #f1f5f9;
+}
+
+.benchmarkBars {
+  padding: 1.5rem;
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+.benchmarkBars h4 {
+  margin-bottom: 1.5rem;
+  color: #f1f5f9;
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.radarChart {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.legendColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.benchmarkBars h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.benchmarkRow {
+  margin-bottom: 1.5rem;
+}
+
+.benchmarkName {
+  display: block;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.benchmarkBarsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.benchmarkBar {
+  position: relative;
+  height: 32px;
+  background: #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+
+.benchmarkFill {
+  height: 100%;
+  transition: width 0.3s ease-out;
+  border-radius: 16px;
+}
+
+.benchmarkScore {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #f1f5f9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.detailedComparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.modelDetail {
+  padding: 1.5rem;
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modelDetail h4 {
+  margin-bottom: 1rem;
+  color: #f1f5f9;
+  font-size: 1.2rem;
+}
+
+.detailSection {
+  margin-bottom: 1.5rem;
+}
+
+.detailSection:last-child {
+  margin-bottom: 0;
+}
+
+.detailSection h5 {
+  margin-bottom: 0.5rem;
+  color: #cbd5e1;
+  font-size: 1rem;
+}
+
+.detailSection ul {
+  margin-left: 1.5rem;
+  color: #94a3b8;
+}
+
+.detailSection li {
+  margin-bottom: 0.25rem;
+}
+
+.detailSection p {
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* Dark mode support */
+:global(.dark) .simulator {
+  background: #1f2937;
+}
+
+:global(.dark) .header h3 {
+  color: #f9fafb;
+}
+
+:global(.dark) .header p {
+  color: #9ca3af;
+}
+
+:global(.dark) .controls {
+  background: #111827;
+  border-color: #374151;
+}
+
+:global(.dark) .inputSection label,
+:global(.dark) .tokenizationTypes label,
+:global(.dark) .viewControls label {
+  color: #e5e7eb;
+}
+
+:global(.dark) .inputSection input,
+:global(.dark) .inputSection textarea {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f9fafb !important;
+}
+
+:global(.dark) .results {
+  background: #111827;
+  border-color: #374151;
+}
+
+:global(.dark) .tokenDisplay {
+  background: #1f2937;
+}
+
+:global(.dark) .explanation {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+:global(.dark) .explanation h4 {
+  color: #60a5fa;
+}
+
+:global(.dark) .explanation p,
+:global(.dark) .explanation ul {
+  color: #93bbfc;
+}
+
+/* Additional dark mode fixes */
+:global(.dark) .tokenStats {
+  color: #e5e7eb;
+}
+
+:global(.dark) .tokenStats strong {
+  color: #f9fafb;
+}
+
+:global(.dark) .methodExplanation {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .methodExplanation p {
+  color: #e5e7eb;
+}
+
+:global(.dark) .exampleBtn {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .exampleBtn:hover {
+  background: #374151;
+}
+
+:global(.dark) .tokenizationTypes button,
+:global(.dark) .viewControls button {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .tokenizationTypes button:hover,
+:global(.dark) .viewControls button:hover {
+  background: #374151;
+}
+
+:global(.dark) .toggles label {
+  color: #e5e7eb;
+}
+
+:global(.dark) .tokenId {
+  background: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+:global(.dark) .token.special .tokenId {
+  background: #f9fafb !important;
+  color: #111827 !important;
+}
+
+/* Prompt Playground dark mode fixes */
+:global(.dark) .systemMessageArea,
+:global(.dark) .userPromptArea {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+:global(.dark) .systemMessageArea label,
+:global(.dark) .userPromptArea label {
+  color: #e2e8f0;
+}
+
+:global(.dark) .systemMessageArea textarea,
+:global(.dark) .userPromptArea textarea {
+  background: #1a202c;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+:global(.dark) .responseSection {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  border-color: #4a5568;
+}
+
+:global(.dark) .responseSection h4 {
+  color: #f1f5f9;
+}
+
+:global(.dark) .responseArea {
+  background: #1a202c;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+:global(.dark) .copyBtn {
+  background: #2d3748;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+
+:global(.dark) .copyBtn:hover {
+  background: #4a5568;
+  border-color: #718096;
+}
+
+:global(.dark) .placeholder {
+  color: #6b7280;
+}
+
+/* Attention Visualizer dark mode fixes */
+:global(.dark) .tokenBtn {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .tokenBtn:hover {
+  background: #374151;
+}
+
+:global(.dark) .tokenBtn.selected {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+:global(.dark) .tokenAnalysis {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .tokenAnalysis h5 {
+  color: #f9fafb;
+}
+
+:global(.dark) .attentionDetails {
+  color: #e5e7eb;
+}
+
+:global(.dark) .attentionDetails > div {
+  background: #111827;
+}
+
+:global(.dark) .attentionDetails strong {
+  color: #f9fafb;
+}
+
+:global(.dark) .scoreItem {
+  color: #e5e7eb;
+}
+
+:global(.dark) .matrixExplanation {
+  color: #e5e7eb;
+}
+
+:global(.dark) .attentionCanvas {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+/* Transformer Architecture 3D dark mode fixes */
+:global(.dark) .layerList h4 {
+  color: #f9fafb;
+}
+
+:global(.dark) .layerItem {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .layerItem:hover {
+  background: #374151;
+}
+
+:global(.dark) .layerItem.selected {
+  background: #1e3a8a;
+  border-color: #3b82f6;
+}
+
+:global(.dark) .layerItem strong {
+  color: #f9fafb;
+}
+
+:global(.dark) .layerItem p {
+  color: #9ca3af;
+}
+
+:global(.dark) .layerInfo {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .layerInfo h4 {
+  color: #f9fafb;
+}
+
+:global(.dark) .layerInfo p {
+  color: #e5e7eb;
+}
+
+/* Step by Step Transformer Styles */
+.modeSelection {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modeSelection button {
+  padding: 0.5rem 1.5rem;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.modeSelection button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.playbackControls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.prevBtn, .nextBtn, .playBtn, .resetBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.prevBtn, .nextBtn {
+  background: #6b7280;
+  color: white;
+}
+
+.prevBtn:hover:not(:disabled), .nextBtn:hover:not(:disabled) {
+  background: #4b5563;
+}
+
+.prevBtn:disabled, .nextBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.playBtn {
+  background: #10b981;
+  color: white;
+  padding: 0.5rem 1.5rem;
+}
+
+.playBtn.playing {
+  background: #f59e0b;
+}
+
+.flowContainer {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.flowContainer::-webkit-scrollbar {
+  height: 6px;
+}
+
+.flowContainer::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.flowContainer::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.flowDiagram {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: fit-content;
+}
+
+.flowStep {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.flowConnector {
+  position: relative;
+  width: 60px;
+  height: 2px;
+}
+
+.flowLine {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e5e7eb;
+  transform: translateY(-50%);
+  transition: background 0.3s;
+}
+
+.flowLine.passed {
+  background: #10b981;
+}
+
+.flowBox {
+  position: relative;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 120px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.flowBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.flowBox.active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+  border-width: 3px;
+}
+
+.flowBox.passed {
+  opacity: 0.7;
+}
+
+.flowIcon {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.stepDetails {
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+
+.stepHeader {
+  margin-bottom: 1rem;
+}
+
+.stepHeader h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.stepDescription {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.tensorTransform {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.tensorBox {
+  flex: 1;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.tensorLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.tensorBox code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: #374151;
+  background: #f3f4f6;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.transformArrow {
+  font-size: 1.5rem;
+  color: #6b7280;
+}
+
+.stepDetailsList {
+  margin-bottom: 1rem;
+}
+
+.stepDetailsList h5 {
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.stepDetailsList ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stepDetailsList li {
+  padding: 0.3rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  color: #6b7280;
+  line-height: 1.4;
+  font-size: 0.85rem;
+}
+
+.stepDetailsList li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.attentionVisualization {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.attentionVisualization h5 {
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.miniAttentionMatrix {
+  text-align: center;
+}
+
+.attentionGrid {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 40px);
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.attentionRow {
+  display: contents;
+}
+
+.attentionCell {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+.attentionCell:hover {
+  transform: scale(1.1);
+}
+
+.attentionCaption {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Cross-Attention Display */
+.crossAttentionDisplay {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.crossAttentionSide {
+  text-align: center;
+}
+
+.crossAttentionSide h6 {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.tokenList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tokenItem {
+  padding: 0.25rem 0.5rem;
+  background: #e5e7eb;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #374151;
+}
+
+.crossAttentionMatrix {
+  display: grid;
+  grid-template-rows: repeat(2, 40px);
+  gap: 4px;
+}
+
+.progressIndicator {
+  margin-top: 1rem;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.3s ease-out;
+}
+
+.progressText {
+  display: block;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Step by Step Dark Mode */
+:global(.dark) .modeSelection button {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .modeSelection button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+:global(.dark) .flowContainer {
+  background: #111827;
+  scrollbar-color: #4b5563 #1f2937;
+}
+
+:global(.dark) .flowContainer::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+:global(.dark) .flowContainer::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+:global(.dark) .flowBox {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .flowLine {
+  background: #374151;
+}
+
+:global(.dark) .stepDetails {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .stepDescription {
+  color: #9ca3af;
+}
+
+:global(.dark) .tensorTransform {
+  background: #111827;
+}
+
+:global(.dark) .tensorBox {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .tensorLabel {
+  color: #9ca3af;
+}
+
+:global(.dark) .tensorBox code {
+  color: #e5e7eb;
+  background: #374151;
+}
+
+:global(.dark) .transformArrow {
+  color: #9ca3af;
+}
+
+:global(.dark) .stepDetailsList h5 {
+  color: #f9fafb;
+}
+
+:global(.dark) .stepDetailsList li {
+  color: #e5e7eb;
+}
+
+:global(.dark) .attentionVisualization {
+  background: #111827;
+}
+
+:global(.dark) .attentionVisualization h5 {
+  color: #f9fafb;
+}
+
+:global(.dark) .attentionCaption {
+  color: #9ca3af;
+}
+
+:global(.dark) .progressBar {
+  background: #374151;
+}
+
+:global(.dark) .progressText {
+  color: #9ca3af;
+}
+
+:global(.dark) .crossAttentionSide h6 {
+  color: #f9fafb;
+}
+
+:global(.dark) .tokenItem {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+/* Training Simulator dark mode fixes */
+:global(.dark) .paramCard {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .paramLabel {
+  color: #9ca3af;
+}
+
+:global(.dark) .paramValue {
+  color: #f9fafb;
+}
+
+:global(.dark) .simulationNote {
+  color: #9ca3af;
+}
+
+:global(.dark) .trainingChart {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+/* Training Simulator responsive */
+@media (max-width: 768px) {
+  .paramDisplay {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Prompt Playground dark mode fixes */
+:global(.dark) .templateBtn {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .templateBtn:hover {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+:global(.dark) .templateBtn.active {
+  background: #1e3a8a;
+  border-color: #3b82f6;
+}
+
+:global(.dark) .templateBtn strong {
+  color: #f9fafb;
+}
+
+:global(.dark) .templateBtn span {
+  color: #9ca3af;
+}
+
+:global(.dark) .systemMessageArea,
+:global(.dark) .userPromptArea {
+  background: #111827;
+  border-color: #374151;
+}
+
+:global(.dark) .systemMessageArea label,
+:global(.dark) .userPromptArea label {
+  color: #e5e7eb;
+}
+
+:global(.dark) .systemMessageArea textarea,
+:global(.dark) .userPromptArea textarea {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .responseArea {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .placeholder {
+  color: #6b7280;
+}
+
+:global(.dark) .tip {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .tip strong {
+  color: #f9fafb;
+}
+
+:global(.dark) .tip p {
+  color: #9ca3af;
+}
