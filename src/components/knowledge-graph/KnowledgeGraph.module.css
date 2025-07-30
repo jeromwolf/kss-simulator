@@ -1,0 +1,825 @@
+.container {
+  display: grid;
+  grid-template-columns: 240px 1fr 320px;
+  gap: 1rem;
+  height: calc(100vh - 80px);
+  padding: 1rem;
+  background: var(--bg-secondary);
+}
+
+/* Panels */
+.leftPanel,
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+.centerPanel {
+  position: relative;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Panel Sections */
+.panelSection {
+  background: var(--bg-primary);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.panelTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Tool Panel */
+.toolGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.toolButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toolButton:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary-color);
+}
+
+.toolButton.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.toolIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.toolLabel {
+  font-size: 0.75rem;
+}
+
+/* View Mode Toggle */
+.viewModeToggle {
+  display: flex;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  padding: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.viewModeButton {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.viewModeButton.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Layout Selector */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+}
+
+.layoutOption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.layoutOption:hover {
+  background: var(--bg-hover);
+}
+
+.layoutOption.active {
+  background: var(--primary-light);
+  border-color: var(--primary-color);
+}
+
+.layoutIcon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}
+
+.layoutOption.active .layoutIcon {
+  opacity: 1;
+}
+
+/* Filter Panel */
+.filterList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterCheckbox {
+  width: 16px;
+  height: 16px;
+}
+
+.filterLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Node Properties */
+.propertyList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.propertyItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.propertyPredicate {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.propertyValue {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.propertyActions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.iconButton {
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.iconButton:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Query Editor */
+.queryTextarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  resize: vertical;
+}
+
+.queryActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.queryButton {
+  padding: 0.5rem 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.queryButton:hover {
+  background: var(--primary-dark);
+}
+
+/* Inference Results */
+.inferenceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.inferenceItem {
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.inferenceTriple {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.tripleSubject {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.triplePredicate {
+  color: var(--accent-color);
+}
+
+.tripleObject {
+  color: var(--text-primary);
+}
+
+/* CSS variables are now handled by the container components directly */
+/* Removed :global selectors that cause CSS modules build errors */
+
+/* Light mode support - placeholder for future use */
+.lightMode {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-hover: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --primary-color: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: rgba(59, 130, 246, 0.1);
+  --accent-color: #10b981;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .container {
+    grid-template-columns: 200px 1fr 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  
+  .leftPanel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .rightPanel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* 3D Graph Styles */
+.graph3dContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.controls3d {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  max-width: 250px;
+  font-size: 0.875rem;
+  z-index: 10;
+}
+
+.controlGroup {
+  margin-bottom: 1rem;
+}
+
+.controlGroup h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  accent-color: #3b82f6;
+}
+
+.statsPanel {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.hoverInfo {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.hoverInfo h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.75rem;
+  color: #10b981;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hoverInfo p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #e5e7eb;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.instructions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+.instructions h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.instructions ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.instructions li {
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  position: relative;
+}
+
+.instructions li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+}
+
+/* Enhanced Filter Panel Styles */
+.filterTabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.filterTab {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.filterTab:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.filterTabActive {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.filterItem:last-child {
+  border-bottom: none;
+}
+
+.filterCheckbox {
+  accent-color: #3b82f6;
+}
+
+.filterLabel {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.filterCount {
+  font-size: 0.75rem;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 0.125rem 0.375rem;
+  border-radius: 12px;
+}
+
+/* Search Panel */
+.searchPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.searchInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  color: #6b7280;
+  z-index: 1;
+}
+
+.searchField {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: white;
+  color: var(--text-primary);
+}
+
+.searchField:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.searchClear {
+  position: absolute;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.searchClear:hover {
+  background: #f3f4f6;
+}
+
+.searchResults {
+  padding: 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.searchSummary {
+  font-size: 0.75rem;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.searchMatches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.searchMatch {
+  font-size: 0.75rem;
+  color: #374151;
+  background: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.searchMore {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-style: italic;
+  text-align: center;
+  padding: 0.25rem;
+}
+
+/* Advanced Filters */
+.advancedFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterGroupLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.predicateFilters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.predicateFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.predicateFilter:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.predicateFilterActive {
+  background: #dbeafe !important;
+  border-color: #3b82f6 !important;
+  color: #1e40af;
+}
+
+.predicateCount {
+  color: #6b7280;
+  font-size: 0.6875rem;
+}
+
+.connectionSlider {
+  width: 100%;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.connectionSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #3b82f6;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Analytics Panel */
+.analyticsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.statValue {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+.analyticsSectionTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.5rem 0;
+}
+
+.hubNodes, .topPredicates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hubNode, .topPredicate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+}
+
+.hubNodeName, .predicateName {
+  font-size: 0.75rem;
+  color: #374151;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.hubNodeConnections, .predicateUsage {
+  font-size: 0.6875rem;
+  color: #6b7280;
+}
+
+/* Dark mode adjustments for filter panel */
+:global(.dark) .filterTab {
+  color: #9ca3af;
+}
+
+:global(.dark) .filterTab:hover {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .searchField {
+  background: #374151;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+:global(.dark) .searchResults {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .searchMatch {
+  background: #374151;
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+:global(.dark) .predicateFilter {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+:global(.dark) .predicateFilter:hover {
+  background: #374151;
+}
+
+:global(.dark) .statItem,
+:global(.dark) .hubNode,
+:global(.dark) .topPredicate {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+:global(.dark) .hubNodeName,
+:global(.dark) .predicateName {
+  color: #e5e7eb;
+}

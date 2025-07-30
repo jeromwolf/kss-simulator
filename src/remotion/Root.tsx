@@ -12,7 +12,7 @@ export const RemotionRoot: React.FC = () => {
     <>
       <Composition
         id="OntologyExplainer"
-        component={OntologyExplainer}
+        component={OntologyExplainer as any}
         durationInFrames={300}
         fps={30}
         width={1920}
@@ -41,7 +41,7 @@ export const RemotionRoot: React.FC = () => {
       
       <Composition
         id="ChapterExplainer"
-        component={ChapterExplainer}
+        component={ChapterExplainer as any}
         durationInFrames={600}
         fps={30}
         width={1920}
@@ -69,7 +69,7 @@ export const RemotionRoot: React.FC = () => {
       
       <Composition
         id="ChapterExplainerWithAudio"
-        component={ChapterExplainerWithAudio}
+        component={ChapterExplainerWithAudio as any}
         durationInFrames={600}
         fps={30}
         width={1920}
@@ -100,7 +100,7 @@ export const RemotionRoot: React.FC = () => {
       
       <Composition
         id="ModernChapterExplainer"
-        component={ModernChapterExplainer}
+        component={ModernChapterExplainer as any}
         durationInFrames={2730}
         fps={30}
         width={1920}
@@ -147,7 +147,7 @@ export const RemotionRoot: React.FC = () => {
       
       <Composition
         id="StockChapterExplainer"
-        component={StockChapterExplainer}
+        component={StockChapterExplainer as any}
         durationInFrames={1200}
         fps={30}
         width={1920}
@@ -183,7 +183,7 @@ export const RemotionRoot: React.FC = () => {
       
       <Composition
         id="TestAudio"
-        component={TestAudio}
+        component={TestAudio as any}
         durationInFrames={180}
         fps={30}
         width={1920}

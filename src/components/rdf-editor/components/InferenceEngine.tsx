@@ -141,7 +141,7 @@ export const InferenceEngine: React.FC<InferenceEngineProps> = ({
     INFERENCE_RULES.forEach(rule => {
       if (rule.id === 'symmetric') {
         triples.forEach(triple => {
-          if (rule.condition(triple.predicate)) {
+          if (rule.condition && rule.condition(triple.predicate)) {
             const newTriple = rule.inference({
               a: triple.subject,
               p: triple.predicate,
@@ -161,7 +161,7 @@ export const InferenceEngine: React.FC<InferenceEngineProps> = ({
           triples.forEach(t2 => {
             if (t1.object === t2.subject && 
                 t1.predicate === t2.predicate && 
-                rule.condition(t1.predicate)) {
+                rule.condition && rule.condition(t1.predicate)) {
               const newTriple = rule.inference({
                 a: t1.subject,
                 p: t1.predicate,
@@ -214,13 +214,16 @@ export const InferenceEngine: React.FC<InferenceEngineProps> = ({
             rule.inverses
           );
           if (result) {
-            const key = `${result.subject}|${result.predicate}|${result.object}`;
-            if (!existingTriples.has(key)) {
-              inferred.push({
-                ...result,
-                source: [`${triple.subject} ${triple.predicate} ${triple.object}`]
-              });
-            }
+            const results = Array.isArray(result) ? result : [result];
+            results.forEach(r => {
+              const key = `${r.subject}|${r.predicate}|${r.object}`;
+              if (!existingTriples.has(key)) {
+                inferred.push({
+                  ...r,
+                  source: [`${triple.subject} ${triple.predicate} ${triple.object}`]
+                });
+              }
+            });
           }
         });
       }

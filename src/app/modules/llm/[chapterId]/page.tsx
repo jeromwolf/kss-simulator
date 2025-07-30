@@ -172,9 +172,10 @@ export default function ChapterPage() {
               // 모든 라벨 초기화
               const labels = question.querySelectorAll('.quiz-options label')
               labels.forEach(label => {
-                label.style.backgroundColor = ''
-                label.style.borderColor = ''
-                label.style.borderWidth = ''
+                const htmlLabel = label as HTMLElement
+                htmlLabel.style.backgroundColor = ''
+                htmlLabel.style.borderColor = ''
+                htmlLabel.style.borderWidth = ''
               })
               
               if (selectedInput) {
@@ -184,26 +185,29 @@ export default function ChapterPage() {
                 if (selectedValue === correctAnswer) {
                   // 정답
                   if (selectedLabel) {
-                    selectedLabel.style.backgroundColor = '#dcfce7'
-                    selectedLabel.style.borderColor = '#22c55e'
-                    selectedLabel.style.borderWidth = '2px'
+                    const htmlSelectedLabel = selectedLabel as HTMLElement
+                    htmlSelectedLabel.style.backgroundColor = '#dcfce7'
+                    htmlSelectedLabel.style.borderColor = '#22c55e'
+                    htmlSelectedLabel.style.borderWidth = '2px'
                   }
                   score++
                 } else {
                   // 오답
                   if (selectedLabel) {
-                    selectedLabel.style.backgroundColor = '#fee2e2'
-                    selectedLabel.style.borderColor = '#ef4444'
-                    selectedLabel.style.borderWidth = '2px'
+                    const htmlSelectedLabel = selectedLabel as HTMLElement
+                    htmlSelectedLabel.style.backgroundColor = '#fee2e2'
+                    htmlSelectedLabel.style.borderColor = '#ef4444'
+                    htmlSelectedLabel.style.borderWidth = '2px'
                   }
                   
                   // 정답 표시
                   const correctInput = question.querySelector(`input[value="${correctAnswer}"]`)
                   const correctLabel = correctInput?.closest('label')
                   if (correctLabel) {
-                    correctLabel.style.backgroundColor = '#dcfce7'
-                    correctLabel.style.borderColor = '#22c55e'
-                    correctLabel.style.borderWidth = '2px'
+                    const htmlCorrectLabel = correctLabel as HTMLElement
+                    htmlCorrectLabel.style.backgroundColor = '#dcfce7'
+                    htmlCorrectLabel.style.borderColor = '#22c55e'
+                    htmlCorrectLabel.style.borderWidth = '2px'
                   }
                 }
               }

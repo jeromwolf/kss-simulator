@@ -106,7 +106,7 @@ const PromptPlayground = () => {
       
       if (textToTranslate.length > 0) {
         // 간단한 번역 시뮬레이션
-        const translations = {
+        const translations: { [key: string]: string } = {
           '안녕하세요': 'Hello',
           '감사합니다': 'Thank you',
           '사랑해요': 'I love you',

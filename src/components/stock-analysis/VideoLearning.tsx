@@ -176,7 +176,7 @@ export function VideoLearning() {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [watchedVideos, setWatchedVideos] = useState<Set<string>>(new Set());
   
-  const categories = ['all', ...new Set(stockVideos.map(v => v.category))];
+  const categories = ['all', ...Array.from(new Set(stockVideos.map(v => v.category)))];
   
   const filteredVideos = selectedCategory === 'all' 
     ? stockVideos 
@@ -195,7 +195,7 @@ export function VideoLearning() {
   };
 
   const handleVideoComplete = (videoId: string) => {
-    setWatchedVideos(prev => new Set([...prev, videoId]));
+    setWatchedVideos(prev => new Set([...Array.from(prev), videoId]));
   };
 
   return (

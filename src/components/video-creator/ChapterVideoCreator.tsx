@@ -258,7 +258,7 @@ export const ChapterVideoCreator: React.FC = () => {
             <div className="relative" style={{ paddingBottom: '56.25%' }}>
               <div className="absolute inset-0">
                 <Player
-                  component={videoStyle === 'modern' ? ModernChapterExplainer : ChapterExplainer}
+                  component={videoStyle === 'modern' ? ModernChapterExplainer as any : ChapterExplainer as any}
                   inputProps={{
                     chapterNumber: selectedChapter.number,
                     chapterTitle: selectedChapter.title,

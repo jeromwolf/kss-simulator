@@ -551,7 +551,7 @@ export const stockTermsData: StockTerm[] = [
 ];
 
 // 카테고리별 용어 개수 계산
-export const termCategories = [...new Set(stockTermsData.map(term => term.category))];
+export const termCategories = [...Array.from(new Set(stockTermsData.map(term => term.category)))];
 export const termsByCategory = termCategories.reduce((acc, category) => {
   acc[category] = stockTermsData.filter(term => term.category === category);
   return acc;

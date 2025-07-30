@@ -184,7 +184,7 @@ export const VideoCreator: React.FC = () => {
             <div className="relative" style={{ paddingBottom: '56.25%' }}>
               <div className="absolute inset-0">
                 <Player
-                  component={OntologyExplainer}
+                  component={OntologyExplainer as any}
                   inputProps={{
                     title,
                     triples,
