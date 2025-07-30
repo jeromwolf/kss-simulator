@@ -11,6 +11,11 @@ export default function ContentWrapper({ content }: ContentWrapperProps) {
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Clean up any existing showEra function
+    if ((window as any).showEra) {
+      delete (window as any).showEra;
+    }
+    
     if (contentRef.current) {
       // Add Font Awesome for icons
       if (!document.querySelector('#font-awesome-css')) {
@@ -323,6 +328,30 @@ export default function ContentWrapper({ content }: ContentWrapperProps) {
 
       // Smooth scroll to top when chapter changes
       window.scrollTo({ top: 0, behavior: 'smooth' })
+      
+      // Make external links open in new tab
+      const externalLinks = contentRef.current?.querySelectorAll('a[href^="http"]')
+      externalLinks?.forEach(link => {
+        const href = link.getAttribute('href')
+        if (href && !href.includes('localhost') && !href.includes('127.0.0.1')) {
+          link.setAttribute('target', '_blank')
+          link.setAttribute('rel', 'noopener noreferrer')
+        }
+      })
+
+      // Execute scripts from HTML content
+      const scripts = contentRef.current?.querySelectorAll('script')
+      scripts?.forEach(script => {
+        if (script.textContent) {
+          try {
+            // Execute the script content directly
+            const scriptFunction = new Function(script.textContent)
+            scriptFunction()
+          } catch (error) {
+            console.error('Error executing script:', error)
+          }
+        }
+      })
     }
 
     // Cleanup event listeners on unmount

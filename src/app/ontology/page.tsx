@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Menu, X, Home } from 'lucide-react'
 import ContentWrapper from './ContentWrapper'
 import TableOfContents from '@/components/TableOfContents'
+import DarkModeToggle from '@/components/DarkModeToggle'
 import styles from './ontology.module.css'
 import './style-override.css'
 
@@ -188,24 +189,29 @@ export default function OntologyPage() {
         </header>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto bg-white dark:bg-gray-900">
           <div className="max-w-5xl mx-auto px-8 py-12">
-            {isLoading ? (
-              <div className="flex flex-col items-center justify-center h-[60vh]">
-                <div className="relative">
-                  <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 dark:border-gray-700"></div>
-                  <div className="animate-spin rounded-full h-16 w-16 border-4 border-kss-primary border-t-transparent absolute inset-0"></div>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700">
+              {isLoading ? (
+                <div className="flex flex-col items-center justify-center h-[60vh]">
+                  <div className="relative">
+                    <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 dark:border-gray-700"></div>
+                    <div className="animate-spin rounded-full h-16 w-16 border-4 border-kss-primary border-t-transparent absolute inset-0"></div>
+                  </div>
+                  <p className="mt-4 text-gray-500 dark:text-gray-400">콘텐츠를 불러오는 중...</p>
                 </div>
-                <p className="mt-4 text-gray-500 dark:text-gray-400">콘텐츠를 불러오는 중...</p>
-              </div>
-            ) : (
-              <ContentWrapper content={chapterContent} />
-            )}
+              ) : (
+                <ContentWrapper content={chapterContent} />
+              )}
+            </div>
           </div>
         </div>
       </main>
       
       {/* Table of Contents - Removed to avoid duplication */}
+      
+      {/* Dark Mode Toggle */}
+      <DarkModeToggle />
     </div>
   )
 }

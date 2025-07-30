@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Brain, TrendingUp, Home } from 'lucide-react';
+import KSSLogo from './icons/KSSLogo';
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -19,7 +20,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-kss-primary to-kss-secondary rounded-lg" />
+              <KSSLogo className="w-8 h-8" />
               <span className="font-bold text-xl">KSS</span>
             </Link>
             

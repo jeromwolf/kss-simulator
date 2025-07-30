@@ -213,37 +213,46 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white dark:bg-gray-900">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 opacity-50" />
-        <div className="relative max-w-7xl mx-auto px-4 py-16">
+        <div className="relative max-w-7xl mx-auto px-4 py-12">
           <div className="text-center">
             {/* Sophisticated KSS Logo with Knowledge Space Icon */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-8 pt-8">
               <div className="relative group cursor-pointer">
-                {/* Subtle glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-kss-primary/20 to-kss-secondary/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-all duration-700"></div>
+                {/* Multiple layer glow effects */}
+                <div className="absolute inset-0 bg-gradient-to-r from-kss-primary/30 to-kss-secondary/30 rounded-3xl blur-3xl opacity-70 group-hover:opacity-100 transition-all duration-1000 animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-pink-600/20 to-blue-600/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-80 transition-all duration-700 rotate-180"></div>
                 
-                {/* Main logo container */}
-                <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-12 py-10 rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl group-hover:shadow-2xl transform group-hover:scale-105 transition-all duration-500">
+                {/* Main logo container - Larger and more prominent */}
+                <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl px-20 py-16 rounded-3xl border-2 border-gray-200/30 dark:border-gray-700/30 shadow-2xl group-hover:shadow-[0_20px_60px_-15px_rgba(123,63,242,0.5)] transform group-hover:scale-110 transition-all duration-700">
                   
-                  {/* Knowledge Space Visualization - Top */}
-                  <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
-                    <div className="relative w-20 h-20">
-                      {/* Central node */}
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-kss-primary to-kss-secondary rounded-full shadow-lg animate-pulse"></div>
-                      
-                      {/* Orbiting nodes */}
-                      <div className="absolute inset-0 animate-spin" style={{animationDuration: '8s'}}>
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-blue-400 rounded-full shadow-md"></div>
-                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-purple-400 rounded-full shadow-md"></div>
-                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-2.5 h-2.5 bg-pink-400 rounded-full shadow-md"></div>
-                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2.5 h-2.5 bg-orange-400 rounded-full shadow-md"></div>
+                  {/* Knowledge Space Visualization - Top - Larger */}
+                  <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
+                    <div className="relative w-32 h-32">
+                      {/* Central node - Larger with ring */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <div className="w-8 h-8 bg-gradient-to-r from-kss-primary to-kss-secondary rounded-full shadow-2xl animate-pulse"></div>
+                        <div className="absolute inset-0 w-8 h-8 bg-gradient-to-r from-kss-primary to-kss-secondary rounded-full animate-ping opacity-30"></div>
                       </div>
                       
-                      {/* Connection lines */}
-                      <div className="absolute inset-0 opacity-30 group-hover:opacity-60 transition-opacity duration-500">
-                        <div className="absolute top-1/2 left-1/2 w-10 h-0.5 bg-gradient-to-r from-kss-primary to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-0"></div>
-                        <div className="absolute top-1/2 left-1/2 w-10 h-0.5 bg-gradient-to-r from-kss-primary to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-45"></div>
-                        <div className="absolute top-1/2 left-1/2 w-10 h-0.5 bg-gradient-to-r from-kss-primary to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-90"></div>
-                        <div className="absolute top-1/2 left-1/2 w-10 h-0.5 bg-gradient-to-r from-kss-primary to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-135"></div>
+                      {/* Orbiting nodes - Multiple rings */}
+                      <div className="absolute inset-0 animate-spin" style={{animationDuration: '10s'}}>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full shadow-lg"></div>
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full shadow-lg"></div>
+                        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full shadow-lg"></div>
+                        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full shadow-lg"></div>
+                      </div>
+                      {/* Second ring */}
+                      <div className="absolute inset-4 animate-spin" style={{animationDuration: '15s', animationDirection: 'reverse'}}>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full shadow-md opacity-70"></div>
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gradient-to-r from-green-400 to-teal-400 rounded-full shadow-md opacity-70"></div>
+                      </div>
+                      
+                      {/* Connection lines - Dynamic */}
+                      <div className="absolute inset-0 opacity-40 group-hover:opacity-80 transition-opacity duration-700">
+                        <div className="absolute top-1/2 left-1/2 w-16 h-0.5 bg-gradient-to-r from-transparent via-kss-primary to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-0 animate-pulse"></div>
+                        <div className="absolute top-1/2 left-1/2 w-16 h-0.5 bg-gradient-to-r from-transparent via-kss-secondary to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-45 animate-pulse delay-100"></div>
+                        <div className="absolute top-1/2 left-1/2 w-16 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-90 animate-pulse delay-200"></div>
+                        <div className="absolute top-1/2 left-1/2 w-16 h-0.5 bg-gradient-to-r from-transparent via-pink-500 to-transparent transform -translate-y-1/2 -translate-x-1/2 rotate-135 animate-pulse delay-300"></div>
                       </div>
                     </div>
                   </div>
@@ -251,57 +260,80 @@ export default function Home() {
                   {/* Logo text with icon integration */}
                   <div className="relative overflow-hidden flex flex-col items-center gap-3">
                     <div className="flex items-center gap-6">
-                      {/* Brain/Network Icon - Larger */}
+                      {/* Brain/Network Icon - Much Larger with effects */}
                       <div className="relative">
-                        <Brain className="w-20 h-20 text-kss-primary group-hover:text-kss-secondary transition-colors duration-500" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-kss-primary/20 to-kss-secondary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-kss-primary/40 to-kss-secondary/40 rounded-full blur-2xl animate-pulse"></div>
+                        <Brain className="w-28 h-28 text-kss-primary group-hover:text-kss-secondary transition-all duration-700 transform group-hover:rotate-12" />
+                        <div className="absolute inset-2 bg-gradient-to-br from-kss-primary/20 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       </div>
                       
                       <div className="text-center">
-                        <h1 className="text-7xl font-bold bg-gradient-to-r from-kss-primary via-purple-600 to-kss-secondary bg-clip-text text-transparent tracking-tight mb-2">
+                        <h1 className="text-8xl font-black bg-gradient-to-r from-kss-primary via-purple-600 to-kss-secondary bg-clip-text text-transparent tracking-tight mb-3 animate-gradient bg-300% transition-all duration-700 group-hover:tracking-wide">
                           KSS
                         </h1>
-                        {/* Full name in smaller text */}
-                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 tracking-wider">
-                          KNOWLEDGE SPACE SIMULATOR
+                        {/* Full name with effects */}
+                        <div className="text-base font-bold text-gray-600 dark:text-gray-300 tracking-[0.3em] uppercase group-hover:tracking-[0.4em] transition-all duration-700">
+                          <span className="inline-block transform group-hover:scale-110 transition-transform duration-500">KNOWLEDGE</span>
+                          <span className="inline-block mx-2 text-kss-primary">•</span>
+                          <span className="inline-block transform group-hover:scale-110 transition-transform duration-500 delay-100">SPACE</span>
+                          <span className="inline-block mx-2 text-kss-secondary">•</span>
+                          <span className="inline-block transform group-hover:scale-110 transition-transform duration-500 delay-200">SIMULATOR</span>
                         </div>
                       </div>
                       
-                      {/* Cube/Space Icon - Larger */}
-                      <div className="relative">
-                        <div className="w-20 h-20 relative group-hover:animate-spin" style={{animationDuration: '3s'}}>
-                          {/* 3D Cube representation */}
-                          <div className="absolute inset-0 border-2 border-kss-secondary/50 rounded-lg transform rotate-12 group-hover:rotate-45 transition-transform duration-700"></div>
-                          <div className="absolute inset-1 border-2 border-kss-primary/50 rounded-lg transform -rotate-12 group-hover:rotate-0 transition-transform duration-700"></div>
-                          <div className="absolute inset-2 bg-gradient-to-br from-kss-primary/20 to-kss-secondary/20 rounded-lg"></div>
+                      {/* Cube/Space Icon - 3D Enhanced */}
+                      <div className="relative perspective-1000">
+                        <div className="w-28 h-28 relative transform-style-3d group-hover:animate-spin" style={{animationDuration: '4s'}}>
+                          {/* 3D Cube with multiple layers */}
+                          <div className="absolute inset-0 border-3 border-kss-secondary/60 rounded-xl transform rotate-12 group-hover:rotate-45 transition-transform duration-1000 shadow-lg"></div>
+                          <div className="absolute inset-2 border-3 border-kss-primary/60 rounded-xl transform -rotate-12 group-hover:rotate-0 transition-transform duration-1000 shadow-lg"></div>
+                          <div className="absolute inset-4 border-2 border-purple-500/40 rounded-lg transform rotate-6 group-hover:-rotate-12 transition-transform duration-1000"></div>
+                          <div className="absolute inset-5 bg-gradient-to-br from-kss-primary/30 via-purple-600/20 to-kss-secondary/30 rounded-lg backdrop-blur-sm"></div>
                           
-                          {/* Inner particles */}
-                          <div className="absolute top-1/2 left-1/2 w-1.5 h-1.5 bg-kss-primary rounded-full transform -translate-x-1/2 -translate-y-1/2 animate-ping"></div>
-                          <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-kss-secondary rounded-full animate-pulse delay-200"></div>
-                          <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-purple-500 rounded-full animate-pulse delay-500"></div>
+                          {/* Floating particles with trails */}
+                          <div className="absolute top-1/2 left-1/2 w-3 h-3 bg-gradient-to-r from-kss-primary to-purple-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 animate-ping shadow-lg"></div>
+                          <div className="absolute top-1/3 left-1/3 w-2 h-2 bg-gradient-to-r from-kss-secondary to-pink-500 rounded-full animate-bounce shadow-md" style={{animationDelay: '0.3s'}}></div>
+                          <div className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-bounce shadow-md" style={{animationDelay: '0.6s'}}></div>
+                          <div className="absolute top-1/4 right-1/4 w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-pulse"></div>
+                          <div className="absolute bottom-1/4 left-1/4 w-1.5 h-1.5 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full animate-pulse delay-500"></div>
                         </div>
                       </div>
                     </div>
                     
-                    {/* Animated underline */}
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-kss-primary to-kss-secondary rounded-full w-0 group-hover:w-3/4 transition-all duration-700 ease-out"></div>
+                    {/* Animated underline - Thicker and glowing */}
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-2 bg-gradient-to-r from-kss-primary via-purple-500 to-kss-secondary rounded-full w-0 group-hover:w-4/5 transition-all duration-700 ease-out shadow-lg group-hover:shadow-[0_0_20px_rgba(123,63,242,0.6)]"></div>
                     
-                    {/* Subtle shine animation */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-in-out"></div>
+                    {/* Multiple shine animations */}
+                    <div className="absolute inset-0 overflow-hidden rounded-3xl">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-all duration-1500 ease-in-out"></div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -translate-y-full group-hover:translate-y-full transition-all duration-2000 ease-in-out delay-300"></div>
+                    </div>
                   </div>
                   
-                  {/* Minimal corner accents */}
-                  <div className="absolute top-3 left-3 w-3 h-3 border-l-2 border-t-2 border-kss-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute top-3 right-3 w-3 h-3 border-r-2 border-t-2 border-kss-secondary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
-                  <div className="absolute bottom-3 left-3 w-3 h-3 border-l-2 border-b-2 border-kss-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200"></div>
-                  <div className="absolute bottom-3 right-3 w-3 h-3 border-r-2 border-b-2 border-kss-secondary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"></div>
+                  {/* Enhanced corner accents with animation */}
+                  <div className="absolute top-6 left-6 w-6 h-6 border-l-3 border-t-3 border-kss-primary/50 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:w-8 group-hover:h-8"></div>
+                  <div className="absolute top-6 right-6 w-6 h-6 border-r-3 border-t-3 border-kss-secondary/50 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 group-hover:w-8 group-hover:h-8"></div>
+                  <div className="absolute bottom-6 left-6 w-6 h-6 border-l-3 border-b-3 border-purple-500/50 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 group-hover:w-8 group-hover:h-8"></div>
+                  <div className="absolute bottom-6 right-6 w-6 h-6 border-r-3 border-b-3 border-pink-500/50 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 group-hover:w-8 group-hover:h-8"></div>
                 </div>
                 
-                {/* Enhanced floating elements representing knowledge nodes */}
-                <div className="absolute -top-2 left-12 w-2 h-2 bg-blue-400/60 rounded-full animate-bounce" style={{animationDelay: '0s', animationDuration: '2s'}}></div>
-                <div className="absolute top-8 -right-2 w-1.5 h-1.5 bg-purple-400/60 rounded-full animate-bounce" style={{animationDelay: '0.5s', animationDuration: '2.5s'}}></div>
-                <div className="absolute -bottom-2 right-12 w-2 h-2 bg-pink-400/60 rounded-full animate-bounce" style={{animationDelay: '1s', animationDuration: '3s'}}></div>
-                <div className="absolute bottom-8 -left-2 w-1.5 h-1.5 bg-orange-400/60 rounded-full animate-bounce" style={{animationDelay: '1.5s', animationDuration: '2.2s'}}></div>
+                {/* Enhanced floating elements with trails */}
+                <div className="absolute -top-6 left-20 animate-float" style={{animationDelay: '0s', animationDuration: '3s'}}>
+                  <div className="w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full shadow-lg shadow-blue-400/50"></div>
+                  <div className="absolute inset-0 w-4 h-4 bg-blue-400 rounded-full animate-ping opacity-30"></div>
+                </div>
+                <div className="absolute top-16 -right-6 animate-float" style={{animationDelay: '0.5s', animationDuration: '3.5s'}}>
+                  <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full shadow-lg shadow-purple-400/50"></div>
+                  <div className="absolute inset-0 w-3 h-3 bg-purple-400 rounded-full animate-ping opacity-30"></div>
+                </div>
+                <div className="absolute -bottom-6 right-20 animate-float" style={{animationDelay: '1s', animationDuration: '4s'}}>
+                  <div className="w-5 h-5 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full shadow-lg shadow-pink-400/50"></div>
+                  <div className="absolute inset-0 w-5 h-5 bg-pink-400 rounded-full animate-ping opacity-30"></div>
+                </div>
+                <div className="absolute bottom-16 -left-6 animate-float" style={{animationDelay: '1.5s', animationDuration: '3.2s'}}>
+                  <div className="w-3.5 h-3.5 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full shadow-lg shadow-orange-400/50"></div>
+                  <div className="absolute inset-0 w-3.5 h-3.5 bg-orange-400 rounded-full animate-ping opacity-30"></div>
+                </div>
                 
                 {/* Data flow lines */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-30 transition-opacity duration-700">
@@ -311,7 +343,7 @@ export default function Home() {
               </div>
             </div>
             {/* Dynamic tagline with typing effect */}
-            <div className="relative max-w-4xl mx-auto mb-8">
+            <div className="relative max-w-4xl mx-auto mb-12 mt-8">
               <p className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2 animate-pulse">
                 차세대 학습 혁신
               </p>
@@ -324,22 +356,22 @@ export default function Home() {
             
             
             {/* Stats - Professional Style */}
-            <div className="flex justify-center gap-6 mb-12">
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6">
+            <div className="flex justify-center gap-6 mb-8">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-10 hover:shadow-lg transition-shadow">
                 <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
                   {courses.filter(c => c.status === 'active').length}+
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">활성 코스</div>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-10 hover:shadow-lg transition-shadow">
                 <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
                   5,000+
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">학습자</div>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-10 hover:shadow-lg transition-shadow">
                 <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
                   4.8★
                 </div>
@@ -351,9 +383,10 @@ export default function Home() {
       </section>
 
       {/* Enterprise Knowledge Simulators */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
+      <section className="py-32 bg-gray-50 dark:bg-gray-900/50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="mb-12">
+            <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                 Enterprise Knowledge Simulators
@@ -370,10 +403,11 @@ export default function Home() {
               </div>
             </div>
           </div>
+          </div>
           
           {/* Domain Filter */}
-          <div className="border-b border-gray-200 dark:border-gray-700">
-            <nav className="flex gap-0">
+          <div className="border-b border-gray-200 dark:border-gray-700 mb-8">
+            <nav className="flex gap-0 overflow-x-auto">
               {categories.map(category => (
                 <button
                   key={category}
@@ -400,9 +434,10 @@ export default function Home() {
             </nav>
           </div>
         </div>
-
+        
         {/* Professional Simulator Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto px-4 mt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
           {filteredCourses.map((course) => {
             const Icon = course.icon;
             
@@ -438,7 +473,7 @@ export default function Home() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
+                  <div className="p-8">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {course.title}
                     </h3>
@@ -577,16 +612,17 @@ export default function Home() {
               </div>
             );
           })}
+          </div>
         </div>
       </section>
 
       {/* Features Section - Professional Style */}
-      <section className="bg-white dark:bg-gray-900 py-16 border-t border-gray-200 dark:border-gray-700">
+      <section className="bg-white dark:bg-gray-900 py-32 border-t border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-12 text-gray-900 dark:text-white">KSS만의 특별한 학습 경험</h2>
+          <h2 className="text-3xl font-bold text-center mb-16 text-gray-900 dark:text-white">KSS만의 특별한 학습 경험</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-10 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-white" />
@@ -598,7 +634,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-10 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded flex items-center justify-center">
                   <Network className="w-5 h-5 text-white" />
@@ -610,7 +646,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-10 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded flex items-center justify-center">
                   <Brain className="w-5 h-5 text-white" />

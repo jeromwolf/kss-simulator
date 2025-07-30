@@ -71,10 +71,10 @@
     <div class="interactive-timeline" id="ontology-history">
         <h4>온톨로지의 역사적 여정 (인터랙티브)</h4>
         <div class="timeline-controls">
-            <button class="timeline-btn" data-era="ancient">고대</button>
-            <button class="timeline-btn" data-era="medieval">중세</button>
-            <button class="timeline-btn" data-era="modern">근대</button>
-            <button class="timeline-btn" data-era="contemporary">현대</button>
+            <button class="timeline-btn">고대</button>
+            <button class="timeline-btn">중세</button>
+            <button class="timeline-btn">근대</button>
+            <button class="timeline-btn">현대</button>
         </div>
         <div class="timeline-content-area">
             <!-- 동적으로 로드될 컨텐츠 영역 -->
@@ -515,7 +515,7 @@ JOIN Job j ON p.job_id = j.id;
             <h4>2. 지식 공유와 재사용</h4>
             <p>표준화된 형식으로 지식을 공유하고 재사용 가능</p>
             <div class="integration-example">
-                <img src="/images/ontology-integration.svg" alt="온톨로지 통합 예시">
+                <div class="placeholder-image" style="background: linear-gradient(135deg, #667eea, #764ba2); height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: white; font-weight: 600;">온톨로지 통합 예시</div>
                 <p>서로 다른 시스템이 공통 온톨로지를 통해 소통</p>
             </div>
         </div>
@@ -910,7 +910,7 @@ JOIN Job j ON p.job_id = j.id;
         <div class="tool-cards">
             <div class="tool-card protege">
                 <div class="tool-header">
-                    <img src="/images/protege-logo.png" alt="Protégé">
+                    <div class="tool-logo" style="background: #4a5568; color: white; padding: 2rem; text-align: center; border-radius: 8px; font-size: 1.5rem; font-weight: bold;">Protégé</div>
                     <h4>Protégé</h4>
                     <span class="tool-badge">무료 오픈소스</span>
                 </div>
@@ -947,7 +947,7 @@ JOIN Job j ON p.job_id = j.id;
             
             <div class="tool-card topbraid">
                 <div class="tool-header">
-                    <img src="/images/topbraid-logo.png" alt="TopBraid">
+                    <div class="tool-logo" style="background: #2d3748; color: white; padding: 2rem; text-align: center; border-radius: 8px; font-size: 1.5rem; font-weight: bold;">TopBraid</div>
                     <h4>TopBraid Composer</h4>
                     <span class="tool-badge">상용</span>
                 </div>
@@ -967,7 +967,7 @@ JOIN Job j ON p.job_id = j.id;
             
             <div class="tool-card webprotege">
                 <div class="tool-header">
-                    <img src="/images/webprotege-logo.png" alt="WebProtégé">
+                    <div class="tool-logo" style="background: #1a202c; color: white; padding: 2rem; text-align: center; border-radius: 8px; font-size: 1.5rem; font-weight: bold;">WebProtégé</div>
                     <h4>WebProtégé</h4>
                     <span class="tool-badge">웹 기반</span>
                 </div>
@@ -1001,7 +1001,7 @@ JOIN Job j ON p.job_id = j.id;
                         <li>운영체제에 맞는 버전 다운로드</li>
                         <li>설치 후 실행</li>
                     </ol>
-                    <img src="/images/protege-download.png" alt="Protégé 다운로드">
+                    <div class="step-image" style="background: #edf2f7; padding: 1rem; border-radius: 8px; text-align: center; color: #4a5568;">📥 Protégé 다운로드</div>
                 </div>
             </div>
             
@@ -1014,7 +1014,7 @@ JOIN Job j ON p.job_id = j.id;
                         <li>온톨로지 IRI 입력: http://example.org/pizza</li>
                         <li>Save as: pizza.owl</li>
                     </ol>
-                    <img src="/images/protege-new.png" alt="새 온톨로지 생성">
+                    <div class="step-image" style="background: #edf2f7; padding: 1rem; border-radius: 8px; text-align: center; color: #4a5568;">📄 새 온톨로지 생성</div>
                 </div>
             </div>
             
@@ -1052,7 +1052,7 @@ Thing
                         <li>hasTopping 속성 생성</li>
                         <li>Domain: Pizza, Range: Topping 설정</li>
                     </ol>
-                    <img src="/images/protege-properties.png" alt="속성 추가">
+                    <div class="step-image" style="background: #edf2f7; padding: 1rem; border-radius: 8px; text-align: center; color: #4a5568;">⚙️ 속성 추가</div>
                 </div>
             </div>
         </div>
@@ -1542,11 +1542,23 @@ function addKnowledgeAndInfer() {
 }
 
 .code-editor {
-    background: #2d3748;
-    color: #fff;
+    background: #1a202c !important;
+    color: #e2e8f0 !important;
     padding: 1rem;
     border-radius: 0.5rem;
     overflow-x: auto;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.code-editor pre {
+    background: transparent !important;
+    color: #e2e8f0 !important;
+    margin: 0;
+}
+
+.code-editor code {
+    background: transparent !important;
+    color: #e2e8f0 !important;
 }
 
 .comparison-table {
@@ -1764,3 +1776,151 @@ function addKnowledgeAndInfer() {
     }
 }
 </style>
+
+<!-- Timeline Interactive Script -->
+<script>
+window.showEra = function(era, evt) {
+    try {
+        // Prevent any default behavior
+        if (evt && evt.preventDefault) {
+            evt.preventDefault();
+        }
+    
+    const contentArea = document.querySelector('.timeline-content-area');
+    const buttons = document.querySelectorAll('.timeline-btn');
+    
+    if (!contentArea) {
+        console.error('Timeline content area not found');
+        return;
+    }
+    
+    // Remove active class from all buttons
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add active class to clicked button
+    if (evt && evt.target) {
+        evt.target.classList.add('active');
+    } else {
+        // Find button by era name if no event
+        buttons.forEach(btn => {
+            if (btn.textContent.includes(era === 'ancient' ? '고대' : 
+                era === 'medieval' ? '중세' : 
+                era === 'modern' ? '근대' : '현대')) {
+                btn.classList.add('active');
+            }
+        });
+    }
+    
+    // Era content data
+    const eraContent = {
+        ancient: {
+            title: '고대 철학의 온톨로지',
+            content: `
+                <div class="era-content">
+                    <h4>고대 그리스 철학자들의 존재론</h4>
+                    <ul>
+                        <li><strong>파르메니데스 (기원전 515-450)</strong>: "존재하는 것은 존재하고, 존재하지 않는 것은 존재하지 않는다" - 존재의 일원론 주장</li>
+                        <li><strong>헤라클레이토스 (기원전 535-475)</strong>: "만물은 흐른다(panta rhei)" - 변화와 생성의 존재론</li>
+                        <li><strong>플라톤 (기원전 428-348)</strong>: 이데아론을 통한 보편자의 실재 주장</li>
+                        <li><strong>아리스토텔레스 (기원전 384-322)</strong>: 범주론과 실체-속성 구분의 체계화</li>
+                    </ul>
+                    <p>이 시기의 철학자들은 '존재란 무엇인가?'라는 근본적 질문에 답하려 했으며, 이는 현대 온톨로지의 철학적 토대가 되었습니다.</p>
+                </div>
+            `
+        },
+        medieval: {
+            title: '중세 스콜라 철학의 온톨로지',
+            content: `
+                <div class="era-content">
+                    <h4>신학과 철학의 만남</h4>
+                    <ul>
+                        <li><strong>토마스 아퀴나스 (1225-1274)</strong>: 존재의 유비(analogia entis) 이론으로 신과 피조물의 존재 관계 설명</li>
+                        <li><strong>둔스 스코투스 (1266-1308)</strong>: 개체성(haecceitas) 개념으로 개별자의 고유성 강조</li>
+                        <li><strong>윌리엄 오컴 (1287-1347)</strong>: 유명론(nominalism)으로 보편자의 실재성 부정</li>
+                    </ul>
+                    <p>중세 철학자들은 아리스토텔레스의 범주론을 기독교 신학과 조화시키려 노력했으며, 이 과정에서 정교한 개념 분석 방법론이 발전했습니다.</p>
+                </div>
+            `
+        },
+        modern: {
+            title: '근대 철학의 존재론적 전환',
+            content: `
+                <div class="era-content">
+                    <h4>인식론적 전회와 존재론</h4>
+                    <ul>
+                        <li><strong>데카르트 (1596-1650)</strong>: "나는 생각한다, 고로 존재한다" - 주체 중심의 존재론</li>
+                        <li><strong>라이프니츠 (1646-1716)</strong>: 모나드론으로 실체의 다원성과 조화 설명</li>
+                        <li><strong>칸트 (1724-1804)</strong>: 현상과 물자체의 구분, 범주론의 재구성</li>
+                        <li><strong>헤겔 (1770-1831)</strong>: 변증법적 존재론으로 생성과 발전의 논리 체계화</li>
+                    </ul>
+                    <p>근대 철학은 존재 자체보다 인식 주체와 존재의 관계에 주목했으며, 이는 현대 온톨로지 공학에서 '관점(viewpoint)'과 '문맥(context)'의 중요성으로 이어집니다.</p>
+                </div>
+            `
+        },
+        contemporary: {
+            title: '현대: 컴퓨터 과학으로의 전환',
+            content: `
+                <div class="era-content">
+                    <h4>온톨로지 공학의 탄생</h4>
+                    <ul>
+                        <li><strong>1960-70년대</strong>: 인공지능 연구에서 지식 표현 문제 대두</li>
+                        <li><strong>1980년대</strong>: 전문가 시스템과 지식 기반 시스템 개발</li>
+                        <li><strong>1990년대</strong>: Tom Gruber의 온톨로지 정의 - "개념화의 명시적 명세"</li>
+                        <li><strong>2000년대</strong>: 시맨틱 웹과 OWL(Web Ontology Language) 표준 제정</li>
+                        <li><strong>2010년대~현재</strong>: 지식 그래프, LOD(Linked Open Data), AI 추론 시스템</li>
+                    </ul>
+                    <p>철학적 존재론이 컴퓨터가 이해할 수 있는 형식적 온톨로지로 변환되면서, 기계 간 지식 공유와 자동 추론이 가능해졌습니다.</p>
+                </div>
+            `
+        }
+    };
+    
+    // Display content with fade effect
+    try {
+        contentArea.style.opacity = '0';
+        setTimeout(() => {
+            const selectedEra = eraContent[era];
+            if (selectedEra) {
+                contentArea.innerHTML = `
+                    <h3>${selectedEra.title}</h3>
+                    ${selectedEra.content}
+                `;
+                contentArea.style.opacity = '1';
+            } else {
+                console.error('Era content not found for:', era);
+                contentArea.innerHTML = '<p>콘텐츠를 불러올 수 없습니다.</p>';
+                contentArea.style.opacity = '1';
+            }
+        }, 200);
+    } catch (error) {
+        console.error('Error displaying era content:', error);
+        contentArea.innerHTML = '<p>오류가 발생했습니다.</p>';
+        contentArea.style.opacity = '1';
+    }
+    } catch (e) {
+        console.error('showEra function error:', e);
+    }
+}
+
+// Initialize timeline buttons with event listeners
+function initializeTimeline() {
+    const buttons = document.querySelectorAll('.timeline-btn');
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const era = this.textContent.includes('고대') ? 'ancient' :
+                       this.textContent.includes('중세') ? 'medieval' :
+                       this.textContent.includes('근대') ? 'modern' : 'contemporary';
+            window.showEra(era, e);
+        });
+    });
+    
+    // Show ancient era by default
+    if (typeof window.showEra === 'function') {
+        window.showEra('ancient');
+    }
+}
+
+// Initialize on page load
+setTimeout(initializeTimeline, 500);
+</script>

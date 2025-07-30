@@ -1,286 +1,627 @@
-/* Custom scrollbar styles */
+/* ===================================
+   Ontology Content Style Override
+   Minimal, maintainable approach
+   =================================== */
+
+/* 1. CSS Variables for Design System */
+:root {
+  /* Colors */
+  --text-primary: rgb(17, 24, 39);
+  --text-secondary: rgb(75, 85, 99);
+  --text-muted: rgb(107, 114, 128);
+  
+  --bg-primary: rgb(255, 255, 255);
+  --bg-secondary: rgb(249, 250, 251);
+  --bg-tertiary: rgb(243, 244, 246);
+  
+  --border-color: rgb(229, 231, 235);
+  --border-color-dark: rgb(209, 213, 219);
+  
+  --accent-primary: rgb(99, 102, 241);
+  --accent-secondary: rgb(139, 92, 246);
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+}
+
+/* Dark mode variables */
+.dark {
+  --text-primary: rgb(243, 244, 246);
+  --text-secondary: rgb(209, 213, 219);
+  --text-muted: rgb(156, 163, 175);
+  
+  --bg-primary: rgb(17, 24, 39);
+  --bg-secondary: rgb(31, 41, 55);
+  --bg-tertiary: rgb(55, 65, 81);
+  
+  --border-color: rgb(55, 65, 81);
+  --border-color-dark: rgb(75, 85, 99);
+  
+  --accent-primary: rgb(167, 139, 250);
+  --accent-secondary: rgb(196, 181, 253);
+}
+
+/* 2. Base Content Styles */
+.chapter-content {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.75;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* 3. Typography */
+.chapter-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.chapter-content h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+  color: var(--accent-primary);
+}
+
+.chapter-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.chapter-content p {
+  margin-bottom: var(--space-md);
+  line-height: 1.875;
+}
+
+/* 4. Lists */
+.chapter-content ul,
+.chapter-content ol {
+  margin: var(--space-md) 0;
+  padding-left: var(--space-lg);
+}
+
+.chapter-content li {
+  margin-bottom: var(--space-xs);
+  line-height: 1.75;
+}
+
+.chapter-content ul {
+  list-style-type: disc;
+}
+
+.chapter-content ol {
+  list-style-type: decimal;
+}
+
+/* 5. Links */
+.chapter-content a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.chapter-content a:hover {
+  color: var(--accent-secondary);
+  text-decoration-thickness: 2px;
+}
+
+/* External links */
+.chapter-content a[href^="http"]:not([href*="localhost"]):after {
+  content: " ↗";
+  font-size: 0.875em;
+  vertical-align: super;
+}
+
+/* 6. Code Blocks */
+.chapter-content pre,
+.chapter-content .code-editor,
+.chapter-content .code-editor pre,
+.chapter-content div.code-editor,
+.chapter-content div.code-editor > pre,
+.chapter-content div.code-editor pre code {
+  background-color: #1a202c !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  overflow-x: auto;
+  font-family: ui-monospace, monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Force code editor styles */
+div.code-editor {
+  background-color: #1a202c !important;
+  color: #e2e8f0 !important;
+}
+
+div.code-editor pre,
+div.code-editor pre code {
+  background-color: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+.dark .chapter-content pre,
+.dark .chapter-content .code-editor,
+.dark .chapter-content .code-editor pre {
+  background-color: rgb(3, 7, 18) !important;
+  border-color: var(--border-color-dark);
+}
+
+/* Code syntax highlighting */
+.chapter-content .code-editor code,
+.chapter-content pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+.chapter-content code {
+  background-color: var(--bg-secondary);
+  color: var(--accent-primary);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-sm);
+  font-family: ui-monospace, monospace;
+  font-size: 0.875em;
+}
+
+.chapter-content pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* 7. Tables */
+.chapter-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.chapter-content th,
+.chapter-content td {
+  padding: var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.chapter-content th {
+  background-color: var(--bg-secondary);
+  font-weight: 600;
+}
+
+.chapter-content tr:last-child td {
+  border-bottom: none;
+}
+
+/* 8. Content Boxes - Targeted Approach */
+
+/* Generic box reset for white backgrounds - Modern glass effect */
+.chapter-content div[style*="background: white"],
+.chapter-content div[style*="background-color: white"],
+.chapter-content div[style*="background:#fff"],
+.chapter-content div[style*="background-color:#fff"],
+.chapter-content div[style*="background: #fff"],
+.chapter-content div[style*="background-color: #fff"],
+.chapter-content div[style*="background: rgb(255"],
+.chapter-content div[style*="background-color: rgb(255"],
+.chapter-content div[style*="background:white"],
+.chapter-content div[style*="background-color:white"] {
+  background: linear-gradient(135deg, rgba(249, 250, 251, 0.9), rgba(243, 244, 246, 0.9)) !important;
+  border: 1px solid rgba(229, 231, 235, 0.5) !important;
+  border-radius: 1rem !important;
+  padding: var(--space-lg) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04) !important;
+  backdrop-filter: blur(8px) !important;
+  transition: all 0.3s ease !important;
+  color: var(--text-primary) !important;
+}
+
+.dark .chapter-content div[style*="background: white"],
+.dark .chapter-content div[style*="background-color: white"],
+.dark .chapter-content div[style*="background:#fff"],
+.dark .chapter-content div[style*="background-color:#fff"],
+.dark .chapter-content div[style*="background: #fff"],
+.dark .chapter-content div[style*="background-color: #fff"],
+.dark .chapter-content div[style*="background: rgb(255"],
+.dark .chapter-content div[style*="background-color: rgb(255"],
+.dark .chapter-content div[style*="background:white"],
+.dark .chapter-content div[style*="background-color:white"] {
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.95)) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Interactive timeline specific styles */
+.chapter-content .interactive-timeline {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.chapter-content .timeline-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.chapter-content .timeline-btn {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-content .timeline-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.chapter-content .timeline-btn:hover:before {
+  left: 100%;
+}
+
+.chapter-content .timeline-btn.active {
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary)) !important;
+  box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+.chapter-content .timeline-content-area {
+  min-height: 200px;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.dark .chapter-content .timeline-content-area {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.chapter-content .era-content {
+  animation: fadeIn 0.5s ease;
+}
+
+.chapter-content .era-content h4 {
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.chapter-content .era-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.chapter-content .era-content li:before {
+  content: "▸ ";
+  color: var(--accent-primary);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ensure text is visible in all boxes */
+.chapter-content div[style*="background"] {
+  color: var(--text-primary) !important;
+}
+
+.chapter-content div[style*="background"] * {
+  color: inherit !important;
+}
+
+/* Force visibility for all content in white boxes */
+.chapter-content div[style*="background: white"] *,
+.chapter-content div[style*="background-color: white"] *,
+.chapter-content div[style*="background:#fff"] *,
+.chapter-content div[style*="background-color:#fff"] *,
+.chapter-content div[style*="background: rgb(255"] * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Specific fix for buttons in white boxes */
+.chapter-content div[style*="background"] a,
+.chapter-content div[style*="background"] button {
+  background-color: var(--accent-primary) !important;
+  color: white !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: var(--radius-md) !important;
+  display: inline-block !important;
+  margin: 0.5rem !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.chapter-content div[style*="background"] a:hover,
+.chapter-content div[style*="background"] button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Standard content sections */
+.chapter-content .section,
+.chapter-content .content-section {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+/* Note boxes */
+.chapter-content .note {
+  background-color: rgb(239, 246, 255);
+  border-left: 4px solid rgb(59, 130, 246);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.dark .chapter-content .note {
+  background-color: rgb(30, 58, 138, 0.2);
+  border-left-color: rgb(96, 165, 250);
+}
+
+/* Warning boxes */
+.chapter-content .warning {
+  background-color: rgb(254, 242, 242);
+  border-left: 4px solid rgb(239, 68, 68);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.dark .chapter-content .warning {
+  background-color: rgb(127, 29, 29, 0.2);
+  border-left-color: rgb(248, 113, 113);
+}
+
+/* Example boxes */
+.chapter-content .example,
+.chapter-content .example-box {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+/* 9. Interactive Elements */
+.chapter-content button,
+.chapter-content .button,
+.chapter-content a.button,
+.chapter-content a[href*="openRDFEditor"],
+.chapter-content a[href*="openSPARQLPlayground"],
+.chapter-content a[href*="open3DGraph"],
+.chapter-content a[href*="openVideoTutorial"],
+.chapter-content a[onclick] {
+  background-color: var(--accent-primary) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  margin: var(--space-xs) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.chapter-content button:hover,
+.chapter-content .button:hover,
+.chapter-content a.button:hover,
+.chapter-content a[onclick]:hover {
+  background-color: var(--accent-secondary) !important;
+  transform: translateY(-1px) !important;
+  color: white !important;
+}
+
+/* Override any inline styles on buttons */
+.chapter-content a[style],
+.chapter-content button[style] {
+  background-color: var(--accent-primary) !important;
+  color: white !important;
+}
+
+/* Button containers - ensure visibility */
+.chapter-content .button-container,
+.chapter-content .button-group,
+.chapter-content div[class*="button"] {
+  padding: var(--space-md) !important;
+  background-color: transparent !important;
+  display: flex !important;
+  gap: var(--space-sm) !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+
+/* 10. Images */
+.chapter-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: var(--space-md) auto;
+  display: block;
+}
+
+/* 11. Blockquotes */
+.chapter-content blockquote {
+  border-left: 4px solid var(--accent-primary);
+  padding-left: var(--space-md);
+  margin: var(--space-md) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* 12. Horizontal Rules */
+.chapter-content hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: var(--space-xl) 0;
+}
+
+/* 13. Scrollbar Styles */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(243, 244, 246, 0.3);
-  border-radius: 8px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color-dark);
 }
 
 .dark ::-webkit-scrollbar-track {
   background: rgba(55, 65, 81, 0.3);
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border-radius: 8px;
-  border: 2px solid transparent;
-  background-clip: content-box;
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.5);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  border-radius: 8px;
-  border: 2px solid transparent;
-  background-clip: content-box;
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.7);
 }
 
-/* Firefox scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #6366f1 rgba(243, 244, 246, 0.3);
+/* 14. Responsive Design */
+@media (max-width: 768px) {
+  .chapter-content {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .chapter-content h1 {
+    font-size: 1.875rem;
+  }
+  
+  .chapter-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .chapter-content h3 {
+    font-size: 1.25rem;
+  }
+  
+  .chapter-content .section,
+  .chapter-content .content-section {
+    padding: var(--space-md);
+  }
 }
 
-.dark * {
-  scrollbar-color: #8b5cf6 rgba(55, 65, 81, 0.3);
+/* 15. Utility Classes */
+.chapter-content .text-center {
+  text-align: center;
 }
 
-/* Style override for chapter content */
-
-/* Reset all default styles from chapters */
-.chapter-content * {
-  /* Remove all: unset to preserve text color */
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  box-sizing: border-box;
+.chapter-content .text-muted {
+  color: var(--text-muted);
 }
 
-/* Apply our custom styles with high specificity */
-.chapter-content {
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif !important;
-  color: rgb(17 24 39); /* gray-900 */
-  line-height: 1.75;
+.chapter-content .mt-0 { margin-top: 0; }
+.chapter-content .mb-0 { margin-bottom: 0; }
+.chapter-content .mt-1 { margin-top: var(--space-sm); }
+.chapter-content .mb-1 { margin-bottom: var(--space-sm); }
+.chapter-content .mt-2 { margin-top: var(--space-md); }
+.chapter-content .mb-2 { margin-bottom: var(--space-md); }
+
+/* 16. Special Handling for Common Patterns */
+
+/* Grid layouts */
+.chapter-content .grid,
+.chapter-content .tools-grid {
+  display: grid;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
 }
 
-.dark .chapter-content {
-  color: rgb(243 244 246); /* gray-100 */
+.chapter-content .grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Headers */
-.chapter-content h1 {
-  display: block;
-  font-size: 2.25rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 2rem !important;
-  padding-bottom: 1rem !important;
-  border-bottom: 1px solid rgb(229 231 235) !important;
-  color: rgb(17 24 39) !important; /* gray-900 */
+.chapter-content .grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.dark .chapter-content h1 {
-  border-bottom-color: rgb(55 65 81) !important;
-  color: rgb(249 250 251) !important; /* gray-50 */
+/* Card-like elements */
+.chapter-content .card,
+.chapter-content .tool-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: all 0.2s;
 }
 
-.chapter-content h2 {
-  display: block;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  margin-top: 3rem !important;
-  margin-bottom: 1.5rem !important;
-  color: rgb(99 102 241) !important;
+.chapter-content .card:hover,
+.chapter-content .tool-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.dark .chapter-content h2 {
-  color: rgb(167 139 250) !important;
+/* Definition lists */
+.chapter-content dl {
+  margin: var(--space-md) 0;
 }
 
-.chapter-content h3 {
-  display: block;
-  font-size: 1.25rem !important;
-  font-weight: 600 !important;
-  margin-top: 2rem !important;
-  margin-bottom: 1rem !important;
-  color: rgb(17 24 39) !important; /* gray-900 */
+.chapter-content dt {
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: var(--space-xs);
 }
 
-.dark .chapter-content h3 {
-  color: rgb(243 244 246) !important; /* gray-100 */
-}
-
-/* Paragraphs */
-.chapter-content p {
-  display: block;
-  margin-bottom: 1.5rem !important;
-  line-height: 1.875 !important;
-}
-
-/* Lists */
-.chapter-content ul,
-.chapter-content ol {
-  display: block;
-  margin: 1.5rem 0 !important;
-  padding-left: 2rem !important;
-}
-
-.chapter-content ul {
-  list-style-type: disc !important;
-}
-
-.chapter-content ol {
-  list-style-type: decimal !important;
-}
-
-.chapter-content li {
-  display: list-item;
-  margin-bottom: 0.5rem !important;
-  line-height: 1.75 !important;
-}
-
-/* Code blocks */
-.chapter-content pre {
-  display: block;
-  background-color: rgb(17 24 39) !important;
-  color: rgb(243 244 246) !important;
-  padding: 1.5rem !important;
-  border-radius: 0.75rem !important;
-  overflow-x: auto !important;
-  margin: 1.5rem 0 !important;
-  font-family: ui-monospace, monospace !important;
-  font-size: 0.875rem !important;
-  line-height: 1.5 !important;
-}
-
-.chapter-content code {
-  background-color: rgb(243 244 246) !important;
-  color: rgb(99 102 241) !important;
-  padding: 0.125rem 0.5rem !important;
-  border-radius: 0.25rem !important;
-  font-family: ui-monospace, monospace !important;
-  font-size: 0.875rem !important;
-}
-
-.dark .chapter-content code {
-  background-color: rgb(31 41 55) !important;
-  color: rgb(167 139 250) !important;
-}
-
-.chapter-content pre code {
-  background-color: transparent !important;
-  color: inherit !important;
-  padding: 0 !important;
-}
-
-/* Tables */
-.chapter-content table {
-  display: table;
-  width: 100% !important;
-  border-collapse: collapse !important;
-  margin: 2rem 0 !important;
-}
-
-.chapter-content th,
-.chapter-content td {
-  display: table-cell;
-  padding: 0.75rem 1rem !important;
-  text-align: left !important;
-  border: 1px solid rgb(229 231 235) !important;
-}
-
-.dark .chapter-content th,
-.dark .chapter-content td {
-  border-color: rgb(55 65 81) !important;
-}
-
-.chapter-content th {
-  background-color: rgb(243 244 246) !important;
-  font-weight: 600 !important;
-}
-
-.dark .chapter-content th {
-  background-color: rgb(31 41 55) !important;
-}
-
-/* Links */
-.chapter-content a {
-  color: rgb(99 102 241) !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-}
-
-.dark .chapter-content a {
-  color: rgb(167 139 250) !important;
-}
-
-.chapter-content a:hover {
-  text-decoration-thickness: 2px !important;
-}
-
-/* Blockquotes */
-.chapter-content blockquote {
-  display: block;
-  border-left: 4px solid rgb(99 102 241) !important;
-  padding-left: 1.5rem !important;
-  margin: 1.5rem 0 !important;
-  font-style: italic !important;
-  color: rgb(75 85 99) !important; /* gray-600 */
-}
-
-.dark .chapter-content blockquote {
-  color: rgb(209 213 219) !important; /* gray-300 */
-  border-left-color: rgb(167 139 250) !important;
-}
-
-/* Special sections */
-.chapter-content .section {
-  display: block;
-  background-color: white !important;
-  padding: 2rem !important;
-  border-radius: 1rem !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-  margin-bottom: 2rem !important;
-  border: 1px solid rgb(243 244 246) !important;
-}
-
-.dark .chapter-content .section {
-  background-color: rgb(31 41 55) !important;
-  border-color: rgb(55 65 81) !important;
-}
-
-/* Example boxes */
-.chapter-content .example {
-  display: block;
-  background-color: rgb(249 250 251) !important;
-  border: 1px solid rgb(229 231 235) !important;
-  padding: 1.5rem !important;
-  border-radius: 0.75rem !important;
-  margin: 1.5rem 0 !important;
-}
-
-.dark .chapter-content .example {
-  background-color: rgb(17 24 39) !important;
-  border-color: rgb(55 65 81) !important;
-}
-
-/* Note boxes */
-.chapter-content .note {
-  display: block;
-  background-color: rgb(239 246 255) !important;
-  border-left: 4px solid rgb(59 130 246) !important;
-  padding: 1rem 1.5rem !important;
-  margin: 1.5rem 0 !important;
-  border-radius: 0 0.5rem 0.5rem 0 !important;
-}
-
-.dark .chapter-content .note {
-  background-color: rgb(30 58 138 / 0.2) !important;
-}
-
-/* Warning boxes */
-.chapter-content .warning {
-  display: block;
-  background-color: rgb(254 242 242) !important;
-  border-left: 4px solid rgb(239 68 68) !important;
-  padding: 1rem 1.5rem !important;
-  margin: 1.5rem 0 !important;
-  border-radius: 0 0.5rem 0.5rem 0 !important;
-}
-
-.dark .chapter-content .warning {
-  background-color: rgb(127 29 29 / 0.2) !important;
+.chapter-content dd {
+  margin-left: var(--space-lg);
+  margin-bottom: var(--space-sm);
 }
