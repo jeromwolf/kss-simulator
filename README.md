@@ -15,6 +15,13 @@ KSS(Knowledge Space Simulator)는 추상적인 기술 개념을 시각적으로 
 
 ## ✨ 주요 기능
 
+### 🤖 LLM (Large Language Model) 학습
+- **6개 챕터**: LLM 기초부터 고급 활용까지
+- **토크나이저 시뮬레이터**: GPT/Claude/BERT 스타일 실시간 체험
+- **인터랙티브 퀴즈**: 학습 확인 및 즉시 피드백
+- **실전 예제**: 프롬프트 엔지니어링, RAG, 코드 생성
+- **4시간 30분 커리큘럼**: 체계적인 학습 경로
+
 ### 📚 온톨로지 마스터클래스
 - **16개 챕터**: 온톨로지 기초부터 실전 프로젝트까지
 - **인터랙티브 학습**: 개념을 직접 조작하며 이해
@@ -109,6 +116,17 @@ kss-standalone/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── page.tsx           # 홈페이지
+│   │   ├── modules/           # 학습 모듈
+│   │   │   └── llm/           # LLM 학습 모듈
+│   │   │       ├── layout.tsx # 모듈 레이아웃
+│   │   │       ├── page.tsx   # 모듈 메인
+│   │   │       ├── metadata.ts # 챕터 메타데이터
+│   │   │       ├── [chapterId]/
+│   │   │       │   └── page.tsx # 챕터 콘텐츠
+│   │   │       ├── components/
+│   │   │       │   └── TokenizerDemo.tsx
+│   │   │       └── styles/
+│   │   │           └── chapter.css
 │   │   ├── ontology/          # 온톨로지 학습
 │   │   ├── stock-analysis/    # 주식투자분석
 │   │   │   ├── page.tsx       # 메인 허브
@@ -167,6 +185,38 @@ kss-standalone/
 15. 산업별 활용사례
 16. 미래 전망과 도전과제
 
+### LLM (Large Language Model) 과정
+
+#### Chapter 1: LLM이란 무엇인가? (30분)
+- LLM의 정의와 역사
+- 주요 모델 소개 (GPT, Claude, Gemini)
+- 실생활 활용 사례
+
+#### Chapter 2: LLM의 핵심 구조 (1시간)
+- Transformer 아키텍처
+- 토큰화 과정 (실시간 시뮬레이터)
+- Attention 메커니즘의 이해
+
+#### Chapter 3: LLM 학습 방법론 (45분)
+- 사전 학습과 파인튜닝
+- 학습 데이터와 규모
+- 최신 학습 기법들
+
+#### Chapter 4: 프롬프트 엔지니어링 (50분)
+- Zero/Few/Many-shot Learning
+- Chain-of-Thought 기법
+- 프롬프트 보안과 방어
+
+#### Chapter 5: LLM 실전 활용 (2시간)
+- RAG 시스템과 챗봇 개발
+- 코드 생성과 문서 처리
+- 번역과 창작 콘텐츠
+
+#### Chapter 6: 고급 기법과 미래 (45분)
+- Multimodal LLM
+- LLM Agent와 Tool Use
+- 미래 전망과 윤리적 고려사항
+
 ### 주식투자분석 과정
 
 #### Module 1: 금융시장의 이해 (2주)
@@ -196,6 +246,21 @@ kss-standalone/
 
 ## 📝 최근 업데이트 (2025-07-30)
 
+### Session 5 - LLM 모듈 추가 및 기능 개선
+- **새로운 LLM 학습 모듈 추가** 🎉
+  - 6개 챕터 완성 (소개, 아키텍처, 학습방법, 프롬프트 엔지니어링, 실전활용, 고급기법)
+  - 체계적인 커리큘럼 구성 (총 4시간 30분 학습 분량)
+  - 챕터별 학습 목표 및 예상 시간 표시
+- **인터랙티브 기능 구현**
+  - 실시간 토크나이저 시뮬레이터 (GPT/Claude/BERT 스타일)
+  - 학습 확인 퀴즈 시스템 (답안 확인 및 점수 표시)
+  - 프로그레스 트래킹 기능
+- **UI/UX 개선**
+  - LLM 모듈 전용 스타일 최적화
+  - 가독성 향상 (폰트 크기, 줄 간격, 색상 대비)
+  - 다크모드 완벽 지원
+  - 리스트 아이템 중복 점 표시 버그 수정
+
 ### Session 4 - UI/UX 및 구조 개선
 - 홈페이지 전체 스타일 통일 (Enterprise Knowledge Simulators 스타일)
 - 온톨로지 페이지 스타일 개선
@@ -209,19 +274,23 @@ kss-standalone/
 - 다크모드 토글 버튼 추가
 
 ### 기술적 개선사항
-- 온톨로지 페이지 챕터 네비게이션 이벤트 시스템 구현
-- CustomEvent를 통한 React 컴포넌트 통신 개선
-- CSS 구조 정리 및 최적화 계획 수립
+- LLM 모듈 메타데이터 시스템 구현
+- 동적 라우팅 및 챕터 네비게이션
+- React Hook을 활용한 상태 관리
+- CSS 모듈화 및 스타일 분리
 
 ### 향후 계획
-- 단계적 리팩토링을 통한 확장 가능한 구조 구축
-- 모듈화된 아키텍처로 새로운 지식 도메인 추가 준비
-- MDX 기반 콘텐츠 관리 시스템 도입 예정
+- LLM 모듈 시뮬레이터 추가 개발 (Attention 시각화, Transformer 데모)
+- RAG 시스템 모듈 개발
+- 모노레포 아키텍처 전환
+- MDX 기반 콘텐츠 관리 시스템 도입
 
 ## 🛤️ 사용 가능한 경로
 
 ### 메인 페이지
 - `/` - 홈페이지 (코스 목록)
+- `/modules/llm` - LLM 학습 모듈
+- `/modules/llm/[chapterId]` - LLM 챕터별 학습
 - `/ontology` - 온톨로지 학습
 - `/stock-analysis` - 주식투자분석 시뮬레이터
 

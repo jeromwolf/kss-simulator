@@ -25,6 +25,20 @@ interface Course {
 
 const courses: Course[] = [
   {
+    id: 'llm',
+    title: 'Large Language Models (LLM)',
+    description: 'Transformer, GPT, Claude 등 최신 LLM 기술 완전 정복',
+    icon: Cpu,
+    color: 'from-indigo-500 to-purple-600',
+    category: '인공지능',
+    difficulty: 'intermediate',
+    duration: '6주',
+    students: 856,
+    rating: 4.9,
+    status: 'active',
+    link: '/modules/llm'
+  },
+  {
     id: 'ontology',
     title: 'Ontology & Semantic Web',
     description: 'RDF, SPARQL, 지식 그래프를 통한 시맨틱 웹 기술 마스터',
@@ -53,19 +67,6 @@ const courses: Course[] = [
     link: '/stock-analysis'
   },
   {
-    id: 'llm',
-    title: 'Large Language Models',
-    description: 'Transformer부터 Fine-tuning까지 LLM 완전 정복',
-    icon: Brain,
-    color: 'from-purple-500 to-indigo-500',
-    category: 'AI/ML',
-    difficulty: 'advanced',
-    duration: '10주',
-    students: 1567,
-    rating: 4.8,
-    status: 'active'
-  },
-  {
     id: 'rag',
     title: 'RAG Systems',
     description: 'Retrieval-Augmented Generation 시스템 설계와 구현',
@@ -74,9 +75,7 @@ const courses: Course[] = [
     category: 'AI/ML',
     difficulty: 'intermediate',
     duration: '6주',
-    students: 934,
-    rating: 4.7,
-    status: 'active'
+    status: 'coming-soon'
   },
   {
     id: 'agent-mcp',
@@ -87,61 +86,7 @@ const courses: Course[] = [
     category: 'Agent/AI',
     difficulty: 'advanced',
     duration: '10주',
-    students: 892,
-    rating: 4.7,
-    status: 'active'
-  },
-  {
-    id: 'medical-ai',
-    title: '의료 AI 시스템',
-    description: '의료 영상 분석, 진단 AI, 치료 최적화 시스템 개발',
-    icon: Sparkles,
-    color: 'from-red-500 to-pink-500',
-    category: '의료AI',
-    difficulty: 'advanced',
-    duration: '14주',
-    students: 567,
-    rating: 4.9,
-    status: 'active'
-  },
-  {
-    id: 'physical-ai',
-    title: 'Physical AI & Robotics',
-    description: '로봇공학, 물리적 AI, 센서 융합 및 제어 시스템',
-    icon: Cpu,
-    color: 'from-orange-500 to-red-500',
-    category: '피지컬AI',
-    difficulty: 'advanced',
-    duration: '12주',
-    students: 723,
-    rating: 4.6,
-    status: 'active'
-  },
-  {
-    id: 'iot-systems',
-    title: 'IoT & Edge Computing',
-    description: '사물인터넷, 엣지 컴퓨팅, 스마트 시티 인프라 구축',
-    icon: Globe,
-    color: 'from-green-500 to-teal-500',
-    category: 'IoT',
-    difficulty: 'intermediate',
-    duration: '9주',
-    students: 1456,
-    rating: 4.5,
-    status: 'active'
-  },
-  {
-    id: 'defense-ai',
-    title: '국방 AI 시스템',
-    description: '군사 AI, 사이버 보안, 전략적 의사결정 지원 시스템',
-    icon: Database,
-    color: 'from-slate-600 to-gray-700',
-    category: '국방AI',
-    difficulty: 'advanced',
-    duration: '16주',
-    students: 234,
-    rating: 4.8,
-    status: 'active'
+    status: 'coming-soon'
   },
   {
     id: 'quantum',
@@ -167,7 +112,7 @@ const courses: Course[] = [
   }
 ];
 
-const categories = ['전체', '지식공학', '금융', 'Agent/AI', '의료AI', '피지컬AI', 'IoT', '국방AI', 'AI/ML', '물리컴퓨팅', '블록체인'];
+const categories = ['전체', '지식공학', 'AI/ML', '금융', 'Agent/AI', '물리컴퓨팅', '블록체인'];
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('전체');
