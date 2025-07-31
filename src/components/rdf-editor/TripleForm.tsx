@@ -44,7 +44,7 @@ export const TripleForm: React.FC<TripleFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div>
           <label htmlFor="subject" className="block text-sm font-medium mb-1">
             주어 (Subject)
@@ -79,20 +79,20 @@ export const TripleForm: React.FC<TripleFormProps> = ({
           <label htmlFor="object" className="block text-sm font-medium mb-1">
             목적어 (Object)
           </label>
-          <div className="flex gap-2">
+          <div className="space-y-2">
             <input
               id="object"
               type="text"
               value={object}
               onChange={(e) => setObject(e.target.value)}
               placeholder="예: '홍길동' 또는 :Employee"
-              className="flex-1 px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
               required
             />
             <select
               value={type}
               onChange={(e) => setType(e.target.value as 'resource' | 'literal')}
-              className="px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 text-sm"
             >
               <option value="resource">리소스</option>
               <option value="literal">리터럴</option>

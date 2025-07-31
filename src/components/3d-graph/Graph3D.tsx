@@ -2,7 +2,7 @@
 
 import React, { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
-import { OrbitControls, Text, Html, Line } from '@react-three/drei';
+import { OrbitControls, Html, Line } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface Triple {
@@ -78,15 +78,22 @@ function NodeMesh({ node, isSelected, onClick, onHover }: NodeMeshProps) {
         emissive={hovered ? node.color : '#000000'}
         emissiveIntensity={hovered ? 0.5 : 0}
       />
-      <Text
+      <Html
         position={[0, -1, 0]}
-        fontSize={0.3}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
+        center
+        distanceFactor={5}
+        style={{
+          fontSize: '12px',
+          color: 'white',
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          padding: '2px 6px',
+          borderRadius: '4px',
+          userSelect: 'none',
+          whiteSpace: 'nowrap'
+        }}
       >
         {node.label}
-      </Text>
+      </Html>
     </mesh>
   );
 }
@@ -111,15 +118,22 @@ function EdgeLine({ sourcePos, targetPos, label }: EdgeLineProps) {
         color="#666666"
         lineWidth={2}
       />
-      <Text
+      <Html
         position={midPoint}
-        fontSize={0.2}
-        color="#999999"
-        anchorX="center"
-        anchorY="middle"
+        center
+        distanceFactor={5}
+        style={{
+          fontSize: '10px',
+          color: '#999999',
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          padding: '1px 4px',
+          borderRadius: '3px',
+          userSelect: 'none',
+          whiteSpace: 'nowrap'
+        }}
       >
         {label}
-      </Text>
+      </Html>
     </>
   );
 }

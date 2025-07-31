@@ -47,24 +47,14 @@ export const InferenceResults: React.FC<InferenceResultsProps> = ({
   return (
     <div className={styles.panelSection}>
       <div className={styles.panelHeader}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Brain size={16} />
             <h3 className={styles.panelTitle}>추론 엔진</h3>
           </div>
           <button
             onClick={() => setShowRules(!showRules)}
-            style={{
-              fontSize: '0.75rem',
-              padding: '0.25rem 0.5rem',
-              background: '#f3f4f6',
-              border: '1px solid #d1d5db',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.25rem'
-            }}
+            className="flex items-center gap-1 px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
           >
             <Info size={12} />
             규칙 ({inferenceRules.length})
@@ -103,7 +93,8 @@ export const InferenceResults: React.FC<InferenceResultsProps> = ({
         alignItems: 'center', 
         justifyContent: 'space-between',
         marginBottom: '0.75rem',
-        padding: '0.5rem',
+        padding: '0.75rem',
+        gap: '1rem',
         background: inferredTriples.length > 0 ? '#ecfdf5' : '#f9fafb',
         border: `1px solid ${inferredTriples.length > 0 ? '#d1fae5' : '#e5e7eb'}`,
         borderRadius: '4px'
@@ -125,19 +116,7 @@ export const InferenceResults: React.FC<InferenceResultsProps> = ({
         <button
           onClick={runInference}
           disabled={isInferring}
-          style={{
-            fontSize: '0.75rem',
-            padding: '0.25rem 0.75rem',
-            background: '#3b82f6',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: isInferring ? 'not-allowed' : 'pointer',
-            opacity: isInferring ? 0.7 : 1,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.25rem'
-          }}
+          className="flex items-center gap-1 px-4 py-1.5 text-xs bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {isInferring ? '추론 중...' : '재실행'}
         </button>

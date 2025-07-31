@@ -57,9 +57,9 @@ export const RDFTripleEditor: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6 space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">RDF Triple 비주얼 에디터</h1>
-        <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold">RDF Triple 비주얼 에디터</h1>
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setShowHelp(true)}
             className="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-md hover:bg-green-200 dark:hover:bg-green-900/50 flex items-center gap-2"
@@ -105,7 +105,7 @@ export const RDFTripleEditor: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">트리플 입력</h2>
@@ -140,12 +140,14 @@ export const RDFTripleEditor: React.FC = () => {
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">시각화</h2>
-            <TripleVisualization
-              triples={triples}
-              selectedTriple={selectedTriple}
-              width={600}
-              height={400}
-            />
+            <div className="w-full overflow-x-auto">
+              <TripleVisualization
+                triples={triples}
+                selectedTriple={selectedTriple}
+                width={Math.min(600, typeof window !== 'undefined' ? window.innerWidth - 80 : 600)}
+                height={400}
+              />
+            </div>
           </div>
           
           <div>

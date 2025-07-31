@@ -2,7 +2,7 @@
 
 import React, { useRef, useMemo, useState, useCallback, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Text, Html, Line, Sphere, Box } from '@react-three/drei';
+import { OrbitControls, Html, Line, Sphere, Box } from '@react-three/drei';
 import * as THREE from 'three';
 import { Triple, LayoutType, FilterOptions } from '../types';
 import styles from '../KnowledgeGraph.module.css';
@@ -124,17 +124,25 @@ function NodeMesh({ node, isSelected, isHovered, onClick, onHover, onDoubleClick
         transparent={node.isInferred}
         opacity={node.isInferred ? 0.7 : 1}
       />
-      <Text
+      <Html
         position={[0, -node.size - 0.5, 0]}
-        fontSize={0.3}
-        color={isSelected ? '#3b82f6' : '#ffffff'}
-        anchorX="center"
-        anchorY="middle"
-        maxWidth={3}
-        font={'/fonts/Inter-Medium.woff'}
+        center
+        distanceFactor={5}
+        style={{
+          fontSize: '12px',
+          color: isSelected ? '#3b82f6' : '#ffffff',
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          padding: '2px 6px',
+          borderRadius: '4px',
+          userSelect: 'none',
+          whiteSpace: 'nowrap',
+          maxWidth: '150px',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis'
+        }}
       >
         {node.label}
-      </Text>
+      </Html>
     </mesh>
   );
 }
@@ -167,17 +175,22 @@ function EdgeLine({ edge, sourcePos, targetPos, isSelected, onClick }: EdgeLineP
         dashSize={0.1}
         gapSize={0.05}
       />
-      <Text
+      <Html
         position={midPoint}
-        fontSize={0.2}
-        color={isSelected ? '#3b82f6' : '#cccccc'}
-        anchorX="center"
-        anchorY="middle"
-        maxWidth={2}
-        font={'/fonts/Inter-Regular.woff'}
+        center
+        distanceFactor={5}
+        style={{
+          fontSize: '10px',
+          color: isSelected ? '#3b82f6' : '#cccccc',
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          padding: '1px 4px',
+          borderRadius: '3px',
+          userSelect: 'none',
+          whiteSpace: 'nowrap'
+        }}
       >
         {edge.label}
-      </Text>
+      </Html>
     </group>
   );
 }

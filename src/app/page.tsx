@@ -109,6 +109,18 @@ const courses: Course[] = [
     difficulty: 'intermediate',
     duration: '8주',
     status: 'planned'
+  },
+  {
+    id: 'neo4j',
+    title: 'Neo4j Knowledge Graph',
+    description: '그래프 데이터베이스로 모든 지식을 연결하는 통합 지식 허브',
+    icon: Network,
+    color: 'from-blue-600 to-indigo-600',
+    category: '지식공학',
+    difficulty: 'intermediate',
+    duration: '6주',
+    status: 'active',
+    link: '/neo4j'
   }
 ];
 
@@ -465,6 +477,13 @@ export default function Home() {
                               <span className="text-xs px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded">Transformer</span>
                               <span className="text-xs px-2 py-1 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded">파인튜닝</span>
                               <span className="text-xs px-2 py-1 bg-violet-50 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400 rounded">추론 엔진</span>
+                            </>
+                          )}
+                          {course.id === 'neo4j' && (
+                            <>
+                              <span className="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded">그래프 탐색</span>
+                              <span className="text-xs px-2 py-1 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded">Cypher 쿼리</span>
+                              <span className="text-xs px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded">지식 통합</span>
                             </>
                           )}
                           {course.id === 'rag' && (
