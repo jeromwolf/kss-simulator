@@ -5,9 +5,11 @@ export const ontologyModule: Module = {
   name: 'Ontology & Knowledge Graphs',
   nameKo: '온톨로지와 지식 그래프',
   description: '지식을 체계적으로 표현하고 추론하는 온톨로지의 이론과 실습을 통해 시맨틱 웹의 핵심 기술을 마스터합니다.',
-  icon: '🔗',
-  status: 'active',
+  version: '1.0.0',
+  difficulty: 'intermediate' as const,
   estimatedHours: 16,
+  icon: '🔗',
+  color: '#3b82f6',
   prerequisites: [],
   chapters: [
     {
@@ -15,7 +17,8 @@ export const ontologyModule: Module = {
       title: '시작하기',
       description: '온톨로지 학습의 첫걸음',
       estimatedMinutes: 30,
-      keywords: ['온톨로지', '지식그래프', '시작']
+      keywords: ['온톨로지', '지식그래프', '시작'],
+      learningObjectives: ['온톨로지의 개념 이해', '학습 과정 파악']
     },
     {
       id: 'chapter01',
@@ -135,25 +138,45 @@ export const ontologyModule: Module = {
       id: 'rdf-editor',
       name: 'RDF Triple Editor',
       description: 'RDF 트리플을 시각적으로 생성하고 편집하는 도구',
-      type: 'editor'
+      component: 'RDFTripleEditor'
     },
     {
       id: 'knowledge-graph',
       name: '3D Knowledge Graph',
       description: '지식 그래프를 3차원으로 시각화하고 탐색하는 도구',
-      type: 'visualization'
+      component: 'KnowledgeGraphContainer'
     },
     {
       id: 'sparql-playground',
       name: 'SPARQL Query Playground',
       description: 'SPARQL 쿼리를 실습하고 결과를 확인하는 환경',
-      type: 'playground'
+      component: 'SparqlPlayground'
     },
     {
       id: 'inference-engine',
       name: '추론 엔진 시뮬레이터',
       description: '온톨로지 추론 과정을 단계별로 시각화',
-      type: 'simulator'
+      component: 'InferenceEngine'
+    }
+  ],
+  tools: [
+    {
+      id: 'rdf-editor',
+      name: 'RDF Editor',
+      description: 'RDF 트리플 편집 도구',
+      url: '/rdf-editor'
+    },
+    {
+      id: '3d-graph',
+      name: '3D Knowledge Graph',
+      description: '3D 지식 그래프 시각화',
+      url: '/3d-graph'
+    },
+    {
+      id: 'sparql-playground',
+      name: 'SPARQL Playground',
+      description: 'SPARQL 쿼리 실습',
+      url: '/sparql-playground'
     }
   ]
 }

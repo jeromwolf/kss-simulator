@@ -32,9 +32,10 @@ const InferenceEngine = dynamic(() =>
   import('@/components/rdf-editor/components/InferenceEngine').then(mod => ({ default: mod.InferenceEngine })), 
   { 
     ssr: false,
-    loading: () => <div className="h-96 flex items-center justify-center">추론 엔진 로딩 중...</div>
+    loading: () => <div className="h-32 flex items-center justify-center">추론 엔진 로딩 중...</div>
   }
 )
+
 
 interface ChapterContentProps {
   chapterId: string
@@ -1387,11 +1388,11 @@ function Chapter06Content() {
         
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
           <InferenceEngine triples={[
-            { id: '1', subject: ':John', predicate: ':hasParent', object: ':Mary' },
-            { id: '2', subject: ':Mary', predicate: ':hasParent', object: ':Susan' },
-            { id: '3', subject: ':John', predicate: ':marriedTo', object: ':Jane' },
-            { id: '4', subject: ':Dog', predicate: 'rdfs:subClassOf', object: ':Animal' },
-            { id: '5', subject: ':Buddy', predicate: 'rdf:type', object: ':Dog' }
+            { subject: ':John', predicate: ':hasParent', object: ':Mary' },
+            { subject: ':Mary', predicate: ':hasParent', object: ':Susan' },
+            { subject: ':John', predicate: ':marriedTo', object: ':Jane' },
+            { subject: ':Dog', predicate: 'rdfs:subClassOf', object: ':Animal' },
+            { subject: ':Buddy', predicate: 'rdf:type', object: ':Dog' }
           ]} />
         </div>
       </section>
@@ -1432,6 +1433,24 @@ function Chapter06Content() {
               ] .
             </div>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">추론 엔진 시뮬레이터</h2>
+        <p className="mb-4">
+          OWL의 추론 능력을 직접 체험해보세요! 간단한 트리플을 입력하면 자동으로 새로운 사실들이 추론됩니다.
+        </p>
+        
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <InferenceEngine 
+            triples={[
+              { subject: ':김철수', predicate: ':hasParent', object: ':김부모' },
+              { subject: ':김부모', predicate: ':hasParent', object: ':김조부모' },
+              { subject: ':이영희', predicate: ':marriedTo', object: ':김철수' },
+              { subject: ':김철수', predicate: ':teaches', object: ':컴퓨터과학' }
+            ]}
+          />
         </div>
       </section>
 
@@ -1538,7 +1557,7 @@ function Chapter07Content() {
               <div>WHERE {`{`}</div>
               <div className="ml-4">?person foaf:name ?name .</div>
               <div className="ml-4">?person foaf:age ?age .</div>
-              <div className="ml-4">FILTER (?age >= 30)</div>
+              <div className="ml-4">FILTER (?age &gt;= 30)</div>
               <div>{`}`}</div>
             </div>
           </div>
@@ -2224,13 +2243,13 @@ function Chapter10Content() {
         
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
           <InferenceEngine triples={[
-            { id: '1', subject: ':John', predicate: ':hasParent', object: ':Mary' },
-            { id: '2', subject: ':Mary', predicate: ':hasParent', object: ':Susan' },
-            { id: '3', subject: ':Tom', predicate: ':marriedTo', object: ':Jane' },
-            { id: '4', subject: ':Dog', predicate: 'rdfs:subClassOf', object: ':Animal' },
-            { id: '5', subject: ':Buddy', predicate: 'rdf:type', object: ':Dog' },
-            { id: '6', subject: ':hasParent', predicate: 'rdf:type', object: 'owl:TransitiveProperty' },
-            { id: '7', subject: ':marriedTo', predicate: 'rdf:type', object: 'owl:SymmetricProperty' }
+            { subject: ':John', predicate: ':hasParent', object: ':Mary' },
+            { subject: ':Mary', predicate: ':hasParent', object: ':Susan' },
+            { subject: ':Tom', predicate: ':marriedTo', object: ':Jane' },
+            { subject: ':Dog', predicate: 'rdfs:subClassOf', object: ':Animal' },
+            { subject: ':Buddy', predicate: 'rdf:type', object: ':Dog' },
+            { subject: ':hasParent', predicate: 'rdf:type', object: 'owl:TransitiveProperty' },
+            { subject: ':marriedTo', predicate: 'rdf:type', object: 'owl:SymmetricProperty' }
           ]} />
         </div>
       </section>
@@ -2796,7 +2815,7 @@ function Chapter13Content() {
               <div className="text-gray-500"># 고위험군 환자 정의</div>
               <div>:HighRiskPatient owl:equivalentClass [</div>
               <div className="ml-4">owl:unionOf (</div>
-              <div className="ml-8">[rdf:type :Patient ; :age >= 65]</div>
+              <div className="ml-8">[rdf:type :Patient ; :age &gt;= 65]</div>
               <div className="ml-8">[rdf:type :Patient ; :hasCondition :ChronicDisease]</div>
               <div className="ml-8">[rdf:type :Patient ; :immunocompromised true]</div>
               <div className="ml-4">)</div>

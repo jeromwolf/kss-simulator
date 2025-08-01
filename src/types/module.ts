@@ -23,7 +23,7 @@ export interface Chapter {
   description: string
   estimatedMinutes: number
   keywords: string[]
-  learningObjectives: string[]
+  learningObjectives?: string[]
   prerequisites?: string[]
 }
 

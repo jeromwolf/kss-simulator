@@ -59,42 +59,71 @@ export default function TokenizerDemo({ initialText = '안녕하세요! LLM을 �
   }, [text, tokenizer])
 
   return (
-    <div className="demo-container">
-      <div className="demo-controls">
-        <select 
-          className="tokenizer-select" 
-          value={tokenizer}
-          onChange={(e) => setTokenizer(e.target.value)}
-        >
-          <option value="gpt">GPT-3/4 Tokenizer</option>
-          <option value="claude">Claude Tokenizer</option>
-          <option value="bert">BERT Tokenizer</option>
-        </select>
-        <textarea 
-          className="demo-input" 
-          placeholder="여기에 텍스트를 입력하세요..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
+    <div className="space-y-6">
+      {/* Controls */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="flex gap-4 mb-4">
+          <div className="flex-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              토크나이저 선택
+            </label>
+            <select 
+              className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              value={tokenizer}
+              onChange={(e) => setTokenizer(e.target.value)}
+            >
+              <option value="gpt">GPT-3/4 Tokenizer</option>
+              <option value="claude">Claude Tokenizer</option>
+              <option value="bert">BERT Tokenizer</option>
+            </select>
+          </div>
+          <div className="flex items-end">
+            <div className="bg-indigo-50 dark:bg-indigo-900/20 px-4 py-2 rounded-lg">
+              <div className="text-sm text-gray-600 dark:text-gray-400">토큰 수</div>
+              <div className="text-xl font-bold text-indigo-600 dark:text-indigo-400">{tokenCount}</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            입력 텍스트
+          </label>
+          <textarea 
+            className="w-full h-24 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
+            placeholder="여기에 텍스트를 입력하세요..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+        </div>
       </div>
-      <div className="demo-output">
-        <div className="token-count">토큰 수: <span className="font-bold">{tokenCount}</span></div>
-        <div className="tokenized-result">
-          {tokens.map((token, index) => (
-            <span key={index} className="token">
-              {token}
-            </span>
-          ))}
+
+      {/* Token Visualization */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+        <h4 className="font-semibold text-gray-900 dark:text-white mb-4">토큰화 결과</h4>
+        <div className="min-h-[80px] p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-600">
+          <div className="flex flex-wrap gap-1">
+            {tokens.map((token, index) => (
+              <span 
+                key={index} 
+                className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded border border-indigo-200 dark:border-indigo-700"
+              >
+                {token}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
       
-      <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-        <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">💡 토크나이저별 특징</h4>
-        <ul className="space-y-2 text-sm text-blue-700 dark:text-blue-300">
-          <li><strong>GPT:</strong> BPE(Byte Pair Encoding) 방식, 한글은 주로 글자 단위로 분할</li>
-          <li><strong>Claude:</strong> 개선된 BPE, 문맥을 고려한 더 효율적인 토큰화</li>
-          <li><strong>BERT:</strong> WordPiece 방식, 서브워드 단위로 분할 (## 프리픽스 사용)</li>
-        </ul>
+      {/* Information */}
+      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+        <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-3 flex items-center gap-2">
+          💡 토크나이저별 특징
+        </h4>
+        <div className="space-y-2 text-sm text-blue-700 dark:text-blue-300">
+          <div><strong>GPT:</strong> BPE(Byte Pair Encoding) 방식, 한글은 주로 글자 단위로 분할</div>
+          <div><strong>Claude:</strong> 개선된 BPE, 문맥을 고려한 더 효율적인 토큰화</div>
+          <div><strong>BERT:</strong> WordPiece 방식, 서브워드 단위로 분할 (## 프리픽스 사용)</div>
+        </div>
       </div>
     </div>
   )

@@ -59,12 +59,12 @@ export default function RAGChapterPage() {
           학습 목표
         </h2>
         <ul className="space-y-2">
-          {currentChapter.learningObjectives.map((objective, index) => (
+          {currentChapter.learningObjectives?.map((objective, index) => (
             <li key={index} className="flex items-start gap-2">
               <span className="text-emerald-600 dark:text-emerald-400 mt-1">•</span>
               <span className="text-gray-700 dark:text-gray-300">{objective}</span>
             </li>
-          ))}
+          )) || []}
         </ul>
       </div>
 
