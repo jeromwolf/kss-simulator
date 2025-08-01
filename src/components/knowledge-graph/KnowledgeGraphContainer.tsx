@@ -52,6 +52,13 @@ export const KnowledgeGraphContainer: React.FC<KnowledgeGraphContainerProps> = (
     showInferred: true
   });
 
+  // Mobile panel visibility state
+  const [showLeftPanel, setShowLeftPanel] = useState(false);
+  const [showRightPanel, setShowRightPanel] = useState(false);
+  
+  // Fullscreen mode state
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
   // History for undo/redo
   const [history, setHistory] = useState<Triple[][]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -375,9 +382,45 @@ ${turtleContent}`;
   }, [triples, onTriplesChange]);
 
   return (
-    <div className={styles.container}>
+    <div className={isFullscreen ? styles.fullscreenContainer : styles.container}>
+      {/* Mobile Toggle Buttons */}
+      <div className={styles.mobileToggles}>
+        <button 
+          className={`${styles.mobileToggle} ${showLeftPanel ? styles.active : ''}`}
+          onClick={() => setShowLeftPanel(!showLeftPanel)}
+          aria-label="Toggle tools panel"
+        >
+          🛠️
+        </button>
+        <button 
+          className={`${styles.mobileToggle} ${showRightPanel ? styles.active : ''}`}
+          onClick={() => setShowRightPanel(!showRightPanel)}
+          aria-label="Toggle properties panel"
+        >
+          📋
+        </button>
+        <button 
+          className={`${styles.mobileToggle} ${isFullscreen ? styles.active : ''}`}
+          onClick={() => setIsFullscreen(!isFullscreen)}
+          aria-label="Toggle fullscreen"
+        >
+          {isFullscreen ? '🪟' : '⛶'}
+        </button>
+      </div>
+
+      {/* Mobile Backdrop */}
+      {(showLeftPanel || showRightPanel) && (
+        <div 
+          className={styles.mobileBackdrop} 
+          onClick={() => {
+            setShowLeftPanel(false);
+            setShowRightPanel(false);
+          }}
+        />
+      )}
+
       {/* Left Panel - Tools */}
-      <div className={styles.leftPanel}>
+      <div className={`${styles.leftPanel} ${showLeftPanel ? styles.visible : ''}`}>
         <ToolPanel 
           onAddNode={() => {/* Manual node add - Phase 3-1 */}}
           onAddEdge={() => {
@@ -436,7 +479,7 @@ ${turtleContent}`;
       </div>
 
       {/* Right Panel - Properties & Query */}
-      <div className={styles.rightPanel}>
+      <div className={`${styles.rightPanel} ${showRightPanel ? styles.visible : ''}`}>
         {selectedNode && (
           <NodeProperties
             nodeId={selectedNode}

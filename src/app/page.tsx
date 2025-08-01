@@ -50,7 +50,7 @@ const courses: Course[] = [
     students: 1234,
     rating: 4.8,
     status: 'active',
-    link: '/ontology'
+    link: '/modules/ontology'
   },
   {
     id: 'stock-analysis',
@@ -71,11 +71,14 @@ const courses: Course[] = [
     title: 'RAG Systems',
     description: 'Retrieval-Augmented Generation 시스템 설계와 구현',
     icon: Database,
-    color: 'from-indigo-500 to-purple-500',
+    color: 'from-emerald-500 to-green-600',
     category: 'AI/ML',
     difficulty: 'intermediate',
-    duration: '6주',
-    status: 'coming-soon'
+    duration: '12시간',
+    students: 423,
+    rating: 4.9,
+    status: 'active',
+    link: '/modules/rag'
   },
   {
     id: 'agent-mcp',
