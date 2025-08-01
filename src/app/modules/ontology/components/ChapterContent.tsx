@@ -883,8 +883,35 @@ function Chapter04Content() {
           아래 에디터를 사용하여 직접 RDF 트리플을 만들어보세요!
         </p>
         
+        <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 mb-4">
+          <h3 className="font-semibold mb-2">💡 목적어의 두 가지 유형</h3>
+          <div className="space-y-2 text-sm">
+            <div>
+              <strong>리소스 (Resource)</strong>: URI로 식별되는 개체
+              <div className="text-gray-600 dark:text-gray-400">예: :Seoul, :Korea, http://example.org/person/john</div>
+            </div>
+            <div>
+              <strong>리터럴 (Literal)</strong>: 실제 데이터 값
+              <div className="text-gray-600 dark:text-gray-400">예: "서울", "25"^^xsd:integer, "2024-01-01"^^xsd:date</div>
+            </div>
+          </div>
+        </div>
+        
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
           <RDFTripleEditor />
+          
+          <div className="mt-4 text-center">
+            <a
+              href="/rdf-editor"
+              target="_blank"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              전체 화면에서 RDF Editor 열기
+            </a>
+          </div>
         </div>
       </section>
 
@@ -941,6 +968,208 @@ function Chapter04Content() {
               <div>{`}`}</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">술어(Predicate)는 어떻게 정하나요?</h2>
+        <p className="mb-4">
+          RDF에서 술어는 주로 두 가지 방법으로 사용합니다: 표준 온톨로지를 가져다 쓰거나, 직접 정의합니다.
+        </p>
+        
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
+            <h3 className="font-semibold text-blue-800 dark:text-blue-200 mb-3">📚 표준 온톨로지 사용 (90%)</h3>
+            <div className="space-y-2 text-sm">
+              <div className="font-mono bg-white dark:bg-gray-800 p-2 rounded">
+                <div className="text-gray-600 dark:text-gray-400"># 사람/조직 정보</div>
+                <div>foaf:name "홍길동"</div>
+                <div>foaf:knows :김철수</div>
+              </div>
+              <div className="font-mono bg-white dark:bg-gray-800 p-2 rounded">
+                <div className="text-gray-600 dark:text-gray-400"># 문서 정보</div>
+                <div>dc:title "RDF 가이드"</div>
+                <div>dc:creator "저자명"</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6">
+            <h3 className="font-semibold text-green-800 dark:text-green-200 mb-3">🔧 커스텀 술어 정의 (10%)</h3>
+            <div className="space-y-2 text-sm">
+              <div className="font-mono bg-white dark:bg-gray-800 p-2 rounded">
+                <div className="text-gray-600 dark:text-gray-400"># 회사 전용</div>
+                <div>my:employeeId "E12345"</div>
+                <div>my:department "개발팀"</div>
+              </div>
+              <div className="font-mono bg-white dark:bg-gray-800 p-2 rounded">
+                <div className="text-gray-600 dark:text-gray-400"># 도메인 특화</div>
+                <div>med:diagnosis "감기"</div>
+                <div>edu:courseCode "CS101"</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6 mb-6">
+          <h3 className="font-semibold mb-3">🌟 자주 사용하는 표준 온톨로지</h3>
+          <div className="grid md:grid-cols-2 gap-3 text-sm">
+            <div>
+              <strong>FOAF</strong> (<code>foaf:</code>)
+              <div className="text-gray-600 dark:text-gray-400">name, knows, mbox, homepage</div>
+            </div>
+            <div>
+              <strong>Dublin Core</strong> (<code>dc:</code>)
+              <div className="text-gray-600 dark:text-gray-400">title, creator, date, subject</div>
+            </div>
+            <div>
+              <strong>Schema.org</strong> (<code>schema:</code>)
+              <div className="text-gray-600 dark:text-gray-400">Person, Organization, Article</div>
+            </div>
+            <div>
+              <strong>RDF Schema</strong> (<code>rdfs:</code>)
+              <div className="text-gray-600 dark:text-gray-400">label, comment, subClassOf</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
+          <h3 className="font-semibold mb-3">💡 실제 사용 예시: 표준 + 커스텀 혼합</h3>
+          <div className="font-mono text-sm">
+            <div className="text-gray-600 dark:text-gray-400"># 1. 네임스페이스 선언</div>
+            <div>@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .</div>
+            <div>@prefix my: &lt;http://mycompany.com/ont#&gt; .</div>
+            <div className="mt-2 text-gray-600 dark:text-gray-400"># 2. 실제 사용</div>
+            <div>:john</div>
+            <div className="ml-4">foaf:name "John Kim" ;      <span className="text-gray-600 dark:text-gray-400"># 표준</span></div>
+            <div className="ml-4">foaf:mbox "john@company.com" ; <span className="text-gray-600 dark:text-gray-400"># 표준</span></div>
+            <div className="ml-4">my:employeeId "E12345" ;   <span className="text-gray-600 dark:text-gray-400"># 커스텀</span></div>
+            <div className="ml-4">my:team "개발1팀" .        <span className="text-gray-600 dark:text-gray-400"># 커스텀</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">자주 쓰는 온톨로지 치트시트</h2>
+        <p className="mb-4">
+          실무에서 가장 많이 사용하는 표준 온톨로지와 주요 속성들을 정리했습니다.
+        </p>
+        
+        <div className="space-y-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-3">
+              FOAF (Friend of a Friend) - 사람/조직 정보
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">주요 속성</h4>
+                <div className="font-mono text-sm space-y-1">
+                  <div><code className="text-blue-600">foaf:name</code> - 이름</div>
+                  <div><code className="text-blue-600">foaf:mbox</code> - 이메일</div>
+                  <div><code className="text-blue-600">foaf:homepage</code> - 홈페이지</div>
+                  <div><code className="text-blue-600">foaf:knows</code> - 아는 사람</div>
+                  <div><code className="text-blue-600">foaf:age</code> - 나이</div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">사용 예시</h4>
+                <div className="bg-gray-50 dark:bg-gray-900 rounded p-3 font-mono text-sm">
+                  <div>:person a foaf:Person ;</div>
+                  <div className="ml-4">foaf:name "홍길동" ;</div>
+                  <div className="ml-4">foaf:mbox &lt;mailto:hong@kr&gt; .</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold text-green-600 dark:text-green-400 mb-3">
+              Dublin Core (DC) - 문서/출판물 메타데이터
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">핵심 15개 요소</h4>
+                <div className="font-mono text-sm space-y-1">
+                  <div><code className="text-green-600">dc:title</code> - 제목</div>
+                  <div><code className="text-green-600">dc:creator</code> - 작성자</div>
+                  <div><code className="text-green-600">dc:date</code> - 날짜</div>
+                  <div><code className="text-green-600">dc:subject</code> - 주제</div>
+                  <div><code className="text-green-600">dc:language</code> - 언어</div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">사용 예시</h4>
+                <div className="bg-gray-50 dark:bg-gray-900 rounded p-3 font-mono text-sm">
+                  <div>:book a :Document ;</div>
+                  <div className="ml-4">dc:title "RDF 입문" ;</div>
+                  <div className="ml-4">dc:creator "김작가" ;</div>
+                  <div className="ml-4">dc:date "2024-01-01" .</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold text-purple-600 dark:text-purple-400 mb-3">
+              Schema.org - 웹 콘텐츠 (Google 권장)
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">주요 타입과 속성</h4>
+                <div className="font-mono text-sm space-y-1">
+                  <div><code className="text-purple-600">schema:Person</code> - 사람</div>
+                  <div><code className="text-purple-600">schema:name</code> - 이름</div>
+                  <div><code className="text-purple-600">schema:author</code> - 저자</div>
+                  <div><code className="text-purple-600">schema:datePublished</code> - 발행일</div>
+                  <div><code className="text-purple-600">schema:price</code> - 가격</div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">사용 예시</h4>
+                <div className="bg-gray-50 dark:bg-gray-900 rounded p-3 font-mono text-sm">
+                  <div>:article a schema:Article ;</div>
+                  <div className="ml-4">schema:headline "뉴스 제목" ;</div>
+                  <div className="ml-4">schema:author :john .</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold text-orange-600 dark:text-orange-400 mb-3">
+              SKOS - 분류/카테고리 체계
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">계층 구조 표현</h4>
+                <div className="font-mono text-sm space-y-1">
+                  <div><code className="text-orange-600">skos:prefLabel</code> - 대표 레이블</div>
+                  <div><code className="text-orange-600">skos:altLabel</code> - 대체 레이블</div>
+                  <div><code className="text-orange-600">skos:broader</code> - 상위 개념</div>
+                  <div><code className="text-orange-600">skos:narrower</code> - 하위 개념</div>
+                  <div><code className="text-orange-600">skos:related</code> - 관련 개념</div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">사용 예시</h4>
+                <div className="bg-gray-50 dark:bg-gray-900 rounded p-3 font-mono text-sm">
+                  <div>:animal skos:prefLabel "동물" ;</div>
+                  <div className="ml-4">skos:narrower :dog, :cat .</div>
+                  <div>:dog skos:broader :animal .</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+          <h3 className="font-semibold mb-2">💡 실무 팁</h3>
+          <ul className="space-y-1 text-sm">
+            <li>• 모르겠으면 <strong>Schema.org</strong>부터 확인 (Google이 관리해서 가장 포괄적)</li>
+            <li>• 각 온톨로지는 <strong>공식 문서</strong>가 있음 (예: xmlns.com/foaf/spec/)</li>
+            <li>• <strong>Protégé</strong> 같은 온톨로지 에디터로 자동완성 지원받기</li>
+            <li>• 여러 온톨로지를 <strong>혼합</strong>해서 사용하는 것이 일반적</li>
+          </ul>
         </div>
       </section>
 

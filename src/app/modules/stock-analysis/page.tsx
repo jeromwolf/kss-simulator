@@ -20,13 +20,12 @@ import {
 import { stockAnalysisModule } from './metadata'
 
 export default function StockAnalysisModulePage() {
-  const [activeSimulator, setActiveSimulator] = useState<string | null>(null)
 
   return (
     <div className="max-w-6xl mx-auto space-y-12">
       {/* Hero Section */}
       <section className="text-center space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-200 rounded-full text-sm font-medium">
           <TrendingUp className="w-4 h-4" />
           체계적인 투자 교육
         </div>
@@ -64,14 +63,14 @@ export default function StockAnalysisModulePage() {
             <Link
               key={chapter.id}
               href={`/modules/stock-analysis/${chapter.id}`}
-              className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-green-300 dark:hover:border-green-600 transition-all duration-200"
+              className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-red-300 dark:hover:border-red-600 transition-all duration-200"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center font-bold">
+                <div className="flex-shrink-0 w-10 h-10 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center font-bold">
                   {index + 1}
                 </div>
                 <div className="flex-grow">
-                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                     {chapter.title}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -88,7 +87,7 @@ export default function StockAnalysisModulePage() {
                     </div>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-green-500 transition-colors" />
+                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-red-500 transition-colors" />
               </div>
             </Link>
           ))}
@@ -115,7 +114,7 @@ export default function StockAnalysisModulePage() {
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div className="flex-grow">
@@ -125,13 +124,13 @@ export default function StockAnalysisModulePage() {
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {simulator.description}
                     </p>
-                    <button
-                      onClick={() => setActiveSimulator(simulator.id)}
-                      className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors"
+                    <Link
+                      href={`/modules/stock-analysis/simulators/${simulator.id}`}
+                      className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors"
                     >
                       <PlayCircle className="w-4 h-4" />
                       시뮬레이터 실행
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -156,13 +155,13 @@ export default function StockAnalysisModulePage() {
             <Link
               key={tool.id}
               href={tool.url}
-              className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-green-300 dark:hover:border-green-600 transition-all duration-200"
+              className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-red-300 dark:hover:border-red-600 transition-all duration-200"
             >
               <div className="text-center space-y-3">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                   {getToolIcon(tool.id)}
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                   {tool.name}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -176,14 +175,14 @@ export default function StockAnalysisModulePage() {
 
       {/* Start Learning CTA */}
       <section className="text-center space-y-6 py-12">
-        <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white">
+        <div className="bg-gradient-to-r from-red-500 to-orange-600 rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-4">지금 바로 시작하세요!</h2>
-          <p className="text-green-100 mb-6">
+          <p className="text-red-100 mb-6">
             체계적인 커리큘럼과 실전 시뮬레이터로 투자 전문가가 되어보세요
           </p>
           <Link
             href={`/modules/stock-analysis/${stockAnalysisModule.chapters[0].id}`}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
           >
             <PlayCircle className="w-5 h-5" />
             첫 번째 모듈 시작하기

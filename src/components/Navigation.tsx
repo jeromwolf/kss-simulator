@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Brain, TrendingUp, Home, Network } from 'lucide-react';
+import { Brain, TrendingUp, Home, Network, Video } from 'lucide-react';
 import KSSLogo from './icons/KSSLogo';
 
 export default function Navigation() {
@@ -12,6 +12,7 @@ export default function Navigation() {
     { href: '/', label: 'Home', icon: Home },
     { href: '/ontology', label: '온톨로지', icon: Brain },
     { href: '/stock-analysis', label: '주식투자분석', icon: TrendingUp },
+    { href: '/video-creator', label: '비디오 생성', icon: Video },
     { href: '/neo4j', label: 'Neo4j', icon: Network },
   ];
 

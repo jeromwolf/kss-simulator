@@ -80,23 +80,28 @@ export const TripleForm: React.FC<TripleFormProps> = ({
             목적어 (Object)
           </label>
           <div className="space-y-2">
-            <input
-              id="object"
-              type="text"
-              value={object}
-              onChange={(e) => setObject(e.target.value)}
-              placeholder="예: '홍길동' 또는 :Employee"
-              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
-              required
-            />
             <select
               value={type}
               onChange={(e) => setType(e.target.value as 'resource' | 'literal')}
               className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 text-sm"
             >
-              <option value="resource">리소스</option>
-              <option value="literal">리터럴</option>
+              <option value="resource">리소스 (다른 개체와 연결)</option>
+              <option value="literal">리터럴 (텍스트/숫자 값)</option>
             </select>
+            <input
+              id="object"
+              type="text"
+              value={object}
+              onChange={(e) => setObject(e.target.value)}
+              placeholder={type === 'resource' ? "예: :Employee, :Seoul" : "예: '홍길동', '25', '2024-01-01'"}
+              className="w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:border-gray-600"
+              required
+            />
+            <div className="text-xs text-gray-500 dark:text-gray-400">
+              {type === 'resource' 
+                ? "리소스: URI로 식별되는 개체. 다른 트리플의 주어가 될 수 있습니다."
+                : "리터럴: 실제 데이터 값. 더 이상 연결되지 않는 끝점입니다."}
+            </div>
           </div>
         </div>
       </div>

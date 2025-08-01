@@ -9,7 +9,7 @@ export const stockAnalysisModule: Module = {
   difficulty: 'intermediate',
   estimatedHours: 60,
   icon: '📈',
-  color: '#059669',
+  color: '#dc2626',
   
   prerequisites: ['기본적인 경제 지식', '수학적 사고력'],
   

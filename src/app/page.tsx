@@ -57,7 +57,7 @@ const courses: Course[] = [
     title: '주식투자분석 시뮬레이터',
     description: '실전 투자 전략과 심리까지 포함한 종합 투자 마스터 과정',
     icon: TrendingUp,
-    color: 'from-green-500 to-emerald-500',
+    color: 'from-red-500 to-orange-500',
     category: '금융',
     difficulty: 'beginner',
     duration: '16주',

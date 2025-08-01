@@ -47,6 +47,7 @@ KSS(Knowledge Space Simulator)는 추상적인 기술 개념을 시각적으로 
 - ⚡ **빠른 성능**: Next.js 기반 최적화
 - 🎨 **모던 UI/UX**: Tailwind CSS로 구현된 세련된 디자인
 - 🤖 **AI 통합**: 학습 도우미 및 멘토 시스템
+- 🎤 **Google TTS 연동**: Wavenet 고품질 한국어 음성 지원
 
 ## 🛠️ 기술 스택
 
@@ -266,11 +267,19 @@ KSS 플랫폼의 비즈니스 모델 및 천억 매출 전략은 [KSS_비즈니�
 
 ## 📝 최신 업데이트 (2025-08-01)
 
-### Session 8 - 모든 핵심 모듈 표준화 완료 🚀
-- **주식투자분석 모듈 리팩토링 완료**
-  - 📈 **표준 구조 적용**: `/app/modules/stock-analysis/` 로 이전
-  - 💚 **Green 테마**: 주식투자분석 모듈 전용 색상 체계 (Green-600/400)
-  - 🏗️ **5개 모듈 구성**: 금융시장 이해, 기본적 분석, 기술적 분석, 포트폴리오 관리, AI&퀀트 투자
+### Session 9 - 콘텐츠 생성 도구 추가 🎥
+- **YouTube 콘텐츠 자동화 시스템 구현**
+  - 🎬 **비디오 생성 도구**: Remotion 기반 쇼츠/설명 영상 제작
+  - 🎤 **TTS 시스템**: Google Cloud TTS API 연동 (Wavenet 고품질 음성)
+  - 📊 **금융 콘텐츠**: PER 계산기, 금융 용어 쇼츠 생성기
+  - 🎯 **온톨로지 쇼츠**: 복잡한 개념을 30초 영상으로 변환
+  - 🔥 **바이럴 콘텐츠**: AI 기반 트렌드 콘텐츠 생성
+- **주식투자분석 시뮬레이터 확장**
+  - 📈 **AI 멘토 시스템**: 개인화된 투자 학습 가이드
+  - 💹 **백테스팅 엔진**: 투자 전략 과거 데이터 검증
+  - 📊 **차트 분석기**: 기술적 패턴 자동 인식
+  - 💰 **재무 분석기**: 기업 재무제표 자동 분석
+  - 🎯 **포트폴리오 최적화**: 마코위츠 모델 기반 자산 배분
   - 🎯 **인터랙티브 시뮬레이터**: 재무제표 분석기, 차트 패턴 분석기, 포트폴리오 최적화기 등 5개
   - 📚 **60시간 커리큘럼**: 기초부터 AI 활용 투자까지 체계적 학습 경로
   - ✅ **빌드 성공**: 20개 페이지 생성, TypeScript 타입 안전성 보장
@@ -355,6 +364,7 @@ KSS 플랫폼의 비즈니스 모델 및 천억 매출 전략은 [KSS_비즈니�
   - 반응형 디자인: 모바일/태블릿 대응
 - **API 통합**
   - Gemini API 연동 옵션 추가 (실제 LLM 응답 생성)
+  - Google Cloud TTS API 연동 (Wavenet 고품질 한국어 음성)
   - 환경 변수 지원 (.env 파일)
 
 ### Session 5 - LLM 모듈 추가 및 기능 개선
@@ -504,6 +514,42 @@ MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
 ### 기능 제안
 - [디스커션](https://github.com/jeromwolf/kss-simulator/discussions)
+
+## ⚙️ 환경 설정
+
+### Google Cloud TTS 설정 (선택사항)
+
+고품질 한국어 음성을 사용하려면 Google Cloud TTS API를 설정하세요:
+
+1. **Google Cloud Console에서 설정**
+   ```bash
+   # 1. Google Cloud Console (https://console.cloud.google.com) 접속
+   # 2. 새 프로젝트 생성 또는 기존 프로젝트 선택
+   # 3. Cloud Text-to-Speech API 활성화
+   # 4. API 키 생성 (API 및 서비스 > 사용자 인증 정보)
+   ```
+
+2. **환경 변수 설정**
+   ```bash
+   # .env.local 파일 생성
+   cp .env.local.example .env.local
+   
+   # API 키 설정
+   NEXT_PUBLIC_GOOGLE_TTS_API_KEY=your_api_key_here
+   ```
+
+3. **지원 음성**
+   - `ko-KR-Wavenet-A` - 자연스러운 여성 음성 (기본)
+   - `ko-KR-Wavenet-B` - 따뜻한 남성 음성
+   - `ko-KR-Wavenet-C` - 신뢰감 있는 여성 음성
+   - `ko-KR-Wavenet-D` - 명확한 남성 음성
+
+4. **특별 기능**
+   - SSML 지원으로 감정, 속도, 피치 조절
+   - 금융 용어별 최적화된 음성 선택
+   - MP3 파일 다운로드 지원
+
+> **참고**: API 키가 없어도 데모 모드로 작동합니다.
 
 ## 📖 사용 메뉴얼
 

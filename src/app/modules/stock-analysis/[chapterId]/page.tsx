@@ -26,7 +26,7 @@ export default function StockAnalysisChapterPage() {
       {/* Chapter Header */}
       <div className="mb-8">
         <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
-          <Link href="/modules/stock-analysis" className="hover:text-green-600 dark:hover:text-green-400">
+          <Link href="/modules/stock-analysis" className="hover:text-red-600 dark:hover:text-red-400">
             주식투자분석 모듈
           </Link>
           <span>/</span>
@@ -54,15 +54,15 @@ export default function StockAnalysisChapterPage() {
 
       {/* Learning Objectives */}
       {currentChapter.learningObjectives && (
-        <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 mb-8">
+        <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 mb-8">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <CheckCircle className="text-green-600 dark:text-green-400" size={20} />
+            <CheckCircle className="text-red-600 dark:text-red-400" size={20} />
             학습 목표
           </h2>
           <ul className="space-y-2">
             {currentChapter.learningObjectives.map((objective, index) => (
               <li key={index} className="flex items-start gap-2">
-                <span className="text-green-600 dark:text-green-400 mt-1">•</span>
+                <span className="text-red-600 dark:text-red-400 mt-1">•</span>
                 <span className="text-gray-700 dark:text-gray-300">{objective}</span>
               </li>
             ))}
@@ -78,7 +78,7 @@ export default function StockAnalysisChapterPage() {
         {prevChapter ? (
           <Link
             href={`/modules/stock-analysis/${prevChapter.id}`}
-            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
           >
             <ChevronLeft size={20} />
             <div className="text-left">
@@ -93,7 +93,7 @@ export default function StockAnalysisChapterPage() {
         {nextChapter ? (
           <Link
             href={`/modules/stock-analysis/${nextChapter.id}`}
-            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
           >
             <div className="text-right">
               <div className="text-sm">다음 모듈</div>
@@ -104,7 +104,7 @@ export default function StockAnalysisChapterPage() {
         ) : (
           <Link
             href="/modules/stock-analysis"
-            className="flex items-center gap-2 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-500 transition-colors"
+            className="flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-500 transition-colors"
           >
             <div className="text-right">
               <div className="text-sm">학습 완료!</div>
