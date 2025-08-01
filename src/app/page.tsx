@@ -64,7 +64,7 @@ const courses: Course[] = [
     students: 2341,
     rating: 4.9,
     status: 'active',
-    link: '/stock-analysis'
+    link: '/modules/stock-analysis'
   },
   {
     id: 'rag',
