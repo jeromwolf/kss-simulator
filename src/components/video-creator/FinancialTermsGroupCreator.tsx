@@ -270,7 +270,7 @@ export const FinancialTermsGroupCreator: React.FC = () => {
 
   // 온톨로지 품질의 상세 교육 스크립트 생성
   const generateHighQualityScript = (term: any) => {
-    const scripts = {
+    const scripts: Record<string, string> = {
       'per': `
 🎯 PER(주가수익비율)이 뭔가요?
 주가를 주당순이익으로 나눈 값입니다. 쉽게 말해 "이 회사 주식이 비싼가 싼가?"를 알려주는 지표죠.
@@ -344,7 +344,7 @@ PER = 현재 주가 ÷ 주당순이익(EPS)
 
   // 실제 예제 생성
   const generateRealExample = (term: any) => {
-    const examples = {
+    const examples: Record<string, any> = {
       'per': {
         company: "삼성전자",
         currentPrice: "70,000원",
@@ -377,7 +377,7 @@ PER = 현재 주가 ÷ 주당순이익(EPS)
 
   // 실용적 가이드 생성
   const generatePracticalGuide = (term: any) => {
-    const guides = {
+    const guides: Record<string, string[]> = {
       'per': [
         "같은 업종 회사들과 비교하기",
         "과거 3년 평균 PER과 비교",

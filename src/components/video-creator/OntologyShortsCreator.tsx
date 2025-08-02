@@ -330,7 +330,6 @@ export const OntologyShortsCreator: React.FC = () => {
                   controls
                   loop
                   autoPlay={false}
-                  muted={false}
                 />
               </div>
             </div>

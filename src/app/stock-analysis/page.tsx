@@ -1,10 +1,6 @@
-import { StockAnalysisHub } from '@/components/stock-analysis/StockAnalysisHub';
-import styles from './stock-analysis.module.css';
+import { redirect } from 'next/navigation';
 
 export default function StockAnalysisPage() {
-  return (
-    <div className={styles['stock-analysis-content']}>
-      <StockAnalysisHub />
-    </div>
-  );
+  // Redirect to the new module page
+  redirect('/modules/stock-analysis');
 }

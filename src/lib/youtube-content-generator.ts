@@ -1,4 +1,25 @@
-import { ChapterContent, Module } from '@/types';
+// Type definitions (these would normally come from @/types)
+interface ChapterContent {
+  id: string;
+  title: string;
+  content: string;
+  description?: string;
+  learningObjectives?: string[];
+  estimatedMinutes?: number;
+  keywords?: string[];
+  hasSimulator?: boolean;
+}
+
+interface Module {
+  id: string;
+  name: string;
+  nameKo?: string;
+  description?: string;
+  keywords?: string[];
+  learningObjectives?: string[];
+  chapters: ChapterContent[];
+  simulators?: any[];
+}
 
 interface YouTubeVideo {
   title: string;
@@ -51,30 +72,31 @@ export class YouTubeContentGenerator {
 
   // 모듈 소개 비디오
   private static generateIntroVideo(module: Module): YouTubeVideo {
+    const moduleNameKo = module.nameKo || module.name;
     return {
-      title: `[KSS] ${module.nameKo} 완벽 가이드 - 소개편`,
+      title: `[KSS] ${moduleNameKo} 완벽 가이드 - 소개편`,
       description: `
-${module.description}
+${module.description || ''}
 
 📚 이 시리즈에서 배우게 될 내용:
 ${module.chapters.map((ch, i) => `${i + 1}. ${ch.title}`).join('\n')}
 
 🔗 KSS 플랫폼에서 직접 체험하기: https://kss-platform.com/modules/${module.id}
 
-#${module.nameKo} #KSS #온라인교육 #AI학습
+#${moduleNameKo} #KSS #온라인교육 #AI학습
       `.trim(),
-      tags: [module.nameKo, 'KSS', '온라인교육', ...module.keywords || []],
+      tags: [moduleNameKo, 'KSS', '온라인교육', ...(module.keywords || [])],
       thumbnail: {
-        title: module.nameKo,
+        title: moduleNameKo,
         subtitle: '완벽 가이드 시작하기'
       },
       script: {
         sections: [
           {
             title: '인사 및 소개',
-            content: `안녕하세요! KSS 플랫폼의 ${module.nameKo} 모듈에 오신 것을 환영합니다.`,
+            content: `안녕하세요! KSS 플랫폼의 ${moduleNameKo} 모듈에 오신 것을 환영합니다.`,
             duration: 10,
-            visuals: { type: 'text', content: module.nameKo }
+            visuals: { type: 'text', content: moduleNameKo }
           },
           {
             title: '학습 목표',
@@ -103,7 +125,7 @@ ${module.chapters.map((ch, i) => `${i + 1}. ${ch.title}`).join('\n')}
     const sections = this.analyzeChapterContent(chapter);
     
     return {
-      title: `[KSS ${module.nameKo}] ${chapterNumber}강. ${chapter.title}`,
+      title: `[KSS ${module.nameKo || module.name}] ${chapterNumber}강. ${chapter.title}`,
       description: `
 ${chapter.description}
 
@@ -114,12 +136,12 @@ ${chapter.learningObjectives?.map(obj => `• ${obj}`).join('\n') || ''}
 
 🔗 KSS에서 시뮬레이터 체험하기: https://kss-platform.com/modules/${module.id}/${chapter.id}
 
-#${module.nameKo} #${chapter.title} #KSS
+#${module.nameKo || module.name} #${chapter.title} #KSS
       `.trim(),
-      tags: [module.nameKo, chapter.title, ...chapter.keywords],
+      tags: [module.nameKo || module.name, chapter.title, ...(chapter.keywords || [])],
       thumbnail: {
         title: `${chapterNumber}강. ${chapter.title}`,
-        subtitle: module.nameKo
+        subtitle: module.nameKo || module.name
       },
       script: {
         sections: sections
@@ -130,7 +152,7 @@ ${chapter.learningObjectives?.map(obj => `• ${obj}`).join('\n') || ''}
   // 시뮬레이터 비디오
   private static generateSimulatorVideo(module: Module, simulator: any): YouTubeVideo {
     return {
-      title: `[KSS 실습] ${simulator.name} 사용법 - ${module.nameKo}`,
+      title: `[KSS 실습] ${simulator.name} 사용법 - ${module.nameKo || module.name}`,
       description: `
 ${simulator.description}
 
@@ -141,7 +163,7 @@ ${simulator.description}
 
 🔗 직접 체험하기: https://kss-platform.com/modules/${module.id}/simulators/${simulator.id}
       `.trim(),
-      tags: [module.nameKo, '시뮬레이터', simulator.name, '실습'],
+      tags: [module.nameKo || module.name, '시뮬레이터', simulator.name, '실습'],
       thumbnail: {
         title: simulator.name,
         subtitle: '시뮬레이터 튜토리얼'
@@ -168,9 +190,9 @@ ${simulator.description}
   // 요약 비디오
   private static generateSummaryVideo(module: Module): YouTubeVideo {
     return {
-      title: `[KSS] ${module.nameKo} 전체 정리 - 핵심 요약`,
+      title: `[KSS] ${module.nameKo || module.name} 전체 정리 - 핵심 요약`,
       description: `
-${module.nameKo} 시리즈를 마무리하며 핵심 내용을 정리합니다.
+${module.nameKo || module.name} 시리즈를 마무리하며 핵심 내용을 정리합니다.
 
 📚 전체 커리큘럼 복습
 🎯 핵심 개념 정리
@@ -178,9 +200,9 @@ ${module.nameKo} 시리즈를 마무리하며 핵심 내용을 정리합니다.
 
 🔗 KSS 플랫폼: https://kss-platform.com
       `.trim(),
-      tags: [module.nameKo, '요약', '정리', 'KSS'],
+      tags: [module.nameKo || module.name, '요약', '정리', 'KSS'],
       thumbnail: {
-        title: `${module.nameKo} 핵심 정리`,
+        title: `${module.nameKo || module.name} 핵심 정리`,
         subtitle: '10분 요약'
       },
       script: {

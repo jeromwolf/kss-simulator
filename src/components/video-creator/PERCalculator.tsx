@@ -19,7 +19,7 @@ const sampleStocks: StockData[] = [
   { name: '셀트리온', price: 180000, eps: 4500, per: 40, industry: '바이오', evaluation: 'fair' }
 ];
 
-const industryRanges = {
+const industryRanges: Record<string, { min: number; max: number }> = {
   '반도체': { min: 8, max: 15 },
   'IT서비스': { min: 15, max: 25 },
   '화학': { min: 6, max: 12 },
@@ -48,15 +48,15 @@ export const PERCalculator: React.FC = () => {
     }
   }, [customPrice, customEPS, selectedStock.industry]);
 
-  const getEvaluationColor = (eval: string) => {
-    if (eval.includes('저평가')) return 'text-green-600 bg-green-100 dark:bg-green-900/20';
-    if (eval.includes('고평가')) return 'text-red-600 bg-red-100 dark:bg-red-900/20';
+  const getEvaluationColor = (evalText: string) => {
+    if (evalText.includes('저평가')) return 'text-green-600 bg-green-100 dark:bg-green-900/20';
+    if (evalText.includes('고평가')) return 'text-red-600 bg-red-100 dark:bg-red-900/20';
     return 'text-blue-600 bg-blue-100 dark:bg-blue-900/20';
   };
 
-  const getEvaluationIcon = (eval: string) => {
-    if (eval.includes('저평가')) return <TrendingUp className="w-4 h-4" />;
-    if (eval.includes('고평가')) return <TrendingDown className="w-4 h-4" />;
+  const getEvaluationIcon = (evalText: string) => {
+    if (evalText.includes('저평가')) return <TrendingUp className="w-4 h-4" />;
+    if (evalText.includes('고평가')) return <TrendingDown className="w-4 h-4" />;
     return <CheckCircle className="w-4 h-4" />;
   };
 

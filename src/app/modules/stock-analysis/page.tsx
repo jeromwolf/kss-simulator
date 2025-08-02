@@ -15,14 +15,155 @@ import {
   ChevronRight,
   DollarSign,
   PieChart,
-  Activity
+  Activity,
+  MessageSquare,
+  Video,
+  Book,
+  LineChart,
+  ArrowLeft
 } from 'lucide-react'
 import { stockAnalysisModule } from './metadata'
+import dynamic from 'next/dynamic'
+
+// Dynamic imports for legacy components
+const AdvancedSimulator = dynamic(
+  () => import('@/components/stock-analysis/AdvancedSimulator').then(mod => mod.AdvancedSimulator),
+  { ssr: false }
+)
+const AIMentor = dynamic(
+  () => import('@/components/stock-analysis/AIMentor').then(mod => mod.AIMentor),
+  { ssr: false }
+)
+const VideoLearning = dynamic(
+  () => import('@/components/stock-analysis/VideoLearning').then(mod => mod.VideoLearning),
+  { ssr: false }
+)
+const VideoCreator = dynamic(
+  () => import('@/components/stock-analysis/VideoCreator').then(mod => mod.VideoCreator),
+  { ssr: false }
+)
 
 export default function StockAnalysisModulePage() {
+  const [viewMode, setViewMode] = useState<'overview' | 'simulator' | 'videos' | 'creator' | 'mentor'>('overview')
+  const [isMentorOpen, setIsMentorOpen] = useState(false)
+
+  // If in special view mode, render that component
+  if (viewMode === 'simulator') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <button
+            onClick={() => setViewMode('overview')}
+            className="mb-6 inline-flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            모듈로 돌아가기
+          </button>
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold flex items-center gap-3">
+              <LineChart className="w-8 h-8 text-green-600" />
+              AI 기반 주식 투자 시뮬레이터
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
+              실시간 시장 데이터와 AI 분석을 통한 투자 시뮬레이션
+            </p>
+          </div>
+          <AdvancedSimulator />
+        </div>
+      </div>
+    )
+  }
+
+  if (viewMode === 'videos') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <button
+            onClick={() => setViewMode('overview')}
+            className="mb-6 inline-flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            모듈로 돌아가기
+          </button>
+          <VideoLearning />
+        </div>
+      </div>
+    )
+  }
+
+  if (viewMode === 'creator') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <button
+            onClick={() => setViewMode('overview')}
+            className="mb-6 inline-flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            모듈로 돌아가기
+          </button>
+          <VideoCreator />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="max-w-6xl mx-auto space-y-12">
+      {/* Navigation */}
+      <div className="flex items-center justify-between">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          홈으로 돌아가기
+        </Link>
+        
+        {/* Quick Actions */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setViewMode('simulator')}
+            className="px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 bg-green-600 text-white hover:bg-green-700"
+          >
+            <LineChart className="w-4 h-4" />
+            AI 시뮬레이터
+          </button>
+          <button
+            onClick={() => setViewMode('videos')}
+            className="px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700"
+          >
+            <PlayCircle className="w-4 h-4" />
+            비디오 강의
+          </button>
+          <button
+            onClick={() => setViewMode('creator')}
+            className="px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 bg-purple-600 text-white hover:bg-purple-700"
+          >
+            <Video className="w-4 h-4" />
+            비디오 생성
+          </button>
+          <Link
+            href="/stock-dictionary"
+            className="px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 bg-gray-600 text-white hover:bg-gray-700"
+          >
+            <Book className="w-4 h-4" />
+            용어 사전
+          </Link>
+          <button
+            onClick={() => setIsMentorOpen(!isMentorOpen)}
+            className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
+              isMentorOpen
+                ? 'bg-orange-600 text-white'
+                : 'bg-orange-600 text-white hover:bg-orange-700'
+            }`}
+          >
+            <MessageSquare className="w-4 h-4" />
+            AI 멘토
+          </button>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="text-center space-y-6">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-200 rounded-full text-sm font-medium">
@@ -98,44 +239,45 @@ export default function StockAnalysisModulePage() {
       <section className="space-y-6">
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            인터랙티브 시뮬레이터
+            실습 시뮬레이터
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
-            실전과 같은 환경에서 투자 전략을 체험하고 학습하세요
+            실제 데이터를 활용한 투자 전략 시뮬레이션
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-6">
-          {stockAnalysisModule.simulators.map((simulator) => {
-            const Icon = getSimulatorIcon(simulator.id)
-            return (
-              <div
-                key={simulator.id}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">
-                      {simulator.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      {simulator.description}
-                    </p>
-                    <Link
-                      href={`/modules/stock-analysis/simulators/${simulator.id}`}
-                      className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors"
-                    >
-                      <PlayCircle className="w-4 h-4" />
+          {stockAnalysisModule.simulators.map(simulator => (
+            <Link
+              key={simulator.id}
+              href={`/modules/stock-analysis/simulators/${simulator.id}`}
+              className="group bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-xl p-6 hover:shadow-lg transition-all duration-200"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm flex items-center justify-center">
+                  {simulator.id === 'financial-calculator' && <Calculator className="w-6 h-6 text-red-600 dark:text-red-400" />}
+                  {simulator.id === 'chart-analyzer' && <BarChart3 className="w-6 h-6 text-red-600 dark:text-red-400" />}
+                  {simulator.id === 'portfolio-optimizer' && <PieChart className="w-6 h-6 text-red-600 dark:text-red-400" />}
+                  {simulator.id === 'backtesting-engine' && <Activity className="w-6 h-6 text-red-600 dark:text-red-400" />}
+                  {simulator.id === 'ai-mentor' && <Brain className="w-6 h-6 text-red-600 dark:text-red-400" />}
+                </div>
+                <div className="flex-grow">
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                    {simulator.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {simulator.description}
+                  </p>
+                  <div className="flex items-center gap-2 mt-3">
+                    <PlayCircle className="w-4 h-4 text-red-500" />
+                    <span className="text-xs font-medium text-red-600 dark:text-red-400">
                       시뮬레이터 실행
-                    </Link>
+                    </span>
                   </div>
                 </div>
               </div>
-            )
-          })}
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -143,82 +285,62 @@ export default function StockAnalysisModulePage() {
       <section className="space-y-6">
         <div className="text-center space-y-2">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            투자 도구 & 자료
+            도구 및 리소스
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
-            실전 투자에 활용할 수 있는 전문 도구들
+            투자 분석을 위한 필수 도구 모음
           </p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-6">
-          {stockAnalysisModule.tools.map((tool) => (
-            <Link
-              key={tool.id}
-              href={tool.url}
-              className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-red-300 dark:hover:border-red-600 transition-all duration-200"
-            >
-              <div className="text-center space-y-3">
-                <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                  {getToolIcon(tool.id)}
-                </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
-                  {tool.name}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {tool.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Start Learning CTA */}
-      <section className="text-center space-y-6 py-12">
-        <div className="bg-gradient-to-r from-red-500 to-orange-600 rounded-2xl p-8 text-white">
-          <h2 className="text-2xl font-bold mb-4">지금 바로 시작하세요!</h2>
-          <p className="text-red-100 mb-6">
-            체계적인 커리큘럼과 실전 시뮬레이터로 투자 전문가가 되어보세요
-          </p>
           <Link
-            href={`/modules/stock-analysis/${stockAnalysisModule.chapters[0].id}`}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+            href="/stock-analysis/curriculum"
+            className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-red-300 dark:hover:border-red-600 transition-all duration-200"
           >
-            <PlayCircle className="w-5 h-5" />
-            첫 번째 모듈 시작하기
+            <BookOpen className="w-8 h-8 text-red-600 dark:text-red-400 mb-3" />
+            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+              전체 커리큘럼
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              체계적인 학습 경로 확인
+            </p>
+          </Link>
+          
+          <Link
+            href="/stock-analysis/terms"
+            className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-red-300 dark:hover:border-red-600 transition-all duration-200"
+          >
+            <Book className="w-8 h-8 text-red-600 dark:text-red-400 mb-3" />
+            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+              금융 용어사전
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              필수 투자 용어 정리
+            </p>
+          </Link>
+          
+          <Link
+            href="/stock-dictionary"
+            className="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-red-300 dark:hover:border-red-600 transition-all duration-200"
+          >
+            <DollarSign className="w-8 h-8 text-red-600 dark:text-red-400 mb-3" />
+            <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+              실시간 시장 데이터
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              최신 시장 동향 분석
+            </p>
           </Link>
         </div>
       </section>
+
+      {/* AI Mentor Chat */}
+      {isMentorOpen && (
+        <AIMentor 
+          isOpen={isMentorOpen}
+          onToggle={() => setIsMentorOpen(!isMentorOpen)}
+        />
+      )}
     </div>
   )
-}
-
-function getSimulatorIcon(simulatorId: string) {
-  switch (simulatorId) {
-    case 'financial-calculator':
-      return Calculator
-    case 'chart-analyzer':
-      return BarChart3
-    case 'portfolio-optimizer':
-      return PieChart
-    case 'backtesting-engine':
-      return Activity
-    case 'ai-mentor':
-      return Brain
-    default:
-      return TrendingUp
-  }
-}
-
-function getToolIcon(toolId: string) {
-  switch (toolId) {
-    case 'stock-screener':
-      return <Target className="w-6 h-6" />
-    case 'financial-terms':
-      return <BookOpen className="w-6 h-6" />
-    case 'market-simulator':
-      return <DollarSign className="w-6 h-6" />
-    default:
-      return <TrendingUp className="w-6 h-6" />
-  }
 }

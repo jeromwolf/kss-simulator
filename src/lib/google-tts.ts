@@ -81,7 +81,7 @@ export class GoogleTTS {
 
       return null;
     } catch (error) {
-      if (error.name === 'AbortError') {
+      if (error instanceof Error && error.name === 'AbortError') {
         console.error('TTS API 타임아웃 (10초 초과)');
       } else {
         console.error('TTS API 호출 오류:', error);

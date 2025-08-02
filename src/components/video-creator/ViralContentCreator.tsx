@@ -466,7 +466,7 @@ export const ViralContentCreator: React.FC = () => {
   };
 
   const getCategoryColor = (category: string) => {
-    const colors = {
+    const colors: Record<string, string> = {
       '충격적 사실': 'text-red-500 bg-red-100 dark:bg-red-900/20',
       '실전 꿀팁': 'text-green-500 bg-green-100 dark:bg-green-900/20', 
       '스토리텔링': 'text-purple-500 bg-purple-100 dark:bg-purple-900/20',

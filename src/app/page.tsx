@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { 
   Brain, TrendingUp, Network, Sparkles, 
   Atom, Cpu, Database, Globe,
-  ChevronRight, Star, Clock, Users
+  ChevronRight, Star, Clock, Users, Zap
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -82,14 +82,31 @@ const courses: Course[] = [
   },
   {
     id: 'agent-mcp',
-    title: 'Agent/MCP/A2A Systems',
-    description: 'AI 에이전트, MCP 프로토콜, Agent-to-Agent 시스템 설계',
+    title: 'AI Agent & MCP',
+    description: 'AI 에이전트 개발과 Model Context Protocol 마스터하기',
+    icon: Cpu,
+    color: 'from-purple-500 to-purple-600',
+    category: 'Agent/AI',
+    difficulty: 'intermediate',
+    duration: '10시간',
+    students: 234,
+    rating: 4.9,
+    status: 'active',
+    link: '/modules/agent-mcp'
+  },
+  {
+    id: 'multi-agent',
+    title: 'Multi-Agent Systems',
+    description: '멀티 에이전트 시스템과 A2A 통신, 오케스트레이션',
     icon: Network,
-    color: 'from-cyan-500 to-blue-500',
+    color: 'from-orange-500 to-orange-600',
     category: 'Agent/AI',
     difficulty: 'advanced',
-    duration: '10주',
-    status: 'coming-soon'
+    duration: '8시간',
+    students: 89,
+    rating: 4.8,
+    status: 'active',
+    link: '/modules/multi-agent'
   },
   {
     id: 'quantum',
@@ -579,6 +596,121 @@ export default function Home() {
               </div>
             );
           })}
+          </div>
+        </div>
+      </section>
+
+      {/* Simulator Tools Section */}
+      <section className="bg-gray-50 dark:bg-gray-900/50 py-32 border-t border-gray-200 dark:border-gray-700">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16 text-gray-900 dark:text-white">Interactive Simulators</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Multi-Agent Simulators */}
+            <Link href="/modules/multi-agent/tools/a2a-orchestrator" className="group">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl transition-all h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded flex items-center justify-center">
+                    <Users className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400">A2A Orchestrator</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  에이전트 간 통신과 작업 흐름 시뮬레이터
+                </p>
+                <div className="text-xs text-orange-600 dark:text-orange-400 font-semibold">
+                  실습 도구 →
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/modules/multi-agent/tools/crewai-builder" className="group">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl transition-all h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded flex items-center justify-center">
+                    <Zap className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400">CrewAI Builder</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  역할 기반 에이전트 팀 구성 도구
+                </p>
+                <div className="text-xs text-orange-600 dark:text-orange-400 font-semibold">
+                  실습 도구 →
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/modules/multi-agent/tools/consensus-simulator" className="group">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl transition-all h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded flex items-center justify-center">
+                    <Cpu className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400">Consensus Simulator</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  분산 합의 알고리즘 시각화 도구
+                </p>
+                <div className="text-xs text-orange-600 dark:text-orange-400 font-semibold">
+                  실습 도구 →
+                </div>
+              </div>
+            </Link>
+
+            {/* RAG Simulators */}
+            <Link href="/modules/rag" className="group">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl transition-all h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded flex items-center justify-center">
+                    <Database className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400">RAG Playground</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  전체 RAG 파이프라인을 실시간으로 체험
+                </p>
+                <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                  RAG Module →
+                </div>
+              </div>
+            </Link>
+
+            {/* Ontology Simulators */}
+            <Link href="/rdf-editor" className="group">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl transition-all h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-600 rounded flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">RDF Editor</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  시각적 RDF Triple 편집기와 지식 그래프 구축
+                </p>
+                <div className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                  Ontology Module →
+                </div>
+              </div>
+            </Link>
+
+            {/* Stock Analysis Simulators - Redirect to new module */}
+            <Link href="/modules/stock-analysis" className="group">
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 hover:shadow-xl transition-all h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-orange-500 rounded flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400">Stock Simulator</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  실전 투자 전략과 기술적 분석 시뮬레이터
+                </p>
+                <div className="text-xs text-red-600 dark:text-red-400 font-semibold">
+                  Stock Analysis Module →
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

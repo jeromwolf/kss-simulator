@@ -435,7 +435,6 @@ export const FinancialTermsShortsCreator: React.FC = () => {
                   controls
                   loop
                   autoPlay={true}
-                  muted={isAudioMuted}
                   clickToPlay={true}
                 />
               </div>
