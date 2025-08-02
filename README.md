@@ -267,6 +267,32 @@ KSS 플랫폼의 비즈니스 모델 및 천억 매출 전략은 [KSS_비즈니�
 
 ## 📝 최신 업데이트 (2025-08-02)
 
+### Session 12 - 자율주행 & 미래 모빌리티 모듈 완성 🚗
+- **자율주행 & 미래 모빌리티 모듈 완전 구현**
+  - 🎯 **8개 챕터 구현**: SAE 자율주행 레벨부터 UAM, 하이퍼루프까지
+    - Chapter 1: 자율주행의 진화와 미래 (SAE 레벨 0-5, 글로벌 생태계)
+    - Chapter 2: 센서 융합과 인지 시스템 (LiDAR, 카메라, 레이더, HD맵)
+    - Chapter 3: AI & 딥러닝 응용 (YOLO, Transformer, Tesla FSD)
+    - Chapter 4: 경로 계획과 제어 (A*, RRT*, PID, MPC)
+    - Chapter 5: V2X 통신과 스마트 인프라 (5G C-V2X, 협력 주행)
+    - Chapter 6: 시뮬레이션과 검증 (CARLA, AirSim, HIL 테스트)
+    - Chapter 7: 전동화와 배터리 관리 (BMS, SOC 추정, 충전 기술)
+    - Chapter 8: MaaS와 미래 모빌리티 (UAM, 하이퍼루프, 지속가능성)
+  - 🚀 **4개 시뮬레이터 설계**: 센서 퓨전 실험실, 자율주행 시뮬레이터, 경로 계획 시각화, V2X 네트워크
+  - 📚 **실무 중심 콘텐츠**: Tesla, Waymo, 현대차 등 실제 기업 기술 분석
+  - 🎨 **Cyan-Blue 테마**: 자율주행/모빌리티 브랜드 컬러
+- **실제 코드 예제 포함**
+  - 🧠 **센서 퓨전 알고리즘**: 칼만 필터, 어텐션 메커니즘 구현
+  - 🗺️ **경로 계획**: A*, RRT* 알고리즘 Python 코드
+  - 🔋 **BMS 시스템**: SOC 추정, 배터리 안전 관리
+  - 🎮 **CARLA 시뮬레이터**: 환경 설정, 센서 부착 예제
+  - ✈️ **UAM 관제**: UTM 시스템 구현 코드
+- **기술적 성과**
+  - ✅ **100% React 컴포넌트**: HTML 문자열 없이 순수 React
+  - 🎯 **완전한 콘텐츠**: 16시간 분량의 체계적 학습 과정
+  - 📊 **메인 페이지 통합**: "자율주행" 카테고리 신설
+  - 🔗 **완벽한 빌드**: 52개 페이지 생성 성공
+
 ### Session 11 - Neo4j Knowledge Graph 모듈 완성 🔗
 - **Neo4j 모듈 완전 구현**
   - 🎯 **8개 챕터 구현**: 그래프 DB 개념, Cypher 쿼리, 데이터 모델링, 알고리즘, 성능 최적화 등
@@ -464,7 +490,8 @@ KSS 플랫폼의 비즈니스 모델 및 천억 매출 전략은 [KSS_비즈니�
 - `/modules/rag` - RAG 시스템 학습 (6개 챕터, Emerald 테마)
 - `/modules/ontology` - 온톨로지 학습 (16개 챕터, Blue 테마)
 - `/modules/llm` - LLM 학습 (8개 챕터, Indigo 테마)
-- `/modules/stock-analysis` - 주식투자분석 (5개 모듈, Green 테마) 🆕
+- `/modules/stock-analysis` - 주식투자분석 (5개 모듈, Green 테마)
+- `/modules/autonomous-mobility` - 자율주행 & 미래 모빌리티 (8개 챕터, Cyan-Blue 테마) 🆕
 - `/modules/*/[chapterId]` - 각 모듈의 챕터별 학습 페이지
 
 ### 도구 페이지

@@ -62,7 +62,7 @@ export default function ImportWizard() {
           rows: [
             { type: 'node', label: 'Person', properties: { name: 'Alice', age: 30 } },
             { type: 'node', label: 'Person', properties: { name: 'Bob', age: 25 } },
-            { type: 'relationship', from: 'Alice', to: 'Bob', type: 'KNOWS' }
+            { type: 'relationship', from: 'Alice', to: 'Bob', relationshipType: 'KNOWS' }
           ]
         })
       }

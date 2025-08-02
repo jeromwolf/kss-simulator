@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { 
   Brain, TrendingUp, Network, Sparkles, 
-  Atom, Cpu, Database, Globe,
+  Atom, Cpu, Database, Globe, Car,
   ChevronRight, Star, Clock, Users, Zap
 } from 'lucide-react'
 import Link from 'next/link'
@@ -122,13 +122,16 @@ const courses: Course[] = [
   {
     id: 'web3',
     title: 'Web3 & Blockchain',
-    description: '블록체인과 탈중앙화 애플리케이션 개발',
+    description: '블록체인 기술과 Web3 생태계를 체험하는 실전 학습 플랫폼',
     icon: Globe,
-    color: 'from-yellow-500 to-orange-500',
+    color: 'from-indigo-500 to-cyan-500',
     category: '블록체인',
     difficulty: 'intermediate',
-    duration: '8주',
-    status: 'planned'
+    duration: '12시간',
+    students: 567,
+    rating: 4.8,
+    status: 'active',
+    link: '/modules/web3'
   },
   {
     id: 'neo4j',
@@ -273,10 +276,36 @@ const courses: Course[] = [
     difficulty: 'advanced',
     duration: '12주',
     status: 'coming-soon'
+  },
+  {
+    id: 'ai-automation',
+    title: '바이블코딩',
+    description: 'Claude Code, Cursor, Windsurf 등 최신 AI 코딩 도구 마스터',
+    icon: Cpu,
+    color: 'from-violet-500 to-purple-600',
+    category: 'AI/ML',
+    difficulty: 'intermediate',
+    duration: '8시간',
+    status: 'active',
+    link: '/modules/ai-automation'
+  },
+  {
+    id: 'autonomous-mobility',
+    title: '자율주행 & 미래 모빌리티',
+    description: 'AI 기반 자율주행 기술과 차세대 모빌리티 생태계 완전 정복',
+    icon: Car,
+    color: 'from-cyan-500 to-blue-600',
+    category: '자율주행',
+    difficulty: 'advanced',
+    duration: '16시간',
+    students: 128,
+    rating: 4.9,
+    status: 'active',
+    link: '/modules/autonomous-mobility'
   }
 ];
 
-const categories = ['전체', '지식공학', 'AI/ML', '금융', 'Agent/AI', '물리컴퓨팅', '블록체인', '의료/바이오', '산업AI', '국방/보안', '수학/이론', '시스템/이론'];
+const categories = ['전체', '지식공학', 'AI/ML', '금융', 'Agent/AI', '물리컴퓨팅', '블록체인', '의료/바이오', '산업AI', '국방/보안', '수학/이론', '시스템/이론', '자율주행'];
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('전체');
@@ -537,7 +566,8 @@ export default function Home() {
                    category === '국방AI' ? 'Defense AI' :
                    category === 'AI/ML' ? 'AI/Machine Learning' :
                    category === '물리컴퓨팅' ? 'Physical Computing' :
-                   category === '블록체인' ? 'Blockchain' : category}
+                   category === '블록체인' ? 'Blockchain' :
+                   category === '자율주행' ? 'Autonomous Mobility' : category}
                 </button>
               ))}
             </nav>
@@ -678,6 +708,14 @@ export default function Home() {
                               <span className="text-xs px-2 py-1 bg-slate-50 dark:bg-slate-900/20 text-slate-600 dark:text-slate-400 rounded">전술 AI</span>
                               <span className="text-xs px-2 py-1 bg-gray-50 dark:bg-gray-900/20 text-gray-600 dark:text-gray-400 rounded">사이버 보안</span>
                               <span className="text-xs px-2 py-1 bg-zinc-50 dark:bg-zinc-900/20 text-zinc-600 dark:text-zinc-400 rounded">의사결정 지원</span>
+                            </>
+                          )}
+                          {course.id === 'autonomous-mobility' && (
+                            <>
+                              <span className="text-xs px-2 py-1 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400 rounded">센서 퓨전</span>
+                              <span className="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded">경로 계획</span>
+                              <span className="text-xs px-2 py-1 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded">V2X 통신</span>
+                              <span className="text-xs px-2 py-1 bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 rounded">CARLA</span>
                             </>
                           )}
                         </div>
