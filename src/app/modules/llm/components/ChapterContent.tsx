@@ -100,47 +100,133 @@ function Chapter01Introduction() {
             </p>
           </div>
           <div className="border-l-4 border-indigo-500 pl-4">
-            <h4 className="font-semibold text-gray-900 dark:text-white">2022-2023: ChatGPT 혁신</h4>
+            <h4 className="font-semibold text-gray-900 dark:text-white">2022: ChatGPT의 혁명</h4>
             <p className="text-gray-600 dark:text-gray-400">
-              RLHF와 InstructGPT로 인간과의 자연스러운 대화 실현
+              RLHF를 통한 사용자 친화적 AI의 탄생, 전 세계적 AI 붐 시작
+            </p>
+          </div>
+          <div className="border-l-4 border-indigo-500 pl-4">
+            <h4 className="font-semibold text-gray-900 dark:text-white">2023: GPT-4, Claude 2, Llama 2</h4>
+            <p className="text-gray-600 dark:text-gray-400">
+              멀티모달 지원, 오픈소스 모델의 부상, 기업별 경쟁 심화
+            </p>
+          </div>
+          <div className="border-l-4 border-indigo-500 pl-4">
+            <h4 className="font-semibold text-gray-900 dark:text-white">2024: Grok, Llama 3, Gemini 1.5</h4>
+            <p className="text-gray-600 dark:text-gray-400">
+              xAI의 Grok 등장, Meta Llama 3 405B 오픈소스 공개, 100만+ 토큰 컨텍스트 시대
+            </p>
+          </div>
+          <div className="border-l-4 border-indigo-500 pl-4">
+            <h4 className="font-semibold text-gray-900 dark:text-white">2025: Claude Opus 4, Grok 3, Gemini 2.5</h4>
+            <p className="text-gray-600 dark:text-gray-400">
+              코딩 특화 모델 발전 (SWE-bench 72.5%), 200만 토큰 컨텍스트, 자율 에이전트 시대 개막
             </p>
           </div>
         </div>
       </section>
 
       <section>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">주요 LLM 모델 비교</h3>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
-            <thead>
-              <tr className="bg-gray-50 dark:bg-gray-800">
-                <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">모델</th>
-                <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">매개변수</th>
-                <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">특징</th>
-                <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">개발사</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">GPT-4</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">~1.7T</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">멀티모달, 고성능 추론</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">OpenAI</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Claude 3</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">~200B</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">안전성, 긴 컨텍스트</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Anthropic</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Gemini</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">~540B</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">구글 검색 통합</td>
-                <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">Google</td>
-              </tr>
-            </tbody>
-          </table>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">2025년 최신 LLM 현황</h3>
+        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="font-bold text-indigo-700 dark:text-indigo-300 mb-3">최강 성능 모델</h4>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-500">•</span>
+                  <div>
+                    <strong>Claude Opus 4</strong> (Anthropic, 2025.01)
+                    <p className="text-gray-600 dark:text-gray-400">코딩 최강 (SWE-bench 72.5%), 7시간 자율 작업</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-500">•</span>
+                  <div>
+                    <strong>Grok 3</strong> (xAI, 2025.02)
+                    <p className="text-gray-600 dark:text-gray-400">200K H100 GPU 학습, AIME 93.3% 달성</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-500">•</span>
+                  <div>
+                    <strong>GPT-4o</strong> (OpenAI, 2024.05)
+                    <p className="text-gray-600 dark:text-gray-400">균형잡힌 성능, 빠른 응답 속도</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-indigo-500">•</span>
+                  <div>
+                    <strong>Gemini 2.5 Pro</strong> (Google, 2025.03)
+                    <p className="text-gray-600 dark:text-gray-400">200만 토큰 컨텍스트, 최고 가성비</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-purple-700 dark:text-purple-300 mb-3">오픈소스 혁신</h4>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-500">•</span>
+                  <div>
+                    <strong>Llama 3.3 70B</strong> (Meta, 2024.12)
+                    <p className="text-gray-600 dark:text-gray-400">405B급 성능을 70B 크기로 구현</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-500">•</span>
+                  <div>
+                    <strong>Mixtral 8x22B</strong> (Mistral, 2024)
+                    <p className="text-gray-600 dark:text-gray-400">MoE 아키텍처, 효율적인 추론</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-500">•</span>
+                  <div>
+                    <strong>Qwen 2.5</strong> (Alibaba, 2024)
+                    <p className="text-gray-600 dark:text-gray-400">중국어 최강, 다국어 지원</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-500">•</span>
+                  <div>
+                    <strong>DeepSeek V3</strong> (DeepSeek, 2024)
+                    <p className="text-gray-600 dark:text-gray-400">코딩 특화, 저비용 고효율</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">주요 기술 트렌드</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <h4 className="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">초거대 컨텍스트</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Gemini 2.5: 200만 토큰<br/>
+              Claude 3: 20만 토큰<br/>
+              전체 코드베이스 분석 가능
+            </p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <h4 className="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">자율 에이전트</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Claude Opus 4: 7시간 자율작업<br/>
+              Tool Use & Function Calling<br/>
+              복잡한 작업 자동화
+            </p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <h4 className="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">멀티모달 통합</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              이미지, 비디오, 오디오 이해<br/>
+              실시간 스트리밍 처리<br/>
+              크로스모달 추론
+            </p>
+          </div>
         </div>
       </section>
 
@@ -316,12 +402,87 @@ function Chapter03Training() {
               <li>안전성, 유용성, 정직성 향상</li>
             </ul>
           </div>
+
+          <div className="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg">
+            <h4 className="font-semibold text-orange-800 dark:text-orange-200 mb-3">4. 최신 학습 기법들</h4>
+            <p className="text-gray-700 dark:text-gray-300 mb-3">
+              2024-2025년 등장한 혁신적인 학습 방법들
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-400">
+              <li><strong>DPO (Direct Preference Optimization)</strong>: RLHF보다 효율적인 선호도 학습</li>
+              <li><strong>Constitutional AI</strong>: Anthropic의 헌법 기반 AI 학습</li>
+              <li><strong>RLAIF</strong>: AI 피드백을 통한 강화학습</li>
+              <li><strong>Chain-of-Thought Fine-tuning</strong>: 추론 능력 향상</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">강화학습 상세 분석</h3>
+        <div className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-xl p-6">
+          <h4 className="font-bold text-red-700 dark:text-red-300 mb-4">RLHF vs DPO vs Constitutional AI</h4>
+          <div className="space-y-4">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
+              <h5 className="font-semibold text-red-600 dark:text-red-400 mb-2">RLHF (PPO 기반)</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• 장점: 세밀한 조정 가능, 성능 검증됨</li>
+                <li>• 단점: 계산 비용 높음, 불안정한 학습</li>
+                <li>• 사용: ChatGPT, Claude 2</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
+              <h5 className="font-semibold text-orange-600 dark:text-orange-400 mb-2">DPO (Direct Preference)</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• 장점: 간단한 구현, 안정적 학습</li>
+                <li>• 단점: 세밀한 조정 어려움</li>
+                <li>• 사용: Llama 3, Mixtral</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
+              <h5 className="font-semibold text-yellow-600 dark:text-yellow-400 mb-2">Constitutional AI</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• 장점: 명확한 원칙, 투명성</li>
+                <li>• 단점: 복잡한 헌법 설계</li>
+                <li>• 사용: Claude 3, Claude Opus 4</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
       <section>
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">토크나이저와 어휘 구성</h3>
         <TokenizerDemo />
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Scaling Laws와 효율화</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+            <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-3">Kaplan Scaling Law</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+              모델 크기 10배 → 성능 약 2배 향상
+            </p>
+            <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• 파라미터 수: N</li>
+              <li>• 데이터 크기: D</li>
+              <li>• 계산량: C</li>
+              <li>• Loss ∝ N^(-0.076)</li>
+            </ul>
+          </div>
+          <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+            <h4 className="font-semibold text-green-700 dark:text-green-300 mb-3">Chinchilla Scaling</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+              최적 데이터/파라미터 비율 = 20:1
+            </p>
+            <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• 70B 모델 → 1.4T 토큰 필요</li>
+              <li>• 데이터 품질이 양보다 중요</li>
+              <li>• 효율적 학습 가능</li>
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
   )
@@ -427,12 +588,267 @@ function Chapter05Applications3() {
 function Chapter06Advanced() {
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold text-indigo-800 dark:text-indigo-200 mb-4">
-        고급 기법과 최신 동향
-      </h2>
-      <p className="text-gray-600 dark:text-gray-400">
-        이 챕터는 현재 개발 중입니다. 최신 LLM 연구와 고급 기법에 대한 내용이 추가될 예정입니다.
-      </p>
+      <section>
+        <h2 className="text-2xl font-bold text-indigo-800 dark:text-indigo-200 mb-4">
+          고급 기법과 최신 동향
+        </h2>
+        <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-6 mb-6">
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            2024-2025년 AI의 최전선: Multimodal, Diffusion, 차세대 아키텍처
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Multimodal AI 시스템</h3>
+        <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6">
+          <h4 className="font-bold text-purple-700 dark:text-purple-300 mb-4">Vision-Language Models</h4>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 className="font-semibold text-purple-600 dark:text-purple-400 mb-2">최신 모델들</h5>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-500">•</span>
+                  <div>
+                    <strong>GPT-4V/4o</strong>: 이미지 이해 + 생성
+                    <p className="text-gray-600 dark:text-gray-400">스크린샷 분석, 차트 해석, 코드 이미지 읽기</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-500">•</span>
+                  <div>
+                    <strong>Claude 3 Vision</strong>: 고정밀 이미지 분석
+                    <p className="text-gray-600 dark:text-gray-400">문서 OCR, 다이어그램 이해, 의료 영상</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-500">•</span>
+                  <div>
+                    <strong>Gemini Ultra</strong>: 비디오 이해
+                    <p className="text-gray-600 dark:text-gray-400">동영상 요약, 실시간 스트림 분석</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="font-semibold text-pink-600 dark:text-pink-400 mb-2">핵심 기술</h5>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-pink-500">•</span>
+                  <div>
+                    <strong>CLIP</strong>: 이미지-텍스트 임베딩 정렬
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-pink-500">•</span>
+                  <div>
+                    <strong>BLIP-2</strong>: 효율적인 비전-언어 사전학습
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-pink-500">•</span>
+                  <div>
+                    <strong>LLaVA</strong>: 오픈소스 멀티모달 LLM
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-pink-500">•</span>
+                  <div>
+                    <strong>Flamingo</strong>: Few-shot 비전 학습
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Diffusion Models</h3>
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6">
+          <h4 className="font-bold text-green-700 dark:text-green-300 mb-4">이미지 생성의 혁명</h4>
+          <div className="space-y-4">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
+              <h5 className="font-semibold text-green-600 dark:text-green-400 mb-2">Stable Diffusion 3</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• Multimodal Diffusion Transformer (MMDiT)</li>
+                <li>• 텍스트 렌더링 개선, 고해상도 생성</li>
+                <li>• ControlNet, LoRA 호환</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
+              <h5 className="font-semibold text-emerald-600 dark:text-emerald-400 mb-2">DALL-E 3</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• ChatGPT 통합으로 프롬프트 자동 개선</li>
+                <li>• 텍스트 정확도 99%+</li>
+                <li>• 일관된 캐릭터 생성</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
+              <h5 className="font-semibold text-teal-600 dark:text-teal-400 mb-2">Midjourney V6</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• 포토리얼리즘 극대화</li>
+                <li>• 프롬프트 이해도 향상</li>
+                <li>• 스타일 일관성 유지</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">차세대 아키텍처</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+            <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Mamba (SSM)</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              State Space Model 기반<br/>
+              선형 시간 복잡도<br/>
+              무한 컨텍스트 가능성
+            </p>
+          </div>
+          <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg">
+            <h4 className="font-semibold text-indigo-700 dark:text-indigo-300 mb-2">RWKV</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              RNN + Transformer 하이브리드<br/>
+              메모리 효율적<br/>
+              스트리밍 추론 지원
+            </p>
+          </div>
+          <div className="bg-violet-50 dark:bg-violet-900/20 p-4 rounded-lg">
+            <h4 className="font-semibold text-violet-700 dark:text-violet-300 mb-2">Flash Attention</h4>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              IO-aware 알고리즘<br/>
+              메모리 사용량 10배 감소<br/>
+              속도 2-4배 향상
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Hugging Face 생태계</h3>
+        <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-6">
+          <h4 className="font-bold text-orange-700 dark:text-orange-300 mb-4">🤗 통합 플랫폼</h4>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h5 className="font-semibold text-orange-600 dark:text-orange-400 mb-2">핵심 라이브러리</h5>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-500">•</span>
+                  <div>
+                    <strong>Transformers</strong>: 20만+ 모델 접근
+                    <p className="text-gray-600 dark:text-gray-400">from transformers import AutoModel</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-500">•</span>
+                  <div>
+                    <strong>Datasets</strong>: 10만+ 데이터셋
+                    <p className="text-gray-600 dark:text-gray-400">load_dataset("squad")</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-orange-500">•</span>
+                  <div>
+                    <strong>Accelerate</strong>: 분산 학습 간소화
+                    <p className="text-gray-600 dark:text-gray-400">Multi-GPU, TPU 지원</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="font-semibold text-yellow-600 dark:text-yellow-400 mb-2">서비스 & 도구</h5>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-yellow-500">•</span>
+                  <div>
+                    <strong>Spaces</strong>: 모델 데모 배포
+                    <p className="text-gray-600 dark:text-gray-400">Gradio, Streamlit 앱 호스팅</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-yellow-500">•</span>
+                  <div>
+                    <strong>AutoTrain</strong>: No-code 파인튜닝
+                    <p className="text-gray-600 dark:text-gray-400">GUI로 모델 학습</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-yellow-500">•</span>
+                  <div>
+                    <strong>Inference API</strong>: 즉시 사용 가능
+                    <p className="text-gray-600 dark:text-gray-400">REST API로 모델 호출</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">AI 서비스 생태계</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <h4 className="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">엔터프라이즈</h4>
+            <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• OpenAI API</li>
+              <li>• Anthropic Claude API</li>
+              <li>• Google Vertex AI</li>
+              <li>• AWS Bedrock</li>
+              <li>• Azure OpenAI Service</li>
+            </ul>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <h4 className="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">개발자 도구</h4>
+            <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• LangChain</li>
+              <li>• LlamaIndex</li>
+              <li>• Pinecone (Vector DB)</li>
+              <li>• Weights & Biases</li>
+              <li>• Cohere Rerank</li>
+            </ul>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+            <h4 className="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">특화 서비스</h4>
+            <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+              <li>• Perplexity (검색 AI)</li>
+              <li>• GitHub Copilot</li>
+              <li>• Cursor (AI IDE)</li>
+              <li>• RunwayML (비디오)</li>
+              <li>• ElevenLabs (음성)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">효율화 기술</h3>
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+          <h4 className="font-bold text-gray-700 dark:text-gray-300 mb-4">모델 최적화 기법</h4>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <h5 className="font-semibold text-gray-600 dark:text-gray-400 mb-2">Parameter Efficient Fine-tuning</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• <strong>LoRA</strong>: Low-Rank Adaptation (0.1% 파라미터)</li>
+                <li>• <strong>QLoRA</strong>: 4-bit Quantized LoRA</li>
+                <li>• <strong>Prefix Tuning</strong>: 프롬프트 임베딩 학습</li>
+                <li>• <strong>Adapter</strong>: 작은 모듈 삽입</li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="font-semibold text-gray-600 dark:text-gray-400 mb-2">Quantization & Compression</h5>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-400">
+                <li>• <strong>GPTQ</strong>: 4-bit weight quantization</li>
+                <li>• <strong>AWQ</strong>: Activation-aware quantization</li>
+                <li>• <strong>Pruning</strong>: 불필요한 연결 제거</li>
+                <li>• <strong>Distillation</strong>: 작은 모델로 지식 전달</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

@@ -140,11 +140,143 @@ const courses: Course[] = [
     difficulty: 'intermediate',
     duration: '6주',
     status: 'active',
-    link: '/neo4j'
+    link: '/modules/neo4j'
+  },
+  {
+    id: 'medical-ai',
+    title: 'Medical AI',
+    description: '의료 영상 분석, 진단 보조, 신약 개발 AI 기술',
+    icon: Brain,
+    color: 'from-red-500 to-pink-500',
+    category: '의료/바이오',
+    difficulty: 'advanced',
+    duration: '10주',
+    status: 'coming-soon'
+  },
+  {
+    id: 'physical-ai',
+    title: 'Physical AI',
+    description: '로봇공학과 물리 시뮬레이션 기반 인공지능',
+    icon: Cpu,
+    color: 'from-gray-600 to-gray-700',
+    category: '산업AI',
+    difficulty: 'advanced',
+    duration: '12주',
+    status: 'coming-soon'
+  },
+  {
+    id: 'iot',
+    title: 'IoT Systems',
+    description: '사물인터넷 센서 네트워크와 엣지 컴퓨팅',
+    icon: Network,
+    color: 'from-teal-500 to-green-500',
+    category: '산업AI',
+    difficulty: 'intermediate',
+    duration: '8주',
+    status: 'planned'
+  },
+  {
+    id: 'defense-ai',
+    title: 'Defense AI',
+    description: '국방 분야 인공지능 응용과 보안 기술',
+    icon: Zap,
+    color: 'from-slate-600 to-slate-800',
+    category: '국방/보안',
+    difficulty: 'advanced',
+    duration: '14주',
+    status: 'planned'
+  },
+  {
+    id: 'bio',
+    title: 'Bio-informatics',
+    description: '유전체 분석과 단백질 구조 예측 AI',
+    icon: Sparkles,
+    color: 'from-green-500 to-emerald-600',
+    category: '의료/바이오',
+    difficulty: 'advanced',
+    duration: '10주',
+    status: 'planned'
+  },
+  {
+    id: 'smart-factory',
+    title: 'Smart Factory',
+    description: '스마트 팩토리 자동화와 예측 유지보수',
+    icon: Database,
+    color: 'from-amber-500 to-orange-600',
+    category: '산업AI',
+    difficulty: 'intermediate',
+    duration: '8주',
+    status: 'planned'
+  },
+  {
+    id: 'system-design',
+    title: 'System Design',
+    description: '대규모 분산 시스템 설계와 아키텍처',
+    icon: Globe,
+    color: 'from-blue-500 to-blue-700',
+    category: '시스템/이론',
+    difficulty: 'advanced',
+    duration: '10주',
+    status: 'coming-soon'
+  },
+  {
+    id: 'linear-algebra',
+    title: 'Linear Algebra',
+    description: 'AI를 위한 선형대수 - 벡터, 행렬, 고유값',
+    icon: Brain,
+    color: 'from-indigo-500 to-indigo-700',
+    category: '수학/이론',
+    difficulty: 'intermediate',
+    duration: '6주',
+    status: 'coming-soon'
+  },
+  {
+    id: 'probability-statistics',
+    title: 'Probability & Statistics',
+    description: '머신러닝을 위한 확률론과 통계학',
+    icon: TrendingUp,
+    color: 'from-cyan-500 to-blue-600',
+    category: '수학/이론',
+    difficulty: 'intermediate',
+    duration: '8주',
+    status: 'coming-soon'
+  },
+  {
+    id: 'optimization',
+    title: 'Optimization Theory',
+    description: '최적화 이론과 경사하강법, 메타휴리스틱',
+    icon: Sparkles,
+    color: 'from-violet-500 to-purple-600',
+    category: '수학/이론',
+    difficulty: 'advanced',
+    duration: '8주',
+    status: 'planned'
+  },
+  {
+    id: 'distributed-computing',
+    title: 'Distributed Computing',
+    description: '분산 컴퓨팅과 병렬 처리, MapReduce',
+    icon: Network,
+    color: 'from-orange-500 to-red-600',
+    category: '시스템/이론',
+    difficulty: 'advanced',
+    duration: '10주',
+    status: 'planned'
+  },
+  {
+    id: 'ai-security',
+    title: 'AI Security & Safety',
+    description: 'AGI 안전성 확보 기술과 적대적 공격 방어',
+    icon: Zap,
+    color: 'from-red-600 to-red-800',
+    category: '국방/보안',
+    difficulty: 'advanced',
+    duration: '12주',
+    status: 'coming-soon'
   }
 ];
 
-const categories = ['전체', '지식공학', 'AI/ML', '금융', 'Agent/AI', '물리컴퓨팅', '블록체인'];
+const categories = ['전체', '지식공학', 'AI/ML', '금융', 'Agent/AI', '물리컴퓨팅', '블록체인', '의료/바이오', '산업AI', '국방/보안', '수학/이론', '시스템/이론'];
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('전체');

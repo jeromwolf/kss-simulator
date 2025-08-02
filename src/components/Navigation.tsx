@@ -13,7 +13,7 @@ export default function Navigation() {
     { href: '/ontology', label: '온톨로지', icon: Brain },
     { href: '/stock-analysis', label: '주식투자분석', icon: TrendingUp },
     { href: '/video-creator', label: '비디오 생성', icon: Video },
-    { href: '/neo4j', label: 'Neo4j', icon: Network },
+    { href: '/modules/neo4j', label: 'Neo4j', icon: Network },
   ];
 
   return (

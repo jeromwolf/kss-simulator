@@ -22,93 +22,110 @@ interface ModelInfo {
 }
 
 const ModelComparison = () => {
-  const [selectedModels, setSelectedModels] = useState<string[]>(['GPT-4', 'Claude 3']);
+  const [selectedModels, setSelectedModels] = useState<string[]>(['Claude Opus 4', 'GPT-4o']);
   const [comparisonMode, setComparisonMode] = useState<'overview' | 'benchmarks' | 'detailed'>('overview');
 
   const models: Record<string, ModelInfo> = {
-    'GPT-4': {
-      name: 'GPT-4',
-      company: 'OpenAI',
-      parameters: '~1.7T',
-      releaseDate: '2023.03',
-      architecture: 'Transformer (Sparse MoE)',
-      contextLength: 128000,
-      trainingData: '웹 데이터, 책, 논문 (2021년까지)',
-      strengths: ['다목적 성능', '긴 컨텍스트', '추론 능력', '코드 생성'],
-      weaknesses: ['최신 정보 부족', '높은 비용', '속도'],
-      benchmarks: {
-        mmlu: 86.4,
-        humanEval: 87.1,
-        gsm8k: 92.0,
-        hellaSwag: 95.3
-      }
-    },
-    'Claude 3': {
-      name: 'Claude 3 Opus',
+    'Claude Opus 4': {
+      name: 'Claude Opus 4',
       company: 'Anthropic',
       parameters: '비공개',
-      releaseDate: '2024.03',
-      architecture: 'Constitutional AI',
+      releaseDate: '2025.01',
+      architecture: 'Hybrid Reasoning Model',
       contextLength: 200000,
-      trainingData: '헌법적 AI 학습',
-      strengths: ['안전성', '매우 긴 컨텍스트', '정확성', '윤리적 추론'],
-      weaknesses: ['창의성 제한', '보수적 응답'],
+      trainingData: '하이브리드 추론 최적화',
+      strengths: ['세계 최고 코딩 모델', '7시간 자율 작업', '깊은 추론', 'SWE-bench 72.5%'],
+      weaknesses: ['높은 비용 ($15/$75 per M)', '컨텍스트 제한'],
       benchmarks: {
-        mmlu: 88.7,
-        humanEval: 84.9,
+        mmlu: 88.8,
+        humanEval: 93.7,
         gsm8k: 95.0,
         hellaSwag: 94.8
       }
     },
-    'Gemini Ultra': {
-      name: 'Gemini Ultra',
+    'GPT-4o': {
+      name: 'GPT-4o',
+      company: 'OpenAI',
+      parameters: '~1.7T',
+      releaseDate: '2024.05',
+      architecture: 'Transformer (Optimized)',
+      contextLength: 128000,
+      trainingData: '웹 데이터, 책, 논문',
+      strengths: ['균형잡힌 성능', '빠른 속도', '멀티모달', '비용 효율적'],
+      weaknesses: ['코딩에서 Claude보다 낮음', '컨텍스트 제한'],
+      benchmarks: {
+        mmlu: 89.0,
+        humanEval: 90.2,
+        gsm8k: 92.0,
+        hellaSwag: 95.3
+      }
+    },
+    'Grok 4': {
+      name: 'Grok 4',
+      company: 'xAI',
+      parameters: '비공개',
+      releaseDate: '2024.12',
+      architecture: 'Reasoning Model',
+      contextLength: 128000,
+      trainingData: '2024.11까지 + X 실시간',
+      strengths: ['ARC-AGI 15.9% 최고', '실시간 검색', '네이티브 도구 사용', 'X 플랫폼 통합'],
+      weaknesses: ['SuperGrok 구독 필요', '텍스트 전용 (현재)'],
+      benchmarks: {
+        mmlu: 85.0,
+        humanEval: 82.0,
+        gsm8k: 90.0,
+        hellaSwag: 92.0
+      }
+    },
+    'Gemini 2.5 Pro': {
+      name: 'Gemini 2.5 Pro',
       company: 'Google',
       parameters: '비공개',
-      releaseDate: '2023.12',
+      releaseDate: '2025.03',
       architecture: 'Multimodal Transformer',
-      contextLength: 32000,
-      trainingData: '텍스트, 이미지, 오디오, 비디오',
-      strengths: ['멀티모달', '추론 능력', '과학 문제'],
-      weaknesses: ['접근성', '일관성'],
+      contextLength: 2000000,
+      trainingData: '멀티모달 (텍스트, 이미지, 비디오)',
+      strengths: ['초대용량 컨텍스트 (2M)', '가성비 최고', '멀티모달', '빠른 속도'],
+      weaknesses: ['코딩 성능 약함', '일관성 문제'],
       benchmarks: {
-        mmlu: 90.0,
-        humanEval: 85.8,
+        mmlu: 91.0,
+        humanEval: 71.9,
         gsm8k: 94.4,
         hellaSwag: 93.7
       }
     },
-    'LLaMA 3': {
-      name: 'LLaMA 3',
+    'Llama 3.3': {
+      name: 'Llama 3.3 70B',
       company: 'Meta',
-      parameters: '8B-70B',
-      releaseDate: '2024.04',
-      architecture: 'Transformer',
-      contextLength: 8192,
-      trainingData: '15T 토큰',
-      strengths: ['오픈소스', '효율성', '다국어'],
-      weaknesses: ['짧은 컨텍스트', '상업적 제한'],
+      parameters: '70B',
+      releaseDate: '2024.12',
+      architecture: 'Transformer (Optimized)',
+      contextLength: 128000,
+      trainingData: '2023.12까지, 다국어',
+      strengths: ['405B급 성능', '오픈소스', '효율성', 'IFEval 92.1%'],
+      weaknesses: ['텍스트 전용', '지시 튜닝만 제공'],
       benchmarks: {
-        mmlu: 82.0,
-        humanEval: 81.8,
-        gsm8k: 88.9,
+        mmlu: 86.0,
+        humanEval: 84.1,
+        gsm8k: 91.0,
         hellaSwag: 92.1
       }
     },
-    'Mixtral 8x7B': {
-      name: 'Mixtral 8x7B',
-      company: 'Mistral AI',
-      parameters: '47B (8x7B MoE)',
-      releaseDate: '2023.12',
-      architecture: 'Sparse MoE',
-      contextLength: 32000,
-      trainingData: '오픈 웹 데이터',
-      strengths: ['효율적 MoE', '오픈소스', '다국어'],
-      weaknesses: ['메모리 요구량', '한국어 성능'],
+    'Grok 3': {
+      name: 'Grok 3',
+      company: 'xAI',
+      parameters: '비공개',
+      releaseDate: '2025.02',
+      architecture: 'Reasoning + Pretraining',
+      contextLength: 128000,
+      trainingData: '12.8T 토큰, 200K H100',
+      strengths: ['AIME 93.3%', 'GPQA 84.6%', '강력한 추론', 'Elo 1402'],
+      weaknesses: ['비용', '접근성 제한'],
       benchmarks: {
-        mmlu: 70.6,
-        humanEval: 74.4,
-        gsm8k: 81.3,
-        hellaSwag: 88.2
+        mmlu: 87.5,
+        humanEval: 85.0,
+        gsm8k: 93.3,
+        hellaSwag: 93.0
       }
     }
   };

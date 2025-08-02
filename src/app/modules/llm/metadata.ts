@@ -123,14 +123,44 @@ export const llmModule: Module = {
       title: '고급 기법과 최신 동향',
       description: '최신 LLM 연구와 고급 활용 기법들',
       estimatedMinutes: 80,
-      keywords: ['multimodal', 'agent', 'fine-tuning', 'quantization', 'efficiency'],
+      keywords: ['multimodal', 'diffusion', 'mamba', 'huggingface', 'efficiency'],
       learningObjectives: [
-        'Multimodal LLM (Vision + Language)',
-        'LLM Agent와 Tool Use',
+        'Multimodal LLM (GPT-4V, Claude Vision, Gemini)',
+        'Diffusion Models (Stable Diffusion, DALL-E 3)',
+        '차세대 아키텍처 (Mamba, RWKV, Flash Attention)',
+        'Hugging Face 생태계 활용',
         'Parameter Efficient Fine-tuning (LoRA, QLoRA)',
-        'Model Quantization과 Compression',
-        'Edge Deployment와 최적화',
-        '미래 LLM 발전 방향과 한계점'
+        'AI 서비스 생태계와 기업 API'
+      ]
+    },
+    {
+      id: '07-huggingface',
+      title: 'Hugging Face 실전 활용',
+      description: '허깅페이스 플랫폼으로 모델 개발부터 배포까지',
+      estimatedMinutes: 60,
+      keywords: ['transformers', 'datasets', 'spaces', 'autotrain', 'inference-api'],
+      learningObjectives: [
+        'Transformers 라이브러리로 모델 로드/파인튜닝',
+        'Datasets로 데이터셋 처리',
+        'Tokenizers로 커스텀 토크나이저 구축',
+        'Spaces로 데모 앱 배포',
+        'AutoTrain으로 No-code 학습',
+        'Inference API 활용법'
+      ]
+    },
+    {
+      id: '08-ai-services',  
+      title: 'AI 서비스와 API 활용',
+      description: '주요 AI 기업 API와 서비스 활용법',
+      estimatedMinutes: 50,
+      keywords: ['openai-api', 'claude-api', 'vertex-ai', 'bedrock', 'langchain'],
+      learningObjectives: [
+        'OpenAI API (GPT-4, DALL-E, Whisper)',
+        'Anthropic Claude API 활용',
+        'Google Vertex AI & Gemini API',
+        'AWS Bedrock 멀티모델 플랫폼',
+        'Azure OpenAI Service',
+        'LangChain으로 API 통합'
       ]
     }
   ],
@@ -169,7 +199,7 @@ export const llmModule: Module = {
     {
       id: 'model-comparison',
       name: 'LLM 모델 비교기',
-      description: 'GPT-4, Claude, Gemini 등 주요 모델들의 성능과 특성 비교',
+      description: 'Claude Opus 4, GPT-4o, Grok 4, Gemini 2.5, Llama 3.3 등 최신 모델 비교',
       component: 'ModelComparison'
     }
   ],
