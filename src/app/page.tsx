@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { 
   Brain, TrendingUp, Network, Sparkles, 
-  Atom, Cpu, Database, Globe, Car,
+  Atom, Cpu, Database, Globe, Car, Factory,
   ChevronRight, Star, Clock, Users, Zap
 } from 'lucide-react'
 import Link from 'next/link'
@@ -109,17 +109,6 @@ const courses: Course[] = [
     link: '/modules/multi-agent'
   },
   {
-    id: 'quantum',
-    title: 'Quantum Computing',
-    description: '양자 컴퓨팅의 기초부터 양자 알고리즘 구현까지',
-    icon: Atom,
-    color: 'from-blue-500 to-cyan-500',
-    category: '물리컴퓨팅',
-    difficulty: 'advanced',
-    duration: '12주',
-    status: 'coming-soon'
-  },
-  {
     id: 'web3',
     title: 'Web3 & Blockchain',
     description: '블록체인 기술과 Web3 생태계를 체험하는 실전 학습 플랫폼',
@@ -146,6 +135,20 @@ const courses: Course[] = [
     link: '/modules/neo4j'
   },
   {
+    id: 'autonomous-mobility',
+    title: '자율주행 & 미래 모빌리티',
+    description: 'AI 기반 자율주행 기술과 차세대 모빌리티 생태계 완전 정복',
+    icon: Car,
+    color: 'from-cyan-500 to-blue-600',
+    category: '자율주행',
+    difficulty: 'advanced',
+    duration: '16시간',
+    students: 112,
+    rating: 4.9,
+    status: 'active',
+    link: '/modules/autonomous-mobility'
+  },
+  {
     id: 'medical-ai',
     title: 'Medical AI',
     description: '의료 영상 분석, 진단 보조, 신약 개발 AI 기술',
@@ -158,14 +161,17 @@ const courses: Course[] = [
   },
   {
     id: 'physical-ai',
-    title: 'Physical AI',
-    description: '로봇공학과 물리 시뮬레이션 기반 인공지능',
+    title: 'Physical AI & 실세계 지능',
+    description: '현실 세계와 상호작용하는 AI 시스템의 설계와 구현',
     icon: Cpu,
-    color: 'from-gray-600 to-gray-700',
-    category: '산업AI',
+    color: 'from-slate-600 to-gray-700',
+    category: '물리AI',
     difficulty: 'advanced',
-    duration: '12주',
-    status: 'coming-soon'
+    duration: '20시간',
+    students: 156,
+    rating: 4.9,
+    status: 'active',
+    link: '/modules/physical-ai'
   },
   {
     id: 'iot',
@@ -201,15 +207,30 @@ const courses: Course[] = [
     status: 'planned'
   },
   {
+    id: 'quantum-computing',
+    title: 'Quantum Computing & 양자 알고리즘',
+    description: '양자역학 기초부터 양자 머신러닝까지 차세대 컴퓨팅 기술 완전 정복',
+    icon: Atom,
+    color: 'from-purple-500 to-violet-600',
+    category: '양자컴퓨팅',
+    difficulty: 'advanced',
+    duration: '24시간',
+    students: 89,
+    rating: 4.8,
+    status: 'active',
+    link: '/modules/quantum-computing'
+  },
+  {
     id: 'smart-factory',
-    title: 'Smart Factory',
-    description: '스마트 팩토리 자동화와 예측 유지보수',
-    icon: Database,
+    title: 'Smart Factory & Industry 4.0',
+    description: '스마트 팩토리 자동화와 예측 유지보수, 디지털 트윈까지 산업 AI 기술 완전 정복',
+    icon: Factory,
     color: 'from-amber-500 to-orange-600',
     category: '산업AI',
     difficulty: 'intermediate',
-    duration: '8주',
-    status: 'planned'
+    duration: '20시간',
+    status: 'active',
+    link: '/modules/smart-factory'
   },
   {
     id: 'system-design',
@@ -288,20 +309,6 @@ const courses: Course[] = [
     duration: '8시간',
     status: 'active',
     link: '/modules/ai-automation'
-  },
-  {
-    id: 'autonomous-mobility',
-    title: '자율주행 & 미래 모빌리티',
-    description: 'AI 기반 자율주행 기술과 차세대 모빌리티 생태계 완전 정복',
-    icon: Car,
-    color: 'from-cyan-500 to-blue-600',
-    category: '자율주행',
-    difficulty: 'advanced',
-    duration: '16시간',
-    students: 128,
-    rating: 4.9,
-    status: 'active',
-    link: '/modules/autonomous-mobility'
   }
 ];
 
@@ -543,34 +550,35 @@ export default function Home() {
           </div>
           </div>
           
-          {/* Domain Filter */}
-          <div className="border-b border-gray-200 dark:border-gray-700 mb-8">
-            <nav className="flex gap-0 overflow-x-auto">
+          {/* Domain Filter - Multi-row layout */}
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-2 justify-center">
               {categories.map(category => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors ${
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all transform hover:scale-105 ${
                     selectedCategory === category
-                      ? 'border-kss-primary text-kss-primary bg-kss-primary/5'
-                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300'
+                      ? 'bg-kss-primary text-white shadow-lg shadow-kss-primary/30'
+                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-kss-primary/30'
                   }`}
                 >
                   {category === '전체' ? 'All Domains' : 
                    category === '지식공학' ? 'Knowledge Engineering' :
                    category === '금융' ? 'Financial Systems' :
                    category === 'Agent/AI' ? 'Agent/AI Systems' :
-                   category === '의료AI' ? 'Medical AI' :
-                   category === '피지컬AI' ? 'Physical AI' :
-                   category === 'IoT' ? 'IoT Systems' :
-                   category === '국방AI' ? 'Defense AI' :
+                   category === '의료/바이오' ? 'Medical AI' :
+                   category === '산업AI' ? 'Industrial AI' :
+                   category === '국방/보안' ? 'Defense AI' :
                    category === 'AI/ML' ? 'AI/Machine Learning' :
                    category === '물리컴퓨팅' ? 'Physical Computing' :
                    category === '블록체인' ? 'Blockchain' :
+                   category === '수학/이론' ? 'Mathematics' :
+                   category === '시스템/이론' ? 'System Design' :
                    category === '자율주행' ? 'Autonomous Mobility' : category}
                 </button>
               ))}
-            </nav>
+            </div>
           </div>
         </div>
         
@@ -718,6 +726,22 @@ export default function Home() {
                               <span className="text-xs px-2 py-1 bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 rounded">CARLA</span>
                             </>
                           )}
+                          {course.id === 'quantum-computing' && (
+                            <>
+                              <span className="text-xs px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded">양자 회로</span>
+                              <span className="text-xs px-2 py-1 bg-violet-50 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400 rounded">Grover 알고리즘</span>
+                              <span className="text-xs px-2 py-1 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded">양자 ML</span>
+                              <span className="text-xs px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded">Qiskit</span>
+                            </>
+                          )}
+                          {course.id === 'smart-factory' && (
+                            <>
+                              <span className="text-xs px-2 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 rounded">예측 유지보수</span>
+                              <span className="text-xs px-2 py-1 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 rounded">디지털 트윈</span>
+                              <span className="text-xs px-2 py-1 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded">AI 품질검사</span>
+                              <span className="text-xs px-2 py-1 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 rounded">로봇 자동화</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     )}
@@ -747,7 +771,7 @@ export default function Home() {
                   <div className="border-t border-gray-100 dark:border-gray-700 p-4">
                     {course.status === 'active' && course.link ? (
                       <Link
-                        href={course.link}
+                        href={course.link || `/modules/${course.id}`}
                         className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
                       >
                         Access Environment
